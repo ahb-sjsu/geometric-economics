@@ -1,88 +1,161 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 350" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
   <defs>
     <style>
-      .title { font-size: 14px; font-weight: 600; fill: #333; }
+      .title { font-size: 15px; font-weight: 600; fill: #333; }
       .subtitle { font-size: 10px; fill: #666; }
       .label { font-size: 11px; fill: #444; font-weight: 500; }
       .small { font-size: 9px; fill: #555; }
-      .failure-name { font-size: 12px; font-weight: 700; }
-      .failure-what { font-size: 9px; fill: #666; }
+      .dim-bar { font-size: 8px; fill: #fff; font-weight: 600; }
+      .dim-label { font-size: 8.5px; fill: #555; }
+      .value { font-size: 13px; font-weight: 700; }
+      .funnel-text { font-size: 10px; font-weight: 600; }
     </style>
+    <linearGradient id="funnel-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e8e8e8;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#ccc;stop-opacity:0.3"/>
+    </linearGradient>
+    <marker id="arr-down" markerWidth="8" markerHeight="8" refX="4" refY="8" orient="auto">
+      <polygon points="0 0, 8 0, 4 8" fill="#999"/>
+    </marker>
   </defs>
 
-  <text x="350" y="24" text-anchor="middle" class="title">Figure 1.1 — Three Failures of the Scalar Economy</text>
-  <text x="350" y="40" text-anchor="middle" class="subtitle">GDP, utility functions, and cost-benefit analysis all compress multi-dimensional reality to a single number — and lose the information that matters most.</text>
+  <text x="400" y="26" text-anchor="middle" class="title">Figure 1.1 -- The GDP Trap: Nine Dimensions Contracted to One Scalar</text>
+  <text x="400" y="44" text-anchor="middle" class="subtitle">Two economies with identical GDP but completely different 9-dimensional profiles. The scalar destroys the information that matters most.</text>
 
-  <!-- Three columns -->
-  <!-- GDP -->
-  <g transform="translate(20, 60)">
-    <rect x="0" y="0" width="210" height="250" fill="#f3e5f5" stroke="#ce93d8" stroke-width="1.5" rx="8"/>
-    <text x="105" y="25" text-anchor="middle" class="failure-name" fill="#7b1fa2">GDP</text>
-    <text x="105" y="42" text-anchor="middle" class="failure-what">Σ(market transactions)</text>
+  <!-- Economy A: Extractive -->
+  <g transform="translate(25, 68)">
+    <rect x="0" y="0" width="230" height="290" fill="#fff5f0" stroke="#ef9a9a" stroke-width="1.5" rx="8"/>
+    <text x="115" y="22" text-anchor="middle" class="label" fill="#c62828">Economy A: "Extractive Growth"</text>
 
-    <!-- What it captures -->
-    <rect x="10" y="55" width="190" height="25" fill="#e1bee7" rx="3"/>
-    <text x="105" y="72" text-anchor="middle" class="small" fill="#4a148c" font-weight="600">Captures: total output (d₁)</text>
+    <!-- 9 dimension bars, each 22px tall with 3px gap -->
+    <rect x="12" y="35" width="200" height="20" fill="#2171b5" rx="3"/>
+    <text x="112" y="49" text-anchor="middle" class="dim-bar">d1 Consequences: HIGH ($1T GDP)</text>
 
-    <!-- What it destroys -->
-    <rect x="10" y="90" width="190" height="100" fill="#fce4ec" stroke="#e57373" stroke-width="0.5" rx="3"/>
-    <text x="105" y="106" text-anchor="middle" class="small" fill="#c62828" font-weight="600">Destroys:</text>
-    <text x="20" y="120" class="small" fill="#c62828">• Distribution (d₃ fairness)</text>
-    <text x="20" y="133" class="small" fill="#c62828">• Sustainability (d₆ social)</text>
-    <text x="20" y="146" class="small" fill="#c62828">• Institutional health (d₈)</text>
-    <text x="20" y="159" class="small" fill="#c62828">• Trust (d₅), Freedom (d₄)</text>
-    <text x="20" y="172" class="small" fill="#c62828">• 8 of 9 dimensions</text>
+    <rect x="12" y="58" width="55" height="20" fill="#6baed6" rx="3"/>
+    <text x="39" y="72" text-anchor="middle" class="dim-bar">d2</text>
+    <text x="75" y="72" class="dim-label" fill="#c62828">Rights: weak</text>
 
-    <text x="105" y="210" text-anchor="middle" class="small" font-weight="600" fill="#7b1fa2">Consequence:</text>
-    <text x="105" y="224" text-anchor="middle" class="small">A country can have rising GDP</text>
-    <text x="105" y="237" text-anchor="middle" class="small">while everything else declines</text>
+    <rect x="12" y="81" width="35" height="20" fill="#ef5350" rx="3"/>
+    <text x="29" y="95" text-anchor="middle" class="dim-bar">d3</text>
+    <text x="55" y="95" class="dim-label" fill="#c62828">Severe inequality</text>
+
+    <rect x="12" y="104" width="50" height="20" fill="#e57373" rx="3"/>
+    <text x="37" y="118" text-anchor="middle" class="dim-bar">d4</text>
+    <text x="70" y="118" class="dim-label" fill="#c62828">Coercive labor</text>
+
+    <rect x="12" y="127" width="28" height="20" fill="#c62828" rx="3"/>
+    <text x="26" y="141" text-anchor="middle" class="dim-bar">d5</text>
+    <text x="48" y="141" class="dim-label" fill="#c62828">Eroding trust</text>
+
+    <rect x="12" y="150" width="22" height="20" fill="#b71c1c" rx="3"/>
+    <text x="23" y="164" text-anchor="middle" class="dim-bar">d6</text>
+    <text x="42" y="164" class="dim-label" fill="#c62828">Environmental damage</text>
+
+    <rect x="12" y="173" width="40" height="20" fill="#ef5350" rx="3"/>
+    <text x="32" y="187" text-anchor="middle" class="dim-bar">d7</text>
+    <text x="60" y="187" class="dim-label" fill="#c62828">Identity erosion</text>
+
+    <rect x="12" y="196" width="30" height="20" fill="#d32f2f" rx="3"/>
+    <text x="27" y="210" text-anchor="middle" class="dim-bar">d8</text>
+    <text x="50" y="210" class="dim-label" fill="#c62828">Declining legitimacy</text>
+
+    <rect x="12" y="219" width="38" height="20" fill="#e57373" rx="3"/>
+    <text x="31" y="233" text-anchor="middle" class="dim-bar">d9</text>
+    <text x="58" y="233" class="dim-label" fill="#c62828">Info opacity</text>
+
+    <!-- Profile shape: tall d1, short everything else -->
+    <text x="115" y="260" text-anchor="middle" class="small" fill="#c62828" font-weight="600">Profile: one tall bar, eight short</text>
+    <text x="115" y="275" text-anchor="middle" class="small" fill="#c62828">"Growth at any cost"</text>
   </g>
 
-  <!-- Utility -->
-  <g transform="translate(245, 60)">
-    <rect x="0" y="0" width="210" height="250" fill="#e3f2fd" stroke="#90caf9" stroke-width="1.5" rx="8"/>
-    <text x="105" y="25" text-anchor="middle" class="failure-name" fill="#1565c0">Utility Function</text>
-    <text x="105" y="42" text-anchor="middle" class="failure-what">u: X → ℝ (maximize a number)</text>
+  <!-- Central funnel: the contraction -->
+  <g transform="translate(270, 68)">
+    <!-- Funnel shape -->
+    <polygon points="0,0 260,0 260,290 0,290" fill="none"/>
 
-    <rect x="10" y="55" width="190" height="25" fill="#bbdefb" rx="3"/>
-    <text x="105" y="72" text-anchor="middle" class="small" fill="#0d47a1" font-weight="600">Captures: preference ranking</text>
+    <!-- 9D input bracket on left -->
+    <path d="M 10,10 L 0,10 L 0,280 L 10,280" fill="none" stroke="#999" stroke-width="1.2"/>
+    <text x="18" y="148" class="small" fill="#999" font-weight="600" transform="rotate(-90,18,148)">R^9 input</text>
 
-    <rect x="10" y="90" width="190" height="100" fill="#fce4ec" stroke="#e57373" stroke-width="0.5" rx="3"/>
-    <text x="105" y="106" text-anchor="middle" class="small" fill="#c62828" font-weight="600">Destroys:</text>
-    <text x="20" y="120" class="small" fill="#c62828">• Which values conflict (d₃ vs d₁)</text>
-    <text x="20" y="133" class="small" fill="#c62828">• Where boundaries lie (β = ∞)</text>
-    <text x="20" y="146" class="small" fill="#c62828">• Why choices feel difficult</text>
-    <text x="20" y="159" class="small" fill="#c62828">• Direction of trade-offs</text>
-    <text x="20" y="172" class="small" fill="#c62828">• n−1 dimensions (Thm 14)</text>
+    <!-- Funnel trapezoid -->
+    <polygon points="35,20 35,270 225,125 225,165" fill="url(#funnel-grad)" stroke="#bbb" stroke-width="1"/>
 
-    <text x="105" y="210" text-anchor="middle" class="small" font-weight="600" fill="#1565c0">Consequence:</text>
-    <text x="105" y="224" text-anchor="middle" class="small">"Irrational" behavior is rational</text>
-    <text x="105" y="237" text-anchor="middle" class="small">on the full manifold (Ch. 4–5)</text>
+    <!-- Arrow lines converging -->
+    <line x1="35" y1="40" x2="220" y2="140" stroke="#aaa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="35" y1="70" x2="220" y2="142" stroke="#aaa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="35" y1="100" x2="220" y2="143" stroke="#aaa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="35" y1="130" x2="220" y2="144" stroke="#aaa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="35" y1="145" x2="220" y2="145" stroke="#2171b5" stroke-width="1.5"/>
+    <line x1="35" y1="160" x2="220" y2="146" stroke="#aaa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="35" y1="190" x2="220" y2="148" stroke="#aaa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="35" y1="220" x2="220" y2="150" stroke="#aaa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="35" y1="250" x2="220" y2="152" stroke="#aaa" stroke-width="0.8" opacity="0.6"/>
+
+    <!-- Funnel label -->
+    <text x="130" y="14" text-anchor="middle" class="funnel-text" fill="#666">phi: R^9 --> R^1</text>
+    <text x="130" y="292" text-anchor="middle" class="small" fill="#b71c1c" font-weight="600">8 dimensions destroyed</text>
+
+    <!-- Lost info annotation -->
+    <rect x="60" y="190" width="140" height="50" fill="rgba(255,255,255,0.85)" stroke="#ef9a9a" stroke-width="0.8" rx="4"/>
+    <text x="130" y="207" text-anchor="middle" class="small" fill="#c62828" font-weight="600">ker(phi) = R^8</text>
+    <text x="130" y="220" text-anchor="middle" class="small" fill="#c62828">The 8-dimensional null space</text>
+    <text x="130" y="233" text-anchor="middle" class="small" fill="#c62828">is irrecoverably lost</text>
+
+    <!-- 1D output on right -->
+    <line x1="228" y1="125" x2="228" y2="165" stroke="#ff9800" stroke-width="4" stroke-linecap="round"/>
+    <text x="245" y="148" class="funnel-text" fill="#ff9800">$1T</text>
+    <text x="245" y="162" class="small" fill="#999">GDP</text>
   </g>
 
-  <!-- CBA -->
-  <g transform="translate(470, 60)">
-    <rect x="0" y="0" width="210" height="250" fill="#fff8e1" stroke="#ffe082" stroke-width="1.5" rx="8"/>
-    <text x="105" y="25" text-anchor="middle" class="failure-name" fill="#f57f17">Cost-Benefit</text>
-    <text x="105" y="42" text-anchor="middle" class="failure-what">Σ(benefits) − Σ(costs) in $ terms</text>
+  <!-- Economy B: Sustainable -->
+  <g transform="translate(545, 68)">
+    <rect x="0" y="0" width="230" height="290" fill="#f0fff0" stroke="#81c784" stroke-width="1.5" rx="8"/>
+    <text x="115" y="22" text-anchor="middle" class="label" fill="#2e7d32">Economy B: "Sustainable Prosperity"</text>
 
-    <rect x="10" y="55" width="190" height="25" fill="#fff9c4" rx="3"/>
-    <text x="105" y="72" text-anchor="middle" class="small" fill="#e65100" font-weight="600">Captures: net monetary value</text>
+    <rect x="12" y="35" width="120" height="20" fill="#2171b5" rx="3"/>
+    <text x="72" y="49" text-anchor="middle" class="dim-bar">d1 Moderate ($1T)</text>
 
-    <rect x="10" y="90" width="190" height="100" fill="#fce4ec" stroke="#e57373" stroke-width="0.5" rx="3"/>
-    <text x="105" y="106" text-anchor="middle" class="small" fill="#c62828" font-weight="600">Destroys:</text>
-    <text x="20" y="120" class="small" fill="#c62828">• Whether exchange rate is legitimate</text>
-    <text x="20" y="133" class="small" fill="#c62828">• Incommensurable values</text>
-    <text x="20" y="146" class="small" fill="#c62828">• Sacred boundaries (β = ∞)</text>
-    <text x="20" y="159" class="small" fill="#c62828">• The metric choice itself</text>
-    <text x="20" y="172" class="small" fill="#c62828">• (metric hidden in "exchange rate")</text>
+    <rect x="12" y="58" width="170" height="20" fill="#4292c6" rx="3"/>
+    <text x="97" y="72" text-anchor="middle" class="dim-bar">d2 Strong property rights</text>
 
-    <text x="105" y="210" text-anchor="middle" class="small" font-weight="600" fill="#f57f17">Consequence:</text>
-    <text x="105" y="224" text-anchor="middle" class="small">The metric does the moral work,</text>
-    <text x="105" y="237" text-anchor="middle" class="small">hidden behind apparent objectivity</text>
+    <rect x="12" y="81" width="185" height="20" fill="#66bb6a" rx="3"/>
+    <text x="104" y="95" text-anchor="middle" class="dim-bar">d3 Low inequality, fair norms</text>
+
+    <rect x="12" y="104" width="175" height="20" fill="#43a047" rx="3"/>
+    <text x="99" y="118" text-anchor="middle" class="dim-bar">d4 High autonomy, free choice</text>
+
+    <rect x="12" y="127" width="190" height="20" fill="#2e7d32" rx="3"/>
+    <text x="107" y="141" text-anchor="middle" class="dim-bar">d5 High trust, social cohesion</text>
+
+    <rect x="12" y="150" width="200" height="20" fill="#1b5e20" rx="3"/>
+    <text x="112" y="164" text-anchor="middle" class="dim-bar">d6 Sustainable communities</text>
+
+    <rect x="12" y="173" width="165" height="20" fill="#43a047" rx="3"/>
+    <text x="94" y="187" text-anchor="middle" class="dim-bar">d7 Civic pride, strong identity</text>
+
+    <rect x="12" y="196" width="180" height="20" fill="#388e3c" rx="3"/>
+    <text x="102" y="210" text-anchor="middle" class="dim-bar">d8 Robust institutions</text>
+
+    <rect x="12" y="219" width="170" height="20" fill="#4caf50" rx="3"/>
+    <text x="97" y="233" text-anchor="middle" class="dim-bar">d9 Transparent, informed</text>
+
+    <text x="115" y="260" text-anchor="middle" class="small" fill="#2e7d32" font-weight="600">Profile: balanced, all dimensions healthy</text>
+    <text x="115" y="275" text-anchor="middle" class="small" fill="#2e7d32">"Prosperity with depth"</text>
   </g>
 
-  <!-- Bottom unifying statement -->
-  <rect x="80" y="320" width="540" height="24" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="1" rx="4"/>
-  <text x="350" y="336" text-anchor="middle" class="small" font-weight="600">All three failures have the same geometric cause: projecting a 9-dimensional decision manifold onto a 1-dimensional scalar.</text>
+  <!-- Central equals: same GDP -->
+  <g transform="translate(365, 375)">
+    <rect x="0" y="0" width="70" height="32" fill="#fff3e0" stroke="#ff9800" stroke-width="1.8" rx="5"/>
+    <text x="35" y="22" text-anchor="middle" font-size="18" font-weight="700" fill="#ff9800">GDP =</text>
+  </g>
+
+  <!-- Bottom theorem box -->
+  <rect x="80" y="420" width="640" height="65" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="6"/>
+  <text x="400" y="440" text-anchor="middle" class="label">Theorem 14 (Scalar Irrecoverability)</text>
+  <text x="400" y="456" text-anchor="middle" class="small">No continuous phi: R^9 --> R is injective. Both economies map to GDP = $1T. The 8 lost dimensions are mathematically irrecoverable.</text>
+  <text x="400" y="472" text-anchor="middle" class="small" font-weight="600" fill="#c62828">These economies are indistinguishable to any scalar measure. The structure that matters most is exactly what the scalar destroys.</text>
+
+  <!-- Connecting arrows from both economies to the equals sign -->
+  <path d="M 140,358 Q 300,395 365,391" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,3"/>
+  <path d="M 660,358 Q 530,395 435,391" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,3"/>
 </svg>

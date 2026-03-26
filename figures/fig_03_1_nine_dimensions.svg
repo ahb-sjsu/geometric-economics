@@ -1,126 +1,154 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 480" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
   <defs>
     <style>
-      .title { font-size: 14px; font-weight: 600; fill: #333; }
+      .title { font-size: 15px; font-weight: 600; fill: #333; }
       .subtitle { font-size: 10px; fill: #666; }
       .dim-name { font-size: 11px; font-weight: 600; }
       .dim-desc { font-size: 9px; fill: #555; }
+      .dim-question { font-size: 8.5px; fill: #888; font-style: italic; }
       .dim-num { font-size: 13px; font-weight: 700; fill: #fff; }
-      .group-label { font-size: 11px; font-weight: 700; }
+      .group-label { font-size: 12px; font-weight: 700; }
       .group-desc { font-size: 9px; fill: #777; font-style: italic; }
+      .matrix-label { font-size: 9px; fill: #555; }
+      .scope-label { font-size: 9px; font-weight: 600; fill: #999; }
     </style>
   </defs>
 
-  <text x="350" y="24" text-anchor="middle" class="title">Figure 3.1 — The Nine Dimensions of the Economic Decision Manifold</text>
-  <text x="350" y="40" text-anchor="middle" class="subtitle">Every economic decision activates a subset of these dimensions. Classical economics sees only d₁. The full manifold sees all nine.</text>
+  <text x="400" y="26" text-anchor="middle" class="title">Figure 3.1 -- The Nine Dimensions of the Economic Decision Manifold</text>
+  <text x="400" y="44" text-anchor="middle" class="subtitle">Every economic decision activates a subset of these dimensions. Classical economics sees only d1. The full manifold sees all nine.</text>
 
-  <!-- Transferable group -->
-  <g transform="translate(30, 65)">
-    <rect x="0" y="0" width="310" height="370" fill="#eff3ff" stroke="#9ecae1" stroke-width="1.5" rx="8"/>
-    <text x="155" y="25" text-anchor="middle" class="group-label" fill="#2171b5">TRANSFERABLE</text>
-    <text x="155" y="40" text-anchor="middle" class="group-desc" fill="#6baed6">Conserved in bilateral exchange (zero-sum)</text>
+  <!-- 3x3 structure header -->
+  <g transform="translate(25, 58)">
+    <!-- Column headers: Normative modes -->
+    <text x="190" y="12" text-anchor="middle" class="scope-label" fill="#2171b5">CONSEQUENTIALIST</text>
+    <text x="400" y="12" text-anchor="middle" class="scope-label" fill="#e6550d">DEONTOLOGICAL</text>
+    <text x="610" y="12" text-anchor="middle" class="scope-label" fill="#7570b3">VIRTUE</text>
 
-    <!-- d1 -->
-    <g transform="translate(15, 55)">
-      <rect x="0" y="0" width="280" height="65" fill="#fff" stroke="#c6dbef" stroke-width="1" rx="5"/>
-      <circle cx="25" cy="32" r="16" fill="#2171b5"/>
-      <text x="25" y="37" text-anchor="middle" class="dim-num">d₁</text>
-      <text x="52" y="20" class="dim-name" fill="#2171b5">Consequences</text>
-      <text x="52" y="34" class="dim-desc">Monetary cost, material outcome, expected value</text>
-      <text x="52" y="48" class="dim-desc" fill="#d73027" font-weight="600">← The ONLY dimension Homo economicus sees</text>
+    <!-- Row headers: Evaluative scopes -->
+    <text x="14" y="96" class="scope-label" transform="rotate(-90,14,96)">INDIVIDUAL</text>
+    <text x="14" y="218" class="scope-label" transform="rotate(-90,14,218)">RELATIONAL</text>
+    <text x="14" y="338" class="scope-label" transform="rotate(-90,14,338)">INSTITUTIONAL</text>
+
+    <!-- Grid lines -->
+    <line x1="28" y1="22" x2="750" y2="22" stroke="#e0e0e0" stroke-width="0.8"/>
+    <line x1="28" y1="150" x2="750" y2="150" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="4,3"/>
+    <line x1="28" y1="272" x2="750" y2="272" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="4,3"/>
+    <line x1="295" y1="22" x2="295" y2="395" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="4,3"/>
+    <line x1="505" y1="22" x2="505" y2="395" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="4,3"/>
+
+    <!-- Row 1: Individual scope -->
+    <!-- d1: Consequences (Consequentialist + Individual) -->
+    <g transform="translate(35, 32)">
+      <rect x="0" y="0" width="248" height="105" fill="#eff3ff" stroke="#9ecae1" stroke-width="1.2" rx="6"/>
+      <circle cx="22" cy="28" r="18" fill="#2171b5"/>
+      <text x="22" y="33" text-anchor="middle" class="dim-num">d1</text>
+      <text x="50" y="22" class="dim-name" fill="#2171b5">Consequences</text>
+      <text x="50" y="38" class="dim-desc">Monetary cost, material outcome,</text>
+      <text x="50" y="51" class="dim-desc">risk-adjusted expected value</text>
+      <text x="50" y="68" class="dim-question">"What do I gain or lose?"</text>
+      <rect x="8" y="78" width="232" height="20" fill="#deebf7" rx="3"/>
+      <text x="124" y="92" text-anchor="middle" class="dim-desc" fill="#c62828" font-weight="600">The ONLY dimension Homo economicus sees</text>
     </g>
 
-    <!-- d2 -->
-    <g transform="translate(15, 130)">
-      <rect x="0" y="0" width="280" height="55" fill="#fff" stroke="#c6dbef" stroke-width="1" rx="5"/>
-      <circle cx="25" cy="27" r="16" fill="#4292c6"/>
-      <text x="25" y="32" text-anchor="middle" class="dim-num">d₂</text>
-      <text x="52" y="18" class="dim-name" fill="#4292c6">Rights / Entitlements</text>
-      <text x="52" y="32" class="dim-desc">Property rights, contractual obligations, Hohfeldian positions</text>
-      <text x="52" y="45" class="dim-desc">"This is mine" vs. "This is available"</text>
+    <!-- d2: Rights (Deontological + Individual) -->
+    <g transform="translate(303, 32)">
+      <rect x="0" y="0" width="194" height="105" fill="#fef0d9" stroke="#fdae6b" stroke-width="1.2" rx="6"/>
+      <circle cx="22" cy="28" r="18" fill="#e6550d"/>
+      <text x="22" y="33" text-anchor="middle" class="dim-num">d2</text>
+      <text x="50" y="22" class="dim-name" fill="#e6550d">Rights / Entitlements</text>
+      <text x="50" y="38" class="dim-desc">Property rights, contracts,</text>
+      <text x="50" y="51" class="dim-desc">Hohfeldian positions</text>
+      <text x="50" y="68" class="dim-question">"What am I entitled to?"</text>
     </g>
 
-    <!-- d4 -->
-    <g transform="translate(15, 195)">
-      <rect x="0" y="0" width="280" height="55" fill="#fff" stroke="#c6dbef" stroke-width="1" rx="5"/>
-      <circle cx="25" cy="27" r="16" fill="#6baed6"/>
-      <text x="25" y="32" text-anchor="middle" class="dim-num">d₄</text>
-      <text x="52" y="18" class="dim-name" fill="#6baed6">Autonomy</text>
-      <text x="52" y="32" class="dim-desc">Freedom of choice, voluntariness, coercion aversion</text>
-      <text x="52" y="45" class="dim-desc">"Am I choosing freely or being forced?"</text>
+    <!-- d7: Virtue/Identity (Virtue + Individual) -->
+    <g transform="translate(513, 32)">
+      <rect x="0" y="0" width="230" height="105" fill="#f2f0f7" stroke="#bcbddc" stroke-width="1.2" rx="6"/>
+      <circle cx="22" cy="28" r="18" fill="#7570b3"/>
+      <text x="22" y="33" text-anchor="middle" class="dim-num">d7</text>
+      <text x="50" y="22" class="dim-name" fill="#7570b3">Virtue / Identity</text>
+      <text x="50" y="38" class="dim-desc">Self-image, moral identity,</text>
+      <text x="50" y="51" class="dim-desc">character consistency</text>
+      <text x="50" y="68" class="dim-question">"Is this who I am?"</text>
     </g>
 
-    <!-- Conservation note -->
-    <rect x="15" y="265" width="280" height="90" fill="#deebf7" stroke="#9ecae1" stroke-width="0.5" rx="4"/>
-    <text x="155" y="285" text-anchor="middle" class="dim-desc" fill="#2171b5" font-weight="600">Theorem 9.1: Conservation</text>
-    <text x="155" y="300" text-anchor="middle" class="dim-desc" fill="#2171b5">Δdₖ(A) + Δdₖ(B) = 0</text>
-    <text x="155" y="315" text-anchor="middle" class="dim-desc">Your gain is my loss. No value created.</text>
-    <text x="155" y="330" text-anchor="middle" class="dim-desc">This is the "zero-sum" part of economics.</text>
-    <text x="155" y="345" text-anchor="middle" class="dim-desc" fill="#2171b5">→ "No free lunch" on these dimensions</text>
+    <!-- Row 2: Relational scope -->
+    <!-- d3: Fairness (Consequentialist + Relational) -->
+    <g transform="translate(35, 157)">
+      <rect x="0" y="0" width="248" height="100" fill="#eff3ff" stroke="#9ecae1" stroke-width="1.2" rx="6"/>
+      <circle cx="22" cy="28" r="18" fill="#4292c6"/>
+      <text x="22" y="33" text-anchor="middle" class="dim-num">d3</text>
+      <text x="50" y="22" class="dim-name" fill="#4292c6">Fairness</text>
+      <text x="50" y="38" class="dim-desc">Distributional justice, reciprocity,</text>
+      <text x="50" y="51" class="dim-desc">proportionality</text>
+      <text x="50" y="68" class="dim-question">"Is this a fair deal?"</text>
+    </g>
+
+    <!-- d4: Autonomy (Deontological + Relational) -->
+    <g transform="translate(303, 157)">
+      <rect x="0" y="0" width="194" height="100" fill="#fef0d9" stroke="#fdae6b" stroke-width="1.2" rx="6"/>
+      <circle cx="22" cy="28" r="18" fill="#fd8d3c"/>
+      <text x="22" y="33" text-anchor="middle" class="dim-num">d4</text>
+      <text x="50" y="22" class="dim-name" fill="#e6550d">Autonomy</text>
+      <text x="50" y="38" class="dim-desc">Freedom of choice,</text>
+      <text x="50" y="51" class="dim-desc">voluntariness, coercion aversion</text>
+      <text x="50" y="68" class="dim-question">"Am I choosing freely?"</text>
+    </g>
+
+    <!-- d5: Trust (Virtue + Relational) -->
+    <g transform="translate(513, 157)">
+      <rect x="0" y="0" width="230" height="100" fill="#f2f0f7" stroke="#bcbddc" stroke-width="1.2" rx="6"/>
+      <circle cx="22" cy="28" r="18" fill="#9e9ac8"/>
+      <text x="22" y="33" text-anchor="middle" class="dim-num">d5</text>
+      <text x="50" y="22" class="dim-name" fill="#7570b3">Privacy / Trust</text>
+      <text x="50" y="38" class="dim-desc">Information asymmetry,</text>
+      <text x="50" y="51" class="dim-desc">fiduciary duty, disclosure</text>
+      <text x="50" y="68" class="dim-question">"Can I trust them?"</text>
+    </g>
+
+    <!-- Row 3: Institutional scope -->
+    <!-- d6: Social Impact (Consequentialist + Institutional) -->
+    <g transform="translate(35, 280)">
+      <rect x="0" y="0" width="248" height="100" fill="#eff3ff" stroke="#9ecae1" stroke-width="1.2" rx="6"/>
+      <circle cx="22" cy="28" r="18" fill="#6baed6"/>
+      <text x="22" y="33" text-anchor="middle" class="dim-num">d6</text>
+      <text x="50" y="22" class="dim-name" fill="#2171b5">Social Impact</text>
+      <text x="50" y="38" class="dim-desc">Externalities, community effects,</text>
+      <text x="50" y="51" class="dim-desc">reputational consequence</text>
+      <text x="50" y="68" class="dim-question">"What will people think?"</text>
+    </g>
+
+    <!-- d8: Legitimacy (Deontological + Institutional) -->
+    <g transform="translate(303, 280)">
+      <rect x="0" y="0" width="194" height="100" fill="#fef0d9" stroke="#fdae6b" stroke-width="1.2" rx="6"/>
+      <circle cx="22" cy="28" r="18" fill="#fdae6b" stroke="#e6550d" stroke-width="1.5"/>
+      <text x="22" y="33" text-anchor="middle" class="dim-num" fill="#e6550d">d8</text>
+      <text x="50" y="22" class="dim-name" fill="#e6550d">Legitimacy</text>
+      <text x="50" y="38" class="dim-desc">Institutional trust, rule compliance,</text>
+      <text x="50" y="51" class="dim-desc">procedural regularity</text>
+      <text x="50" y="68" class="dim-question">"Are the rules being followed?"</text>
+    </g>
+
+    <!-- d9: Epistemic (Virtue + Institutional) -->
+    <g transform="translate(513, 280)">
+      <rect x="0" y="0" width="230" height="100" fill="#f2f0f7" stroke="#bcbddc" stroke-width="1.2" rx="6"/>
+      <circle cx="22" cy="28" r="18" fill="#bcbddc" stroke="#7570b3" stroke-width="1.5"/>
+      <text x="22" y="33" text-anchor="middle" class="dim-num" fill="#7570b3">d9</text>
+      <text x="50" y="22" class="dim-name" fill="#7570b3">Epistemic Status</text>
+      <text x="50" y="38" class="dim-desc">Information quality, confidence,</text>
+      <text x="50" y="51" class="dim-desc">ambiguity, understanding</text>
+      <text x="50" y="68" class="dim-question">"Do I know what I'm getting?"</text>
+    </g>
   </g>
 
-  <!-- Evaluative group -->
-  <g transform="translate(360, 65)">
-    <rect x="0" y="0" width="310" height="370" fill="#fef0d9" stroke="#fdae6b" stroke-width="1.5" rx="8"/>
-    <text x="155" y="25" text-anchor="middle" class="group-label" fill="#e6550d">EVALUATIVE</text>
-    <text x="155" y="40" text-anchor="middle" class="group-desc" fill="#fd8d3c">Not conserved (positive-sum possible)</text>
+  <!-- Bottom: Transferable vs Evaluative distinction -->
+  <g transform="translate(25, 450)">
+    <rect x="0" y="0" width="365" height="38" fill="#eff3ff" stroke="#9ecae1" stroke-width="1" rx="5"/>
+    <text x="182" y="16" text-anchor="middle" class="dim-desc" fill="#2171b5" font-weight="700">TRANSFERABLE: d1, d2, d4</text>
+    <text x="182" y="30" text-anchor="middle" class="dim-desc" fill="#2171b5">Conserved in exchange: your gain = my loss (zero-sum)</text>
 
-    <!-- d3 -->
-    <g transform="translate(15, 55)">
-      <rect x="0" y="0" width="280" height="45" fill="#fff" stroke="#fdd0a2" stroke-width="1" rx="5"/>
-      <circle cx="25" cy="22" r="14" fill="#e6550d"/>
-      <text x="25" y="27" text-anchor="middle" class="dim-num" font-size="11">d₃</text>
-      <text x="52" y="18" class="dim-name" fill="#e6550d">Fairness</text>
-      <text x="52" y="32" class="dim-desc">Distributional justice, reciprocity. "Is this a fair deal?"</text>
-    </g>
-
-    <!-- d5 -->
-    <g transform="translate(15, 108)">
-      <rect x="0" y="0" width="280" height="45" fill="#fff" stroke="#fdd0a2" stroke-width="1" rx="5"/>
-      <circle cx="25" cy="22" r="14" fill="#fd8d3c"/>
-      <text x="25" y="27" text-anchor="middle" class="dim-num" font-size="11">d₅</text>
-      <text x="52" y="18" class="dim-name" fill="#fd8d3c">Privacy / Trust</text>
-      <text x="52" y="32" class="dim-desc">Information asymmetry, fiduciary duty. "Can I trust them?"</text>
-    </g>
-
-    <!-- d6 -->
-    <g transform="translate(15, 161)">
-      <rect x="0" y="0" width="280" height="45" fill="#fff" stroke="#fdd0a2" stroke-width="1" rx="5"/>
-      <circle cx="25" cy="22" r="14" fill="#fdae6b"/>
-      <text x="25" y="27" text-anchor="middle" class="dim-num" font-size="11">d₆</text>
-      <text x="52" y="18" class="dim-name" fill="#e6550d">Social Impact</text>
-      <text x="52" y="32" class="dim-desc">Externalities, reputation. "What will people think?"</text>
-    </g>
-
-    <!-- d7 -->
-    <g transform="translate(15, 214)">
-      <rect x="0" y="0" width="280" height="45" fill="#fff" stroke="#fdd0a2" stroke-width="1" rx="5"/>
-      <circle cx="25" cy="22" r="14" fill="#fdd0a2" stroke="#e6550d" stroke-width="1"/>
-      <text x="25" y="27" text-anchor="middle" class="dim-num" font-size="11" fill="#e6550d">d₇</text>
-      <text x="52" y="18" class="dim-name" fill="#e6550d">Virtue / Identity</text>
-      <text x="52" y="32" class="dim-desc">Self-image, moral identity. "Is this the kind of person I am?"</text>
-    </g>
-
-    <!-- d8, d9 -->
-    <g transform="translate(15, 267)">
-      <rect x="0" y="0" width="135" height="40" fill="#fff" stroke="#fdd0a2" stroke-width="0.8" rx="4"/>
-      <text x="67" y="17" text-anchor="middle" class="dim-name" fill="#e6550d" font-size="10">d₈ Legitimacy</text>
-      <text x="67" y="30" text-anchor="middle" class="dim-desc">Rule compliance</text>
-    </g>
-    <g transform="translate(160, 267)">
-      <rect x="0" y="0" width="135" height="40" fill="#fff" stroke="#fdd0a2" stroke-width="0.8" rx="4"/>
-      <text x="67" y="17" text-anchor="middle" class="dim-name" fill="#e6550d" font-size="10">d₉ Epistemic</text>
-      <text x="67" y="30" text-anchor="middle" class="dim-desc">Info quality</text>
-    </g>
-
-    <!-- Positive-sum note -->
-    <rect x="15" y="315" width="280" height="45" fill="#feedde" stroke="#fdae6b" stroke-width="0.5" rx="4"/>
-    <text x="155" y="332" text-anchor="middle" class="dim-desc" fill="#e6550d" font-weight="600">Not conserved → mutual gains possible</text>
-    <text x="155" y="347" text-anchor="middle" class="dim-desc">Both parties can gain trust, community,</text>
-    <text x="155" y="360" text-anchor="middle" class="dim-desc">identity. This is WHY trade creates value.</text>
+    <rect x="385" y="0" width="365" height="38" fill="#fef0d9" stroke="#fdae6b" stroke-width="1" rx="5"/>
+    <text x="567" y="16" text-anchor="middle" class="dim-desc" fill="#e6550d" font-weight="700">EVALUATIVE: d3, d5, d6, d7, d8, d9</text>
+    <text x="567" y="30" text-anchor="middle" class="dim-desc" fill="#e6550d">Not conserved: mutual gains possible (positive-sum)</text>
   </g>
-
-  <!-- Bottom caption -->
-  <text x="350" y="455" text-anchor="middle" class="subtitle">The transferable/evaluative distinction explains why trade is simultaneously zero-sum (on money) and positive-sum (on relationships).</text>
-  <text x="350" y="470" text-anchor="middle" class="subtitle">Homo economicus sees only d₁. Behavioral economics catalogs the consequences of ignoring d₂–d₉. This framework makes all nine explicit.</text>
 </svg>

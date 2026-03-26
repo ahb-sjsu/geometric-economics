@@ -1,122 +1,191 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
   <defs>
     <style>
-      .title { font-size: 14px; font-weight: 600; fill: #333; }
+      .title { font-size: 15px; font-weight: 600; fill: #333; }
       .subtitle { font-size: 10px; fill: #666; }
       .path-name { font-size: 12px; font-weight: 700; }
       .path-desc { font-size: 9px; fill: #555; }
       .econ-label { font-size: 10px; font-weight: 600; }
       .econ-example { font-size: 9px; fill: #666; font-style: italic; }
+      .fix-text { font-size: 8.5px; font-weight: 600; }
     </style>
+    <marker id="arr-true" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#1b9e77"/>
+    </marker>
+    <marker id="arr-corrupt" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#d73027"/>
+    </marker>
+    <marker id="arr-hijack" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#e6550d"/>
+    </marker>
   </defs>
 
-  <text x="360" y="24" text-anchor="middle" class="title">Figure 10.1 — Four Geometric Pathologies of Market Failure</text>
-  <text x="360" y="40" text-anchor="middle" class="subtitle">The same four failure modes from Geometric Reasoning (Ch. 5–8), instantiated on the economic decision manifold.</text>
+  <text x="400" y="26" text-anchor="middle" class="title">Figure 10.1 -- Four Geometric Pathologies of Market Failure</text>
+  <text x="400" y="44" text-anchor="middle" class="subtitle">Each market failure maps to a specific geometric defect in the search process on the economic decision manifold.</text>
 
   <!-- 2x2 grid -->
-  <!-- Heuristic Corruption (top-left) -->
-  <g transform="translate(20, 60)">
-    <rect x="0" y="0" width="330" height="200" fill="#fff5f0" stroke="#fcbba1" stroke-width="1.5" rx="8"/>
+  <!-- 1. Heuristic Corruption (top-left) -->
+  <g transform="translate(15, 58)">
+    <rect x="0" y="0" width="380" height="195" fill="#fff5f0" stroke="#ef9a9a" stroke-width="1.5" rx="8"/>
 
-    <text x="165" y="25" text-anchor="middle" class="path-name" fill="#cb181d">1. Heuristic Corruption</text>
-    <text x="165" y="40" text-anchor="middle" class="path-desc">The price signal ∇h points away from the geodesic</text>
+    <text x="190" y="22" text-anchor="middle" class="path-name" fill="#c62828">1. Heuristic Corruption</text>
+    <text x="190" y="37" text-anchor="middle" class="path-desc" fill="#888">The price signal grad(h) points away from the geodesic</text>
 
-    <!-- Mini diagram: price arrow missing externality -->
-    <line x1="40" y1="80" x2="120" y2="80" stroke="#2171b5" stroke-width="2"/>
-    <polygon points="120,80 114,75 114,85" fill="#2171b5"/>
-    <text x="80" y="73" text-anchor="middle" class="path-desc" fill="#2171b5">price signal</text>
+    <!-- Visual: diverging arrows -->
+    <g transform="translate(15, 50)">
+      <circle cx="30" cy="55" r="5" fill="#333"/>
+      <text x="30" y="45" text-anchor="middle" class="path-desc" fill="#333" font-weight="600">Start</text>
 
-    <line x1="40" y1="80" x2="100" y2="120" stroke="#1a9850" stroke-width="2" stroke-dasharray="4,3"/>
-    <polygon points="100,120 93,114 97,122" fill="#1a9850"/>
-    <text x="55" y="112" class="path-desc" fill="#1a9850">true cost</text>
+      <!-- Price signal (wrong direction) -->
+      <line x1="35" y1="55" x2="145" y2="35" stroke="#d73027" stroke-width="2.5" marker-end="url(#arr-corrupt)"/>
+      <text x="110" y="28" class="path-desc" fill="#d73027" font-weight="600">price signal (d1 only)</text>
 
-    <text x="170" y="80" class="econ-label" fill="#cb181d">Economic examples:</text>
-    <text x="170" y="95" class="econ-example">• Externalities (pollution not priced)</text>
-    <text x="170" y="109" class="econ-example">• Information asymmetry (Akerlof lemons)</text>
-    <text x="170" y="123" class="econ-example">• Missing markets (no price for trust)</text>
+      <!-- True cost (correct direction) -->
+      <line x1="35" y1="58" x2="130" y2="100" stroke="#1b9e77" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arr-true)"/>
+      <text x="115" y="115" class="path-desc" fill="#1b9e77" font-weight="600">true manifold cost</text>
 
-    <rect x="10" y="140" width="310" height="48" fill="#fee0d2" rx="4"/>
-    <text x="165" y="158" text-anchor="middle" class="path-desc" font-weight="600" fill="#cb181d">Fix: Pigouvian taxes, disclosure requirements,</text>
-    <text x="165" y="172" text-anchor="middle" class="path-desc" font-weight="600" fill="#cb181d">reputation systems → restore heuristic admissibility</text>
+      <!-- Angle arc -->
+      <path d="M 55,52 A 20,20 0 0,1 53,65" fill="none" stroke="#ff9800" stroke-width="1.5"/>
+      <text x="64" y="62" class="path-desc" fill="#ff9800" font-weight="700">theta</text>
+    </g>
+
+    <g transform="translate(175, 52)">
+      <text x="0" y="12" class="econ-label" fill="#c62828">Economic examples:</text>
+      <text x="0" y="28" class="econ-example">Externalities (pollution not priced)</text>
+      <text x="0" y="42" class="econ-example">Information asymmetry (Akerlof lemons)</text>
+      <text x="0" y="56" class="econ-example">Missing markets (no price for trust, d5)</text>
+    </g>
+
+    <rect x="10" y="150" width="360" height="35" fill="#ffebee" rx="4"/>
+    <text x="190" y="166" text-anchor="middle" class="fix-text" fill="#c62828">Fix: Pigouvian taxes, disclosure requirements, reputation systems</text>
+    <text x="190" y="178" text-anchor="middle" class="fix-text" fill="#c62828">Restore heuristic admissibility: make grad(h) approximate true grad(f)</text>
   </g>
 
-  <!-- Objective Hijacking (top-right) -->
-  <g transform="translate(370, 60)">
-    <rect x="0" y="0" width="330" height="200" fill="#fff5eb" stroke="#fdbe85" stroke-width="1.5" rx="8"/>
+  <!-- 2. Objective Hijacking (top-right) -->
+  <g transform="translate(405, 58)">
+    <rect x="0" y="0" width="380" height="195" fill="#fff8e1" stroke="#ffb74d" stroke-width="1.5" rx="8"/>
 
-    <text x="165" y="25" text-anchor="middle" class="path-name" fill="#e6550d">2. Objective Hijacking</text>
-    <text x="165" y="40" text-anchor="middle" class="path-desc">The search optimizes the wrong objective function</text>
+    <text x="190" y="22" text-anchor="middle" class="path-name" fill="#e65100">2. Objective Hijacking</text>
+    <text x="190" y="37" text-anchor="middle" class="path-desc" fill="#888">The optimizer serves the wrong objective function</text>
 
-    <!-- Mini diagram: two objectives diverging -->
-    <circle cx="50" cy="90" r="4" fill="#333"/>
-    <line x1="54" y1="90" x2="110" y2="70" stroke="#1a9850" stroke-width="2"/>
-    <text x="115" y="66" class="path-desc" fill="#1a9850">public welfare</text>
-    <line x1="54" y1="92" x2="110" y2="120" stroke="#d73027" stroke-width="2.5"/>
-    <text x="115" y="125" class="path-desc" fill="#d73027">captured objective</text>
+    <!-- Visual: two targets, arrow goes to wrong one -->
+    <g transform="translate(15, 50)">
+      <circle cx="30" cy="55" r="5" fill="#333"/>
 
-    <text x="170" y="80" class="econ-label" fill="#e6550d">Economic examples:</text>
-    <text x="170" y="95" class="econ-example">• Regulatory capture (regulator serves industry)</text>
-    <text x="170" y="109" class="econ-example">• Short-termism (quarterly proxy ≠ geodesic)</text>
-    <text x="170" y="123" class="econ-example">• Shareholder primacy (d₁ ≠ full manifold)</text>
+      <!-- Public welfare target (correct) -->
+      <circle cx="140" cy="25" r="12" fill="none" stroke="#1b9e77" stroke-width="1.5"/>
+      <circle cx="140" cy="25" r="4" fill="#1b9e77"/>
+      <text x="158" y="20" class="path-desc" fill="#1b9e77" font-weight="600">public</text>
+      <text x="158" y="31" class="path-desc" fill="#1b9e77" font-weight="600">welfare</text>
 
-    <rect x="10" y="140" width="310" height="48" fill="#fee6ce" rx="4"/>
-    <text x="165" y="158" text-anchor="middle" class="path-desc" font-weight="600" fill="#e6550d">Fix: Structural governance, stakeholder representation,</text>
-    <text x="165" y="172" text-anchor="middle" class="path-desc" font-weight="600" fill="#e6550d">long-term incentive alignment → protect the objective</text>
+      <!-- Captured objective (wrong) -->
+      <circle cx="140" cy="95" r="12" fill="none" stroke="#e65100" stroke-width="2"/>
+      <circle cx="140" cy="95" r="4" fill="#e65100"/>
+      <text x="158" y="92" class="path-desc" fill="#e65100" font-weight="600">captured</text>
+      <text x="158" y="103" class="path-desc" fill="#e65100" font-weight="600">objective</text>
+
+      <!-- Arrow to wrong target -->
+      <line x1="35" y1="58" x2="128" y2="90" stroke="#e65100" stroke-width="2.5" marker-end="url(#arr-hijack)"/>
+
+      <!-- Faint correct path -->
+      <line x1="35" y1="52" x2="128" y2="28" stroke="#1b9e77" stroke-width="1" stroke-dasharray="3,3"/>
+    </g>
+
+    <g transform="translate(175, 52)">
+      <text x="0" y="12" class="econ-label" fill="#e65100">Economic examples:</text>
+      <text x="0" y="28" class="econ-example">Regulatory capture (regulator serves industry)</text>
+      <text x="0" y="42" class="econ-example">Short-termism (quarterly proxy != geodesic)</text>
+      <text x="0" y="56" class="econ-example">Shareholder primacy (d1 != full manifold)</text>
+    </g>
+
+    <rect x="10" y="150" width="360" height="35" fill="#fff3e0" rx="4"/>
+    <text x="190" y="166" text-anchor="middle" class="fix-text" fill="#e65100">Fix: Structural governance, stakeholder representation,</text>
+    <text x="190" y="178" text-anchor="middle" class="fix-text" fill="#e65100">long-term incentive alignment -- protect the objective function</text>
   </g>
 
-  <!-- Local Minima (bottom-left) -->
-  <g transform="translate(20, 280)">
-    <rect x="0" y="0" width="330" height="200" fill="#f7fcf5" stroke="#a1d99b" stroke-width="1.5" rx="8"/>
+  <!-- 3. Local Minima (bottom-left) -->
+  <g transform="translate(15, 262)">
+    <rect x="0" y="0" width="380" height="195" fill="#f1f8e9" stroke="#aed581" stroke-width="1.5" rx="8"/>
 
-    <text x="165" y="25" text-anchor="middle" class="path-name" fill="#238b45">3. Local Minima</text>
-    <text x="165" y="40" text-anchor="middle" class="path-desc">The search is trapped in a suboptimal basin</text>
+    <text x="190" y="22" text-anchor="middle" class="path-name" fill="#33691e">3. Local Minima</text>
+    <text x="190" y="37" text-anchor="middle" class="path-desc" fill="#888">The search is trapped in a suboptimal basin</text>
 
-    <!-- Mini diagram: W-shaped potential -->
-    <path d="M 30,120 C 50,120 60,80 80,80 C 100,80 110,120 120,120 C 130,120 140,60 170,50"
-          fill="none" stroke="#333" stroke-width="1.5"/>
-    <circle cx="80" cy="118" r="4" fill="#d73027"/>
-    <text x="80" y="140" text-anchor="middle" class="path-desc" fill="#d73027">trapped</text>
-    <circle cx="165" cy="48" r="4" fill="#1a9850"/>
-    <text x="165" y="42" class="path-desc" fill="#1a9850">optimal</text>
+    <!-- Visual: energy landscape with trapped ball -->
+    <g transform="translate(15, 48)">
+      <!-- W-shaped potential with clear basins -->
+      <path d="M 10,90 C 25,90 35,50 55,50 C 75,50 80,90 95,90 C 110,90 115,50 130,50 C 145,50 150,20 175,10"
+            fill="none" stroke="#555" stroke-width="2"/>
 
-    <text x="190" y="75" class="econ-label" fill="#238b45">Economic examples:</text>
-    <text x="190" y="90" class="econ-example">• Asset bubbles (overvalued basin)</text>
-    <text x="190" y="104" class="econ-example">• Poverty traps (escape energy > savings)</text>
-    <text x="190" y="118" class="econ-example">• Technology lock-in (QWERTY)</text>
+      <!-- Trapped ball in local minimum -->
+      <circle cx="95" cy="88" r="6" fill="#d32f2f"/>
+      <text x="95" y="110" text-anchor="middle" class="path-desc" fill="#d32f2f" font-weight="700">trapped!</text>
 
-    <rect x="10" y="140" width="310" height="48" fill="#e5f5e0" rx="4"/>
-    <text x="165" y="158" text-anchor="middle" class="path-desc" font-weight="600" fill="#238b45">Fix: Coordinated intervention, industrial policy,</text>
-    <text x="165" y="172" text-anchor="middle" class="path-desc" font-weight="600" fill="#238b45">cash transfers + training → provide escape energy</text>
+      <!-- Global minimum indicator -->
+      <circle cx="170" cy="12" r="5" fill="#1b9e77"/>
+      <text x="170" y="5" text-anchor="middle" class="path-desc" fill="#1b9e77" font-weight="600">global optimum</text>
+
+      <!-- Energy barrier annotation -->
+      <line x1="115" y1="48" x2="115" y2="88" stroke="#ff9800" stroke-width="1" stroke-dasharray="2,2"/>
+      <text x="125" y="72" class="path-desc" fill="#ff9800" font-size="8" font-weight="600">escape</text>
+      <text x="125" y="82" class="path-desc" fill="#ff9800" font-size="8" font-weight="600">energy</text>
+    </g>
+
+    <g transform="translate(190, 52)">
+      <text x="0" y="12" class="econ-label" fill="#33691e">Economic examples:</text>
+      <text x="0" y="28" class="econ-example">Asset bubbles (overvalued basin)</text>
+      <text x="0" y="42" class="econ-example">Poverty traps (escape cost > savings)</text>
+      <text x="0" y="56" class="econ-example">Technology lock-in (QWERTY effect)</text>
+    </g>
+
+    <rect x="10" y="150" width="360" height="35" fill="#e8f5e9" rx="4"/>
+    <text x="190" y="166" text-anchor="middle" class="fix-text" fill="#33691e">Fix: Coordinated intervention, industrial policy, cash transfers</text>
+    <text x="190" y="178" text-anchor="middle" class="fix-text" fill="#33691e">Provide escape energy to cross the barrier to the global optimum</text>
   </g>
 
-  <!-- Gauge Breaking (bottom-right) -->
-  <g transform="translate(370, 280)">
-    <rect x="0" y="0" width="330" height="200" fill="#f7fbff" stroke="#9ecae1" stroke-width="1.5" rx="8"/>
+  <!-- 4. Gauge Breaking (bottom-right) -->
+  <g transform="translate(405, 262)">
+    <rect x="0" y="0" width="380" height="195" fill="#e8eaf6" stroke="#9fa8da" stroke-width="1.5" rx="8"/>
 
-    <text x="165" y="25" text-anchor="middle" class="path-name" fill="#2171b5">4. Gauge Breaking</text>
-    <text x="165" y="40" text-anchor="middle" class="path-desc">Output depends on description, not content</text>
+    <text x="190" y="22" text-anchor="middle" class="path-name" fill="#283593">4. Gauge Breaking</text>
+    <text x="190" y="37" text-anchor="middle" class="path-desc" fill="#888">Output depends on description, not content</text>
 
-    <!-- Mini diagram: same input, different outputs -->
-    <rect x="30" y="60" width="60" height="25" fill="#deebf7" stroke="#9ecae1" rx="3"/>
-    <text x="60" y="77" text-anchor="middle" class="path-desc" fill="#2171b5">$100</text>
-    <rect x="30" y="95" width="60" height="25" fill="#fee0d2" stroke="#fcbba1" rx="3"/>
-    <text x="60" y="112" text-anchor="middle" class="path-desc" fill="#d73027">€92</text>
-    <text x="105" y="90" class="path-desc">same</text>
-    <text x="105" y="103" class="path-desc">value!</text>
-    <text x="145" y="77" class="path-desc" fill="#2171b5">→ "affordable"</text>
-    <text x="145" y="112" class="path-desc" fill="#d73027">→ "expensive"</text>
+    <!-- Visual: same value, two descriptions, different reactions -->
+    <g transform="translate(15, 48)">
+      <!-- Same underlying value -->
+      <rect x="55" y="30" width="45" height="30" fill="#e8eaf6" stroke="#7986cb" stroke-width="1.5" rx="3"/>
+      <text x="77" y="50" text-anchor="middle" class="path-desc" fill="#283593" font-weight="700">value</text>
 
-    <text x="190" y="75" class="econ-label" fill="#2171b5">Economic examples:</text>
-    <text x="190" y="90" class="econ-example">• Money illusion (nominal ≠ real)</text>
-    <text x="190" y="104" class="econ-example">• Framing effects (90% survival ≠ 10% mortality)</text>
-    <text x="190" y="118" class="econ-example">• Sunk cost fallacy (past ≠ future)</text>
+      <!-- Two gauges -->
+      <line x1="45" y1="35" x2="15" y2="10" stroke="#283593" stroke-width="1.2"/>
+      <rect x="0" y="0" width="35" height="18" fill="#e3f2fd" stroke="#64b5f6" rx="3"/>
+      <text x="17" y="13" text-anchor="middle" class="path-desc" fill="#1565c0" font-weight="600">$100</text>
 
-    <rect x="10" y="140" width="310" height="48" fill="#deebf7" rx="4"/>
-    <text x="165" y="158" text-anchor="middle" class="path-desc" font-weight="600" fill="#2171b5">Fix: Gauge-invariant reporting (real prices),</text>
-    <text x="165" y="172" text-anchor="middle" class="path-desc" font-weight="600" fill="#2171b5">BIP compliance testing → enforce description invariance</text>
+      <line x1="110" y1="35" x2="140" y2="10" stroke="#283593" stroke-width="1.2"/>
+      <rect x="125" y="0" width="35" height="18" fill="#fce4ec" stroke="#ef9a9a" rx="3"/>
+      <text x="142" y="13" text-anchor="middle" class="path-desc" fill="#c62828" font-weight="600">-10%</text>
+
+      <!-- Different reactions -->
+      <text x="17" y="83" text-anchor="middle" class="path-desc" fill="#1565c0">"affordable"</text>
+      <text x="142" y="83" text-anchor="middle" class="path-desc" fill="#c62828">"a loss!"</text>
+
+      <!-- Arrow indicating same thing -->
+      <path d="M 35,45 C 50,55 105,55 125,45" fill="none" stroke="#9e9e9e" stroke-width="0.8" stroke-dasharray="2,2"/>
+      <text x="80" y="68" text-anchor="middle" class="path-desc" fill="#9e9e9e" font-style="italic">same value!</text>
+    </g>
+
+    <g transform="translate(175, 52)">
+      <text x="0" y="12" class="econ-label" fill="#283593">Economic examples:</text>
+      <text x="0" y="28" class="econ-example">Money illusion (nominal != real)</text>
+      <text x="0" y="42" class="econ-example">Framing effects (90% survival != 10% death)</text>
+      <text x="0" y="56" class="econ-example">Sunk cost fallacy (past != future)</text>
+    </g>
+
+    <rect x="10" y="150" width="360" height="35" fill="#e8eaf6" rx="4"/>
+    <text x="190" y="166" text-anchor="middle" class="fix-text" fill="#283593">Fix: Gauge-invariant reporting (real prices, standardized framing),</text>
+    <text x="190" y="178" text-anchor="middle" class="fix-text" fill="#283593">BIP compliance testing -- enforce description invariance</text>
   </g>
 
-  <!-- Caption -->
-  <text x="360" y="500" text-anchor="middle" class="subtitle">These four pathologies co-occur and reinforce each other. Gentrification activates all four simultaneously (Chapter 10 worked example).</text>
-  <text x="360" y="515" text-anchor="middle" class="subtitle">Each maps to a specific geometric property: corrupted gradient, hijacked objective, basin entrapment, or gauge variance.</text>
+  <!-- Bottom caption -->
+  <text x="400" y="475" text-anchor="middle" class="subtitle">These four pathologies co-occur and reinforce each other. Gentrification activates all four simultaneously (Ch. 10 worked example).</text>
+  <text x="400" y="491" text-anchor="middle" class="subtitle">Each maps to a specific geometric property: corrupted gradient, hijacked objective, basin entrapment, or gauge variance.</text>
 </svg>

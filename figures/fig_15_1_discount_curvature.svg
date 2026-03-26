@@ -1,86 +1,146 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
   <defs>
     <style>
-      .title { font-size: 14px; font-weight: 600; fill: #333; }
+      .title { font-size: 15px; font-weight: 600; fill: #333; }
       .subtitle { font-size: 10px; fill: #666; }
       .axis-label { font-size: 11px; fill: #444; font-weight: 500; }
       .tick { font-size: 9px; fill: #999; }
       .curve-label { font-size: 10px; font-weight: 600; }
       .small { font-size: 9px; fill: #555; }
+      .annotation { font-size: 9px; fill: #888; font-style: italic; }
     </style>
+    <linearGradient id="steep-region" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff9800;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#ff9800;stop-opacity:0.02"/>
+    </linearGradient>
+    <linearGradient id="flat-region" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4caf50;stop-opacity:0.02"/>
+      <stop offset="100%" style="stop-color:#4caf50;stop-opacity:0.08"/>
+    </linearGradient>
   </defs>
 
-  <text x="340" y="24" text-anchor="middle" class="title">Figure 15.1 — The Discount Rate as Temporal Curvature</text>
-  <text x="340" y="40" text-anchor="middle" class="subtitle">Exponential discounting assumes constant curvature. Observed discounting is hyperbolic — curvature decreases with temporal distance.</text>
+  <text x="400" y="26" text-anchor="middle" class="title">Figure 15.1 -- The Discount Rate as Temporal Curvature</text>
+  <text x="400" y="44" text-anchor="middle" class="subtitle">High discount rate = high curvature (the future is "small"). Low discount rate = flat (the future is as real as the present).</text>
 
-  <g transform="translate(80, 65)">
+  <!-- Main chart area -->
+  <g transform="translate(90, 65)">
     <!-- Axes -->
-    <line x1="0" y1="260" x2="520" y2="260" stroke="#333" stroke-width="1.2"/>
-    <line x1="0" y1="0" x2="0" y2="260" stroke="#333" stroke-width="1.2"/>
+    <line x1="0" y1="280" x2="560" y2="280" stroke="#333" stroke-width="1.2"/>
+    <line x1="0" y1="0" x2="0" y2="280" stroke="#333" stroke-width="1.2"/>
 
-    <text x="260" y="295" text-anchor="middle" class="axis-label">Time horizon (years)</text>
-    <text x="-50" y="130" text-anchor="middle" transform="rotate(-90,-50,130)" class="axis-label">Present value of $1 future</text>
+    <text x="280" y="315" text-anchor="middle" class="axis-label">Time horizon (years)</text>
+    <text x="-55" y="140" text-anchor="middle" transform="rotate(-90,-55,140)" class="axis-label">Present value of $1 future</text>
 
     <!-- Y ticks -->
-    <text x="-8" y="264" text-anchor="end" class="tick">$0.00</text>
-    <text x="-8" y="199" text-anchor="end" class="tick">$0.25</text>
-    <text x="-8" y="134" text-anchor="end" class="tick">$0.50</text>
-    <text x="-8" y="69" text-anchor="end" class="tick">$0.75</text>
-    <text x="-8" y="4" text-anchor="end" class="tick">$1.00</text>
+    <line x1="-4" y1="280" x2="4" y2="280" stroke="#333" stroke-width="1"/>
+    <text x="-10" y="284" text-anchor="end" class="tick">$0.00</text>
+    <line x1="-4" y1="210" x2="560" y2="210" stroke="#f5f5f5" stroke-width="0.5"/>
+    <text x="-10" y="214" text-anchor="end" class="tick">$0.25</text>
+    <line x1="-4" y1="140" x2="560" y2="140" stroke="#f5f5f5" stroke-width="0.5"/>
+    <text x="-10" y="144" text-anchor="end" class="tick">$0.50</text>
+    <line x1="-4" y1="70" x2="560" y2="70" stroke="#f5f5f5" stroke-width="0.5"/>
+    <text x="-10" y="74" text-anchor="end" class="tick">$0.75</text>
+    <line x1="-4" y1="0" x2="4" y2="0" stroke="#333" stroke-width="1"/>
+    <text x="-10" y="4" text-anchor="end" class="tick">$1.00</text>
 
     <!-- X ticks -->
-    <text x="0" y="278" text-anchor="middle" class="tick">0</text>
-    <text x="104" y="278" text-anchor="middle" class="tick">10</text>
-    <text x="208" y="278" text-anchor="middle" class="tick">20</text>
-    <text x="312" y="278" text-anchor="middle" class="tick">30</text>
-    <text x="416" y="278" text-anchor="middle" class="tick">40</text>
-    <text x="520" y="278" text-anchor="middle" class="tick">50</text>
+    <text x="0" y="296" text-anchor="middle" class="tick">0</text>
+    <line x1="112" y1="278" x2="112" y2="282" stroke="#333" stroke-width="1"/>
+    <text x="112" y="296" text-anchor="middle" class="tick">10</text>
+    <line x1="224" y1="278" x2="224" y2="282" stroke="#333" stroke-width="1"/>
+    <text x="224" y="296" text-anchor="middle" class="tick">20</text>
+    <line x1="336" y1="278" x2="336" y2="282" stroke="#333" stroke-width="1"/>
+    <text x="336" y="296" text-anchor="middle" class="tick">30</text>
+    <line x1="448" y1="278" x2="448" y2="282" stroke="#333" stroke-width="1"/>
+    <text x="448" y="296" text-anchor="middle" class="tick">40</text>
+    <line x1="560" y1="278" x2="560" y2="282" stroke="#333" stroke-width="1"/>
+    <text x="560" y="296" text-anchor="middle" class="tick">50</text>
 
-    <!-- Grid -->
-    <line x1="0" y1="195" x2="520" y2="195" stroke="#f0f0f0" stroke-width="0.5"/>
-    <line x1="0" y1="130" x2="520" y2="130" stroke="#f0f0f0" stroke-width="0.5"/>
-    <line x1="0" y1="65" x2="520" y2="65" stroke="#f0f0f0" stroke-width="0.5"/>
+    <!-- Background regions -->
+    <rect x="0" y="0" width="120" height="280" fill="url(#steep-region)" rx="0"/>
+    <rect x="380" y="0" width="180" height="280" fill="url(#flat-region)" rx="0"/>
 
-    <!-- Exponential discounting (δ=3%, Nordhaus): e^(-0.03t) -->
-    <!-- t=0:1.0, t=10:0.74, t=20:0.55, t=30:0.41, t=40:0.30, t=50:0.22 -->
-    <path d="M 0,0 C 30,30 60,78 104,68 C 148,92 180,120 208,117 C 250,140 280,153 312,154 C 350,168 380,176 416,182 C 460,190 490,196 520,203"
+    <!-- Nordhaus high-discount exponential: e^(-0.05t) -->
+    <!-- t=0:1.00, t=10:0.61, t=20:0.37, t=30:0.22, t=40:0.14, t=50:0.08 -->
+    <path d="M 0,0 C 28,28 56,65 112,110 C 168,148 196,170 224,178 C 280,198 308,210 336,218 C 392,230 420,238 448,242 C 504,248 532,252 560,254"
+          fill="none" stroke="#d73027" stroke-width="2.8"/>
+    <text x="572" y="252" class="curve-label" fill="#d73027">Nordhaus</text>
+    <text x="572" y="265" class="small" fill="#d73027">delta = 5%</text>
+    <text x="572" y="278" class="small" fill="#d73027">High curvature</text>
+
+    <!-- Standard exponential: e^(-0.03t) -->
+    <!-- t=0:1.00, t=10:0.74, t=20:0.55, t=30:0.41, t=40:0.30, t=50:0.22 -->
+    <path d="M 0,0 C 28,18 56,42 112,73 C 168,100 196,114 224,126 C 280,145 308,155 336,165 C 392,178 420,185 448,192 C 504,200 532,205 560,210"
           fill="none" stroke="#2171b5" stroke-width="2.5"/>
-    <text x="530" y="200" class="curve-label" fill="#2171b5">Exponential</text>
-    <text x="530" y="213" class="small" fill="#2171b5">δ = 3% (Nordhaus)</text>
-    <text x="530" y="226" class="small" fill="#2171b5">Constant curvature</text>
+    <text x="572" y="208" class="curve-label" fill="#2171b5">Standard</text>
+    <text x="572" y="221" class="small" fill="#2171b5">delta = 3%</text>
+    <text x="572" y="234" class="small" fill="#2171b5">Moderate curve</text>
 
-    <!-- Hyperbolic discounting: 1/(1+0.05t) -->
-    <!-- t=0:1.0, t=10:0.67, t=20:0.50, t=30:0.40, t=40:0.33, t=50:0.29 -->
-    <path d="M 0,0 C 20,45 50,72 104,86 C 150,110 180,125 208,130 C 250,142 280,150 312,156 C 350,164 380,170 416,175 C 460,180 490,183 520,186"
-          fill="none" stroke="#d95f02" stroke-width="2.5" stroke-dasharray="8,3"/>
-    <text x="530" y="183" class="curve-label" fill="#d95f02">Hyperbolic</text>
-    <text x="530" y="196" class="small" fill="#d95f02">k = 0.05 (observed)</text>
-    <text x="530" y="209" class="small" fill="#d95f02">Decreasing curvature</text>
+    <!-- Hyperbolic: 1/(1+0.05t) -->
+    <!-- t=0:1.00, t=10:0.67, t=20:0.50, t=30:0.40, t=40:0.33, t=50:0.29 -->
+    <path d="M 0,0 C 20,42 50,70 112,92 C 168,115 196,125 224,140 C 280,155 308,162 336,168 C 392,178 420,183 448,188 C 504,193 532,196 560,198"
+          fill="none" stroke="#e6550d" stroke-width="2.5" stroke-dasharray="8,4"/>
+    <text x="572" y="196" class="curve-label" fill="#e6550d">Hyperbolic</text>
+    <text x="572" y="209" class="small" fill="#e6550d">k = 0.05 (observed)</text>
+    <text x="572" y="222" class="small" fill="#e6550d">Decreasing curve</text>
 
-    <!-- Stern (near-zero discounting) -->
-    <!-- δ=0.1%: e^(-0.001t) — nearly flat -->
-    <path d="M 0,0 C 60,2 120,5 208,5 C 300,8 400,10 520,13"
-          fill="none" stroke="#1b9e77" stroke-width="2" stroke-dasharray="3,3"/>
-    <text x="530" y="10" class="curve-label" fill="#1b9e77">Stern</text>
-    <text x="530" y="23" class="small" fill="#1b9e77">δ ≈ 0.1% (flat manifold)</text>
+    <!-- Stern near-zero: e^(-0.001t), nearly flat -->
+    <path d="M 0,0 C 56,3 112,5 224,7 C 336,10 448,12 560,14"
+          fill="none" stroke="#1b9e77" stroke-width="2.5" stroke-dasharray="3,3"/>
+    <text x="572" y="12" class="curve-label" fill="#1b9e77">Stern</text>
+    <text x="572" y="25" class="small" fill="#1b9e77">delta = 0.1%</text>
+    <text x="572" y="38" class="small" fill="#1b9e77">Flat manifold</text>
 
-    <!-- Key region: short-term divergence -->
-    <rect x="0" y="0" width="80" height="90" fill="rgba(255,152,0,0.08)" stroke="#ff9800" stroke-width="0.8" stroke-dasharray="3,3" rx="4"/>
-    <text x="40" y="105" text-anchor="middle" class="small" fill="#ff9800" font-weight="600">Steep curvature</text>
-    <text x="40" y="117" text-anchor="middle" class="small" fill="#ff9800">near present</text>
+    <!-- Steep curvature annotation (near present) -->
+    <rect x="5" y="3" width="105" height="50" fill="rgba(255,255,255,0.8)" stroke="#ff9800" stroke-width="0.8" rx="4"/>
+    <text x="57" y="18" text-anchor="middle" class="small" fill="#e65100" font-weight="600">Steep curvature</text>
+    <text x="57" y="30" text-anchor="middle" class="small" fill="#e65100">near present</text>
+    <text x="57" y="42" text-anchor="middle" class="small" fill="#e65100">(visceral goods active)</text>
 
-    <!-- Long-term convergence region -->
-    <rect x="350" y="150" width="170" height="50" fill="rgba(76,175,80,0.06)" stroke="#66bb6a" stroke-width="0.8" stroke-dasharray="3,3" rx="4"/>
-    <text x="435" y="168" text-anchor="middle" class="small" fill="#2e7d32">Curves converge</text>
-    <text x="435" y="180" text-anchor="middle" class="small" fill="#2e7d32">(manifold flattens at horizon)</text>
+    <!-- Flat region annotation -->
+    <rect x="390" y="130" width="155" height="45" fill="rgba(255,255,255,0.8)" stroke="#66bb6a" stroke-width="0.8" rx="4"/>
+    <text x="467" y="146" text-anchor="middle" class="small" fill="#2e7d32" font-weight="600">Curves converge at horizon</text>
+    <text x="467" y="158" text-anchor="middle" class="small" fill="#2e7d32">(manifold flattens: only d1</text>
+    <text x="467" y="170" text-anchor="middle" class="small" fill="#2e7d32">remains active at long range)</text>
 
-    <!-- Annotation: debate -->
-    <rect x="150" y="225" width="250" height="30" fill="#fff3e0" stroke="#ffb74d" stroke-width="0.8" rx="4"/>
-    <text x="275" y="240" text-anchor="middle" class="small" fill="#e65100" font-weight="600">The Stern–Nordhaus debate = disagreement about</text>
-    <text x="275" y="252" text-anchor="middle" class="small" fill="#e65100" font-weight="600">the curvature tensor along the temporal axis</text>
+    <!-- The Stern-Nordhaus debate annotation -->
+    <rect x="100" y="225" width="280" height="45" fill="#fff3e0" stroke="#ffb74d" stroke-width="1" rx="5"/>
+    <text x="240" y="242" text-anchor="middle" class="small" fill="#e65100" font-weight="700">The Stern-Nordhaus debate =</text>
+    <text x="240" y="254" text-anchor="middle" class="small" fill="#e65100" font-weight="700">disagreement about the curvature tensor R_titj</text>
+    <text x="240" y="266" text-anchor="middle" class="small" fill="#e65100">along the temporal axis of the social manifold</text>
+
+    <!-- Key insight: why hyperbolic -->
+    <path d="M 25,55 L 25,90" fill="none" stroke="#e6550d" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="30" y="85" class="small" fill="#e6550d" font-weight="600">steep: many dims active</text>
+
+    <path d="M 500,175 L 500,200" fill="none" stroke="#e6550d" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="505" y="215" class="small" fill="#e6550d" font-weight="600">flat: only d1 active</text>
   </g>
 
-  <!-- Caption -->
-  <text x="340" y="370" text-anchor="middle" class="subtitle">Exponential (constant curvature) vs. hyperbolic (decreasing curvature) vs. Stern (flat). The discount rate is not a preference — it is temporal curvature.</text>
-  <text x="340" y="386" text-anchor="middle" class="subtitle">Proposition 15.1: Near the present, more dimensions activate (visceral goods), producing steep curvature. At long horizons, only d₁ persists → flatter.</text>
+  <!-- Bottom captions -->
+  <text x="400" y="420" text-anchor="middle" class="subtitle">Exponential (constant curvature) vs. hyperbolic (decreasing curvature) vs. Stern (flat). The discount rate is temporal curvature, not a preference.</text>
+  <text x="400" y="438" text-anchor="middle" class="subtitle">Proposition 15.1: Near the present, more dimensions activate (visceral goods), producing steep curvature. At long horizons, only d1 persists.</text>
+
+  <!-- Curvature diagrams at bottom -->
+  <g transform="translate(90, 452)">
+    <!-- High curvature visual -->
+    <rect x="0" y="0" width="180" height="38" fill="#ffebee" stroke="#ef9a9a" stroke-width="0.8" rx="4"/>
+    <path d="M 15,28 Q 35,5 55,28" fill="none" stroke="#d73027" stroke-width="2"/>
+    <text x="70" y="16" class="small" fill="#d73027" font-weight="600">High delta = high curvature</text>
+    <text x="70" y="30" class="small" fill="#d73027">Future is "small" and "far"</text>
+  </g>
+
+  <g transform="translate(310, 452)">
+    <rect x="0" y="0" width="180" height="38" fill="#fff8e1" stroke="#ffb74d" stroke-width="0.8" rx="4"/>
+    <path d="M 15,25 Q 35,12 55,25" fill="none" stroke="#e6550d" stroke-width="2"/>
+    <text x="70" y="16" class="small" fill="#e65100" font-weight="600">Moderate = moderate curve</text>
+    <text x="70" y="30" class="small" fill="#e65100">Standard economics (3%)</text>
+  </g>
+
+  <g transform="translate(530, 452)">
+    <rect x="0" y="0" width="180" height="38" fill="#e8f5e9" stroke="#81c784" stroke-width="0.8" rx="4"/>
+    <line x1="15" y1="22" x2="55" y2="22" stroke="#1b9e77" stroke-width="2"/>
+    <text x="70" y="16" class="small" fill="#2e7d32" font-weight="600">Low delta = flat manifold</text>
+    <text x="70" y="30" class="small" fill="#2e7d32">Future is as real as present</text>
+  </g>
 </svg>

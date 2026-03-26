@@ -62,6 +62,46 @@ Should we build the highway through the wetland? Cost-benefit analysis sums the 
 
 **[Modeling Axiom.]** A geometric approach would make the metric explicit. It would represent transportation value and ecological value as *dimensions* of a value space, and the metric tensor $g_{\mu\nu}$ would encode the structure of permissible trade-offs. If the two values are incommensurable — if no legitimate exchange rate exists — then the metric is *degenerate* along the relevant subspace: the off-diagonal components are undefined. The framework represents this as a structural feature of the economic landscape, not as a failure of analysis.
 
+## The Easterlin Paradox and Its Geometric Resolution
+
+Before turning to what geometry provides, consider a paradox that crystallizes the scalar failure.
+
+In 1974, Richard Easterlin documented a striking finding: beyond a threshold of approximately $15,000 per capita (in 2024 dollars, roughly $75,000), national increases in GDP do not predict increases in reported life satisfaction. Japan's real GDP per capita quadrupled between 1960 and 1990; average life satisfaction did not budge. The United States grew richer than any large nation in history; its happiness surveys flatlined from the 1970s onward, even as GDP per capita tripled.
+
+**[Empirical.]** The standard explanations — hedonic adaptation, relative income effects, aspiration adjustment — describe the phenomenon without explaining it structurally. Why should there be a threshold? Why should money stop working at a particular level? Why should the relationship between income and happiness be logarithmic rather than linear?
+
+The geometric framework provides a structural answer. Below the threshold, monetary growth ($d_1$) is strongly correlated with improvements on other dimensions: security ($d_9$), autonomy ($d_4$), social participation ($d_6$), basic rights ($d_2$). The covariance matrix $\Sigma$ has large positive off-diagonal entries between $d_1$ and these other dimensions. Increasing $d_1$ pulls the entire attribute vector upward. GDP growth moves the economy along a geodesic that improves most dimensions simultaneously.
+
+Above the threshold, the correlations weaken. Additional income does not automatically improve trust ($d_5$), fairness ($d_3$), community cohesion ($d_6$), or identity ($d_7$). The off-diagonal entries between $d_1$ and $d_5$–$d_9$ approach zero — or even become negative, as when economic growth undermines community bonds or intensifies status competition. GDP growth continues to move the economy along $d_1$, but the other eight dimensions are no longer carried along. The scalar says the economy is growing. The manifold says it is moving sideways.
+
+The Easterlin paradox is not a paradox. It is the expected behavior of a system where the correlation structure between dimensions changes as a function of position on the manifold. Below the threshold, scalar optimization happens to be a reasonable proxy for full-manifold optimization because the dimensions are coupled. Above the threshold, the proxy fails because the coupling breaks down. GDP continues to be measured accurately — the measurement is not wrong. But it is measuring the wrong thing: a projection that has decoupled from the object it was meant to represent.
+
+> **MARIA'S COFFEE SHOP — THE EASTERLIN PARADOX IN MINIATURE**
+>
+> *Maria's coffee shop nets $4,200 per month after the old rent. If her net income fell to $1,500, everything would degrade — she would cut employee hours ($d_4$), stop buying fair-trade beans ($d_3$, $d_7$), lose her community role ($d_6$), and live in constant financial anxiety ($d_9$). At $1,500, raising income to $4,200 would improve all nine dimensions. The correlation between $d_1$ and $d_5$–$d_9$ is strong.*
+>
+> *But if Maria's net income rose from $4,200 to $8,000 — if she doubled her revenue by converting to a franchise model — the additional money might come at the cost of autonomy ($d_4$: franchise rules replace her judgment), identity ($d_7$: she is no longer "Maria's place" but "Starbucks #4287"), community ($d_6$: the regulars leave when the character changes), and trust ($d_5$: her employees feel betrayed). More money, less welfare on the full manifold. The Easterlin paradox, at the scale of one small business.*
+
+## The Monetization Trap
+
+The three scalar failures — GDP, utility maximization, and cost-benefit analysis — share a common mechanism that deserves its own name. We call it the *monetization trap*: the assumption that all relevant information about an economic state can be expressed in a common monetary unit.
+
+The monetization trap is seductive because it is sometimes correct. When the decision involves only $d_1$ — when the other dimensions are inactive or approximately invariant — monetization is lossless. Choosing between two savings accounts with different interest rates is a pure $d_1$ decision. Comparing the price of gasoline at two adjacent stations is a pure $d_1$ decision. In these cases, the scalar projection captures everything.
+
+The trap springs when monetization is applied to decisions where multiple dimensions are active and the dimensions are not all reducible to $d_1$. Consider three canonical examples:
+
+**The value of a statistical life (VSL).** Regulatory agencies in the United States use a VSL of approximately $11.6 million (EPA, 2023) to evaluate safety regulations. A regulation that prevents one death and costs less than $11.6 million passes the cost-benefit test; one that costs more fails. The number is derived from revealed-preference studies: how much extra pay do workers demand for jobs with higher fatality risk?
+
+The geometric objection is not that the number is wrong but that the procedure is incoherent. Revealed-preference VSL estimates reflect $d_1$ trade-offs made by agents in specific labor-market contexts, with specific informational constraints ($d_9$), specific outside options ($d_4$), and specific social-norm structures ($d_3$, $d_6$). The resulting number is not a property of the value of life. It is a property of the specific manifold configuration in which the revealed preference was elicited. Transporting the number to a different policy context — say, environmental regulation affecting children who never made a labor-market choice — is parallel transporting a vector on a curved manifold. The vector arrives rotated. The number arrives wrong.
+
+**The social cost of carbon (SCC).** The Interagency Working Group on the Social Cost of Greenhouse Gases sets the SCC at approximately $51 per ton of CO₂ (2020 dollars). This number enters cost-benefit calculations for every federal regulation that affects emissions. It is the monetary estimate of the damage caused by emitting one additional ton of CO₂.
+
+The SCC compresses intergenerational harm ($d_6$ across decades and centuries), ecological irreversibility ($d_2$: rights of future populations to a livable planet), distributional injustice ($d_3$: poor nations bear disproportionate climate costs), and civilizational risk ($d_9$: epistemic uncertainty about tail outcomes) into a single dollar figure. The choice of discount rate alone — a parameter that encodes the temporal curvature of the decision manifold (Chapter 15) — swings the SCC from $14 to $200+ per ton. The "answer" depends entirely on the metric, and the metric is chosen before the calculation begins.
+
+**The compensation principle.** The Kaldor-Hicks criterion declares a policy change "efficient" if the winners could, in principle, compensate the losers and still be better off — even if they do not actually compensate them. The geometric objection: the claim that the winners "could" compensate the losers is a statement about $d_1$ only. A policy that displaces a community (severe $d_6$ loss), destroys trust networks ($d_5$), and eliminates cultural identity ($d_7$) cannot be compensated by any transfer on $d_1$, because the losses are on dimensions that are not fungible with money. The compensation principle assumes a non-degenerate metric between all dimensions. The actual metric is degenerate: some losses cannot be offset by gains on other dimensions, at any exchange rate.
+
+The monetization trap is, mathematically, the assumption that the metric tensor $g_{\mu\nu}$ of the economic decision manifold is everywhere non-degenerate with finite off-diagonal components. The geometric framework makes this assumption explicit, falsifiable, and — in many important cases — false.
+
 ## What Geometry Provides
 
 The word "geometry" comes from the Greek γεωμετρία — literally, "earth measurement." But modern geometry has traveled far from surveying. It is the mathematics of *structure*: how spaces are shaped, how quantities transform, how objects relate across changes of perspective.
@@ -78,6 +118,8 @@ What does this geometry provide for economics?
 
 **Computability.** Geometric objects can be represented in computers, geometric operations can be implemented in algorithms, and geometric equations can be solved numerically. The companion library `eris-econ` demonstrates this: it implements the full decision manifold, A* pathfinding, and Bond Geodesic Equilibrium computation, and validates against published experimental data.
 
+**A unified taxonomy of error.** Perhaps the most practically useful contribution of geometry is a classification of what goes wrong. In scalar economics, any deviation from rational behavior is filed under "bias" — a miscellaneous drawer that now holds over 180 entries. The geometric framework replaces this with a principled taxonomy: *heuristic corruption* (the price signal is inadmissible), *objective hijacking* (the optimizer serves the wrong master), *local minima* (the search is trapped in a suboptimal basin), and *gauge breaking* (the evaluation depends on the description, not the content). These four categories — developed in *Geometric Reasoning* (Bond, 2026c) and applied to economics in Chapter 10 — are structurally distinct, have different causes, different signatures, and different remedies. The geometric framework does not merely say "something went wrong"; it says *which kind of thing* went wrong, and *why*.
+
 ## What This Book Is Not
 
 Intellectual honesty requires stating what we do not claim.
@@ -87,6 +129,30 @@ Intellectual honesty requires stating what we do not claim.
 **This is not a new economic theory.** We do not propose "geometric consequentialism" or "manifold monetarism" as competitors to existing schools. Rather, the framework provides a common mathematical language in which existing theories can be stated with unprecedented precision. Neoclassical economics is a specific metric (diagonal, $d_1$-only). Behavioral economics is the study of heuristic corruption on the decision manifold. Institutional economics is the study of boundary constraints. The framework does not adjudicate between these theories; it makes their commitments explicit.
 
 **This is not a rejection of mathematical economics.** On the contrary, it is an argument for *more* mathematics — specifically, the mathematics of geometry, which provides tools that the current apparatus of optimization theory and general equilibrium lacks.
+
+## The Scalar in Practice: Three Case Studies
+
+The scalar failure is not abstract. It shapes real decisions with real consequences every day. Three brief case studies illustrate the pattern.
+
+### Case Study 1: Amazon's Same-Day Delivery
+
+Amazon's logistics algorithm optimizes a single objective: minimize delivery time per dollar of cost. This is $d_1$-only optimization, and it is spectacularly successful on that dimension. But the algorithm's geodesic — the path it finds through the decision manifold — traverses regions that are costly on other dimensions. Delivery drivers work under time pressure that degrades their autonomy ($d_4$: algorithmically monitored bathroom breaks), physical safety ($d_2$: accident rates above industry average), and job quality ($d_3$: piece-rate pay structures that are unfair relative to the value created). The communities through which the delivery trucks pass bear environmental and traffic costs ($d_6$) that the algorithm does not price.
+
+The scalar optimizer is functioning correctly. It is finding the minimum-cost path on the $d_1$ projection. The problem is that the $d_1$ projection discards the dimensions on which the path is catastrophically expensive. The drivers' labor-market choices — "voluntarily" accepting the terms — do not mean the full-manifold cost is low. It means the drivers' outside options are sufficiently constrained ($d_4$ degraded by market power) that the $d_1$-only geodesic is the only one available to them.
+
+### Case Study 2: The Opioid Crisis
+
+Purdue Pharma's decision to market OxyContin aggressively to general practitioners was a scalar optimization: maximize revenue from pain medication. On $d_1$, the strategy was brilliantly successful — $35 billion in cumulative revenue. On the full manifold, the strategy crossed sacred-value boundaries on $d_2$ (patients' rights to accurate medical information, violated by misleading claims about addiction risk), $d_3$ (fairness: profiting from misrepresented risk), $d_5$ (trust: physicians' trust in pharmaceutical companies, permanently degraded), and $d_6$ (social impact: 500,000 opioid-related deaths in the United States between 1999 and 2020).
+
+The Sackler family's personal wealth increased by billions. The full-manifold cost of their strategy was, on any reasonable metric, among the largest economic-ethical disasters in American history. A scalar accounting of the firm's performance showed consistently excellent returns. A geometric accounting would have shown boundary crossings on $d_2$ and $d_3$ from the earliest marketing decisions — crossings that were invisible on the $d_1$ projection but that a nine-dimensional evaluation would have flagged as catastrophic.
+
+### Case Study 3: Bhutan's Gross National Happiness
+
+Bhutan's decision in 1972 to adopt Gross National Happiness (GNH) as its primary development metric — in place of GDP — is the most direct political attempt to escape the scalar trap. GNH is measured across nine domains: psychological well-being, health, education, time use, cultural resilience, good governance, community vitality, ecological diversity, and living standards.
+
+The convergence with the nine dimensions of the decision manifold is not exact but is striking. Bhutan's nine GNH domains map naturally onto the manifold's nine dimensions: living standards maps to $d_1$, governance to $d_8$, cultural resilience to $d_7$, community vitality to $d_6$, and so on. Bhutan did not have the geometric vocabulary, but it independently arrived at a similar dimensional structure — suggesting that the multi-dimensionality of economic life is not an artifact of the framework but a property of the phenomenon.
+
+GNH has been criticized for being difficult to operationalize. The geometric framework provides the operationalization: the nine domains are coordinates on a decision manifold; the interactions between domains are encoded in a covariance matrix; and the "distance" from the current state to the goal state is measured by the Mahalanobis metric. The framework does not replace GNH. It provides the mathematical apparatus that GNH has been seeking for fifty years.
 
 ## The Suspicious Coincidence
 

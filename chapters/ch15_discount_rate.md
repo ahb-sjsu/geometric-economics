@@ -25,6 +25,22 @@ But human discounting is not exponential. It is *hyperbolic*: $R/(1 + kt)$ rathe
 
 **[Empirical.]** The geometric explanation: present-bias is stronger for visceral goods (food, sex, drugs) than for abstract goods (money, career). Visceral goods activate more dimensions of the manifold at short horizons ($d_6$ social, $d_7$ identity, $d_4$ autonomy are all engaged by immediate visceral choice), while abstract goods primarily affect $d_1$ (consequences) at all horizons. Higher-dimensional activation at short horizons = steeper curvature near $t = 0$ = more hyperbolic discounting.
 
+### Dimension-Dependent Discounting
+
+A critical prediction of the geometric framework is that different dimensions should be discounted at different rates, because the temporal curvature varies across dimensions.
+
+**Proposition 15.2 (Dimension-Dependent Discounting — Extended).** *The discount rate on dimension $d_k$ is:*
+
+$$\delta_k = K(t, d_k)$$
+
+*where $K(t, d_k)$ is the sectional curvature of the temporal-$d_k$ plane. If $K(t, d_1) > K(t, d_6)$ — if the temporal manifold curves more steeply on the monetary axis than on the social-impact axis — then monetary value is discounted faster than social value.*
+
+**[Empirical.]** This prediction is testable. Ask subjects: "Would you rather receive $100 today or $110 in a year?" (monetary discounting on $d_1$). Then ask: "Would you rather your neighborhood park be clean today or slightly cleaner in a year?" (social-impact discounting on $d_6$). The monetary discount rate is typically 5–15% (subjects require $105–$115 in a year to match $100 today). The social-impact discount rate is much lower — subjects treat future community benefits as nearly as valuable as present ones.
+
+The standard approach of applying a single discount rate to all dimensions — computing the net present value of a policy by discounting monetary costs, environmental benefits, health impacts, and community effects at the same rate — is a scalar contraction. The Scalar Irrecoverability Theorem (Chapter 6) says this contraction destroys information. The lost information is *which dimensions are properly discounted at which rates*.
+
+The practical consequence is enormous. A highway project with immediate monetary benefits ($d_1$, discounted at 3%) and long-term environmental costs ($d_6$, which should be discounted at 0.5%) will be approved under a single 3% rate and rejected under dimension-dependent discounting. The single rate effectively discounts the environment into irrelevance — not because anyone decided that the environment does not matter, but because the choice to use one rate for all dimensions implicitly makes that decision.
+
 ## 15.2 The Stern-Nordhaus Debate
 
 The most consequential disagreement about discount rates is in climate economics. Nicholas Stern (2006) used a near-zero social discount rate ($\delta \approx 0.1\%$) and concluded that immediate, aggressive climate action is economically justified. William Nordhaus (2008) used a market-calibrated rate ($\delta \approx 3\%$) and concluded that gradual action is optimal.
@@ -36,6 +52,32 @@ Stern's manifold is nearly flat along the temporal axis: future people's welfare
 Nordhaus's manifold has positive curvature along the temporal axis: distant future welfare is geometrically farther away than present welfare. The geodesic on this manifold accepts some climate risk in exchange for faster present growth, because the distant future is "far" on Nordhaus's metric.
 
 The geometric framework does not resolve the disagreement. But it makes the disagreement *precise*: Stern and Nordhaus are not arguing about whether to discount. They are arguing about the curvature tensor $R_{t i t j}$ along the temporal dimension of the social decision manifold. This is an empirical question — measurable, in principle, from revealed intergenerational preferences — not a philosophical one.
+
+### The Ramsey Equation, Geometrized
+
+The Ramsey equation is the standard formula for the social discount rate:
+
+$$\delta = \rho + \eta \cdot g$$
+
+where $\rho$ is the pure rate of time preference (how much we discount purely because something is in the future), $\eta$ is the elasticity of marginal utility (how quickly additional consumption becomes less valuable), and $g$ is the growth rate of consumption.
+
+In the geometric framework, each term has a curvature interpretation:
+
+- **$\rho$ (pure time preference)** is the *intrinsic* temporal curvature — the curvature that would exist even on a manifold where all other dimensions are constant. Stern sets $\rho \approx 0$ (no intrinsic preference for the present over the future — a flat temporal manifold). Nordhaus calibrates $\rho$ from market interest rates, arriving at $\rho \approx 1.5\%$ (moderate intrinsic curvature).
+
+- **$\eta \cdot g$ (growth-adjusted discounting)** is the *extrinsic* temporal curvature induced by growth. If future people are richer ($g > 0$) and additional wealth has diminishing returns ($\eta > 0$), then a dollar in the future is "worth less" to them — the manifold curves away from the monetary axis as time progresses. Stern uses $\eta = 1$, $g \approx 1.3\%$, yielding $\eta g \approx 1.3\%$. Nordhaus uses $\eta \approx 2$, $g \approx 2\%$, yielding $\eta g \approx 4\%$.
+
+The total discount rate is the sum of intrinsic and extrinsic curvature: $\delta = \rho + \eta g$. Stern: $\delta \approx 0.1 + 1.3 = 1.4\%$. Nordhaus: $\delta \approx 1.5 + 4 = 5.5\%$.
+
+The geometric framework reveals a critical hidden assumption in the Ramsey equation: it assumes that all dimensions are discounted at the same rate — that the curvature is isotropic across dimensions. But there is no reason to believe this. Growth-adjusted discounting ($\eta g$) applies to dimensions where future people will be "richer." On $d_1$ (monetary wealth), growth is plausible — future generations may indeed be materially richer. On $d_6$ (environmental quality), growth is implausible — future generations may inherit a degraded environment. On $d_5$ (institutional trust), growth is uncertain. On $d_2$ (rights of future populations), growth is not even well-defined.
+
+The Ramsey equation with a single $\delta$ conflates these dimensions. A multi-dimensional Ramsey equation would specify:
+
+$$\delta_k = \rho + \eta_k \cdot g_k \quad \text{for each dimension } k$$
+
+where $g_k$ is the growth rate of dimension $d_k$ and $\eta_k$ is the elasticity of the manifold in that dimension. For monetary wealth ($k=1$), $g_1 \approx 2\%$ and $\delta_1 \approx 4\%$. For environmental quality ($k=6$), $g_6 < 0$ (declining) and $\delta_6 < \rho$ (the discount rate should be *below* the pure time preference rate, because future environmental quality will be scarcer, not more abundant). For some dimensions, $\delta_k$ may even be negative — meaning that future values on that dimension should count *more* than present values, because the dimension is deteriorating.
+
+This is the geometric resolution of the Stern-Nordhaus debate: both are correct on different dimensions. Nordhaus's rate is appropriate for $d_1$ (monetary value, which grows over time). Stern's rate is appropriate for $d_6$ (environmental quality, which does not grow and may decline). The error is in using a single rate for a multi-dimensional problem — a scalar contraction, once again, destroying the information that matters most.
 
 ## 15.3 Intergenerational Equity as Parallel Transport
 

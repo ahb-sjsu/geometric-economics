@@ -1,106 +1,163 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 420" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
   <defs>
     <style>
-      .title { font-size: 14px; font-weight: 600; fill: #333; }
+      .title { font-size: 15px; font-weight: 600; fill: #333; }
       .subtitle { font-size: 10px; fill: #666; }
       .label { font-size: 11px; fill: #444; font-weight: 500; }
       .small { font-size: 9px; fill: #555; }
-      .dim-bar { font-size: 8px; fill: #fff; font-weight: 600; }
-      .value { font-size: 13px; font-weight: 700; }
+      .math { font-size: 12px; font-weight: 600; fill: #333; font-style: italic; }
+      .kernel-text { font-size: 9px; fill: #c62828; }
+      .image-text { font-size: 9px; fill: #2171b5; }
     </style>
+    <linearGradient id="kernel-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffcdd2;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#ef9a9a;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="r9-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e3f2fd;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#bbdefb;stop-opacity:0.2"/>
+    </linearGradient>
+    <marker id="arr-map" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2171b5"/>
+    </marker>
   </defs>
 
-  <text x="350" y="24" text-anchor="middle" class="title">Figure 6.1 — The Scalar Irrecoverability Theorem: What GDP Destroys</text>
-  <text x="350" y="40" text-anchor="middle" class="subtitle">Two economies with identical GDP ($1T) but completely different 9-dimensional profiles. No function of GDP alone can distinguish them.</text>
+  <text x="400" y="26" text-anchor="middle" class="title">Figure 6.1 -- Scalar Irrecoverability: The Rank-Nullity Theorem Applied to Economics</text>
+  <text x="400" y="44" text-anchor="middle" class="subtitle">The map phi: R^9 --> R^1 has an 8-dimensional kernel. The lost information is not approximate -- it is mathematically irrecoverable.</text>
 
-  <!-- Economy A -->
-  <g transform="translate(40, 65)">
-    <rect x="0" y="0" width="290" height="280" fill="#fff5f0" stroke="#fcbba1" stroke-width="1.2" rx="8"/>
-    <text x="145" y="22" text-anchor="middle" class="label" fill="#cb181d">Economy A: "Extractive Growth"</text>
+  <!-- Left: R^9 domain -->
+  <g transform="translate(30, 65)">
+    <!-- R^9 background -->
+    <rect x="0" y="0" width="280" height="340" fill="url(#r9-grad)" stroke="#90caf9" stroke-width="1.5" rx="10"/>
+    <text x="140" y="24" text-anchor="middle" class="label" fill="#1565c0" font-size="13">R^9 (Economic State Space)</text>
 
-    <!-- 9 dimension bars -->
-    <rect x="10" y="35" width="250" height="20" fill="#2171b5" rx="2"/>
-    <text x="135" y="49" text-anchor="middle" class="dim-bar">d₁ Consequences: HIGH ($1T GDP) ████████████</text>
+    <!-- 9 coordinate axes radiating from center -->
+    <g transform="translate(140, 180)">
+      <!-- d1 axis (highlighted - the one that survives) -->
+      <line x1="0" y1="0" x2="0" y2="-120" stroke="#2171b5" stroke-width="2.5"/>
+      <text x="4" y="-125" class="image-text" fill="#2171b5" font-weight="700">d1 (monetary)</text>
 
-    <rect x="10" y="60" width="80" height="20" fill="#6baed6" rx="2"/>
-    <text x="50" y="74" text-anchor="middle" class="dim-bar">d₂ Rights: LOW</text>
+      <!-- d2-d9 axes (these are lost) -->
+      <line x1="0" y1="0" x2="90" y2="-75" stroke="#ef9a9a" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="95" y="-78" class="kernel-text" font-size="8">d2</text>
 
-    <rect x="10" y="85" width="50" height="20" fill="#fb6a4a" rx="2"/>
-    <text x="35" y="99" text-anchor="middle" class="dim-bar">d₃ ↓</text>
-    <text x="70" y="99" class="small" fill="#cb181d">Severe inequality</text>
+      <line x1="0" y1="0" x2="115" y2="-20" stroke="#ef9a9a" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="120" y="-18" class="kernel-text" font-size="8">d3</text>
 
-    <rect x="10" y="110" width="70" height="20" fill="#fc9272" rx="2"/>
-    <text x="45" y="124" text-anchor="middle" class="dim-bar">d₄ Low</text>
-    <text x="90" y="124" class="small" fill="#cb181d">Coercive labor</text>
+      <line x1="0" y1="0" x2="110" y2="45" stroke="#ef9a9a" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="115" y="48" class="kernel-text" font-size="8">d4</text>
 
-    <rect x="10" y="135" width="40" height="20" fill="#de2d26" rx="2"/>
-    <text x="30" y="149" text-anchor="middle" class="dim-bar">d₅↓</text>
-    <text x="60" y="149" class="small" fill="#cb181d">Eroding trust</text>
+      <line x1="0" y1="0" x2="75" y2="95" stroke="#ef9a9a" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="80" y="100" class="kernel-text" font-size="8">d5</text>
 
-    <rect x="10" y="160" width="30" height="20" fill="#a50f15" rx="2"/>
-    <text x="25" y="174" text-anchor="middle" class="dim-bar">↓</text>
-    <text x="50" y="174" class="small" fill="#cb181d">Environmental damage</text>
+      <line x1="0" y1="0" x2="15" y2="115" stroke="#ef9a9a" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="20" y="120" class="kernel-text" font-size="8">d6</text>
 
-    <rect x="10" y="185" width="60" height="20" fill="#fc9272" rx="2"/>
-    <text x="40" y="199" text-anchor="middle" class="dim-bar">d₇ ↓</text>
-    <text x="80" y="199" class="small" fill="#cb181d">Identity erosion</text>
+      <line x1="0" y1="0" x2="-70" y2="95" stroke="#ef9a9a" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="-90" y="100" class="kernel-text" font-size="8">d7</text>
 
-    <rect x="10" y="210" width="45" height="20" fill="#de2d26" rx="2"/>
-    <text x="32" y="224" text-anchor="middle" class="dim-bar">d₈↓</text>
-    <text x="65" y="224" class="small" fill="#cb181d">Declining legitimacy</text>
+      <line x1="0" y1="0" x2="-110" y2="40" stroke="#ef9a9a" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="-125" y="43" class="kernel-text" font-size="8">d8</text>
 
-    <rect x="10" y="235" width="55" height="20" fill="#fb6a4a" rx="2"/>
-    <text x="37" y="249" text-anchor="middle" class="dim-bar">d₉ ↓</text>
-    <text x="75" y="249" class="small" fill="#cb181d">Information opacity</text>
+      <line x1="0" y1="0" x2="-105" y2="-30" stroke="#ef9a9a" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="-120" y="-28" class="kernel-text" font-size="8">d9</text>
 
-    <text x="145" y="272" text-anchor="middle" class="value" fill="#cb181d">GDP = $1 Trillion</text>
+      <!-- Two example points that map to same scalar -->
+      <circle cx="-15" cy="-60" r="5" fill="#c62828"/>
+      <text x="-30" y="-65" class="small" fill="#c62828" font-weight="600">a</text>
+
+      <circle cx="50" cy="30" r="5" fill="#1b9e77"/>
+      <text x="57" y="27" class="small" fill="#1b9e77" font-weight="600">a'</text>
+    </g>
+
+    <!-- Kernel shading -->
+    <ellipse cx="140" cy="200" rx="100" ry="80" fill="url(#kernel-grad)" stroke="#ef9a9a" stroke-width="1" stroke-dasharray="5,3" opacity="0.7"/>
+    <text x="140" y="310" text-anchor="middle" class="kernel-text" font-weight="600" font-size="10">ker(dphi) = 8-dimensional</text>
+    <text x="140" y="324" text-anchor="middle" class="kernel-text">(all directions orthogonal to d1)</text>
   </g>
 
-  <!-- Economy B -->
-  <g transform="translate(370, 65)">
-    <rect x="0" y="0" width="290" height="280" fill="#f0fff0" stroke="#a1d99b" stroke-width="1.2" rx="8"/>
-    <text x="145" y="22" text-anchor="middle" class="label" fill="#238b45">Economy B: "Sustainable Prosperity"</text>
+  <!-- Central mapping arrow -->
+  <g transform="translate(330, 130)">
+    <!-- Big arrow -->
+    <line x1="0" y1="105" x2="120" y2="105" stroke="#666" stroke-width="2.5" marker-end="url(#arr-map)"/>
 
-    <!-- 9 dimension bars -->
-    <rect x="10" y="35" width="160" height="20" fill="#2171b5" rx="2"/>
-    <text x="90" y="49" text-anchor="middle" class="dim-bar">d₁ Consequences: MODERATE ($1T) ██████</text>
+    <!-- Map label -->
+    <text x="60" y="85" text-anchor="middle" class="math" fill="#333">phi</text>
+    <text x="60" y="100" text-anchor="middle" class="small" fill="#666">R^9 --> R^1</text>
 
-    <rect x="10" y="60" width="200" height="20" fill="#6baed6" rx="2"/>
-    <text x="110" y="74" text-anchor="middle" class="dim-bar">d₂ Rights: STRONG ████████████</text>
+    <!-- Rank-nullity box -->
+    <rect x="-15" y="130" width="150" height="80" fill="#fff8e1" stroke="#ffb74d" stroke-width="1.2" rx="6"/>
+    <text x="60" y="150" text-anchor="middle" class="small" fill="#e65100" font-weight="700">Rank-Nullity Theorem:</text>
+    <text x="60" y="168" text-anchor="middle" class="math" fill="#e65100" font-size="11">dim(R^9) = rank + nullity</text>
+    <text x="60" y="184" text-anchor="middle" class="math" fill="#e65100" font-size="11">9 = 1 + 8</text>
+    <text x="60" y="200" text-anchor="middle" class="small" fill="#e65100">8 dimensions in the kernel</text>
 
-    <rect x="10" y="85" width="220" height="20" fill="#74c476" rx="2"/>
-    <text x="120" y="99" text-anchor="middle" class="dim-bar">d₃ Fairness: STRONG (low inequality) █████████</text>
-
-    <rect x="10" y="110" width="210" height="20" fill="#41ab5d" rx="2"/>
-    <text x="115" y="124" text-anchor="middle" class="dim-bar">d₄ Autonomy: HIGH (freedom of choice) ████████</text>
-
-    <rect x="10" y="135" width="230" height="20" fill="#238b45" rx="2"/>
-    <text x="125" y="149" text-anchor="middle" class="dim-bar">d₅ Trust: HIGH (social cohesion) ██████████</text>
-
-    <rect x="10" y="160" width="240" height="20" fill="#006d2c" rx="2"/>
-    <text x="130" y="174" text-anchor="middle" class="dim-bar">d₆ Social: HIGH (sustainable, community) ███████████</text>
-
-    <rect x="10" y="185" width="200" height="20" fill="#41ab5d" rx="2"/>
-    <text x="110" y="199" text-anchor="middle" class="dim-bar">d₇ Identity: STRONG (civic pride) ████████</text>
-
-    <rect x="10" y="210" width="220" height="20" fill="#238b45" rx="2"/>
-    <text x="120" y="224" text-anchor="middle" class="dim-bar">d₈ Legitimacy: HIGH (robust institutions) █████████</text>
-
-    <rect x="10" y="235" width="210" height="20" fill="#74c476" rx="2"/>
-    <text x="115" y="249" text-anchor="middle" class="dim-bar">d₉ Epistemic: HIGH (transparent, informed) ████████</text>
-
-    <text x="145" y="272" text-anchor="middle" class="value" fill="#238b45">GDP = $1 Trillion</text>
+    <!-- Two converging arrows from points a and a' -->
+    <path d="M -20,65 C 30,50 80,70 130,105" fill="none" stroke="#c62828" stroke-width="1.2" stroke-dasharray="3,2"/>
+    <path d="M -20,145 C 30,145 80,125 130,108" fill="none" stroke="#1b9e77" stroke-width="1.2" stroke-dasharray="3,2"/>
   </g>
 
-  <!-- Central equals sign -->
-  <g transform="translate(330, 65)">
-    <rect x="0" y="255" width="40" height="30" fill="#fff3e0" stroke="#ff9800" stroke-width="1.5" rx="4"/>
-    <text x="20" y="275" text-anchor="middle" font-size="16" font-weight="700" fill="#ff9800">=</text>
+  <!-- Right: R^1 codomain -->
+  <g transform="translate(490, 65)">
+    <rect x="0" y="0" width="280" height="340" fill="#fafafa" stroke="#e0e0e0" stroke-width="1.5" rx="10"/>
+    <text x="140" y="24" text-anchor="middle" class="label" fill="#333" font-size="13">R^1 (Scalar Output)</text>
+
+    <!-- Vertical R^1 axis -->
+    <line x1="60" y1="50" x2="60" y2="300" stroke="#333" stroke-width="1.5"/>
+
+    <!-- Tick marks -->
+    <line x1="55" y1="80" x2="65" y2="80" stroke="#333" stroke-width="1"/>
+    <text x="48" y="84" text-anchor="end" class="small">$2T</text>
+
+    <line x1="55" y1="140" x2="65" y2="140" stroke="#333" stroke-width="1"/>
+    <text x="48" y="144" text-anchor="end" class="small">$1.5T</text>
+
+    <line x1="55" y1="200" x2="65" y2="200" stroke="#333" stroke-width="1"/>
+    <text x="48" y="204" text-anchor="end" class="small" font-weight="700">$1T</text>
+
+    <line x1="55" y1="260" x2="65" y2="260" stroke="#333" stroke-width="1"/>
+    <text x="48" y="264" text-anchor="end" class="small">$0.5T</text>
+
+    <!-- Both points map to same value -->
+    <circle cx="60" cy="200" r="7" fill="#ff9800" stroke="#e65100" stroke-width="1.5"/>
+
+    <!-- Labels for the merged point -->
+    <text x="75" y="192" class="small" fill="#c62828" font-weight="600">a maps here: $1T</text>
+    <text x="75" y="207" class="small" fill="#1b9e77" font-weight="600">a' maps here: $1T</text>
+    <text x="75" y="222" class="small" fill="#e65100" font-weight="700">INDISTINGUISHABLE</text>
+
+    <!-- Level set annotation -->
+    <rect x="80" y="240" width="185" height="70" fill="#fff3e0" stroke="#ffb74d" stroke-width="0.8" rx="5"/>
+    <text x="172" y="258" text-anchor="middle" class="small" fill="#e65100" font-weight="600">The Level Set phi^(-1)($1T)</text>
+    <text x="172" y="272" text-anchor="middle" class="small" fill="#e65100">is an 8-dimensional surface</text>
+    <text x="172" y="286" text-anchor="middle" class="small" fill="#e65100">containing infinitely many</text>
+    <text x="172" y="300" text-anchor="middle" class="small" fill="#e65100">distinct economic states</text>
+
+    <!-- Axis label -->
+    <text x="60" y="320" text-anchor="middle" class="small" fill="#666">GDP axis</text>
   </g>
 
-  <!-- Theorem box -->
-  <rect x="100" y="355" width="500" height="50" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="5"/>
-  <text x="350" y="372" text-anchor="middle" class="label">Theorem 14 (Scalar Irrecoverability)</text>
-  <text x="350" y="388" text-anchor="middle" class="small">No continuous φ: ℝ⁹ → ℝ is injective. GDP maps BOTH economies to $1T. The 8 lost dimensions are mathematically irrecoverable.</text>
-  <text x="350" y="400" text-anchor="middle" class="small" font-weight="600" fill="#d73027">These economies are indistinguishable to any scalar measure. The structure that matters most is exactly what the scalar destroys.</text>
+  <!-- Bottom: Three consequences -->
+  <g transform="translate(30, 420)">
+    <rect x="0" y="0" width="240" height="65" fill="#ffebee" stroke="#ef9a9a" stroke-width="1" rx="5"/>
+    <text x="120" y="17" text-anchor="middle" class="small" fill="#c62828" font-weight="700">(1) Not Injective</text>
+    <text x="120" y="32" text-anchor="middle" class="small" fill="#c62828">phi(a) = phi(a') does NOT imply a = a'.</text>
+    <text x="120" y="46" text-anchor="middle" class="small" fill="#c62828">Brouwer's invariance of dimension:</text>
+    <text x="120" y="59" text-anchor="middle" class="small" fill="#c62828">R^9 cannot embed in R^1.</text>
+
+    <rect x="260" y="0" width="240" height="65" fill="#fff3e0" stroke="#ffb74d" stroke-width="1" rx="5"/>
+    <text x="380" y="17" text-anchor="middle" class="small" fill="#e65100" font-weight="700">(2) Irrecoverable</text>
+    <text x="380" y="32" text-anchor="middle" class="small" fill="#e65100">No left inverse psi exists such</text>
+    <text x="380" y="46" text-anchor="middle" class="small" fill="#e65100">that psi(phi(a)) = a. The 8 lost</text>
+    <text x="380" y="59" text-anchor="middle" class="small" fill="#e65100">dimensions are gone forever.</text>
+
+    <rect x="520" y="0" width="250" height="65" fill="#e8f5e9" stroke="#81c784" stroke-width="1" rx="5"/>
+    <text x="645" y="17" text-anchor="middle" class="small" fill="#2e7d32" font-weight="700">(3) Unbounded Divergence</text>
+    <text x="645" y="32" text-anchor="middle" class="small" fill="#2e7d32">The phi-optimal path can cross moral</text>
+    <text x="645" y="46" text-anchor="middle" class="small" fill="#2e7d32">boundaries (beta = infinity) that the</text>
+    <text x="645" y="59" text-anchor="middle" class="small" fill="#2e7d32">scalar cannot see. Error is unbounded.</text>
+  </g>
 </svg>
