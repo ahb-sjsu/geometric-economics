@@ -164,6 +164,20 @@ When I applied the same framework to economic decisions, the correspondences con
 
 I do not claim that this convergence reveals a deep metaphysical unity between physics and economics. Perhaps it does; perhaps it does not. What I claim is more modest and more useful: that the mathematical structures developed by physicists to describe nature are *also* the right structures for describing economic decision-making. The same patterns of transformation, conservation, and symmetry that organize the physical world also organize the economic world — or at least, modeling them as doing so yields a framework of extraordinary explanatory and predictive power.
 
+## The Dimensional Hypothesis
+
+The claim of this book can be stated precisely: *economic decisions have intrinsic multi-dimensional structure, and the apparent anomalies of economic behavior arise from the interaction between this structure and the scalar projections through which we observe it.*
+
+This is a testable hypothesis, not an axiom. It generates specific predictions:
+
+**Prediction:** If behavioral "anomalies" are artifacts of dimensional collapse, then the anomalies should disappear when the full manifold is measured. Loss aversion ($\lambda \approx 2.25$) should decompose into dimensional activations: decisions that activate only $d_1$ should show $\lambda \approx 1$ (no loss aversion), while decisions that activate multiple dimensions should show $\lambda > 1$ (apparent loss aversion reflecting the higher manifold cost of multi-dimensional losses). Chapter 4 derives this prediction and shows that $\lambda$ ranges from 1.0 to 3.53 depending on the number of active dimensions — exactly as the hypothesis requires.
+
+**Prediction:** If the decision manifold has nine approximately independent dimensions, then factor analysis of behavioral economic data should recover approximately nine factors. Preliminary evidence from the eris-econ validation (Appendix C) supports this, but large-scale replication is needed.
+
+**Prediction:** If market failures are geometric pathologies, then the four failure types (heuristic corruption, objective hijacking, local minima, gauge breaking) should be classifiable from observable market data, and the classification should predict the appropriate remedy. A market failure caused by heuristic corruption requires a different remedy than one caused by gauge breaking. Chapter 10 develops this classification.
+
+The dimensional hypothesis is not unique to this framework. Amartya Sen's capability approach, Kate Raworth's Doughnut Economics, the Stiglitz-Sen-Fitoussi Commission, Bhutan's GNH, and the OECD's Better Life Index all assert multi-dimensionality. What the geometric framework adds is the *mathematical apparatus*: not just "multiple dimensions" but a metric that encodes how dimensions interact, boundaries that partition the space, conservation laws that constrain what is possible, and gauge symmetries that identify what is genuine versus what is an artifact of description.
+
 ## The Arc of the Book
 
 **Part I: The Problem** motivates geometric economics. This chapter has argued that scalar reduction is the structural source of economics' most persistent failures. Chapter 2 traces proto-geometric insights through the history of economic thought — from Adam Smith's gradient flows to Amartya Sen's irreducibly plural capabilities — showing that the geometry was always latent in the tradition.
@@ -187,6 +201,16 @@ The answer is that we are not claiming to *capture* economics. We are claiming t
 The economic map has been one-dimensional for too long. This book draws the other eight dimensions.
 
 ---
+
+## The Reader's Guide
+
+This chapter has made the case that scalar economics is structurally incomplete — that the single-number representation of economic value destroys information that is mathematically irrecoverable and practically indispensable. The remainder of the book builds the alternative.
+
+The reader who is primarily interested in the theoretical framework should proceed to Chapter 2 (historical precursors) and then through Part II (Chapters 3–6), which builds the apparatus from the ground up. The reader who wants to see the framework in action should skip ahead to Chapter 7 (the Bond Geodesic Equilibrium) and the application chapters (13–15). The reader who is skeptical and wants to know whether any of this is empirically testable should turn to Chapter 16 (open questions and falsifiable predictions) and Appendix C (the eris-econ validation data).
+
+Each chapter opens with a Maria's Coffee Shop vignette that grounds the mathematics in a concrete business decision. The mathematics ranges from the accessible (Chapters 1–2, 10) to the moderately technical (Chapters 3–6, 13–15) to the formally demanding (Chapters 7–9, 11). Readers without graduate-level mathematical background may wish to read the Running Example blocks, the prose sections, and the Worked Examples while treating the formal definitions and proofs as optional. The framework's insights are expressible in plain language; the formal apparatus exists to make them precise, not to restrict access.
+
+A note on notation: throughout the book, $d_k$ denotes the $k$-th dimension of the decision manifold (with $d_1$ always being the monetary/consequentialist dimension), $\Sigma$ denotes the covariance matrix that defines the Mahalanobis metric, $\beta_k$ denotes the boundary penalty for constraint $k$, and $\text{BF}$ denotes behavioral friction — the total path cost on the full manifold. The notation is consistent across all chapters and is summarized in Appendix A.
 
 ## Worked Example: Maria's Rent Increase
 
@@ -212,6 +236,22 @@ The landlord's analysis, operating on $d_1$ alone, sees a rent increase of $2,00
 
 This is not a rejection of the landlord's right to charge market rent. It is a demonstration that the *market rate* itself is a scalar projection of a richer economic reality, and that decisions made on the projection can be strictly dominated by decisions made on the full manifold — dominated in the Pareto sense, where both landlord and community are better off under a path that respects the full geometry.
 
+### What Happens Next
+
+The worked example is not hypothetical. In cities across the world, the same dynamics play out: landlords optimize on $d_1$, tenants experience displacement on all nine dimensions, and the standard policy response (rent control, zoning changes, displacement funds) operates on $d_1$ alone.
+
+The geometric framework suggests a different approach. Instead of fighting over the single dimension that both sides can see, the framework makes visible the eight dimensions that the $d_1$ analysis hides. A neighborhood planning process informed by the full manifold would ask:
+
+- What is the community value ($d_6$) of the businesses that a rent increase would displace?
+- What is the trust relationship ($d_5$) between tenants and landlords, and how does the increase affect it?
+- What are the fairness norms ($d_3$) that the community applies to the landlord's behavior?
+- What institutional structures ($d_8$) exist to mediate between the parties?
+- What information ($d_9$) do the parties have about each other's true positions?
+
+These questions are not sentimental additions to a hard-headed economic analysis. They are *dimensions of the decision manifold* that determine the equilibrium outcome. The Bond Geodesic Equilibrium of the Maria-landlord game (developed in detail in Chapter 7) shows that a moderate rent increase with a long-term guarantee — a compromise that accounts for all nine dimensions — Pareto-dominates the $d_1$-only Nash outcome. Both parties are better off, not because they are being altruistic, but because they are optimizing on the correct space.
+
+The lesson of this opening example is the lesson of the entire book: the economy is not a line. It is a space. And optimizing on the line, when the reality is the space, produces outcomes that are suboptimal for everyone.
+
 ---
 
 ## Technical Appendix
@@ -222,6 +262,18 @@ This is not a rejection of the landlord's right to charge market rent. It is a d
 
 **Dimensional Count (Justification).** **[Modeling Axiom.]** The claim that economic decisions involve nine dimensions is a modeling axiom, not a mathematical necessity. The specific dimensionality is inherited from the moral manifold developed in *Geometric Ethics* (Bond, 2026b, Chapter 5), where it is derived from a $3 \times 3$ decomposition of moral space (three normative modes × three scopes). The adaptation to economics replaces moral-specific labels with economic-specific ones while preserving the mathematical structure. The dimensionality is empirically testable: factor analysis of behavioral economic data should recover approximately nine independent factors. The eris-econ validation (Appendix C) provides preliminary evidence.
 
+**The Contraction Operation.** **[Established Mathematics.]** A contraction is a linear map from a tensor to a lower-rank tensor, obtained by summing over a pair of indices. GDP is a contraction of the economic tensor: it sums over all agents $i$, all goods $j$, and all non-monetary dimensions $k > 1$, retaining only the monetary value of final transactions. In index notation:
+
+$$\text{GDP} = \sum_{i} \sum_{j} T^{1}_{ij}$$
+
+where $T^k_{ij}$ is the economic tensor with dimension index $k$, agent index $i$, and good index $j$. The contraction discards the $k > 1$ components (non-monetary dimensions) and the off-diagonal structure (how dimensions interact). The Scalar Irrecoverability Theorem (Chapter 6) proves that no linear operation on GDP can recover the discarded components — the contraction is mathematically irreversible.
+
+**The Mahalanobis Distance (Preview).** **[Established Mathematics.]** The Mahalanobis distance between two points $\mathbf{x}$ and $\mathbf{y}$ in a space with covariance matrix $\Sigma$ is:
+
+$$d_M(\mathbf{x}, \mathbf{y}) = \sqrt{(\mathbf{x} - \mathbf{y})^T \Sigma^{-1} (\mathbf{x} - \mathbf{y})}$$
+
+This is the natural distance measure when the dimensions have different scales and are correlated. When $\Sigma$ is diagonal, the Mahalanobis distance reduces to a weighted Euclidean distance with weights $1/\sigma_k^2$. When $\Sigma$ has off-diagonal terms, the distance depends on the correlations between dimensions — a displacement that is aligned with the correlation structure costs less than one that is orthogonal to it. Chapter 4 develops the full economic metric based on this distance measure.
+
 ---
 
 ## Notes on Sources
@@ -231,3 +283,9 @@ The critique of GDP as a welfare measure is developed in Stiglitz, Sen, and Fito
 The behavioral economics canon includes Kahneman and Tversky (1979), "Prospect Theory: An Analysis of Decision Under Risk," *Econometrica*; Thaler (1980), "Toward a Positive Theory of Consumer Choice," *Journal of Economic Behavior and Organization*; and Ariely (2008), *Predictably Irrational*. We treat these as empirical data, not as theoretical commitments.
 
 The geometric framework inherits from Bond (2026a), *Geometric Methods in Computational Modeling*; Bond (2026b), *Geometric Ethics*; and Bond (2026c), *Geometric Reasoning: From Search to Manifolds*. The specific application to economics was first presented as Chapter 20 of *Geometric Ethics* and is developed here in full.
+
+The Easterlin paradox is documented in Easterlin (1974), "Does Economic Growth Improve the Human Lot?", in *Nations and Households in Economic Growth* (Academic Press), and updated in Easterlin et al. (2010), "The Happiness-Income Paradox Revisited," *PNAS*. The geometric interpretation — that the paradox reflects the decoupling of the correlation structure between monetary and evaluative dimensions above a threshold — is original to this framework.
+
+The monetization trap is discussed, under different names, in Anderson (1993), *Value in Ethics and Economics* (Harvard University Press); Sandel (2012), *What Money Can't Buy: The Moral Limits of Markets* (FSG); and Satz (2010), *Why Some Things Should Not Be for Sale* (Oxford University Press). The geometric formalization — that the trap is the assumption of a non-degenerate metric where the true metric is degenerate — is original.
+
+The value of a statistical life (VSL) methodology is reviewed in Viscusi (2018), *Pricing Lives: Guideposts for a Safer Society* (Princeton University Press). The social cost of carbon is reviewed in the Interagency Working Group on Social Cost of Greenhouse Gases (2021). Bhutan's Gross National Happiness is documented in the Centre for Bhutan Studies (2012), *GNH Survey Report*. The Amazon logistics case draws on the reporting compiled in Kantor and Streitfeld (2015, *New York Times*) and subsequent investigations. The opioid crisis statistics are from the CDC's National Center for Health Statistics.

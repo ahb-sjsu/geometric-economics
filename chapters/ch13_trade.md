@@ -23,6 +23,10 @@ The geometric reinterpretation: comparative advantage is a statement about *curv
 
 When both countries produce everything domestically, each is forced to traverse high-curvature regions of their manifold (A producing semiconductors, B producing textiles). Trade allows each to follow their low-curvature geodesic and exchange the results. The gains from trade are the reduction in total geodesic length: the sum of the two specialized geodesics is shorter than the sum of the two autarky geodesics.
 
+This reinterpretation reveals something hidden in the classical formulation: the curvature that determines comparative advantage is not fixed. It can be changed by investment in infrastructure, education, institutions, and technology. A country that invests in semiconductor R&D is *flattening* its manifold along the semiconductor axis — reducing the curvature, making production cheaper, and shifting its comparative advantage. Industrial policy, in the geometric framework, is *deliberate curvature reduction* on specific production axes.
+
+The East Asian development model — Japan, then South Korea, then Taiwan, then China — can be read as a sequence of deliberate curvature reductions: each country invested heavily in specific production capabilities (textiles, then electronics, then semiconductors, then advanced manufacturing), reducing curvature on those axes until their comparative advantage shifted. The policy succeeded not because it "picked winners" in the traditional sense but because the investment reduced curvature — made production cheaper and less disruptive — on strategically chosen axes.
+
 **On the full manifold**, comparative advantage has dimensions beyond $d_1$. A country may have low curvature on $d_1$ for electronics production (cheap labor) but high curvature on $d_4$ (coercive labor practices) and $d_3$ (unfair wage distribution). The $d_1$-only geodesic says "produce electronics." The full-manifold geodesic may say "produce electronics *with fair labor standards*" — a longer $d_1$ path but a shorter total path.
 
 ### Formalizing Comparative Advantage as Curvature
@@ -127,6 +131,36 @@ On the full manifold, the analysis is more complex. If China's exports were prod
 
 The framework does not automatically endorse free trade or protectionism. It says: *compute the geodesic on the full manifold.* If free trade is the shortest path on all nine dimensions, free trade is optimal. If free trade requires traversing boundary-crossing regions (coerced labor, environmental destruction, institutional corruption), then some form of boundary enforcement — tariffs, sanctions, or trade agreements with labor and environmental provisions — may produce a shorter total geodesic despite its higher $d_1$ cost.
 
+## 13.6 Currency as Gauge Transformation in Trade
+
+**[Modeling Axiom.]** International trade introduces a gauge complication absent from domestic exchange: goods are priced in different currencies, and the exchange rate between currencies is itself a market-determined variable subject to speculation, manipulation, and misalignment.
+
+In the geometric framework, a currency denomination is a *gauge choice* — a labeling convention that should not affect the evaluation of the underlying economic state. The same good, priced at $100 in the US and €92 in Europe, is the same good. The evaluation of whether to buy it should be invariant under the currency transformation. When it is not — when agents make different trade decisions depending on the denomination — we have a gauge violation.
+
+Exchange rate misalignment is a systematic gauge violation that distorts the entire trade manifold. An undervalued currency makes a country's exports appear cheaper on $d_1$ than they actually are — the price heuristic is biased by the gauge. An overvalued currency has the opposite effect. The standard policy debate about "currency manipulation" is, in geometric terms, a debate about deliberate gauge violations: a country that artificially suppresses its exchange rate is distorting the price heuristic on the trade manifold, routing geodesics through its economy that would otherwise pass through other countries.
+
+### Trade Agreements as Manifold Harmonization
+
+**[Empirical.]** Trade agreements — from bilateral tariff reductions to comprehensive frameworks like the EU single market — are attempts to harmonize the decision manifolds of participating countries. Harmonization involves:
+
+1. **Boundary alignment**: Agreeing on common regulatory boundaries ($d_8$), so that the regulatory constraints are the same across the manifold. Without alignment, a good that crosses from one country to another may traverse a boundary in the destination country that does not exist in the origin country.
+
+2. **Metric convergence**: Aligning the covariance matrices $\Sigma$ across countries, so that the cost of economic transitions is comparable. Mutual recognition of professional qualifications, common product standards, and harmonized labor protections all serve to make the manifolds of participating countries more similar.
+
+3. **Gauge fixing**: Agreeing on common units and measurement standards, so that the price heuristic is comparable across countries. The euro is the most dramatic example: a common currency eliminates the currency gauge entirely within the eurozone, removing an entire class of gauge violations from intra-eurozone trade.
+
+The EU single market is, in this framework, the most ambitious manifold harmonization project in history. Its success — the world's largest single market by GDP — and its difficulties (the eurozone crisis, Brexit, disputes over regulatory harmonization) can both be understood geometrically. The success comes from the reduction in boundary penalties and gauge violations between member states. The difficulties come from the fact that manifold harmonization requires convergence of $\Sigma$ — the covariance matrices that encode each country's values, institutions, and economic structure. Countries with very different $\Sigma$ (e.g., Germany and Greece, with very different weights on $d_8$ institutional legitimacy and $d_3$ fairness norms) find harmonization costly, because convergence requires changing the relative importance of dimensions — which is a cultural and political transformation, not just a regulatory one.
+
+## 13.7 The Geometry of Trade Imbalances
+
+**[Modeling Axiom.]** A persistent trade imbalance — one country systematically exporting more than it imports — is a statement about the relative curvatures of the two countries' manifolds. The exporting country has lower curvature in the production of traded goods: its geodesics to production states are shorter, so it produces more cheaply and exports the surplus. The importing country has lower curvature in the consumption dimension (or in the production of non-traded services): its geodesics favor consumption of imported goods over domestic production.
+
+On $d_1$ alone, a trade deficit is a monetary flow: the importing country sends money to the exporting country in exchange for goods. By the conservation laws of Chapter 9, the $d_1$ flow is balanced by a corresponding flow of financial assets (the exporting country accumulates claims on the importing country). This is the standard balance-of-payments accounting.
+
+On the full manifold, the picture is richer. The trade relationship may generate evaluative surplus ($d_5$, $d_6$, $d_9$) that benefits both parties. But a persistent imbalance may also reflect a structural asymmetry: the importing country's $d_4$ (autonomy) is constrained by dependence on foreign production. Its $d_9$ (epistemic security) is degraded by the loss of domestic productive capacity. Its $d_6$ (community impact) may decline as manufacturing jobs disappear.
+
+The "China shock" literature (Autor, Dorn, and Hanson, 2013) documented exactly this pattern: regions of the United States that were most exposed to Chinese import competition experienced not just $d_1$ losses (lower wages, higher unemployment) but cascading losses across evaluative dimensions — increased social dysfunction ($d_6$), loss of community identity ($d_7$), degraded institutional trust ($d_5$, $d_8$), and epistemic decline ($d_9$: reduced educational investment). The $d_1$-only trade model predicted that displaced workers would move to new sectors. The full-manifold model predicts that the displacement crosses multiple boundaries simultaneously, making adjustment far more costly than the scalar projection suggests.
+
 ---
 
 ## Worked Example: Maria's Bean Sourcing Decision
@@ -158,6 +192,64 @@ Maria evaluates three supply chain options:
 
 The $d_1$-only ranking: A > C > B. The full-manifold ranking: B > C > A. Maria chooses B — the most expensive option monetarily, the cheapest on the full manifold. This is not irrational. It is optimal on the correct manifold.
 
+### The Conservation Laws in Maria's Trade
+
+Applying the conservation framework (Chapter 9) to Maria's sourcing decision:
+
+**Option B (Elena, fair-trade):** The $2,000 monetary transfer is conserved — Maria pays, Elena receives. But the evaluative surplus is substantial: trust (+0.4 each), community (+0.6 each), identity (+0.8 Maria, +0.5 Elena). Total evaluative value created per transaction: approximately 2.3 units.
+
+**Option A (commodity):** The $960 monetary transfer is conserved. The evaluative surplus is approximately zero — no trust, no community, no identity affirmation. The $1,040/month Maria saves on $d_1$ comes at the cost of 2.3 units of evaluative value per transaction.
+
+The conservation law reveals the hidden structure: Maria's "willingness to pay more" for fair-trade beans is not a consumption preference on $d_1$. It is the purchase of evaluative surplus that cannot be obtained at any price through the commodity channel. The premium is the monetary cost of accessing a different region of the manifold — a region where evaluative value can be created.
+
+## The Geometry of Trade Agreements: A Deeper Analysis
+
+### Bilateral vs. Multilateral Trade
+
+**[Modeling Axiom.]** The geometry of bilateral trade differs fundamentally from multilateral trade. In bilateral trade, two agents optimize on their respective manifolds, finding a BGE that balances both agents' behavioral friction. In multilateral trade, $n$ agents optimize simultaneously, and the equilibrium is a multi-dimensional fixed point.
+
+The critical difference: bilateral trade can only exploit the curvature differentials between two countries. Multilateral trade can exploit *circular* curvature differentials — comparative advantage chains where Country A trades with B, B trades with C, and C trades with A, with each leg following a low-curvature geodesic that no bilateral combination can achieve.
+
+The gains from multilateral trade exceed the sum of bilateral gains precisely because of this circularity. The geometric framework makes this precise: the multi-agent BGE on a trade manifold with $n$ countries finds geodesics that exploit the full curvature structure of the manifold, including curvature gradients that are invisible in any bilateral projection.
+
+This is the geometric argument for multilateral trade organizations (WTO, EU single market): they enable the economy to find geodesics on the full $n$-country manifold, rather than being restricted to the bilateral projections. The gains from the multilateral geodesic over the best set of bilateral geodesics are the "geometric surplus" of multilateral trade — a surplus that arises from the curvature structure of the full manifold and cannot be computed from any set of bilateral comparisons.
+
+### Rules of Origin as Geodesic Constraints
+
+**[Empirical.]** Rules of origin in trade agreements specify what fraction of a good's value must be produced within the agreement's territory to qualify for preferential tariff rates. In the geometric framework, these are constraints on the geodesic's path: the supply chain trajectory must pass through specific regions of the production manifold.
+
+The USMCA's automotive rules of origin, for example, require that 75% of a vehicle's value be produced in North America, with specific wage thresholds for labor content. These are boundary penalties on the production geodesic: a supply chain that routes through low-wage Asian manufacturing incurs a tariff penalty that a North American supply chain avoids.
+
+The geometric analysis reveals that rules of origin create two competing effects. They *protect* evaluative dimensions ($d_3$: fair wages, $d_4$: labor autonomy, $d_6$: domestic community impact) by preventing the geodesic from routing through regions where these dimensions are violated. But they also *distort* the $d_1$ geodesic by forcing production through higher-cost regions. The net effect on total manifold cost depends on the covariance matrix $\Sigma$ — on how much each dimension matters.
+
+For goods where the evaluative dimensions are strongly weighted (consumer products with visible supply chains, goods requiring skilled labor, products with significant community employment impact), rules of origin may reduce total manifold cost even while increasing $d_1$ cost. For anonymous commodity goods where only $d_1$ matters, rules of origin are pure deadweight loss. The framework provides the criterion: compute the full-manifold cost of the constrained geodesic versus the unconstrained geodesic, and assess whether the evaluative gains justify the monetary cost.
+
+## The Political Economy of Trade, Geometrized
+
+### Distributional Effects of Trade
+
+**[Empirical.]** The Stolper-Samuelson theorem predicts that trade liberalization benefits the abundant factor and harms the scarce factor. In a labor-abundant developing country opening to trade, wages rise; in a capital-abundant developed country opening to trade with a labor-abundant partner, wages fall (or grow more slowly) while returns to capital increase.
+
+The geometric framework extends this prediction to the full manifold. The workers displaced by trade competition do not only suffer $d_1$ losses (lower wages or unemployment). They experience cascading losses:
+
+- $d_4$ (autonomy): loss of occupation eliminates the daily exercise of skill and judgment
+- $d_5$ (trust): the implicit social contract — "work hard and you will prosper" — is violated
+- $d_6$ (community): factory towns lose their economic anchor and social infrastructure
+- $d_7$ (identity): "steelworker," "autoworker," "miner" are identities, not just job descriptions
+- $d_9$ (epistemic): uncertainty about future employment, retraining options, and economic prospects
+
+The policy implication: trade adjustment assistance that provides only $d_1$ compensation (cash payments, retraining subsidies) addresses one dimension of a five-dimensional loss. The empirical evidence on the effectiveness of Trade Adjustment Assistance (TAA) in the United States confirms this prediction: TAA recipients who receive cash and retraining show limited improvement relative to non-recipients, because the cash does not restore autonomy, identity, community, or trust. Effective adjustment requires multi-dimensional intervention — a prediction that follows directly from the manifold structure and that would not be generated by a $d_1$-only analysis.
+
+### Trade and Power Asymmetry
+
+**[Modeling Axiom.]** Trade between partners of unequal economic power is not just an exchange on the manifold; it is an interaction where the more powerful partner can shape the other's manifold. A large importing nation can set terms of trade that force the exporting nation's geodesic through regions that the exporting nation would not voluntarily traverse.
+
+Consider trade between a large retail corporation and a small-country supplier. The corporation can demand: low prices ($d_1$ extraction from the supplier), rapid fulfillment timelines ($d_4$ constraint on the supplier's autonomy), exclusive dealing ($d_5$ trust asymmetry), and compliance with the corporation's proprietary standards ($d_8$ legitimacy defined by the powerful party). Each demand reshapes the supplier's manifold — raising the curvature on specific dimensions and constraining the available geodesics.
+
+This is not free trade in the classical sense — where both parties freely choose their geodesics and find mutual gains. It is *constrained trade*, where one party defines the boundaries on both manifolds. The conservation law still holds on the transferable dimensions: the monetary transfer is zero-sum. But the evaluative surplus that would arise from genuinely voluntary exchange — mutual trust, relationship-building, identity affirmation — is suppressed by the power asymmetry. The dominant party captures $d_1$ surplus while preventing the creation of $d_5$–$d_9$ surplus that would empower the subordinate party.
+
+The framework generates a prediction: trade relationships characterized by power asymmetry should generate less evaluative surplus than relationships between equal partners. This is testable by comparing the trust, community, and identity outcomes of supply chain relationships between small suppliers and large buyers versus relationships between equal-sized firms.
+
 ---
 
 ## Technical Appendix
@@ -170,6 +262,14 @@ $G > 0$ whenever trade allows both countries to follow lower-curvature geodesics
 
 **Proposition 13.1 (Trade Restrictions May Be Optimal).** **[Conditional Theorem.]** A trade restriction that raises $d_1$ cost but prevents boundary crossing on $d_k$ ($k > 1$) reduces total manifold cost whenever $\beta_k > \Delta d_1 / \sigma_1^2$. The restriction is welfare-improving on the full manifold even though it is welfare-reducing on the scalar projection.
 
+**Proposition 13.2 (Evaluative Surplus of Trade Relationships).** **[Conditional Theorem.]** In a repeated bilateral trade relationship between agents A and B, the cumulative evaluative surplus after $n$ transactions is:
+
+$$V_{\text{eval}}(n) = \sum_{t=1}^{n} \sum_{k=5}^{9} \left[\Delta d_k^{(t)}(A) + \Delta d_k^{(t)}(B)\right]$$
+
+This quantity is typically concave in $n$ (initial transactions build trust rapidly; subsequent transactions add trust at a diminishing rate) and can be permanently reduced to zero by a single betrayal (Theorem 9.3 from Chapter 9). The evaluative surplus provides a geometric measure of the "value of the trade relationship" that is invisible to $d_1$ accounting.
+
+**Proposition 13.3 (The Anti-Comparative-Advantage Trap).** **[Conditional Theorem.]** A country whose comparative advantage on $d_1$ requires boundary crossing on $d_3$ or $d_4$ (e.g., comparative advantage in cheap labor that relies on coercive labor practices) faces a geometric trap: the $d_1$ geodesic that trade theory recommends is not a geodesic on the full manifold. If the country follows the $d_1$ recommendation and specializes in boundary-crossing production, it becomes locked into a production path that is optimal on the scalar projection but suboptimal on the full manifold — and the lock-in deepens over time as the production infrastructure, skill distribution, and institutional structure adapt to the boundary-crossing path. Escape from this trap requires a coordinated shift across multiple dimensions, analogous to escaping a poverty-trap basin (Chapter 10).
+
 ---
 
 ## References
@@ -177,3 +277,8 @@ $G > 0$ whenever trade allows both countries to follow lower-curvature geodesics
 Ricardo, D. (1817). *On the Principles of Political Economy and Taxation.*
 Smith, A. (1776). *An Inquiry into the Nature and Causes of the Wealth of Nations.*
 Stiglitz, J. E. (2002). *Globalization and Its Discontents.* Norton.
+Autor, D. H., Dorn, D., and Hanson, G. H. (2013). "The China Syndrome: Local Labor Market Effects of Import Competition in the United States." *American Economic Review*, 103(6), 2121–2168.
+Banerjee, A. V., and Duflo, E. (2011). *Poor Economics.* PublicAffairs.
+Heckscher, E. (1919). "The Effect of Foreign Trade on the Distribution of Income." *Ekonomisk Tidskrift*, 21, 497–512.
+Ohlin, B. (1933). *Interregional and International Trade.* Harvard University Press.
+Krugman, P. (1980). "Scale Economies, Product Differentiation, and the Pattern of Trade." *American Economic Review*, 70(5), 950–959.

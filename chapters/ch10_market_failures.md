@@ -30,6 +30,8 @@
 
 The price system is the economy's heuristic field (Chapter 5). When prices accurately reflect the full manifold cost of a transaction, the heuristic is admissible and the market's search process finds near-optimal paths. When prices fail to reflect true costs, the heuristic is corrupted and the search is misdirected.
 
+The geometric taxonomy of heuristic corruption identifies three mechanisms: the price *omits* a dimension (externality), the price *misestimates* a dimension (information asymmetry), or the price is *actively manipulated* to corrupt another agent's heuristic (fraud). Each has a distinct mathematical signature and requires a distinct policy response.
+
 ### Externalities as Heuristic Corruption
 
 **[Empirical.]** An externality exists when the price of a good does not include the full cost on the decision manifold. A factory that pollutes a river imposes costs on dimensions $d_6$ (social impact — downstream communities), $d_5$ (trust — breach of implicit social contract), and $d_8$ (legitimacy — violation of environmental norms). If these costs are not reflected in the factory's output price, the price heuristic $h(n)$ systematically underestimates the true cost-to-go from pollution-intensive production states.
@@ -37,6 +39,8 @@ The price system is the economy's heuristic field (Chapter 5). When prices accur
 The result is predictable: the market's A* search, guided by the corrupted heuristic, follows a trajectory that avoids the true geodesic (which would include pollution costs) and instead converges on a cheaper-seeming path that ignores dimensions $d_5$, $d_6$, and $d_8$. This is not market failure in the traditional sense — the market is functioning correctly *on the projected manifold*. It is a dimensional failure: the price heuristic operates on $d_1$ while the true cost lives on all nine dimensions.
 
 **Pigouvian taxes** are heuristic corrections: they add a penalty to the price that approximates the missing manifold dimensions. A carbon tax adds $\Delta h(n) = \beta_{\text{climate}} \cdot \text{emissions}(n)$ to the price heuristic, partially restoring admissibility. The geometric framework explains why Pigouvian taxes are hard to calibrate: the correct penalty depends on the covariance matrix $\Sigma$ (how the missing dimensions interact with $d_1$), which varies across contexts and is difficult to estimate.
+
+The framework also explains why some externalities are more persistent than others. A negative externality on $d_6$ (environmental pollution) persists because the affected parties (downstream communities, future generations) are not participants in the market transaction — they cannot bid the price up to reflect their costs. A negative externality on $d_5$ (trust erosion from deceptive advertising) is partially self-correcting: the eroded trust eventually reduces the firm's customer base, feeding back into $d_1$. The geometric prediction: externalities are most persistent when the affected dimension is *decoupled* from $d_1$ in the covariance matrix — when the non-monetary cost does not eventually cascade back into monetary consequences. Environmental externalities are persistent because the environmental-monetary coupling is weak and delayed. Trust externalities are less persistent because the trust-monetary coupling is stronger and faster.
 
 ### Information Asymmetry as Heuristic Degradation
 
@@ -208,6 +212,46 @@ The four pathologies interact. Heuristic corruption (externalities not priced) e
 
 The geometric framework doesn't just catalog these failures. It explains why they co-occur and reinforce each other — they are coupled pathologies on a single manifold, not independent market failures requiring independent policy responses.
 
+## Implications for Policy
+
+### Why Single-Instrument Policies Fail
+
+The four-pathology taxonomy explains why single-instrument economic policies often fail to address market failures. A carbon tax addresses heuristic corruption (correcting the price signal on $d_6$) but does not address objective hijacking (if the regulators setting the tax rate have been captured by the fossil fuel industry), local minima (if the economy is locked into carbon-intensive infrastructure), or gauge breaking (if agents confuse nominal and real costs of the transition).
+
+Effective policy addresses all active pathologies simultaneously. For climate change:
+
+- **Heuristic repair**: Carbon pricing (tax or cap-and-trade) corrects the price signal.
+- **Objective protection**: Independent climate agencies with multi-dimensional mandates (not just GDP growth) resist capture.
+- **Basin escape**: Green infrastructure investment overcomes the lock-in of carbon-intensive capital.
+- **Gauge correction**: Real-cost accounting that includes the social cost of carbon in all government projections.
+
+The geometric framework does not prescribe specific policies. It provides the *diagnostic taxonomy* that identifies which pathologies are active and therefore which policy instruments are necessary. The diagnosis precedes the prescription — and the diagnosis requires the full manifold, not the scalar projection.
+
+### Market Failures as Information About the Manifold
+
+A final and perhaps counterintuitive observation: market failures are *informative*. They reveal the shape of the decision manifold.
+
+When the price system fails to allocate efficiently, the failure is diagnostic. An externality reveals a dimension ($d_6$: social impact) that the price heuristic does not capture. A bubble reveals a local minimum whose basin structure can be characterized. Regulatory capture reveals a dimension ($d_8$: institutional legitimacy) whose boundary penalties have been suppressed. Money illusion reveals a gauge violation whose magnitude can be measured.
+
+Each failure is a data point about the manifold. A perfectly efficient market — one where the price system captures all relevant information and the A* search follows the geodesic — would tell us nothing about the manifold structure beyond $d_1$. Market failures, by revealing the gap between the price projection and the true manifold, map the dimensions that the price system misses. The program of behavioral economics — cataloguing "anomalies" — is, in this light, an empirical mapping of the decision manifold, conducted without the geometric vocabulary to describe what is being mapped.
+
+This book provides the vocabulary. The catalog of market failures becomes a map of manifold structure. The anomalies become data. And the data points toward the same conclusion as the conservation laws, the gauge invariance, and the BGE: the economy is not a scalar. It is a nine-dimensional geometric object, and the scalar projection — useful as it is — is not the economy. It is its shadow.
+
+## The Taxonomy in Summary
+
+The following table synthesizes the four pathologies, their geometric signatures, their economic manifestations, and their policy remedies:
+
+| Pathology | Geometric Signature | Economic Manifestation | Diagnostic | Remedy |
+|-----------|--------------------|-----------------------|------------|--------|
+| Heuristic corruption | $\nabla h$ points away from geodesic | Externalities, information asymmetry, moral hazard | Divergence between price and full-manifold cost | Pigouvian taxes, disclosure, certification |
+| Objective hijacking | Search optimizes wrong $\mathcal{L}$ | Regulatory capture, short-termism, Goodhart's law | Proxy diverges from true objective over time | Multi-dimensional evaluation, independent oversight |
+| Local minima | Agent trapped in suboptimal basin | Bubbles, poverty traps, institutional lock-in | Cost of escape exceeds accumulation rate | Coordinated intervention on multiple dimensions |
+| Gauge breaking | $f(\gamma)$ depends on description | Money illusion, sunk cost fallacy, denomination effects | Same state evaluated differently under gauge transformation | Gauge-invariant metrics, real-value accounting |
+
+The taxonomy is exhaustive in the following sense: any deviation of market behavior from the full-manifold geodesic can be classified as one of these four pathologies or a combination of them. The proof is constructive: given a deviation, identify whether the heuristic points correctly (if not: corruption), whether the agent is optimizing the right objective (if not: hijacking), whether the agent is in a local minimum (if so: local minimum), and whether the evaluation is gauge-invariant (if not: gauge breaking). At least one of these conditions must hold for any observed deviation from the geodesic.
+
+The practical value of the taxonomy is diagnostic: it tells the analyst not just that something has gone wrong, but *which kind of thing* has gone wrong and therefore *which class of remedy* is appropriate. The scalar framework — which classifies all deviations as "market failures" requiring case-by-case analysis — lacks this diagnostic power.
+
 ---
 
 ## Technical Appendix
@@ -218,7 +262,13 @@ $$\text{HCI}(g) = \frac{|p(g) - w^*(g)|}{w^*(g)}$$
 
 where $p(g)$ is the market price ($d_1$ component only) and $w^*(g)$ is the full manifold cost of producing and distributing $g$. $\text{HCI} = 0$ means the price is admissible; $\text{HCI} > 0$ means the price heuristic underestimates true cost by a factor proportional to the missing dimensions.
 
-**Proposition 10.1 (Pathology Coupling).** **[Conditional Theorem.]** On the economic decision manifold, the four pathologies are not independent. Heuristic corruption on dimension $d_k$ increases the probability of objective hijacking toward $d_k$-aligned objectives, which deepens local minima on the $d_k$-projected manifold, which is sustained by gauge breaking between the projected and full manifolds.
+**Proposition 10.1 (Pathology Coupling).** **[Conditional Theorem.]** On the economic decision manifold, the four pathologies are not independent. Heuristic corruption on dimension $d_k$ increases the probability of objective hijacking toward $d_k$-aligned objectives, which deepens local minima on the $d_k$-projected manifold, which is sustained by gauge breaking between the projected and full manifolds. The coupling forms a directed cycle (Proposition 10.2) with positive feedback: each pathology amplifies the next.
+
+**Proposition 10.3 (Exhaustive Classification).** **[Conditional Theorem.]** Any observable deviation of market behavior from the full-manifold Bond geodesic can be attributed to one or more of the four pathologies. Let $\gamma^*$ be the full-manifold geodesic and $\gamma$ be the observed trajectory. The deviation $\gamma - \gamma^*$ decomposes as:
+
+$$\gamma - \gamma^* = \delta_H + \delta_O + \delta_L + \delta_G$$
+
+where $\delta_H$ is the component due to heuristic corruption, $\delta_O$ due to objective hijacking, $\delta_L$ due to local-minimum trapping, and $\delta_G$ due to gauge breaking. The components are not orthogonal in general (the pathologies interact), but each is independently measurable: $\delta_H$ by comparing the price heuristic to the true manifold cost, $\delta_O$ by comparing the optimized objective to the stated objective, $\delta_L$ by computing the basin structure at the current state, and $\delta_G$ by testing invariance under admissible re-descriptions.
 
 **Definition 10.2 (Basin Depth for Economic Local Minima).** The *depth* of an economic local minimum at state $s^*$ is:
 
@@ -234,4 +284,10 @@ Akerlof, G. A. (1970). "The Market for 'Lemons'." *Quarterly Journal of Economic
 Hayek, F. A. (1945). "The Use of Knowledge in Society." *American Economic Review*, 35(4), 519–530.
 Pigou, A. C. (1920). *The Economics of Welfare.* Macmillan.
 Shiller, R. J. (2005). *Irrational Exuberance.* Princeton University Press.
+Greenwald, B. C., and Stiglitz, J. E. (1986). "Externalities in Economies with Imperfect Information and Incomplete Markets." *Quarterly Journal of Economics*, 101(2), 229–264.
+Arkes, H. R., and Blumer, C. (1985). "The Psychology of Sunk Cost." *Organizational Behavior and Human Decision Processes*, 35(1), 124–140.
+Banerjee, A. V., and Duflo, E. (2011). *Poor Economics.* PublicAffairs.
+Geanakoplos, J. (2010). "The Leverage Cycle." *NBER Macroeconomics Annual*, 24(1), 1–65.
+Goodhart, C. A. E. (1975). "Problems of Monetary Management: The UK Experience." *Papers in Monetary Economics*, Reserve Bank of Australia.
+Raghubir, P., and Srivastava, J. (2002). "Effect of Face Value on Product Valuation in Foreign Currencies." *Journal of Consumer Research*, 29(3), 335–347.
 Stigler, G. J. (1971). "The Theory of Economic Regulation." *Bell Journal of Economics*, 2(1), 3–21.

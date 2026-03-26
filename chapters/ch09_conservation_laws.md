@@ -114,7 +114,21 @@ The accounting identity has immediate consequences:
 
 **Corollary 9.3 (Ponzi Schemes Violate Conservation).** *A Ponzi scheme claims to create transferable value ($d_1$ returns to investors) without corresponding transferable cost. Since $\Delta d_1$ is conserved, the returns must come from other investors' capital, not from value creation. The conservation law immediately identifies the scheme as parasitic: it draws down the transferable pool while (temporarily) creating the illusion of non-conservation on $d_1$. The scheme collapses when the pool is exhausted — which conservation guarantees must happen.*
 
-## 9.6 Exploitation as Conservation Violation
+## 9.6 Open vs. Closed Systems
+
+The conservation laws established in this chapter apply to *closed* bilateral exchanges — transactions where no third party enters and no external conditions change. Real economies are open systems, and the distinction matters.
+
+**[Modeling Axiom.]** In an open economic system — one where external agents, regulatory changes, or environmental shifts can inject or extract value — the conservation law for transferable dimensions generalizes:
+
+$$\Delta d_k(A) + \Delta d_k(B) = F_k^{\text{external}}$$
+
+where $F_k^{\text{external}}$ is the net external input on dimension $d_k$. In a closed exchange, $F_k^{\text{external}} = 0$ and conservation holds. In an open system, $F_k^{\text{external}}$ can be positive (subsidies, external investment) or negative (taxation, expropriation).
+
+Government taxation is the most common form of external extraction on $d_1$: the government takes a fraction of the transaction's monetary value, so $\Delta d_1(A) + \Delta d_1(B) = -\text{tax}$. The tax revenue is not destroyed — it is transferred to the government, which is a third party. In the closed system \{A, B, government\}, conservation holds. The conservation violation is an artifact of defining the system boundary too narrowly.
+
+This observation has a methodological implication: conservation violations, when observed, signal that the system boundary is incorrect — that there are external flows the analysis is missing. A market that appears to create money from nothing (a Ponzi scheme) is violating conservation within the defined system. The violation *diagnoses* the presence of unobserved external flows (other investors' capital). A company that appears to generate profit without creating value is extracting from unobserved dimensions of other agents' manifolds.
+
+## 9.7 Exploitation as Conservation Violation
 
 **Corollary 9.1 (Exploitation Is Detectable).** *If one party consistently extracts surplus on $d_1$ (monetary gain) while the counterparty consistently bears costs on $d_3$ (fairness), $d_4$ (autonomy), or $d_6$ (social impact), the Bond Index will be non-zero. Exploitation is not a moral judgment — it is a measurable asymmetry in the dimensional distribution of behavioral friction.*
 
@@ -242,11 +256,43 @@ This is the geometric explanation for the finding that financial sector growth b
 
 **Proposition 9.1 (Transferability Test).** **[Conditional Theorem.]** Dimension $d_k$ is transferable if and only if the gain of $d_k$-value by one party requires the surrender of $d_k$-value by the other — i.e., the dimension admits no "creation from nothing." In the Hohfeldian framework, this corresponds to dimensions whose changes are governed by correlative pairs (right↔duty, privilege↔no-right).
 
-**Proposition 9.2 (Exploitation Index).** **[Modeling Axiom.]** For a series of $n$ transactions between parties A and B, the *exploitation index* is:
+**Proposition 9.2 (Open System Conservation).** **[Conditional Theorem.]** In an open economic system with $m$ agents and external flows $F_k^{\text{ext}}$, the generalized conservation law is:
+
+$$\sum_{i=1}^{m} \Delta d_k(i) = F_k^{\text{ext}} \quad \text{for all transferable } k$$
+
+When $F_k^{\text{ext}} = 0$ (closed system), conservation holds exactly. When $F_k^{\text{ext}} \neq 0$ (open system), the total internal change equals the external flow. A positive $F_k^{\text{ext}}$ indicates external value injection (subsidy, investment); a negative $F_k^{\text{ext}}$ indicates extraction (taxation, expropriation). Conservation violations *within* the system diagnose unobserved external flows.
+
+**Proposition 9.3 (Exploitation Index).** **[Modeling Axiom.]** For a series of $n$ transactions between parties A and B, the *exploitation index* is:
 
 $$E(A \to B) = \frac{1}{n} \sum_{t=1}^{n} \left[ \Delta d_1^{(t)}(A) \cdot \sum_{k \neq 1} |\Delta d_k^{(t)}(B)| \right]$$
 
 A positive exploitation index indicates that A's monetary gains are systematically accompanied by B's non-monetary losses. The index is zero for fair exchanges and positive for exploitative ones.
+
+## Implications for Institutional Design
+
+### Markets vs. Institutions
+
+The conservation/non-conservation distinction illuminates a fundamental question in economics: when should allocation be left to markets, and when should it be governed by institutions?
+
+**[Modeling Axiom.]** Markets are efficient allocators of *transferable* value. The price system aggregates information about $d_1$ (monetary cost) and guides the exchange of rights ($d_2$) and autonomy ($d_4$). Markets are good at this because these dimensions are conserved: the price system needs only to track the flow of a conserved quantity, which is an accounting problem.
+
+Markets are poor allocators of *evaluative* value. Trust ($d_5$), community ($d_6$), identity ($d_7$), and institutional legitimacy ($d_8$) are not conserved, are not priced, and are not transferable. They are emergent properties of relationships that cannot be bought, sold, or allocated by markets. Institutions — families, communities, professional associations, regulatory bodies, cultural organizations — are the social structures that cultivate evaluative value.
+
+The geometric prediction: economic systems that rely exclusively on markets will under-invest in evaluative dimensions, because the price system cannot see them. Systems that rely exclusively on institutions will under-invest in transferable efficiency, because institutions lack the information-aggregation power of the price system. The optimal economic system uses markets to allocate transferable value and institutions to cultivate evaluative value — with the covariance matrix $\Sigma$ determining the balance.
+
+This is not a new argument — it echoes Karl Polanyi's *The Great Transformation* (1944) and more recent work on social capital (Putnam, 2000) and institutional economics (Acemoglu and Robinson, 2012). What the geometric framework adds is the mathematical structure: the transferable/evaluative distinction is derived from the symmetry structure of the economic Lagrangian (Section 9.8), and the relative importance of markets versus institutions is encoded in the covariance matrix $\Sigma$, which is in principle measurable.
+
+### Corporate Purpose and Stakeholder Theory
+
+**[Empirical.]** The debate between shareholder primacy (Milton Friedman: "the social responsibility of business is to increase its profits") and stakeholder theory (R. Edward Freeman: firms should serve all stakeholders — employees, customers, communities, shareholders) is, in the conservation framework, a debate about which dimensions the firm should optimize.
+
+Shareholder primacy says: optimize $d_1$ (monetary value) and distribute it to shareholders. The other dimensions are externalities — costs or benefits that the firm does not internalize and should not be responsible for.
+
+Stakeholder theory says: optimize the full manifold, balancing monetary return ($d_1$) against employee welfare ($d_3$, $d_4$), customer trust ($d_5$), community impact ($d_6$), institutional legitimacy ($d_8$), and shareholder return ($d_1$).
+
+The conservation framework provides a resolution: the firm that optimizes only $d_1$ is depleting evaluative dimensions (Theorem 10.1 from Chapter 10). This depletion is invisible to the $d_1$ accounting but real on the full manifold. Eventually, the evaluative erosion cascades back into $d_1$ — through employee turnover, customer defection, regulatory action, and reputational collapse. The firm that optimizes the full manifold maintains evaluative value as a renewable resource, sustaining the conditions for long-term $d_1$ returns.
+
+The conservation law tells us *why* stakeholder theory is not just ethically preferable but economically rational on the correct manifold. Evaluative value is not conserved — it can be created by good management and destroyed by exploitative management. A firm that creates evaluative surplus (trust, community, identity) through its operations is generating value that benefits all stakeholders *without reducing* the value available to shareholders. The value is genuinely new — created by the interaction, not transferred from one stakeholder to another.
 
 ---
 
@@ -254,9 +300,23 @@ This completes Part III. The conservation laws developed in this chapter, togeth
 
 ---
 
+## Notes on Sources
+
+The conservation laws developed in this chapter have antecedents in accounting identity theory (the double-entry bookkeeping system, invented by Luca Pacioli in 1494, is the oldest conservation law in economics) and in Walras's law (total excess demand across all markets sums to zero — a conservation statement about monetary flows). The contribution here is the extension to the full nine-dimensional manifold and the distinction between transferable and evaluative dimensions, which is original.
+
+The Noether derivation (Section 9.8) follows the general structure of Noether (1918) as applied to field theories, adapted to the economic Lagrangian. The analogy between conservation laws in physics and economics has been noted informally by many authors (Samuelson's *Foundations of Economic Analysis*, 1947, explicitly drew on variational methods from physics) but has not, to my knowledge, been developed with the full BIP-Noether machinery applied here.
+
+The distinction between extensive (conserved, transferable) and intensive (non-conserved, evaluative) economic quantities parallels the distinction in thermodynamics (Callen, 1985, *Thermodynamics and an Introduction to Thermostatistics*). The economic analogue of the second law of thermodynamics — asymmetric trust destruction — appears to be new.
+
+The evaluative surplus concept connects to the social capital literature (Putnam, 2000; Coleman, 1988) and the relational contracting literature (Baker, Gibbons, and Murphy, 2002). The conservation framework provides the mathematical structure that these literatures have described qualitatively: social capital is the accumulated evaluative surplus of repeated economic interactions, and it can be created (positive-sum) or destroyed (asymmetrically) but not transferred (not conserved).
+
 ## References
 
 Bond, A. H. (2026a). *Geometric Methods in Computational Modeling.* SJSU.
 Bond, A. H. (2026b). *Geometric Ethics: The Mathematical Structure of Moral Reasoning.* SJSU.
+Cecchetti, S. G., and Kharroubi, E. (2012). "Reassessing the Impact of Finance on Growth." BIS Working Paper No. 381.
+Coleman, J. S. (1988). "Social Capital in the Creation of Human Capital." *American Journal of Sociology*, 94, S95–S120.
 Noether, E. (1918). "Invariante Variationsprobleme." *Nachrichten der Königlichen Gesellschaft der Wissenschaften zu Göttingen*, 235–257.
+Polanyi, K. (1944). *The Great Transformation.* Rinehart.
+Putnam, R. D. (2000). *Bowling Alone.* Simon & Schuster.
 Smith, A. (1776). *An Inquiry into the Nature and Causes of the Wealth of Nations.*

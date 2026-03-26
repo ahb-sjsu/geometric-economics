@@ -23,6 +23,10 @@ In the formalism of Chapter 3, regulations are boundary penalties $\beta_k$ atta
 
 The key geometric insight: **the regulator does not choose the geodesic.** The regulator constrains the manifold; agents find their own geodesics within the constrained space. This is the difference between command economies (the planner chooses the path) and regulated markets (the planner shapes the landscape; agents navigate it).
 
+This insight clarifies a confusion that pervades regulatory debate. Critics of regulation often frame it as "government telling businesses what to do." The geometric framework shows that regulation, when properly designed, does not tell businesses what to do. It tells them where they *cannot* go — and then lets them find the best path within the permitted region. A speed limit does not tell the driver which route to take. It constrains the velocity along any route. A building code does not design the building. It constrains the set of permissible designs. The geodesic — the optimal path — is still chosen by the agent, within the constrained manifold.
+
+The framework also explains when regulation *should* choose the geodesic: in cases of natural monopoly (where competition does not produce multiple geodesics to compare), public goods provision (where no individual geodesic reaches the socially optimal state), and emergency response (where the time for geodesic search is insufficient). These are cases where the manifold structure does not support individual pathfinding, and central coordination is the only way to reach the goal region.
+
 ## 14.2 Environmental Regulation as Forbidden Regions
 
 **[Empirical.]** Environmental regulations define forbidden regions on the decision manifold — states where pollution exceeds acceptable levels, where resource extraction exceeds sustainable rates, where habitat destruction crosses irreversibility thresholds.
@@ -65,6 +69,20 @@ The principles are not independent recommendations. They are the minimal set of 
 The 2008 crisis (Chapter 11) occurred partly because curvature constraints were too loose — institutions could take positions with effective curvature far exceeding what the manifold could support. When the manifold's own curvature diverged at the singularity, the trajectories of over-leveraged institutions became undefined.
 
 **Basel capital requirements** are, in this framework, bounds on the Christoffel symbols $\Gamma^k_{ij}$ in the financial dimensions: the connection structure cannot permit transitions that accumulate curvature beyond the stability threshold. The geometric prediction: optimal capital requirements depend on the local curvature of the financial manifold, which varies with market conditions — higher curvature (more volatile markets) should trigger tighter constraints. This is precisely the logic of countercyclical capital buffers.
+
+### Systemic Risk as Correlated Curvature
+
+**[Empirical.]** Systemic risk — the risk that the failure of one institution triggers cascading failures across the financial system — is, geometrically, *correlated curvature*: multiple institutions' trajectories bend in the same direction at the same time, so that a perturbation that pushes one institution past its curvature limit pushes many institutions past theirs.
+
+In normal conditions, institutions' trajectories are approximately independent: one bank's lending decisions do not strongly affect another bank's curvature. In pre-crisis conditions, correlations increase: all banks hold similar assets, all banks use similar risk models, all banks are exposed to the same housing market. The curvatures become correlated, and the system's effective curvature is the sum of the individual curvatures — which can exceed the stability threshold even when each individual curvature does not.
+
+Macroprudential regulation — systemically important financial institution (SIFI) designations, stress testing, systemic risk surcharges — is curvature-correlation regulation: it limits not just individual institutions' curvature but the correlation between institutions' curvatures. The geometric framework provides the metric: measure the covariance of curvature across institutions, and impose constraints when the correlation exceeds a threshold. This is more precise than the current approach of designating individual institutions as "systemic" — a binary classification that misses the continuous spectrum of curvature correlation.
+
+### The Leverage Cycle as Curvature Oscillation
+
+**[Empirical.]** Geanakoplos (2010) described the "leverage cycle" — the tendency of leverage to increase during booms and decrease during busts, amplifying both. In the geometric framework, this is a curvature oscillation: during booms, the manifold appears to have low curvature (low volatility, high asset values, easy credit), so institutions increase their trajectory curvature (leverage up). During busts, the manifold reveals its true high curvature (high volatility, falling values, tight credit), and institutions must rapidly reduce their trajectory curvature (deleverage), which amplifies the downturn.
+
+The optimal regulatory response is a curvature stabilizer: a mechanism that constrains curvature during the boom phase (when it appears cheap but is actually building systemic risk) and relaxes curvature constraints during the bust phase (when the deleveraging cascade makes the crisis worse). This is countercyclical capital buffers — which the geometric framework predicts should be calibrated to the manifold's curvature, not to the agent's perceived curvature (which is distorted during bubbles by gauge violations on the nominal/real distinction).
 
 ## 14.4 Labor Regulation as Autonomy Protection
 
@@ -120,6 +138,40 @@ The four pathologies of Chapter 10 apply to regulation itself — the regulators
 
 This is not a preference. It is a topological feature of the decision manifold. Certain goods are not on the same connected component as monetary goods in the agent's decision complex. No path connects "my kidney" to "dollars" because the sacred-value boundary has infinite weight. Market design cannot "fix" repugnant markets because the problem is not a market failure — it is a topological disconnection.
 
+## 14.7 Antitrust as Curvature Monopoly Prevention
+
+**[Empirical.]** A monopoly distorts the economic decision manifold by giving one agent disproportionate control over the curvature of other agents' manifolds. When a single firm controls a market, it can set prices (controlling the $d_1$ heuristic), terms of service (controlling the $d_4$ autonomy dimension), and information flows (controlling the $d_9$ epistemic dimension). The monopolist's decisions shape the manifold on which all other agents pathfind.
+
+In the geometric framework, market power is *manifold power*: the ability to modify other agents' edge weights. A monopolist that raises prices above competitive levels increases the $d_1$ edge weight for all consumers. A monopolist that imposes take-it-or-leave-it contracts reduces $d_4$ (autonomy) for all counterparties. A monopolist that controls information channels degrades $d_9$ for all market participants.
+
+Antitrust enforcement is curvature regulation: it prevents any single agent from accumulating enough manifold power to distort other agents' geodesics. The Sherman Act's prohibition on monopolization is, in geometric terms, a bound on the maximum influence any single agent can have on other agents' edge weights. The geometric framework generates a precise criterion for antitrust intervention: *intervene when a single agent's influence on other agents' curvature exceeds a threshold*, measured by the change in other agents' geodesics attributable to the dominant agent's strategy.
+
+This criterion is more precise than the current "consumer welfare" standard, which evaluates market power solely on $d_1$ (price effects). A technology platform that offers services at zero monetary price ($d_1$ = 0) but degrades privacy ($d_9$), constrains interoperability ($d_4$), and manipulates information ($d_9$) may satisfy the $d_1$-only consumer welfare standard while substantially distorting agents' manifolds on other dimensions. The geometric criterion would identify this as problematic: the platform has excessive manifold power on $d_4$ and $d_9$, even though its $d_1$ effect is benign or positive.
+
+## 14.8 The Regulatory Paradox
+
+**[Modeling Axiom.]** Regulation creates a fundamental tension: boundaries that constrain harmful trajectories also constrain beneficial innovation. Every regulatory boundary that prevents a harmful path also prevents some paths that might lead to beneficial states that lie beyond the boundary.
+
+The geometric framework makes this tension precise. Consider a boundary $\beta_k$ on dimension $d_k$ at threshold $\theta_k$. All trajectories must satisfy $d_k \geq \theta_k$. Some trajectories that violate this constraint would be harmful (the intended target of the regulation). Others would be beneficial — innovative approaches that temporarily cross the boundary but converge to states that are Pareto-superior on the full manifold.
+
+**Proposition 14.3 (The Regulatory Paradox).** *For any non-trivial regulatory boundary ($\theta_k$ strictly above the minimum possible value of $d_k$), there exist paths $\gamma$ that cross the boundary, converge to states in the goal region $G$, and have lower total behavioral friction than the best boundary-respecting path. Regulation necessarily excludes some beneficial trajectories along with the harmful ones.*
+
+**Proof.** By construction: let $\gamma^*$ be the optimal boundary-respecting path. Consider a path $\gamma'$ identical to $\gamma^*$ except that it briefly dips below $\theta_k$ on dimension $d_k$ while making a larger improvement on some other dimension $d_j$. If the $d_j$ improvement exceeds the $d_k$ violation in Mahalanobis distance (which is always possible for some configuration of $\Sigma$), then $\text{BF}(\gamma') < \text{BF}(\gamma^*)$. But $\gamma'$ is excluded by the regulation. $\square$
+
+The regulatory paradox does not imply that regulation is wrong. It implies that *every regulatory boundary has an efficiency cost*, and the regulator's task is to set the boundary where the cost of excluding beneficial paths is outweighed by the benefit of excluding harmful ones. The geometric framework provides the criterion: the optimal boundary is where the marginal beneficial path excluded has total manifold cost equal to the marginal harmful path excluded.
+
+### Regulatory Sandboxes as Controlled Boundary Crossing
+
+The regulatory sandbox — a limited environment where firms can test innovative approaches under relaxed regulatory constraints — is a geometric device for managing the regulatory paradox. The sandbox temporarily lowers specific boundary penalties ($\beta_k$ reduced, not eliminated) within a controlled region of the manifold, allowing exploration of paths that the standard boundary would exclude. If the exploration reveals that the paths are beneficial (they reach good states on the full manifold), the boundary can be permanently adjusted. If the exploration reveals harm, the boundary is maintained.
+
+In the geometric framework, a sandbox is a *local metric perturbation*: the regulator modifies the edge weights in a neighborhood of the manifold to see what geodesics emerge. The modification is reversible (the sandbox is temporary) and bounded (only within the specified region). This is precisely the approach that a manifold explorer would take when uncertain about the terrain: probe locally, observe the resulting paths, and update the map before committing to a permanent route.
+
+> **MARIA'S COFFEE SHOP — THE REGULATORY LANDSCAPE**
+>
+> *Maria operates in a regulatory landscape that includes hard boundaries (health code: $\beta = \infty$), firm boundaries (minimum wage: $\beta$ very large), soft boundaries (outdoor-seating permits: $\beta$ moderate), and absent boundaries (community impact of rent increases: $\beta = 0$). The landscape is asymmetric in a telling way: the regulations that protect Maria's customers (health, safety, wage) are well-calibrated. The regulations that protect Maria from her landlord (rent control, community preservation, anti-displacement) are weak or absent.*
+>
+> *The geometric explanation: the consumer-facing regulations have been calibrated over decades of inspection data and public health research — the boundary penalties approximate the true manifold cost of violation. The landlord-tenant regulations have been weakened by objective hijacking (Chapter 10): real estate interests have captured the regulatory process, suppressing boundaries that would constrain their $d_1$-optimal but full-manifold-harmful strategies. The asymmetry in regulatory coverage is itself a geometric pathology — a partial gauge invariance where some boundaries are enforced and others are not, creating a manifold that is well-calibrated in some dimensions and miscalibrated in others.*
+
 ---
 
 ## Worked Example: Regulating Maria's Neighborhood
@@ -133,6 +185,56 @@ The Mission District needs a regulatory framework that addresses all four pathol
 **Bubble prevention (basin shaping):** Commercial rent stabilization that limits annual increases to inflation + X%, preventing the speculative basin from deepening beyond escape energy. The geometric effect: reducing basin depth $D(s^*)$ to below the accumulation rate $A(s^*)$ of small businesses, ensuring escape is possible.
 
 **Gauge correction (real-value reporting):** Require that property assessments include community-value metrics alongside market value — a multi-dimensional assessment that makes the real manifold visible alongside the nominal one.
+
+### Multi-Dimensional Regulatory Assessment
+
+The worked example illustrates a broader point: effective regulation of complex systems requires *multi-dimensional regulatory assessment* — evaluation of the regulated system on all nine dimensions, not just $d_1$.
+
+Current regulatory impact assessment (RIA) in the United States follows Executive Order 12866: agencies must demonstrate that the benefits of a regulation exceed the costs, measured in dollars. This is $d_1$-only assessment — a scalar projection that misses eight dimensions of regulatory effect.
+
+A geometric RIA would require:
+
+1. **Identify active dimensions**: Which dimensions of the decision manifold does the regulation affect? A labor regulation primarily affects $d_1$ (wages), $d_3$ (fairness), $d_4$ (autonomy). An environmental regulation primarily affects $d_1$ (compliance cost), $d_6$ (social/environmental impact), $d_8$ (institutional legitimacy).
+
+2. **Compute full-manifold cost and benefit**: For each affected dimension, estimate the displacement caused by the regulation and the Mahalanobis distance traversed. Sum across dimensions, using the appropriate $\Sigma$.
+
+3. **Assess boundary effects**: Does the regulation create, move, or remove boundaries on the manifold? Are the boundary penalties calibrated appropriately — far enough from the geodesic to avoid constraining legitimate activity, close enough to prevent harmful trajectories?
+
+4. **Check for pathology interaction**: Will the regulation inadvertently enable or exacerbate any of the four pathologies? A regulation that corrects heuristic corruption (good) but creates opportunities for objective hijacking (bad) may have net negative effect despite passing the single-dimension test.
+
+5. **Gauge-invariance check**: Are the regulation's metrics gauge-invariant? A regulation measured in nominal terms may appear effective under inflation (nominal compliance rises) while being ineffective in real terms (real compliance is flat). The assessment must use gauge-invariant metrics.
+
+This multi-dimensional RIA is more complex than the current scalar version. But the complexity is not added by the framework — it is inherent in the regulatory problem. The scalar RIA hides the complexity by discarding it. The geometric RIA makes it explicit and tractable.
+
+## Regulation as Emergent Order
+
+A final observation: the geometric framework reveals regulation not as an external constraint imposed on an otherwise free market but as a *structural condition for the market to function on the full manifold*.
+
+Without property rights enforcement ($d_2$ boundaries), no one invests. Without contract enforcement ($d_2$, $d_5$), no one trades with strangers. Without fraud prevention ($d_9$), no one trusts information. Without competition policy ($d_4$), monopolists control the manifold. These are not constraints on the market — they are the *infrastructure of the manifold* on which the market operates.
+
+The free-market/regulation debate is, geometrically, a debate about how much manifold infrastructure is needed. The extreme free-market position says: provide $d_2$ boundaries (property rights and contracts) and let the market find geodesics. The extreme regulatory position says: constrain the manifold on all nine dimensions until the only accessible geodesic is the one the regulator prefers (a command economy). The geometric framework occupies the space between: provide the boundaries that are necessary for the full manifold to be navigable, calibrate them to be far enough from the geodesic that agents retain freedom, and use the four-pathology taxonomy to diagnose when existing boundaries need repair.
+
+## 14.9 The Future of Regulation: Adaptive Manifold Management
+
+**[Speculation/Extension.]** The geometric framework points toward a fundamentally different approach to regulation: *adaptive manifold management* — continuous calibration of boundaries and penalties based on real-time observation of the economic manifold.
+
+Current regulation is static: boundaries are set by legislation, enforced by agencies, and changed through political processes that operate on timescales of years to decades. The economic manifold changes on timescales of days to months. The mismatch between regulatory timescales and manifold dynamics is a structural source of regulatory failure.
+
+Adaptive manifold management would operate differently:
+
+1. **Continuous monitoring**: Measure the position of agents' geodesics relative to boundaries on all nine dimensions. Identify when geodesics are approaching boundaries (early warning) or crossing them (violation).
+
+2. **Dynamic boundary adjustment**: Move boundaries closer to geodesics when the risk of harmful crossing is high, and further away when the risk is low. This is the countercyclical approach: tighten regulation during booms (when risk-taking increases) and loosen it during downturns (when risk-taking is suppressed by market conditions).
+
+3. **Multi-dimensional assessment**: Evaluate regulatory effectiveness on all nine dimensions, not just $d_1$. A regulation that improves $d_1$ outcomes (lower prices) but degrades $d_5$ outcomes (lower trust) may be net negative on the full manifold.
+
+4. **Pathology detection**: Use the four-pathology taxonomy to diagnose emerging problems — detecting heuristic corruption, objective hijacking, local minima, and gauge breaking before they produce crises.
+
+This vision requires two capabilities that do not currently exist: reliable real-time measurement of the economic manifold's position on evaluative dimensions ($d_5$–$d_9$), and governance mechanisms that can adjust boundaries at manifold-relevant timescales without being captured by the regulated interests. Both are open problems — but the framework identifies them as the *right* problems, which is the first step toward solving them.
+
+The key insight is that regulation is not a constraint imposed from outside the market. It is *manifold infrastructure* — the boundary and penalty structure that enables the market to function on the full nine-dimensional manifold rather than being restricted to the $d_1$ projection. Just as roads and power grids are physical infrastructure that enables economic activity, regulatory boundaries are *geometric infrastructure* that enables economic activity on the full decision manifold.
+
+Without this infrastructure, agents optimize on $d_1$ alone — and the full-manifold pathologies (externalities, capture, bubbles, illusion) emerge as inevitable consequences of one-dimensional navigation in a nine-dimensional space.
 
 ---
 
@@ -150,6 +252,10 @@ Boundaries too close to the geodesic constrain legitimate activity; boundaries t
 
 ## References
 
-Roth, A. E. (2007). "Repugnance as a Constraint on Markets." *Journal of Economic Perspectives*, 21(3), 37–58.
-Stiglitz, J. E. (2010). *Freefall.* Norton.
+Geanakoplos, J. (2010). "The Leverage Cycle." *NBER Macroeconomics Annual*, 24(1), 1–65.
+Hardin, G. (1968). "The Tragedy of the Commons." *Science*, 162(3859), 1243–1248.
 Ostrom, E. (1990). *Governing the Commons.* Cambridge University Press.
+Pigou, A. C. (1920). *The Economics of Welfare.* Macmillan.
+Roth, A. E. (2007). "Repugnance as a Constraint on Markets." *Journal of Economic Perspectives*, 21(3), 37–58.
+Stigler, G. J. (1971). "The Theory of Economic Regulation." *Bell Journal of Economics*, 2(1), 3–21.
+Stiglitz, J. E. (2010). *Freefall.* Norton.
