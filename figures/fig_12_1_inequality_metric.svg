@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 14px; font-weight: 600; fill: #333; }
+      .subtitle { font-size: 10px; fill: #666; }
+      .label { font-size: 11px; fill: #444; font-weight: 500; }
+      .small { font-size: 9px; fill: #555; }
+      .agent { font-size: 11px; font-weight: 700; }
+      .value { font-size: 10px; font-weight: 600; }
+    </style>
+  </defs>
+
+  <text x="340" y="24" text-anchor="middle" class="title">Figure 12.1 — Inequality as Metric Distortion: Same $100, Different Geometric Cost</text>
+  <text x="340" y="40" text-anchor="middle" class="subtitle">Different agents experience different metrics on the same manifold. A dollar is not a dollar — its geometric cost depends on position.</text>
+
+  <!-- Three agents -->
+  <!-- Maria's employee (minimum wage) -->
+  <g transform="translate(20, 60)">
+    <rect x="0" y="0" width="200" height="290" fill="#fce4ec" stroke="#e57373" stroke-width="1.5" rx="8"/>
+    <text x="100" y="22" text-anchor="middle" class="agent" fill="#c62828">Tomás (min-wage employee)</text>
+    <text x="100" y="38" text-anchor="middle" class="small" fill="#c62828">Annual income: $32,000</text>
+
+    <text x="100" y="60" text-anchor="middle" class="label">$100 expense impact:</text>
+
+    <!-- Big impact bars -->
+    <rect x="10" y="70" width="180" height="18" fill="#ef5350" rx="2"/>
+    <text x="100" y="83" text-anchor="middle" class="small" fill="#fff" font-weight="600">d₁: 0.31% of income — SIGNIFICANT</text>
+
+    <rect x="10" y="93" width="160" height="18" fill="#e57373" rx="2"/>
+    <text x="90" y="106" text-anchor="middle" class="small" fill="#fff" font-weight="600">d₃: may skip meals (fairness cost)</text>
+
+    <rect x="10" y="116" width="140" height="18" fill="#ef9a9a" rx="2"/>
+    <text x="80" y="129" text-anchor="middle" class="small" fill="#c62828">d₄: less freedom this week</text>
+
+    <rect x="10" y="139" width="120" height="18" fill="#ffcdd2" rx="2"/>
+    <text x="70" y="152" text-anchor="middle" class="small" fill="#c62828">d₉: anxiety about rent</text>
+
+    <rect x="10" y="170" width="180" height="40" fill="#ffebee" stroke="#e57373" stroke-width="0.5" rx="3"/>
+    <text x="100" y="187" text-anchor="middle" class="value" fill="#c62828">Mahalanobis cost: 4.7</text>
+    <text x="100" y="200" text-anchor="middle" class="small" fill="#c62828">Multiple dimensions displaced</text>
+
+    <rect x="10" y="220" width="180" height="55" fill="#fff" stroke="#e57373" stroke-width="0.5" rx="3"/>
+    <text x="100" y="238" text-anchor="middle" class="small" fill="#c62828" font-weight="600">Curvature: HIGH</text>
+    <text x="100" y="252" text-anchor="middle" class="small">Small monetary change →</text>
+    <text x="100" y="264" text-anchor="middle" class="small">large multi-dimensional displacement</text>
+  </g>
+
+  <!-- Maria (small business owner) -->
+  <g transform="translate(240, 60)">
+    <rect x="0" y="0" width="200" height="290" fill="#fff8e1" stroke="#ffd54f" stroke-width="1.5" rx="8"/>
+    <text x="100" y="22" text-anchor="middle" class="agent" fill="#f57f17">Maria (shop owner)</text>
+    <text x="100" y="38" text-anchor="middle" class="small" fill="#f57f17">Annual income: $65,000</text>
+
+    <text x="100" y="60" text-anchor="middle" class="label">$100 expense impact:</text>
+
+    <rect x="10" y="70" width="120" height="18" fill="#ffb74d" rx="2"/>
+    <text x="70" y="83" text-anchor="middle" class="small" fill="#fff" font-weight="600">d₁: 0.15% — noticeable</text>
+
+    <rect x="10" y="93" width="60" height="18" fill="#ffe0b2" rx="2"/>
+    <text x="40" y="106" text-anchor="middle" class="small" fill="#e65100">d₃: minor</text>
+
+    <rect x="10" y="116" width="40" height="18" fill="#fff3e0" rx="2"/>
+    <text x="30" y="129" text-anchor="middle" class="small" fill="#e65100">d₄:</text>
+    <text x="60" y="129" class="small">slight constraint</text>
+
+    <rect x="10" y="170" width="180" height="40" fill="#fffde7" stroke="#ffd54f" stroke-width="0.5" rx="3"/>
+    <text x="100" y="187" text-anchor="middle" class="value" fill="#f57f17">Mahalanobis cost: 1.8</text>
+    <text x="100" y="200" text-anchor="middle" class="small" fill="#f57f17">Primarily d₁, minor other dims</text>
+
+    <rect x="10" y="220" width="180" height="55" fill="#fff" stroke="#ffd54f" stroke-width="0.5" rx="3"/>
+    <text x="100" y="238" text-anchor="middle" class="small" fill="#f57f17" font-weight="600">Curvature: MODERATE</text>
+    <text x="100" y="252" text-anchor="middle" class="small">$100 is felt but manageable.</text>
+    <text x="100" y="264" text-anchor="middle" class="small">Autonomy preserved.</text>
+  </g>
+
+  <!-- REIT CEO -->
+  <g transform="translate(460, 60)">
+    <rect x="0" y="0" width="200" height="290" fill="#e8f5e9" stroke="#81c784" stroke-width="1.5" rx="8"/>
+    <text x="100" y="22" text-anchor="middle" class="agent" fill="#2e7d32">Richard (REIT CEO)</text>
+    <text x="100" y="38" text-anchor="middle" class="small" fill="#2e7d32">Annual income: $2,400,000</text>
+
+    <text x="100" y="60" text-anchor="middle" class="label">$100 expense impact:</text>
+
+    <rect x="10" y="70" width="20" height="18" fill="#a5d6a7" rx="2"/>
+    <text x="40" y="83" class="small" fill="#2e7d32">d₁: 0.004% — imperceptible</text>
+
+    <text x="20" y="110" class="small" fill="#999">All other dimensions: ≈ 0</text>
+    <text x="20" y="124" class="small" fill="#999">$100 is below perceptual threshold</text>
+
+    <rect x="10" y="170" width="180" height="40" fill="#f1f8e9" stroke="#81c784" stroke-width="0.5" rx="3"/>
+    <text x="100" y="187" text-anchor="middle" class="value" fill="#2e7d32">Mahalanobis cost: 0.04</text>
+    <text x="100" y="200" text-anchor="middle" class="small" fill="#2e7d32">Effectively zero displacement</text>
+
+    <rect x="10" y="220" width="180" height="55" fill="#fff" stroke="#81c784" stroke-width="0.5" rx="3"/>
+    <text x="100" y="238" text-anchor="middle" class="small" fill="#2e7d32" font-weight="600">Curvature: FLAT</text>
+    <text x="100" y="252" text-anchor="middle" class="small">$100 doesn't move him on</text>
+    <text x="100" y="264" text-anchor="middle" class="small">any dimension of the manifold.</text>
+  </g>
+
+  <!-- Bottom annotation -->
+  <rect x="60" y="358" width="560" height="35" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="1" rx="5"/>
+  <text x="340" y="373" text-anchor="middle" class="small" font-weight="600">Same $100. Geometric costs: 4.7 vs 1.8 vs 0.04. The ratio 4.7/0.04 = 118× measures the curvature distortion.</text>
+  <text x="340" y="386" text-anchor="middle" class="small">The Gini coefficient (a scalar) cannot capture this — it is a contraction of the inequality tensor, and Scalar Irrecoverability applies.</text>
+</svg>

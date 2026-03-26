@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 420" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 14px; font-weight: 600; fill: #333; }
+      .subtitle { font-size: 10px; fill: #666; }
+      .label { font-size: 11px; fill: #444; font-weight: 500; }
+      .small { font-size: 9px; fill: #555; }
+      .dim-bar { font-size: 8px; fill: #fff; font-weight: 600; }
+      .value { font-size: 13px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <text x="350" y="24" text-anchor="middle" class="title">Figure 6.1 — The Scalar Irrecoverability Theorem: What GDP Destroys</text>
+  <text x="350" y="40" text-anchor="middle" class="subtitle">Two economies with identical GDP ($1T) but completely different 9-dimensional profiles. No function of GDP alone can distinguish them.</text>
+
+  <!-- Economy A -->
+  <g transform="translate(40, 65)">
+    <rect x="0" y="0" width="290" height="280" fill="#fff5f0" stroke="#fcbba1" stroke-width="1.2" rx="8"/>
+    <text x="145" y="22" text-anchor="middle" class="label" fill="#cb181d">Economy A: "Extractive Growth"</text>
+
+    <!-- 9 dimension bars -->
+    <rect x="10" y="35" width="250" height="20" fill="#2171b5" rx="2"/>
+    <text x="135" y="49" text-anchor="middle" class="dim-bar">d₁ Consequences: HIGH ($1T GDP) ████████████</text>
+
+    <rect x="10" y="60" width="80" height="20" fill="#6baed6" rx="2"/>
+    <text x="50" y="74" text-anchor="middle" class="dim-bar">d₂ Rights: LOW</text>
+
+    <rect x="10" y="85" width="50" height="20" fill="#fb6a4a" rx="2"/>
+    <text x="35" y="99" text-anchor="middle" class="dim-bar">d₃ ↓</text>
+    <text x="70" y="99" class="small" fill="#cb181d">Severe inequality</text>
+
+    <rect x="10" y="110" width="70" height="20" fill="#fc9272" rx="2"/>
+    <text x="45" y="124" text-anchor="middle" class="dim-bar">d₄ Low</text>
+    <text x="90" y="124" class="small" fill="#cb181d">Coercive labor</text>
+
+    <rect x="10" y="135" width="40" height="20" fill="#de2d26" rx="2"/>
+    <text x="30" y="149" text-anchor="middle" class="dim-bar">d₅↓</text>
+    <text x="60" y="149" class="small" fill="#cb181d">Eroding trust</text>
+
+    <rect x="10" y="160" width="30" height="20" fill="#a50f15" rx="2"/>
+    <text x="25" y="174" text-anchor="middle" class="dim-bar">↓</text>
+    <text x="50" y="174" class="small" fill="#cb181d">Environmental damage</text>
+
+    <rect x="10" y="185" width="60" height="20" fill="#fc9272" rx="2"/>
+    <text x="40" y="199" text-anchor="middle" class="dim-bar">d₇ ↓</text>
+    <text x="80" y="199" class="small" fill="#cb181d">Identity erosion</text>
+
+    <rect x="10" y="210" width="45" height="20" fill="#de2d26" rx="2"/>
+    <text x="32" y="224" text-anchor="middle" class="dim-bar">d₈↓</text>
+    <text x="65" y="224" class="small" fill="#cb181d">Declining legitimacy</text>
+
+    <rect x="10" y="235" width="55" height="20" fill="#fb6a4a" rx="2"/>
+    <text x="37" y="249" text-anchor="middle" class="dim-bar">d₉ ↓</text>
+    <text x="75" y="249" class="small" fill="#cb181d">Information opacity</text>
+
+    <text x="145" y="272" text-anchor="middle" class="value" fill="#cb181d">GDP = $1 Trillion</text>
+  </g>
+
+  <!-- Economy B -->
+  <g transform="translate(370, 65)">
+    <rect x="0" y="0" width="290" height="280" fill="#f0fff0" stroke="#a1d99b" stroke-width="1.2" rx="8"/>
+    <text x="145" y="22" text-anchor="middle" class="label" fill="#238b45">Economy B: "Sustainable Prosperity"</text>
+
+    <!-- 9 dimension bars -->
+    <rect x="10" y="35" width="160" height="20" fill="#2171b5" rx="2"/>
+    <text x="90" y="49" text-anchor="middle" class="dim-bar">d₁ Consequences: MODERATE ($1T) ██████</text>
+
+    <rect x="10" y="60" width="200" height="20" fill="#6baed6" rx="2"/>
+    <text x="110" y="74" text-anchor="middle" class="dim-bar">d₂ Rights: STRONG ████████████</text>
+
+    <rect x="10" y="85" width="220" height="20" fill="#74c476" rx="2"/>
+    <text x="120" y="99" text-anchor="middle" class="dim-bar">d₃ Fairness: STRONG (low inequality) █████████</text>
+
+    <rect x="10" y="110" width="210" height="20" fill="#41ab5d" rx="2"/>
+    <text x="115" y="124" text-anchor="middle" class="dim-bar">d₄ Autonomy: HIGH (freedom of choice) ████████</text>
+
+    <rect x="10" y="135" width="230" height="20" fill="#238b45" rx="2"/>
+    <text x="125" y="149" text-anchor="middle" class="dim-bar">d₅ Trust: HIGH (social cohesion) ██████████</text>
+
+    <rect x="10" y="160" width="240" height="20" fill="#006d2c" rx="2"/>
+    <text x="130" y="174" text-anchor="middle" class="dim-bar">d₆ Social: HIGH (sustainable, community) ███████████</text>
+
+    <rect x="10" y="185" width="200" height="20" fill="#41ab5d" rx="2"/>
+    <text x="110" y="199" text-anchor="middle" class="dim-bar">d₇ Identity: STRONG (civic pride) ████████</text>
+
+    <rect x="10" y="210" width="220" height="20" fill="#238b45" rx="2"/>
+    <text x="120" y="224" text-anchor="middle" class="dim-bar">d₈ Legitimacy: HIGH (robust institutions) █████████</text>
+
+    <rect x="10" y="235" width="210" height="20" fill="#74c476" rx="2"/>
+    <text x="115" y="249" text-anchor="middle" class="dim-bar">d₉ Epistemic: HIGH (transparent, informed) ████████</text>
+
+    <text x="145" y="272" text-anchor="middle" class="value" fill="#238b45">GDP = $1 Trillion</text>
+  </g>
+
+  <!-- Central equals sign -->
+  <g transform="translate(330, 65)">
+    <rect x="0" y="255" width="40" height="30" fill="#fff3e0" stroke="#ff9800" stroke-width="1.5" rx="4"/>
+    <text x="20" y="275" text-anchor="middle" font-size="16" font-weight="700" fill="#ff9800">=</text>
+  </g>
+
+  <!-- Theorem box -->
+  <rect x="100" y="355" width="500" height="50" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="5"/>
+  <text x="350" y="372" text-anchor="middle" class="label">Theorem 14 (Scalar Irrecoverability)</text>
+  <text x="350" y="388" text-anchor="middle" class="small">No continuous φ: ℝ⁹ → ℝ is injective. GDP maps BOTH economies to $1T. The 8 lost dimensions are mathematically irrecoverable.</text>
+  <text x="350" y="400" text-anchor="middle" class="small" font-weight="600" fill="#d73027">These economies are indistinguishable to any scalar measure. The structure that matters most is exactly what the scalar destroys.</text>
+</svg>

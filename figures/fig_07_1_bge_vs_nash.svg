@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 500" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 14px; font-weight: 600; fill: #333; }
+      .subtitle { font-size: 10px; fill: #666; }
+      .label { font-size: 11px; fill: #444; font-weight: 500; }
+      .small { font-size: 9px; fill: #666; }
+      .dim-label { font-size: 8px; fill: #999; }
+      .value { font-size: 10px; font-weight: 600; }
+    </style>
+    <marker id="arr-blue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2166ac"/>
+    </marker>
+    <marker id="arr-red" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#b2182b"/>
+    </marker>
+    <marker id="arr-green" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#1b9e77"/>
+    </marker>
+  </defs>
+
+  <text x="360" y="24" text-anchor="middle" class="title">Figure 7.1 — Bond Geodesic Equilibrium vs. Nash Equilibrium</text>
+  <text x="360" y="40" text-anchor="middle" class="subtitle">Nash optimizes on the d₁ projection (monetary only). BGE optimizes on the full 9-dimensional manifold. Nash is the scalar shadow of BGE.</text>
+
+  <!-- Left panel: Nash (1D) -->
+  <g transform="translate(30, 70)">
+    <text x="140" y="0" text-anchor="middle" class="label">Nash Equilibrium (d₁ projection)</text>
+
+    <!-- 1D axis -->
+    <line x1="20" y1="180" x2="260" y2="180" stroke="#333" stroke-width="1.5"/>
+    <text x="140" y="200" text-anchor="middle" class="small">Monetary payoff (d₁)</text>
+
+    <!-- Landlord's optimal: max rent -->
+    <circle cx="230" cy="180" r="6" fill="#b2182b"/>
+    <text x="230" y="165" text-anchor="middle" class="value" fill="#b2182b">$7,000</text>
+    <text x="230" y="155" text-anchor="middle" class="small">Landlord Nash</text>
+
+    <!-- Maria's reservation: can just afford -->
+    <circle cx="180" cy="180" r="4" fill="#b2182b" opacity="0.4"/>
+    <text x="180" y="210" text-anchor="middle" class="small" fill="#b2182b">Maria pays or leaves</text>
+
+    <!-- Arrow showing Nash prediction -->
+    <line x1="50" y1="180" x2="220" y2="180" stroke="#b2182b" stroke-width="2" marker-end="url(#arr-red)"/>
+    <text x="135" y="175" text-anchor="middle" class="small" fill="#b2182b">maximize d₁</text>
+
+    <!-- Result box -->
+    <rect x="20" y="230" width="250" height="100" fill="#fee0d2" stroke="#b2182b" stroke-width="1" rx="5"/>
+    <text x="145" y="250" text-anchor="middle" class="label" fill="#b2182b">Nash Prediction</text>
+    <text x="145" y="268" text-anchor="middle" class="small">Rent: $7,000/month</text>
+    <text x="145" y="282" text-anchor="middle" class="small">Maria: pays or exits</text>
+    <text x="145" y="296" text-anchor="middle" class="small">Community: 4 jobs lost</text>
+    <text x="145" y="310" text-anchor="middle" class="small">Trust: destroyed</text>
+    <text x="145" y="324" text-anchor="middle" class="small" font-weight="600" fill="#b2182b">Visible dimensions: 1 of 9</text>
+  </g>
+
+  <!-- Right panel: BGE (9D) -->
+  <g transform="translate(380, 70)">
+    <text x="155" y="0" text-anchor="middle" class="label">Bond Geodesic Equilibrium (full manifold)</text>
+
+    <!-- 9D representation: stacked dimension bars -->
+    <g transform="translate(10, 25)">
+      <!-- Dimension bars showing the full manifold optimization -->
+      <rect x="0" y="0" width="280" height="18" fill="#deebf7" stroke="#9ecae1" stroke-width="0.5" rx="2"/>
+      <text x="5" y="13" class="dim-label" fill="#2166ac">d₁ Monetary: $6,000 rent (moderate)</text>
+
+      <rect x="0" y="22" width="280" height="18" fill="#deebf7" stroke="#9ecae1" stroke-width="0.5" rx="2"/>
+      <text x="5" y="35" class="dim-label" fill="#2166ac">d₂ Rights: 5-year lease guaranteed</text>
+
+      <rect x="0" y="44" width="280" height="18" fill="#deebf7" stroke="#9ecae1" stroke-width="0.5" rx="2"/>
+      <text x="5" y="57" class="dim-label" fill="#2166ac">d₃ Fairness: proportional to value created</text>
+
+      <rect x="0" y="66" width="280" height="18" fill="#deebf7" stroke="#9ecae1" stroke-width="0.5" rx="2"/>
+      <text x="5" y="79" class="dim-label" fill="#2166ac">d₄ Autonomy: Maria controls her business</text>
+
+      <rect x="0" y="88" width="280" height="18" fill="#deebf7" stroke="#9ecae1" stroke-width="0.5" rx="2"/>
+      <text x="5" y="101" class="dim-label" fill="#2166ac">d₅ Trust: stable landlord-tenant relationship</text>
+
+      <rect x="0" y="110" width="280" height="18" fill="#deebf7" stroke="#9ecae1" stroke-width="0.5" rx="2"/>
+      <text x="5" y="123" class="dim-label" fill="#2166ac">d₆ Social: 4 jobs preserved, community hub intact</text>
+
+      <rect x="0" y="132" width="280" height="18" fill="#deebf7" stroke="#9ecae1" stroke-width="0.5" rx="2"/>
+      <text x="5" y="145" class="dim-label" fill="#2166ac">d₇ Identity: ethical landlord reputation</text>
+
+      <rect x="0" y="154" width="280" height="18" fill="#deebf7" stroke="#9ecae1" stroke-width="0.5" rx="2"/>
+      <text x="5" y="167" class="dim-label" fill="#2166ac">d₈ Legitimacy: market-fair with community respect</text>
+
+      <rect x="0" y="176" width="280" height="18" fill="#deebf7" stroke="#9ecae1" stroke-width="0.5" rx="2"/>
+      <text x="5" y="189" class="dim-label" fill="#2166ac">d₉ Epistemic: long-term tenancy reduces uncertainty</text>
+    </g>
+
+    <!-- BGE geodesic arrow -->
+    <line x1="300" y1="30" x2="300" y2="200" stroke="#1b9e77" stroke-width="2.5" marker-end="url(#arr-green)"/>
+    <text x="310" y="120" class="small" fill="#1b9e77" transform="rotate(90,310,120)">Bond geodesic</text>
+
+    <!-- Result box -->
+    <rect x="10" y="230" width="280" height="100" fill="#d4edda" stroke="#1b9e77" stroke-width="1" rx="5"/>
+    <text x="150" y="250" text-anchor="middle" class="label" fill="#1b9e77">BGE Prediction</text>
+    <text x="150" y="268" text-anchor="middle" class="small">Rent: $6,000/month + 5-year lease</text>
+    <text x="150" y="282" text-anchor="middle" class="small">Maria: sustainable, growing business</text>
+    <text x="150" y="296" text-anchor="middle" class="small">Community: preserved and strengthened</text>
+    <text x="150" y="310" text-anchor="middle" class="small">Trust: mutual long-term relationship</text>
+    <text x="150" y="324" text-anchor="middle" class="small" font-weight="600" fill="#1b9e77">Visible dimensions: 9 of 9</text>
+  </g>
+
+  <!-- Central theorem statement -->
+  <rect x="160" y="420" width="400" height="50" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="5"/>
+  <text x="360" y="440" text-anchor="middle" class="label">Theorem 21 (BGE–Nash Relationship)</text>
+  <text x="360" y="456" text-anchor="middle" class="small">Nash equilibrium is the d₁-only projection of BGE, and the projection is lossy (Scalar Irrecoverability).</text>
+
+  <!-- Connecting arrow -->
+  <path d="M 280,300 Q 360,380 360,415" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,3"/>
+  <path d="M 530,300 Q 450,380 380,415" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,3"/>
+</svg>

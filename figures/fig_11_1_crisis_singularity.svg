@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 430" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 14px; font-weight: 600; fill: #333; }
+      .subtitle { font-size: 10px; fill: #666; }
+      .label { font-size: 11px; fill: #444; font-weight: 500; }
+      .small { font-size: 9px; fill: #555; }
+      .phase { font-size: 10px; font-weight: 600; }
+      .year { font-size: 9px; fill: #999; font-weight: 500; }
+    </style>
+    <linearGradient id="bubble-grad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#fee0d2;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#fcbba1;stop-opacity:0.8"/>
+    </linearGradient>
+    <linearGradient id="crisis-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#67000d;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#67000d;stop-opacity:0.1"/>
+    </linearGradient>
+    <linearGradient id="recovery-grad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#e5f5e0;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#a1d99b;stop-opacity:0.5"/>
+    </linearGradient>
+  </defs>
+
+  <text x="350" y="24" text-anchor="middle" class="title">Figure 11.1 — The 2008 Financial Crisis as a Curvature Singularity</text>
+  <text x="350" y="40" text-anchor="middle" class="subtitle">The manifold's metric degenerates, curvature diverges, and geodesics cease to exist. Recovery = smoothing the singularity.</text>
+
+  <g transform="translate(50, 60)">
+    <!-- Time axis -->
+    <line x1="0" y1="310" x2="600" y2="310" stroke="#333" stroke-width="1"/>
+    <text x="300" y="340" text-anchor="middle" class="label">Time →</text>
+
+    <!-- Phase backgrounds -->
+    <rect x="0" y="0" width="200" height="300" fill="url(#bubble-grad)" rx="0"/>
+    <rect x="200" y="0" width="120" height="300" fill="url(#crisis-grad)" rx="0"/>
+    <rect x="320" y="0" width="280" height="300" fill="url(#recovery-grad)" rx="0"/>
+
+    <!-- Phase labels -->
+    <text x="100" y="20" text-anchor="middle" class="phase" fill="#cb181d">BUBBLE</text>
+    <text x="100" y="34" text-anchor="middle" class="small" fill="#cb181d">Metric inflating on d₁</text>
+    <text x="100" y="46" text-anchor="middle" class="small" fill="#cb181d">while d₅, d₉ deflate</text>
+
+    <text x="260" y="20" text-anchor="middle" class="phase" fill="#fff">SINGULARITY</text>
+    <text x="260" y="34" text-anchor="middle" class="small" fill="#fee0d2">Metric degenerate</text>
+    <text x="260" y="46" text-anchor="middle" class="small" fill="#fee0d2">Curvature → ∞</text>
+
+    <text x="460" y="20" text-anchor="middle" class="phase" fill="#238b45">RECOVERY</text>
+    <text x="460" y="34" text-anchor="middle" class="small" fill="#238b45">Metric regularization</text>
+    <text x="460" y="46" text-anchor="middle" class="small" fill="#238b45">(central bank smoothing)</text>
+
+    <!-- Year markers -->
+    <text x="0" y="325" text-anchor="middle" class="year">2004</text>
+    <text x="100" y="325" text-anchor="middle" class="year">2006</text>
+    <text x="200" y="325" text-anchor="middle" class="year">2007</text>
+    <text x="260" y="325" text-anchor="middle" class="year" fill="#67000d" font-weight="700">Sep 2008</text>
+    <text x="320" y="325" text-anchor="middle" class="year">2009</text>
+    <text x="460" y="325" text-anchor="middle" class="year">2012</text>
+    <text x="580" y="325" text-anchor="middle" class="year">2015</text>
+
+    <!-- Three dimension traces -->
+    <!-- d₁ (monetary value / asset prices) — rises in bubble, crashes, recovers -->
+    <path d="M 0,200 C 40,195 80,170 120,140 C 160,110 180,80 200,60 C 220,30 240,180 260,250 C 280,270 320,240 380,220 C 440,200 520,185 580,180"
+          fill="none" stroke="#2171b5" stroke-width="2.5"/>
+    <text x="590" y="178" class="small" fill="#2171b5" font-weight="600">d₁ (asset prices)</text>
+
+    <!-- d₅ (trust) — erodes during bubble, collapses at singularity, slowly rebuilds -->
+    <path d="M 0,180 C 40,185 80,195 120,210 C 160,225 180,240 200,255 C 220,270 240,285 260,290 C 280,290 320,280 380,260 C 440,245 520,230 580,220"
+          fill="none" stroke="#e6550d" stroke-width="2" stroke-dasharray="6,3"/>
+    <text x="590" y="218" class="small" fill="#e6550d" font-weight="600">d₅ (trust)</text>
+
+    <!-- d₉ (epistemic / information quality) — degrades, crashes, rebuilds -->
+    <path d="M 0,190 C 40,200 80,215 120,235 C 160,255 180,268 200,275 C 220,282 240,290 260,295 C 280,293 320,275 380,255 C 440,240 520,225 580,215"
+          fill="none" stroke="#7570b3" stroke-width="2" stroke-dasharray="2,2"/>
+    <text x="590" y="213" class="small" fill="#7570b3" font-weight="600">d₉ (info quality)</text>
+
+    <!-- Divergence annotation at singularity -->
+    <line x1="250" y1="60" x2="250" y2="290" stroke="#67000d" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="260" y="75" class="small" fill="#67000d" font-weight="600">d₁ and d₅ diverge</text>
+    <text x="260" y="88" class="small" fill="#67000d">→ metric degenerate</text>
+    <text x="260" y="101" class="small" fill="#67000d">→ no geodesic exists</text>
+
+    <!-- Key insight annotations -->
+    <rect x="10" y="255" width="175" height="40" fill="rgba(255,255,255,0.8)" stroke="#fcbba1" stroke-width="0.5" rx="3"/>
+    <text x="97" y="270" text-anchor="middle" class="small" fill="#cb181d">d₁ inflating while d₅, d₉ deflating</text>
+    <text x="97" y="283" text-anchor="middle" class="small" fill="#cb181d">= the geometric signature of a bubble</text>
+
+    <rect x="355" y="265" width="195" height="30" fill="rgba(255,255,255,0.8)" stroke="#a1d99b" stroke-width="0.5" rx="3"/>
+    <text x="452" y="280" text-anchor="middle" class="small" fill="#238b45">QE, TARP = metric regularization</text>
+    <text x="452" y="290" text-anchor="middle" class="small" fill="#238b45">(restore finite curvature)</text>
+  </g>
+
+  <!-- Caption -->
+  <text x="350" y="400" text-anchor="middle" class="subtitle">The bubble is visible as dimensional divergence: d₁ (prices) rising while d₅ (trust) and d₉ (info quality) fall. At the singularity, the gap is infinite.</text>
+  <text x="350" y="416" text-anchor="middle" class="subtitle">No scalar measure (stock index, GDP growth) captures this divergence. Only the multi-dimensional profile reveals the approaching singularity.</text>
+</svg>

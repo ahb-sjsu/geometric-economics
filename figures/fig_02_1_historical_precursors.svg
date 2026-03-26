@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 14px; font-weight: 600; fill: #333; }
+      .subtitle { font-size: 10px; fill: #666; }
+      .thinker { font-size: 11px; font-weight: 700; }
+      .insight { font-size: 9px; fill: #555; }
+      .geo-reading { font-size: 9px; font-weight: 600; }
+      .year { font-size: 8px; fill: #999; }
+      .connector { stroke: #ccc; stroke-width: 1; fill: none; }
+    </style>
+  </defs>
+
+  <text x="360" y="24" text-anchor="middle" class="title">Figure 2.1 — Historical Precursors: Geometry Before Geometry</text>
+  <text x="360" y="40" text-anchor="middle" class="subtitle">Each school discovered a piece of the geometric framework without the mathematical vocabulary to unify them.</text>
+
+  <!-- Timeline arrow -->
+  <line x1="40" y1="365" x2="680" y2="365" stroke="#999" stroke-width="1.5"/>
+  <polygon points="680,365 674,360 674,370" fill="#999"/>
+
+  <!-- Smith -->
+  <g transform="translate(20, 60)">
+    <rect x="0" y="0" width="125" height="125" fill="#e3f2fd" stroke="#64b5f6" stroke-width="1.2" rx="6"/>
+    <text x="62" y="18" text-anchor="middle" class="thinker" fill="#1565c0">Adam Smith</text>
+    <text x="62" y="30" text-anchor="middle" class="year">1776</text>
+    <text x="10" y="48" class="insight">"Invisible hand"</text>
+    <text x="10" y="61" class="insight">guides self-interest</text>
+    <text x="10" y="74" class="insight">toward public good</text>
+    <rect x="5" y="82" width="115" height="35" fill="#bbdefb" rx="3"/>
+    <text x="62" y="97" text-anchor="middle" class="geo-reading" fill="#1565c0">Geometric reading:</text>
+    <text x="62" y="110" text-anchor="middle" class="insight" fill="#1565c0">Gradient flow on M</text>
+    <line x1="62" y1="125" x2="62" y2="365" class="connector" stroke-dasharray="2,4"/>
+  </g>
+
+  <!-- Walras -->
+  <g transform="translate(155, 60)">
+    <rect x="0" y="0" width="125" height="125" fill="#fce4ec" stroke="#ef9a9a" stroke-width="1.2" rx="6"/>
+    <text x="62" y="18" text-anchor="middle" class="thinker" fill="#c62828">Walras</text>
+    <text x="62" y="30" text-anchor="middle" class="year">1874</text>
+    <text x="10" y="48" class="insight">General equilibrium:</text>
+    <text x="10" y="61" class="insight">all markets clear</text>
+    <text x="10" y="74" class="insight">simultaneously</text>
+    <rect x="5" y="82" width="115" height="35" fill="#ffcdd2" rx="3"/>
+    <text x="62" y="97" text-anchor="middle" class="geo-reading" fill="#c62828">Geometric reading:</text>
+    <text x="62" y="110" text-anchor="middle" class="insight" fill="#c62828">Fixed point on M</text>
+    <line x1="62" y1="125" x2="62" y2="365" class="connector" stroke-dasharray="2,4"/>
+  </g>
+
+  <!-- Nash -->
+  <g transform="translate(290, 60)">
+    <rect x="0" y="0" width="125" height="125" fill="#f3e5f5" stroke="#ce93d8" stroke-width="1.2" rx="6"/>
+    <text x="62" y="18" text-anchor="middle" class="thinker" fill="#6a1b9a">Nash</text>
+    <text x="62" y="30" text-anchor="middle" class="year">1950</text>
+    <text x="10" y="48" class="insight">Nash equilibrium:</text>
+    <text x="10" y="61" class="insight">no player can</text>
+    <text x="10" y="74" class="insight">improve unilaterally</text>
+    <rect x="5" y="82" width="115" height="35" fill="#e1bee7" rx="3"/>
+    <text x="62" y="97" text-anchor="middle" class="geo-reading" fill="#6a1b9a">Geometric reading:</text>
+    <text x="62" y="110" text-anchor="middle" class="insight" fill="#6a1b9a">d₁ projection of BGE</text>
+    <line x1="62" y1="125" x2="62" y2="365" class="connector" stroke-dasharray="2,4"/>
+  </g>
+
+  <!-- Kahneman -->
+  <g transform="translate(290, 200)">
+    <rect x="0" y="0" width="125" height="125" fill="#fff3e0" stroke="#ffb74d" stroke-width="1.2" rx="6"/>
+    <text x="62" y="18" text-anchor="middle" class="thinker" fill="#e65100">Kahneman</text>
+    <text x="62" y="30" text-anchor="middle" class="year">1979</text>
+    <text x="10" y="48" class="insight">Prospect theory:</text>
+    <text x="10" y="61" class="insight">loss aversion, framing,</text>
+    <text x="10" y="74" class="insight">reference dependence</text>
+    <rect x="5" y="82" width="115" height="35" fill="#ffe0b2" rx="3"/>
+    <text x="62" y="97" text-anchor="middle" class="geo-reading" fill="#e65100">Geometric reading:</text>
+    <text x="62" y="110" text-anchor="middle" class="insight" fill="#e65100">Metric asymmetry on M</text>
+  </g>
+
+  <!-- Sen -->
+  <g transform="translate(425, 60)">
+    <rect x="0" y="0" width="125" height="125" fill="#e8f5e9" stroke="#81c784" stroke-width="1.2" rx="6"/>
+    <text x="62" y="18" text-anchor="middle" class="thinker" fill="#2e7d32">Amartya Sen</text>
+    <text x="62" y="30" text-anchor="middle" class="year">1985</text>
+    <text x="10" y="48" class="insight">Capabilities approach:</text>
+    <text x="10" y="61" class="insight">welfare is irreducibly</text>
+    <text x="10" y="74" class="insight">multi-dimensional</text>
+    <rect x="5" y="82" width="115" height="35" fill="#c8e6c9" rx="3"/>
+    <text x="62" y="97" text-anchor="middle" class="geo-reading" fill="#2e7d32">Geometric reading:</text>
+    <text x="62" y="110" text-anchor="middle" class="insight" fill="#2e7d32">Manifold coordinates</text>
+    <line x1="62" y1="125" x2="62" y2="365" class="connector" stroke-dasharray="2,4"/>
+  </g>
+
+  <!-- Simon -->
+  <g transform="translate(155, 200)">
+    <rect x="0" y="0" width="125" height="125" fill="#e0f2f1" stroke="#80cbc4" stroke-width="1.2" rx="6"/>
+    <text x="62" y="18" text-anchor="middle" class="thinker" fill="#00695c">H. Simon</text>
+    <text x="62" y="30" text-anchor="middle" class="year">1955</text>
+    <text x="10" y="48" class="insight">Bounded rationality:</text>
+    <text x="10" y="61" class="insight">satisfice, don't</text>
+    <text x="10" y="74" class="insight">optimize</text>
+    <rect x="5" y="82" width="115" height="35" fill="#b2dfdb" rx="3"/>
+    <text x="62" y="97" text-anchor="middle" class="geo-reading" fill="#00695c">Geometric reading:</text>
+    <text x="62" y="110" text-anchor="middle" class="insight" fill="#00695c">ε-admissible A* search</text>
+  </g>
+
+  <!-- Ostrom -->
+  <g transform="translate(425, 200)">
+    <rect x="0" y="0" width="125" height="125" fill="#efebe9" stroke="#bcaaa4" stroke-width="1.2" rx="6"/>
+    <text x="62" y="18" text-anchor="middle" class="thinker" fill="#4e342e">Elinor Ostrom</text>
+    <text x="62" y="30" text-anchor="middle" class="year">1990</text>
+    <text x="10" y="48" class="insight">Commons governance:</text>
+    <text x="10" y="61" class="insight">institutions solve</text>
+    <text x="10" y="74" class="insight">collective action</text>
+    <rect x="5" y="82" width="115" height="35" fill="#d7ccc8" rx="3"/>
+    <text x="62" y="97" text-anchor="middle" class="geo-reading" fill="#4e342e">Geometric reading:</text>
+    <text x="62" y="110" text-anchor="middle" class="insight" fill="#4e342e">Boundary calibration β</text>
+  </g>
+
+  <!-- Bond (convergence) -->
+  <g transform="translate(565, 120)">
+    <rect x="0" y="0" width="130" height="140" fill="#fff9c4" stroke="#fdd835" stroke-width="2" rx="8"/>
+    <text x="65" y="20" text-anchor="middle" class="thinker" fill="#f57f17">Bond (2026)</text>
+    <text x="65" y="35" text-anchor="middle" class="year" fill="#f57f17">Geometric Economics</text>
+    <rect x="5" y="42" width="120" height="90" fill="#fffde7" rx="3"/>
+    <text x="65" y="58" text-anchor="middle" class="geo-reading" fill="#f57f17">Unification:</text>
+    <text x="10" y="73" class="insight" fill="#f57f17">• Manifold M (Sen)</text>
+    <text x="10" y="86" class="insight" fill="#f57f17">• A* search (Simon)</text>
+    <text x="10" y="99" class="insight" fill="#f57f17">• BGE ⊃ Nash</text>
+    <text x="10" y="112" class="insight" fill="#f57f17">• Metric = prospect theory</text>
+    <text x="10" y="125" class="insight" fill="#f57f17">• β = Ostrom's institutions</text>
+
+    <!-- Convergence arrows -->
+    <line x1="-10" y1="70" x2="-35" y2="70" stroke="#fdd835" stroke-width="1.5"/>
+    <line x1="-10" y1="40" x2="-80" y2="-10" stroke="#fdd835" stroke-width="1"/>
+    <line x1="-10" y1="100" x2="-80" y2="140" stroke="#fdd835" stroke-width="1"/>
+  </g>
+
+  <!-- Timeline labels -->
+  <text x="82" y="380" text-anchor="middle" class="year">1776</text>
+  <text x="217" y="380" text-anchor="middle" class="year">1874</text>
+  <text x="280" y="380" text-anchor="middle" class="year">1950</text>
+  <text x="352" y="380" text-anchor="middle" class="year">1979</text>
+  <text x="487" y="380" text-anchor="middle" class="year">1985–90</text>
+  <text x="630" y="380" text-anchor="middle" class="year" fill="#f57f17" font-weight="600">2026</text>
+
+  <!-- Caption -->
+  <text x="360" y="405" text-anchor="middle" class="subtitle">Each thinker identified a geometric feature of economic reality without the unifying framework. The geometric series provides the vocabulary.</text>
+</svg>

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 350" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 14px; font-weight: 600; fill: #333; }
+      .subtitle { font-size: 10px; fill: #666; }
+      .label { font-size: 11px; fill: #444; font-weight: 500; }
+      .small { font-size: 9px; fill: #555; }
+      .failure-name { font-size: 12px; font-weight: 700; }
+      .failure-what { font-size: 9px; fill: #666; }
+    </style>
+  </defs>
+
+  <text x="350" y="24" text-anchor="middle" class="title">Figure 1.1 — Three Failures of the Scalar Economy</text>
+  <text x="350" y="40" text-anchor="middle" class="subtitle">GDP, utility functions, and cost-benefit analysis all compress multi-dimensional reality to a single number — and lose the information that matters most.</text>
+
+  <!-- Three columns -->
+  <!-- GDP -->
+  <g transform="translate(20, 60)">
+    <rect x="0" y="0" width="210" height="250" fill="#f3e5f5" stroke="#ce93d8" stroke-width="1.5" rx="8"/>
+    <text x="105" y="25" text-anchor="middle" class="failure-name" fill="#7b1fa2">GDP</text>
+    <text x="105" y="42" text-anchor="middle" class="failure-what">Σ(market transactions)</text>
+
+    <!-- What it captures -->
+    <rect x="10" y="55" width="190" height="25" fill="#e1bee7" rx="3"/>
+    <text x="105" y="72" text-anchor="middle" class="small" fill="#4a148c" font-weight="600">Captures: total output (d₁)</text>
+
+    <!-- What it destroys -->
+    <rect x="10" y="90" width="190" height="100" fill="#fce4ec" stroke="#e57373" stroke-width="0.5" rx="3"/>
+    <text x="105" y="106" text-anchor="middle" class="small" fill="#c62828" font-weight="600">Destroys:</text>
+    <text x="20" y="120" class="small" fill="#c62828">• Distribution (d₃ fairness)</text>
+    <text x="20" y="133" class="small" fill="#c62828">• Sustainability (d₆ social)</text>
+    <text x="20" y="146" class="small" fill="#c62828">• Institutional health (d₈)</text>
+    <text x="20" y="159" class="small" fill="#c62828">• Trust (d₅), Freedom (d₄)</text>
+    <text x="20" y="172" class="small" fill="#c62828">• 8 of 9 dimensions</text>
+
+    <text x="105" y="210" text-anchor="middle" class="small" font-weight="600" fill="#7b1fa2">Consequence:</text>
+    <text x="105" y="224" text-anchor="middle" class="small">A country can have rising GDP</text>
+    <text x="105" y="237" text-anchor="middle" class="small">while everything else declines</text>
+  </g>
+
+  <!-- Utility -->
+  <g transform="translate(245, 60)">
+    <rect x="0" y="0" width="210" height="250" fill="#e3f2fd" stroke="#90caf9" stroke-width="1.5" rx="8"/>
+    <text x="105" y="25" text-anchor="middle" class="failure-name" fill="#1565c0">Utility Function</text>
+    <text x="105" y="42" text-anchor="middle" class="failure-what">u: X → ℝ (maximize a number)</text>
+
+    <rect x="10" y="55" width="190" height="25" fill="#bbdefb" rx="3"/>
+    <text x="105" y="72" text-anchor="middle" class="small" fill="#0d47a1" font-weight="600">Captures: preference ranking</text>
+
+    <rect x="10" y="90" width="190" height="100" fill="#fce4ec" stroke="#e57373" stroke-width="0.5" rx="3"/>
+    <text x="105" y="106" text-anchor="middle" class="small" fill="#c62828" font-weight="600">Destroys:</text>
+    <text x="20" y="120" class="small" fill="#c62828">• Which values conflict (d₃ vs d₁)</text>
+    <text x="20" y="133" class="small" fill="#c62828">• Where boundaries lie (β = ∞)</text>
+    <text x="20" y="146" class="small" fill="#c62828">• Why choices feel difficult</text>
+    <text x="20" y="159" class="small" fill="#c62828">• Direction of trade-offs</text>
+    <text x="20" y="172" class="small" fill="#c62828">• n−1 dimensions (Thm 14)</text>
+
+    <text x="105" y="210" text-anchor="middle" class="small" font-weight="600" fill="#1565c0">Consequence:</text>
+    <text x="105" y="224" text-anchor="middle" class="small">"Irrational" behavior is rational</text>
+    <text x="105" y="237" text-anchor="middle" class="small">on the full manifold (Ch. 4–5)</text>
+  </g>
+
+  <!-- CBA -->
+  <g transform="translate(470, 60)">
+    <rect x="0" y="0" width="210" height="250" fill="#fff8e1" stroke="#ffe082" stroke-width="1.5" rx="8"/>
+    <text x="105" y="25" text-anchor="middle" class="failure-name" fill="#f57f17">Cost-Benefit</text>
+    <text x="105" y="42" text-anchor="middle" class="failure-what">Σ(benefits) − Σ(costs) in $ terms</text>
+
+    <rect x="10" y="55" width="190" height="25" fill="#fff9c4" rx="3"/>
+    <text x="105" y="72" text-anchor="middle" class="small" fill="#e65100" font-weight="600">Captures: net monetary value</text>
+
+    <rect x="10" y="90" width="190" height="100" fill="#fce4ec" stroke="#e57373" stroke-width="0.5" rx="3"/>
+    <text x="105" y="106" text-anchor="middle" class="small" fill="#c62828" font-weight="600">Destroys:</text>
+    <text x="20" y="120" class="small" fill="#c62828">• Whether exchange rate is legitimate</text>
+    <text x="20" y="133" class="small" fill="#c62828">• Incommensurable values</text>
+    <text x="20" y="146" class="small" fill="#c62828">• Sacred boundaries (β = ∞)</text>
+    <text x="20" y="159" class="small" fill="#c62828">• The metric choice itself</text>
+    <text x="20" y="172" class="small" fill="#c62828">• (metric hidden in "exchange rate")</text>
+
+    <text x="105" y="210" text-anchor="middle" class="small" font-weight="600" fill="#f57f17">Consequence:</text>
+    <text x="105" y="224" text-anchor="middle" class="small">The metric does the moral work,</text>
+    <text x="105" y="237" text-anchor="middle" class="small">hidden behind apparent objectivity</text>
+  </g>
+
+  <!-- Bottom unifying statement -->
+  <rect x="80" y="320" width="540" height="24" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="1" rx="4"/>
+  <text x="350" y="336" text-anchor="middle" class="small" font-weight="600">All three failures have the same geometric cause: projecting a 9-dimensional decision manifold onto a 1-dimensional scalar.</text>
+</svg>

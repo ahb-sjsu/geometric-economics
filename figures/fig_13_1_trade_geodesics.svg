@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 14px; font-weight: 600; fill: #333; }
+      .subtitle { font-size: 10px; fill: #666; }
+      .label { font-size: 11px; fill: #444; font-weight: 500; }
+      .small { font-size: 9px; fill: #555; }
+      .path-label { font-size: 10px; font-weight: 600; }
+      .cost { font-size: 10px; font-weight: 700; }
+    </style>
+    <marker id="arr-commodity" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#d73027"/>
+    </marker>
+    <marker id="arr-fair" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#1b9e77"/>
+    </marker>
+  </defs>
+
+  <text x="350" y="24" text-anchor="middle" class="title">Figure 13.1 — Trade as Geodesic Exchange: Maria's Bean Sourcing</text>
+  <text x="350" y="40" text-anchor="middle" class="subtitle">The cheapest path on d₁ is not the shortest path on the full manifold. Fair trade IS the geodesic when evaluative dimensions are weighted.</text>
+
+  <g transform="translate(50, 60)">
+    <!-- Manifold surface suggestion -->
+    <rect x="0" y="0" width="600" height="280" fill="#fafafa" stroke="#eee" stroke-width="1" rx="8"/>
+
+    <!-- Start: Maria needs beans -->
+    <circle cx="50" cy="140" r="8" fill="#333" stroke="#fff" stroke-width="2"/>
+    <text x="50" y="130" text-anchor="middle" class="label">Maria</text>
+    <text x="50" y="118" text-anchor="middle" class="small">needs 80 lbs/month</text>
+
+    <!-- End options -->
+    <!-- Option A: Commodity (Brazil) -->
+    <circle cx="550" cy="60" r="6" fill="#d73027"/>
+    <text x="550" y="48" text-anchor="middle" class="path-label" fill="#d73027">Option A: Commodity</text>
+    <text x="550" y="36" text-anchor="middle" class="small" fill="#d73027">Brazil, $12/lb</text>
+
+    <!-- Option B: Fair trade (Colombia via Elena) -->
+    <circle cx="550" cy="200" r="6" fill="#1b9e77"/>
+    <text x="550" y="218" text-anchor="middle" class="path-label" fill="#1b9e77">Option B: Fair Trade</text>
+    <text x="550" y="230" text-anchor="middle" class="small" fill="#1b9e77">Colombia via Elena, $25/lb</text>
+
+    <!-- Path A: Commodity (cheap but high total manifold cost) -->
+    <path d="M 58,138 C 150,100 300,50 544,60" fill="none" stroke="#d73027" stroke-width="2.5" marker-end="url(#arr-commodity)"/>
+
+    <!-- Penalty markers along Path A -->
+    <circle cx="180" cy="105" r="10" fill="#ffebee" stroke="#ef9a9a" stroke-width="1"/>
+    <text x="180" y="109" text-anchor="middle" font-size="7" fill="#c62828" font-weight="700">−d₃</text>
+    <text x="200" y="100" class="small" fill="#c62828">unfair wages</text>
+
+    <circle cx="300" cy="68" r="10" fill="#ffebee" stroke="#ef9a9a" stroke-width="1"/>
+    <text x="300" y="72" text-anchor="middle" font-size="7" fill="#c62828" font-weight="700">−d₇</text>
+    <text x="320" y="62" class="small" fill="#c62828">identity violation</text>
+
+    <circle cx="420" cy="56" r="10" fill="#ffebee" stroke="#ef9a9a" stroke-width="1"/>
+    <text x="420" y="60" text-anchor="middle" font-size="7" fill="#c62828" font-weight="700">−d₆</text>
+    <text x="440" y="50" class="small" fill="#c62828">community harm</text>
+
+    <!-- Path B: Fair trade (more expensive on d₁ but shorter total) -->
+    <path d="M 58,143 C 150,170 300,210 544,200" fill="none" stroke="#1b9e77" stroke-width="2.5" marker-end="url(#arr-fair)"/>
+
+    <!-- Bonus markers along Path B -->
+    <circle cx="180" cy="172" r="10" fill="#e8f5e9" stroke="#81c784" stroke-width="1"/>
+    <text x="180" y="176" text-anchor="middle" font-size="7" fill="#2e7d32" font-weight="700">+d₃</text>
+    <text x="200" y="188" class="small" fill="#2e7d32">fair wages</text>
+
+    <circle cx="300" cy="208" r="10" fill="#e8f5e9" stroke="#81c784" stroke-width="1"/>
+    <text x="300" y="212" text-anchor="middle" font-size="7" fill="#2e7d32" font-weight="700">+d₅</text>
+    <text x="320" y="222" class="small" fill="#2e7d32">trust with Elena</text>
+
+    <circle cx="420" cy="204" r="10" fill="#e8f5e9" stroke="#81c784" stroke-width="1"/>
+    <text x="420" y="208" text-anchor="middle" font-size="7" fill="#2e7d32" font-weight="700">+d₇</text>
+    <text x="440" y="218" class="small" fill="#2e7d32">identity alignment</text>
+
+    <!-- Cost comparison box -->
+    <rect x="130" y="240" width="340" height="35" fill="#fff" stroke="#ddd" stroke-width="1" rx="5"/>
+
+    <text x="200" y="255" text-anchor="middle" class="small" fill="#d73027">Path A: d₁ cost = $960</text>
+    <text x="200" y="268" text-anchor="middle" class="cost" fill="#d73027">Total BF = HIGH</text>
+
+    <text x="300" y="260" text-anchor="middle" class="small" fill="#999">vs.</text>
+
+    <text x="400" y="255" text-anchor="middle" class="small" fill="#1b9e77">Path B: d₁ cost = $2,000</text>
+    <text x="400" y="268" text-anchor="middle" class="cost" fill="#1b9e77">Total BF = LOWER</text>
+  </g>
+
+  <!-- Caption -->
+  <text x="350" y="360" text-anchor="middle" class="subtitle">Path A is cheaper on d₁ ($960 vs $2,000) but more expensive on the full manifold (penalty markers accumulate).</text>
+  <text x="350" y="376" text-anchor="middle" class="subtitle">Path B — the "expensive" fair-trade option — is the Bond geodesic. Maria's choice is not irrational. It is optimal on the correct manifold.</text>
+  <text x="350" y="392" text-anchor="middle" class="subtitle" font-weight="600">International trade policy that optimizes only d₁ systematically selects Path A over Path B — the wrong geodesic.</text>
+</svg>

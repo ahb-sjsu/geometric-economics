@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 380" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 14px; font-weight: 600; fill: #333; }
+      .subtitle { font-size: 10px; fill: #666; }
+      .header { font-size: 12px; font-weight: 700; }
+      .row-label { font-size: 10px; fill: #444; }
+      .cell { font-size: 9px; fill: #555; }
+      .formula { font-size: 12px; font-weight: 700; fill: #333; }
+    </style>
+  </defs>
+
+  <text x="350" y="24" text-anchor="middle" class="title">Figure 5.1 — Kahneman's Dual Process Theory as A* Search</text>
+  <text x="350" y="40" text-anchor="middle" class="subtitle">System 1 = h(n), the moral-heuristic cost. System 2 = g(n), the accumulated economic cost. The decision is f = g + h, not one or the other.</text>
+
+  <!-- Central formula -->
+  <rect x="200" y="50" width="300" height="40" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="6"/>
+  <text x="350" y="75" text-anchor="middle" class="formula">f(n) = g(n) + h(n)</text>
+
+  <!-- Arrows from formula to columns -->
+  <line x1="280" y1="90" x2="175" y2="115" stroke="#2171b5" stroke-width="1.5"/>
+  <line x1="420" y1="90" x2="525" y2="115" stroke="#e6550d" stroke-width="1.5"/>
+
+  <!-- System 2 column (left) -->
+  <g transform="translate(20, 115)">
+    <rect x="0" y="0" width="310" height="230" fill="#e3f2fd" stroke="#2171b5" stroke-width="1.5" rx="8"/>
+    <text x="155" y="25" text-anchor="middle" class="header" fill="#1565c0">System 2: g(n)</text>
+    <text x="155" y="40" text-anchor="middle" class="cell" fill="#1565c0">Accumulated cost along the path so far</text>
+
+    <!-- Property rows -->
+    <rect x="10" y="50" width="290" height="22" fill="#bbdefb" rx="2"/>
+    <text x="90" y="65" text-anchor="middle" class="row-label" fill="#0d47a1">Slow, deliberate</text>
+    <text x="230" y="65" text-anchor="middle" class="cell">Requires summing edge weights</text>
+
+    <rect x="10" y="77" width="290" height="22" fill="#fff" rx="2"/>
+    <text x="90" y="92" text-anchor="middle" class="row-label" fill="#0d47a1">Sequential</text>
+    <text x="230" y="92" text-anchor="middle" class="cell">Path cost accumulated step by step</text>
+
+    <rect x="10" y="104" width="290" height="22" fill="#bbdefb" rx="2"/>
+    <text x="90" y="119" text-anchor="middle" class="row-label" fill="#0d47a1">Capacity-limited</text>
+    <text x="230" y="119" text-anchor="middle" class="cell">Working memory limits path length</text>
+
+    <rect x="10" y="131" width="290" height="22" fill="#fff" rx="2"/>
+    <text x="90" y="146" text-anchor="middle" class="row-label" fill="#0d47a1">Can override h(n)</text>
+    <text x="230" y="146" text-anchor="middle" class="cell">Select low-g path even if h is high</text>
+
+    <rect x="10" y="158" width="290" height="22" fill="#bbdefb" rx="2"/>
+    <text x="90" y="173" text-anchor="middle" class="row-label" fill="#0d47a1">Depleted by effort</text>
+    <text x="230" y="173" text-anchor="middle" class="cell">Cognitive resources for g are finite</text>
+
+    <rect x="10" y="190" width="290" height="30" fill="#e3f2fd" stroke="#90caf9" stroke-width="0.5" rx="3"/>
+    <text x="155" y="210" text-anchor="middle" class="cell" fill="#1565c0" font-weight="600">Economic analogue: spreadsheet, calculation,</text>
+    <text x="155" y="220" text-anchor="middle" class="cell" fill="#1565c0" font-weight="600">cost-benefit analysis, explicit deliberation</text>
+  </g>
+
+  <!-- System 1 column (right) -->
+  <g transform="translate(370, 115)">
+    <rect x="0" y="0" width="310" height="230" fill="#fff3e0" stroke="#e6550d" stroke-width="1.5" rx="8"/>
+    <text x="155" y="25" text-anchor="middle" class="header" fill="#e65100">System 1: h(n)</text>
+    <text x="155" y="40" text-anchor="middle" class="cell" fill="#e65100">Heuristic estimate of remaining cost</text>
+
+    <rect x="10" y="50" width="290" height="22" fill="#ffe0b2" rx="2"/>
+    <text x="90" y="65" text-anchor="middle" class="row-label" fill="#bf360c">Fast, automatic</text>
+    <text x="230" y="65" text-anchor="middle" class="cell">Lookup, not calculation</text>
+
+    <rect x="10" y="77" width="290" height="22" fill="#fff" rx="2"/>
+    <text x="90" y="92" text-anchor="middle" class="row-label" fill="#bf360c">Associative</text>
+    <text x="230" y="92" text-anchor="middle" class="cell">Based on learned boundary penalties β</text>
+
+    <rect x="10" y="104" width="290" height="22" fill="#ffe0b2" rx="2"/>
+    <text x="90" y="119" text-anchor="middle" class="row-label" fill="#bf360c">Context-sensitive</text>
+    <text x="230" y="119" text-anchor="middle" class="cell">h(n) depends on current state n</text>
+
+    <rect x="10" y="131" width="290" height="22" fill="#fff" rx="2"/>
+    <text x="90" y="146" text-anchor="middle" class="row-label" fill="#bf360c">Emotionally valenced</text>
+    <text x="230" y="146" text-anchor="middle" class="cell">Boundary penalties are affective</text>
+
+    <rect x="10" y="158" width="290" height="22" fill="#ffe0b2" rx="2"/>
+    <text x="90" y="173" text-anchor="middle" class="row-label" fill="#bf360c">Hard to override</text>
+    <text x="230" y="173" text-anchor="middle" class="cell">h(n) always contributes to f(n)</text>
+
+    <rect x="10" y="190" width="290" height="30" fill="#fff3e0" stroke="#ffb74d" stroke-width="0.5" rx="3"/>
+    <text x="155" y="210" text-anchor="middle" class="cell" fill="#e65100" font-weight="600">Economic analogue: gut feeling, moral intuition,</text>
+    <text x="155" y="220" text-anchor="middle" class="cell" fill="#e65100" font-weight="600">"this deal feels wrong," cultural norms</text>
+  </g>
+
+  <!-- Bottom insight -->
+  <rect x="80" y="352" width="540" height="22" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="1" rx="4"/>
+  <text x="350" y="367" text-anchor="middle" class="cell" font-weight="600">Key: System 1 is not a bias. It is an admissible A* heuristic on the full manifold (Theorem 7). Calling it "irrational" is a projection error.</text>
+</svg>

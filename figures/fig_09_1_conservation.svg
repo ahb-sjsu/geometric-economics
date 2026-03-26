@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 14px; font-weight: 600; fill: #333; }
+      .subtitle { font-size: 10px; fill: #666; }
+      .agent { font-size: 12px; font-weight: 700; }
+      .dim { font-size: 9px; }
+      .flow-label { font-size: 9px; font-weight: 600; }
+      .sum-label { font-size: 11px; font-weight: 700; }
+    </style>
+    <marker id="flow-r" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2171b5"/>
+    </marker>
+    <marker id="flow-l" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+      <polygon points="8 0, 0 3, 8 6" fill="#2171b5"/>
+    </marker>
+  </defs>
+
+  <text x="340" y="24" text-anchor="middle" class="title">Figure 9.1 — Attribute Conservation in Maria's Supply Chain</text>
+  <text x="340" y="40" text-anchor="middle" class="subtitle">Transferable dimensions (d₁, d₂, d₄): zero-sum. Evaluative dimensions (d₃, d₅–d₉): positive-sum. This is why trade creates value.</text>
+
+  <!-- Maria box -->
+  <g transform="translate(40, 65)">
+    <rect x="0" y="0" width="200" height="280" fill="#eff3ff" stroke="#6baed6" stroke-width="1.5" rx="8"/>
+    <text x="100" y="25" text-anchor="middle" class="agent" fill="#2171b5">Maria (buyer)</text>
+
+    <!-- Transferable -->
+    <rect x="10" y="40" width="180" height="22" fill="#c6dbef" rx="3"/>
+    <text x="100" y="55" text-anchor="middle" class="dim" fill="#08519c">d₁: −$2,000 (pays)</text>
+
+    <rect x="10" y="67" width="180" height="22" fill="#c6dbef" rx="3"/>
+    <text x="100" y="82" text-anchor="middle" class="dim" fill="#08519c">d₂: +beans ownership</text>
+
+    <rect x="10" y="94" width="180" height="22" fill="#c6dbef" rx="3"/>
+    <text x="100" y="109" text-anchor="middle" class="dim" fill="#08519c">d₄: −committed to menu</text>
+
+    <!-- Evaluative -->
+    <rect x="10" y="130" width="180" height="22" fill="#d4edda" rx="3"/>
+    <text x="100" y="145" text-anchor="middle" class="dim" fill="#155724">d₅: +0.3 trust in Elena</text>
+
+    <rect x="10" y="157" width="180" height="22" fill="#d4edda" rx="3"/>
+    <text x="100" y="172" text-anchor="middle" class="dim" fill="#155724">d₆: +0.2 local supply chain</text>
+
+    <rect x="10" y="184" width="180" height="22" fill="#d4edda" rx="3"/>
+    <text x="100" y="199" text-anchor="middle" class="dim" fill="#155724">d₇: +0.4 ethical sourcer identity</text>
+
+    <rect x="10" y="211" width="180" height="22" fill="#d4edda" rx="3"/>
+    <text x="100" y="226" text-anchor="middle" class="dim" fill="#155724">d₉: +0.2 knows bean quality</text>
+
+    <rect x="10" y="245" width="180" height="25" fill="#bee5eb" stroke="#17a2b8" stroke-width="0.8" rx="3"/>
+    <text x="100" y="262" text-anchor="middle" class="flow-label" fill="#117a8b">Net evaluative: +1.1</text>
+  </g>
+
+  <!-- Elena box -->
+  <g transform="translate(440, 65)">
+    <rect x="0" y="0" width="200" height="280" fill="#fef0d9" stroke="#fdae6b" stroke-width="1.5" rx="8"/>
+    <text x="100" y="25" text-anchor="middle" class="agent" fill="#e6550d">Elena (seller)</text>
+
+    <!-- Transferable -->
+    <rect x="10" y="40" width="180" height="22" fill="#fdd0a2" rx="3"/>
+    <text x="100" y="55" text-anchor="middle" class="dim" fill="#a63603">d₁: +$2,000 (receives)</text>
+
+    <rect x="10" y="67" width="180" height="22" fill="#fdd0a2" rx="3"/>
+    <text x="100" y="82" text-anchor="middle" class="dim" fill="#a63603">d₂: −beans ownership</text>
+
+    <rect x="10" y="94" width="180" height="22" fill="#fdd0a2" rx="3"/>
+    <text x="100" y="109" text-anchor="middle" class="dim" fill="#a63603">d₄: −committed to delivery</text>
+
+    <!-- Evaluative -->
+    <rect x="10" y="130" width="180" height="22" fill="#d4edda" rx="3"/>
+    <text x="100" y="145" text-anchor="middle" class="dim" fill="#155724">d₅: +0.4 trust in Maria</text>
+
+    <rect x="10" y="157" width="180" height="22" fill="#d4edda" rx="3"/>
+    <text x="100" y="172" text-anchor="middle" class="dim" fill="#155724">d₆: +0.3 craft economy</text>
+
+    <rect x="10" y="184" width="180" height="22" fill="#d4edda" rx="3"/>
+    <text x="100" y="199" text-anchor="middle" class="dim" fill="#155724">d₇: +0.5 craft roaster identity</text>
+
+    <rect x="10" y="211" width="180" height="22" fill="#d4edda" rx="3"/>
+    <text x="100" y="226" text-anchor="middle" class="dim" fill="#155724">d₉: +0.1 knows market demand</text>
+
+    <rect x="10" y="245" width="180" height="25" fill="#bee5eb" stroke="#17a2b8" stroke-width="0.8" rx="3"/>
+    <text x="100" y="262" text-anchor="middle" class="flow-label" fill="#117a8b">Net evaluative: +1.3</text>
+  </g>
+
+  <!-- Flow arrows (transferable — zero-sum) -->
+  <g transform="translate(240, 65)">
+    <line x1="0" y1="51" x2="200" y2="51" stroke="#08519c" stroke-width="2" marker-end="url(#flow-r)"/>
+    <text x="100" y="44" text-anchor="middle" class="flow-label" fill="#08519c">$2,000 →</text>
+
+    <line x1="200" y1="78" x2="0" y2="78" stroke="#08519c" stroke-width="2" marker-end="url(#flow-l)"/>
+    <text x="100" y="73" text-anchor="middle" class="flow-label" fill="#08519c">← beans</text>
+
+    <!-- Sum box for transferable -->
+    <rect x="50" y="95" width="100" height="30" fill="#e8e8e8" stroke="#999" stroke-width="1" rx="4"/>
+    <text x="100" y="115" text-anchor="middle" class="sum-label" fill="#666">Σ = 0</text>
+  </g>
+
+  <!-- Evaluative: both gain -->
+  <g transform="translate(240, 65)">
+    <rect x="30" y="175" width="140" height="55" fill="#d4edda" stroke="#28a745" stroke-width="1.5" rx="6"/>
+    <text x="100" y="195" text-anchor="middle" class="sum-label" fill="#155724">Σ = +2.4</text>
+    <text x="100" y="210" text-anchor="middle" class="flow-label" fill="#155724">Value CREATED</text>
+    <text x="100" y="222" text-anchor="middle" class="dim" fill="#28a745">Both parties gain simultaneously</text>
+  </g>
+
+  <!-- Bottom summary -->
+  <rect x="60" y="360" width="560" height="30" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="5"/>
+  <text x="340" y="380" text-anchor="middle" class="subtitle" font-weight="600">The $2,000 is conserved (zero-sum). The 2.4 units of relational value are created (positive-sum). Both happen in the same transaction.</text>
+</svg>
