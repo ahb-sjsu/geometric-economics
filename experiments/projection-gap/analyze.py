@@ -74,6 +74,64 @@ def bh_fdr(pvals: list[float], q: float = 0.05) -> list[bool]:
     return passed
 
 
+def per_model_consistency(deltas: dict, pred_by_id: dict) -> dict:
+    """Cross-model consistency (DESIGN.md): per real contrast, the fraction of
+    models whose mean per-subject Delta matches the predicted sign.
+
+    Subjects are keyed "model::persona"; we group by the model prefix.
+    """
+    out = {}
+    for cid, subj_delta in deltas.items():
+        pr = pred_by_id.get(cid, {})
+        if pr.get("kind") != "real":
+            continue
+        by_model: dict = defaultdict(list)
+        for subject, d in subj_delta.items():
+            model = subject.split("::", 1)[0]
+            by_model[model].append(d)
+        model_sign = {m: int(np.sign(np.mean(v))) for m, v in by_model.items()}
+        match = sum(1 for s in model_sign.values() if s == pr.get("sign_pred"))
+        out[cid] = {
+            "n_models": len(model_sign),
+            "n_match": match,
+            "frac_match": match / len(model_sign) if model_sign else 0.0,
+            "model_sign": model_sign,
+            "sign_pred": pr.get("sign_pred"),
+        }
+    return out
+
+
+def placebo_corrected(deltas: dict, pred_by_id: dict) -> dict:
+    """Within-subject placebo correction: for each real contrast, subtract the
+    subject's OWN domain-matched placebo Delta, removing their generic
+    wording/demand sensitivity. Returns {real_contrast: test_contrast(corrected)}.
+
+    corrected_delta[subject] = Delta_real[subject] - Delta_placebo(domain)[subject]
+    Only subjects present in both the real contrast and its domain placebo count.
+    """
+    placebo_by_domain = {
+        pr["domain"]: pid
+        for pid, pr in pred_by_id.items()
+        if pr.get("kind") == "placebo"
+    }
+    out = {}
+    for cid, subj_delta in deltas.items():
+        pr = pred_by_id.get(cid, {})
+        if pr.get("kind") != "real":
+            continue
+        pid = placebo_by_domain.get(pr.get("domain"))
+        pl = deltas.get(pid, {}) if pid else {}
+        corrected = {s: d - pl[s] for s, d in subj_delta.items() if s in pl}
+        if not corrected:
+            continue
+        res = test_contrast(np.array(list(corrected.values())))
+        res["placebo_used"] = pid
+        res["sign_pred"] = pr.get("sign_pred")
+        res["sign_match"] = res["sign_obs"] == pr.get("sign_pred")
+        out[cid] = res
+    return out
+
+
 def paired_cohens_d(x: np.ndarray) -> float:
     sd = x.std(ddof=1)
     return float(x.mean() / sd) if sd > 0 else 0.0
@@ -152,6 +210,16 @@ def analyze(rows: list[dict], predictions: dict) -> dict:
     placebos = [per[c] for c in per if per[c]["kind"] == "placebo"]
     placebo_null = all((not p.get("fdr_sig", False)) and abs(p["mean_delta"]) < 0.05 for p in placebos)
 
+    cross_model = per_model_consistency(deltas, pred_by_id)
+    cm_fracs = [v["frac_match"] for v in cross_model.values()]
+
+    # placebo-corrected (within-subject) effects + their own BH-FDR
+    corrected = placebo_corrected(deltas, pred_by_id)
+    cpk = list(corrected)
+    cfdr = dict(zip(cpk, bh_fdr([corrected[c]["p"] for c in cpk]))) if cpk else {}
+    for c, ok in cfdr.items():
+        corrected[c]["fdr_sig"] = bool(ok)
+    corr_pass = {c: (corrected[c].get("fdr_sig") and corrected[c]["sign_match"]) for c in cpk}
     verdict = {
         "H1_sign_significant": h1,
         "H1_pass_fraction": (sum(h1.values()) / len(h1)) if h1 else 0.0,
@@ -160,8 +228,12 @@ def analyze(rows: list[dict], predictions: dict) -> dict:
         "H4_dose_peak_level": dose_peak,
         "H4_loss_reversal": (b1 == 1 and b1l == -1),
         "H4_placebo_null": bool(placebo_null),
+        "cross_model_mean_frac_match": (sum(cm_fracs) / len(cm_fracs)) if cm_fracs else 0.0,
+        "H1_placebo_corrected_pass_fraction": (sum(corr_pass.values()) / len(corr_pass)) if corr_pass else 0.0,
+        "H1_placebo_corrected_significant": corr_pass,
     }
-    return {"per_contrast": per, "verdict": verdict}
+    return {"per_contrast": per, "cross_model": cross_model,
+            "placebo_corrected": corrected, "verdict": verdict}
 
 
 def print_report(res: dict):
@@ -172,6 +244,18 @@ def print_report(res: dict):
               f"{(r['delta_pred'] or 0):>+8.3f} {str(r['sign_obs']):>4} {r['p']:>8.4f} "
               f"{r['cohens_d']:>6.2f} {str(r.get('fdr_sig','')):>4} "
               f"{str(r['sign_match']):>5} {str(r['mag_covered'])}")
+    if res.get("cross_model"):
+        print("\nCross-model consistency (real contrasts):")
+        print(f"  {'contrast':8} {'models match pred sign':>24}")
+        for cid, cm in sorted(res["cross_model"].items()):
+            print(f"  {cid:8} {cm['n_match']}/{cm['n_models']} "
+                  f"(frac {cm['frac_match']:.2f}, pred sign {cm['sign_pred']:+d})")
+    if res.get("placebo_corrected"):
+        print("\nPlacebo-corrected effects (real minus own domain-matched placebo, within-subject):")
+        print(f"  {'contrast':8} {'n':>4} {'d_corr':>8} {'p':>8} {'coh_d':>6} {'fdr':>5} match")
+        for cid, r in sorted(res["placebo_corrected"].items()):
+            print(f"  {cid:8} {r['n']:>4} {r['mean_delta']:>+8.3f} {r['p']:>8.4f} "
+                  f"{r['cohens_d']:>6.2f} {str(r.get('fdr_sig','')):>5} {r['sign_match']}")
     print("\nVerdict:")
     for k, v in res["verdict"].items():
         print(f"  {k}: {v}")
