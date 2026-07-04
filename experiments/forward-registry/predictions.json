@@ -1,0 +1,58 @@
+{
+  "description": "Forward, pre-registered SIGN-predictions where the geometry and scalar economics diverge on a non-monetary coordinate. Frozen + hashed before resolution (registry.lock.json). Resolutions appended later without altering the frozen block.",
+  "coordinates": {"1": "Monetary", "6": "Social Impact", "7": "Virtue/Identity", "8": "Legitimacy", "9": "Epistemic Status"},
+  "predictions": [
+    {
+      "id": "PG-2026-001",
+      "status": "open",
+      "frozen": {
+        "registered": "2026-07-04",
+        "claim": "Introducing a monetary fine or payment into a domain with high pre-existing social-norm / identity salience (e.g. blood, organ, volunteering, civic compliance, prosocial conservation) will worsen the target behaviour relative to a no-incentive control, at least at low incentive levels.",
+        "coordinate": "1->6/7",
+        "scalar_prediction": "target behaviour improves monotonically with the incentive",
+        "geometry_prediction": "target behaviour reverses (sign flip) as d1 displaces d6/d7",
+        "resolution_criterion": "any future field experiment/policy with a no-incentive control in a high-norm domain; scored on the SIGN of the treatment effect on the target behaviour",
+        "falsifier": "improvement (correct scalar sign) with no crowding-out at low incentive"
+      }
+    },
+    {
+      "id": "PG-2026-002",
+      "status": "open",
+      "frozen": {
+        "registered": "2026-07-04",
+        "claim": "Following a widely-perceived legitimacy shock to a tax or regulatory authority (rates/penalties unchanged), voluntary compliance falls relative to its pre-shock trend.",
+        "coordinate": "8",
+        "scalar_prediction": "unchanged compliance (monetary incentives unchanged)",
+        "geometry_prediction": "compliance falls with the legitimacy drop on d8",
+        "resolution_criterion": "identified legitimacy shocks (contested elections, scandals, rulings) with unchanged monetary terms; scored on the SIGN of the compliance change vs trend",
+        "falsifier": "no compliance change after a clear legitimacy shock with fixed incentives"
+      }
+    },
+    {
+      "id": "PG-2026-003",
+      "status": "open",
+      "frozen": {
+        "registered": "2026-07-04",
+        "claim": "At identical monetary cost to households, a carbon price framed as a civic 'fee-and-dividend' (identity/legitimacy frame) secures higher public acceptance than the same price framed as a 'tax' (transaction frame).",
+        "coordinate": "7/8",
+        "scalar_prediction": "identical acceptance (identical monetary cost)",
+        "geometry_prediction": "civic frame raises acceptance via d7/d8",
+        "resolution_criterion": "referenda, surveys, or field trials varying the frame at matched monetary cost; scored on the SIGN of the acceptance difference",
+        "falsifier": "no acceptance difference between frames at equal cost"
+      }
+    },
+    {
+      "id": "PG-2026-004",
+      "status": "open",
+      "frozen": {
+        "registered": "2026-07-04",
+        "claim": "When a probabilistic risk is communicated with explicit ambiguity ('experts disagree', 'estimate uncertain') versus a precise point probability of identical stated value, uptake of the protective/precautionary option rises under the ambiguous framing (loss domain) even though the stated probability is unchanged.",
+        "coordinate": "9",
+        "scalar_prediction": "identical choice (stated probability and payoffs unchanged)",
+        "geometry_prediction": "epistemic ambiguity shifts choice via d9 (loss-domain flip)",
+        "resolution_criterion": "public-health / insurance / warning-label field or survey experiments holding stated probability fixed while varying epistemic framing; scored on the SIGN of the uptake difference",
+        "falsifier": "no uptake difference when stated probability is held fixed"
+      }
+    }
+  ]
+}

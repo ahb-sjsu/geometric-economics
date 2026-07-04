@@ -1,0 +1,13 @@
+{
+  "registry": "projection-gap forward predictions v1",
+  "n_predictions": 4,
+  "open": 4,
+  "resolved": 0,
+  "per_prediction_sha256": {
+    "PG-2026-001": "26ea49f6d8146f9372015faff42661119b2165a84cce450abaf7438a39833e48",
+    "PG-2026-002": "405d77d23ab94146856b01de5a7d2681743883802a1dfb096f508d7f33eb0c83",
+    "PG-2026-003": "175ca75dcb83785b8453725f0584dc23c93650265d21ac77160af70e354d4acc",
+    "PG-2026-004": "a89eabd8d26d321cd14728dbb7b955e737bce2666b3378f501890baeaa032306"
+  },
+  "combined_sha256": "8abfb938db6abfa5440fb2ab2b258ba1f96a6e8515f6f92f09fbdd5316a2c2b1"
+}

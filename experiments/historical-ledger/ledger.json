@@ -1,0 +1,123 @@
+{
+  "description": "Historical projection-gaps: episodes where scalar economics predicts the wrong SIGN and the geometry (via a non-monetary coordinate) predicts the observed direction.",
+  "coordinates": {"1": "Monetary", "6": "Social Impact", "7": "Virtue/Identity", "8": "Legitimacy", "9": "Epistemic Status"},
+  "entries": [
+    {
+      "id": "A1_titmuss_blood",
+      "class": "crowding-out",
+      "episode": "Paying for blood donation reduces supply",
+      "money_moved": "+ (introduce payment)",
+      "coordinate": [6, 7],
+      "coordinate_shift": "gift/altruism frame displaced by commodity frame",
+      "scalar_sign": "supply up",
+      "geometry_sign": "supply down",
+      "observed_sign": "down",
+      "geometry_wins": true,
+      "citation": "Titmuss (1970), The Gift Relationship"
+    },
+    {
+      "id": "A2_fine_is_a_price",
+      "class": "crowding-out",
+      "episode": "Fining late daycare pickups increases lateness",
+      "money_moved": "+ (add fine)",
+      "coordinate": [7, 8],
+      "coordinate_shift": "moral obligation reframed as a purchasable price",
+      "scalar_sign": "lateness down",
+      "geometry_sign": "lateness up",
+      "observed_sign": "up",
+      "geometry_wins": true,
+      "citation": "Gneezy & Rustichini (2000a), 'A Fine is a Price', J. Legal Studies 29(1)"
+    },
+    {
+      "id": "A3_pay_enough",
+      "class": "crowding-out",
+      "episode": "Small payment lowers effort vs unpaid volunteering",
+      "money_moved": "+ (small payment)",
+      "coordinate": [7],
+      "coordinate_shift": "volunteer/identity motivation displaced",
+      "scalar_sign": "effort up",
+      "geometry_sign": "effort down at low pay",
+      "observed_sign": "down",
+      "geometry_wins": true,
+      "citation": "Gneezy & Rustichini (2000b), 'Pay Enough or Don't Pay at All', QJE 115(3)"
+    },
+    {
+      "id": "A4_nuclear_siting",
+      "class": "crowding-out",
+      "episode": "Cash compensation lowers acceptance of nuclear-waste siting",
+      "money_moved": "+ (offer money)",
+      "coordinate": [8, 6],
+      "coordinate_shift": "civic duty reframed as a transaction",
+      "scalar_sign": "acceptance up",
+      "geometry_sign": "acceptance down",
+      "observed_sign": "down (approx 51% to 25%)",
+      "geometry_wins": true,
+      "citation": "Frey & Oberholzer-Gee (1997), 'The Cost of Price Incentives', AER 87(4)"
+    },
+    {
+      "id": "A5_cash_for_grades",
+      "class": "crowding-out",
+      "episode": "Paying for outcomes raises inputs but not final outcomes",
+      "money_moved": "+ (pay for outcomes)",
+      "coordinate": [7],
+      "coordinate_shift": "learning identity vs paid task",
+      "scalar_sign": "outcomes up",
+      "geometry_sign": "outcomes ~null / down",
+      "observed_sign": "outcomes approx null",
+      "geometry_wins": "partial",
+      "citation": "Fryer (2011), 'Financial Incentives and Student Achievement', QJE 126(4)"
+    },
+    {
+      "id": "B1_tax_morale",
+      "class": "legitimacy",
+      "episode": "Compliance tracks state legitimacy, not just the tax rate",
+      "money_moved": "0 (rate fixed)",
+      "coordinate": [8],
+      "coordinate_shift": "perceived legitimacy of the state",
+      "scalar_sign": "same evasion at same rate",
+      "geometry_sign": "compliance rises with legitimacy",
+      "observed_sign": "tracks legitimacy",
+      "geometry_wins": true,
+      "citation": "Torgler (2007), Tax Compliance and Tax Morale"
+    },
+    {
+      "id": "C1_bank_runs",
+      "class": "epistemic",
+      "episode": "Bank runs selected by beliefs at fixed fundamentals",
+      "money_moved": "0 (fundamentals fixed)",
+      "coordinate": [9],
+      "coordinate_shift": "confidence / beliefs",
+      "scalar_sign": "payoff-only cannot select equilibrium",
+      "geometry_sign": "run iff confidence collapses",
+      "observed_sign": "belief-selected",
+      "geometry_wins": "mechanism-level",
+      "citation": "Diamond & Dybvig (1983), JPE 91(3)"
+    },
+    {
+      "id": "C2_ambiguity",
+      "class": "epistemic",
+      "episode": "Ambiguity aversion at matched expected value",
+      "money_moved": "0 (EV fixed)",
+      "coordinate": [9],
+      "coordinate_shift": "known vs unknown probabilities",
+      "scalar_sign": "indifference (same EV)",
+      "geometry_sign": "ambiguity is costly -> shift",
+      "observed_sign": "robust ambiguity aversion",
+      "geometry_wins": true,
+      "citation": "Ellsberg (1961), QJE 75(4); Halevy (2007), Econometrica 75(2)"
+    },
+    {
+      "id": "D1_name_of_the_game",
+      "class": "identity-framing",
+      "episode": "Identical PD, 'Wall Street' vs 'Community' label, cooperation doubles",
+      "money_moved": "0 (payoff matrix fixed)",
+      "coordinate": [7, 8],
+      "coordinate_shift": "social frame of the interaction",
+      "scalar_sign": "identical play (same matrix)",
+      "geometry_sign": "more cooperation under Community frame",
+      "observed_sign": "cooperation approx doubles under Community",
+      "geometry_wins": true,
+      "citation": "Liberman, Samuels & Ross (2004), 'The Name of the Game', Pers. Soc. Psychol. Bull. 30(9)"
+    }
+  ]
+}
