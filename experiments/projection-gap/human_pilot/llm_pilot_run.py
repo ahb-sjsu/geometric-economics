@@ -41,7 +41,7 @@ def letter_prompt(contrast, pole, variant, incentive):
     return (f"{lead}{body}\nOption A: {c['optionA']}\nOption B: {c['optionB']}{ANSWER}")
 
 
-def build_items(models, n_personas, incentive, seed=0):
+def build_items(models, n_personas, incentive, samples=1, seed=0):
     grid = P.grid()
     random.Random(seed).shuffle(grid)
     personas = grid[:n_personas]
@@ -51,17 +51,18 @@ def build_items(models, n_personas, incentive, seed=0):
         for persona in personas:
             subject = f"{model}::{persona.id}"
             for c in LETTERS["contrasts"]:
-                pole = "hi" if rng.random() < 0.5 else "lo"          # between-subjects
-                variant = rng.randrange(len(c["poles"][pole]["reframings"]))
-                items.append(WorkItem(
-                    id=f"{c['id']}|{pole}|{variant}|{subject}|{int(incentive)}",
-                    model=model, prompt=letter_prompt(c, pole, variant, incentive),
-                    system=persona.system_prompt(),
-                    meta={"contrast": c["id"], "pole": pole, "variant": variant, "subject": subject,
-                          "model": model, "kind": c["kind"], "family": c["family"],
-                          "domain": c["domain"], "coord": c["coord"], "sign_pred": c["sign_pred"],
-                          "incentive": incentive},
-                ))
+                pole = "hi" if rng.random() < 0.5 else "lo"          # between-subjects (per subject)
+                for k in range(samples):
+                    variant = rng.randrange(len(c["poles"][pole]["reframings"]))
+                    items.append(WorkItem(
+                        id=f"{c['id']}|{pole}|{variant}|{subject}|{k}|{int(incentive)}",
+                        model=model, prompt=letter_prompt(c, pole, variant, incentive),
+                        system=persona.system_prompt(),
+                        meta={"contrast": c["id"], "pole": pole, "variant": variant,
+                              "subject": subject, "model": model, "kind": c["kind"],
+                              "family": c["family"], "domain": c["domain"], "coord": c["coord"],
+                              "sign_pred": c["sign_pred"], "incentive": incentive},
+                    ))
     return items
 
 
@@ -92,13 +93,15 @@ def main():
                     help="run with the incentive framing, without, or both arms")
     ap.add_argument("--models", default=os.environ.get("MODELS", ",".join(DEFAULT_MODELS)))
     ap.add_argument("--npersonas", type=int, default=int(os.environ.get("NPERSONAS", "12")))
+    ap.add_argument("--samples", type=int, default=int(os.environ.get("SAMPLES", "1")),
+                    help="binary responses per subject per contrast (between-subjects power)")
     a = ap.parse_args()
 
     models = [m.strip() for m in a.models.split(",") if m.strip()]
     arms = {"on": [True], "off": [False], "both": [True, False]}[a.incentive]
     items = []
     for inc in arms:
-        items += build_items(models, a.npersonas, inc)
+        items += build_items(models, a.npersonas, inc, samples=a.samples)
     store = ResultStore(a.out)
     print(f"LLM pilot: {len(models)} models x {a.npersonas} personas x "
           f"{len(LETTERS['contrasts'])} contrasts x {len(arms)} incentive-arm(s) "
