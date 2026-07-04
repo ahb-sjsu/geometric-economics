@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "study": "projection-gap human pilot",
+    "predictions": "prereg-v2 (fixed-temperature); sign(Delta)=sign(sign_pred) is the primary claim",
+    "design": "between-subjects on pole; each subject sees ONE pole per contrast, one random reframing",
+    "note": "Option A is the coordinate-aligned choice; monetary payoffs are IDENTICAL across lo/hi poles, so every scalar theory is forced to predict equal choice rates. Higher A-rate at the hi pole = predicted sign +1."
+  },
+  "contrasts": [
+    {
+      "id": "A1.1", "family": "A1_social_impact", "domain": "game", "coord": "societal", "kind": "real", "sign_pred": 1,
+      "subject": "Give $4 or keep $10?",
+      "optionA": "Give the $4", "optionB": "Keep all $10",
+      "poles": {
+        "lo": {"reframings": [
+          "Dear Ethicist, I can keep $6 and give $4 to another person, or keep the whole $10. The other person is a stranger I will never meet. What should I do?"]},
+        "hi": {"reframings": [
+          "Dear Ethicist, I can keep $6 and give $4, or keep the whole $10. The $4 funds meals at a community shelter that will feed a dozen people. What should I do?",
+          "Dear Ethicist, I can keep $6 and give $4, or keep the whole $10. The $4 goes to a local food bank that families in my town rely on. What should I do?",
+          "Dear Ethicist, I can keep $6 and give $4, or keep the whole $10. The $4 helps neighbors in need get through a hard winter. What should I do?"]}
+      }
+    },
+    {
+      "id": "A1.2", "family": "A1_social_impact", "domain": "game", "coord": "societal", "kind": "real", "sign_pred": 1,
+      "subject": "Contribute $8 to the pool?",
+      "optionA": "Contribute the $8", "optionB": "Contribute $0",
+      "poles": {
+        "lo": {"reframings": [
+          "Dear Ethicist, I can put $8 into a common pool or keep it. Contributions are anonymous and the pool is dissolved right after. What should I do?"]},
+        "hi": {"reframings": [
+          "Dear Ethicist, I can put $8 into a common pool or keep it. Contributions are anonymous, but the pool funds a shared well the whole village will drink from for years. What should I do?",
+          "Dear Ethicist, I can put $8 into a common pool or keep it. It stays anonymous, but the pool pays for a park the whole neighborhood will use for a generation. What should I do?"]}
+      }
+    },
+    {
+      "id": "A2.1", "family": "A2_virtue_identity", "domain": "game", "coord": "identity", "kind": "real", "sign_pred": 1,
+      "subject": "Report honestly for $5, or under-report for $15?",
+      "optionA": "Report honestly ($5)", "optionB": "Under-report ($15)",
+      "poles": {
+        "lo": {"reframings": [
+          "Dear Ethicist, in a one-off transaction I can under-report to gain $15 or report honestly for $5. No one will ever check. What should I do?"]},
+        "hi": {"reframings": [
+          "Dear Ethicist, as the certified auditor whose whole professional identity rests on integrity, I can under-report to gain $15 or report honestly for $5. No one will ever check. What should I do?",
+          "Dear Ethicist, I have spent my life being known as an honest person; now I can under-report for $15 or report honestly for $5, and no one will ever check. What should I do?"]}
+      }
+    },
+    {
+      "id": "A3.1", "family": "A3_epistemic", "domain": "game", "coord": "epistemic", "kind": "real", "sign_pred": 1,
+      "subject": "Send $10 in the trust game, or keep it?",
+      "optionA": "Send the $10", "optionB": "Keep the $10",
+      "poles": {
+        "lo": {"reframings": [
+          "Dear Ethicist, I can send $10 (which triples to $30) hoping my partner returns half, or keep it. I've heard an unverified rumor the partner sometimes returns nothing. What should I do?"]},
+        "hi": {"reframings": [
+          "Dear Ethicist, I can send $10 (which triples to $30) hoping my partner returns half, or keep it. A verified, audited record shows the partner returns half every time. What should I do?",
+          "Dear Ethicist, I can send $10 (tripling to $30) hoping for half back, or keep it. Independent, confirmed records show this partner has always returned half. What should I do?"]}
+      }
+    },
+    {
+      "id": "B1.1", "family": "B1_epistemic_gain", "domain": "lottery", "coord": "epistemic", "kind": "real", "sign_pred": 1,
+      "subject": "A sure $40, or a 50% shot at $100?",
+      "optionA": "Take the sure $40", "optionB": "Take the 50% chance at $100",
+      "poles": {
+        "lo": {"reframings": [
+          "Dear Ethicist, I can take a sure $40, or a 50% chance at $100 (else $0). The 50% is a precisely known, machine-verified probability. What should I do?"]},
+        "hi": {"reframings": [
+          "Dear Ethicist, I can take a sure $40, or a 50% chance at $100 (else $0). But the '50%' is a vague guess from an unreliable source; the true odds are unknown. What should I do?",
+          "Dear Ethicist, I can take a sure $40, or a gamble the seller calls '50-50' for $100 (else $0) — though nobody can actually verify those odds. What should I do?"]}
+      }
+    },
+    {
+      "id": "B1L.1", "family": "B1L_epistemic_loss", "domain": "lottery", "coord": "epistemic", "kind": "real", "sign_pred": -1,
+      "subject": "A sure $40 loss, or a 50% chance of losing $100?",
+      "optionA": "Take the sure $40 loss", "optionB": "Take the 50% chance of losing $100",
+      "poles": {
+        "lo": {"reframings": [
+          "Dear Ethicist, I must take a sure loss of $40, or a 50% chance of losing $100 (else $0). The 50% is a precisely known, machine-verified probability. What should I do?"]},
+        "hi": {"reframings": [
+          "Dear Ethicist, I must take a sure loss of $40, or a 50% chance of losing $100 (else $0). But the '50%' is a vague guess from an unreliable source; the true odds are unknown. What should I do?"]}
+      }
+    },
+    {
+      "id": "B2.1", "family": "B2_social_impact", "domain": "lottery", "coord": "societal", "kind": "real", "sign_pred": 1,
+      "subject": "A sure $30, or a 40% shot at $80?",
+      "optionA": "Take the sure $30", "optionB": "Take the 40% chance at $80",
+      "poles": {
+        "lo": {"reframings": [
+          "Dear Ethicist, I can take a sure $30, or a 40% chance at $80 (else $0). The payoff affects only me. What should I do?"]},
+        "hi": {"reframings": [
+          "Dear Ethicist, I can take a sure $30, or a 40% chance at $80 (else $0). Whatever I receive is shared with my whole community. What should I do?"]}
+      }
+    },
+    {
+      "id": "P.A1", "family": "placebo", "domain": "game", "coord": "societal", "kind": "placebo", "sign_pred": 0,
+      "subject": "Give $4 or keep $10? (control)",
+      "optionA": "Give the $4", "optionB": "Keep all $10",
+      "poles": {
+        "lo": {"reframings": [
+          "Dear Ethicist, I can keep $6 and give $4, or keep all $10. The other person is a stranger. What should I do?"]},
+        "hi": {"reframings": [
+          "Dear Ethicist, I may keep six dollars and give four dollars, or retain the entire ten dollars. The counterpart is a stranger. What should I do?"]}
+      }
+    },
+    {
+      "id": "P.B1", "family": "placebo", "domain": "lottery", "coord": "epistemic", "kind": "placebo", "sign_pred": 0,
+      "subject": "A sure $40, or a 50% shot at $100? (control)",
+      "optionA": "Take the sure $40", "optionB": "Take the 50% chance at $100",
+      "poles": {
+        "lo": {"reframings": [
+          "Dear Ethicist, I can take a sure $40, or a 50% chance at $100 (else $0). The probability is precisely known. What should I do?"]},
+        "hi": {"reframings": [
+          "Dear Ethicist, I may select a guaranteed $40, or a one-in-two shot at $100 (otherwise $0). The probability is precisely known. What should I do?"]}
+      }
+    },
+    {
+      "id": "D9.1", "family": "dose_d9", "domain": "lottery", "coord": "epistemic", "kind": "dose", "sign_pred": 1, "dose_level": 1,
+      "subject": "A sure $40, or a 50% shot at $100? (source reliability 1/4)",
+      "optionA": "Take the sure $40", "optionB": "Take the 50% chance at $100",
+      "poles": {
+        "lo": {"reframings": ["Dear Ethicist, sure $40 or a 50% chance at $100 (else $0); the probability source is fully reliable. What should I do?"]},
+        "hi": {"reframings": ["Dear Ethicist, sure $40 or a 50% chance at $100 (else $0); the source's reliability is graded level 1 of 4 (higher = vaguer). What should I do?"]}
+      }
+    },
+    {
+      "id": "D9.2", "family": "dose_d9", "domain": "lottery", "coord": "epistemic", "kind": "dose", "sign_pred": 1, "dose_level": 2,
+      "subject": "A sure $40, or a 50% shot at $100? (source reliability 2/4)",
+      "optionA": "Take the sure $40", "optionB": "Take the 50% chance at $100",
+      "poles": {
+        "lo": {"reframings": ["Dear Ethicist, sure $40 or a 50% chance at $100 (else $0); the probability source is fully reliable. What should I do?"]},
+        "hi": {"reframings": ["Dear Ethicist, sure $40 or a 50% chance at $100 (else $0); the source's reliability is graded level 2 of 4 (higher = vaguer). What should I do?"]}
+      }
+    },
+    {
+      "id": "D9.3", "family": "dose_d9", "domain": "lottery", "coord": "epistemic", "kind": "dose", "sign_pred": 1, "dose_level": 3,
+      "subject": "A sure $40, or a 50% shot at $100? (source reliability 3/4)",
+      "optionA": "Take the sure $40", "optionB": "Take the 50% chance at $100",
+      "poles": {
+        "lo": {"reframings": ["Dear Ethicist, sure $40 or a 50% chance at $100 (else $0); the probability source is fully reliable. What should I do?"]},
+        "hi": {"reframings": ["Dear Ethicist, sure $40 or a 50% chance at $100 (else $0); the source's reliability is graded level 3 of 4 (higher = vaguer). What should I do?"]}
+      }
+    },
+    {
+      "id": "D9.4", "family": "dose_d9", "domain": "lottery", "coord": "epistemic", "kind": "dose", "sign_pred": 1, "dose_level": 4,
+      "subject": "A sure $40, or a 50% shot at $100? (source reliability 4/4)",
+      "optionA": "Take the sure $40", "optionB": "Take the 50% chance at $100",
+      "poles": {
+        "lo": {"reframings": ["Dear Ethicist, sure $40 or a 50% chance at $100 (else $0); the probability source is fully reliable. What should I do?"]},
+        "hi": {"reframings": ["Dear Ethicist, sure $40 or a 50% chance at $100 (else $0); the source's reliability is graded level 4 of 4 (higher = vaguer). What should I do?"]}
+      }
+    }
+  ],
+  "attention_checks": [
+    {"id": "ATT.1", "subject": "Attention check", "body": "Dear Ethicist, to show you are reading carefully, please choose the option labelled 'Left'.", "optionA": "Left", "optionB": "Right", "correct": "A"}
+  ]
+}
