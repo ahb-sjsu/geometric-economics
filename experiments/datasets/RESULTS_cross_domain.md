@@ -66,6 +66,20 @@ games 0.146**). **The risk-return tradeoff shape is shared across risky choice a
 only the scale is domain-specific.** This is a clean, strong form of the shared-metric claim — stronger
 than the raw one-directional transfer above, and the honest headline of this analysis.
 
+## Structural fuzzing — searching the space of forms for the ideal (it found one)
+
+Applying the TCSS structural-fuzzing method to the *model form* itself (`structural_search.py`): fuzz
+over {value transform, risk feature, metric norm, reference}, scored by **worst-case cross-domain
+transfer** (a form only wins if it transfers *both* ways). Winner:
+
+> **`{value: identity, risk: variance, norm: L1 (city-block), ref: max}` — worst-case 72%, mean 95%.**
+
+So a **variance** risk feature and an **L1** (city-block) metric transfer more robustly *bidirectionally*
+than the SD / L2 (Mahalanobis) default (which is asymmetric under full transfer, and needs the polar
+angle-lock to reach ~100%). Two independent routes — polar angle-locking on SD/L2, and structural
+search landing on var/L1 — both say the raw Euclidean-SD form is not the most transferable structure.
+A candidate "ideal" for Part III, to be confirmed with CV + the polar transfer on top.
+
 ## Belief model: does level-k sharpen the transfer? (No.)
 
 We re-encoded games under iterated quantal best-response beliefs (row is level-(k+1)) instead of the
