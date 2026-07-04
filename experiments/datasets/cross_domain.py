@@ -98,6 +98,20 @@ def eval_mae(theta, probs):
     return float(np.mean(maes))
 
 
+def fit_shape_locked(probs, ratio, x0=(1.0, 1.0)):
+    """Polar / PolarQuant-style transfer: LOCK the scale-invariant aversion angle
+    (ratio = s_ev/s_sd, the risk-return tradeoff shape) from the source domain,
+    and recalibrate only the overall scale (s_sd) and temperature T on the target.
+    Transfers the DIRECTION, lets the MAGNITUDE float -- 2 free params, not 3."""
+    def obj(p):
+        s_sd, T = np.abs(p) + 1e-6
+        return nll((ratio * s_sd, s_sd, T), probs)
+    res = minimize(obj, x0, method="Nelder-Mead",
+                   options={"maxiter": 6000, "xatol": 1e-5, "fatol": 1e-7})
+    s_sd, T = np.abs(res.x) + 1e-6
+    return (ratio * s_sd, s_sd, T)
+
+
 def uniform_nll(probs):
     tot, wsum = 0.0, 0.0
     for ev, sd, obs, n in probs:
@@ -106,17 +120,31 @@ def uniform_nll(probs):
     return tot / wsum
 
 
+def _ratio(theta):
+    return abs(theta[0]) / (abs(theta[1]) + 1e-9)
+
+
+def _gap(chance, native, val):
+    return (chance - val) / (chance - native) if chance > native else float("nan")
+
+
 def _report(lot, gam, tag):
     th_lot, th_gam = fit(lot), fit(gam)
-    print(f"[{tag}] games={len(gam)}  chance(games)={uniform_nll(gam):.4f}  chance(lot)={uniform_nll(lot):.4f}")
-    print(f"  GAMES     within={nll(th_gam, gam):.4f}   TRANSFER lot->games={nll(th_lot, gam):.4f}")
-    print(f"  LOTTERIES within={nll(th_lot, lot):.4f}   TRANSFER games->lot={nll(th_gam, lot):.4f}")
-    # fraction of chance->native gap closed by the transfer (games direction)
-    chance, native, transfer = uniform_nll(gam), nll(th_gam, gam), nll(th_lot, gam)
-    frac = (chance - transfer) / (chance - native) if chance > native else float("nan")
-    print(f"  lot->games transfer closes {frac*100:.0f}% of the chance->native gap")
-    print(f"  sigmas lot: s_ev={abs(th_lot[0]):.3f} s_sd={abs(th_lot[1]):.3f} T={abs(th_lot[2]):.3f}"
-          f"  |  games: s_ev={abs(th_gam[0]):.3f} s_sd={abs(th_gam[1]):.3f} T={abs(th_gam[2]):.3f}\n")
+    ch_g, ch_l = uniform_nll(gam), uniform_nll(lot)
+    # full (no-refit) transfer
+    full_lg, full_gl = nll(th_lot, gam), nll(th_gam, lot)
+    # polar shape-transfer: lock the aversion angle from the source, recalibrate scale+T
+    pol_lg = nll(fit_shape_locked(gam, _ratio(th_lot)), gam)   # lot-shape -> games
+    pol_gl = nll(fit_shape_locked(lot, _ratio(th_gam)), lot)   # games-shape -> lotteries
+    nat_g, nat_l = nll(th_gam, gam), nll(th_lot, lot)
+    print(f"[{tag}] chance(games)={ch_g:.4f} chance(lot)={ch_l:.4f}")
+    print(f"  GAMES     native={nat_g:.4f} | full-transfer(lot)={full_lg:.4f} "
+          f"({_gap(ch_g,nat_g,full_lg)*100:.0f}%) | POLAR-transfer={pol_lg:.4f} "
+          f"({_gap(ch_g,nat_g,pol_lg)*100:.0f}%)")
+    print(f"  LOTTERIES native={nat_l:.4f} | full-transfer(games)={full_gl:.4f} "
+          f"({_gap(ch_l,nat_l,full_gl)*100:.0f}%) | POLAR-transfer={pol_gl:.4f} "
+          f"({_gap(ch_l,nat_l,pol_gl)*100:.0f}%)")
+    print(f"  aversion-angle ratio (s_ev/s_sd)  lot={_ratio(th_lot):.3f}  games={_ratio(th_gam):.3f}\n")
 
 
 def main():

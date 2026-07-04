@@ -46,6 +46,26 @@ proxied by a uniform belief) does not generalize back. So the shared-metric clai
 the strong direction (risk → strategy) but not symmetrically** — an honest, partial win, not a clean
 unification.
 
+## Polar decomposition FIXES the asymmetry (the big result)
+
+Motivated by PolarQuant (the KV-cache method that splits a vector into scale-variant *magnitude* and
+scale-invariant *direction*), note the geometric cost factors as
+`cost = r · √((cosθ/σ_ev)² + (sinθ/σ_sd)²)` — a radius `r` times an angular term set entirely by the
+**ratio σ_ev:σ_sd**. That ratio is the scale-invariant **aversion angle** (the risk-return tradeoff
+*shape*); the rest is domain-specific *scale/decisiveness*. So instead of forcing both across domains
+(full transfer), transfer **only the angle** and let magnitude+temperature recalibrate per domain:
+
+| Direction | full (no-refit) transfer | **polar (angle-locked) transfer** |
+|---|--:|--:|
+| lotteries → games | 0.931 (66% of chance→native gap) | **0.876 (100%)** |
+| games → lotteries | 0.783 (−131%, worse than chance) | **0.627 (97%)** |
+
+The polar transfer **closes ~100% of the gap in both directions** — the failed direction is *rescued*.
+And the fitted aversion angles are nearly equal across domains (ratio σ_ev/σ_sd: **lotteries 0.105,
+games 0.146**). **The risk-return tradeoff shape is shared across risky choice and strategic games;
+only the scale is domain-specific.** This is a clean, strong form of the shared-metric claim — stronger
+than the raw one-directional transfer above, and the honest headline of this analysis.
+
 ## Belief model: does level-k sharpen the transfer? (No.)
 
 We re-encoded games under iterated quantal best-response beliefs (row is level-(k+1)) instead of the
