@@ -77,3 +77,8 @@ transfer, novel) could anchor a standalone short paper.
 - C2 `datasets/bogota_games.py`, `cross_domain.py`, `RESULTS_cross_domain.md` — done.
 - C3 `projection-gap/` (prereg-v1) + `llm-panel` — panel running; verdict pending.
 - C4 `historical-ledger/`, `forward-registry/` — done.
+
+---
+
+> **Superseded.** This omnibus outline is replaced by a focused split: keystone theory + two
+> standalone empirical pillars + a human capstone. See `papers/README.md` and `papers/paper_0{0,1,2}_*.md`.
