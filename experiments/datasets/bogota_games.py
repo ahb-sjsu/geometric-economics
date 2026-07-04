@@ -50,12 +50,14 @@ def _parse_nfg(path: str):
     if len(nums) < need:
         return None
     payoffs = nums[:need]
-    M = np.zeros((n0, n1))
+    Mrow = np.zeros((n0, n1))   # player-0 (row) payoff, indexed [s0, s1]
+    Mcol = np.zeros((n0, n1))   # player-1 (col) payoff, indexed [s0, s1]
     for s1 in range(n1):
         for s0 in range(n0):
             c = s0 + n0 * s1  # player-0 strategy varies fastest
-            M[s0, s1] = payoffs[2 * c]  # player-0 payoff
-    return M
+            Mrow[s0, s1] = payoffs[2 * c]
+            Mcol[s0, s1] = payoffs[2 * c + 1]
+    return Mrow, Mcol
 
 
 def load_games():
@@ -74,24 +76,58 @@ def load_games():
             path = os.path.join(POOLS, nfg)
             if not os.path.exists(path):
                 continue
-            M = _parse_nfg(path)
-            if M is None:
+            parsed = _parse_nfg(path)
+            if parsed is None:
                 continue
+            Mrow, Mcol = parsed
             freqs = [float(x) for x in farr.split(",") if x.strip() != ""]
-            n0 = M.shape[0]
+            n0 = Mrow.shape[0]
             freqs = freqs[:n0]
             if len(freqs) != n0 or abs(sum(freqs)) < 1e-9:
                 continue
             games.append({"id": f"{study}:{gvar}", "study": study, "N": int(N),
-                          "freqs": np.array(freqs), "M": M})
+                          "freqs": np.array(freqs), "M": Mrow, "Mcol": Mcol})
     return games
 
 
-def encode_strategies(M: np.ndarray):
-    """Per row strategy: (EV, SD) under a UNIFORM belief over the column actions.
-    Same feature space as CPC18 lotteries (EV, risk)."""
-    ev = M.mean(axis=1)                 # E_j[payoff | uniform opponent]
-    sd = M.std(axis=1)                  # strategic-uncertainty risk
+def _softmax(x, lam):
+    z = lam * (x - x.max())
+    e = np.exp(z)
+    return e / e.sum()
+
+
+def opponent_belief(M: np.ndarray, Mcol: np.ndarray, level: int, lam: float):
+    """Column player's action distribution believed by a level-(level+1) row player.
+    Iterated quantal best responses starting from uniform (level 0). Returns a
+    length-n1 distribution over the opponent's actions.
+
+    M    = row payoff [s0, s1] (row's own payoff)
+    Mcol = col payoff [s0, s1] (col's own payoff)
+    """
+    n0, n1 = M.shape
+    row_dist = np.ones(n0) / n0
+    col_dist = np.ones(n1) / n1
+    for _ in range(max(1, level)):
+        col_dist = _softmax(row_dist @ Mcol, lam)      # col BR to row_dist
+        row_dist = _softmax(M @ col_dist, lam)         # row BR to col_dist
+    return col_dist
+
+
+def encode_strategies(M: np.ndarray, Mcol: np.ndarray | None = None,
+                      belief: str = "uniform", level: int = 1, lam: float = 0.1):
+    """Per row strategy: (EV, SD) under a belief about the column player.
+
+    belief='uniform' : opponent uniform (level-0)  -> row is level-1.
+    belief='lk'      : opponent plays level-`level` quantal BR (precision lam)
+                       -> row is level-(level+1). Needs Mcol.
+    Same (EV, SD) feature space as CPC18 lotteries in every case.
+    """
+    if belief == "lk" and Mcol is not None:
+        w = opponent_belief(M, Mcol, level, lam)
+    else:
+        w = np.ones(M.shape[1]) / M.shape[1]
+    ev = M @ w
+    sd = np.sqrt((((M - ev[:, None]) ** 2) @ w))
     return ev, sd
 
 
@@ -104,9 +140,9 @@ if __name__ == "__main__":
     for s, n in sorted(studies.items()):
         print(f"  {s}: {n}")
     g = games[0]
-    ev, sd = encode_strategies(g["M"])
+    evu, sdu = encode_strategies(g["M"])
+    evk, sdk = encode_strategies(g["M"], g["Mcol"], belief="lk", level=1, lam=0.1)
     print(f"\nexample {g['id']}: N={g['N']} shape={g['M'].shape}")
-    print(f"  payoff M=\n{g['M']}")
-    print(f"  observed freqs = {g['freqs']}")
-    print(f"  strategy EV (uniform belief) = {ev}")
-    print(f"  strategy SD = {sd}")
+    print(f"  observed freqs   = {np.round(g['freqs'], 3)}")
+    print(f"  EV uniform (l0)  = {np.round(evu, 2)}   SD = {np.round(sdu, 2)}")
+    print(f"  EV level-k belief= {np.round(evk, 2)}   SD = {np.round(sdk, 2)}")

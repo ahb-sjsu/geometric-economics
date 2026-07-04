@@ -46,6 +46,25 @@ proxied by a uniform belief) does not generalize back. So the shared-metric clai
 the strong direction (risk → strategy) but not symmetrically** — an honest, partial win, not a clean
 unification.
 
+## Belief model: does level-k sharpen the transfer? (No.)
+
+We re-encoded games under iterated quantal best-response beliefs (row is level-(k+1)) instead of the
+uniform level-0 opponent:
+
+| Belief | games native NLL | lot→games transfer | gap closed |
+|---|--:|--:|--:|
+| **uniform (level-0 opponent)** | **0.876** | **0.931** | **66%** |
+| level-k (opp level-1) | 0.971 | 0.973 | (native collapses toward chance) |
+| level-k (opp level-2) | 0.995 | 1.010 | (worse still) |
+
+**Level-k makes the game encoding *worse*, not better.** The native games fit degrades toward chance
+as the belief deepens, and its fitted σ's go degenerate (σ_sd → thousands = "ignore risk"). So the
+**uniform / level-0 belief is the better encoding**, and the positive lottery→games transfer holds
+under it. This is consistent with a robust behavioral-game-theory result — *non-strategic (level-0)
+features carry most of the predictive signal* (Wright & Leyton-Brown, "Level-0 Models"; "ElementaryNet",
+2025). The geometric metric transfers because it captures the EV/risk response that dominates human
+play, not sophisticated strategic reasoning.
+
 ## Caveats
 
 - Games use a **uniform level-0 belief** to define strategic (EV, SD); richer belief models
