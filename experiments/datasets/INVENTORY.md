@@ -8,8 +8,9 @@ fixed money/lottery). Reachability below is **probed by `fetch.py`, not asserted
 
 | id | validates | access | conf | reachable | notes |
 |---|:--:|---|:--:|:--:|---|
+| **cpc18** — Choice Prediction Competition 2018 | A | **open (CC-BY)** | high | **yes** | **CONFIRMED**: Zenodo [10.5281/zenodo.2571510](https://zenodo.org/records/2571510), `all CPC18 raw data.csv` (65 MB, 694,500 individual choices), train/test split. Fetch via the TCSS Zenodo downloader. |
+| **choices13k** — large-scale risky choice | A | open | high | yes | Peterson et al. (Science 2021), ~13k problems, [github.com/jcpeterson/choices13k](https://github.com/jcpeterson/choices13k). Second lottery-leg benchmark. |
 | **gps** — Global Preferences Survey | A | registration | high | login-gated | best cross-domain same-subject data; needs manual registration |
-| **cpc18** — Choice Prediction Competition | A | verify | low | 404 on guessed repo | gold-standard risky-choice benchmark; data repo needs manual confirmation |
 | **bruhin2010** — Risk and Rationality | A | supplement | med | yes | per-subject CPT params; common-protocol competitor |
 | **manylabs2** — Many Labs 2 | A/B | open (OSF) | med | yes | individual framing manipulations at scale |
 | **ruggeri2020** — KT 19-country replication | A | open (OSF) | med | yes | already a TCSS target; re-analyze individual-level |
@@ -23,9 +24,12 @@ fixed money/lottery). Reachability below is **probed by `fetch.py`, not asserted
 
 ## Priorities
 
-1. **GPS** (job A, cross-domain same-subject) and **CPC** (job A, risky-choice benchmark) — the two
-   that turn the TCSS paper from "16 aggregate targets" into "held-out individual prediction under a
-   common likelihood." Both need a manual access step (GPS registration; CPC repo confirmation).
+1. **CPC18** (job A, risky-choice benchmark) — **open, CC-BY, confirmed, 694,500 individual choices
+   with a train/test split**, directly fetchable via the TCSS Zenodo downloader. This is the fastest
+   path to turning the TCSS paper from "16 aggregate targets" into "held-out individual prediction
+   under a common likelihood" — the single biggest credibility jump. **Start here.** (choices13k is a
+   second open lottery-leg benchmark.) **GPS** adds the cross-domain same-subject dimension but needs
+   manual registration.
 2. **halevy2007 / ambiguity** and any **framing-of-games** data — existing **human projection-gaps**
    (d9, d7/d8) that pre-validate the LLM result on real people. See `../historical-ledger/`.
 3. **socialchem / ethics / moralmachine** — open now, for **encoding** the non-monetary coordinates
