@@ -1,0 +1,23 @@
+{
+  "prereg": "projection-gap v1",
+  "frozen_at": "2026-07-04T00:00:00Z",
+  "combined_sha256": "123c5f4f02c8efbff1aed838056701a05f379c1e299450c6a2ca71c7255842ca",
+  "component_sha256": {
+    "model": "c62a411c7c5b8ffc6ccccfd8097a98d3e5ab9c1dbe1f9fa96361aacc3c1b9aa6",
+    "contrasts": "db14bf04d748b0518a7ccbdcd45f4dfdbfc4262ca58556fd5e4099410fda86cb",
+    "predictions": "94dff4f1d9b1e59d2c447824e2624ccff43213e69c9539caf164f4e41153794f"
+  },
+  "counts": {
+    "contrasts": 13,
+    "real": 7,
+    "placebo": 2,
+    "dose": 4
+  },
+  "primary_hypothesis": "sign(Delta_obs)=sign(Delta_pred) for all real contrasts; scalar null Delta=0",
+  "sharp_predictions": [
+    "loss-domain d9 sign reversal (B1 vs B1L)",
+    "non-monotone PEAKED dose-response, max at level 2 (cost-gap ~1.4)",
+    "placebos Delta=0"
+  ],
+  "note": "Commit this file and tag prereg-v1 BEFORE running any LLM-panel subject."
+}

@@ -1,0 +1,181 @@
+{
+  "model": {
+    "sigma2": {
+      "6": 78.26,
+      "7": 32.28,
+      "9": 0.013
+    },
+    "T_base": 0.24,
+    "T_alpha": 2.13,
+    "T_floor": 0.5,
+    "source": "TCSS revised_manuscript_v2 (frozen, no refit)"
+  },
+  "m_unit": 1.0,
+  "n_contrasts": 13,
+  "predictions": [
+    {
+      "id": "A1.1",
+      "family": "A1_social_impact",
+      "domain": "game",
+      "coord": 6,
+      "coord_name": "Social Impact",
+      "kind": "real",
+      "p_a_lo": 0.5,
+      "p_a_hi": 0.55628,
+      "delta_pred": 0.05628,
+      "sign_pred": 1
+    },
+    {
+      "id": "A1.2",
+      "family": "A1_social_impact",
+      "domain": "game",
+      "coord": 6,
+      "coord_name": "Social Impact",
+      "kind": "real",
+      "p_a_lo": 0.5,
+      "p_a_hi": 0.55628,
+      "delta_pred": 0.05628,
+      "sign_pred": 1
+    },
+    {
+      "id": "A2.1",
+      "family": "A2_virtue_identity",
+      "domain": "game",
+      "coord": 7,
+      "coord_name": "Virtue/Identity",
+      "kind": "real",
+      "p_a_lo": 0.5,
+      "p_a_hi": 0.587107,
+      "delta_pred": 0.087107,
+      "sign_pred": 1
+    },
+    {
+      "id": "A3.1",
+      "family": "A3_epistemic",
+      "domain": "game",
+      "coord": 9,
+      "coord_name": "Epistemic Status",
+      "kind": "real",
+      "p_a_lo": 0.5,
+      "p_a_hi": 0.588613,
+      "delta_pred": 0.088613,
+      "sign_pred": 1
+    },
+    {
+      "id": "B1.1",
+      "family": "B1_epistemic_gain",
+      "domain": "lottery",
+      "coord": 9,
+      "coord_name": "Epistemic Status",
+      "kind": "real",
+      "p_a_lo": 0.5,
+      "p_a_hi": 0.588613,
+      "delta_pred": 0.088613,
+      "sign_pred": 1
+    },
+    {
+      "id": "B1L.1",
+      "family": "B1L_epistemic_loss",
+      "domain": "lottery",
+      "coord": 9,
+      "coord_name": "Epistemic Status",
+      "kind": "real",
+      "p_a_lo": 0.5,
+      "p_a_hi": 0.411387,
+      "delta_pred": -0.088613,
+      "sign_pred": -1
+    },
+    {
+      "id": "B2.1",
+      "family": "B2_social_impact",
+      "domain": "lottery",
+      "coord": 6,
+      "coord_name": "Social Impact",
+      "kind": "real",
+      "p_a_lo": 0.5,
+      "p_a_hi": 0.55628,
+      "delta_pred": 0.05628,
+      "sign_pred": 1
+    },
+    {
+      "id": "P.A1",
+      "family": "placebo",
+      "domain": "game",
+      "coord": 6,
+      "coord_name": "Social Impact",
+      "kind": "placebo",
+      "p_a_lo": 0.5,
+      "p_a_hi": 0.5,
+      "delta_pred": 0.0,
+      "sign_pred": 0
+    },
+    {
+      "id": "P.B1",
+      "family": "placebo",
+      "domain": "lottery",
+      "coord": 9,
+      "coord_name": "Epistemic Status",
+      "kind": "placebo",
+      "p_a_lo": 0.5,
+      "p_a_hi": 0.5,
+      "delta_pred": 0.0,
+      "sign_pred": 0
+    },
+    {
+      "id": "D9.1",
+      "family": "dose_d9",
+      "domain": "lottery",
+      "coord": 9,
+      "coord_name": "Epistemic Status",
+      "kind": "dose",
+      "p_a_lo": 0.5,
+      "p_a_hi": 0.741249,
+      "delta_pred": 0.241249,
+      "sign_pred": 1
+    },
+    {
+      "id": "D9.2",
+      "family": "dose_d9",
+      "domain": "lottery",
+      "coord": 9,
+      "coord_name": "Epistemic Status",
+      "kind": "dose",
+      "p_a_lo": 0.5,
+      "p_a_hi": 0.943031,
+      "delta_pred": 0.443031,
+      "sign_pred": 1
+    },
+    {
+      "id": "D9.3",
+      "family": "dose_d9",
+      "domain": "lottery",
+      "coord": 9,
+      "coord_name": "Epistemic Status",
+      "kind": "dose",
+      "p_a_lo": 0.5,
+      "p_a_hi": 0.801617,
+      "delta_pred": 0.301617,
+      "sign_pred": 1
+    },
+    {
+      "id": "D9.4",
+      "family": "dose_d9",
+      "domain": "lottery",
+      "coord": 9,
+      "coord_name": "Epistemic Status",
+      "kind": "dose",
+      "p_a_lo": 0.5,
+      "p_a_hi": 0.654313,
+      "delta_pred": 0.154313,
+      "sign_pred": 1
+    }
+  ],
+  "structural": {
+    "scalar_null": "every scalar theory (EU/Nash/Fehr-Schmidt/CPT) predicts delta=0 for all real contrasts",
+    "placebos_zero": true,
+    "loss_domain_d9_reversal": true,
+    "dose_peaked_at_level": 2,
+    "dose_is_nonmonotone": true,
+    "all_real_signs_nonzero": true
+  }
+}
