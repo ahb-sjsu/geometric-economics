@@ -1,0 +1,18 @@
+{
+  "prereg": "projection-gap v2 (fixed-temperature redesign)",
+  "frozen_at": "2026-07-04T00:00:00Z",
+  "combined_sha256": "ca84eb4cd2257c0897f2a9b4086c213148a11253e87a89845b21e63e60c70991",
+  "component_sha256": {
+    "model": "c0a12b8f9d2f6695970281c7c3f52d34eb5c2f47c0d3898bed3f8d0c3f46b706",
+    "contrasts": "db14bf04d748b0518a7ccbdcd45f4dfdbfc4262ca58556fd5e4099410fda86cb",
+    "predictions": "c016435639fc7ce2c026126e259da7d141f9e040ecd91c905718ed4403d312d2"
+  },
+  "supersedes": "prereg-v1 (cost-dependent temperature; panel-scored, record stands)",
+  "primary_hypothesis": "sign(Delta_obs)=sign(Delta_pred) for all real contrasts; scalar null Delta=0",
+  "key_changes": [
+    "fixed temperature (alpha=2.13 -> flat)",
+    "dose MONOTONE not peaked",
+    "magnitude = fitted scale"
+  ],
+  "note": "For the NEXT run (human study). Commit + tag prereg-v2 BEFORE collecting data."
+}
