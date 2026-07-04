@@ -54,18 +54,33 @@ function demographics() {
     <p></p><button class="go" id="d">Start the letters</button>`;
   document.getElementById("d").onclick = () => {
     S.demo = { age: val("age"), gender: val("gender"), numeracy: val("num") };
-    buildQueue(); next();
+    incentive();
   };
 }
 function val(id){ return document.getElementById(id).value; }
+
+function incentive() {
+  const m = S.letters.meta;
+  stage.innerHTML = `
+    <div class="subject">How the bonus works</div>
+    <p>The choices you make are <b>real</b>. When you finish, <b>one</b> of your decisions will be
+       picked at random and played out for a genuine cash bonus. Amounts are shown in
+       <b>tokens</b>; you start with ${m.endowment_tokens} tokens and each token is worth
+       $${m.exchange_rate_usd_per_token.toFixed(2)}.</p>
+    <p class="muted">Because any decision might be the one that counts, it is in your interest to
+       answer each one exactly as you truly prefer.</p>
+    <button class="go" id="i">Got it — start</button>`;
+  document.getElementById("i").onclick = () => { buildQueue(); next(); };
+}
 
 function buildQueue() {
   // between-subjects: assign one pole per contrast at the subject level
   const items = [];
   for (const c of S.letters.contrasts) {
     const pole = Math.random() < 0.5 ? "lo" : "hi";
-    const text = rnd(c.poles[pole].reframings);
-    items.push({ kind: "contrast", id: c.id, pole, text, subject: c.subject,
+    const vi = Math.floor(Math.random() * c.poles[pole].reframings.length);
+    items.push({ kind: "contrast", id: c.id, pole, variant: vi,
+                 text: c.poles[pole].reframings[vi], subject: c.subject,
                  optionA: c.optionA, optionB: c.optionB, meta: c });
   }
   shuffle(items);
@@ -97,18 +112,36 @@ function next() {
                        attn_pass: choice === it.correct, rt });
     } else {
       S.records.push({ subject: S.subject, model: "human", contrast: it.id, pole: it.pole,
-                       kind: it.meta.kind, family: it.meta.family, domain: it.meta.domain,
-                       coord: it.meta.coord, sign_pred: it.meta.sign_pred, choice, rt });
+                       variant: it.variant, kind: it.meta.kind, family: it.meta.family,
+                       domain: it.meta.domain, coord: it.meta.coord,
+                       sign_pred: it.meta.sign_pred, choice, rt });
     }
     S.i++; next();
   });
 }
 
+function resolveBonus() {
+  const m = S.letters.meta;
+  const eligible = S.records.filter(r => r.kind === "real" || r.kind === "dose");
+  if (!eligible.length) return null;
+  const pick = rnd(eligible);
+  const c = S.letters.contrasts.find(x => x.id === pick.contrast);
+  const spec = c.payoff[pick.choice];
+  let self = 0;
+  if ("self" in spec) self = spec.self;
+  else if (spec.lottery) { const L = spec.lottery; self = Math.random() < L.p ? L.hi : L.lo; }
+  const tokens = (m.endowment_tokens || 0) + self;
+  const bonusUsd = Math.max(0, tokens * (m.exchange_rate_usd_per_token || 0));
+  return { contrast: pick.contrast, choice: pick.choice, self_tokens: self,
+           total_tokens: tokens, bonus_usd: Math.round(bonusUsd * 100) / 100 };
+}
+
 function finish() {
   bar.style.width = "100%";
+  const bonus = resolveBonus();
   const payload = {
     subject: S.subject, prolific: S.prolific || null, demo: S.demo,
-    ms: Date.now() - S.started, records: S.records,
+    ms: Date.now() - S.started, bonus, records: S.records,
   };
   // JSONL: one row per record (analyze_human.py reads these directly)
   const jsonl = S.records.map(r => JSON.stringify({ ...r, prolific: S.prolific || null })).join("\n");
@@ -116,9 +149,15 @@ function finish() {
     fetch(CONFIG.SHEETS_ENDPOINT, { method: "POST", body: JSON.stringify(payload) }).catch(() => {});
   }
   const blob = new URL(URL.createObjectURL(new Blob([jsonl], { type: "application/x-ndjson" })));
+  const bonusLine = bonus
+    ? `<p>Your randomly selected decision was <b>${bonus.contrast}</b> → you chose
+        <b>${bonus.choice}</b>, worth <b>${bonus.self_tokens} tokens</b>. With your starting
+        ${S.letters.meta.endowment_tokens}, that's a bonus of <b>$${bonus.bonus_usd.toFixed(2)}</b>.</p>`
+    : "";
   stage.innerHTML = `
     <div class="subject">Thank you</div>
     <p>You're done. Your responses were recorded.</p>
+    ${bonusLine}
     <p class="muted">If the researcher asked you to submit a file, download it below.</p>
     <p><a class="go" style="text-decoration:none" href="${blob}" download="dearethicist_${S.subject}.jsonl">Download my responses</a></p>
     <details><summary class="muted">show raw</summary><textarea readonly>${jsonl}</textarea></details>`;

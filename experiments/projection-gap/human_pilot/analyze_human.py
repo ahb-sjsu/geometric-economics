@@ -151,8 +151,16 @@ def main():
     if not a.data:
         _selftest(); return
     rows, failed = load(a.data)
-    print(f"{len(rows)} records, {len(failed)} subjects excluded (attention)\n")
-    report(analyze(rows))
+    print(f"{len(rows)} records, {len(failed)} subjects excluded (attention)")
+    arms = sorted({r.get("incentive") for r in rows if "incentive" in r})
+    if len(arms) > 1:  # LLM dry-run with both incentive framings -> compare
+        for arm in arms:
+            sub = [r for r in rows if r.get("incentive") == arm]
+            print(f"\n===== incentive framing = {arm} ({len(sub)} records) =====")
+            report(analyze(sub))
+    else:
+        print()
+        report(analyze(rows))
 
 
 if __name__ == "__main__":
