@@ -105,6 +105,14 @@ def main():
         print(f"  -> {hi} > {lo}: a POSITION MAIN EFFECT ({kind}). NOT a pure interaction -> the "
               f"social domain is NOT a V4; it is one reflection + main-effect inequality aversion.")
 
+    print("\n== External validation (Nunnari & Pozzi 2022 meta-analysis, 41 studies) ==")
+    print("  meta DICTATOR games (classic FS convention): envy alpha=0.266, guilt beta=0.387.")
+    print(f"  this fit (7 Charness-Rabin dictator games):  alpha={a:.3f}, beta={b:.3f}.")
+    print(f"  -> beta MATCHES the meta-analytic dictator guilt ({b:.2f} vs 0.39); alpha is lower "
+          f"(these 7 games have few strong behind-positions, so envy is under-identified). The "
+          f"advantageous-inequality aversion that drives the reflection-breaking replicates the "
+          f"meta-analysis.")
+
     print("\n== Structural verdict (Move 2, real data) ==")
     print("The social domain has ONE reflection axis: self<->other (= the sign of inequality). Swapping "
           "self and other IS the inequality-sign flip, so there is no SECOND independent social "

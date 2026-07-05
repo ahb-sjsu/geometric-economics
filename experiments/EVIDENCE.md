@@ -78,6 +78,40 @@ mirroring value-reflection broken by loss aversion), but the **full V₄ does no
 independent axes. Social = one reflection + main-effect inequality aversion, **not a V₄**. This
 confirms the a-priori Fehr-Schmidt prediction on real data (`RESULTS_social_reflection.md`).
 
+## Independent literature corroboration (from the social-preference PDFs)
+
+Mining Fehr & Charness (JEL 2025), the Nunnari–Pozzi (2022) meta-analysis, Cooper–Kagel, and the
+Fehr lecture surfaced independent, large-sample support for two of this program's own claims — from a
+literature that never set out to test them:
+
+- **Low-dimensional structure of preferences (supports Pillar 1, low-rank Σ, in the *social* domain).**
+  Unsupervised **Dirichlet-process-means clustering** of distributional preferences independently
+  recovers **~3 robust clusters** (altruistic, inequality-averse, predominantly selfish) across Swiss
+  (N=816/916), Danish (N=3,691), German (N=2,583/2,794), and US (N=1,000) samples; the whole
+  distribution is essentially the **2 parameters (α, β)**. Heterogeneous social behavior collapses onto
+  a low-dimensional latent structure — the same shape as the low-rank metric finding, in a different
+  domain, from independent data.
+- **Reflection-symmetric social value function (corroborates the reflection + aversion motif).**
+  The Fehr–Schmidt utility is a **kinked, reference-dependent value function around the equality line**,
+  with the disadvantageous branch (envy α) weighted more than the advantageous branch (guilt β) — α ≥ β
+  is exactly a **loss-aversion-role asymmetry** in social space (Fehr & Charness §4.1.4; Offerman 2002:
+  negative emotions after unkind acts exceed positive after kind). This is the *self↔other reflection
+  broken by an aversion field* that Move 2/2b found — here confirmed as the established functional form.
+- **External check on the Move-2b fit.** Our Charness–Rabin dictator fit gives **β = 0.34**, matching
+  the Nunnari–Pozzi meta-analytic dictator **β = 0.39** (41 studies). The advantageous-inequality
+  aversion that drives the social reflection-breaking replicates the meta-analysis.
+- **Scale/encoding-invariance (supports the invariance angle).** α, β are found **invariant to income /
+  stake level** (Epper–Senn–Fehr); Fehr–Schmidt normalizes non-pecuniary terms by (n−1) and Rabin
+  kindness by the payoff range — built-in scale-invariance, echoing the encoding-invariance of Pillar 2.
+- **Cross-game transfer methodology (supports the transfer claim).** The canonical social-preference
+  test is exactly *fit parameters in one game (ultimatum), transfer to others (dictator, public goods,
+  trust, third-party punishment) with the same parameters* — the same fit-and-transfer logic as the
+  cross-domain leg, long-established in this literature.
+
+Net: the two load-bearing shapes of the thesis — **low dimensionality** and **a reflection-symmetric,
+aversion-broken value structure** — are independently present in the mainstream social-preference
+literature. That is corroboration, not proof, but it is corroboration the program did not manufacture.
+
 ## What the body of work can honestly claim — and what it needs for "Nobel-class"
 
 **Can claim now:** a low-rank, transfer-capable decision metric whose non-monetary, encoding-invariant
