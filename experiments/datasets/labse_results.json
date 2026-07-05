@@ -1,0 +1,441 @@
+{
+  "langs": [
+    "ar",
+    "es",
+    "hi",
+    "sw",
+    "zh"
+  ],
+  "rows": [
+    {
+      "id": "A1.1",
+      "coord": "societal",
+      "kind": "real",
+      "family": "A1_social_impact",
+      "langs": {
+        "ar": {
+          "axis_cos": 0.9023475646972656,
+          "fidelity": 0.937868595123291,
+          "gated": 1.0
+        },
+        "es": {
+          "axis_cos": 0.9437338709831238,
+          "fidelity": 0.924931526184082,
+          "gated": 1.0
+        },
+        "hi": {
+          "axis_cos": 0.9072433710098267,
+          "fidelity": 0.8959230184555054,
+          "gated": 1.0
+        },
+        "sw": {
+          "axis_cos": 0.9102739095687866,
+          "fidelity": 0.9108208417892456,
+          "gated": 1.0
+        },
+        "zh": {
+          "axis_cos": 0.8850146532058716,
+          "fidelity": 0.9001243114471436,
+          "gated": 1.0
+        }
+      }
+    },
+    {
+      "id": "A1.2",
+      "coord": "societal",
+      "kind": "real",
+      "family": "A1_social_impact",
+      "langs": {
+        "ar": {
+          "axis_cos": 0.8154377937316895,
+          "fidelity": 0.9138379096984863,
+          "gated": 1.0
+        },
+        "es": {
+          "axis_cos": 0.8513017892837524,
+          "fidelity": 0.9224758148193359,
+          "gated": 1.0
+        },
+        "hi": {
+          "axis_cos": 0.8423662185668945,
+          "fidelity": 0.8632148504257202,
+          "gated": 1.0
+        },
+        "sw": {
+          "axis_cos": 0.7533382177352905,
+          "fidelity": 0.8733597993850708,
+          "gated": 1.0
+        },
+        "zh": {
+          "axis_cos": 0.8224878907203674,
+          "fidelity": 0.8990796804428101,
+          "gated": 1.0
+        }
+      }
+    },
+    {
+      "id": "A2.1",
+      "coord": "identity",
+      "kind": "real",
+      "family": "A2_virtue_identity",
+      "langs": {
+        "ar": {
+          "axis_cos": 0.8162121772766113,
+          "fidelity": 0.9297671318054199,
+          "gated": 1.0
+        },
+        "es": {
+          "axis_cos": 0.8517572283744812,
+          "fidelity": 0.9357362389564514,
+          "gated": 1.0
+        },
+        "hi": {
+          "axis_cos": 0.7429717183113098,
+          "fidelity": 0.8545899391174316,
+          "gated": 1.0
+        },
+        "sw": {
+          "axis_cos": 0.7908573150634766,
+          "fidelity": 0.8937771320343018,
+          "gated": 1.0
+        },
+        "zh": {
+          "axis_cos": 0.713565468788147,
+          "fidelity": 0.9171679019927979,
+          "gated": 1.0
+        }
+      }
+    },
+    {
+      "id": "A3.1",
+      "coord": "epistemic",
+      "kind": "real",
+      "family": "A3_epistemic",
+      "langs": {
+        "ar": {
+          "axis_cos": 0.8495324850082397,
+          "fidelity": 0.9256227016448975,
+          "gated": 1.0
+        },
+        "es": {
+          "axis_cos": 0.8637275695800781,
+          "fidelity": 0.9175835847854614,
+          "gated": 1.0
+        },
+        "hi": {
+          "axis_cos": 0.7800335884094238,
+          "fidelity": 0.8433034420013428,
+          "gated": 1.0
+        },
+        "sw": {
+          "axis_cos": 0.8158758878707886,
+          "fidelity": 0.878799557685852,
+          "gated": 1.0
+        },
+        "zh": {
+          "axis_cos": 0.7290875911712646,
+          "fidelity": 0.9022470116615295,
+          "gated": 1.0
+        }
+      }
+    },
+    {
+      "id": "B1.1",
+      "coord": "epistemic",
+      "kind": "real",
+      "family": "B1_epistemic_gain",
+      "langs": {
+        "ar": {
+          "axis_cos": 0.7735280990600586,
+          "fidelity": 0.9259892106056213,
+          "gated": 1.0
+        },
+        "es": {
+          "axis_cos": 0.847870945930481,
+          "fidelity": 0.9208118915557861,
+          "gated": 1.0
+        },
+        "hi": {
+          "axis_cos": 0.7513666749000549,
+          "fidelity": 0.8964614868164062,
+          "gated": 1.0
+        },
+        "sw": {
+          "axis_cos": 0.8517436385154724,
+          "fidelity": 0.8971547484397888,
+          "gated": 1.0
+        },
+        "zh": {
+          "axis_cos": 0.6914641261100769,
+          "fidelity": 0.9059046506881714,
+          "gated": 1.0
+        }
+      }
+    },
+    {
+      "id": "B1L.1",
+      "coord": "epistemic",
+      "kind": "real",
+      "family": "B1L_epistemic_loss",
+      "langs": {
+        "ar": {
+          "axis_cos": 0.7213689088821411,
+          "fidelity": 0.9372864961624146,
+          "gated": 1.0
+        },
+        "es": {
+          "axis_cos": 0.807482123374939,
+          "fidelity": 0.9361662268638611,
+          "gated": 1.0
+        },
+        "hi": {
+          "axis_cos": 0.7825397253036499,
+          "fidelity": 0.9063864946365356,
+          "gated": 1.0
+        },
+        "sw": {
+          "axis_cos": 0.8230403661727905,
+          "fidelity": 0.9151545763015747,
+          "gated": 1.0
+        },
+        "zh": {
+          "axis_cos": 0.7458844184875488,
+          "fidelity": 0.9176905155181885,
+          "gated": 1.0
+        }
+      }
+    },
+    {
+      "id": "B2.1",
+      "coord": "societal",
+      "kind": "real",
+      "family": "B2_social_impact",
+      "langs": {
+        "ar": {
+          "axis_cos": 0.8526352643966675,
+          "fidelity": 0.9263297319412231,
+          "gated": 1.0
+        },
+        "es": {
+          "axis_cos": 0.871463418006897,
+          "fidelity": 0.9076204299926758,
+          "gated": 1.0
+        },
+        "hi": {
+          "axis_cos": 0.8842737078666687,
+          "fidelity": 0.893422544002533,
+          "gated": 1.0
+        },
+        "sw": {
+          "axis_cos": 0.7932794094085693,
+          "fidelity": 0.8880957365036011,
+          "gated": 1.0
+        },
+        "zh": {
+          "axis_cos": 0.8420350551605225,
+          "fidelity": 0.8731278777122498,
+          "gated": 1.0
+        }
+      }
+    },
+    {
+      "id": "P.A1",
+      "coord": "societal",
+      "kind": "placebo",
+      "family": "placebo",
+      "langs": {
+        "ar": {
+          "axis_cos": 0.5707601308822632,
+          "fidelity": 0.8945615291595459,
+          "gated": 1.0
+        },
+        "es": {
+          "axis_cos": 0.7210136651992798,
+          "fidelity": 0.9024656414985657,
+          "gated": 1.0
+        },
+        "hi": {
+          "axis_cos": 0.5341460108757019,
+          "fidelity": 0.8673144578933716,
+          "gated": 1.0
+        },
+        "sw": {
+          "axis_cos": 0.538925290107727,
+          "fidelity": 0.8639518022537231,
+          "gated": 1.0
+        },
+        "zh": {
+          "axis_cos": 0.41958460211753845,
+          "fidelity": 0.873314619064331,
+          "gated": 1.0
+        }
+      }
+    },
+    {
+      "id": "P.B1",
+      "coord": "epistemic",
+      "kind": "placebo",
+      "family": "placebo",
+      "langs": {
+        "ar": {
+          "axis_cos": 0.6611243486404419,
+          "fidelity": 0.9099878668785095,
+          "gated": 1.0
+        },
+        "es": {
+          "axis_cos": 0.6815215349197388,
+          "fidelity": 0.9135273098945618,
+          "gated": 1.0
+        },
+        "hi": {
+          "axis_cos": 0.6690986752510071,
+          "fidelity": 0.8899138569831848,
+          "gated": 1.0
+        },
+        "sw": {
+          "axis_cos": 0.7052544355392456,
+          "fidelity": 0.8825861215591431,
+          "gated": 1.0
+        },
+        "zh": {
+          "axis_cos": 0.5419467687606812,
+          "fidelity": 0.9021022319793701,
+          "gated": 1.0
+        }
+      }
+    },
+    {
+      "id": "D9.1",
+      "coord": "epistemic",
+      "kind": "dose",
+      "family": "dose_d9",
+      "langs": {
+        "ar": {
+          "axis_cos": 0.8277720808982849,
+          "fidelity": 0.9256304502487183,
+          "gated": 1.0
+        },
+        "es": {
+          "axis_cos": 0.7818460464477539,
+          "fidelity": 0.9382082223892212,
+          "gated": 1.0
+        },
+        "hi": {
+          "axis_cos": 0.7775509357452393,
+          "fidelity": 0.9099454283714294,
+          "gated": 1.0
+        },
+        "sw": {
+          "axis_cos": 0.7590460777282715,
+          "fidelity": 0.8820347785949707,
+          "gated": 1.0
+        },
+        "zh": {
+          "axis_cos": 0.810828447341919,
+          "fidelity": 0.8715275526046753,
+          "gated": 1.0
+        }
+      }
+    },
+    {
+      "id": "D9.2",
+      "coord": "epistemic",
+      "kind": "dose",
+      "family": "dose_d9",
+      "langs": {
+        "ar": {
+          "axis_cos": 0.8232746124267578,
+          "fidelity": 0.9249125719070435,
+          "gated": 1.0
+        },
+        "es": {
+          "axis_cos": 0.7382637858390808,
+          "fidelity": 0.936308741569519,
+          "gated": 1.0
+        },
+        "hi": {
+          "axis_cos": 0.7789173126220703,
+          "fidelity": 0.9072973132133484,
+          "gated": 1.0
+        },
+        "sw": {
+          "axis_cos": 0.7689402103424072,
+          "fidelity": 0.8806174993515015,
+          "gated": 1.0
+        },
+        "zh": {
+          "axis_cos": 0.8045558333396912,
+          "fidelity": 0.8671364784240723,
+          "gated": 1.0
+        }
+      }
+    },
+    {
+      "id": "D9.3",
+      "coord": "epistemic",
+      "kind": "dose",
+      "family": "dose_d9",
+      "langs": {
+        "ar": {
+          "axis_cos": 0.7953693866729736,
+          "fidelity": 0.92270827293396,
+          "gated": 1.0
+        },
+        "es": {
+          "axis_cos": 0.7816332578659058,
+          "fidelity": 0.9324032068252563,
+          "gated": 1.0
+        },
+        "hi": {
+          "axis_cos": 0.9128159284591675,
+          "fidelity": 0.9111844897270203,
+          "gated": 1.0
+        },
+        "sw": {
+          "axis_cos": 0.8005335927009583,
+          "fidelity": 0.8856735825538635,
+          "gated": 1.0
+        },
+        "zh": {
+          "axis_cos": 0.8013906478881836,
+          "fidelity": 0.8673343658447266,
+          "gated": 1.0
+        }
+      }
+    },
+    {
+      "id": "D9.4",
+      "coord": "epistemic",
+      "kind": "dose",
+      "family": "dose_d9",
+      "langs": {
+        "ar": {
+          "axis_cos": 0.8329858779907227,
+          "fidelity": 0.9267904758453369,
+          "gated": 1.0
+        },
+        "es": {
+          "axis_cos": 0.8257904052734375,
+          "fidelity": 0.9365262985229492,
+          "gated": 1.0
+        },
+        "hi": {
+          "axis_cos": 0.7956202030181885,
+          "fidelity": 0.9109911322593689,
+          "gated": 1.0
+        },
+        "sw": {
+          "axis_cos": 0.7633655071258545,
+          "fidelity": 0.8814456462860107,
+          "gated": 1.0
+        },
+        "zh": {
+          "axis_cos": 0.7876947522163391,
+          "fidelity": 0.8688461780548096,
+          "gated": 1.0
+        }
+      }
+    }
+  ],
+  "gate": 0.75
+}

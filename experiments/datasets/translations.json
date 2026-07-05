@@ -1,0 +1,610 @@
+{
+ "A1.1": {
+  "hi": {
+   "zh": [
+    "尊敬的伦理学家：我可以选择留下 6 美元并捐出 4 美元，或者独留全部 10 美元。这 4 美元将为社区收容所提供餐食，足以供养十几人。我该如何抉择？",
+    "尊敬的伦理学家：我可以选择留下 6 美元并捐出 4 美元，或者独留全部 10 美元。这 4 美元将捐给本地一家食品银行，我镇上的许多家庭都依赖它。我该如何抉择？",
+    "尊敬的伦理学家：我可以选择留下 6 美元并捐出 4 美元，或者留下全部 10 美元。这 4 美元能帮助有需要的邻居度过艰难的冬天。我该如何抉择？"
+   ],
+   "es": [
+    "Estimado ético: puedo quedarme con 6 dólares y donar 4, o quedarme con los 10 dólares completos. Los 4 dólares financian comidas en un refugio comunitario que alimentará a una docena de personas. ¿Qué debería hacer?",
+    "Estimado ético: puedo quedarme con 6 dólares y donar 4, o quedarme con los 10 dólares completos. Los 4 dólares irían a un banco de alimentos local del que dependen las familias de mi ciudad. ¿Qué debería hacer?",
+    "Estimado Ético: puedo quedarme con 6 dólares y dar 4, o quedarme con los 10 dólares completos. Los 4 dólares ayudan a vecinos necesitados a superar un invierno difícil. ¿Qué debería hacer?"
+   ],
+   "ar": [
+    "عزيزي الخبير الأخلاقي، يمكنني الاحتفاظ بـ 6 دولارات ومنح 4 دولارات، أو الاحتفاظ بمبلغ 10 دولارات كاملًا. تُموّل الـ 4 دولارات وجبات في ملجأ مجتمعي سيُطعم اثني عشر شخصًا. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، يمكنني الاحتفاظ بـ 6 دولارات والتبرع بـ 4 دولارات، أو الاحتفاظ بمبلغ 10 دولارات كاملًا. تذهب الـ 4 دولارات إلى بنك طعام محلي تعتمد عليه العائلات في مدينتي. ماذا يجب أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، يمكنني الاحتفاظ بـ 6 دولارات ومنح 4 دولارات، أو الاحتفاظ بجميع الـ 10 دولارات. تساعد الـ 4 دولارات الجيران المحتاجين على تجاوز شتاء قاسٍ. ماذا يجب أن أفعل؟"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, naweza kubaki na dola 6 na kutoa dola 4, au kubaki na dola 10 zote. Dola 4 hizo zinafadhili chakula katika makazi ya jamii ambayo yatalisha watu kumi na wawili. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, naweza kuhifadhi dola 6 na kutoa dola 4, au kuhifadhi dola 10 nzima. Dola 4 hizo zinaenda benki ya chakula ya ndani ambayo familia katika mji wangu zinategemea. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, naweza kubaki na dola 6 na kutoa dola 4, au kubaki na dola 10 zote. Dola 4 husaidia majirani wenye mahitaji kupita msimu mgumu wa baridi. Nifanye nini?"
+   ],
+   "hi": [
+    "प्रिय नैतिकता सलाहकार, मैं 6 डॉलर रख सकता हूँ और 4 डॉलर दे सकता हूँ, या पूरे 10 डॉलर रख सकता हूँ। ये 4 डॉलर एक सामुदायिक आश्रय में भोजन के लिए जाते हैं, जहाँ से एक दर्जन लोगों को भोजन मिलेगा। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता सलाहकार, मैं 6 डॉलर रख सकता हूँ और 4 डॉलर दे सकता हूँ, या पूरे 10 डॉलर रख सकता हूँ। ये 4 डॉलर एक स्थानीय खाद्य बैंक को जाएंगे, जिस पर मेरे शहर के परिवार निर्भर हैं। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता विशेषज्ञ, मैं 6 डॉलर रख सकता हूँ और 4 डॉलर दे सकता हूँ, या सभी 10 डॉलर रख सकता हूँ। ये 4 डॉलर जरूरतमंद पड़ोसियों को कठिन सर्दी से गुजरने में मदद करेंगे। मुझे क्या करना चाहिए?"
+   ]
+  },
+  "lo": {
+   "es": [
+    "Estimado ético: puedo quedarme con 6 dólares y darle 4 dólares a otra persona, o quedarme con los 10 dólares completos. La otra persona es un desconocido al que nunca conoceré. ¿Qué debería hacer?",
+    "Estimado ético: puedo quedarme con 6 dólares y dar 4, o quedarme con los 10 dólares completos. El destinatario es una persona anónima en una ciudad lejana, sin conexión conmigo. ¿Qué debería hacer?",
+    "Estimado ético: puedo quedarme con 6 dólares y dar 4, o quedarme con los 10 dólares completos. La otra parte es alguien con quien no tendré más contacto. ¿Qué debería hacer?"
+   ],
+   "zh": [
+    "亲爱的伦理学家：我可以选择自己留下 6 美元，给另一个人 4 美元；或者自己独留全部 10 美元。对方是我永远不会遇到的陌生人。我该如何抉择？",
+    "尊敬的伦理学家：我可以选择留下 6 美元并捐出 4 美元，或者独吞全部 10 美元。受助者是远方城市中一位与我毫无关联的匿名人士。我该如何抉择？",
+    "尊敬的伦理学家：我可以选择留下 6 美元并给对方 4 美元，或者独吞全部 10 美元。对方是我今后不会再有联系的人。我该如何抉择？"
+   ],
+   "hi": [
+    "प्रिय नैतिकता विशेषज्ञ, मैं 6 डॉलर रख सकता हूँ और 4 डॉलर किसी अन्य व्यक्ति को दे सकता हूँ, या पूरे 10 डॉलर खुद रख सकता हूँ। वह व्यक्ति एक अजनबी है जिसे मैं कभी नहीं मिलूँगा। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकताविद्, मैं 6 डॉलर रख सकता हूँ और 4 डॉलर दे सकता हूँ, या पूरे 10 डॉलर रख सकता हूँ। प्राप्तकर्ता एक दूरस्थ शहर में रहने वाला एक अज्ञात व्यक्ति है, जिसका मुझसे कोई संबंध नहीं है। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता सलाहकार, मैं 6 डॉलर रख सकता हूँ और 4 डॉलर दे सकता हूँ, या सभी 10 डॉलर रख सकता हूँ। दूसरा पक्ष वह व्यक्ति है जिससे मेरा भविष्य में कोई संपर्क नहीं होगा। मुझे क्या करना चाहिए?"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, naweza kubaki na dola 6 na kumpa dola 4 mtu mwingine, au kubaki na dola 10 nzima. Mtu huyo ni mgeni ambaye sitamwona kamwe. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, naweza kubaki na dola 6 na kutoa dola 4, au kubaki na dola 10 nzima. Mpokeaji ni mtu asiyejulikana katika mji ulio mbali, ambaye hana uhusiano nami. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, naweza kubaki na dola 6 na kutoa dola 4, au kubaki na dola 10 zote. Mhusika mwingine ni mtu ambaye sitakuwa na mawasiliano tena naye. Nifanye nini?"
+   ],
+   "ar": [
+    "عزيزي الخبير الأخلاقي، يمكنني الاحتفاظ بـ 6 دولارات ومنح 4 دولارات لشخص آخر، أو الاحتفاظ بمبلغ 10 دولارات كاملًا. الشخص الآخر غريب لن أقابله أبدًا. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، يمكنني الاحتفاظ بـ 6 دولارات ومنح 4 دولارات، أو الاحتفاظ بالمبلغ كاملًا وهو 10 دولارات. المتلقّي شخص مجهول في مدينة بعيدة ولا تربطني به أي صلة. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، يمكنني الاحتفاظ بـ 6 دولارات ومنح 4 دولارات، أو الاحتفاظ بجميع الـ 10 دولارات. الطرف الآخر شخص لن يكون لي معه أي اتصال مستقبلي. ماذا يجب أن أفعل؟"
+   ]
+  }
+ },
+ "A1.2": {
+  "hi": {
+   "zh": [
+    "尊敬的伦理学家：我有 10 美元，可以选择将其中 8 美元投入公共资金池，或者自己留下。此事是匿名的，但该资金池将用于修建一口共享水井，供整个村庄饮用多年。我该如何抉择？",
+    "亲爱的伦理学家：我可以从我拥有的 10 美元中拿出 8 美元投入公共基金，也可以选择留下这笔钱；捐款是匿名的，但这笔基金将用于修建一个公园，供整个社区使用一代人。我该如何抉择？",
+    "亲爱的伦理学家：我 10 美元中的 8 美元可以资助一家全镇都将依赖的诊所，或者留给我自己；无论哪种方式都是匿名的。我该怎么办？"
+   ],
+   "hi": [
+    "प्रिय नैतिकता विशेषज्ञ, मेरे पास 10 डॉलर हैं; मैं इनमें से 8 डॉलर एक साझा पूल में डाल सकता हूँ या उन्हें अपने पास रख सकता हूँ। यह गुमनाम है, लेकिन यह पूल एक साझा कुएं को वित्तपोषित करता है जिससे पूरा गाँव वर्षों तक पानी पीएगा। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता सलाहकार, मैं अपनी 10 डॉलर में से 8 डॉलर एक सामूहिक कोष में दे सकता हूँ या रख सकता हूँ; यह गुमनाम रहेगा, लेकिन वह कोष एक ऐसे पार्क के लिए भुगतान करेगा जिसका पूरा मोहल्ला एक पीढ़ी तक उपयोग करेगा। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता विशेषज्ञ, मेरे 10 डॉलर में से 8 डॉलर या तो उस क्लिनिक को पूरे शहर की निर्भरता के लिए वित्तपोषित कर सकते हैं, या मेरे पास रह सकते हैं; दोनों ही स्थितियों में यह गुमनाम है। मुझे क्या करना चाहिए?"
+   ],
+   "es": [
+    "Estimado ético: de 10 dólares, puedo aportar 8 dólares a un fondo común o quedármelos. Es anónimo, pero el fondo financia un pozo compartido del que beberá todo el pueblo durante años. ¿Qué debo hacer?",
+    "Estimado ético: puedo aportar 8 dólares de mis 10 dólares a un fondo común o quedármelos; la contribución es anónima, pero el fondo financiará un parque que todo el vecindario utilizará durante una generación. ¿Qué debería hacer?",
+    "Estimado ético, 8 dólares de mis 10 dólares pueden financiar una clínica de la que dependerá todo el pueblo, o quedarse conmigo; de cualquier forma, es anónimo. ¿Qué debo hacer?"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, kutoka kwa dola 10 naweza kuweka dola 8 kwenye hazina ya pamoja au kuzishikilia mimi. Ni ya siri, lakini hazina hiyo inafadhili kisima cha pamoja ambacho kijiji kizima kitakunywa maji yake kwa miaka mingi. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, Ninaweza kuchangia dola 8 kati ya dola 10 zangu kwenye mfuko au kuzishikilia; inabaki bila kutambulika, lakini mfuko huo unalipa gharama za uwanja ambao mtaa mzima utautumia kwa kizazi kizima. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, dola 8 kati ya dola 10 zangu zinaweza kufadhili zima la kliniki ambalo mji mzima utategemea, au kubaki kwangu; kwa njia yoyote ni bila kutambulika. Nifanye nini?"
+   ],
+   "ar": [
+    "عزيزي الخبير الأخلاقي، من بين 10 دولارات يمكنني وضع 8 دولارات في صندوق مشترك أو الاحتفاظ بها. الأمر مجهول الهوية، لكن الصندوق يموّل بئرًا مشتركًا سيشرب منه القرية بأكملها لسنوات. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، يمكنني المساهمة بـ 8 دولارات من أصل 10 دولارات أملكها في صندوق مشترك أو الاحتفاظ بها؛ تبقى مساهمتي مجهولة المصدر، لكن الصندوق يموّل إنشاء حديقة سيستخدمها الحيّ بأكمله لجيل كامل. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، يمكن لـ 8 دولارات من أصل 10 دولارات تملكها أن تموّل عيادة سيعتمد عليها البلدة بأكملها، أو أن تبقى معي؛ وفي كلتا الحالتين يبقى الأمر مجهول الهوية. ماذا ينبغي أن أفعل؟"
+   ]
+  },
+  "lo": {
+   "es": [
+    "Estimado ético: con 10 dólares, puedo aportar 8 dólares a un fondo común o quedármelos. Las contribuciones son anónimas y el fondo se disuelve inmediatamente después. ¿Qué debería hacer?",
+    "Estimado ético: puedo aportar 8 dólares de mis 10 dólares a un fondo o quedármelos; es anónimo y el fondo se vacía y desecha inmediatamente. ¿Qué debo hacer?",
+    "Estimado ético, 8 dólares de mis 10 dólares pueden ir a una caja común o quedarse conmigo; nadie lo ve y la caja común no sirve para ningún propósito duradero. ¿Qué debo hacer?"
+   ],
+   "zh": [
+    "亲爱的伦理学家：我有 10 美元，可以选择将其中 8 美元投入一个公共资金池，或者自己留下。捐款是匿名的，且资金池随后立即解散。我该如何抉择？",
+    "尊敬的伦理学家：我可以从我的 10 美元中拿出 8 美元投入一个资金池，也可以自己留下；这个过程是匿名的，而且资金池会立即被清空并丢弃。我该怎么办？",
+    "亲爱的伦理学家：我的 10 美元中有 8 美元可以投入彩池或留给自己；无人知晓，且该彩池并无持久意义。我该如何抉择？"
+   ],
+   "ar": [
+    "عزيزي الخبير الأخلاقي، من أصل 10 دولارات يمكنني وضع 8 دولارات في صندوق مشترك أو الاحتفاظ بها. المساهمات مجهولة ويُحلّ الصندوق فورًا بعد ذلك. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، يمكنني المساهمة بـ 8 دولارات من أصل 10 دولارات أملكها في وعاء أو الاحتفاظ بها؛ الأمر مجهول والوعاء يُفرغ ويُتخلص منه فورًا. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، يمكن أن تذهب 8 دولارات من أصل 10 دولارات أملكها إلى صندوق مشترك أو أن تبقى معي؛ لا أحد يرى ذلك والصندوق لا يخدم أي غرض دائم. ماذا يجب أن أفعل؟"
+   ],
+   "hi": [
+    "प्रिय नैतिकतावादी, $10 में से मैं $8 एक सामान्य पूल में डाल सकता हूँ या रख सकता हूँ। योगदान गुमनाम हैं और पूल तुरंत बाद भंग कर दिया जाता है। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता सलाहकार, मैं अपने 10 डॉलर में से 8 डॉलर एक सामूहिक कोष में दे सकता हूँ या रख सकता हूँ; यह गुमनाम है और कोष को तुरंत खाली करके फेंक दिया जाता है। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता सलाहकार, मेरे 10 डॉलर में से 8 डॉलर पूल में जा सकते हैं या मेरे पास रह सकते हैं; कोई इसे नहीं देखता और पूल का कोई स्थायी उद्देश्य नहीं है। मुझे क्या करना चाहिए?"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, kutoka kwa dola 10 naweza kuweka dola 8 kwenye hazina ya pamoja au kuzishikilia. Michango ni ya siri na hazina hiyo hutawanywa mara baada ya hapo. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, naweza kuchangia dola 8 kati ya dola 10 zangu kwenye chungu au kuzishikilia; ni ya siri na chungu hupunguzwa na kutupwa mara moja. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, dola 8 kati ya dola 10 zangu zinaweza kwenda kwenye mfuko wa pamoja au kubaki kwangu; hakuna anayeona na mfuko huo hauna lengo la kudumu. Nifanye nini?"
+   ]
+  }
+ },
+ "A2.1": {
+  "hi": {
+   "es": [
+    "Estimado ético: como auditor certificado cuya identidad profesional entera descansa en la integridad, puedo subdeclarar para ganar 15 dólares o declarar con honestidad por 5 dólares. Nadie lo comprobará jamás. ¿Qué debo hacer?",
+    "Estimado ético: He pasado toda mi vida siendo conocido como una persona honesta; ahora puedo declarar menos por 15 dólares o declarar honestamente por 5 dólares, y nadie lo verificará jamás. ¿Qué debo hacer?",
+    "Estimado ético, la honestidad es el núcleo de quién soy y de cómo me ven los demás; aún puedo declarar menos por 15 dólares o declarar la verdad por 5 dólares, sin ser descubierto en ningún caso. ¿Qué debo hacer?"
+   ],
+   "ar": [
+    "عزيزي الخبير الأخلاقي، بصفتي مدققًا معتمدًا ترتكز هويتي المهنية بأكملها على النزاهة، يمكنني التقليل من الإبلاغ لكسب 15 دولارًا أو الإبلاغ بصدق مقابل 5 دولارات. لن يتحقق أحد من ذلك أبدًا. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، لقد قضيت حياتي معروفاً كشخص صادق؛ والآن يمكنني الإبلاغ عن مبلغ أقل مقابل 15 دولاراً أو الإبلاغ بصدق مقابل 5 دولارات، ولن يتحقق أحد من ذلك أبداً. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، الصدق هو جوهر هويتي وكيفية نظر الآخرين إليّ؛ لا يزال بإمكاني التقليل من الإبلاغ مقابل 15 دولارًا أو الإبلاغ بصدق مقابل 5 دولارات، دون أن أُكتشف في الحالتين. ماذا يجب أن أفعل؟"
+   ],
+   "zh": [
+    "尊敬的伦理学家：作为一名认证审计师，我的整个职业身份都建立在诚信之上。我可以选择少报以获取 15 美元，也可以如实报告以获得 5 美元。没有人会核查。我该如何抉择？",
+    "尊敬的伦理学家：我一生都以诚实著称；如今，我可以少报以获取 15 美元，也可以如实申报只拿 5 美元，而且绝不会有人核查。我该如何抉择？",
+    "尊敬的伦理学家，诚实是我的立身之本，也是他人对我的看法；我仍然可以选择少报以获取 15 美元，或如实申报以获得 5 美元，且无论哪种选择都不会被发现。我该如何抉择？"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, kama mkaguzi uliyethibitishwa ambaye utambulisho wangu wote wa kitaalam unategemea uadilifu, naweza kuripoti chini ili kupata dola 15 au kuripoti kwa uaminifu ili kupata dola 5. Hakuna atakayekagua kamwe. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, nimeishi maisha yangu yote nikijulikana kama mtu mwaminifu; sasa naweza kuripoti chini kwa dola 15 au kuripoti kwa uaminifu kwa dola 5, na hakuna atakayekagua kamwe. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, uaminifu ndio kiini cha utu wangu na jinsi wengine wanavyoniona; bado naweza kuripoti chini kwa dola 15 au kuripoti kwa ukweli kwa dola 5, bila kugunduliwa katika hali yoyote. Nifanye nini?"
+   ],
+   "hi": [
+    "प्रिय नैतिकता विशेषज्ञ, एक प्रमाणित लेखा परीक्षक के रूप में, जिसकी पूरी पेशेवर पहचान ईमानदारी पर टिकी है, मैं $15 कमाने के लिए कम रिपोर्ट कर सकता हूँ या $5 के लिए ईमानदारी से रिपोर्ट कर सकता हूँ। कोई भी कभी जाँच नहीं करेगा। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता सलाहकार, मैंने अपना पूरा जीवन एक ईमानदार व्यक्ति के रूप में जाना जाने में बिताया है; अब मैं 15 डॉलर के लिए कम रिपोर्ट कर सकता हूँ या 5 डॉलर के लिए ईमानदारी से रिपोर्ट कर सकता हूँ, और कोई भी कभी जाँच नहीं करेगा। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता विशेषज्ञ, ईमानदारी मेरी पहचान का मूल आधार है और दूसरे मुझे इसी नज़रिए से देखते हैं; मैं या तो $15 के लिए कम रिपोर्ट कर सकता हूँ या $5 के लिए सच्चाई के साथ रिपोर्ट कर सकता हूँ, और दोनों ही स्थितियों में पकड़े जाने की संभावना नहीं है। मुझे क्या करना चाहिए?"
+   ]
+  },
+  "lo": {
+   "es": [
+    "Estimado ético: en una transacción única, puedo declarar menos para ganar 15 dólares o declarar con honestidad para ganar 5 dólares. Nadie lo comprobará jamás. ¿Qué debo hacer?",
+    "Estimado ético, solo esta vez puedo alterar las cifras por 15 dólares o declararlas con veracidad por 5 dólares, sin ninguna posibilidad de ser descubierto. ¿Qué debo hacer?",
+    "Estimado ético, la documentación de un desconocido me permite reclamar 15 dólares si declaro menos de lo debido o 5 dólares si declaro con honestidad; nunca será auditada. ¿Qué debo hacer?"
+   ],
+   "zh": [
+    "亲爱的伦理学家：在一次性的交易中，我可以少报以获取 15 美元，也可以如实申报获得 5 美元。没有人会核查。我该怎么办？",
+    "亲爱的伦理学家，就这一次，我可以选择虚报数字获得 15 美元，或者如实申报获得 5 美元，且完全不会被发现。我该怎么办？",
+    "亲爱的伦理学家，一份陌生人的文件让我可以通过少报领取 15 美元，或通过如实申报领取 5 美元；这份文件永远不会被审计。我该怎么办？"
+   ],
+   "ar": [
+    "عزيزي الخبير الأخلاقي، في معاملة لمرة واحدة يمكنني فيها التقليل من الإبلاغ لربح 15 دولارًا أو الإبلاغ بصدق مقابل 5 دولارات. لن يتحقق أحد من الأمر أبدًا. ماذا يجب أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، لمرة واحدة فقط، يمكنني تزييف الأرقام مقابل 15 دولارًا أو ذكرها بصدق مقابل 5 دولارات، مع انعدام فرصة الاكتشاف تمامًا. ماذا يجب أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، تتيح لي أوراق شخص غريب المطالبة بمبلغ 15 دولارًا عبر التقليل من الإبلاغ، أو بمبلغ 5 دولارات عبر الإبلاغ بصدق؛ ولن يتم تدقيقها أبدًا. ماذا ينبغي أن أفعل؟"
+   ],
+   "hi": [
+    "प्रिय नैतिकता सलाहकार, एक बार की लेन-देन में मैं $15 प्राप्त करने के लिए कम रिपोर्ट कर सकता हूँ या ईमानदारी से रिपोर्ट करके $5 प्राप्त कर सकता हूँ। कोई भी कभी जाँच नहीं करेगा। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता सलाहकार, केवल इस एक बार के लिए मैं $15 के लिए आंकड़ों में हेरफेर कर सकता हूँ या $5 के लिए उन्हें सच्चाई से बता सकता हूँ, पकड़े जाने की शून्य संभावना के साथ। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता सलाहकार, एक अजनबी के कागज़ात मुझे या तो कम रिपोर्ट करके 15 डॉलर दावा करने या ईमानदारी से रिपोर्ट करके 5 डॉलर दावा करने की अनुमति देते हैं; इसकी कभी जांच नहीं होगी। मुझे क्या करना चाहिए?"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, katika shughuli ya mara moja naweza kuripoti chini ili kupata dola 15 au kuripoti kwa uaminifu ili kupata dola 5. Hakuna atakayekagua kamwe. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, kwa mara hii tu ninaweza kubadilisha namba ili kupata dola 15 au kuzisema kwa ukweli ili kupata dola 5, bila uwezekano wowote wa kugundulika. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, karatasi za mtu asiyejulikana zinaniruhusu kudai dola 15 kwa kuripoti chini au dola 5 kwa kuripoti kwa uaminifu; hazitakaguliwa kamwe. Nifanye nini?"
+   ]
+  }
+ },
+ "A3.1": {
+  "hi": {
+   "ar": [
+    "عزيزي الخبير الأخلاقي، يمكنني إرسال 10 دولارات (التي تتضاعف لتصبح 30 دولارًا) على أمل أن يعيد شريكي نصفها، أو يمكنني الاحتفاظ بها. تُظهر سجلات موثقة ومُراجَعة أن الشريك يعيد النصف في كل مرة. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، إرسال 10 دولارات يضاعفها إلى 30 دولارًا إذا شارك شريكي العائد؛ بينما الاحتفاظ بها آمن. تُظهر السجلات المستقلة والمؤكدة أن هذا الشريك كان دائمًا يعيد النصف. ماذا يجب أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، يمكنني المخاطرة بمبلغ 10 دولارات (ليصبح 30 دولارًا) على أن يعيد الشريك نصفه، أو يمكنني الاحتفاظ به. وقد صدّق طرف ثالث موثوق به أن الشريك يردّ المبلغ في كل مرة. ماذا يجب أن أفعل؟"
+   ],
+   "es": [
+    "Estimado ético: puedo enviar 10 dólares (que se triplican a 30 dólares) con la esperanza de que mi pareja devuelva la mitad, o quedármelos. Un registro verificado y auditado muestra que la pareja devuelve la mitad cada vez. ¿Qué debo hacer?",
+    "Estimado ético: enviar 10 dólares los triplica a 30 dólares si mi pareja devuelve la mitad; quedármelos es seguro. Registros independientes y confirmados muestran que esta pareja siempre ha devuelto la mitad. ¿Qué debo hacer?",
+    "Estimado ético: puedo arriesgar 10 dólares (que se triplicarían a 30 dólares) a que un socio devuelva la mitad, o quedármelos. Un tercero de confianza ha certificado que el socio corresponde cada vez. ¿Qué debería hacer?"
+   ],
+   "zh": [
+    "亲爱的伦理学家：我可以寄出 10 美元（这将增至 30 美元），并期望我的伴侣返还一半，或者选择保留这笔钱。一份经过验证和审计的记录显示，该伴侣每次都会返还一半。我该如何抉择？",
+    "亲爱的伦理学家：如果我寄出 10 美元，而我的伴侣回赠一半，这笔钱就会变成 30 美元；自己留下则很安全。独立且经证实的记录显示，这位伴侣过去总是回赠一半。我该怎么办？",
+    "尊敬的伦理学家：我可以选择冒 10 美元的风险（若成功则增至 30 美元），前提是合作伙伴返还一半；或者选择保留这 10 美元。一位可信的第三方已证实，该合作伙伴每次都会予以回报。我该如何抉择？"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, ninaweza kutuma dola 10 (ambayo huongezeka mara tatu hadi dola 30) nikitarajia mwenzi wangu arudishe nusu, au nishikilie. Rekodi iliyothibitishwa na kukaguliwa inaonyesha kuwa mwenzi wangu hurudisha nusu kila wakati. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, kutuma dola 10 kunazidisha kiasi hicho hadi dola 30 ikiwa mshirika wangu atashiriki tena; kuweka pesa hizo ni salama. Rekodi huru zilizothibitishwa zinaonyesha kuwa mshirika huyu amekuwa akirudisha nusu kila wakati. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, naweza kuchukua hatari ya $10 (ikiwa itakuwa $30) ikiwa mshirika atarudisha nusu, au kuitunza. Mtu wa tatu aliyeaminika amethibitisha kuwa mshirika hurejesha kila wakati. Nifanye nini?"
+   ],
+   "hi": [
+    "प्रिय नैतिकता विशेषज्ञ, मैं 10 डॉलर भेज सकता हूँ (जो 30 डॉलर हो जाएंगे) इस उम्मीद में कि मेरा साझेदार आधा लौटा देगा, या इसे अपने पास रख सकता हूँ। एक सत्यापित और ऑडिट किया गया रिकॉर्ड दर्शाता है कि साझेदार हर बार आधा राशि लौटाता है। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता सलाहकार, 10 डॉलर भेजने पर यदि मेरा साथी वापस साझा करता है तो राशि तिगुनी होकर 30 डॉलर हो जाती है; इसे रख लेना सुरक्षित है। स्वतंत्र, पुष्ट रिकॉर्ड दर्शाते हैं कि यह साथी हमेशा आधा वापस लौटाता रहा है। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता विशेषज्ञ, मैं किसी साझेदार के आधे हिस्से को वापस लौटाने पर $10 का जोखिम उठा सकता हूँ (जो तिगुने होकर $30 बन जाएंगे), या इसे अपने पास रख सकता हूँ। एक विश्वसनीय तीसरे पक्ष ने प्रमाणित किया है कि साझेदार हर बार बदले में लौटाता है। मुझे क्या करना चाहिए?"
+   ]
+  },
+  "lo": {
+   "es": [
+    "Estimado ético: puedo enviar 10 dólares (que se triplican a 30 dólares) con la esperanza de que mi pareja devuelva la mitad, o quedármelos. He escuchado un rumor no verificado de que a veces la pareja no devuelve nada. ¿Qué debería hacer?",
+    "Estimado ético: enviar 10 dólares los triplica a 30 dólares si mi socio devuelve su parte; quedármelos es seguro. Los rumores dicen que este socio no es de fiar, pero quién sabe. ¿Qué debo hacer?",
+    "Estimado ético: puedo arriesgar 10 dólares (que se triplicarían a 30) a que un socio devuelva la mitad, o quedármelos. Solo tengo rumores sobre si lo hará. ¿Qué debería hacer?"
+   ],
+   "hi": [
+    "प्रिय नैतिकता सलाहकार, मैं 10 डॉलर भेज सकता हूँ (जो तिगुने होकर 30 डॉलर बन जाएंगे) इस उम्मीद में कि मेरा साझेदार आधा लौटा देगा, या इसे अपने पास रख सकता हूँ। मैंने एक अपुष्ट अफवाह सुनी है कि साझेदार कभी-कभी कुछ भी नहीं लौटाता। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता सलाहकार, 10 डॉलर भेजने से राशि 30 डॉलर हो जाती है यदि मेरा साझेदार वापस साझा करता है; इसे रखना सुरक्षित है। अफवाहों के अनुसार यह साझेदार अविश्वसनीय है, लेकिन कौन जानता है। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता सलाहकार, मैं $10 का जोखिम उठा सकता हूँ (जो $30 तक तिगुने हो जाएंगे) यदि मेरा साझेदार आधा वापस लौटाता है, या फिर इसे अपने पास रख सकता हूँ। मेरे पास केवल अफवाहें हैं कि वे ऐसा करेंगे या नहीं। मुझे क्या करना चाहिए?"
+   ],
+   "zh": [
+    "亲爱的伦理学家：我可以寄出 10 美元（这将变成 30 美元），并期望我的伴侣返还一半，或者我也可以自己留下这笔钱。我听到一个未经证实的传言，说这位伴侣有时会一分不还。我该怎么办？",
+    "亲爱的伦理学家：如果我寄出 10 美元，而我的合作伙伴回赠，这笔钱就会变成 30 美元；自己留下则很安全。有传言说这位合作伙伴不可靠，但谁又说得准呢？我该怎么办？",
+    "尊敬的伦理学家：我可以冒着损失 10 美元的风险（若成功则增至 30 美元），前提是合作伙伴返还一半；或者我也可以选择保留这 10 美元。我目前仅有关于对方是否会返还的传闻。我该如何抉择？"
+   ],
+   "ar": [
+    "عزيزي الخبير الأخلاقي، يمكنني إرسال 10 دولارات (التي تتضاعف لتصبح 30 دولارًا) على أمل أن يعيد شريكي نصفها، أو أن أحتفظ بها. لقد سمعت إشاعة غير مؤكّدة تفيد بأن الشريك قد لا يعيد شيئًا في بعض الأحيان. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، إرسال 10 دولارات يضاعفها إلى 30 دولارًا إذا شارك شريكي العائد؛ والاحتفاظ بها آمن. تقول الشائعات إن هذا الشريك غير موثوق به، لكن من يدري. ماذا يجب أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، يمكنني المخاطرة بمبلغ 10 دولارات (ليصبح 30 دولارًا) على أن يعيد الشريك النصف، أو أن أحتفظ به. وكل ما لدي هو شائعات حول ما إذا كان سيفعل ذلك. ماذا يجب أن أفعل؟"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, ninaweza kutuma dola 10 (ambazo huongezeka mara tatu na kuwa dola 30) nikitarajia mwenzi wangu arudishe nusu, au kuzishikilia. Nimesikia uvumi usiothibitishwa kwamba mwenzi wangu wakati mwingine hurudisha chochote. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, kutuma dola 10 kunazidisha kiasi hicho hadi dola 30 ikiwa mshirika wangu atashirikisha tena; kuweka pesa hizo ni salama. Habari zinazosambaa zinasema mshirika huyu haaminiki, lakini nani anajua. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, naweza kuchukua hatari ya $10 (ikiwa itakuwa $30) ikiwa mshirika atarudisha nusu, au kuitunza. Kila ninachokijua ni uvumi kuhusu kama atafanya hivyo. Nifanye nini?"
+   ]
+  }
+ },
+ "B1.1": {
+  "hi": {
+   "ar": [
+    "أيها الأخلاقي، يمكنني الحصول على 40 دولارًا مؤكدًا، أو خوض فرصة بنسبة 50% للحصول على 100 دولار (وإلا فلا شيء). لكن نسبة الـ\"50%\" هذه مجرد تخمين غامض صادر عن مصدر غير موثوق؛ فالاحتمالات الحقيقية مجهولة. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، هل أختار 40 دولارًا مؤكدًا أم مقامرة يسميها البائع \"50-50\" مقابل 100 دولار (وإلا 0 دولار)، رغم أنه لا يمكن لأحد التحقق فعليًا من تلك الاحتمالات؟ ماذا يجب أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، هل أختار 40 دولارًا مضمونة أم أرهن بـ 100 دولار (وإلا صفر) حيث أن نسبة \"50%\" مجرد إشاعة غير مؤكدة؛ فالاحتمال الحقيقي قد يكون أي شيء. ماذا ينبغي أن أفعل؟"
+   ],
+   "zh": [
+    "亲爱的伦理学家，我可以选择稳拿 40 美元，或者有 50% 的机会获得 100 美元（否则为 0 美元）。但这个\"50%\"只是来自不可靠来源的模糊猜测，真实概率未知。我该怎么办？",
+    "亲爱的伦理学家，我面临一个选择：是稳妥地获得 40 美元，还是花 100 美元参与卖家所称的\"50-50\"赌博（否则一无所获），尽管实际上无人能核实这些概率。我该怎么办？",
+    "亲爱的伦理学家：是选择稳拿 40 美元，还是赌一把 100 美元（否则为 0 美元），而所谓的\"50%\"概率只是未经证实的传闻，真实概率可能为任何数值？我该如何抉择？"
+   ],
+   "es": [
+    "Estimado ético: puedo aceptar 40 dólares seguros o una probabilidad del 50 % de obtener 100 dólares (de lo contrario, 0 dólares). Pero ese \"50 %\" es una estimación vaga procedente de una fuente poco fiable; las probabilidades reales son desconocidas. ¿Qué debería hacer?",
+    "Estimado ético: ¿debería aceptar 40 dólares seguros o arriesgarme con una apuesta que el vendedor califica como \"50-50\" por 100 dólares (de lo contrario, 0 dólares), aunque nadie puede verificar realmente esas probabilidades? ¿Qué debería hacer?",
+    "Estimado Éticista: ¿una garantía de 40 dólares o una apuesta por 100 dólares (de lo contrario, 0 dólares) cuyo \"50 %\" es un rumor no confirmado; la probabilidad real podría ser cualquier cosa? ¿Qué debería hacer?"
+   ],
+   "hi": [
+    "प्रिय नैतिकताविद्, मैं या तो निश्चित रूप से 40 डॉलर ले सकता हूँ, या 100 डॉलर मिलने का 50% मौका (अन्यथा 0 डॉलर)। परंतु यह '50%' एक अविश्वसनीय स्रोत से लिया गया एक अस्पष्ट अनुमान है; वास्तविक संभावनाएँ अज्ञात हैं। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता विशेषज्ञ, क्या मुझे निश्चित $40 लेने चाहिए या विक्रेता के '50-50' कहलाने वाले जुए पर $100 (अन्यथा $0) दांव लगाना चाहिए, हालांकि वास्तव में कोई भी उन संभावनाओं की पुष्टि नहीं कर सकता? मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता विशेषज्ञ, क्या मुझे गारंटीकृत 40 डॉलर लेने चाहिए या 100 डॉलर (अन्यथा 0 डॉलर) पर दांव लगाना चाहिए, जिसकी '50%' संभावना केवल एक अपुष्ट अफवाह है; वास्तविक संभावना कुछ भी हो सकती है। मुझे क्या करना चाहिए?"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, naweza kuchukua dola 40 zilizohakikishwa, au nafasi ya asilimia 50 ya kupata dola 100 (vinginevyo dola 0). Lakini 'asilimia 50' hiyo ni makadirio yasiyo wazi kutoka kwa chanzo kisichoaminika; uwezekano halisi haujulikani. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, je, ni bora kuchukua dola 40 au kucheza kamari ambayo muuzaji anaiita '50-50' kwa dola 100 (vinginevyo dola 0), ingawa hakuna anayeweza kuthibitisha nafasi hizo? Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, dola 40 zilizohakikishwa au kubashiri kupata dola 100 (vinginevyo dola 0) ambapo 'asilimia 50' ni uvumi usiothibitishwa; uwezekano halisi unaweza kuwa chochote. Nifanye nini?"
+   ]
+  },
+  "lo": {
+   "es": [
+    "Estimado ético: puedo aceptar 40 dólares seguros o una probabilidad del 50 % de obtener 100 dólares (de lo contrario, 0 dólares). El 50 % es una probabilidad conocida con precisión y verificada por máquina. ¿Qué debería hacer?",
+    "Estimado ético: ¿debo aceptar con seguridad 40 dólares o arriesgarme con una apuesta de 100 dólares (de lo contrario, 0 dólares), cuyas probabilidades son exactamente, y de manera verificable, de uno entre dos? ¿Qué debería hacer?",
+    "Estimado Ético, ¿un monto garantizado de 40 dólares o una apuesta por 100 dólares (de lo contrario, 0 dólares) con una probabilidad que ha sido medida y certificada en un 50 %? ¿Qué debería hacer?"
+   ],
+   "zh": [
+    "亲爱的伦理学家：我可以选择稳拿 40 美元，或者有 50% 的机会获得 100 美元（否则为 0 美元）。这 50% 的概率是精确已知且经机器验证的。我该如何选择？",
+    "亲爱的伦理学家，我面临两个选择：稳拿 40 美元，或者赌一把：有确切且可验证的 50% 概率赢得 100 美元，否则一无所获。我该如何抉择？",
+    "亲爱的伦理学家，是选择保证获得 40 美元，还是赌一把有 50% 概率获得 100 美元（否则为 0 美元），且该概率已经过测量和认证？我该怎么办？"
+   ],
+   "ar": [
+    "أيها الأخلاقي العزيز، يمكنني الحصول على 40 دولارًا مؤكدة، أو خوض فرصة بنسبة 50% للحصول على 100 دولار (وإلا 0 دولار). النسبة 50% هي احتمال معروف بدقة ومُتحقَّق منه آليًا. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، هل أختار 40 دولارًا مؤكّدة أم مقامرة بـ 100 دولار (وإلا 0 دولار) تكون احتمالاتها بالضبط، وبشكل قابل للتحقّق، واحدًا من اثنين؟ ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، هل أختار 40 دولارًا مضمونة أم أرهن بـ 100 دولار (وإلا 0 دولار) باحتمال تم قياسه واعتماده بنسبة 50%؟ ماذا يجب أن أفعل؟"
+   ],
+   "hi": [
+    "प्रिय नैतिकताविद्, मैं या तो निश्चित रूप से 40 डॉलर ले सकता हूँ, या फिर 50% संभावना के साथ 100 डॉलर (अन्यथा 0 डॉलर)। यह 50% संभावना सटीक रूप से ज्ञात और मशीन द्वारा सत्यापित है। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता विशेषज्ञ, निश्चित रूप से 40 डॉलर या 100 डॉलर की शर्त (अन्यथा 0 डॉलर), जिसकी संभावनाएँ बिल्कुल और सत्यापनीय रूप से एक-दो हैं। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकताविद्, मुझे गारंटीकृत 40 डॉलर मिलें या फिर 50% प्रायिकता के साथ 100 डॉलर (अन्यथा 0 डॉलर) पर दांव लगाऊं, जिसकी माप और प्रमाणन किया गया है? मुझे क्या करना चाहिए?"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, naweza kuchukua dola 40 hakika, au nafasi ya asilimia 50 ya kupata dola 100 (vinginevyo dola 0). Asilimia 50 ni uwezekano unaojulikana kwa usahihi na umeidhinishwa na mashine. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, je, ni bora kuchukua dola 40 au kucheza kamari ya dola 100 (vinginevyo dola 0) ambayo nafasi zake ni hasa, na zinaweza kuthibitishwa kuwa moja kati ya mbili. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, dola 40 zilizohakikishwa au kubashiri kupata dola 100 (vinginevyo dola 0) kwa uwezekano uliopimwa na kuthibitishwa kuwa asilimia 50. Nifanye nini?"
+   ]
+  }
+ },
+ "B1L.1": {
+  "hi": {
+   "es": [
+    "Estimado ético: debo asumir una pérdida segura de 40 dólares o una probabilidad del 50 % de perder 100 dólares (de lo contrario, 0 dólares). Pero ese \"50 %\" es una estimación vaga procedente de una fuente poco fiable; las probabilidades reales son desconocidas. ¿Qué debería hacer?",
+    "Estimado ético, ¿una pérdida segura de 40 dólares o una apuesta que pierde 100 dólares (o nada) cuya probabilidad \"50-50\" nadie puede verificar? ¿Qué debo hacer?",
+    "Estimado ético: pierda 40 dólares con certeza o arriésguese a perder 100 dólares (o bien 0), cuyo \"50 %\" es un rumor no confirmado; las probabilidades reales podrían ser cualquiera. ¿Qué debo hacer?"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, ninapaswa kuchagua kati ya kupoteza hakika dola 40, au nafasi ya asilimia 50 ya kupoteza dola 100 (vinginevyo dola 0). Lakini 'asilimia 50' hiyo ni makadirio yasiyo wazi kutoka kwa chanzo kisichoaminika; uwezekano halisi haujulikani. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, je, ni upotezaji fulani wa dola 40, au kamari inayopoteza dola 100 (vinginevyo hakuna kitu) ambayo '50-50' yake hawezi kuthibitishwa na mtu yeyote? Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, upoteze dola 40 kwa uhakika, au uweke hatarini kupoteza dola 100 (vinginevyo dola 0) ambapo 'asilimia 50' ni uvumi usiothibitishwa; nafasi halisi zinaweza kuwa chochote. Nifanye nini?"
+   ],
+   "zh": [
+    "亲爱的伦理学家：我面临两个选择：一是确定损失 40 美元，二是有 50% 的概率损失 100 美元（否则损失 0 美元）。但这个\"50%\"只是来自不可靠来源的模糊猜测，真实概率未知。我该如何抉择？",
+    "亲爱的伦理学家：是接受确定的 40 美元损失，还是参与一场可能损失 100 美元（否则无损失）的赌博，而其\"50-50\"的概率无人能够核实？我该如何抉择？",
+    "亲爱的伦理学家：是确定损失 40 美元，还是冒险损失 100 美元（否则为 0 美元），而所谓的\"50%\"只是未经证实的传言；实际概率可能千差万别。我该怎么办？"
+   ],
+   "hi": [
+    "प्रिय नैतिकतावादी, मुझे या तो 40 डॉलर का निश्चित नुकसान उठाना है, या 100 डॉलर खोने का 50% जोखिम लेना है (अन्यथा 0 डॉलर)। लेकिन यह '50%' एक अविश्वसनीय स्रोत से लिया गया एक अस्पष्ट अनुमान है; वास्तविक संभावनाएं अज्ञात हैं। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता विशेषज्ञ, एक निश्चित 40 डॉलर का नुकसान, या एक जुआ जिसमें 100 डॉलर का नुकसान होता है (अन्यथा कुछ नहीं), जिसकी '50-50' संभावना की कोई पुष्टि नहीं कर सकता। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकतावादी, निश्चित रूप से 40 डॉलर खो दें, या 100 डॉलर खोने का जोखिम उठाएं (अन्यथा 0 डॉलर), जिसकी '50%' संभावना एक अपुष्ट अफवाह है; वास्तविक संभावनाएं कुछ भी हो सकती हैं। मुझे क्या करना चाहिए?"
+   ],
+   "ar": [
+    "أيها الأخلاقي، يجب أن أختار بين خسارة مؤكدة قدرها 40 دولارًا، أو فرصة بنسبة 50% لخسارة 100 دولار (وإلا فلا خسارة). لكن نسبة الـ50% هذه مجرد تخمين غامض من مصدر غير موثوق؛ فالاحتمالات الحقيقية مجهولة. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، هل أختار خسارة مؤكدة قدرها 40 دولارًا، أم مقامرة تخسر 100 دولار (وإلا فلا شيء) ذات احتمالية \"50-50\" لا يستطيع أحد التحقق منها؟ ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، أخسر 40 دولارًا بشكل مؤكد، أم أخاطر بخسارة 100 دولار (وإلا فلا شيء) حيث أن نسبة \"50%\" مجرد إشاعة غير مؤكدة؛ فالاحتمالات الحقيقية قد تكون أي شيء. ماذا يجب أن أفعل؟"
+   ]
+  },
+  "lo": {
+   "es": [
+    "Estimado ético: debo aceptar una pérdida segura de 40 dólares o asumir un 50 % de probabilidad de perder 100 dólares (de lo contrario, 0 dólares). El 50 % es una probabilidad conocida con precisión y verificada por máquina. ¿Qué debo hacer?",
+    "Estimado Éticista: ¿una pérdida segura de 40 dólares o una apuesta que pierde 100 dólares (o nada) con unas probabilidades exactamente verificables de uno entre dos? ¿Qué debería hacer?",
+    "Estimado Étic@: pierda 40 dólares con certeza, o arriésguese a perder 100 dólares (o bien 0 dólares) con una probabilidad medida y certificada del 50 %. ¿Qué debo hacer?"
+   ],
+   "zh": [
+    "亲爱的伦理学家：我面临两个选择：一是确定损失 40 美元，二是有 50% 的概率损失 100 美元（否则损失 0 美元）。这 50% 的概率是精确已知且经机器验证的。我该如何抉择？",
+    "亲爱的伦理学家，是接受确定的 40 美元损失，还是参与一场以确切且可验证的二分之一概率输掉 100 美元（否则不输）的赌博？我该如何抉择？",
+    "亲爱的伦理学家：是确定损失 40 美元，还是以经测量并认证为 50% 的概率冒险损失 100 美元（否则损失 0 美元）？我该如何抉择？"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, Lazima nichague kati ya kupoteza hakika $40, au nafasi ya asilimia 50 ya kupoteza $100 (vinginevyo $0). Asilimia 50 ni uwezekano uliojulikana kwa usahihi na kuthibitishwa na mashine. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, upotezaji fulani wa dola 40, au kamari inayopoteza dola 100 (vinginevyo hakuna kitu) kwa uwezekano halisi, unaothibitishwa wa moja kati ya mbili. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, upoteze dola 40 kwa uhakika, au uweke hatarini kupoteza dola 100 (vinginevyo dola 0) kwa uwezekano uliopimwa na kuthibitishwa kuwa asilimia 50. Nifanye nini?"
+   ],
+   "ar": [
+    "أيها الأخلاقي، يجب أن أخسر خسارة مؤكدة قدرها 40 دولارًا، أو أن أواجه فرصة بنسبة 50% لخسارة 100 دولار (وإلا فلا خسارة). النسبة 50% هي احتمال معروف بدقة ومُتحقَّق منه آليًا. ماذا يجب أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، هل أخسر مبلغ 40 دولارًا مؤكدًا، أم أراهن بخسارة 100 دولار (وإلا فلا شيء) باحتمالات قابلة للتحقق تمامًا تبلغ واحدًا إلى اثنين؟ ماذا يجب أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، أخسر 40 دولارًا بشكل مؤكد، أم أخاطر بخسارة 100 دولار (وإلا فلا خسارة) باحتمال تم قياسه واعتماده بنسبة 50%؟ ماذا ينبغي أن أفعل؟"
+   ],
+   "hi": [
+    "प्रिय नैतिकतावादी, मुझे या तो 40 डॉलर का निश्चित नुकसान उठाना है, या 100 डॉलर खोने का 50% जोखिम लेना है (अन्यथा 0 डॉलर)। यह 50% संभावना सटीक रूप से ज्ञात और मशीन द्वारा सत्यापित है। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकतावादी, एक निश्चित 40 डॉलर का नुकसान, या एक जुआ जिसमें ठीक-ठीक, सत्यापनीय एक-में-दो की संभावना पर 100 डॉलर का नुकसान होता है (अन्यथा कुछ नहीं)। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता विशेषज्ञ, निश्चित रूप से 40 डॉलर खोएं, या 50% की मापी गई और प्रमाणित प्रायिकता के साथ 100 डॉलर खोने का जोखिम उठाएं (अन्यथा 0 डॉलर)। मुझे क्या करना चाहिए?"
+   ]
+  }
+ },
+ "B2.1": {
+  "hi": {
+   "ar": [
+    "أيها الخبير الأخلاقي، يمكنني الحصول على 30 دولارًا مؤكدًا، أو فرصة بنسبة 40% للحصول على 80 دولارًا (وإلا فلا شيء). مهما أحصل عليه سيتم تقاسمه مع مجتمعي بأكمله. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، هل أختار ضمان 30 دولارًا أم فرصة بنسبة 40% للحصول على 80 دولارًا (وإلا صفرًا)؟ أيًا كان المبلغ الذي أحصل عليه، سيتم تجميعه لصالح حيّ بأكمله. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، بالتأكيد 30 دولارًا أو مقامرة بنسبة 40% للحصول على 80 دولارًا (وإلا صفر دولار)، وتُستخدم العائدات لدعم الجميع في مجتمعي. ماذا يجب أن أفعل؟"
+   ],
+   "es": [
+    "Estimado ético: puedo aceptar 30 dólares seguros o una probabilidad del 40 % de obtener 80 dólares (de lo contrario, 0 dólares). Todo lo que reciba se compartirá con toda mi comunidad. ¿Qué debería hacer?",
+    "Estimado Étic@, ¿un pago garantizado de 30 dólares o una probabilidad del 40 % de obtener 80 dólares (de lo contrario, 0 dólares)? Todo lo que obtenga se destinará a un fondo común para todo mi vecindario. ¿Qué debería hacer?",
+    "Estimado ético, ¿debería aceptar 30 dólares seguros o arriesgarme con un 40 % de probabilidad de ganar 80 dólares (y 0 dólares en caso contrario), sabiendo que las ganancias beneficiarán a toda mi comunidad? ¿Qué debería hacer?"
+   ],
+   "zh": [
+    "亲爱的伦理学家：我可以选择稳拿 30 美元，或者有 40% 的概率获得 80 美元（否则为 0 美元）。无论我得到多少，都会与我的整个社区分享。我该如何选择？",
+    "亲爱的伦理学家：是选择保证获得 30 美元，还是选择有 40% 的概率获得 80 美元（否则为 0 美元）？无论我得到多少，都将汇入整个社区的公共资金中。我该如何选择？",
+    "亲爱的伦理学家，我面临两个选择：要么稳拿 30 美元，要么以 40% 的概率赢得 80 美元（否则一无所获），所得款项将用于支持我所在社区的每一个人。我该如何抉择？"
+   ],
+   "hi": [
+    "प्रिय नैतिकताविद्, मैं या तो निश्चित रूप से 30 डॉलर ले सकता हूँ, या 80 डॉलर मिलने की 40% संभावना चुन सकता हूँ (अन्यथा 0 डॉलर)। जो भी राशि मुझे मिलती है, वह मेरे पूरे समुदाय के साथ साझा की जाती है। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता विशेषज्ञ, मुझे गारंटीकृत 30 डॉलर मिलें या 80 डॉलर मिलने की 40% संभावना (अन्यथा 0 डॉलर); जो भी राशि मुझे मिलती है, वह मेरे पूरे पड़ोस के लिए एकत्र की जाती है। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता विशेषज्ञ, निश्चित $30 या $80 पर 40% जोखिम (अन्यथा $0), और इससे प्राप्त राशि मेरे समुदाय के सभी लोगों का समर्थन करती है। मुझे क्या करना चाहिए?"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, naweza kuchukua dola 30 hakika, au nafasi ya asilimia 40 ya kupata dola 80 (vinginevyo dola 0). Kile nitachokipata kitagawanywa na jamii yangu yote. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, dola 30 zilizohakikishwa au nafasi ya asilimia 40 ya kupata dola 80 (vinginevyo dola 0); chochote nitakachopata kitawekwa pamoja kwa ajili ya mtaa wangu wote. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, je, ni bora kuchagua dola 30 au kubahatisha asilimia 40 kwa dola 80 (vinginevyo dola 0), na mapato hayo kusaidia kila mtu katika jamii yangu? Nifanye nini?"
+   ]
+  },
+  "lo": {
+   "ar": [
+    "أيها الخبير الأخلاقي، يمكنني الحصول على 30 دولارًا مؤكدًا، أو فرصة بنسبة 40% للحصول على 80 دولارًا (وإلا 0 دولار). العائد يؤثر عليّ أنا فقط. ماذا ينبغي أن أفعل؟",
+    "أيها الأخلاقي، هل أختار 30 دولارًا مضمونة أم فرصة بنسبة 40% للحصول على 80 دولارًا (وإلا فلا شيء)؟ مهما حدث فلن يؤثر ذلك على أحد سواي. ماذا ينبغي أن أفعل؟",
+    "عزيزي الخبير الأخلاقي، بالتأكيد 30 دولارًا أو مقامرة بنسبة 40% بمبلغ 80 دولارًا (وإلا 0 دولار)، لحسابي الخاص وحده. ماذا يجب أن أفعل؟"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, naweza kuchukua dola 30 hakika, au nafasi ya asilimia 40 ya kupata dola 80 (vinginevyo dola 0). Faida hiyo inaniathiri mimi pekee. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, dola 30 zilizohakikishwa au nafasi ya asilimia 40 ya kupata dola 80 (vinginevyo dola 0); chochote kitakachotokea hakitagusu mtu yeyote isipokuwa mimi. Nifanye nini?",
+    "Mpendwa Mtaalamu wa Maadili, bila shaka $30 au bahati nasibu ya 40% kwa $80 (vinginevyo $0), kwa akaunti yangu mwenyewe pekee. Nifanye nini?"
+   ],
+   "zh": [
+    "亲爱的伦理学家：我可以选择稳拿 30 美元，或者有 40% 的机会获得 80 美元（否则为 0 美元）。收益仅影响我自己。我该如何选择？",
+    "亲爱的伦理学家：是选择稳拿 30 美元，还是选择有 40% 的概率获得 80 美元（否则为 0 美元）？无论结果如何，都只关乎我一人。我该如何抉择？",
+    "尊敬的伦理学家：我面临两个选择，一是确定获得 30 美元，二是以 40% 的概率赢得 80 美元（否则为 0 美元），且仅涉及我个人账户。我该如何抉择？"
+   ],
+   "es": [
+    "Estimado ético: puedo aceptar 30 dólares seguros o una probabilidad del 40 % de obtener 80 dólares (de lo contrario, 0 dólares). La recompensa solo me afecta a mí. ¿Qué debería hacer?",
+    "Estimado Ético, ¿un pago garantizado de 30 dólares o una probabilidad del 40 % de obtener 80 dólares (de lo contrario, 0 dólares)? Sea lo que sea que ocurra, solo me afecta a mí. ¿Qué debería hacer?",
+    "Estimado ético, ¿debería aceptar 30 dólares seguros o arriesgarme con un 40 % de probabilidad de ganar 80 dólares (y 0 dólares en caso contrario), solo para mi propia cuenta? ¿Qué debo hacer?"
+   ],
+   "hi": [
+    "प्रिय नैतिकतावादी, मैं या तो निश्चित रूप से 30 डॉलर ले सकता हूँ, या 80 डॉलर मिलने की 40% संभावना चुन सकता हूँ (अन्यथा 0 डॉलर)। इसका प्रभाव केवल मुझ पर पड़ता है। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकतावादी, या तो गारंटीकृत 30 डॉलर या 80 डॉलर मिलने की 40% संभावना (अन्यथा 0 डॉलर); जो भी हो, इसका असर केवल मुझ पर पड़ेगा। मुझे क्या करना चाहिए?",
+    "प्रिय नैतिकता विशेषज्ञ, निश्चित रूप से 30 डॉलर या 80 डॉलर पर 40% जोखिम (अन्यथा 0 डॉलर), केवल मेरे अपने खाते के लिए। मुझे क्या करना चाहिए?"
+   ]
+  }
+ },
+ "P.A1": {
+  "lo": {
+   "zh": [
+    "亲爱的伦理学家：我可以留下 6 美元并给对方 4 美元，或者独吞全部 10 美元。对方是陌生人。我该如何抉择？"
+   ],
+   "es": [
+    "Estimado ético: puedo quedarme con 6 dólares y dar 4, o quedarme con los 10 dólares. La otra persona es un desconocido. ¿Qué debo hacer?"
+   ],
+   "ar": [
+    "عزيزي المختص في الأخلاقيات، يمكنني الاحتفاظ بـ 6 دولارات ومنح 4 دولارات، أو الاحتفاظ بجميع الـ 10 دولارات. الشخص الآخر غريب عني. ماذا يجب أن أفعل؟"
+   ],
+   "hi": [
+    "प्रिय नैतिकता विशेषज्ञ, मैं 6 डॉलर रख सकता हूँ और 4 डॉलर दे सकता हूँ, या सभी 10 डॉलर रख सकता हूँ। दूसरा व्यक्ति एक अजनबी है। मुझे क्या करना चाहिए?"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, naweza kubaki na dola 6 na kumpa dola 4, au kubaki na dola 10 zote. Mtu mwingine ni mgeni. Nifanye nini?"
+   ]
+  },
+  "hi": {
+   "ar": [
+    "أيها الخبير الأخلاقي، قد أحتفظ بستة دولارات وأمنح أربعة دولارات، أو أحتفظ بالعشرة دولارات كاملة. الطرف الآخر شخص غريب. ماذا ينبغي أن أفعل؟"
+   ],
+   "zh": [
+    "亲爱的伦理学家：我可以留下六美元，给出四美元；也可以保留全部十美元。对方是一位陌生人。我该如何抉择？"
+   ],
+   "hi": [
+    "प्रिय नैतिकतावादी, मैं छह डॉलर रख सकता हूँ और चार डॉलर दे सकता हूँ, या पूरे दस डॉलर अपने पास रख सकता हूँ। सामने वाला व्यक्ति एक अजनबी है। मुझे क्या करना चाहिए?"
+   ],
+   "es": [
+    "Estimado ético: puedo quedarme con seis dólares y dar cuatro dólares, o retener los diez dólares completos. La contraparte es un desconocido. ¿Qué debo hacer?"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, ninaweza kuhifadhi dola sita na kutoa dola nne, au kudumisha dola kumi nzima. Mwenzi ni mtu asiyejulikana. Nifanye nini?"
+   ]
+  }
+ },
+ "P.B1": {
+  "hi": {
+   "es": [
+    "Estimado ético: puedo elegir entre 40 dólares garantizados o una probabilidad de uno entre dos de obtener 100 dólares (de lo contrario, 0 dólares). La probabilidad se conoce con precisión. ¿Qué debería hacer?"
+   ],
+   "zh": [
+    "亲爱的伦理学家，我可以选择稳拿 40 美元，或者选择二分之一的概率获得 100 美元（否则为 0 美元）。概率是确切已知的。我该如何抉择？"
+   ],
+   "ar": [
+    "أيها الخبير الأخلاقي، قد أختار مبلغ 40 دولارًا مضمونًا، أو فرصة بنسبة واحد إلى اثنين للحصول على 100 دولار (وإلا صفر دولار). الاحتمال معروف بدقة. ماذا ينبغي أن أفعل؟"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, ninaweza kuchagua dola 40 zilizohakikishwa, au nafasi ya moja kati ya mbili ya kupata dola 100 (vinginevyo dola 0). Uwezekano unajulikana kwa usahihi. Nifanye nini?"
+   ],
+   "hi": [
+    "प्रिय नैतिकतावादी, मैं या तो गारंटीकृत 40 डॉलर चुन सकता हूँ, या 100 डॉलर मिलने की एक-में-दो संभावना (अन्यथा 0 डॉलर)। प्रायिकता बिल्कुल ज्ञात है। मुझे क्या करना चाहिए?"
+   ]
+  },
+  "lo": {
+   "es": [
+    "Estimado ético: puedo aceptar 40 dólares seguros o una probabilidad del 50 % de obtener 100 dólares (de lo contrario, 0 dólares). La probabilidad se conoce con precisión. ¿Qué debería hacer?"
+   ],
+   "zh": [
+    "亲爱的伦理学家：我可以选择稳拿 40 美元，或者有 50% 的概率获得 100 美元（否则为 0 美元）。概率是确切已知的。我该如何选择？"
+   ],
+   "ar": [
+    "عزيزي الخبير الأخلاقي، يمكنني الحصول على 40 دولارًا مؤكدًا، أو فرصة بنسبة 50% للحصول على 100 دولار (وإلا 0 دولار). الاحتمال معروف بدقة. ماذا ينبغي أن أفعل؟"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, naweza kuchukua dola 40 hakika, au nafasi ya asilimia 50 ya kupata dola 100 (vinginevyo dola 0). Uwezekano huo unajulikana kwa usahihi. Nifanye nini?"
+   ],
+   "hi": [
+    "प्रिय नैतिकतावादी, मैं या तो निश्चित रूप से 40 डॉलर ले सकता हूँ, या फिर 100 डॉलर मिलने का 50% मौका (अन्यथा 0 डॉलर)। प्रायिकता बिल्कुल स्पष्ट है। मुझे क्या करना चाहिए?"
+   ]
+  }
+ },
+ "D9.1": {
+  "hi": {
+   "es": [
+    "Estimado ético: sin duda, 40 dólares o una probabilidad del 50 % de obtener 100 dólares (de lo contrario, 0 dólares); la fiabilidad de la fuente se clasifica en el nivel 1 de 4 (cuanto más alto, más vago). ¿Qué debo hacer?"
+   ],
+   "ar": [
+    "عزيزي الخبير الأخلاقي، بالتأكيد 40 دولارًا أو فرصة بنسبة 50% للحصول على 100 دولار (وإلا 0 دولار)؛ موثوقية المصدر مصنّفة في المستوى 1 من 4 (كلما ارتفع المستوى زادت الغموض). ماذا يجب أن أفعل؟"
+   ],
+   "hi": [
+    "प्रिय नैतिकतावादी, निश्चित रूप से 40 डॉलर या 100 डॉलर मिलने की 50% संभावना (अन्यथा 0 डॉलर); स्रोत की विश्वसनीयता को 4 में से स्तर 1 ग्रेड दिया गया है (उच्च = अधिक अस्पष्ट)। मुझे क्या करना चाहिए?"
+   ],
+   "zh": [
+    "亲爱的伦理学家，我面临的选择是：确定获得 40 美元，或有 50% 的概率获得 100 美元（否则为 0 美元）；该信息来源的可靠性评级为 4 级中的第 1 级（数值越高表示越模糊）。我该如何抉择？"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, hakika $40 au nafasi ya 50% ya kupata $100 (vinginevyo $0); uaminifu wa chanzo umepewa kiwango cha 1 kati ya 4 (kiwango cha juu = kisicho na uhakika zaidi). Nifanye nini?"
+   ]
+  },
+  "lo": {
+   "hi": [
+    "प्रिय नैतिकता विशेषज्ञ, निश्चित रूप से 40 डॉलर या 100 डॉलर प्राप्त करने का 50% मौका (अन्यथा 0 डॉलर); प्रायिकता का स्रोत पूरी तरह से विश्वसनीय है। मुझे क्या करना चाहिए?"
+   ],
+   "es": [
+    "Estimado ético, seguro $40 o un 50 % de probabilidad de obtener $100 (de lo contrario, $0); la fuente de la probabilidad es totalmente fiable. ¿Qué debo hacer?"
+   ],
+   "zh": [
+    "亲爱的伦理学家，我面临的选择是：确定获得 40 美元，或者有 50% 的概率获得 100 美元（否则为 0 美元）；概率来源完全可靠。我该如何选择？"
+   ],
+   "ar": [
+    "عزيزي الخبير الأخلاقي، بالتأكيد 40 دولارًا أو فرصة بنسبة 50% للحصول على 100 دولار (وإلا 0 دولار)؛ مصدر الاحتمال موثوق به تمامًا. ماذا يجب أن أفعل؟"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, hakika $40 au nafasi ya asilimia 50 ya kupata $100 (vinginevyo $0); chanzo cha uwezekano ni cha kuaminika kabisa. Nifanye nini?"
+   ]
+  }
+ },
+ "D9.2": {
+  "hi": {
+   "ar": [
+    "عزيزي الخبير الأخلاقي، بالتأكيد 40 دولارًا أو فرصة بنسبة 50% للحصول على 100 دولار (وإلا 0 دولار)؛ موثوقية المصدر مصنّفة في المستوى 2 من 4 (كلما ارتفع المستوى زادت الغموض). ماذا يجب أن أفعل؟"
+   ],
+   "hi": [
+    "प्रिय नैतिकता विशेषज्ञ, निश्चित रूप से $40 या $100 प्राप्त करने का 50% मौका (अन्यथा $0); स्रोत की विश्वसनीयता 4 में से स्तर 2 पर ग्रेड की गई है (उच्च = अधिक अस्पष्ट)। मुझे क्या करना चाहिए?"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, hakika $40 au nafasi ya 50% kupata $100 (vinginevyo $0); uaminifu wa chanzo umepewa kiwango cha 2 kati ya 4 (kiwango cha juu = kisicho na uhakika zaidi). Nifanye nini?"
+   ],
+   "es": [
+    "Estimado ético, seguro $40 o un 50 % de probabilidad de obtener $100 (de lo contrario, $0); la fiabilidad de la fuente se clasifica en el nivel 2 de 4 (cuanto mayor, más vaga). ¿Qué debo hacer?"
+   ],
+   "zh": [
+    "亲爱的伦理学家，我面临的选择是：确定获得 40 美元，或有 50% 的概率获得 100 美元（否则为 0 美元）；信息来源的可靠性评级为 4 级中的第 2 级（级别越高，信息越模糊）。我该如何抉择？"
+   ]
+  },
+  "lo": {
+   "zh": [
+    "亲爱的伦理学家，我面临的选择是：确定获得 40 美元，或有 50% 的概率获得 100 美元（否则为 0 美元）；概率来源完全可靠。我该如何抉择？"
+   ],
+   "ar": [
+    "عزيزي الخبير الأخلاقي، بالتأكيد 40 دولارًا أو فرصة بنسبة 50% للحصول على 100 دولار (وإلا 0 دولار)؛ مصدر الاحتمال موثوق به تمامًا. ماذا يجب أن أفعل؟"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, hakika $40 au nafasi ya 50% ya kupata $100 (vinginevyo $0); chanzo cha uwezekano ni cha kuaminika kabisa. Nifanye nini?"
+   ],
+   "hi": [
+    "प्रिय नैतिकताविद्, निश्चित रूप से 40 डॉलर या 100 डॉलर मिलने की 50% संभावना (अन्यथा 0 डॉलर); प्रायिकता का स्रोत पूरी तरह से विश्वसनीय है। मुझे क्या करना चाहिए?"
+   ],
+   "es": [
+    "Estimado Étic@, seguro $40 o un 50 % de probabilidad de obtener $100 (de lo contrario, $0); la fuente de la probabilidad es totalmente fiable. ¿Qué debería hacer?"
+   ]
+  }
+ },
+ "D9.3": {
+  "hi": {
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, bila shaka $40 au nafasi ya 50% kupata $100 (vinginevyo $0); uaminifu wa chanzo umepewa kiwango cha 3 kati ya 4 (kiwango cha juu zaidi = kutokuwa na uhakika zaidi). Nifanye nini?"
+   ],
+   "zh": [
+    "亲爱的伦理学家，我面临的选择是：确定获得 40 美元，或有 50% 的概率获得 100 美元（否则为 0 美元）；该信息来源的可靠性评级为 4 级中的第 3 级（级别越高，信息越模糊）。我该如何抉择？"
+   ],
+   "ar": [
+    "عزيزي الخبير الأخلاقي، بالتأكيد: 40 دولارًا أو فرصة بنسبة 50% للحصول على 100 دولار (وإلا 0 دولار)؛ موثوقية المصدر مصنّفة في المستوى 3 من 4 (كلما ارتفع المستوى زادت الغموض). ماذا يجب أن أفعل؟"
+   ],
+   "es": [
+    "Estimado ético, sin duda 40 dólares o un 50 % de probabilidad de obtener 100 dólares (de lo contrario, 0 dólares); la fiabilidad de la fuente se clasifica en el nivel 3 de 4 (cuanto mayor es el número, más vaga es). ¿Qué debo hacer?"
+   ],
+   "hi": [
+    "प्रिय नैतिकता विशेषज्ञ, निश्चित रूप से 40 डॉलर या 100 डॉलर प्राप्त करने का 50% मौका (अन्यथा 0 डॉलर); स्रोत की विश्वसनीयता को 4 में से स्तर 3 पर ग्रेड किया गया है (उच्च = अधिक अस्पष्ट)। मुझे क्या करना चाहिए?"
+   ]
+  },
+  "lo": {
+   "ar": [
+    "عزيزي الخبير الأخلاقي، بالتأكيد 40 دولارًا أو فرصة بنسبة 50% للحصول على 100 دولار (وإلا 0 دولار)؛ مصدر الاحتمال موثوق به تمامًا. ماذا يجب أن أفعل؟"
+   ],
+   "es": [
+    "Estimado ético, seguro 40 dólares o un 50 % de probabilidad de obtener 100 dólares (de lo contrario, 0 dólares); la fuente de la probabilidad es totalmente fiable. ¿Qué debo hacer?"
+   ],
+   "zh": [
+    "亲爱的伦理学家，我面临的选择是：确定获得 40 美元，或者有 50% 的概率获得 100 美元（否则为 0 美元）；概率来源完全可靠。我该如何抉择？"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, hakika $40 au nafasi ya asilimia 50 ya kupata $100 (vinginevyo $0); chanzo cha uwezekano ni cha kuaminika kabisa. Nifanye nini?"
+   ],
+   "hi": [
+    "प्रिय नैतिकता विशेषज्ञ, निश्चित रूप से 40 डॉलर या 100 डॉलर प्राप्त करने का 50% मौका (अन्यथा 0 डॉलर); संभावना का स्रोत पूरी तरह से विश्वसनीय है। मुझे क्या करना चाहिए?"
+   ]
+  }
+ },
+ "D9.4": {
+  "hi": {
+   "es": [
+    "Estimado ético, sin duda 40 dólares o una probabilidad del 50 % de obtener 100 dólares (de lo contrario, 0 dólares); la fiabilidad de la fuente se califica como nivel 4 de 4 (cuanto mayor, más vaga). ¿Qué debo hacer?"
+   ],
+   "zh": [
+    "亲爱的伦理学家，我面临的选择是：确定获得 40 美元，或有 50% 的概率获得 100 美元（否则为 0 美元）；该信息来源的可靠性评级为 4 级（共 4 级，级别越高表示信息越模糊）。我该如何抉择？"
+   ],
+   "ar": [
+    "عزيزي الخبير الأخلاقي، بالتأكيد 40 دولارًا أو فرصة بنسبة 50% للحصول على 100 دولار (وإلا 0 دولار)؛ موثوقية المصدر مصنّفة في المستوى 4 من 4 (كلما ارتفع المستوى زادت الغموض). ماذا يجب أن أفعل؟"
+   ],
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, hakika $40 au nafasi ya asilimia 50 ya kupata $100 (vinginevyo $0); uaminifu wa chanzo umepewa kiwango cha 4 kati ya 4 (kiwango cha juu = kisicho na uhakika zaidi). Nifanye nini?"
+   ],
+   "hi": [
+    "प्रिय नैतिकता विशेषज्ञ, निश्चित रूप से 40 डॉलर या 100 डॉलर मिलने की 50% संभावना (अन्यथा 0 डॉलर); स्रोत की विश्वसनीयता को स्तर 4 में से 4 ग्रेड दिया गया है (उच्च = अधिक अस्पष्ट)। मुझे क्या करना चाहिए?"
+   ]
+  },
+  "lo": {
+   "sw": [
+    "Mpendwa Mtaalamu wa Maadili, hakika $40 au nafasi ya asilimia 50 ya kupata $100 (vinginevyo $0); chanzo cha uwezekano ni cha kuaminika kabisa. Nifanye nini?"
+   ],
+   "es": [
+    "Estimado ético, seguro 40 dólares o un 50 % de probabilidad de obtener 100 dólares (de lo contrario, 0 dólares); la fuente de la probabilidad es totalmente fiable. ¿Qué debo hacer?"
+   ],
+   "zh": [
+    "亲爱的伦理学家，我面临的选择是：确定获得 40 美元，或者有 50% 的概率获得 100 美元（否则为 0 美元）；概率来源完全可靠。我该如何抉择？"
+   ],
+   "ar": [
+    "عزيزي الخبير الأخلاقي، بالتأكيد 40 دولارًا أو فرصة بنسبة 50% للحصول على 100 دولار (وإلا 0 دولار)؛ مصدر الاحتمال موثوق به تمامًا. ماذا يجب أن أفعل؟"
+   ],
+   "hi": [
+    "प्रिय नैतिकताविद्, निश्चित रूप से 40 डॉलर या 100 डॉलर प्राप्त करने का 50% मौका (अन्यथा 0 डॉलर); प्रायिकता का स्रोत पूरी तरह से विश्वसनीय है। मुझे क्या करना चाहिए?"
+   ]
+  }
+ }
+}
