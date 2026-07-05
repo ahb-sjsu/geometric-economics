@@ -1,3 +1,7 @@
 # Build output
 output/
 experiments/_atlas.py
+experiments/datasets/raw_fkm/
+*.pdf
+115613-V1.zip
+115613_*.xml

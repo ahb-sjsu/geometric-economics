@@ -91,6 +91,14 @@ literature that never set out to test them:
   distribution is essentially the **2 parameters (α, β)**. Heterogeneous social behavior collapses onto
   a low-dimensional latent structure — the same shape as the low-rank metric finding, in a different
   domain, from independent data.
+- **POWERED individual-level confirmation on FKM (2007) real data** (`RESULTS_fkm.md`, 76 subjects ×
+  50 budget-line choices = 3,800 decisions). **T1:** 96% of subjects have convex, downward-sloping
+  giving demand — choice is **utility/metric-governed** (the geometric premise; FKM's own GARP ≈90%).
+  **T2:** a **2-parameter CES fits each subject** (mean R²=0.54) — the social preference is
+  **low-dimensional**, the social analog of low-rank Σ, at the individual level. **T3:** strong
+  self-regard (79% kept; median own-weight α=0.78) is the σ_s **reflection-breaking**. This is the
+  powered social evidence the 9-game transfer test (Move 2c) could not reach — and it corroborates
+  *both* load-bearing shapes (metric-governed + low-dimensional) in the social domain.
 - **Reflection-symmetric social value function (corroborates the reflection + aversion motif).**
   The Fehr–Schmidt utility is a **kinked, reference-dependent value function around the equality line**,
   with the disadvantageous branch (envy α) weighted more than the advantageous branch (guilt β) — α ≥ β
