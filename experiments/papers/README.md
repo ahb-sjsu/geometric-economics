@@ -8,19 +8,26 @@ for GDT throughout.)
 
 ## The central claim
 
-> Economic choice is navigation on a low-dimensional decision manifold. Scalar utility is an
-> information-losing projection of it. One shared metric governs both risky and strategic choice, and
-> there exist regimes where that metric predicts behavior no scalar theory can express — signed, out of
-> sample, and invariant to how the researcher encodes the attributes.
+> Choice is navigation on a low-dimensional decision manifold. Scalar utility is an information-losing
+> projection of it. One shared metric governs risky, strategic, and social choice, and there exist
+> regimes where that metric predicts behavior no scalar theory can express — signed, out of sample, and
+> invariant to how the researcher encodes the attributes.
 
 ## Structure
 
+**Start here → the flagship** (`paper_flagship_gdt.md`, *"Choice Has a Shape: Geometric Decision
+Theory"*) — the single landmark paper that announces GDT, proves why the scalar incumbents must fail,
+describes the falsification instrument, reports the two held-out pillars, and is candid about the
+graveyard and the one decisive test ahead. The four papers below are the modular pillars it stands on.
+
 | Piece | Role | Discharges | Status |
 |---|---|---|---|
+| **Flagship — GDT (landmark)** | the whole claim in one paper; sets the stage and positions GDT vs EU/prospect/game theory | the synthesis + the epistemic ledger | `paper_flagship_gdt.md` — draft |
 | **Paper 0 — Theory (keystone)** | the claim as theorems: scalar irrecoverability, projection-nesting, the projection-gap, encoding-invariance | states the obligations; separates the necessary (empty) from the contentful | `paper_00_theory.md` — draft |
-| **Paper 1 — Cross-domain (pillar)** | one metric, calibrated on risk, predicts strategy | **parsimony** | `paper_01_cross_domain.md` — draft; results run |
+| **Paper 1 — Cross-domain (pillar)** | one metric, calibrated on risk, predicts strategy | **parsimony / transfer** | `paper_01_cross_domain.md` — draft; results run |
 | **Paper 2 — Projection-gap (pillar)** | the falsification instrument + LLM model-organism evidence | **the projection gap** (on a model organism) | `paper_02_projection_gap.md` — draft; panel run |
-| **Capstone — Human study** | the confirmatory human projection-gap + the redesigned rule | converts the strict-subsumption corollary into a fact about human behavior | designed (`prereg-v2`); not yet run |
+| **Paper 3 — Symmetry (supporting)** | the fourfold pattern as Klein-four + loss-aversion; honest re-description bounds | structure vs re-description; a *reduced-scope* result after held-out failure | `paper_03_fourfold_symmetry.md` — draft |
+| **Capstone — Human study** | the confirmatory human projection-gap + the redesigned rule | converts the strict-subsumption corollary into a fact about human behavior | launch-ready (`prereg-v2` frozen, `HUMAN_STUDY_LAUNCH.md`); not yet run |
 
 ## The load-bearing honesty (what makes a foundation)
 
