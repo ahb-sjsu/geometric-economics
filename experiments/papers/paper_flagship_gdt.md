@@ -19,9 +19,10 @@ impossibility**: if choice depends on two or more independent coordinates (money
 epistemic status), *no continuous scalar utility can represent it without information loss*.
 **Geometric Decision Theory (GDT)** replaces the scalar with a **geometry** — choice is movement on a
 low-dimensional decision manifold under a Mahalanobis cost metric Σ with a stochastic (softmax) choice
-rule. Every incumbent theory is then a **degenerate projection** of this geometry onto a subspace
-(Nash = the monetary coordinate under best response; CPT = a scalar contraction of a lottery
-submanifold). GDT makes a distinctive, falsifiable prediction the entire scalar class cannot: a
+rule. Restrict this geometry to the monetary coordinate under a single best response, and the Nash
+condition reappears; contract a lottery submanifold onto one scalar, and cumulative prospect theory
+reappears — each incumbent recovered exactly on its own subspace and silent off it. GDT makes a
+distinctive, falsifiable prediction the entire scalar class cannot: a
 **projection-gap** — matched problems identical under *every* scalar projection but differing on one
 active non-monetary coordinate, where the scalar class is *mathematically forced* to predict no
 difference and the geometry predicts a signed gap whose **sign is invariant to any monotone
@@ -57,10 +58,13 @@ the metric is **low-rank** (a rank-1–2 precision matrix suffices — the coord
 coupled), and the temperature `T` is a **fixed information price** (rational inattention), not a free
 knob.
 
-The incumbents are not competitors but **shadows**. Restrict Σ to the monetary axis and take a single
-best-response step: Nash equilibrium. Contract a lottery submanifold onto one scalar: cumulative
-prospect theory. GDT does not discard them — it **locates** them, as projections that are exactly right
-on their subspace and silent off it.
+Two operations on this single object are worth carrying out. Set every coordinate but money to zero and
+let each player take one best response to the others' choices; the fixed points of the choice rule are
+the Nash equilibria. Collapse a lottery submanifold onto its monetary axis, with the metric's curvature
+there in the role of a value function and the temperature in the role of a probability weight; what
+remains is the choice rule of cumulative prospect theory. Neither operation adds anything to the
+geometry — each only removes coordinates from it, and each result is exact on the subspace that
+survives and silent on the axes that were switched off.
 
 ## 3. Why the scalar class must fail (the load-bearing theorem)
 
@@ -121,57 +125,38 @@ information price that repaired the temperature architecture, the reflection mot
 risk and social choice — remains *because* it survived. A reader can see exactly where the theory's
 weight sits and where it does not; that visibility is the point.
 
-## 7. The experiment — and why you should be the one to run it
+## 7. The decisive experiment
 
-We have done the hard part. What remains is a clean, cheap, decisive test, and we are trying to make it
-irresistible.
+Two problems. In the first, a respondent chooses between a sure \$40 and a 50% chance of \$100, the
+probability precisely known and machine-verified. In the second, the wording is the same to the letter,
+except that the "50%" is now a vague estimate from a source described as unreliable.
 
-**Look at one matched pair.** *Version A:* "a sure \$40, or a 50% chance at \$100 — the 50% is a
-precisely known, machine-verified probability." *Version B:* identical wording, except "the '50%' is a
-vague guess from an unreliable source." Same payoffs. Same stated probability. **Every scalar theory
-you have ever used — expected utility, cumulative prospect theory, anything that scores the gamble by
-its (probability-weighted) monetary value — is forced to predict that A and B are chosen at the same
-rate.** They differ only in the *epistemic status* of the probability, a coordinate no scalar carries.
-Geometric Decision Theory predicts, **in writing, before any data**, that people shift toward the sure
-\$40 under B — and it predicts the **sign**, not a fitted magnitude, in a way you cannot dissolve by
-re-scaling the coordinate: *any* monotone re-encoding of "how well-known is the probability" gives the
-same prediction. Then the same instrument asks the *same coordinate in a trust game* (send \$10 on a
-rumor vs an audited record) and predicts the *same sign* — one principle, two domains, no free
-parameters.
+Nothing about the payoffs has changed, and nothing about the stated probability. The
+probability-weighted monetary value — the number expected utility computes, the number cumulative
+prospect theory computes after its weighting — is, in both problems, exactly the same. Every theory
+that values a gamble by its money and its odds is therefore obliged to treat these as one problem, and
+to predict a single rate of choice.
 
-**You win either way, and the result is clean.**
-- If the gap is **absent**, you have falsified a newly-proposed theory on its own pre-registered turf —
-  a crisp, publishable negative that no amount of our re-fitting can rescue (the signs were frozen and
-  hashed).
-- If the gap is **present**, you have shown that an *entire class* of decision theories — the scalar
-  class, essentially all of behavioral and neoclassical choice — is provably incomplete on problems it
-  cannot even distinguish, and you ran the experiment that showed it.
+The one thing that changed was how well the probability is known. No scalar valuation carries that
+quantity; Geometric Decision Theory does. It predicts a shift toward the certain option, and predicts
+the *sign* of the shift rather than its size, in a form that survives any monotone re-encoding of the
+coordinate. Posed once more in a strategic setting — a trust game entered on an unverified rumor rather
+than an audited record — the same coordinate returns the same predicted sign, from the same metric.
 
-**The barrier is as low as we can make it.** The instrument is built and validated on 84,000
-model-organism responses; the predictions are frozen (`prereg-v2`, sha256 `ca84eb4c`); the analysis
-code is written (between-subjects, BH-FDR, placebo-corrected, attention-screened); the power analysis
-is done. **N ≈ 500, roughly \$2,000 on Prolific, an eight-minute task, a couple of weeks.** You supply
-the IRB and press go; everything else is in this repository.
-
-**We especially want the skeptics.** The design is built for adversarial collaboration: pre-register
-against us, choose your own coordinates, add your own scalar-model controls. The whole point of a
-projection-gap is that a hostile experimenter and a friendly one must get the *same* answer, because
-the scalar class's prediction is *forced*, not fit. There is no version of this experiment where the
-result is ambiguous — and that is exactly why it is worth running.
+For the full set of such contrasts the signs were fixed and hashed before observation, and the design
+has been carried through on a language-model panel, where the predictions held across models. The
+corresponding measurement in human respondents has not been made.
 
 ## 8. What we claim, exactly
 
-Choice is governed by a low-rank metric on a low-dimensional decision manifold; this geometry
-**subsumes** the scalar incumbents as projections, makes an **encoding-invariant, pre-registered
-prediction they are forced to fail**, and **transfers one metric across risky and strategic choice** —
-both confirmed out-of-sample in a model organism and corroborated on real social-choice data. We do
-**not** claim it is proven in humans (the gate), that it is a superior within-domain predictor (it is
-not — its edge is unification and falsification), or that its every structural flourish generalizes
-(most did not). Geometric Decision Theory is a **falsifiable geometry of choice with two pillars that
-have survived held-out testing and one decisive experiment ahead**. That is the stage; the human study
-is the next act.
+The claim is that choice is governed by a low-rank metric on a low-dimensional decision manifold; that
+this geometry makes an **encoding-invariant, pre-registered prediction the scalar class is forced to
+fail**; and that **one metric transfers across risky and strategic choice** — the first confirmed
+out-of-sample in a model organism, the second on real social-choice data. The incumbent theories it
+does not oppose; §2 recovered them within it. We do **not** claim it is proven in humans (the gate),
+that it is a superior within-domain predictor (it is not — its advantage is unification and
+falsification), or that its every structural flourish generalizes (most did not).
 
-Most theories ask to be believed. This one asks to be **shot at** — with a target we drew first, a gun
-we loaded and handed you, and a wager that whichever way it fires, you publish. The stimuli are frozen,
-the predictions are hashed, the code is written, the cost is two thousand dollars. The only thing
-missing is the person who runs it. **Be that person.**
+Geometric Decision Theory is a falsifiable geometry of choice with two pillars that have survived
+held-out testing and one measurement outstanding. The predictions are frozen and the apparatus is
+built; the measurement is in human respondents.
