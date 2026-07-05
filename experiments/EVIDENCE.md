@@ -54,6 +54,12 @@ stated to be disarmed, not leaned on.
   they are utility-side, not temperature.
 - **Cross-domain transfer** (paper_01; polar angle-lock): one shared metric spans risky and strategic
   choice, ~97–100% both ways, small within-domain price, half the parameters. The unification claim.
+- **Social-coordinate transfer** (`social_transfer.py`, `RESULTS_social_transfer_powered.md`): the
+  *social* self↔other tradeoff transfers between FKM budget-line giving (3,800 individual choices) and
+  Charness–Rabin dictator games — independently-fit shapes align at **cos 0.96**, angle-locked transfer
+  **FKM→CR 100% / CR→FKM 45%** (same richer-domain-transfers-better asymmetry as the risk leg).
+  **Supersedes** the underpowered 9-game move2c ("untestable"). Powered, bidirectional; honest bound is
+  population heterogeneity in the *level* of other-regard (shared shape, recalibrated scale).
 - **Reflection + aversion motif** (`polar_reflection.py`, `move2_social.py`): the loss domain is the
   gain domain mirrored across the value axis (ρ_SD = −0.8); the *same* motif recurs socially (self↔
   other reflection broken by inequality aversion). A real cross-domain structural through-line.
@@ -138,7 +144,11 @@ That is a genuine, defensible contribution.
    is the gate.
 2. **Held-out confirmation of the loss-domain reflection** (the one Pillar-1 caveat).
 3. A domain where the metric makes a **novel, quantitative, pre-registered prediction** that is then
-   confirmed — not a re-description of a known regularity.
+   confirmed — not a re-description of a known regularity. **Registered** (`prereg-coupling-v1`,
+   `PREREG_cross_domain_coupling.md`): the choice-fit *risk* aversion angle predicts the same
+   individual's choice-fit *social* other-regard angle, rank-1 coupling; incumbents predict zero.
+   Confirmation gated on same-subject risk+social data (GPS, registration-gated) — registered, not yet
+   confirmed.
 
 The symmetry work (V₄, D₄, angles) is honest texture and a memorable hook, but the load is carried by
 the low-rank Σ and the encoding-invariant projection-gap. Consolidate there.

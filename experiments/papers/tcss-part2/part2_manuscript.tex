@@ -37,7 +37,7 @@ A companion paper introduced a geometric decision model in which economic choice
 The natural question that benchmark raised---whether the shared metric is a flexible representation or a predictive structure---is answered here with held-out, individual-level, and pre-registered tests, and with a designed falsification instrument.
 We report four results.
 First, on the Choice Prediction Competition individual-choice benchmark (CPC18; 270 problems), predicting \emph{unseen} problems out of sample, the geometric model beats expected value, edges out linear random-utility, and lands within one standard deviation of cumulative prospect theory with one fewer parameter.
-Encoding lotteries and $110$ published normal-form games in a common (expected value, dispersion) space, a metric fit \emph{only} on risky choice predicts strategic play, and a polar decomposition into a scale-invariant \emph{aversion angle} plus a domain-specific magnitude raises transfer to $97$--$100\%$ of a native fit \emph{in both directions}.
+Encoding lotteries and $110$ published normal-form games in a common (expected value, dispersion) space, a metric fit \emph{only} on risky choice predicts strategic play, and a polar decomposition into a scale-invariant \emph{aversion angle} plus a domain-specific magnitude raises transfer to $97$--$100\%$ of a native fit \emph{in both directions}; the same construction transfers the \emph{social} self--other coordinate between $3{,}800$ budget-line giving choices and dictator games (shape alignment $\cos=0.96$, $45$--$100\%$ of a native fit).
 Second, we pre-register (hashed before data) four claims that $\Sigma$ is low-rank and test them on three held-out domains---social-preference games, a $19$-country prospect-theory replication, and a six-language cross-lingual panel---where a rank-$1$/rank-$2$ precision matrix matches the full metric, beats the diagonal restriction the companion paper's reviewer flagged, and transfers at $\approx99\%$.
 Third, a \emph{projection-gap} design constructs matched problems identical under every scalar projection but differing on one active non-monetary coordinate, so the entire scalar class is forced to predict no difference; run as a pre-registered study on a language-model panel ($216$ model agents, $83{,}682$ forced choices), five of seven contrasts move in the predicted direction with perfect cross-model consistency, and two pre-registered predictions fail and are reported.
 Fourth, both failures localize to the cost-dependent temperature, which we replace with a fixed information price that repairs the dose-response and improves held-out fit.
@@ -71,7 +71,7 @@ All three appear below.
 \subsection{Contributions}
 This paper makes five contributions, each a self-contained result computed on public data.
 \begin{enumerate}
-    \item \textbf{Held-out individual-level prediction and bidirectional cross-domain transfer.} On CPC18 the geometric model is competitive with domain-specialized CPT out of sample with fewer parameters; a metric fit only on lotteries predicts play in $110$ normal-form games, and a polar (angle-locked) transfer reaches $97$--$100\%$ of a native fit in both directions (Section~\ref{sec:transfer}).
+    \item \textbf{Held-out individual-level prediction and bidirectional cross-domain transfer.} On CPC18 the geometric model is competitive with domain-specialized CPT out of sample with fewer parameters; a metric fit only on lotteries predicts play in $110$ normal-form games, a polar (angle-locked) transfer reaches $97$--$100\%$ of a native fit in both directions, and the same construction transfers the \emph{social} self--other coordinate between budget-line giving and dictator games (Section~\ref{sec:transfer}).
     \item \textbf{A pre-registered low-rank metric.} Four falsifiable claims that $\Sigma$ is rank-$1$/rank-$2$ are frozen before data and confirmed on three held-out domains, superseding the diagonal restriction on out-of-sample evidence (Section~\ref{sec:lowrank}).
     \item \textbf{A projection-gap falsification instrument.} A pre-registered design forces the entire scalar class to predict a null; a language-model panel returns a cross-model, cross-domain positive on five of seven contrasts, with two registered failures reported (Section~\ref{sec:projgap}).
     \item \textbf{A repaired choice rule.} A fixed information price, motivated by rational inattention, replaces the cost-dependent temperature, closing the dose-response failure the projection-gap study exposed and improving held-out fit (Section~\ref{sec:temperature}).
@@ -222,10 +222,39 @@ This is a cleaner statement of the shared-metric claim than the raw transfer, an
 An independent route agrees.
 A structural search over model \emph{forms} (value transform, dispersion feature, metric norm, reference point), scored by worst-case bidirectional transfer, selects a variance dispersion feature and a city-block norm rather than the Euclidean-SD default---two independent routes to the conclusion that a portable shape, not a domain-tuned one, carries the transfer.
 
+\subsection{Result 4: the social coordinate transfers too}
+The transfer of Results 2--3 shares the \emph{risk} part of the metric (EV, dispersion).
+A sharper test of the framework's distinctive content is whether the \emph{social} coordinate---the self--other tradeoff, the social analog of the aversion angle---transfers between two structurally different social-allocation tasks.
+We restrict the metric to the $2$-D social space (own payoff $s$, other's payoff $o$): each option is an allocation, the per-menu ideal is $(s^*,o^*)=(\max s,\max o)$, the cost is $C=\sqrt{((s^*-s)/\sigma_s)^2+((o^*-o)/\sigma_o)^2}$, and the tradeoff angle is the scale-invariant ratio $\sigma_s\!:\!\sigma_o$ (an isotropic ridge $\sigma\geq0.05$ regularizes the degenerate self-regard corner, consistent with the pseudometric-plus-ridge form).
+Domain~A is the Fisman--Kariv--Markovits budget-line giving experiment~\cite{fisman2007}---$3{,}800$ individual choices ($76$ subjects), each budget line a menu of $(s,o)$ points; domain~B is the seven Charness--Rabin two-person dictator games~\cite{charness2002}.
+Fitting the angle on one and predicting the other with only a scale recalibration, Table~\ref{tab:social} reports the result.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.15}
+\caption{Social-Coordinate Transfer (Angle-Locked; \% of Chance-to-Native Gap Closed)}
+\label{tab:social}
+\centering
+\begin{tabular}{l r r}
+\toprule
+\textbf{Direction} & \textbf{Full transfer} & \textbf{Angle-locked} \\
+\midrule
+FKM giving $\to$ Charness--Rabin & $66\%$ & $\mathbf{100\%}$ \\
+Charness--Rabin $\to$ FKM giving & $44\%$ & $\mathbf{45\%}$ \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize{Fit independently, the two tasks' self--other tradeoff shapes align at $\cos=0.96$. The powered domain (FKM, $3{,}800$ choices) transfers fully to predict dictator play; the seven-game reverse fit reaches $45\%$---the same richer-domain-transfers-better asymmetry as Results 2--3, now on the other-regarding coordinate.}
+\end{flushleft}
+\end{table}
+
+Fit independently, the two social tasks' self--other tradeoff shapes are nearly identical ($\cos=0.96$), and the powered FKM metric predicts Charness--Rabin dictator play at $100\%$ of a native fit with only a scale recalibration.
+The reverse direction---a seven-game fit predicting $3{,}800$ individual choices---reaches $45\%$, the same asymmetry (richer calibration generalizes better) seen for risk.
+This upgrades what an earlier, underpowered nine-game attempt could not resolve: the framework's distinctive non-monetary coordinate transfers across domains, not only the risk coordinate.
+
 \subsection{Honest limits}
-Three limits bound the claim.
-First, matrix games exercise payoff and strategic uncertainty, not the fairness/identity coordinates GDT posits; the transfer we demonstrate is of the \emph{risk} part of the metric, and social-coordinate transfer requires social-preference games (Section~\ref{sec:corroboration} supplies corroboration but not the same transfer test).
-Second, level-$k$ beliefs do not help: iterated best-response encodings \emph{degrade} the native game fit, and the naive level-$0$ belief predicts best, consistent with the level-$0$ literature~\cite{wright2017}; the metric transfers because it captures the non-strategic risk response that dominates human play, not sophisticated reasoning.
+Three limits bound the claims.
+First, the social transfer is a shared \emph{shape} recalibrated in \emph{scale}: a single pooled metric leaves the \emph{level} of other-regard differing across populations (FKM's roughly $40\%$ keep-everything choosers drive one axis to the ridge floor), so the social leg does not yet reach the $\approx97$--$100\%$-both-ways of the risk leg, and the Charness--Rabin side is seven aggregate games.
+Second, level-$k$ beliefs do not help the game encoding: iterated best-response encodings \emph{degrade} the native game fit, and the naive level-$0$ belief predicts best, consistent with the level-$0$ literature~\cite{wright2017}; the metric transfers because it captures the non-strategic response that dominates human play, not sophisticated reasoning.
 Third, the two-outcome approximation for multi-outcome lotteries and per-dataset scale normalization are model-neutral and do not favor the geometry.
 
 %==============================================================================
@@ -291,6 +320,29 @@ The sign is the pre-registered, adversary-proof prediction; magnitude is seconda
 
 The frozen model, the contrasts (social-impact, identity, and epistemic manipulations in game and lottery frames, at fixed payoffs and probabilities), surface-wording \emph{placebos} (predicted $\Delta=0$, an internal falsifier), and a dose-response family were \texttt{sha256}-hashed and tagged before any subject was run (\texttt{prereg-v1}).
 No prediction can be edited post hoc without breaking the hash.
+
+\subsection{Formal properties: the design is a complete detector}
+The instrument is not an ad hoc probe tuned to embarrass incumbents; it is a complete test of whether behavior factors through a given projection.
+Let a scalar-projection model depend on an option $x$ only through $\pi(x)$, where the projection $\pi$ discards a coordinate set $Z$, and call behavior \emph{$\pi$-sufficient} if $P(\cdot\mid x)=g(\pi(x))$ for some $g$.
+A \emph{projection-gap design over $Z$} is a set of matched options equal under $\pi$ but differing on a coordinate in $Z$.
+
+\emph{Theorem 1 (Completeness).}
+Behavior is $\pi$-sufficient if and only if no projection-gap design over $Z$ produces a choice-probability difference.
+
+\emph{Proof.}
+(Necessity) If $P(\cdot\mid x)=g(\pi(x))$, then any matched pair with $\pi(x)=\pi(x')$ gives $P(\cdot\mid x)=P(\cdot\mid x')$, so no such design produces a difference.
+(Sufficiency, contrapositive) If behavior is not $\pi$-sufficient, there exist $x,x'$ with $\pi(x)=\pi(x')$ but $P(\cdot\mid x)\neq P(\cdot\mid x')$; these differ only on coordinates in $Z$ and constitute a projection-gap design producing a difference, which the model---predicting equality---fails. $\hfill\square$
+
+\emph{Theorem 2 (Encoding-invariance of the sign).}
+Consider a design in which the manipulation changes a discarded coordinate $z$ monotonically for one option while the comparator is fixed on $z$, with no active cross-term coupling $z$ to other coordinates.
+Then the sign of the GDT gap $\Delta=P(x_{\text{hi}})-P(x_{\text{lo}})$ is invariant under any strictly increasing reparameterization of $z$.
+
+\emph{Proof.}
+For $C(x)=\sqrt{\Delta\mathbf{a}^{\top}P\,\Delta\mathbf{a}}$ with $P_{zz}>0$ and no cross-term in $z$, increasing $z$ monotonically increases the manipulated option's cost relative to the fixed comparator, hence monotonically changes its choice probability; a strictly increasing $g(z)$ preserves the order of the manipulated coordinate and therefore the sign of that change, though not its magnitude. $\hfill\square$
+
+\emph{Corollary (A falsification calculus).}
+For any incumbent in the scalar-projection class, its discarded coordinates $Z$ are fixed by its sufficient statistic; projection-gap designs over $Z$ are then a complete, theory-agnostic test of that incumbent whose signs are robust to monotone re-encoding.
+The instrument is not specific to GDT: it clears or falsifies \emph{any} premature projection, and GDT enters only to predict the sign of a gap that some design must exhibit whenever the incumbent is not $\pi$-sufficient.
 
 \subsection{A language-model panel as a model organism}
 A projection-gap study needs individual-level data at scale, which human experiments deliver slowly and expensively.
@@ -359,8 +411,7 @@ Isolating the failures to a single, independently repairable component---and rep
 \label{sec:corroboration}
 %==============================================================================
 
-The cross-domain test of Section~\ref{sec:transfer} exercises the risk part of the metric.
-The social coordinates the framework posits are corroborated---not by the same transfer test, but by independent, large-sample evidence from a literature that never set out to test this program.
+Beyond the social-coordinate transfer of Section~\ref{sec:transfer} (Result~4), the social \emph{shapes} the framework posits are independently corroborated by large-sample evidence from a literature that never set out to test this program.
 
 \paragraph{Low dimensionality (supports the low-rank metric, in the social domain)}
 Individual-level analysis of the Fisman--Kariv--Markovits giving experiment~\cite{fisman2007} ($76$ subjects $\times$ $50$ budget-line choices $=3{,}800$ decisions) reproduces both load-bearing shapes.
@@ -424,13 +475,17 @@ The language-model-panel apparatus is independently reusable: a polite, preempti
 \subsection{The human gate (future work, not a claim)}
 Every result here is computational, and we claim exactly that.
 The confirmatory leg is a human projection-gap study under the repaired choice rule, powered by the panel's effect sizes ($d\approx0.5$--$0.9$ on the five confirmed contrasts), with encoding-invariant signs and pre-committed falsifiers (\texttt{prereg-v2} frozen).
-Two further gates remain open and are stated as such: held-out confirmation of the loss-domain reflection encoding (the standing bound of Section~\ref{sec:lowrank}), and a domain in which the metric makes a novel, quantitative, pre-registered prediction that is then confirmed rather than a re-description of a known regularity.
-None of these is asserted here; they are the work the present results are pointed at.
+Two further gates remain open and are stated as such.
+The first is held-out confirmation of the loss-domain reflection encoding (the standing bound of Section~\ref{sec:lowrank}).
+The second is a novel, quantitative prediction that is not a re-description of a known regularity: because one metric governs both domains, the geometric \emph{aversion angle} fit from an individual's lottery choices should predict the \emph{other-regard angle} fit from that same individual's giving, and the coupling should be rank-$1$---whereas CPT and inequality-aversion, calibrated separately, place no constraint on the cross-domain association and predict zero.
+That a bare correlation between risk and social preferences exists is already known; the pre-registered content is the sharper claim that a choice-fit angle transfers across domains at the individual level and that the coupling is low-rank.
+The sign predictions are frozen and hashed (\texttt{prereg-coupling-v1}); confirmation requires same-subject risk-and-social choice data (e.g., the Global Preferences Survey), which we flag as the required, currently registration-gated, input.
+None of these gates is asserted here; they are the work the present results are pointed at.
 
 \subsection{What this paper does not claim}
 For clarity we collect the boundaries.
 The geometry does not beat CPT on lotteries; it ties with one fewer parameter.
-The cross-domain transfer is of the risk part of the metric, and is symmetric only after the angle-lock; the raw transfer is one-directional, and reported as such.
+The cross-domain transfer is strongest for the risk coordinate; the social coordinate transfers too, but as a shared shape recalibrated in scale, and the raw risk transfer is symmetric only after the angle-lock---all reported as such.
 The projection-gap positive is a model-organism result, not a human claim.
 Magnitudes are not yet calibrated; signs are.
 And the low-rank result is gain-domain.
