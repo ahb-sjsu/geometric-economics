@@ -1,37 +1,31 @@
 # Choice Has a Shape: Geometric Decision Theory
 
-*Flagship / landmark synthesis. Draft. The single paper that sets the stage — it states the one idea,
-proves why the incumbents must fail, describes the instrument that forces the failure, reports the
-evidence that has survived held-out testing, and names precisely what remains unproven. It sits above
-the four modular papers (theory, cross-domain transfer, projection-gap, symmetry) and is written to
-the program's standard: the ambition is in the sharpness of the claim and the honesty of the ledger,
-never in inflated results.*
+*Flagship / landmark synthesis. Draft. States the model as equations, the claims as theorems with
+proofs, describes the instrument that forces the incumbents to a testable error, reports the evidence
+that has survived held-out testing, and names precisely what remains unproven. It sits above the four
+modular papers (theory, cross-domain transfer, projection-gap, symmetry). The ambition is in the
+sharpness of the claim and the honesty of the ledger, never in inflated results.*
 
 ---
 
 ## Abstract
 
-Decision theory is fragmented: expected utility for risk, equilibrium and behavioral game theory for
-strategy, social-preference models for fairness, cumulative prospect theory for the anomalies. Each is
-**scalar** — it collapses an option onto a single number (a utility, a payoff, a value). We argue this
-is not a modeling convenience but the source of the fragmentation, and we prove it is a **topological
-impossibility**: if choice depends on two or more independent coordinates (money, fairness, identity,
-epistemic status), *no continuous scalar utility can represent it without information loss*.
-**Geometric Decision Theory (GDT)** replaces the scalar with a **geometry** — choice is movement on a
-low-dimensional decision manifold under a Mahalanobis cost metric Σ with a stochastic (softmax) choice
-rule. Restrict this geometry to the monetary coordinate under a single best response, and the Nash
-condition reappears; contract a lottery submanifold onto one scalar, and cumulative prospect theory
-reappears — each incumbent recovered exactly on its own subspace and silent off it. GDT makes a
-distinctive, falsifiable prediction the dominant scalar theories cannot: a
-**projection-gap** — matched problems identical under each of those scalar projections but differing on
-one active non-monetary coordinate, so that each is *mathematically forced* to predict no difference
-while the geometry predicts a signed gap whose **sign is invariant to any monotone re-encoding** of the
-coordinate (and, because no single scalar carries every coordinate, a model patched to survive one gap
-must fail on another). On pre-registered, held-out tests the theory earns two things no
-scalar account can: the projection-gap appears (in a language-model panel, cross-model), and **one
-low-rank metric transfers across risky and strategic choice** at near-native accuracy. We are equally
-explicit about what has *not* survived — a catalogue of falsified structural conjectures — and about
-the one decisive test not yet run: confirmation in humans.
+Decision theories scalarize too early. Expected utility, payoff-based game theory, social-preference
+models, and cumulative prospect theory each reduce an option to a **domain-local sufficient statistic** —
+money, own-payoff, a payoff vector, a probability-weighted value — and discard the rest before choice.
+**Geometric Decision Theory (GDT)** instead represents an option as a displacement on a low-dimensional
+**decision manifold** and evaluates it with a single **metric shared across domains** before a final
+stochastic contraction. The classical theories are recovered as *singular projections* of this one
+object: payoff-only best response yields Nash equilibrium in the zero-temperature limit, and contraction
+of a lottery submanifold yields a cumulative-prospect-theory–like scalar valuation. The theory is
+falsifiable through **projection-gap** designs — matched problems identical under the incumbents'
+projections but differing on one active non-monetary coordinate. Such projections are *forced* to
+predict no difference; GDT predicts a **signed** gap whose direction is invariant to any monotone
+re-encoding of the coordinate. On pre-registered, held-out tests two claims survive that a domain-local
+projection cannot make: the projection-gap appears in a language-model panel, across models, and **one
+low-rank metric transfers between risky and strategic choice in both directions**. We are explicit about
+what has *not* survived — a catalogue of rejected structural conjectures — and about the one decisive
+test not yet run: confirmation in humans.
 
 ---
 
@@ -39,99 +33,155 @@ the one decisive test not yet run: confirmation in humans.
 
 A person choosing a gamble, splitting a pie, playing a game, and judging a moral trade-off is, to the
 theories, four different animals. Expected utility, game theory, social-preference models, and prospect
-theory share almost no machinery. This is usually treated as a division of labor. We treat it as a
+theory share almost no machinery. This is usually read as a division of labor. We read it as a
 **symptom**.
 
-Every one of these theories is scalar: it maps an option `x` to a real number `u(x)` and predicts the
-option with the highest number (up to noise). Scalarity is what makes them incompatible — each picks a
-*different* scalar (money, own-payoff, a fairness-adjusted payoff, a probability-weighted value), and
-there is no canonical way to reconcile them, because **there is no scalar that carries all the
-coordinates at once**. That is not a failure of ingenuity; it is a theorem (§3).
+Each theory summarizes an option by a single number — but so, in the end, does any decision rule that
+outputs a choice. The trouble is not that the theories end in a scalar; it is that each computes its
+scalar **domain-locally and prematurely**, from a projection that keeps only its own subspace (money,
+or own-payoff, or a payoff vector) and discards the other coordinates *before* any option is compared.
+**Premature, domain-local scalarization is what makes the theories incompatible** — each throws away
+what another keeps — and it is what makes each of them wrong, in a specific and testable way, whenever
+a discarded coordinate is behaviorally active.
 
-## 2. The one idea: choice has a shape
+## 2. The model
 
-GDT posits that an option is a point in a **low-dimensional decision manifold** whose axes are the
-coordinates a decider actually weighs — monetary consequence, but also social impact, fairness,
-identity, epistemic status, and a few more. Preference is a **Mahalanobis cost metric** Σ on this
-manifold: the disutility of moving from a reference to an option is `√(Δᵀ Σ⁻¹ Δ)`, and choice is
-`softmax(−cost/T)`. Two empirical facts, established below, give this content it would otherwise lack:
-the metric is **low-rank** (a rank-1–2 precision matrix suffices — the coordinates are few and
-coupled), and the temperature `T` is a **fixed information price** (rational inattention), not a free
-knob.
+An option is a point `x ∈ ℝᵈ` on a **decision manifold** `M` whose coordinates are the attributes a
+decider weighs — monetary consequence together with a few non-monetary ones (social impact, fairness,
+identity, epistemic status). A reference `r ∈ M` fixes the status quo and `Δ(x) = x − r` is the
+displacement an option demands. Preference is a **Mahalanobis cost**
 
-Two operations on this single object are worth carrying out. Set every coordinate but money to zero and
-let each player respond to the others' choices; the fixed points of the choice rule are its
-equilibria — quantal-response equilibria in general, and the Nash equilibria as the temperature
-vanishes. Collapse a lottery submanifold onto its monetary axis; what remains is a nonlinear value
-function over outcomes with probabilities entering non-linearly — an object of the same kind as
-cumulative prospect theory (the correspondence is structural; we do not claim to derive prospect
-theory's particular weighting function). Neither operation adds anything to the geometry — each only
-removes coordinates from it, and each result is exact on the subspace that survives and silent on the
-axes that were switched off.
+> (1)  `C(x) = √( Δ(x)ᵀ P Δ(x) )`,   `P ⪰ 0`,   `rank(P) = k`.
 
-## 3. Why the scalar class must fail (the load-bearing theorem)
+`P` is a positive-semidefinite precision matrix; with `k < d` it is a **pseudometric on the active
+subspace**, made a proper metric by an isotropic ridge (`P + εI`, `ε ↓ 0`). The **low-rank hypothesis**
+is `k ∈ {1,2}`: the active subspace is small. Choice over a menu `𝒳 ⊆ M` is logit in the cost,
 
-**Scalar irrecoverability.** Let choice depend continuously on coordinates including two that vary
-independently. Then no continuous scalar `u` can reproduce the choice function without collapsing
-distinct options that the decider distinguishes. The proof is topological: there is no continuous
-injection of a space of dimension ≥ 2 into ℝ, so any scalar summary must identify options the decider
-keeps distinct; information is necessarily lost. This is the *only* theorem GDT strictly needs, and it is only conditionally
-load-bearing — it has teeth **only** where an experiment exhibits two options a scalar must equate but
-a decider does not (§4). The other formal results (that any finite choice model embeds in a
-one-dimensional cost model; that the incumbents are projections) are stated precisely so they can be
-**disarmed**: they are true and, on their own, scientifically empty. GDT earns its keep only through
-the empirics.
+> (2)  `Pr(x ; 𝒳) = exp(−C(x)/T) / Σ_{y∈𝒳} exp(−C(y)/T)`,   `T > 0`,
+
+with `T` a temperature the theory takes to be a fixed **information price** (rational inattention), not
+a free parameter. Equations (1)–(2) are the whole of GDT; §5 supplies the two facts — that `k` is small
+and `T` fixed — that keep them from being vacuous.
+
+One clarification forestalls the obvious objection. GDT too contracts to a single number, the cost
+`C(x)`, before the choice in (2); it is not "non-scalar" at the moment of decision. What distinguishes
+it is *when* and *how* the contraction happens. The incumbents contract **domain-locally and
+prematurely** — each discards the coordinates outside its subspace before any comparison — whereas GDT
+carries every active coordinate in `Δ` and contracts them through **one metric shared across domains**.
+The target of the theory is therefore not scalarity but *premature projection*.
+
+Make this precise. Call a model **domain-local scalar** if its choice depends on `x` only through a
+sufficient statistic `u(x) = φ(π(x))` for a projection `π : ℝᵈ → ℝᵐ`, `m < d`, onto a proper subspace.
+Expected utility takes `π` to money; Nash, to own-payoff; Fehr–Schmidt inequality aversion, to the
+`(own, others)` payoff vector; cumulative prospect theory, to a scalar value over *stated*
+probabilities. Write `𝒫` for this class. (A model may always be enlarged by appending a coordinate to
+`π`; §4 and §7 return to that move and show what it costs.)
+
+## 3. Results
+
+**Theorem 1 (projection irrecoverability).** *Let `π` discard a coordinate `z`, and let
+`u(x) = φ(π(x))` be any model in `𝒫` with that projection. Then `u` is invariant to `z`, so for every
+matched pair `(x, x′)` with `π(x) = π(x′)` but `z(x) ≠ z(x′)`, the model predicts `Pr(x) = Pr(x′)`. If
+observed choice varies systematically with `z`, then `z` is behaviorally active and `π`-scalarization
+is false for that domain.* — Immediate: `u(x) = φ(π(x)) = φ(π(x′)) = u(x′)`, and choice depends on `x`
+only through `u`. ∎
+
+This is the load-bearing result, and it is not the impossibility of scalar utility — a model *with the
+right projection* fits perfectly. It is that a projection which **omits an active coordinate** is forced
+into a false equality, exactly the equality a projection-gap exhibits (§4).
+
+**Corollary (information loss).** No continuous contraction `u : M → ℝ` is injective on a
+full-dimensional region of `M`; any scalar summary therefore loses coordinate information. Whether the
+lost information is behaviorally active is an empirical question, settled by Theorem 1's matched pair.
+
+**Proposition 2 (projection nesting).** *(i) With `P` supported on the monetary axis, the finite-`T`
+choice rule (2) on that subspace is a logit-response model, and in the zero-temperature best-response
+limit `T → 0` its fixed points are the Nash equilibria. (ii) On a lottery submanifold, (1)–(2) can be
+embedded as a scalar contraction over reference-dependent, probability-weighted coordinates, yielding a
+value-function-times-nonlinear-probability object of the cumulative-prospect-theory kind.* — *Sketch.*
+(i) As `T → 0`, (2) concentrates on `argmin_x C(x)`, i.e. best response; its fixed points are the Nash
+equilibria, and the finite-`T` form is McKelvey–Palfrey quantal response. (ii) A quadratic form
+contracted onto one axis is a curved value function, and the temperature induces nonlinear probability
+sensitivity; we assert the *structural form*, not prospect theory's particular weighting function,
+whose exact recovery would require the construction we defer to a companion. ∎ The incumbents are thus
+singular projections of (1)–(2), exact on their subspace and silent off it. On their own these
+correspondences establish only *containment*, not improvement; the improvement is Theorem 3 and the
+empirics.
+
+**Theorem 3 (encoding-invariance of the projection-gap sign).** *Let `x_lo` and `x_hi` differ only in
+coordinate `d`, with `Δ_d` of fixed sign in each menu, and let `g` be any strictly increasing
+reparameterization of coordinate `d`. Then*
+
+> `sign[ Pr(A ; x_hi) − Pr(A ; x_lo) ]`  *is identical computed under `d` or under `g(d)`.*
+
+*Proof.* Since `P_dd > 0`, `C` is strictly increasing in `|Δ_d|`; a monotone `g` preserves the order of
+`Δ_d`, hence the order of the costs `C_A, C_B` within each menu, hence the sign of `C_B − C_A`, hence —
+through the strictly increasing logistic in (2) — the sign of the choice-probability gap. ∎ The
+predicted *direction* cannot be reverse-engineered by any monotone choice of units for the coordinate;
+only its magnitude is scale-dependent.
 
 ## 4. The instrument: forcing a wrong answer
 
-The distinctive move is not to fit better but to **design a question the competitor must get wrong**.
-A **projection-gap** is a matched pair of decision problems constructed so that each of the dominant
-scalar theories — expected utility, Nash, Fehr-Schmidt inequality aversion, cumulative prospect theory —
-assigns them identical value, while they differ on one active non-monetary coordinate. Each is thereby
-forced to predict *no behavioral difference*. GDT predicts a **signed** difference, and — crucially —
-the *sign is invariant to any monotone re-encoding* of the coordinate, so the prediction cannot be
-reverse-engineered by a clever choice of units. A scalar model can, of course, be patched to carry the
-offending coordinate; but by the theorem of §3 no single scalar carries them all, so a patch that
-rescues one contrast has conceded the coordinate is real and will fail on the next. Pre-register the
-signs before data, and a single experiment adjudicates the dominant theories of risky, strategic, and
-social choice at once. This is the falsification engine that a within-domain goodness-of-fit contest
-can never be.
+Theorem 1 and Theorem 3 together define the experiment. Construct a matched pair `(x_lo, x_hi)`
+identical under the sufficient statistics of the standard incumbents — expected utility, Nash/payoff,
+inequality aversion, and cumulative prospect theory as conventionally specified over stated
+probabilities — but differing on one active non-monetary coordinate `d`. By Theorem 1 **each of those
+projections is forced to a null**, `Pr(A ; x_hi) = Pr(A ; x_lo)`. By Theorem 3 **GDT predicts a signed
+gap** whose direction survives any monotone re-encoding of `d`. Freeze the sign before data.
 
-## 5. What has survived held-out testing (the two pillars)
+A scalar model can, of course, be enlarged to carry `d` — `u = CPT(x) − λ · d(x)` is still scalar and
+would predict the gap. But that enlargement *appends precisely the coordinate GDT represents
+geometrically*; it is a step toward GDT, not a refutation of it, and — because the instrument spans
+several active coordinates and no single low-dimensional sufficient statistic carries them all — a patch
+that rescues one gap concedes that coordinate and fails on the next. A within-domain goodness-of-fit
+contest can never produce this adjudication; a pre-registered projection-gap settles the standard
+theories of risky, strategic, and social choice on a single matched pair.
 
-- **Pillar 1 — the metric is low-rank, and it transfers.** A single geometric metric, calibrated on
-  risky choice, predicts human play in strategic games it was never shown (cross-domain transfer at
-  ~97–100% of a native fit, at half the parameters). Pre-registered as a low-rank structural claim and
-  re-tested on three held-out corpora — social-preference games, a 19-country prospect-theory
-  replication (99% cross-country transfer), and a cross-lingual panel — it holds: **diagonal is beaten,
-  full is unnecessary, rank 1–2 suffices** (the structural claim is strongest in the gain domain; the
-  loss/reflection domain required a separate, and honestly weaker, reflection encoding). No ensemble of
-  domain-specialized scalar models can do this at any parameter count, because they share no coordinates
-  to transfer.
-- **Pillar 2 — the projection-gap appears.** On a pre-registered language-model panel (216 subjects, a
-  six-model ladder, ~84k choices), the core prediction holds: the predicted signed gap appears on 5 of
-  7 real contrasts, placebo-corrected, **cross-model (6/6)**, and not capability-gated — present in the
-  weakest model, which rules out "only sophisticated agents show it." Each of the enumerated scalar
-  theories predicts zero, by construction, on all of them.
+## 5. What has survived held-out testing
 
-Corroboration, not manufactured by us, comes from the mainstream social-preference literature: on real
-individual data (Fisman–Kariv–Markovits; Charness–Rabin), choice is **utility-consistent** (~96% of
-subjects), giving is **low-dimensional** (a two-parameter CES fits each subject), and the social metric
-carries clean symmetries (self↔other reflection; an o₁↔o₂ exchange symmetry among recipients) — the
-same low-dimensional, symmetric shape GDT posits, in a domain we did not design.
+Two claims survive out-of-sample that a domain-local projection cannot make.
+
+- **Pillar 1 — one low-rank metric transfers between domains, in both directions.** A single metric,
+  fit on one domain, predicts the other with no re-fit: risk-trained metrics predict strategic play and
+  game-trained metrics predict risky choice, at ~97–100% of a native fit and half the parameters, once
+  the scale-invariant tradeoff *shape* is transferred and only a scalar magnitude recalibrated.
+  Pre-registered as a low-rank structural claim and re-tested on three held-out corpora, it holds —
+  diagonal beaten, full unnecessary, rank 1–2 sufficient — strongest in the gain domain (the
+  loss/reflection domain needed a separate, and honestly weaker, reflection encoding). No ensemble of
+  domain-specialized models can transfer at all, at any parameter count, because they share no
+  coordinates to carry across.
+- **Pillar 2 — the projection-gap appears.** On a pre-registered panel of **216 model agents** (LLM
+  respondents across a six-model ladder, ~84k choices), the predicted signed gap appears on 5 of 7 real
+  contrasts, placebo-corrected, **across all six models**, and not capability-gated — present in the
+  weakest model. Each incumbent projection predicts zero, by construction, on every one.
+
+| claim | data | N | pre-registered | held-out | baseline | result | status |
+|---|---|--:|:--:|:--:|---|---|---|
+| low-rank transfer (both directions) | CPC18 lotteries ↔ bogotá games | 694k choices / 110 games | structural (`prereg-sigma-v1`) | yes | native / diagonal / full | 97–100% | survived |
+| prospect replication | Ruggeri 19-country PT | 4,098 resp. / ~69k | signs frozen | yes | CPT / diagonal | 99% cross-country (H1 marginal) | survived (gain domain) |
+| projection-gap | LLM panel | 216 model agents / 84k | `prereg-v1` | yes | scalar zero-gap | 5/7, 6/6 models | survived |
+| social low-dimensionality | Fisman–Kariv–Markovits budget lines | 76 resp. / 3,800 | — | corroboration | — | ~96% utility-consistent, 2-param CES | corroborates |
+| human projection-gap | human respondents | ~500 (not run) | signs frozen (`prereg-v2`) | pending | scalar zero-gap | pending | **gate** |
+
+Independent corroboration, which we did not design, comes from the mainstream social-preference
+literature: on real individual data (Fisman–Kariv–Markovits; Charness–Rabin), choice is
+utility-consistent (~96% of subjects), giving is low-dimensional (a two-parameter CES fits each
+subject), and the social metric carries clean symmetries (self↔other reflection; an o₁↔o₂ exchange
+symmetry among recipients) — the same low-dimensional, symmetric shape the model posits, in a domain we
+did not build.
 
 ## 6. The discipline, and the graveyard
 
 A theory is only as trustworthy as the tests it *failed*. Ours are on the record. We conjectured a
-**universal aversion constant** (killed — the angle is confounded by problem selection), a
-**Shannon-Hartley-style conserved quantity** in the polar encoding (killed — it is adaptation, not
-conservation), a **dihedral D₄ symmetry** of the fourfold pattern (killed — the structure is Klein-four,
-a rectangle not a square), and the **generality of that group structure** (killed — it does not
-replicate on representative gambles; it is a property of the curated Kahneman–Tversky set). Every one
-was retired by a held-out or derivation test, not by taste. What remains — the two pillars, the fixed
-information price that repaired the temperature architecture, the reflection motif that recurs across
-risk and social choice — remains *because* it survived. A reader can see exactly where the theory's
-weight sits and where it does not; that visibility is the point.
+**universal aversion constant** (rejected — the angle is confounded by problem selection), a
+**Shannon–Hartley-style conserved quantity** in the polar encoding (rejected — it is adaptation, not
+conservation), a **dihedral D₄ symmetry** of the fourfold pattern (rejected — the structure is
+Klein-four, a rectangle not a square), and the **generality of that group structure** (rejected — it
+does not replicate on representative gambles; it is a property of the curated Kahneman–Tversky set).
+Each was retired by a held-out or derivation test, not by taste. What remains — the two pillars, the
+fixed information price that repaired the temperature rule, the reflection motif that recurs across risk
+and social choice — remains *because* it survived. A reader can see exactly where the theory's weight
+sits and where it does not; that visibility is the point.
 
 ## 7. The decisive experiment
 
@@ -139,32 +189,40 @@ Two problems. In the first, a respondent chooses between a sure \$40 and a 50% c
 probability precisely known and machine-verified. In the second, the wording is the same to the letter,
 except that the "50%" is now a vague estimate from a source described as unreliable.
 
-Nothing about the payoffs has changed, and nothing about the stated probability. The
-probability-weighted monetary value — the number expected utility computes, the number cumulative
-prospect theory computes after its weighting — is, in both problems, exactly the same. Every theory
-that values a gamble by its money and its odds is therefore obliged to treat these as one problem, and
-to predict a single rate of choice.
+Nothing about the payoffs has changed, and nothing about the stated probability. Expected utility and
+cumulative prospect theory as conventionally specified both value the gamble by its money and its
+*stated* odds; each is therefore obliged to treat these as one problem, and to predict a single rate of
+choice.
 
-The one thing that changed was how well the probability is known. No scalar valuation carries that
-quantity; Geometric Decision Theory does. It predicts a shift toward the certain option, and predicts
-the *sign* of the shift rather than its size, in a form that survives any monotone re-encoding of the
-coordinate. Posed once more in a strategic setting — a trust game entered on an unverified rumor rather
-than an audited record — the same coordinate returns the same predicted sign, from the same metric.
+The one thing that changed was how well the probability is known. Neither of those valuations carries
+that quantity; the geometry does — as displacement on an epistemic coordinate — and predicts a shift
+toward the certain option, and predicts its *sign* rather than its size, in a form that survives any
+monotone re-encoding. A reader will object that ambiguity-sensitive scalar models — maxmin, smooth
+ambiguity, robustness — *do* carry it. They do; and in doing so each appends precisely the coordinate
+the geometry already contains, which is the claim, not its refutation. What no single such model does
+is carry this coordinate *and* the social and identity coordinates the same instrument manipulates in
+turn; that is the content of Theorem 1.
+
+To separate the epistemic-status cost from a mere shift in believed probability, the design elicits, per
+respondent, a subjective probability and a confidence/source-reliability rating, and tests whether
+reliability moves choice **conditional on the elicited probability**. Posed once more in a strategic
+setting — a trust game entered on an unverified rumor rather than an audited record — the same
+coordinate returns the same predicted sign, from the same metric.
 
 For the full set of such contrasts the signs were fixed and hashed before observation, and the design
-has been carried through on a language-model panel, where the predictions held across models. The
+has been carried through on the language-model panel, where the predictions held across models. The
 corresponding measurement in human respondents has not been made.
 
 ## 8. What we claim, exactly
 
 The claim is that choice is governed by a low-rank metric on a low-dimensional decision manifold; that
-this geometry makes an **encoding-invariant, pre-registered prediction the scalar class is forced to
-fail**; and that **one metric transfers across risky and strategic choice** — the first confirmed
-out-of-sample in a model organism, the second on real human choice data spanning risky and strategic
-tasks (and corroborated in social choice). The incumbent theories it does not oppose; §2 recovered them
-within it. We do **not** claim it is proven in humans (the gate),
-that it is a superior within-domain predictor (it is not — its advantage is unification and
-falsification), or that its every structural flourish generalizes (most did not).
+this geometry makes an **encoding-invariant, pre-registered prediction the standard scalar projections
+are forced to fail**; and that **one metric transfers between risky and strategic choice** — the first
+confirmed out-of-sample in a model organism, the second on real human choice data in both directions
+(and corroborated in social choice). The incumbent theories it does not oppose; Proposition 2 recovered
+them within it as singular projections. We do **not** claim it is proven in humans (the gate), that it
+is a superior within-domain predictor (it is not — its advantage is unification and falsification), or
+that its every structural flourish generalizes (most did not).
 
 Geometric Decision Theory is a falsifiable geometry of choice with two pillars that have survived
 held-out testing and one measurement outstanding. The predictions are frozen and the apparatus is
