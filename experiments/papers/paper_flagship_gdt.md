@@ -1,7 +1,7 @@
 # Choice Has a Shape: Geometric Decision Theory
 
-*Flagship / landmark synthesis. Draft. A **projection theory of behavioral failure**: it names what each
-incumbent scalar projection discards, builds matched problems identical under that projection, varies the
+*Flagship synthesis. Draft. A **projection theory of behavioral failure**: it names what each incumbent
+scalar projection discards, builds matched problems identical under that projection, varies the
 discarded coordinate, pre-registers the geometry's sign, and asks whether behavior moves. States the
 model as equations, the claims as theorems with proofs, reports the evidence that has survived held-out
 testing, and names precisely what remains unproven. It sits above the four modular papers (theory,
@@ -23,10 +23,11 @@ yields logit response, and Nash equilibrium in the zero-temperature best-respons
 suitable contraction of a reference-dependent lottery submanifold yields CPT-like scalar valuation. The
 theory is falsifiable through **projection-gap** designs — matched problems identical under the incumbents'
 projections but differing on one active non-monetary coordinate. Such projections are *forced* to
-predict no difference; GDT predicts a **signed** gap whose direction is invariant to any monotone
-re-encoding of the coordinate. On pre-registered, held-out tests two claims survive that a domain-local
-projection cannot make: the projection-gap appears in a language-model panel, across models, and **one
-low-rank metric transfers between risky and strategic choice in both directions**. We are explicit about
+predict no difference; in the dominance-case designs used here, GDT predicts a **signed** gap whose
+direction is invariant to monotone re-encoding of the manipulated coordinate. On pre-registered,
+held-out tests two claims survive that a domain-local projection cannot make: the projection-gap appears
+in a language-model panel, across models, and **one low-rank metric *shape* transfers between risky and
+strategic choice in both directions, with only scale recalibration**. We are explicit about
 what has *not* survived — a catalogue of rejected structural conjectures — and about the one decisive
 test not yet run: confirmation in humans.
 
@@ -112,22 +113,24 @@ The incumbents are thus limiting projections of (1)–(2), exact on their subspa
 their own these correspondences establish only *containment*, not improvement; the improvement is
 Theorem 3 and the empirics.
 
-**Theorem 3 (encoding-invariance of the projection-gap sign; restricted).** *Let `x_lo` and `x_hi` be
-matched menus differing only in coordinate `d`, all other coordinates held fixed, and suppose the active
-metric carries no cross-term coupling `d` to another active coordinate in this contrast (`P_{dj} = 0`
-for `j ≠ d`, as when `P` is diagonal or block-diagonal there). Let `g` be strictly increasing, let the
-transformed displacement be `g(x_d) − g(r_d)`, and suppose both displacements lie on the same side of
-the reference. Then*
+**Theorem 3 (dominance-case projection-gap invariance).** *Let `x_lo` and `x_hi` be matched menus in
+which the manipulation changes coordinate `d` for one alternative only (say `A`), with the comparator
+`B` fixed on `d`, all other coordinates held fixed, and no active cross-term involving `d`; let both
+`d`-displacements of `A` lie on the same side of the reference. Then for any strictly increasing
+reparameterization `g` of coordinate `d`,*
 
 > `sign[ Pr(A ; x_hi) − Pr(A ; x_lo) ]`  *is invariant under `g`.*
 
-*Proof.* With no `d`-cross-term, `C` depends on `d` only through `P_dd Δ_d²`, so `C` is strictly
-increasing in `|Δ_d|`; a monotone `g` preserves the common sign and the order of `Δ_d`, hence the order
-of the costs `C_A, C_B` within each menu, hence the sign of `C_B − C_A`, hence — through the strictly
-increasing logistic in (2) — the sign of the gap. ∎ The predicted *direction* therefore cannot be
-reverse-engineered by any monotone choice of units for the coordinate. (Under a general low-rank metric
-`d` couples to other active coordinates; the sign is then invariant provided the cross-term does not
-dominate. We state only the clean case and defer the generalization.)
+*Proof.* With no `d`-cross-term, `C_A` depends on `d` only through `P_dd Δ_{d,A}²`, while `C_B` is
+unchanged between the menus. A monotone `g` preserves the common sign and order of `Δ_{d,A}`, hence the
+direction in which `C_A` moves between `x_lo` and `x_hi` relative to the fixed `C_B`, hence the sign of
+the change in `C_B − C_A`, hence — through the strictly increasing logistic in (2) — the sign of the gap
+in `Pr(A)`. ∎ Because the manipulated coordinate changes the relative cost of one option monotonically
+while the comparator is fixed on that coordinate, a monotone re-encoding of `d` cannot reverse the sign.
+(If both alternatives move on `d`, invariance needs a further single-crossing assumption; under a
+general low-rank metric `d` couples to other coordinates, where the sign is invariant provided the
+cross-term does not dominate. We state the dominance case, which the designs here satisfy, and defer the
+rest.)
 
 ## 4. The instrument: forcing a wrong answer
 
@@ -139,21 +142,23 @@ projections is forced to a null**, `Pr(A ; x_hi) = Pr(A ; x_lo)`. By Theorem 3 *
 gap** whose direction survives any monotone re-encoding of `d`. Freeze the sign before data.
 
 A scalar model can, of course, be enlarged to carry `d` — `u = CPT(x) − λ · d(x)` is still scalar and
-would predict the gap. But that enlargement *appends precisely the coordinate GDT represents
-geometrically*; it is a step toward GDT, not a refutation of it, and — because the instrument spans
-several active coordinates and no single low-dimensional sufficient statistic carries them all — a patch
-that rescues one gap concedes that coordinate and fails on the next. A within-domain goodness-of-fit
-contest can never produce this adjudication; a pre-registered projection-gap settles the standard
-theories of risky, strategic, and social choice on a single matched pair.
+would predict the gap. But such a patch **concedes the projection-gap result**: it appends precisely the
+coordinate the geometry already represents. Repeated patches, coordinate by coordinate, become an
+*implicit coordinate system*; GDT's contribution is to **specify** that system, **constrain** it with a
+shared low-rank metric, and **test** its transfer across domains — which an ad hoc sequence of patches
+does not. A within-domain goodness-of-fit contest cannot produce this adjudication; a pre-registered
+projection-gap settles the standard domain-local theories of risky, strategic, and social choice on a
+single matched pair.
 
 ## 5. What has survived held-out testing
 
 Two claims survive out-of-sample that a domain-local projection cannot make.
 
 - **Pillar 1 — one low-rank metric transfers between domains, in both directions.** A single metric,
-  fit on one domain, predicts the other with no re-fit: risk-trained metrics predict strategic play and
-  game-trained metrics predict risky choice, at ~97–100% of a native fit and half the parameters, once
-  the scale-invariant tradeoff *shape* is transferred and only a scalar magnitude recalibrated.
+  fit on one domain, predicts the other with **no re-fit of the metric shape** — only a one-parameter
+  scale recalibration: risk-trained metrics predict strategic play and game-trained metrics predict
+  risky choice, at ~97–100% of a native fit and half the parameters, the scale-invariant tradeoff
+  *shape* transferring across.
   Pre-registered as a low-rank structural claim and re-tested on three held-out corpora, it holds —
   diagonal beaten, full unnecessary, rank 1–2 sufficient — strongest in the gain domain (the
   loss/reflection domain needed a separate, and honestly weaker, reflection encoding). Standard
@@ -163,6 +168,11 @@ Two claims survive out-of-sample that a domain-local projection cannot make.
   respondents across a six-model ladder, ~84k choices), the predicted signed gap appears on 5 of 7 real
   contrasts, placebo-corrected, **across all six models**, and not capability-gated — present in the
   weakest model. Each incumbent projection predicts zero, by construction, on every one.
+
+The temperature is not tuned per contrast. A single **information price** `T` is fixed once on the
+projection-gap panel — a fixed-`T` logit outperforms the original cost-dependent temperature there
+(ΔBIC ≈ 140) — and held constant across all contrasts and dose levels; the gaps are therefore not a
+temperature artifact.
 
 | claim | data | N | pre-registered | held-out | baseline | result | status |
 |---|---|--:|:--:|:--:|---|---|---|
@@ -225,14 +235,20 @@ corresponding measurement in human respondents has not been made.
 
 ## 8. What we claim, exactly
 
-The claim is that many choices are governed by a low-rank metric on a low-dimensional decision
-manifold; that standard theories fail when their **domain-local projections omit an active coordinate**;
-and that GDT exposes such failures through **pre-registered projection-gap designs whose signs are
-invariant under monotone re-encoding** of the coordinate. The target is not scalarity but premature
-projection. Its two positive obligations are met out-of-sample: the projection-gap appears in a model
-organism, and one metric transfers between risky and strategic choice in both directions (and is
-corroborated in social choice). The incumbent theories it does not oppose; Proposition 2 places them
-within it as limiting projections. We do **not** claim it is proven in humans (the gate), that it is a
+GDT is a **projection theory of behavioral failure**: standard decision theories fail not because they
+end in scalars, but because their domain-local projections discard active coordinates; projection-gap
+experiments expose those discarded coordinates, and a shared low-rank metric explains why the same
+coordinates recur across risky, strategic, and social choice.
+
+Precisely: the claim is that many choices are governed by a low-rank metric on a low-dimensional
+decision manifold; that standard theories fail when their **domain-local projections omit an active
+coordinate**; and that GDT exposes such failures through **pre-registered, dominance-case projection-gap
+designs whose signs are invariant under monotone re-encoding** of the manipulated coordinate. The target
+is not scalarity but premature projection. Its two positive obligations are met out-of-sample: the
+projection-gap appears in a model-agent (LLM respondent) panel, and one metric *shape* transfers between
+risky and strategic choice in both directions, with only scale recalibration (and is corroborated in
+social choice). The incumbent theories it does not oppose; Proposition 2 places them within it as
+limiting projections. We do **not** claim it is proven in humans (the gate), that it is a
 superior within-domain predictor (it is not — its advantage is unification and falsification), or that
 its every structural flourish generalizes (most did not).
 
