@@ -121,14 +121,43 @@ information price that repaired the temperature architecture, the reflection mot
 risk and social choice — remains *because* it survived. A reader can see exactly where the theory's
 weight sits and where it does not; that visibility is the point.
 
-## 7. The decisive test, not yet run
+## 7. The experiment — and why you should be the one to run it
 
-The language-model panel is a **model organism**: powered, controllable, and — the cross-model,
-not-capability-gated result argues — a fair stand-in for testing whether the *structure* is real. It is
-not the destination. The confirmatory test is the projection-gap in **humans**, pre-registered
-(frozen), instrument built and validated, powered (N≈500 for the strong contrasts). Its gates are
-institutional and ethical, not scientific. GDT stands or falls, as a claim about people, on that
-result.
+We have done the hard part. What remains is a clean, cheap, decisive test, and we are trying to make it
+irresistible.
+
+**Look at one matched pair.** *Version A:* "a sure \$40, or a 50% chance at \$100 — the 50% is a
+precisely known, machine-verified probability." *Version B:* identical wording, except "the '50%' is a
+vague guess from an unreliable source." Same payoffs. Same stated probability. **Every scalar theory
+you have ever used — expected utility, cumulative prospect theory, anything that scores the gamble by
+its (probability-weighted) monetary value — is forced to predict that A and B are chosen at the same
+rate.** They differ only in the *epistemic status* of the probability, a coordinate no scalar carries.
+Geometric Decision Theory predicts, **in writing, before any data**, that people shift toward the sure
+\$40 under B — and it predicts the **sign**, not a fitted magnitude, in a way you cannot dissolve by
+re-scaling the coordinate: *any* monotone re-encoding of "how well-known is the probability" gives the
+same prediction. Then the same instrument asks the *same coordinate in a trust game* (send \$10 on a
+rumor vs an audited record) and predicts the *same sign* — one principle, two domains, no free
+parameters.
+
+**You win either way, and the result is clean.**
+- If the gap is **absent**, you have falsified a newly-proposed theory on its own pre-registered turf —
+  a crisp, publishable negative that no amount of our re-fitting can rescue (the signs were frozen and
+  hashed).
+- If the gap is **present**, you have shown that an *entire class* of decision theories — the scalar
+  class, essentially all of behavioral and neoclassical choice — is provably incomplete on problems it
+  cannot even distinguish, and you ran the experiment that showed it.
+
+**The barrier is as low as we can make it.** The instrument is built and validated on 84,000
+model-organism responses; the predictions are frozen (`prereg-v2`, sha256 `ca84eb4c`); the analysis
+code is written (between-subjects, BH-FDR, placebo-corrected, attention-screened); the power analysis
+is done. **N ≈ 500, roughly \$2,000 on Prolific, an eight-minute task, a couple of weeks.** You supply
+the IRB and press go; everything else is in this repository.
+
+**We especially want the skeptics.** The design is built for adversarial collaboration: pre-register
+against us, choose your own coordinates, add your own scalar-model controls. The whole point of a
+projection-gap is that a hostile experimenter and a friendly one must get the *same* answer, because
+the scalar class's prediction is *forced*, not fit. There is no version of this experiment where the
+result is ambiguous — and that is exactly why it is worth running.
 
 ## 8. What we claim, exactly
 
@@ -141,3 +170,8 @@ not — its edge is unification and falsification), or that its every structural
 (most did not). Geometric Decision Theory is a **falsifiable geometry of choice with two pillars that
 have survived held-out testing and one decisive experiment ahead**. That is the stage; the human study
 is the next act.
+
+Most theories ask to be believed. This one asks to be **shot at** — with a target we drew first, a gun
+we loaded and handed you, and a wager that whichever way it fires, you publish. The stimuli are frozen,
+the predictions are hashed, the code is written, the cost is two thousand dollars. The only thing
+missing is the person who runs it. **Be that person.**
