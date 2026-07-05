@@ -25,8 +25,15 @@ size). We further test whether V₄ lifts to the full dihedral group D₄ (a 90�
 axes) and find it does **not**: with mixed gambles filling the interior of the (domain, probability)
 plane, the rotation-covariant term vanishes and rotation-breaking terms dominate. The structure is a
 **rectangle (V₄), not a square (D₄)** — the value and probability axes are genuinely different kinds
-of thing. We are explicit about what is structure and what is re-description, and about the two-corpus
-evidentiary base.
+of thing.
+
+**Important negative (§8).** A pre-registered held-out test on representative gambles (CPC18 +
+choices13k) does **not** replicate the V₄: there, probability has a substantial main effect on risk
+attitude, so the defining "pure interaction" is absent. The V₄ is therefore a property of the
+**adversarially curated Kahneman–Tversky problem set** — designed to isolate the fourfold interaction —
+**not of risky choice in general**. Nor is it derived from the fitted metric (the low-rank Σ is
+expected-value-dominated, with ≈0 weight on the risk coordinate). We state the claim at this reduced
+scope and are explicit about what is structure, what is re-description, and what failed to generalize.
 
 ---
 
@@ -141,9 +148,37 @@ sums differ by 2·loss-aversion) that a held-out corpus can test.
   cross-method convergence is strong, but a pre-registered held-out re-test of the additive cell
   constraints would move this from "organizing description" to "confirmed structure."
 
-## 7. Claim, exactly
+## 7. Three attempts to promote the result — and what they showed
 
-The Tversky–Kahneman fourfold pattern is the **Klein four-group V₄** — two commuting reflections of the
-choice geometry (value and probability) — perturbed by a **single loss-aversion field** that the same
-data recover two independent ways. It does **not** lift to the dihedral D₄: there is no rotation
-between the value and probability axes. We claim exactly that, and no more.
+We tried to elevate the claim from an organizing description to a load-bearing structural law by
+(1) deriving the reflections from the metric, (2) generalizing to the social domain, and
+(3) confirming out-of-sample. The honest outcome:
+
+- **Not derived from Σ.** The fitted low-rank metric is expected-value-dominated (≈0 weight on the risk
+  coordinate). It does not force the risk pseudoscalar; the V₄ lives in a subdominant dimension the
+  metric does not carry. The reflections are additional structure, not a consequence of the metric.
+- **Only the single reflection generalizes.** In the social domain a self↔other reflection is broken by
+  inequality aversion — the same *reflection + aversion* motif as risk. But that is one reflection; a
+  full social V₄ needs 2-D allocation data we do not have.
+- **Does not replicate out-of-sample (§8).** The defining constraint (b_q ≈ 0) fails on representative
+  gambles.
+
+## 8. The held-out failure (pre-registered)
+
+We froze the V₄ structural predictions (interaction dominates; no probability main effect; loss
+aversion present) and tested them on a distinct corpus — 1,044 pure-domain gambles from CPC18 +
+choices13k. **Zero of three replicated.** The fitted interaction (b_dq = 0.22) is not larger than the
+probability main effect (b_q = −0.19); the pure-interaction signature is absent. On representative
+gambles, probability *does* carry an independent effect on risk attitude. The V₄ was therefore a
+property of the **curated Kahneman–Tversky problem set** — constructed precisely to isolate the
+fourfold interaction — not of risky choice in general.
+
+## 9. Claim, exactly (reduced)
+
+Within the classical Kahneman–Tversky fourfold demonstration, risk attitudes carry **Klein four-group
+V₄** structure — two commuting reflections (value, probability) — perturbed by a single **loss-aversion
+field** that two independent analyses recover, and the *reflection + aversion* motif recurs in the
+social domain (self↔other + inequality aversion). It does **not** lift to D₄, it is **not** derived
+from the fitted metric, and it does **not** replicate on representative gambles. It is an elegant
+description of a curated regularity — a supporting observation, **not** a general law and **not** a
+pillar of the geometric thesis. We claim exactly that, and no more.
