@@ -77,8 +77,9 @@ The target of the theory is therefore not scalarity but *premature projection*.
 
 Make this precise. Call a model **domain-local scalar** if its choice depends on `x` only through a
 sufficient statistic `u(x) = φ(π(x))` for a projection `π : ℝᵈ → ℝᵐ`, `m < d`, onto a proper subspace.
-Expected utility takes `π` to money; Nash, to own-payoff; Fehr–Schmidt inequality aversion, to the
-`(own, others)` payoff vector; cumulative prospect theory, to a scalar value over *stated*
+Expected utility (von Neumann & Morgenstern, 1944) takes `π` to money; Nash equilibrium (Nash, 1950),
+to own-payoff; Fehr–Schmidt inequality aversion (Fehr & Schmidt, 1999), to the `(own, others)` payoff
+vector; cumulative prospect theory (Tversky & Kahneman, 1992), to a scalar value over *stated*
 probabilities. Write `𝒫` for this class. (A model may always be enlarged by appending a coordinate to
 `π`; §4 and §7 return to that move and show what it costs.)
 
@@ -255,3 +256,32 @@ its every structural flourish generalizes (most did not).
 Geometric Decision Theory is a falsifiable geometry of choice with two pillars that have survived
 held-out testing and one measurement outstanding. The predictions are frozen and the apparatus is
 built; the measurement is in human respondents.
+
+---
+
+## References
+
+*(Author–year–venue as given; page numbers and DOIs to be verified against source before external
+circulation. Charness–Rabin and Fisman–Kariv–Markovits were checked against the original PDFs.)*
+
+- Afriat, S. N. (1967). The construction of utility functions from expenditure data. *International Economic Review* 8, 67–77.
+- Andreoni, J., & Miller, J. (2002). Giving according to GARP: an experimental test of the consistency of preferences for altruism. *Econometrica* 70, 737–753.
+- Charness, G., & Rabin, M. (2002). Understanding social preferences with simple tests. *Quarterly Journal of Economics* 117, 817–869.
+- Ellsberg, D. (1961). Risk, ambiguity, and the Savage axioms. *Quarterly Journal of Economics* 75, 643–669.
+- Engelmann, D., & Strobel, M. (2004). Inequality aversion, efficiency, and maximin preferences in simple distribution experiments. *American Economic Review* 94, 857–869.
+- Fehr, E., & Schmidt, K. M. (1999). A theory of fairness, competition, and cooperation. *Quarterly Journal of Economics* 114, 817–868.
+- Fisman, R., Kariv, S., & Markovits, D. (2007). Individual preferences for giving. *American Economic Review* 97, 1858–1876.
+- Gilboa, I., & Schmeidler, D. (1989). Maxmin expected utility with a non-unique prior. *Journal of Mathematical Economics* 18, 141–153.
+- Kahneman, D., & Tversky, A. (1979). Prospect theory: an analysis of decision under risk. *Econometrica* 47, 263–291.
+- Klibanoff, P., Marinacci, M., & Mukerji, S. (2005). A smooth model of decision making under ambiguity. *Econometrica* 73, 1849–1892.
+- Matějka, F., & McKay, A. (2015). Rational inattention to discrete choices: a new foundation for the multinomial logit model. *American Economic Review* 105, 272–298.
+- McKelvey, R. D., & Palfrey, T. R. (1995). Quantal response equilibria for normal form games. *Games and Economic Behavior* 10, 6–38.
+- Nash, J. F. (1950). Equilibrium points in n-person games. *Proceedings of the National Academy of Sciences* 36, 48–49.
+- Ruggeri, K., et al. (2020). Replicating patterns of prospect theory for decision under risk. *Nature Human Behaviour* 4, 622–633.
+- Shannon, C. E. (1948). A mathematical theory of communication. *Bell System Technical Journal* 27, 379–423, 623–656.
+- Sims, C. A. (2003). Implications of rational inattention. *Journal of Monetary Economics* 50, 665–690.
+- Tversky, A., & Kahneman, D. (1992). Advances in prospect theory: cumulative representation of uncertainty. *Journal of Risk and Uncertainty* 5, 297–323.
+- Varian, H. R. (1982). The nonparametric approach to demand analysis. *Econometrica* 50, 945–973.
+- von Neumann, J., & Morgenstern, O. (1944). *Theory of Games and Economic Behavior*. Princeton University Press.
+- Choice Prediction Competition 2018 (CPC18) data. Zenodo, doi:10.5281/zenodo.2571510.
+- Brouwer, L. E. J. (1911). Beweis der Invarianz des *n*-dimensionalen Gebiets. *Mathematische Annalen* 71, 305–313. *(invariance of domain, §3 Corollary)*
