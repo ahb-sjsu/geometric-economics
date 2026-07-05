@@ -10,7 +10,8 @@ keystone theory, and the one thing no scalar decision theory can express.*
 
 Cumulative prospect theory (CPT) describes risky choice; equilibrium and behavioral game theory
 describe strategic choice; the two literatures share almost no machinery. We ask whether a single
-geometric decision metric predicts behavior in **both**. Encoding lottery options and normal-form
+geometric decision metric — the metric of **Geometric Decision Theory (GDT)** — predicts behavior in
+**both**. Encoding lottery options and normal-form
 game strategies into one feature space — expected value and outcome dispersion, with strategic
 uncertainty proxied by payoff variance under a level-0 belief — we fit the metric on one domain and
 **predict the other with no re-fit**. Three findings. **(1) Individual-level competitiveness.** On the

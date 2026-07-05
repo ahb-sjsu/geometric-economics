@@ -13,8 +13,8 @@ trivially contain simpler ones. We operationalize strict improvement directly. A
 design constructs matched decision problems that are identical under *every* scalar projection
 (expected utility, Nash, inequality aversion, cumulative prospect theory) but differ on one active
 non-monetary coordinate; the entire scalar class is then *mathematically forced* to predict no
-behavioral difference, while the geometric model predicts a signed gap whose **sign is invariant to any
-monotone re-encoding** of the coordinate. We pre-register the sign predictions (hashed before data) and
+behavioral difference, while the geometric model of **Geometric Decision Theory (GDT)** predicts a
+signed gap whose **sign is invariant to any monotone re-encoding** of the coordinate. We pre-register the sign predictions (hashed before data) and
 run the design on a **language-model panel** — 216 synthetic subjects (36 personas × 6 models spanning
 a capability ladder), 83,682 forced choices — as a powered, ethically cheap model organism. **The core
 result holds:** placebo-corrected and FDR-controlled, 5 of 7 contrasts move in the predicted direction,

@@ -1,15 +1,21 @@
-# Geometric Economics — Consolidated Evidence Ledger
+# Geometric Decision Theory (GDT) — Consolidated Evidence Ledger
 
 *The honest state of the body of work. Distinguishes the results that survived pre-registered,
 held-out testing (the pillars) from those that did not (the graveyard) and those that are real but
 supporting. Written so the thesis rests weight only on what can hold it.*
 
+*Name: the theory is **Geometric Decision Theory (GDT)** — "decision," not "economics," because its
+distinctive content (encoding-invariant non-monetary coordinates, moral/epistemic and LLM choice)
+spans decision-making beyond economic choice. "GDT" and, informally, "the geometry" / "the geometric
+model" are used interchangeably below.*
+
 ---
 
 ## The thesis, in one sentence
 
-Economic choice is movement on a low-dimensional decision manifold under a Mahalanobis cost metric Σ
-with a softmax choice rule; the empirically load-bearing claims are that (a) the metric is **low-rank**,
+**Geometric Decision Theory:** choice is movement on a low-dimensional decision manifold under a
+Mahalanobis cost metric Σ with a softmax choice rule; the empirically load-bearing claims are that
+(a) the metric is **low-rank**,
 (b) choice depends on **non-monetary coordinates in an encoding-invariant way** that no scalar utility
 can represent, and (c) the same metric **transfers across domains**.
 

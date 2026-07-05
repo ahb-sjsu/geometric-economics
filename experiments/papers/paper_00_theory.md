@@ -1,4 +1,4 @@
-# The Geometry of Economic Choice: Scalar Irrecoverability, Projection Nesting, and Strict Subsumption
+# Geometric Decision Theory: Scalar Irrecoverability, Projection Nesting, and Strict Subsumption
 
 *Keystone (theory) paper. Draft. States the central reframing as mathematics: the theorems on which
 the empirical pillars (cross-domain transfer; the projection-gap experiments) rest. Written to be
@@ -9,9 +9,11 @@ own, and which acquire content only through the empirics.*
 
 ## Abstract
 
-We formalize economic choice as movement on a low-dimensional decision manifold under a Mahalanobis
-cost metric with a stochastic (softmax) choice rule, and prove four results relating this geometry to
-the two dominant descriptive theories. **(Representation)** any finite stochastic choice model embeds
+**Geometric Decision Theory (GDT)** formalizes choice as movement on a low-dimensional decision
+manifold under a Mahalanobis cost metric with a stochastic (softmax) choice rule. We name it "decision"
+rather than "economic" theory because its distinctive content — encoding-invariant dependence on
+non-monetary coordinates — governs risky, strategic, social, and moral choice alike. We prove four
+results relating this geometry to the two dominant descriptive theories. **(Representation)** any finite stochastic choice model embeds
 in a one-dimensional geometric cost model — a triviality we state only to disarm it. **(Nesting)**
 Nash equilibrium is the restriction of the geometry to the monetary coordinate under single-step best
 response, and cumulative prospect theory is a scalar contraction of a lottery submanifold; both are

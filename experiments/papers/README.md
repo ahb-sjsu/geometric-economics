@@ -1,8 +1,10 @@
-# The geometric decision program — a body of work
+# Geometric Decision Theory (GDT) — a body of work
 
-A foundation, not a series. One central claim, stated as mathematics and discharged by empirics, each
-piece written to stand alone and held to exactly the confidence its evidence supports. The ambition is
-in the *sharpness of the claim* and the *rigor of the apparatus* — never in inflated results.
+A foundation, not a series. One central claim — the theory of **Geometric Decision Theory (GDT)** —
+stated as mathematics and discharged by empirics, each piece written to stand alone and held to exactly
+the confidence its evidence supports. The ambition is in the *sharpness of the claim* and the *rigor of
+the apparatus* — never in inflated results. ("The geometry" / "the geometric model" are used informally
+for GDT throughout.)
 
 ## The central claim
 
