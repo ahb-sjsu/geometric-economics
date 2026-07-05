@@ -1,0 +1,521 @@
+\documentclass[journal]{IEEEtran}
+
+% Packages
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{balance}
+
+% Custom commands (matching Part I: revised_manuscript_v2.tex)
+\newcommand{\E}{\mathcal{E}}               % Economic decision complex
+\newcommand{\M}{\mathcal{M}}               % General manifold
+\newcommand{\BF}{\mathrm{BF}}              % Behavioral friction
+\newcommand{\Pclass}{\mathcal{P}}          % Scalar-projection class
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\begin{document}
+
+\title{Geometric Prediction of Economic Behavior~II:\\Held-Out and Cross-Domain Validation}
+
+\author{Andrew~H.~Bond%
+\thanks{A.~H.~Bond is with the Department of Computer Engineering, San Jos\'{e} State University, San Jos\'{e}, CA 95192 USA (e-mail: andrew.bond@sjsu.edu; ORCID: 0009-0003-2599-6158).}%
+\thanks{This is a follow-up to ``Geometric Prediction of Economic Behavior: Cross-Domain Validation Across Game Theory and Prospect Theory,'' IEEE Transactions on Computational Social Systems.}%
+\thanks{Manuscript received \today.}}
+
+\markboth{IEEE Transactions on Computational Social Systems}%
+{Bond: Geometric Prediction of Economic Behavior~II}
+
+\maketitle
+
+\begin{abstract}
+A companion paper introduced a geometric decision model in which economic choices are displacements on a nine-dimensional manifold evaluated by a Mahalanobis cost metric~$\Sigma$, and reported an in-sample benchmark of sixteen aggregate targets.
+The natural question that benchmark raised---whether the shared metric is a flexible representation or a predictive structure---is answered here with held-out, individual-level, and pre-registered tests, and with a designed falsification instrument.
+We report four results.
+First, on the Choice Prediction Competition individual-choice benchmark (CPC18; 270 problems), predicting \emph{unseen} problems out of sample, the geometric model beats expected value, edges out linear random-utility, and lands within one standard deviation of cumulative prospect theory with one fewer parameter.
+Encoding lotteries and $110$ published normal-form games in a common (expected value, dispersion) space, a metric fit \emph{only} on risky choice predicts strategic play, and a polar decomposition into a scale-invariant \emph{aversion angle} plus a domain-specific magnitude raises transfer to $97$--$100\%$ of a native fit \emph{in both directions}.
+Second, we pre-register (hashed before data) four claims that $\Sigma$ is low-rank and test them on three held-out domains---social-preference games, a $19$-country prospect-theory replication, and a six-language cross-lingual panel---where a rank-$1$/rank-$2$ precision matrix matches the full metric, beats the diagonal restriction the companion paper's reviewer flagged, and transfers at $\approx99\%$.
+Third, a \emph{projection-gap} design constructs matched problems identical under every scalar projection but differing on one active non-monetary coordinate, so the entire scalar class is forced to predict no difference; run as a pre-registered study on a language-model panel ($216$ model agents, $83{,}682$ forced choices), five of seven contrasts move in the predicted direction with perfect cross-model consistency, and two pre-registered predictions fail and are reported.
+Fourth, both failures localize to the cost-dependent temperature, which we replace with a fixed information price that repairs the dose-response and improves held-out fit.
+We are explicit about scope: every result here is computational, the low-rank result is gain-domain, and the confirmatory human projection-gap study these results power is stated as future work, not a claim.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Computational social systems, geometric decision theory, behavioral prediction, cross-domain transfer, pre-registration, held-out validation, Mahalanobis distance, rational inattention, language-model panels, falsification.
+\end{IEEEkeywords}
+
+%==============================================================================
+\section{Introduction}
+\label{sec:intro}
+%==============================================================================
+
+\IEEEPARstart{A}{companion} paper in this journal introduced a geometric framework for economic decision-making in which each option is a displacement vector on a nine-dimensional decision manifold~$\E$ and options are evaluated by a Mahalanobis cost metric with a softmax choice rule~\cite{bond2026partI}.
+A diagonal covariance matrix~$\Sigma$ selected on nine bargaining and public-goods targets was shown to reproduce, without re-estimating the active variances, seven held-out prospect-theory and historical-replication targets, and the model's sharpest counter-intuitive corollary---stake-scaling invariance---was falsified in the direction the framework itself predicts on high-stakes ultimatum data.
+We refer to that framework, for brevity, as \emph{Geometric Decision Theory} (GDT), and use ``the geometric model'' interchangeably.
+
+Part~I was deliberately modest, and its central open question is the one any descriptive model must answer: is a metric that \emph{fits} canonical aggregate frequencies a flexible representation, or a \emph{predictive structure}?
+The companion paper's evaluation was largely in-sample and target-level; its reviewers asked, reasonably, for individual-level data, held-out prediction under a common protocol, and a tighter accounting of the cost-dependent temperature.
+This paper takes those asks as its agenda.
+Its purpose is not to restate the model but to subject it to the tests that separate structure from flexibility: out-of-sample prediction on individual choices, pre-registered claims frozen before data, transfer across genuinely different domains, and a designed experiment in which the competing model class is \emph{forced} to be wrong.
+
+Three properties make such tests decisive rather than merely favorable.
+\emph{Held-out} evaluation---predicting problems, countries, or languages never used in calibration---cannot be gamed by flexibility, because added flexibility that only fits noise raises out-of-sample error rather than lowering it.
+\emph{Pre-registration}---freezing a hashed prediction before any data are seen---removes the degrees of freedom that make post-hoc fit uninformative.
+And a \emph{projection-gap} design, in which every scalar decision theory is mathematically constrained to predict no difference, turns ``our model fits better'' into ``the competing class is forced into a specific wrong answer that ours gets right, with nothing fit.''
+All three appear below.
+
+\subsection{Contributions}
+This paper makes five contributions, each a self-contained result computed on public data.
+\begin{enumerate}
+    \item \textbf{Held-out individual-level prediction and bidirectional cross-domain transfer.} On CPC18 the geometric model is competitive with domain-specialized CPT out of sample with fewer parameters; a metric fit only on lotteries predicts play in $110$ normal-form games, and a polar (angle-locked) transfer reaches $97$--$100\%$ of a native fit in both directions (Section~\ref{sec:transfer}).
+    \item \textbf{A pre-registered low-rank metric.} Four falsifiable claims that $\Sigma$ is rank-$1$/rank-$2$ are frozen before data and confirmed on three held-out domains, superseding the diagonal restriction on out-of-sample evidence (Section~\ref{sec:lowrank}).
+    \item \textbf{A projection-gap falsification instrument.} A pre-registered design forces the entire scalar class to predict a null; a language-model panel returns a cross-model, cross-domain positive on five of seven contrasts, with two registered failures reported (Section~\ref{sec:projgap}).
+    \item \textbf{A repaired choice rule.} A fixed information price, motivated by rational inattention, replaces the cost-dependent temperature, closing the dose-response failure the projection-gap study exposed and improving held-out fit (Section~\ref{sec:temperature}).
+    \item \textbf{Independent corroboration and an honest graveyard.} Two load-bearing shapes---low dimensionality and a reflection-symmetric, aversion-broken value structure---appear independently in the social-preference literature (Section~\ref{sec:corroboration}); four structural conjectures that failed held-out testing are reported so they are not re-walked (Section~\ref{sec:graveyard}).
+\end{enumerate}
+
+The remainder is organized as follows.
+Section~\ref{sec:recap} recaps the frozen model.
+Sections~\ref{sec:transfer}--\ref{sec:temperature} present the four quantitative results.
+Section~\ref{sec:corroboration} reports independent corroboration, Section~\ref{sec:graveyard} the graveyard, Section~\ref{sec:discussion} discussion and the human gate, and Section~\ref{sec:conclusion} concludes.
+
+%==============================================================================
+\section{Model Recap and the Scalar Class}
+\label{sec:recap}
+%==============================================================================
+
+We reuse the model of Part~I without re-estimation~\cite{bond2026partI} and restate only what the tests below require.
+An option is a displacement $\Delta\mathbf{a}\in\mathbb{R}^9$ on the manifold~$\E$ whose nine coordinates encode monetary consequences ($d_1$), rights ($d_2$), fairness ($d_3$), autonomy ($d_4$), privacy/trust ($d_5$), social impact ($d_6$), virtue/identity ($d_7$), legitimacy ($d_8$), and epistemic status ($d_9$).
+Its cost is the Mahalanobis distance
+\begin{equation}
+    C(\Delta\mathbf{a}) = \sqrt{\Delta\mathbf{a}^{\top}\, \Sigma^{-1}\, \Delta\mathbf{a}},
+    \label{eq:mahalanobis}
+\end{equation}
+and the probability of choosing option $A$ from a menu is the softmax
+\begin{equation}
+    P(A) = \frac{\exp(-C_A/T)}{\sum_{B}\exp(-C_B/T)},
+    \label{eq:softmax}
+\end{equation}
+with temperature $T>0$.
+Part~I used a cost-dependent temperature $T(\delta)=\max(T_{\text{floor}},\,T_{\text{base}}\,\delta^{T_\alpha})$ with $(T_{\text{base}},T_\alpha,T_{\text{floor}})=(0.24,2.13,0.5)$ and $\delta=|C_A-C_B|$; Section~\ref{sec:temperature} revisits exactly this component.
+Part~I selected a diagonal $\Sigma$ with active set $\{d_6,d_7,d_9\}$; Section~\ref{sec:lowrank} tests whether the diagonal restriction can be replaced by a genuinely low-rank precision matrix.
+
+The tests turn on a precise competitor class.
+Let the \emph{scalar-projection class} $\Pclass$ be the set of models whose choice depends on an option only through a scalar $u(x)=\varphi(\pi(x))$ for some projection $\pi$ and monotone $\varphi$.
+Its members are the incumbents: expected utility (money projection), Nash/payoff models (own-payoff projection), inequality aversion (own, others), and CPT (a stated-probability lottery scalar).
+GDT also contracts an option to a scalar cost~\eqref{eq:mahalanobis} before choice; the distinction we test is not scalarity at the final step but \emph{premature domain-local projection}---whether a model discards an active coordinate before choosing.
+A model in $\Pclass$ whose projection $\pi$ omits a coordinate $z$ is invariant to $z$ by construction; if behavior varies systematically with $z$, that model is forced to fail.
+This is the logic the projection-gap instrument (Section~\ref{sec:projgap}) exploits.
+
+%==============================================================================
+\section{Held-Out Prediction and Bidirectional Cross-Domain Transfer}
+\label{sec:transfer}
+%==============================================================================
+
+The strongest test of a decision theory is not fit but \emph{transfer}: whether a structure estimated in one setting predicts behavior in a genuinely different one with nothing re-fit.
+Scalar incumbents cannot even be asked this cross-domain question---CPT has no representation of a game, Nash none of a lottery.
+GDT can be asked it, because one metric spans both.
+
+\subsection{Shared encoding}
+To place lotteries and games in one space we encode each option by its expected value and dispersion.
+A lottery option $(H,p,L)$ has $\mathrm{EV}=pH+(1-p)L$ and $\mathrm{SD}=\sqrt{p(H-\mathrm{EV})^2+(1-p)(L-\mathrm{EV})^2}$.
+A row strategy $s$ with payoff matrix $M$, under a uniform level-$0$ belief over the opponent's actions, has $\mathrm{EV}_s=\operatorname{mean}_j M[s,j]$ and $\mathrm{SD}_s=\operatorname{std}_j M[s,j]$---strategic uncertainty proxied by payoff variance.
+Payoffs are scale-normalized per dataset.
+The cost is the Mahalanobis distance from the ideal (high EV, low dispersion), and the same $(\sigma_{\mathrm{ev}},\sigma_{\mathrm{sd}},T)$ govern both domains, which is what makes transfer meaningful.
+
+\subsection{Data}
+Lotteries are the CPC18 description problems~\cite{erev2017,cpc18data} ($270$ problems, first-encounter choices without feedback).
+Games are the ``bogota'' behavioral-game-theory datapool~\cite{wright2017} ($110$ two-player normal-form games from eight published studies---Stahl--Wilson, Costa-Gomes, Goeree--Holt, Cooper, Haruvy, Camerer---with human action frequencies).
+
+\subsection{Result 1: held-out individual prediction (CPC18)}
+Predicting unseen problems' choice rates under $20$-fold cross-validation by problem identifier, Table~\ref{tab:cpc18} reports held-out mean absolute error.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.15}
+\caption{Held-Out Choice Prediction on CPC18 ($20$-Fold CV by Problem)}
+\label{tab:cpc18}
+\centering
+\begin{tabular}{l r r}
+\toprule
+\textbf{Model} & \textbf{\# params} & \textbf{Held-out MAE} \\
+\midrule
+Constant                 & 1 & $0.199 \pm 0.012$ \\
+Expected value (logit)   & 1 & $0.149 \pm 0.008$ \\
+Linear random-utility    & 4 & $0.128 \pm 0.010$ \\
+\textbf{Geometric (GDT)} & 4 & $\mathbf{0.124 \pm 0.009}$ \\
+CPT                      & 5 & $0.118 \pm 0.008$ \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize{Errors are mean~$\pm$~s.d.\ across folds. The geometric model beats expected value and linear random-utility out of sample and lands within one standard deviation of the domain-specialized CPT with one fewer parameter.}
+\end{flushleft}
+\end{table}
+
+The domain-general geometry beats expected value, edges out linear random-utility (a margin within fold noise), and ties the domain-specialized champion with fewer parameters.
+On its home turf CPT should---and does---lead narrowly; the point is that the geometry is competitive there \emph{and} portable, which CPT is not.
+
+\subsection{Result 2: cross-domain transfer}
+We fit $(\sigma_{\mathrm{ev}},\sigma_{\mathrm{sd}},T)$ on one domain and predict the other with no re-fit, scoring by multinomial negative log-likelihood (NLL; chance is uniform).
+Table~\ref{tab:transfer} reports the raw transfer and, below it, an important asymmetry.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.15}
+\caption{Cross-Domain Transfer (No Re-Fit; Multinomial NLL, Lower Better)}
+\label{tab:transfer}
+\centering
+\begin{tabular}{l l r}
+\toprule
+\textbf{Target} & \textbf{Model} & \textbf{NLL} \\
+\midrule
+Games      & fit-on-games (native)          & $0.876$ \quad (chance $1.040$) \\
+Games      & transfer lotteries$\to$games   & $0.931$ \\
+Lotteries  & fit-on-lotteries (native)      & $0.624$ \quad (chance $0.693$) \\
+Lotteries  & transfer games$\to$lotteries   & $0.783$ \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize{A metric that has seen only lotteries predicts strategic play at NLL $0.931$, closing $66\%$ of the chance-to-native gap on games it never saw. The reverse direction is worse than chance, exposing an asymmetry resolved in Table~\ref{tab:polar}.}
+\end{flushleft}
+\end{table}
+
+A metric that has seen \emph{only} lotteries predicts strategic play well above chance---two-thirds of the way to a games-native fit, on games it was never shown.
+No scalar incumbent can produce this at any parameter count.
+The reverse direction (games$\to$lotteries) is worse than chance: the smaller, noisier game calibration is overconfident outside its regime.
+We report the asymmetry rather than average it away, and resolve it next.
+
+\subsection{Result 3: the transfer is a shared \emph{shape}}
+The cost factors as
+\begin{equation}
+    C = r\cdot\sqrt{(\cos\theta/\sigma_{\mathrm{ev}})^2 + (\sin\theta/\sigma_{\mathrm{sd}})^2},
+    \label{eq:polar}
+\end{equation}
+a radius $r$ (overall scale) times an angular term set entirely by the ratio $\sigma_{\mathrm{ev}}\!:\!\sigma_{\mathrm{sd}}$---the scale-invariant \emph{aversion angle}, i.e.\ the risk--return tradeoff shape.
+Transferring the whole metric forces both shape and scale across domains; transferring only the angle and recalibrating the one-parameter magnitude isolates what should be universal.
+Table~\ref{tab:polar} shows the effect.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.15}
+\caption{Angle-Locked (Polar) Transfer Rescues Both Directions}
+\label{tab:polar}
+\centering
+\begin{tabular}{l r r}
+\toprule
+\textbf{Direction} & \textbf{Full transfer} & \textbf{Angle-locked transfer} \\
+\midrule
+lotteries $\to$ games & $0.931$ \; ($66\%$) & $\mathbf{0.876}$ \; ($\mathbf{100\%}$) \\
+games $\to$ lotteries & $0.783$ \; ($<0$)   & $\mathbf{0.627}$ \; ($\mathbf{97\%}$) \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize{Percentages are fraction of the chance-to-native gap closed. Fitted aversion angles are similar across domains, both strongly EV-weighted ($\sigma_{\mathrm{ev}}/\sigma_{\mathrm{sd}}$: lotteries $0.105$, games $0.146$). Only a one-parameter scale is recalibrated; the metric \emph{shape} is not re-fit.}
+\end{flushleft}
+\end{table}
+
+The asymmetry disappears: angle-locked transfer reaches $97$--$100\%$ of a native fit in both directions, and the fitted tradeoff angles are similar across domains (both strongly EV-weighted).
+\emph{The risk--return tradeoff shape is shared across risky and strategic choice; only the stakes are domain-specific.}
+This is a cleaner statement of the shared-metric claim than the raw transfer, and it is the headline of the cross-domain result: what transfers is a metric \emph{shape}, with only a scale recalibration, not a re-fit.
+
+An independent route agrees.
+A structural search over model \emph{forms} (value transform, dispersion feature, metric norm, reference point), scored by worst-case bidirectional transfer, selects a variance dispersion feature and a city-block norm rather than the Euclidean-SD default---two independent routes to the conclusion that a portable shape, not a domain-tuned one, carries the transfer.
+
+\subsection{Honest limits}
+Three limits bound the claim.
+First, matrix games exercise payoff and strategic uncertainty, not the fairness/identity coordinates GDT posits; the transfer we demonstrate is of the \emph{risk} part of the metric, and social-coordinate transfer requires social-preference games (Section~\ref{sec:corroboration} supplies corroboration but not the same transfer test).
+Second, level-$k$ beliefs do not help: iterated best-response encodings \emph{degrade} the native game fit, and the naive level-$0$ belief predicts best, consistent with the level-$0$ literature~\cite{wright2017}; the metric transfers because it captures the non-strategic risk response that dominates human play, not sophisticated reasoning.
+Third, the two-outcome approximation for multi-outcome lotteries and per-dataset scale normalization are model-neutral and do not favor the geometry.
+
+%==============================================================================
+\section{A Pre-Registered Low-Rank Metric}
+\label{sec:lowrank}
+%==============================================================================
+
+Part~I restricted $\Sigma$ to be diagonal, a parsimony choice its reviewer called ``convenient but severe.''
+A constrained-$\Sigma$ search on lotteries and games suggested that the precision matrix is in fact effectively \emph{low-rank}: a rank-$1$/rank-$2$ structure matches the full metric and beats the diagonal.
+That was a search winner---a hypothesis, not a result.
+We froze it, before any held-out data, as four falsifiable claims, hashed and tagged (\texttt{prereg-sigma-v1}):
+\begin{itemize}
+    \item \textbf{H1} (low-rank sufficiency): rank-$1$ fits within $0.02$ NLL of the full metric.
+    \item \textbf{H2} (transfer): the metric transfers $\geq85\%$ of the chance-to-native gap.
+    \item \textbf{H3} (real off-diagonal structure): rank-$1$ beats diagonal at equal parameter count.
+    \item \textbf{H4} (low, not full, rank): rank-$2$ adds little over rank-$1$.
+\end{itemize}
+We then named three held-out domains and ran all three.
+Table~\ref{tab:lowrank} reports the scorecard.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.2}
+\caption{\texttt{prereg-sigma-v1} Scorecard Across Three Held-Out Domains}
+\label{tab:lowrank}
+\centering
+\begin{tabular}{@{}p{0.24\columnwidth} c c c p{0.20\columnwidth}@{}}
+\toprule
+\textbf{Held-out leg} & \textbf{H1} & \textbf{H3} & \textbf{H4} & \textbf{H2 (transfer)} \\
+\midrule
+Social games (Fraser--Nettle ultimatum, responder)~\cite{fraser2020} & Pass & \textbf{Pass} & Pass & $99\%$ across hunger condition \\
+Ruggeri PT ($17$ KT $\times$ $19$ countries)~\cite{ruggeri2020} & Pass$^{*}$ & \textbf{Pass} & Pass & $\mathbf{99\%}$ across countries \\
+Cross-lingual ($6$ languages) & --- & --- & --- & shape $0.74$; axis $+0.214$ vs.\ placebo \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize{H3 (rank-$1$ beats diagonal): Fraser--Nettle $0.290<0.335$; Ruggeri $0.667<0.680$. $^{*}$Ruggeri rank-$1$ is marginal at the $0.02$ line; rank-$2$ is the tighter low-rank choice (best BIC in the original search), consistent with H4. The cross-lingual leg tests coordinate universality: LaBSE axis alignment is $+0.214$ above a placebo-axis control, and a behavioral panel reproduces the projection-gap shape at $0.74$ correlation across six languages.}
+\end{flushleft}
+\end{table}
+
+In every domain where they can be tested, the frozen claims hold: \emph{the diagonal is beaten, the full metric is unnecessary, and rank $1$--$2$ suffices}.
+The metric transfers at $\approx99\%$ across hunger conditions and across $19$ countries, and its coordinate directions are language-invariant.
+This is the parsimony win the free-diagonal $\Sigma$ lacked, on pre-registered out-of-sample data; the diagonal restriction of Part~I is superseded, and by frozen evidence rather than a fresh search.
+
+\paragraph{Standing bound}
+The confirmed low-rank result is a \emph{gain-domain} result.
+The loss/reflection domain is the consistent weak spot: raw geometric features do not capture the sign-flip of risk attitudes under losses (the Ruggeri gain$\to$loss transfer is $0\%$), and the reflection encoding remains fit, not yet held-out.
+This bounds the claim honestly and names the next modeling target; it is also the same locus the temperature repair of Section~\ref{sec:temperature} addresses.
+
+%==============================================================================
+\section{A Projection-Gap Falsification Instrument}
+\label{sec:projgap}
+%==============================================================================
+
+Testing whether a theory \emph{strictly improves} on its predecessors is hard because richer models trivially contain simpler ones, so ``we fit better'' is weak evidence and ``we contain them'' is none.
+The projection-gap design converts strict improvement into a setting where the incumbent class is \emph{forced} into a specific wrong prediction that the new theory gets right, with nothing fit.
+
+\subsection{Design}
+For the scalar class $\Pclass$ (Section~\ref{sec:recap}), a \emph{projection-equivalent pair} $(x,x')$ has identical monetary payoffs and identical lottery structure, differing only in the framing of one active non-monetary coordinate $d\in\{\text{social impact, identity, epistemic status}\}$.
+Because every $M\in\Pclass$ depends on the option only through a projection that omits $d$, every such model is invariant to the manipulation and predicts $\text{behavior}(x)=\text{behavior}(x')$.
+The geometric model predicts a signed gap $\Delta=P(x)-P(x')\neq0$.
+When the manipulation moves the relative cost of one option monotonically on $d$ while the comparator is fixed on that coordinate, the sign of $\Delta$ is invariant to any strictly increasing re-encoding of $d$---so a confirmed sign cannot be a coding artifact.
+The sign is the pre-registered, adversary-proof prediction; magnitude is secondary.
+
+The frozen model, the contrasts (social-impact, identity, and epistemic manipulations in game and lottery frames, at fixed payoffs and probabilities), surface-wording \emph{placebos} (predicted $\Delta=0$, an internal falsifier), and a dose-response family were \texttt{sha256}-hashed and tagged before any subject was run (\texttt{prereg-v1}).
+No prediction can be edited post hoc without breaking the hash.
+
+\subsection{A language-model panel as a model organism}
+A projection-gap study needs individual-level data at scale, which human experiments deliver slowly and expensively.
+We use a panel of language models as a \emph{model organism}: each model, conditioned on a grid of sampled value/demographic personas, is a population of synthetic respondents yielding per-subject choice distributions at a scale no human study reaches.
+We are explicit about status.
+A positive result is an existence proof that the frozen metric predicts a real agent population's projection-defying choices out of sample, and a powered dry-run that sizes a confirmatory human study; it is \emph{not} the human economics claim.
+A negative result is itself informative and cheap.
+The panel ran across a shared, policy-bound GPU cluster through a polite admission controller (additive-increase/multiplicative-decrease, bounded violation rate) with a durable, preemption-tolerant result stream; output-only forced choice avoids reasoning leakage, and every work item is idempotent.
+
+\subsection{Result: the core claim holds}
+The panel comprised $216$ model agents ($36$ personas $\times$ $6$ models spanning a capability ladder) and $83{,}682$ valid forced choices ($99.3\%$ parse) at $0\%$ policy violations.
+Placebo-correcting each subject against their own domain-matched wording placebo and controlling the false-discovery rate, Table~\ref{tab:projgap} reports the confirmed contrasts.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.15}
+\caption{Projection-Gap Contrasts (Placebo-Corrected, FDR-Controlled)}
+\label{tab:projgap}
+\centering
+\footnotesize
+\begin{tabular}{@{}l l r r c@{}}
+\toprule
+\textbf{Contrast} & \textbf{Coordinate} & \textbf{$\Delta$} & \textbf{$d$} & \textbf{Cross-model} \\
+\midrule
+Epistemic (game)    & epistemic status & $+0.46$ & $0.91$ & \textbf{6/6} \\
+Social (game)       & social impact    & $+0.32$ & $0.81$ & \textbf{6/6} \\
+Identity (game)     & identity         & $+0.25$ & $0.64$ & \textbf{6/6} \\
+Epistemic (lottery) & epistemic status & $+0.17$ & $0.52$ & \textbf{6/6} \\
+Social (lottery)    & social scope     & $+0.17$ & $0.56$ & \textbf{6/6} \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize{$\Delta$ is the placebo-corrected choice-probability gap; $d$ is Cohen's~$d$. All five move in the pre-registered direction across both frames, with perfect $6/6$ cross-model consistency, including the weakest model---so the effect is not capability-gated. Placebos are null at full power.}
+\end{flushleft}
+\end{table}
+
+Five of seven contrasts are FDR-significant with the predicted sign, placebo-corrected, across both game and lottery frames, with perfect $6/6$ cross-model consistency.
+Manipulations \emph{invisible to every scalar theory} move choices in the frozen metric's predicted direction, in every model; the placebos are null at full power; and the effect is present in the weakest model, so the ``only advanced models show it'' hypothesis is rejected.
+
+\subsection{The failures we pre-registered, and report}
+Two pre-registered predictions fail, and we report them.
+First, a predicted loss-domain sign reversal does not appear (observed same sign; $1/6$ models): the prospect-theory-motivated loss encoding does not hold for these subjects---the same gain-domain boundary as Section~\ref{sec:lowrank}.
+Second, the dose-response is monotone-increasing where the frozen model predicted an inverted-U, and magnitudes are roughly five times larger than the frozen model allows (signs right, sizes larger).
+Both failures share one cause, which we isolate and repair next.
+The active metric---which coordinates matter, and their signs---survives untouched; only the choice-rule scaling is implicated.
+
+%==============================================================================
+\section{Repairing the Temperature: A Fixed Information Price}
+\label{sec:temperature}
+%==============================================================================
+
+Choice-rule fuzzing on independent human data (CPC18) traces both dose-response and magnitude failures to the cost-dependent temperature exponent.
+Calibrated on aggregate targets, Part~I's exponent was $T_\alpha=2.13$; fit on individual choices it is near-flat ($T_\alpha\approx0.42$).
+A super-linear temperature over-damps: it predicts washout of small cost differences (hence an inverted-U dose curve) and compresses effect sizes (hence the fivefold magnitude gap).
+
+The repair is to replace the cost-dependent rule with a \emph{fixed} temperature interpreted as an information price.
+Under rational inattention~\cite{sims2003}, an agent paying a constant marginal cost per bit of information is optimally described by a logit whose temperature is that price, and the multinomial-logit form is the exact solution~\cite{matejka2015}.
+This gives GDT's softmax~\eqref{eq:softmax} a first-principles reading: $T$ is not a nuisance scaling but the price of a bit, fixed across problems.
+Empirically, on held-out choices the fixed information price beats the cost-dependent temperature decisively---the dose-response Spearman correlation moves from $-0.95$ (wrong sign, the artifact) to $+1.0$ (monotone, as observed), with a Bayesian information criterion improvement of $\approx140$.
+The fixed price restores the monotone dose-response, unthrottles magnitude, and improves the held-out fit, and the revised predictions are re-registered (\texttt{prereg-v2}) for the next round.
+
+Two residuals remain, and they are on the \emph{utility} side, not the temperature: the absolute calibration of the active variances $\sigma_k$, and the loss-domain reflection encoding.
+Isolating the failures to a single, independently repairable component---and repairing it on independent data---is the behavior a modular model should exhibit under falsification.
+
+%==============================================================================
+\section{Independent Corroboration in the Social-Preference Literature}
+\label{sec:corroboration}
+%==============================================================================
+
+The cross-domain test of Section~\ref{sec:transfer} exercises the risk part of the metric.
+The social coordinates the framework posits are corroborated---not by the same transfer test, but by independent, large-sample evidence from a literature that never set out to test this program.
+
+\paragraph{Low dimensionality (supports the low-rank metric, in the social domain)}
+Individual-level analysis of the Fisman--Kariv--Markovits giving experiment~\cite{fisman2007} ($76$ subjects $\times$ $50$ budget-line choices $=3{,}800$ decisions) reproduces both load-bearing shapes.
+Ninety-six percent of subjects have convex, downward-sloping giving demand---choice is metric-governed, the geometric premise.
+A two-parameter constant-elasticity-of-substitution utility fits each subject (mean $R^2=0.54$), the social analog of a low-rank metric at the individual level.
+And strong self-regard (median own-weight $0.78$) plays the role of the reflection-breaking field discussed below.
+Independently, finite-mixture and unsupervised clustering of distributional preferences recover roughly three robust types (altruistic, inequality-averse, predominantly selfish) across large Swiss, German, Danish, and U.S.\ samples~\cite{bruhin2019,fehrCharness2025}---heterogeneous social behavior collapsing onto a low-dimensional latent structure, the same shape as the low-rank finding in a different domain.
+
+\paragraph{A reflection-symmetric, aversion-broken value structure}
+The Fehr--Schmidt utility is a kinked, reference-dependent value function around the equality line, with the disadvantageous branch weighted more than the advantageous branch~\cite{fehr1999}---a loss-aversion-role asymmetry in social space.
+Our own fit to the Charness--Rabin two-person dictator games~\cite{charness2002} gives advantageous-inequality aversion $\beta=0.34$, matching the pooled estimate from a meta-analysis of $297$ structural estimates (mean $\beta=0.33$)~\cite{nunnariPozzi2022}; the position asymmetry is a significant main effect (likelihood-ratio $\chi^2=24.8$, $p<0.001$).
+The social domain therefore has \emph{one} reflection axis (self$\leftrightarrow$other, broken by self-regard), not the two independent axes of risky choice---a corroboration of the reflection motif and, at the same time, a correction of the over-general symmetry conjecture (Section~\ref{sec:graveyard}).
+
+Net: the two load-bearing shapes of the thesis---low dimensionality and a reflection-symmetric, aversion-broken value structure---are independently present in the mainstream social-preference literature.
+That is corroboration the program did not manufacture, not proof.
+
+%==============================================================================
+\section{The Graveyard}
+\label{sec:graveyard}
+%==============================================================================
+
+A foundation is only as strong as the honesty of its weakest claim.
+Four structural conjectures that looked promising were killed by held-out or derivation tests; we report them so they are not re-walked (Table~\ref{tab:graveyard}).
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.2}
+\caption{Rejected Conjectures (Reported So They Are Not Re-Walked)}
+\label{tab:graveyard}
+\centering
+\begin{tabular}{@{}p{0.30\columnwidth} p{0.60\columnwidth}@{}}
+\toprule
+\textbf{Conjecture} & \textbf{How it was rejected} \\
+\midrule
+A universal aversion angle (one constant across all domains) & Problem-selection confound: adversarial Kahneman--Tversky sets shift the angle; it holds only within comparable samples. \\
+A Shannon--Hartley conserved quantity in the polar encoding & The normalized risk weight sign-flips with stakes; adaptation, not conservation. The real link is rational inattention (about form, not a conserved quantity). \\
+$D_4$ dihedral symmetry of the fourfold pattern & The rotation-covariant term vanishes in the interior; the structure is $V_4$ (Klein four), a rectangle, not a square. \\
+$V_4$ as a general law of risky choice & A pre-registered held-out test on representative gambles scored $0/3$; the $V_4$ is specific to the curated problem set, and is not derivable from the low-rank metric (which is EV-dominated). \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The pattern is that every attractive structural overclaim was killed by a held-out or derivation test.
+That is the method working; the survivors---the low-rank metric and the encoding-invariant projection-gap---are what remains after the firing squad.
+
+%==============================================================================
+\section{Discussion}
+\label{sec:discussion}
+%==============================================================================
+
+\subsection{What held-out testing establishes}
+Part~I asked whether a metric that fits canonical frequencies is representation or structure.
+The tests here answer, on the side of structure, within a bounded scope.
+A metric competitive with the domain-specialized champion out of sample and portable across a domain the champion cannot represent (Section~\ref{sec:transfer}); a low-rank structure frozen before data and confirmed across games, countries, and languages (Section~\ref{sec:lowrank}); and a designed experiment in which the entire scalar class is constrained to a null while the frozen metric predicts the observed signs (Section~\ref{sec:projgap})---these are the properties flexibility cannot supply, because flexibility helps in-sample fit and hurts held-out error.
+The one component that behaved as a free flexibility knob, the cost-dependent temperature, was the component that failed under falsification, and its principled replacement (Section~\ref{sec:temperature}) both repaired the failure and tightened the model.
+
+\subsection{Relevance to computational social systems}
+The results sharpen the companion paper's agent-modeling use case.
+A behavioral primitive for social simulation is more useful when its metric is \emph{low-rank} (few parameters, estimable from limited data), \emph{transferable} (calibrated in one setting, deployed in another), and \emph{falsifiable through designed contrasts} (a mechanism designer can construct a projection-gap probe to check whether a modeled population is sensitive to a non-monetary coordinate before deploying an intervention that assumes it is not).
+The language-model-panel apparatus is independently reusable: a polite, preemption-tolerant harness for running pre-registered, individual-level behavioral designs on model populations at a scale human panels cannot reach, as a powered first stage that sizes a human study.
+
+\subsection{The human gate (future work, not a claim)}
+Every result here is computational, and we claim exactly that.
+The confirmatory leg is a human projection-gap study under the repaired choice rule, powered by the panel's effect sizes ($d\approx0.5$--$0.9$ on the five confirmed contrasts), with encoding-invariant signs and pre-committed falsifiers (\texttt{prereg-v2} frozen).
+Two further gates remain open and are stated as such: held-out confirmation of the loss-domain reflection encoding (the standing bound of Section~\ref{sec:lowrank}), and a domain in which the metric makes a novel, quantitative, pre-registered prediction that is then confirmed rather than a re-description of a known regularity.
+None of these is asserted here; they are the work the present results are pointed at.
+
+\subsection{What this paper does not claim}
+For clarity we collect the boundaries.
+The geometry does not beat CPT on lotteries; it ties with one fewer parameter.
+The cross-domain transfer is of the risk part of the metric, and is symmetric only after the angle-lock; the raw transfer is one-directional, and reported as such.
+The projection-gap positive is a model-organism result, not a human claim.
+Magnitudes are not yet calibrated; signs are.
+And the low-rank result is gain-domain.
+Each boundary is a named next test, not a hedge.
+
+%==============================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+%==============================================================================
+
+The companion paper established a geometric decision model and an in-sample benchmark and asked whether its shared metric is flexible representation or predictive structure.
+This follow-up answers with the tests that separate the two.
+Out of sample on individual choices, the metric is competitive with the domain-specialized incumbent and, unlike any scalar theory, portable across risky and strategic choice, with a scale-invariant tradeoff shape that transfers at $97$--$100\%$ of a native fit in both directions.
+Frozen before data, four claims that the metric is low-rank survive on three held-out domains, superseding the diagonal restriction.
+Forced by design into a null, the entire scalar class is contradicted by a pre-registered language-model panel on five of seven contrasts with perfect cross-model consistency, and the two registered failures localize to a single choice-rule component that a fixed information price repairs.
+The contribution is not a unification of decision theory, and we are careful not to use that word.
+It is a low-rank, transfer-capable decision metric whose non-monetary, encoding-invariant predictions falsify the scalar-projection class, confirmed on frozen, held-out, and cross-model computational evidence---accompanied by an honest account of what failed, and by a powered, pre-registered human study these results are built to size.
+
+%==============================================================================
+% References
+%==============================================================================
+\begin{thebibliography}{40}
+
+\bibitem{bond2026partI}
+A.~H.~Bond, ``Geometric prediction of economic behavior: Cross-domain validation across game theory and prospect theory,''
+\emph{IEEE Trans. Comput. Social Syst.}, in press, 2026.
+
+\bibitem{erev2017}
+I.~Erev, E.~Ert, O.~Plonsky, D.~Roth, and Y.~Roth, ``From anomalies to forecasts: Toward a descriptive model of decisions under risk, under ambiguity, and from experience,''
+\emph{Psychol. Rev.}, vol.~124, no.~4, pp.~369--409, 2017.
+
+\bibitem{cpc18data}
+O.~Plonsky, I.~Erev, \emph{et~al.}, ``CPC18: Choice Prediction Competition 2018 dataset,''
+Zenodo, 2019, doi: 10.5281/zenodo.2571510.
+
+\bibitem{wright2017}
+J.~R.~Wright and K.~Leyton-Brown, ``Predicting human behavior in unrepeated, simultaneous-move games,''
+\emph{Games Econ. Behav.}, vol.~106, pp.~16--37, Nov. 2017.
+
+\bibitem{tversky1992}
+A.~Tversky and D.~Kahneman, ``Advances in prospect theory: Cumulative representation of uncertainty,''
+\emph{J. Risk Uncertainty}, vol.~5, no.~4, pp.~297--323, Oct. 1992.
+
+\bibitem{fehr1999}
+E.~Fehr and K.~M.~Schmidt, ``A theory of fairness, competition, and cooperation,''
+\emph{Quart. J. Econ.}, vol.~114, no.~3, pp.~817--868, Aug. 1999.
+
+\bibitem{fraser2020}
+B.~J.~Fraser and D.~Nettle, ``Hunger affects social decisions in a multi-round public goods game but not an ultimatum game,''
+\emph{Adaptive Human Behav. Physiol.}, vol.~6, pp.~334--355, 2020.
+
+\bibitem{ruggeri2020}
+K.~Ruggeri \emph{et~al.}, ``Replicating patterns of prospect theory for decision under risk,''
+\emph{Nature Human Behav.}, vol.~4, no.~6, pp.~622--633, Jun. 2020.
+
+\bibitem{fisman2007}
+R.~Fisman, S.~Kariv, and D.~Markovits, ``Individual preferences for giving,''
+\emph{Amer. Econ. Rev.}, vol.~97, no.~5, pp.~1858--1876, Dec. 2007.
+
+\bibitem{charness2002}
+G.~Charness and M.~Rabin, ``Understanding social preferences with simple tests,''
+\emph{Quart. J. Econ.}, vol.~117, no.~3, pp.~817--869, Aug. 2002.
+
+\bibitem{sims2003}
+C.~A.~Sims, ``Implications of rational inattention,''
+\emph{J. Monetary Econ.}, vol.~50, no.~3, pp.~665--690, Apr. 2003.
+
+\bibitem{matejka2015}
+F.~Mat\v{e}jka and A.~McKay, ``Rational inattention to discrete choices: A new foundation for the multinomial logit model,''
+\emph{Amer. Econ. Rev.}, vol.~105, no.~1, pp.~272--298, Jan. 2015.
+
+\bibitem{bruhin2019}
+A.~Bruhin, E.~Fehr, and D.~Schunk, ``The many faces of human sociality: Uncovering the distribution and stability of social preferences,''
+\emph{J. Eur. Econ. Assoc.}, vol.~17, no.~4, pp.~1025--1069, Aug. 2019.
+
+\bibitem{fehrCharness2025}
+E.~Fehr and G.~Charness, ``Social preferences: Fundamental characteristics and economic consequences,''
+\emph{J. Econ. Literature}, vol.~63, no.~2, pp.~440--514, Jun. 2025.
+
+\bibitem{nunnariPozzi2022}
+S.~Nunnari and M.~Pozzi, ``Meta-analysis of inequality aversion estimates,''
+CESifo Working Paper No.~9851, Munich, Germany, 2022.
+
+\end{thebibliography}
+
+\balance
+
+\end{document}
