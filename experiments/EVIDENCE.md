@@ -64,16 +64,19 @@ stated to be disarmed, not leaned on.
 **Pattern:** every pretty structural overclaim was killed by a held-out or derivation test. That is the
 method working. The survivors above are what remains after the firing squad.
 
-## Track A status (the reflection-motif push) — honestly blocked
+## Track A status (the reflection-motif push) — RESOLVED with real data
 
-The proper test of whether the social domain has a **two-reflection** structure (a genuine social V₄)
-needs choice-level 2-D allocation data (Charness–Rabin / Bruhin–Fehr–Schmerer). It is **not on Atlas**,
-and public sources yield only *aggregate* dictator meta-studies (Engel 2011), not the (own, other)
-choice structure. Moreover, **Fehr-Schmidt theory predicts the social domain is main-effect-dominated**
-(envy α > guilt β, plus cost sensitivity) — i.e. *not* a pure-interaction V₄. So the expected and
-observed social structure is **one reflection** (inequality aversion, Move 2), not two. A curated LLM
-model-organism panel would re-confirm this at real cost; the honest open step is a real allocation
-corpus.
+Completed on **Charness & Rabin (2002 QJE), Table I** — the seven two-person dictator games (real 2-D
+allocation choice; own and other vary independently). Fehr-Schmidt fit: α≈0 (no envy in these games),
+**β=0.34** (real advantageous-inequality aversion — people pay to reduce being ahead), self-regard as
+the σ_s-reflection-breaking. The position asymmetry is a **significant main effect** (α=β rejected,
+LR χ²=24.8, p<0.001) — not the pure interaction a V₄ needs.
+
+**Verdict:** the *reflection + aversion motif* generalizes (self↔other reflection broken by self-regard,
+mirroring value-reflection broken by loss aversion), but the **full V₄ does not** — swapping self↔other
+*is* the inequality-sign flip, so the social domain has **one** reflection axis (ℤ/2), not risk's two
+independent axes. Social = one reflection + main-effect inequality aversion, **not a V₄**. This
+confirms the a-priori Fehr-Schmidt prediction on real data (`RESULTS_social_reflection.md`).
 
 ## What the body of work can honestly claim — and what it needs for "Nobel-class"
 
