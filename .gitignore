@@ -5,3 +5,8 @@ experiments/datasets/raw_fkm/
 *.pdf
 115613-V1.zip
 115613_*.xml
+
+# GPS data + do-files (copyright-gated; IZA/Bonn download, not redistributable)
+experiments/datasets/raw_gps/
+dataverse_files.zip
+Global_preferences.pdf
