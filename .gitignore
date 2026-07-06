@@ -10,3 +10,7 @@ experiments/datasets/raw_fkm/
 experiments/datasets/raw_gps/
 dataverse_files.zip
 Global_preferences.pdf
+
+# CourtListener API token (secret) + fetched case data (CL terms)
+experiments/legal/.cl_token
+experiments/legal/raw/
