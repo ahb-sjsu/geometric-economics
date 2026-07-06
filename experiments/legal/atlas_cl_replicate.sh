@@ -25,31 +25,39 @@ BASE=https://storage.courtlistener.com/bulk-data
 FILES=(courts dockets originating-court-information opinion-clusters opinions citation-map \
        people-db-people people-db-positions)
 
+WGET="wget -c --tries=20 --timeout=60 --waitretry=15 --retry-connrefused --progress=dot:giga"
 download() {
   mkdir -p "$BULK"; cd "$BULK"
-  echo "[download] schema + ${#FILES[@]} tables of dump $DUMP -> $BULK"
-  wget -c -q --show-progress "$BASE/schema-$DUMP.sql"
+  echo "[download] schema + ${#FILES[@]} tables of dump $DUMP -> $BULK  ($(date))"
+  $WGET "$BASE/schema-$DUMP.sql"
   for t in "${FILES[@]}"; do
-    echo "  $t ..."; wget -c -q --show-progress "$BASE/$t-$DUMP.csv.bz2"
+    echo "  == $t == ($(date))"; $WGET "$BASE/$t-$DUMP.csv.bz2"
   done
-  echo "[download] done."; du -sh "$BULK"
+  echo "[download] done ($(date))."; du -sh "$BULK"; ls -lh "$BULK"
 }
 
-pg() { pg_ctl -D "$PGDATA" -o "-p $PGPORT" "$@"; }
-psql_() { psql -p "$PGPORT" -d "$DB" "$@"; }
+# Use the EXISTING Postgres server (installed) via sudo -u postgres, with a TABLESPACE on /archive
+# so the ~0.5 TB of table data lives on the 15 TB disk, not the system disk.
+TS=cl_archive
+TSDIR="$ROOT/pgts"
+PG="sudo -u postgres psql"
+
+tablespace() {
+  # tablespace dir must be owned by the postgres OS user and empty
+  sudo mkdir -p "$TSDIR"; sudo chown postgres:postgres "$TSDIR"
+  $PG -tc "SELECT 1 FROM pg_tablespace WHERE spcname='$TS'" | grep -q 1 \
+    || $PG -c "CREATE TABLESPACE $TS LOCATION '$TSDIR';"
+}
 
 load() {
-  command -v initdb >/dev/null || { echo "initdb not found -- install postgresql or add to PATH"; exit 1; }
-  if [ ! -f "$PGDATA/PG_VERSION" ]; then
-    echo "[load] initdb cluster in $PGDATA (on /archive)"
-    initdb -D "$PGDATA" -U postgres >/dev/null
-  fi
-  pg -l "$ROOT/pg.log" -w start || true
-  psql -p "$PGPORT" -U postgres -tc "SELECT 1 FROM pg_database WHERE datname='$DB'" | grep -q 1 \
-    || createdb -p "$PGPORT" -U postgres "$DB"
-  echo "[load] schema"; psql -p "$PGPORT" -U postgres -d "$DB" -f "$BULK/schema-$DUMP.sql"
-  # COPY each bz2 straight into its table via bzcat; table names are the CourtListener search_* /
-  # people_db_* tables defined by the schema file. HEADER row gives the column order.
+  command -v psql >/dev/null || { echo "psql not found"; exit 1; }
+  tablespace
+  $PG -tc "SELECT 1 FROM pg_database WHERE datname='$DB'" | grep -q 1 \
+    || sudo -u postgres createdb "$DB" -D "$TS"
+  echo "[load] schema -> $DB (tablespace $TS)"
+  $PG -d "$DB" -f "$BULK/schema-$DUMP.sql"
+  # COPY each bz2 straight into its table via bzcat. Superuser (postgres) can COPY FROM PROGRAM;
+  # bulk files are world-readable so the postgres OS user can bzcat them.
   declare -A TBL=(
     [courts]=search_court
     [dockets]=search_docket
@@ -62,16 +70,15 @@ load() {
   )
   for f in "${FILES[@]}"; do
     tbl="${TBL[$f]}"
-    echo "[load] COPY $f -> $tbl"
-    psql -p "$PGPORT" -U postgres -d "$DB" -c \
-      "COPY $tbl FROM PROGRAM 'bzcat $BULK/$f-$DUMP.csv.bz2' WITH (FORMAT csv, HEADER true);"
+    echo "[load] COPY $f -> $tbl ($(date))"
+    $PG -d "$DB" -c "COPY $tbl FROM PROGRAM 'bzcat $BULK/$f-$DUMP.csv.bz2' WITH (FORMAT csv, HEADER true);"
   done
-  echo "[load] done."
+  echo "[load] done ($(date))."
 }
 
 index() {
   echo "[index] study indexes"
-  psql -p "$PGPORT" -U postgres -d "$DB" <<'SQL'
+  $PG -d "$DB" <<'SQL'
 CREATE INDEX IF NOT EXISTS ix_docket_court_date ON search_docket (court_id, date_filed);
 CREATE INDEX IF NOT EXISTS ix_docket_number     ON search_docket (docket_number);
 CREATE INDEX IF NOT EXISTS ix_oci_docket        ON search_originatingcourtinformation (docket_number);
@@ -80,7 +87,7 @@ CREATE INDEX IF NOT EXISTS ix_citing            ON search_opinionscited (citing_
 CREATE INDEX IF NOT EXISTS ix_cluster_docket    ON search_opinioncluster (docket_id);
 CREATE INDEX IF NOT EXISTS ix_opinion_cluster   ON search_opinion (cluster_id);
 SQL
-  echo "[index] done. Connect: psql -p $PGPORT -d $DB"
+  echo "[index] done. Connect: sudo -u postgres psql -d $DB"
 }
 
 case "${1:-}" in
