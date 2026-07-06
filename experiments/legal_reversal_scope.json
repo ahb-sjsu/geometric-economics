@@ -22,21 +22,38 @@
     "excluded": ["dismissed", "settled", "remanded-without-merits-reversal", "not-appealed"],
     "source": "open citation/disposition graph",
     "validation": {"tool": "westlaw-keycite-manual", "sample_n": 300, "min_agreement": 0.90},
-    "leakage_redaction": ["editor treatment flags", "headnotes", "synopsis", "later-appended history"]
+    "leakage_redaction": ["editor treatment flags", "headnotes", "synopsis", "later-appended history"],
+    "stratify_by_ground": {
+      "rationale": "the compiler measures MORAL structure; reversal tracks LEGAL error. They align for rights/procedure grounds, not for precedential/statutory ones. Stratify (and pre-commit the primary target = gate-relevant reversals) so the measured pathology matches the label.",
+      "gate_aligned_grounds": {
+        "legitimate_authority": ["jurisdiction", "standing", "ultra vires", "procedural authority"],
+        "valid_consent": ["due process", "waiver validity", "voluntariness", "notice"],
+        "universalizability": ["equal protection", "inconsistent treatment"],
+        "mere_means": ["dignity", "cruel/unusual", "instrumental use of a party"]
+      },
+      "primary_target": "reversals on gate-aligned grounds (sharper, more uniquely-geometric)",
+      "secondary": "all-grounds reversal (reported, expected weaker)"
+    }
   },
 
   "compiler": {
-    "pipeline": "erisml-compile / aesthetics-compile (dense tensor per opinion)",
-    "TODO_tensor_shape": "record exact dims once compiler output is inspected",
-    "TODO_axis_semantics": "record what each tensor mode means (e.g. Hohfeldian-relation x party x doctrine); needed so H3 regime-boundary bins are meaningful",
+    "pipeline": "erisml-compiler (MoralGraph -> MoralTensorV3 + projections); IR schema erisml_compiler_ir_v0.3; Zenodo DOI 10.5281/zenodo.20659432",
+    "NOT_aesthetics_compiler": "the aesthetics-compiler emits visual dims (color/contrast/closure) and is the WRONG tool; the ErisML compiler emits normative structure",
+    "tensor": "MoralTensorV3; rank-2 (k,n) primary [k=moral dimension, n=stakeholder], rank-1 (k,) global fallback. Only ranks 1-2 are wired (higher ranks raise NotImplementedError -- honest contract).",
+    "k_axis_moral_dimensions": ["autonomy_consent", "autonomy_respect", "care_protection", "epistemic_quality", "fairness_equity", "legitimacy_trust", "physical_harm", "privacy_protection", "repair_residue", "rights_respect", "societal_environmental", "third_party_externality", "virtue_care", "vow_fidelity"],
+    "coordinate_match": "these k-dimensions are ~the GDT 9-D decision-manifold coordinates (rights/fairness/autonomy/privacy/legitimacy/epistemic/virtue/social); the compiler is in effect a concrete GDT encoder -- the low-rank pillar and pathology score live in the same space as the rest of the program",
+    "deontic_gates": ["universalizability", "mere_means", "valid_consent", "legitimate_authority"],
+    "aggregates": ["gini", "gini_harm", "worst_off", "worst_off_harm", "deme_verdict"],
+    "extractor": "MoralGraph is built by LLM + spaCy-SRL annotation of the text -- a source of extraction noise/bias; see caveats.extractor",
     "input_text": "court's own opinion, redacted per label.leakage_redaction"
   },
 
   "pathology_score_S": {
+    "space": "the MoralTensorV3 (GDT-coordinate) representation of each opinion",
     "low_rank_fit": "Tucker/PCA on TRAINING tensors only",
     "k_rule": "smallest k with marginal explained variance < 0.01 (fit on train only, then frozen)",
-    "components": ["off_manifold_residual", "local_curvature_geodesic_deviation"],
-    "TODO_weights": "convex weights on the two components, e.g. [0.5, 0.5]; fix before test use",
+    "components": ["off_manifold_residual", "local_curvature_geodesic_deviation", "n_deontic_gate_failures"],
+    "TODO_weights": "convex weights on the three components, e.g. [0.4, 0.3, 0.3]; fix before test use",
     "standardization": "z-score S on training split; apply same transform to val/test"
   },
 
@@ -58,5 +75,11 @@
   "multiplicity": "Holm across the 5 confirmatory rows; all else exploratory",
   "TODO_min_test_n": "e.g. 20000; do not run confirmatory tests below this",
 
-  "tier_gate": "Tier-A success REQUIRES H1 AND H2 AND H3. H1-only-with-H2-fail => reported as Tier B (re-description). Committed, not reframable post hoc."
+  "tier_gate": "Tier-A success REQUIRES H1 AND H2 AND H3. H1-only-with-H2-fail => reported as Tier B (re-description). Committed, not reframable post hoc.",
+
+  "caveats": {
+    "moral_vs_legal": "the compiler encodes MORAL structure (GDT coordinates), not the full legal apparatus (precedent, statutory interpretation, procedure). Reversals driven by purely legal-technical error are invisible to it -- hence the gate-aligned primary target. A null on all-grounds reversal with a hit on gate-aligned reversal is the expected, honest shape.",
+    "extractor": "the MoralGraph is LLM/SRL-extracted, so the geometry partly reflects the extractor's reading. Mitigations: fix the extractor + version before freeze; report inter-extractor stability on a sample; treat the extractor as part of the frozen pipeline.",
+    "single_jurisdiction": "one court set / window; positive result is not universal (cross-court replication is future work)."
+  }
 }

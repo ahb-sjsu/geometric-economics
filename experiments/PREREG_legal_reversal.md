@@ -60,16 +60,31 @@ post hoc.
 
 ## 4. The geometric quantity (pre-committed operationalization)
 
-Each opinion is compiled to a **dense tensor** `T_case` (ErisML/aesthetics-compile pipeline; the tensor
-axis semantics are recorded in `legal_reversal_scope.json`). On the **training split only**:
+Each opinion is compiled to a **dense moral tensor** `T_case` by the **ErisML compiler**
+(`MoralTensorV3`, rank-2 `(k,n)` = moral-dimension × stakeholder, plus four Kantian deontic gates and
+Gini/worst-off aggregates). Crucially, the `k` axis is the set of moral dimensions
+(`rights_respect, fairness_equity, autonomy_consent, privacy_protection, legitimacy_trust,
+epistemic_quality, virtue_care, …`) — **essentially the GDT decision-manifold coordinates**, so the
+compiler acts as a concrete GDT encoder and the pathology score lives in the same space as the rest of
+the program. (The visual `aesthetics-compiler` is the wrong tool and is not used.) On the **training
+split only**:
 
 1. Fit a rank-`k` low-rank model (Tucker/PCA) to the training-case tensors; `k` chosen by a
    pre-committed elbow rule (first `k` where marginal explained variance < 1%), fixed before test use.
 2. **Pathology score** `S(case)` = a fixed convex combination (weights frozen in the scope file) of:
    - **off-manifold residual**: `‖T_case − Π_k T_case‖` (reconstruction error under the rank-`k` fit);
-   - **local curvature / geodesic deviation** as defined in *Geometric Methods* (Bond 2026a), computed
-     on the case's neighborhood in the fitted manifold.
+   - **local curvature / geodesic deviation** as defined in *Geometric Methods* (Bond 2026a);
+   - **number of failed deontic gates** (universalizability, mere_means, valid_consent,
+     legitimate_authority) — categorical normative pathology.
 `S` is computed identically on train/val/test; test cases are never used to fit the manifold.
+
+**Label alignment (primary target).** The compiler encodes *moral* structure; reversal tracks *legal*
+error, and the two align on rights/procedure grounds but not on precedential/statutory ones. The
+**primary** label is therefore reversal on **gate-aligned grounds** (jurisdiction/standing →
+legitimate_authority; due process/waiver → valid_consent; equal protection → universalizability;
+dignity → mere_means); **all-grounds** reversal is a secondary target, expected weaker. This is
+pre-committed so a hit on gate-aligned reversal with a null on all-grounds is the *anticipated* honest
+shape, not a post-hoc rescue.
 
 ## 5. Hypotheses, thresholds, falsifiers (all pre-committed)
 
@@ -122,6 +137,13 @@ pre-commit to controlling it, in order of preference:
 ## 9. Honest limitations (stated before data)
 
 - One jurisdiction/window; a positive result is not universal (cross-court replication is future work).
+- **Moral ≠ legal.** The compiler encodes normative/moral structure (GDT coordinates), not the full
+  legal apparatus (precedent, statutory interpretation, procedure). Reversals from purely legal-technical
+  error are invisible to it — hence the gate-aligned primary target. A null on all-grounds reversal with
+  a hit on gate-aligned reversal is the *expected* honest shape, not a failure.
+- **Extractor dependence.** The MoralGraph is LLM/SRL-extracted, so the geometry partly reflects the
+  extractor's reading. Mitigation: the extractor + version is part of the frozen pipeline, and
+  inter-extractor stability is reported on a sample.
 - Reversal conflates legal error, changed law, new evidence, discretionary reversal — a noisy proxy for
   "wrong decision."
 - The compiler's only prior human benchmark (aesthetics) gave small effects (`r≈0.05`); the geometric
