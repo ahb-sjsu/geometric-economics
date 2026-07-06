@@ -1,20 +1,19 @@
 {
-  "_status": "DRAFT — finalize the TODO fields before computing the frozen hash / tagging prereg-legal-reversal-v1. Freezing placeholders is not a real pre-registration.",
+  "_status": "FINALIZED for freeze. All parameters fixed; run FREEZE_PROTOCOL (sha256 + signed tag prereg-legal-reversal-v1 + push) before any label linkage or S computation.",
   "_frozen_with": "PREREG_legal_reversal.md",
 
   "corpus": {
-    "source_primary": "caselaw-access-project",
-    "source_secondary": "courtlistener-bulk",
-    "access_reality_2026-07": "CourtListener v4 detail/text endpoints require a FREE API token (401 unauth); open search returns metadata + citation graph only. Full opinion TEXT needs the token or the free bulk download. RECON: posture/procedural_history/syllabus are ~0% populated on CA9 2005-2015 -- there is NO structured disposition/grounds field; text-derived only.",
+    "source": "CourtListener bulk 2026-06-30 dump, loaded to the Atlas Postgres replica (public-domain, CC Public Domain Mark; reproducible). 10.8M opinions, 77.5M citation edges, 71.7M dockets, 973K originating-court-info, judges.",
     "westlaw_role": "label-validation-and-taxonomy-reference-only (no bulk extraction; ToS + TR v. ROSS 2025)",
-    "TODO_court_set": "e.g. all U.S. Courts of Appeals reviewing U.S. District Court civil merits decisions; fix the exact court IDs. Prefer a court with random panel/judge assignment for the IV.",
-    "TODO_year_range": "e.g. decisions 1990-2015 (so appellate history has matured by data pull)"
+    "court_set": "UNIT = U.S. District Court merits opinions (search_court.jurisdiction='FD'); REVIEWER = the U.S. Court of Appeals opinion (jurisdiction='F') linked via search_docket.originating_court_information_id -> search_originatingcourtinformation.docket_number (authoritative appeal lineage). 248,364 circuit appeals carry lower-court lineage (feasibility confirmed).",
+    "year_range": "district decisions filed 1990-01-01 .. 2015-12-31 (appellate history matured by the 2026 dump)",
+    "unit_dedup": "one row per reviewed district merits opinion; exclude non-merits dispositions per label.excluded"
   },
 
   "splits": {
-    "TODO_t0_train_before": "e.g. 2008",
-    "TODO_t1_test_from": "e.g. 2012",
-    "rule": "temporal; train < t0, validate [t0,t1), test >= t1; no unit in two splits"
+    "t0_train_before": "2008-01-01",
+    "t1_test_from": "2012-01-01",
+    "rule": "temporal by district-decision filing date; train < t0, validate [t0,t1), test >= t1; no unit in two splits; the low-rank manifold and legal-BERT baseline are fit on train only"
   },
 
   "label": {
@@ -62,8 +61,8 @@
     "low_rank_fit": "Tucker/PCA on TRAINING tensors only",
     "k_rule": "smallest k with marginal explained variance < 0.01 (fit on train only, then frozen)",
     "components": ["off_manifold_residual", "local_curvature_geodesic_deviation", "n_deontic_gate_failures"],
-    "TODO_weights": "convex weights on the three components, e.g. [0.4, 0.3, 0.3]; fix before test use",
-    "standardization": "z-score S on training split; apply same transform to val/test"
+    "weights": [0.4, 0.3, 0.3],
+    "standardization": "z-score each component on the TRAIN split, then S = 0.4*z(off_manifold) + 0.3*z(curvature) + 0.3*z(gate_failures); apply the train transforms to val/test"
   },
 
   "hypotheses": {
@@ -82,7 +81,10 @@
 
   "baselines": ["base_rate", "length+court+year_logistic", "legal-BERT_on_redacted_text"],
   "multiplicity": "Holm across the 5 confirmatory rows; all else exploratory",
-  "TODO_min_test_n": "e.g. 20000; do not run confirmatory tests below this",
+  "min_test_n": 20000,
+  "min_test_n_note": "do not run confirmatory tests below 20,000 reviewed district decisions in the test window; 248,364 circuit appeals carry lineage corpus-wide, so the 1990-2015 district->circuit test split is expected to clear this comfortably. If it does not, expand the window before (not after) unblinding.",
+  "label_construction_engine": "cl_labels_sql.py on the Atlas replica: authoritative docket-lineage linkage (originating_court_information) + reverse-citation graph; disposition/ground via NLP on the reviewing circuit opinion; Westlaw KeyCite validation on the 300-sample.",
+  "compute": "Stage 4 (ErisML compile -> MoralTensor -> S) is embarrassingly parallel per opinion; plan is to shard ~100-300k district opinions across NRP GPU pods reusing the llm-panel polite/preemption-tolerant harness. Post-freeze.",
 
   "tier_gate": "Tier-A success REQUIRES H1 AND H2 AND H3. H1-only-with-H2-fail => reported as Tier B (re-description). Committed, not reframable post hoc.",
 
