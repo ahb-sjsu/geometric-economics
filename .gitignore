@@ -15,3 +15,6 @@ Global_preferences.pdf
 experiments/legal/.cl_token
 experiments/legal/raw/
 __pycache__/
+
+# erisml data upload artifact
+experiments/legal/_erisml_data.tgz
