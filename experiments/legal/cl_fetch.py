@@ -45,11 +45,12 @@ def get(url, tok, params=None):
             with urllib.request.urlopen(req, timeout=40) as r:
                 return json.load(r)
         except urllib.error.HTTPError as e:
-            if e.code == 429:              # rate limited: back off
-                time.sleep(2 ** attempt)
+            if e.code == 429:              # rate limited: back off (honor Retry-After if present)
+                wait = int(e.headers.get("Retry-After", 0) or 0) or (2 ** attempt)
+                time.sleep(min(wait, 30))
                 continue
             raise
-    raise SystemExit("repeated rate-limit / failure on " + url)
+    raise RuntimeError("repeated rate-limit / failure on " + url)   # catchable by callers
 
 
 def opinion_text(op):
