@@ -22,8 +22,10 @@ DB=courtlistener
 BASE=https://storage.courtlistener.com/bulk-data
 
 # tables we need: text, lineage, citation graph, courts, judges (panel IV). Skip embeddings (~2TB).
-FILES=(courts dockets originating-court-information opinion-clusters opinions citation-map \
-       people-db-people people-db-positions)
+# order: tiny -> small -> dockets -> opinions LAST (so the 51 GB file's COPY doesn't gate the rest,
+# and a mechanic error surfaces on tiny 'courts' in seconds).
+FILES=(courts originating-court-information people-db-people people-db-positions \
+       citation-map opinion-clusters dockets opinions)
 
 WGET="wget -c --tries=20 --timeout=60 --waitretry=15 --retry-connrefused --progress=dot:giga"
 download() {
@@ -49,29 +51,45 @@ tablespace() {
     || $PG -c "CREATE TABLESPACE $TS LOCATION '$TSDIR';"
 }
 
+declare -A TBL=(
+  [courts]=search_court
+  [dockets]=search_docket
+  [originating-court-information]=search_originatingcourtinformation
+  [opinion-clusters]=search_opinioncluster
+  [opinions]=search_opinion
+  [citation-map]=search_opinionscited
+  [people-db-people]=people_db_person
+  [people-db-positions]=people_db_position
+)
+
 load() {
   command -v psql >/dev/null || { echo "psql not found"; exit 1; }
   tablespace
   $PG -tc "SELECT 1 FROM pg_database WHERE datname='$DB'" | grep -q 1 \
     || sudo -u postgres createdb "$DB" -D "$TS"
-  echo "[load] schema -> $DB (tablespace $TS)"
-  $PG -d "$DB" -f "$BULK/schema-$DUMP.sql"
-  # COPY each bz2 straight into its table via bzcat. Superuser (postgres) can COPY FROM PROGRAM;
-  # bulk files are world-readable so the postgres OS user can bzcat them.
-  declare -A TBL=(
-    [courts]=search_court
-    [dockets]=search_docket
-    [originating-court-information]=search_originatingcourtinformation
-    [opinion-clusters]=search_opinioncluster
-    [opinions]=search_opinion
-    [citation-map]=search_opinionscited
-    [people-db-people]=people_db_person
-    [people-db-positions]=people_db_position
-  )
+  # BARE CREATE TABLE (no indexes/FKs -> fast COPY, no FK violations on a partial load) for only
+  # the 8 tables we load; extracted from the full pg_dump schema.
+  local names=" ${TBL[*]} "
+  # strip NOT NULL (bulk CSV writes empty-string NOT-NULL fields as empty -> read as NULL) and inline
+  # DEFAULTs (sequences aren't created in the bare subset); read-only research replica, so permissive.
+  awk -v names="$names" '
+    /^CREATE TABLE public\./ { t=$3; sub(/^public\./,"",t); sub(/\(.*/,"",t); p=(index(names," " t " ")>0) }
+    p { print }
+    p && /^\);/ { p=0; print "" }
+  ' "$BULK/schema-$DUMP.sql" | sed -E 's/ NOT NULL//g; s/ DEFAULT [^,]+//g' > "$ROOT/subset_schema.sql"
+  echo "[load] (re)creating bare tables (idempotent)"
+  for t in "${TBL[@]}"; do $PG -d "$DB" -c "DROP TABLE IF EXISTS $t CASCADE;" >/dev/null; done
+  $PG -d "$DB" -f "$ROOT/subset_schema.sql"
+  # COPY via stream: strip \r (embedded \r\n in quoted text fields trips Postgres CSV; harmless for
+  # our text features) and pipe to \copy FROM STDIN with a header-derived column list (avoids the
+  # FROM PROGRAM quoting mess). Subshell disables pipefail so bzcat|head-1 SIGPIPE doesn't abort.
   for f in "${FILES[@]}"; do
     tbl="${TBL[$f]}"
-    echo "[load] COPY $f -> $tbl ($(date))"
-    $PG -d "$DB" -c "COPY $tbl FROM PROGRAM 'bzcat $BULK/$f-$DUMP.csv.bz2' WITH (FORMAT csv, HEADER true);"
+    hdr=$( set +o pipefail; bzcat "$BULK/$f-$DUMP.csv.bz2" | head -1 | tr -d '\r' )
+    echo "[load] COPY $f -> $tbl ($(echo "$hdr" | tr ',' '\n' | wc -l) cols) ($(date))"
+    # normalize through Python's CSV parser (Postgres CSV desyncs on these files where Python does not)
+    bzcat "$BULK/$f-$DUMP.csv.bz2" | python3 "$ROOT/_cl_normalize.py" | \
+      $PG -d "$DB" -c "\copy $tbl ($hdr) FROM STDIN WITH (FORMAT csv, HEADER true)"
   done
   echo "[load] done ($(date))."
 }
