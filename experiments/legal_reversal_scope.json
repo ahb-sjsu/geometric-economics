@@ -1,0 +1,62 @@
+{
+  "_status": "DRAFT — finalize the TODO fields before computing the frozen hash / tagging prereg-legal-reversal-v1. Freezing placeholders is not a real pre-registration.",
+  "_frozen_with": "PREREG_legal_reversal.md",
+
+  "corpus": {
+    "source_primary": "caselaw-access-project",
+    "source_secondary": "courtlistener-bulk",
+    "westlaw_role": "label-validation-and-taxonomy-reference-only (no bulk extraction; ToS + TR v. ROSS 2025)",
+    "TODO_court_set": "e.g. all U.S. Courts of Appeals reviewing U.S. District Court civil merits decisions; fix the exact court IDs",
+    "TODO_year_range": "e.g. decisions 1990-2015 (so appellate history has matured by data pull)"
+  },
+
+  "splits": {
+    "TODO_t0_train_before": "e.g. 2008",
+    "TODO_t1_test_from": "e.g. 2012",
+    "rule": "temporal; train < t0, validate [t0,t1), test >= t1; no unit in two splits"
+  },
+
+  "label": {
+    "positive": "reversed OR vacated in direct appellate history",
+    "negative": "affirmed",
+    "excluded": ["dismissed", "settled", "remanded-without-merits-reversal", "not-appealed"],
+    "source": "open citation/disposition graph",
+    "validation": {"tool": "westlaw-keycite-manual", "sample_n": 300, "min_agreement": 0.90},
+    "leakage_redaction": ["editor treatment flags", "headnotes", "synopsis", "later-appended history"]
+  },
+
+  "compiler": {
+    "pipeline": "erisml-compile / aesthetics-compile (dense tensor per opinion)",
+    "TODO_tensor_shape": "record exact dims once compiler output is inspected",
+    "TODO_axis_semantics": "record what each tensor mode means (e.g. Hohfeldian-relation x party x doctrine); needed so H3 regime-boundary bins are meaningful",
+    "input_text": "court's own opinion, redacted per label.leakage_redaction"
+  },
+
+  "pathology_score_S": {
+    "low_rank_fit": "Tucker/PCA on TRAINING tensors only",
+    "k_rule": "smallest k with marginal explained variance < 0.01 (fit on train only, then frozen)",
+    "components": ["off_manifold_residual", "local_curvature_geodesic_deviation"],
+    "TODO_weights": "convex weights on the two components, e.g. [0.5, 0.5]; fix before test use",
+    "standardization": "z-score S on training split; apply same transform to val/test"
+  },
+
+  "hypotheses": {
+    "H1_reversal": {"metric": "OR per SD of S, selection-corrected", "pass": ">=1.25", "p": "<0.001", "falsify": "<=1.10 or n.s."},
+    "H2_unique": {"metric": "held-out ΔAUC of S over legal-BERT baseline", "pass": ">=0.02", "lrt_p": "<0.001", "tier_b_if": "<0.01"},
+    "H3_structure": {"metric": "monotonicity of reversal in off-manifold residual + boundary elevation", "pass": "monotone increasing AND boundary>interior", "falsify": "flat/uniform"},
+    "H4_lowrank": {"metric": "k* and variance explained", "pass": "k*<=8 AND var>=0.70"},
+    "P0_placebo": {"labels": ["filing_quarter", "opinion_length_decile"], "pass": "S does NOT predict these", "void_if": "S predicts placebo"}
+  },
+
+  "selection_control": {
+    "preferred": "random-trial-judge-assignment IV (examiner design) if court set supports it",
+    "fallback": "Heckman two-stage (stage1 P(appeal), stage2 P(reverse|appeal) with inverse-Mills)",
+    "reporting": "raw AND selection-corrected; headline = corrected; H1 requires sign/threshold stable across both"
+  },
+
+  "baselines": ["base_rate", "length+court+year_logistic", "legal-BERT_on_redacted_text"],
+  "multiplicity": "Holm across the 5 confirmatory rows; all else exploratory",
+  "TODO_min_test_n": "e.g. 20000; do not run confirmatory tests below this",
+
+  "tier_gate": "Tier-A success REQUIRES H1 AND H2 AND H3. H1-only-with-H2-fail => reported as Tier B (re-description). Committed, not reframable post hoc."
+}
