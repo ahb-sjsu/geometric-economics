@@ -45,16 +45,48 @@ def cited_by(opinion_id, tok, limit=8):
 
 
 def opinion_ctx(opinion_id, tok):
-    """(case_name, date_filed, text) for an opinion via its cluster."""
+    """(case_name, date_filed, text, docket_url) for an opinion via its cluster."""
     op = clf.get(f"{clf.API}/opinions/{opinion_id}/", tok)
     _, text = clf.opinion_text(op)
     cl_url = op.get("cluster") or ""
     m = re.search(r"/clusters/(\d+)/", cl_url)
-    name, date = None, None
+    name, date, dk_url = None, None, None
     if m:
         cl = clf.get(f"{clf.API}/clusters/{m.group(1)}/", tok)
-        name, date = cl.get("case_name"), cl.get("date_filed")
-    return name, date, (text or "")
+        name, date, dk_url = cl.get("case_name"), cl.get("date_filed"), cl.get("docket")
+    return name, date, (text or ""), dk_url
+
+
+def docket_lineage(dk_url, tok):
+    """Authoritative appeal lineage for a docket (direct-ID fetch; bulk docket queries time out).
+    Returns {docket_number, court_id, appeal_from_str, originating_docket_number}. Sparse on old
+    opinion-sourced dockets; rich on modern RECAP appellate dockets."""
+    if not dk_url:
+        return {}
+    dk = clf.get(dk_url, tok)
+    oci = dk.get("originating_court_information")
+    orig_dn = None
+    if isinstance(oci, str) and oci.startswith("http"):
+        try:
+            orig_dn = clf.get(oci, tok).get("docket_number")
+        except Exception:
+            pass
+    elif isinstance(oci, dict):
+        orig_dn = oci.get("docket_number")
+    return {
+        "docket_number": dk.get("docket_number"),
+        "court_id": (dk.get("court") or "").rstrip("/").rsplit("/", 1)[-1] or None,
+        "appeal_from_str": dk.get("appeal_from_str"),
+        "originating_docket_number": orig_dn,
+    }
+
+
+def lineage_confirms(subject, reviewer):
+    """True if the reviewer's docket explicitly records the SUBJECT as the case it reviewed
+    (originating docket_number match) -- authoritative, unlike name overlap."""
+    sdn = (subject.get("docket_number") or "").strip()
+    rodn = (reviewer.get("originating_docket_number") or "").strip()
+    return bool(sdn) and bool(rodn) and (sdn == rodn or sdn in rodn or rodn in sdn)
 
 
 def name_overlap(a, b):
@@ -73,8 +105,9 @@ def disposition(text):
 
 def demo(opinion_id, tok):
     print(f"== Stage-3 linkage demo for opinion {opinion_id} (mechanics only; NO labels/S) ==")
-    subj_name, subj_date, _ = opinion_ctx(opinion_id, tok)
-    print(f"  subject: {subj_name!r}  filed {subj_date}")
+    subj_name, subj_date, _, subj_dk = opinion_ctx(opinion_id, tok)
+    subj_lin = docket_lineage(subj_dk, tok)
+    print(f"  subject: {subj_name!r}  filed {subj_date}  docket#={subj_lin.get('docket_number')!r}")
     citers = cited_by(opinion_id, tok, limit=4)
     print(f"  cited-by: {len(citers)} citing opinions retrieved")
     if not citers:
@@ -83,7 +116,8 @@ def demo(opinion_id, tok):
     best = None
     for cid, depth in citers:
         try:
-            name, date, text = opinion_ctx(cid, tok)
+            name, date, text, dk = opinion_ctx(cid, tok)
+            lin = docket_lineage(dk, tok)
         except Exception as e:                       # rate-limit / fetch error: degrade, don't crash
             print(f"    citing {cid}: [skipped: {type(e).__name__}]")
             time.sleep(2.0)
@@ -91,21 +125,23 @@ def demo(opinion_id, tok):
         ov = name_overlap(subj_name, name)
         later = (date or "") > (subj_date or "")
         disp, gates = disposition(text)
-        cand = later and ov >= 0.25          # heuristic: later + shares party names
-        flag = "  <-- candidate reviewer" if cand else ""
-        print(f"    citing {cid}: {str(name)[:38]!r} {date}  name_overlap={ov:.2f} later={later} "
-              f"disp={disp} gates={gates}{flag}")
-        if cand and best is None:
-            best = (cid, name, disp, gates)
+        confirmed = lineage_confirms(subj_lin, lin)   # authoritative docket-lineage link
+        cand = confirmed or (later and ov >= 0.25)
+        why = "docket-confirmed" if confirmed else ("name+later" if cand else "-")
+        flag = f"  <-- reviewer ({why})" if cand else ""
+        print(f"    citing {cid}: {str(name)[:34]!r} {date}  overlap={ov:.2f} later={later} "
+              f"orig_dn={lin.get('originating_docket_number')!r} disp={disp} gates={gates}{flag}")
+        if cand and (best is None or confirmed):       # prefer a docket-confirmed reviewer
+            best = (cid, name, disp, gates, why)
         time.sleep(1.0)                               # gentle pacing under the rate limit
     print("  --")
     if best:
-        print(f"  best candidate reviewer: {best[0]} {best[1]!r} -> disposition={best[2]}, gate(s)={best[3]}")
+        print(f"  best reviewer: {best[0]} {best[1]!r} via {best[4]} -> disposition={best[2]}, gate(s)={best[3]}")
     else:
-        print("  no citing opinion passed the later+name-overlap heuristic "
-              "(this is the review-vs-citation disambiguation problem, unsolved by plumbing).")
-    print("  HONEST: retrieval + disposition-regex ingredients work; reliable review-vs-citation "
-          "linkage needs docket/subsequent-history lineage + KeyCite validation (real Stage 3).")
+        print("  no reviewer found (no docket-lineage match, no later+name-overlap citer).")
+    print("  HONEST: docket lineage (originating docket# match) is AUTHORITATIVE where populated but "
+          "sparse on old/opinion-sourced dockets and un-bulk-queryable (per-case only); name-overlap is "
+          "the noisy fallback. Production Stage 3 pairs RECAP docket lineage with KeyCite validation.")
 
 
 def main():
