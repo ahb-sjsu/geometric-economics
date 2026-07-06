@@ -5,8 +5,9 @@
   "corpus": {
     "source_primary": "caselaw-access-project",
     "source_secondary": "courtlistener-bulk",
+    "access_reality_2026-07": "CourtListener v4 detail/text endpoints require a FREE API token (401 unauth); open search returns metadata + citation graph only. Full opinion TEXT needs the token or the free bulk download. RECON: posture/procedural_history/syllabus are ~0% populated on CA9 2005-2015 -- there is NO structured disposition/grounds field; text-derived only.",
     "westlaw_role": "label-validation-and-taxonomy-reference-only (no bulk extraction; ToS + TR v. ROSS 2025)",
-    "TODO_court_set": "e.g. all U.S. Courts of Appeals reviewing U.S. District Court civil merits decisions; fix the exact court IDs",
+    "TODO_court_set": "e.g. all U.S. Courts of Appeals reviewing U.S. District Court civil merits decisions; fix the exact court IDs. Prefer a court with random panel/judge assignment for the IV.",
     "TODO_year_range": "e.g. decisions 1990-2015 (so appellate history has matured by data pull)"
   },
 
@@ -20,7 +21,15 @@
     "positive": "reversed OR vacated in direct appellate history",
     "negative": "affirmed",
     "excluded": ["dismissed", "settled", "remanded-without-merits-reversal", "not-appealed"],
-    "source": "open citation/disposition graph",
+    "source": "CONSTRUCTED (not a field): full-text NLP + citation-graph linkage",
+    "construction_pipeline": [
+      "1. get full opinion text (CL token or bulk)",
+      "2. link each lower decision to the appellate opinion reviewing it (citation graph + docket + sibling_ids)",
+      "3. NLP-parse the appellate opinion's holding for reverse/vacate vs affirm (label y)",
+      "4. NLP-extract the GROUND of reversal and map to the deontic gates (gate-aligned target)",
+      "5. Westlaw KeyCite gold-standard validation on the sample below"
+    ],
+    "construction_is_a_project": "steps 2-4 are substantial, noisy NLP+graph engineering with their own error; label quality must be measured, not assumed",
     "validation": {"tool": "westlaw-keycite-manual", "sample_n": 300, "min_agreement": 0.90},
     "leakage_redaction": ["editor treatment flags", "headnotes", "synopsis", "later-appended history"],
     "stratify_by_ground": {
