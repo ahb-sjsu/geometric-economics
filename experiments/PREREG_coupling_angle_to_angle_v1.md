@@ -59,15 +59,18 @@ neither GDT nor the incumbent and does not count (carried verbatim from `prereg-
 Each subject completes, in one session, three incentivized blocks (block order counterbalanced; an
 attention/consistency check per block):
 
-- **R — Risk block.** K_R binary lottery choices spanning the (expected value, dispersion) plane:
-  a pre-specified grid varying EV gap and spread, including gain-only and mixed gambles, drawn from the
-  CPC18 / Ruggeri KT item families already used in Part II so the risk encoding is identical. Gain
-  domain is primary; a loss-domain subset is included but analyzed separately (the standing
-  reflection caveat — Part II — so a loss-domain angle is *not* pooled into θ_risk).
+- **R — Risk block.** K_R binary lottery choices spanning the (expected value, dispersion) plane,
+  drawn from the CPC18 / Ruggeri KT item families used in Part II so the risk encoding is identical.
+  **Split into balanced gain and loss sub-blocks** (K_R/2 gain-domain, K_R/2 loss-domain) — *both*
+  adequately sized, because the reflection sub-angles θ_risk-gain and θ_risk-loss are each fit
+  separately and their **difference is the primary coupling variable** (the loss-aversion analog,
+  §4.2). This makes the loss block first-class, not an afterthought (correcting the standing "loss is a
+  side subset" habit); a gain-only angle is never pooled with loss.
 - **S — Social block.** K_S allocation choices between self and one anonymous other: budget-line
   (modified-dictator) menus in the Charness–Rabin / FKM style used in Part II Move 1, spanning the
-  (own payoff s, other payoff o) plane, including both **advantageous** (s > o) and **disadvantageous**
-  (s < o) regions so that two social sub-angles are identified (§3).
+  (own payoff s, other payoff o) plane, **balanced across advantageous (s > o) and disadvantageous
+  (s < o)** regions (K_S/2 each) so θ_social-adv and θ_social-dis are each estimable and their
+  difference — the inequality-aversion analog — is the social half of the aversion contrast (§4.2).
 - **P — Patience block (auxiliary, for the rank test).** K_P intertemporal choices (smaller-sooner vs
   larger-later) yielding a third choice-fit angle θ_time, so that P2 (rank-1) is a **non-trivial**
   ≥ 3-angle test rather than a 2-variable tautology.
@@ -85,16 +88,20 @@ on the 2-D subspace, the scale-invariant tradeoff **angle**, an isotropic ridge 
 **fixed-temperature information-price rule** (Part II §VI; *not* the deprecated cost-dependent rule).
 Only the one-parameter magnitude is recalibrated per subject; the angle is the estimand.
 
-- **θ_risk** = the aversion angle σ_EV : σ_dispersion from block R (gain items).
-- **θ_social,adv** and **θ_social,dis** = the other-regard angles σ_s : σ_o fit separately on the
-  advantageous and disadvantageous regions of block S (the envy/guilt asymmetry — Fehr–Schmidt β vs α).
-  **θ_social** (for P1) = the pooled other-regard angle; the split is used for the P3 robustness and
-  the P2 rank test.
+- **θ_risk-gain**, **θ_risk-loss** = the aversion angle σ_EV : σ_dispersion fit *separately* on the
+  gain and loss sub-blocks of R. **θ_risk** (for the rank-0 P1) = the gain angle (loss never pooled in);
+  the **aversion contrast a_risk = θ_risk-gain − θ_risk-loss** is the risk half of the primary statistic.
+- **θ_social,adv**, **θ_social,dis** = the other-regard angles σ_s : σ_o fit separately on the
+  advantageous and disadvantageous regions of S (envy/guilt — Fehr–Schmidt β vs α). **θ_social** (rank-0)
+  = the pooled other-regard angle; the **aversion contrast a_social = θ_social,adv − θ_social,dis** is
+  the social half of the primary statistic.
 - **θ_time** = the impatience angle from block P.
 
-Each subject thus yields a vector of ≥ 4 choice-fit angles. Angles are estimated by penalized MLE
-(the softmax likelihood of the fixed-temperature rule) with the ridge; per-subject standard errors
-come from the likelihood curvature and from split-half refits (§4.3).
+Each subject thus yields ≥ 5 choice-fit sub-angles (2 risk, 2 social, 1 time). Angles are estimated by
+penalized MLE (the softmax likelihood of the fixed-temperature rule) with the ridge; per-subject
+standard errors come from the likelihood curvature and from split-half refits (§4.3). The **aversion
+contrasts** (a_risk, a_social) are the primary Level-B variables (§4.2); the pooled angles feed the
+rank-0 secondary; all sub-angles feed the joint-factor rank test.
 
 ---
 
@@ -111,16 +118,42 @@ Resampling/uncertainty unit = **subject** throughout. Family for FDR = the three
 - **Falsify:** ρ ≤ 0.10, or n.s., or negative. (The 0.10 boundary is carried from `prereg-coupling-v1`;
   the 0.20 pass margin reflects that a shared-metric coupling should be substantial, not merely nonzero.)
 
-### 4.2 P2 — rank-1 across the choice-fit angles
-- **Estimand:** the eigenvalue spectrum of the disattenuated correlation matrix of the ≥ 4 angles
-  (θ_risk, θ_social,adv, θ_social,dis, θ_time [+ any pre-registered extra]).
-- **Pass (rank-1):** PC1 variance share ≥ 0.60 **and** λ1/λ2 ≥ 3.0 **and** partialling PC1 out drives
-  every cross-domain (risk↔social) partial correlation to |r| < 0.10.
-- **Tier-B fallback (rank-2):** PC1+PC2 ≥ 0.70 with PC1 < 0.60 → the *strong* rank-1 claim is
-  falsified but the broader low-rank structure survives at rank 2 (the Ruggeri "rank-2 sweet spot").
-  Reported as Tier B, not as confirmation of the distinctive P2.
-- **Falsify:** PC1+PC2 < 0.70 (not low-rank) — the GPS-proxy outcome; would replicate the falsification
-  at the gold-standard level.
+### 4.2 P2 — the coupling across the RANK LADDER (a scalar angle is a rank-0 shadow)
+
+A single shared metric Σ is a rank-2 tensor per domain; reducing it to one tradeoff **angle** keeps
+only the rotation and discards the anisotropy and the **reflection** (symmetry) structure. A shared
+metric therefore need not produce a correlation of *naively pooled* angles — and if it acts through
+the reflection axis (the recurring "reflection broken by aversion" motif: loss aversion in risk,
+inequality aversion in social), pooling **cancels** the shared factor and the scalar test reads ≈ 0.
+That is exactly the GPS "two bundles / no coupling" outcome, and it is *consistent with* a shared
+metric that the scalar encoding cannot see (`datasets/coupling_encoding_probe.py`). So P2 is
+pre-registered as a **ladder of ranks**, all tested; B is supported if the coupling appears at **any**
+rank, and *the rank at which it appears is itself the finding*.
+
+- **Rank 0 — scalar angle (secondary, not decisive either way).** corr(pooled θ_risk, pooled
+  θ_social). A pass supports a *simple* (non-reflection) coupling. **A null here does NOT falsify B**
+  (reflection masks it); it is reported, not weighted.
+- **Rank "reflection" — the aversion contrast (PRIMARY).** Each domain's **symmetry-breaking
+  parameter** is a *task-defined* contrast (no fitting): a_risk = θ_risk-gain − θ_risk-loss (the
+  loss-aversion analog), a_social = θ_social-adv − θ_social-dis (the inequality-aversion analog).
+  **Pass:** the disattenuated corr(a_risk, a_social) has 95% CI lower > 0.10, sign positive. This is
+  the sharpest Level-B prediction — a shared metric couples the aversion terms even when it leaves the
+  angles uncoupled — and by simulation it is by far the best-powered (§6). Sign is pre-committed
+  positive (more loss-averse ⇒ more inequality-averse).
+- **Rank ≥ 2 — joint low-rank tensor factor (structure test).** A cross-fitted joint low-rank factor /
+  CCA over the reflection-resolved sub-angles across [subject × coordinate × domain]; **rank-1** if one
+  shared subject-factor explains the cross-domain covariance (PC1 share ≥ 0.60, λ1/λ2 ≥ 3, cross-domain
+  partials → |r| < 0.10 after removing it). By simulation this cross-fitted factor is concordant with
+  the aversion contrast (both decisive at N ≈ 200; §6.2). The **hierarchical latent model** of §4.3 is
+  the preferred estimator for full error-propagation and the rank-1-vs-2 call, but is not required for
+  detection. The aversion contrast is favored as *primary* only because it needs no fitting (the
+  reflection axis is task-defined), making it the simplest and most transparent of the three.
+- **Falsify B:** the coupling is null (CI excludes 0.10) at **every** rank — scalar **and** aversion
+  contrast **and** joint factor. Only then is the shared-metric claim false at the individual level;
+  this would replicate the GPS falsification at the gold standard, now with the reflection encoding
+  given every chance.
+- **Tier-B (rank-2 not rank-1):** the joint factor is low-rank at rank 2 but not rank 1 → broader
+  low-rank coupling, distinctive rank-1 claim fails; reported as Tier B.
 
 ### 4.3 Measurement-error correction (pre-committed method)
 Two independent estimators, both reported; the **hierarchical** one is the headline:
@@ -204,6 +237,31 @@ is **not** resolvable at feasible N with this statistic (needs N ≈ 1600). Ther
     large sample only when the moderate sample warrants it.
 The `coupling_power_sim.py` script + this table are pinned in the freeze bundle; re-run to reproduce.
 
+### 6.2 Power for the rank-ladder / aversion-contrast primary (`coupling_tensor_sim.py`, `coupling_encoding_probe.py`)
+The scalar table above is the **rank-0** test. The **primary P2 statistic (§4.2, the aversion
+contrast)** is far cheaper because the reflection *difference* amplifies the shared factor (2×) while
+pooling cancels it. Simulating a reflection-structured shared metric (one latent factor loading
+oppositely across each domain's reflection axis) and the task-defined contrast test:
+
+| statistic | power at N=200 × K=32 | false-positive (no coupling) | r recovered |
+|-----------|:---------------------:|:----------------------------:|:-----------:|
+| rank-0 scalar angle correlation | ≈ 0.00 (structurally blind under reflection) | 0.00 | +0.01 |
+| **aversion contrast** (θ_gain−θ_loss ↔ θ_adv−θ_dis; axis task-defined, no fitting) | **1.00** | **0.000** | **+0.56** |
+| joint CCA / factor over the reflection sub-angles (cross-fitted) | **1.00** | **0.000** | **+0.56** |
+
+Under the reflection hypothesis **both** above-rank-0 tests are decisive at **N ≈ 200** (r ≈ 0.56,
+FP ≈ 0), while the scalar angle sees nothing — the coupling lives in the reflection/aversion structure
+the scalar discards. The frozen **N = 400** design is already *over*-powered for the coupling and stays
+sized by the rank-0 scalar test (its only binding constraint). The **aversion contrast is the primary
+confirmatory statistic** because it needs no fitting (the reflection axis is task-defined, so it is
+stable and simplest); the cross-fitted joint factor is a concordant secondary, and the **hierarchical
+latent model (§4.3)** remains the preferred estimator for full error-propagation and the rank-1-vs-2
+structure test — but it is *not required for detection*. **Honest scope:** this power is *conditional on
+B being reflection-structured* — it establishes the *instrument* is right and cheap **if** B lives in
+the aversion terms, not that B exists. (An earlier version reported the plug-in factor as
+"estimator-unstable, flat in N"; that was a data-shaping bug — corrected — not a real limit.)
+`coupling_encoding_probe.py`/`coupling_tensor_sim.py` + this table are pinned in the bundle.
+
 ---
 
 ## 7. Data sources (in preference order)
@@ -221,16 +279,20 @@ The `coupling_power_sim.py` script + this table are pinned in the freeze bundle;
 ---
 
 ## 8. Decision rules (pre-committed)
+The coupling is tested across the rank ladder (§4.2); B is supported if it appears at **any** rank, and
+the rank is the finding. "Coupling detected at rank X" = that rank's CI lower > 0.10, sign positive.
+
 | outcome | registered interpretation |
 |---|---|
-| P1 pass **and** P2 rank-1 pass **and** P3 hold | **GDT coupling confirmed** at the gold standard — the Tier-A novel prediction the program is built on |
-| P1 pass, P2 rank-2 (not rank-1) | broader low-rank coupling, but the distinctive rank-1 claim fails → Tier B (re-description strength), reported as such |
-| P1 pass, P2 not low-rank | positive coupling exists but is not metric-structured → **not** GDT-confirming (a bare correlation, excluded in advance) |
-| **P1 inconclusive** (r_corr ≈ 0.10–0.20 at N=400, CI spans both bounds) | **INCONCLUSIVE** power dead-zone (§6) — not confirming, not falsifying; trigger the sequential N=1600 extension if the pre-committed suggestive rule fires, else report inconclusive |
-| P1 fail (r_corr ≤ 0.10 with CI excluding 0.20, or n.s., or negative) | the shared-metric claim is **false at the individual choice level** — the strongest possible falsification; recorded in the graveyard next to the GPS-proxy result |
-| P3 fail | the coupling is a coding artifact; P1/P2 void |
+| coupling detected at the **aversion-contrast** rank **and** joint factor is **rank-1** **and** P3 holds | **GDT coupling confirmed at the gold standard** — the shared metric couples the domains through the reflection/aversion structure. The Tier-A result the program is built on; the *reflection* rank is itself the discovery (why GPS saw "two bundles"). |
+| coupling at the aversion rank, joint factor **rank-2** not rank-1 | broader low-rank coupling; distinctive rank-1 claim fails → **Tier B**, reported as such |
+| coupling **only** at the rank-0 scalar angle (aversion rank null) | a *simple* (non-reflection) coupling — supports B but not the reflection structure; reported at that rank |
+| coupling at aversion rank but **P3 fail** | the coupling is a coding artifact; void |
+| **inconclusive** (aversion-contrast CI spans 0.10 at N=400, point est ≥ 0.15) | **INCONCLUSIVE** — trigger the sequential N=1600 extension (§6) under the pre-committed alpha-spending rule; else report inconclusive |
+| **null at EVERY rank** (scalar, aversion contrast, and joint factor all CI-exclude 0.10) | the shared-metric claim is **false at the individual choice level**, with the reflection encoding given every chance — the strongest falsification; graveyard, next to the GPS-proxy result |
 
-No threshold or sign may change after the §9 freeze; a wrong sign is a reported failure.
+No threshold, sign, or rank definition may change after the §9 freeze; a wrong sign is a reported
+failure. A null at the rank-0 scalar **alone** never falsifies B (§4.2) — only a null at every rank does.
 
 ---
 
