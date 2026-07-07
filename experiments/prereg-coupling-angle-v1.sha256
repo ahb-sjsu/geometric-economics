@@ -1,0 +1,31 @@
+{
+  "prereg": "prereg-coupling-angle-v1",
+  "title": "Gold-standard cross-domain coupling test (same-subject, angle-to-angle; rank ladder)",
+  "level": 1,
+  "author": "Andrew H. Bond, San Jose State University",
+  "supersedes_as_gold_standard": "prereg-coupling-v1 (proxy; FALSIFIED on GPS, RESULTS_coupling_scorecard.md)",
+  "primary_statistic": "aversion contrast corr(theta_gain-theta_loss, theta_adv-theta_dis); rank ladder in section 4.2; all signs positive",
+  "bundle_files": [
+    "PREREG_coupling_angle_to_angle_v1.md",
+    "datasets/coupling_analysis.py",
+    "datasets/test_coupling_analysis.py",
+    "datasets/coupling_stimuli.py",
+    "datasets/coupling_stimuli.json",
+    "datasets/coupling_power_sim.py",
+    "datasets/coupling_tensor_sim.py",
+    "datasets/coupling_encoding_probe.py"
+  ],
+  "component_sha256": {
+    "PREREG_coupling_angle_to_angle_v1.md": "603de57ada1ed689e1d436d0f7c5d49aa1b28147fd24fba76e844de1f5c3511f",
+    "datasets/coupling_analysis.py": "3b9127491fafddda241ae1b6c03114ce8d90f77a741dcff92591f5d5cef4a9b6",
+    "datasets/test_coupling_analysis.py": "ab37c7e0471e4e3d7ab7d81aa81d43753d460a71fc2d868ad24732ad567db49f",
+    "datasets/coupling_stimuli.py": "04a79dcf122d64df544fb0d431fba4e59737430043ff3b4f286c4f0b061240df",
+    "datasets/coupling_stimuli.json": "736d2a281b38aa011cbfb60110bdf08605df4b1d06c683c2e901e3f782f4ecd9",
+    "datasets/coupling_power_sim.py": "2e997eefc12cae59baaf0c92600bbf2a69c1d546ec3f06651b7ae1b7c1d60def",
+    "datasets/coupling_tensor_sim.py": "4ab27e9e4d4520d943ac4637fd9874002ff4938a67fac859968c1292c1de8516",
+    "datasets/coupling_encoding_probe.py": "58c99c7e217d85577b04c54ebf21996240d9aaf4a10f00105536879c0ee73c15"
+  },
+  "combined_sha256": "26ff5af20d7bae206af38024dcce6a9cced171578693d10d1d84c19829cf9b4a",
+  "level2_note": "human-facing menus from the frozen encoded design + OSF registration precede data collection",
+  "hash_note": "sha256 over the committed git blobs (line-ending-canonical); verify with: git show <tag>:<path> | sha256sum"
+}

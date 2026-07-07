@@ -1,15 +1,15 @@
 # prereg-coupling-angle-v1 — The Gold-Standard Cross-Domain Coupling Test (same-subject, angle-to-angle)
 
-**Status:** DRAFT for author review — not yet frozen (see §9). Nothing here is a registered claim until the freeze in §9 is executed.
+**Status:** FROZEN (Level 1) — protocol + confirmatory analysis (`coupling_analysis.py`, tests pass) + frozen stimulus design (`coupling_stimuli.json`) + power sims + sign table are complete and hashed (`prereg-coupling-angle-v1.sha256`, signed tag `prereg-coupling-angle-v1`). Level 2 (human-facing menu instantiation from the frozen encoded design; OSF public registration) precedes data collection. Nothing was a registered claim before this freeze.
 **Supersedes-as-gold-standard, does not retract:** `prereg-coupling-v1` (`PREREG_cross_domain_coupling.md`, sha256 `1eac580f…`). That prediction stands as frozen; it was scored on the Global Preferences Survey and **failed on the proxy** (`RESULTS_coupling_scorecard.md`): GPS ships preference *scores*, not choice-fit angles, and its P2 (rank-1) failed decisively. This document specifies the test the proxy could not be — fitting the geometric angles from each person's **raw choices** in both domains — which is the only test that can *confirm* the coupling.
 **Author:** Andrew H. Bond, San José State University. **Companion:** GDT Part I & II; `prereg-sigma-v1`, `prereg-dimensions-v1`.
 
 > **Global caveat, stated first.** Per-person angles fit from a finite number of choices are
-> **noisy**. A raw across-subject angle correlation is *attenuated* by that noise; a naive raw
-> correlation therefore under-states the true coupling and is not, by itself, the test. The
-> confirmatory statistic is **measurement-error-corrected** (§4.3), and every threshold below is set
-> on the corrected quantity with the raw reported alongside. This is pre-committed, not a post-hoc
-> rescue.
+> **noisy**, which *attenuates* a raw across-subject correlation. The confirmatory PASS is decided on
+> the **raw** subject-bootstrap CI (conservative: if the raw CI lower clears 0.10, the
+> measurement-error-corrected value clears it too), and the **disattenuated** correlation is reported
+> alongside as the true-magnitude estimate (`coupling_analysis.py`). Deciding on the raw prevents
+> disattenuation from ever manufacturing a pass. This is pre-committed, not a post-hoc rescue.
 
 ---
 
@@ -296,15 +296,25 @@ failure. A null at the rank-0 scalar **alone** never falsifies B (§4.2) — onl
 
 ---
 
-## 9. Freeze procedure (to execute, not yet executed)
-1. Finalize: the exact R/S/P menus, stakes, encoder for angles (the frozen Part II fitter, pinned by
-   commit), the error-correction priors/sampler, the fold seeds, the power analysis (§6) with the
-   selected (N, K_R, K_S, K_P), and the sign-prediction table (all positive; loss-domain excluded).
-2. Assemble the bundle: this protocol (final), the stimulus files, the analysis code (angle fitter +
-   P1/P2/P3 + error model), fold seeds, power results.
-3. `sha256` the bundle → `prereg-coupling-angle-v1.sha256`; **signed git tag** `prereg-coupling-angle-v1`
-   and **OSF registration** (public, timestamped) *before* any data collection.
-4. Only then recruit/collect (or pull the existing dataset) and score.
+## 9. Freeze — Level-1 bundle (EXECUTED)
+Frozen bundle (hashed in `prereg-coupling-angle-v1.sha256`, signed tag `prereg-coupling-angle-v1`):
+
+| file | role |
+|------|------|
+| `PREREG_coupling_angle_to_angle_v1.md` | this protocol (hypotheses, rank ladder, thresholds, signs) |
+| `datasets/coupling_analysis.py` | **confirmatory pipeline** — fit sub-angles → rank ladder (scalar / aversion / joint factor) with disattenuation + bootstrap CIs → null controls |
+| `datasets/test_coupling_analysis.py` | validates it detects coupling when present, controls FP when absent, nulls ≈ 0 |
+| `datasets/coupling_stimuli.py` + `coupling_stimuli.json` | frozen encoded stimulus design (K_R=32 balanced gain/loss, K_S=32 balanced adv/dis, K_P=16; seed 20260707) |
+| `datasets/coupling_power_sim.py`, `coupling_tensor_sim.py`, `coupling_encoding_probe.py` | power (§6): scalar N=400×K=32 for ρ≥0.30; aversion contrast decisive at N≈200 |
+
+**Sign table (frozen, all positive):** every rung's coupling is predicted **positive** — a_risk↔a_social
+(more loss-averse ⇒ more inequality-averse) and the pooled-angle and joint-factor couplings. No sign
+may change post-freeze; a wrong sign is a reported failure.
+
+**Level 2 (before data collection, not part of this hash):** instantiate the human-facing R/S/P menus
+from the frozen encoded design via the Part II encoding; register publicly on **OSF** (timestamped);
+finalize stakes and recruitment. Then recruit/collect (or pull an existing same-subject dataset) and
+score with the frozen `coupling_analysis.py`. `combined_sha256` recorded in the `.sha256` lock.
 
 ---
 
