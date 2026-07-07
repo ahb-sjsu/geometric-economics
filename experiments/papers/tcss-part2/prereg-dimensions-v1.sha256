@@ -1,0 +1,25 @@
+{
+  "prereg": "prereg-dimensions-v1",
+  "title": "Protocol for Activating and Pricing the Nine Coordinates of the Economic Decision Manifold",
+  "level": 1,
+  "author": "Andrew H. Bond, San Jose State University",
+  "companion_to": [
+    "prereg-v1",
+    "prereg-v2",
+    "prereg-sigma-v1",
+    "prereg-coupling-v1"
+  ],
+  "frozen_predictions": "sign table in prereg-dimensions-v1.md 5.0 (all real coords +1; d9-loss -1; d2 lexicographic-contingent)",
+  "bundle_files": [
+    "prereg-dimensions-v1.md",
+    "codebook-v1.md",
+    "power/power_bootstrap.py"
+  ],
+  "component_sha256": {
+    "prereg-dimensions-v1.md": "70af89608e7dd0a79e50eb581597b8fc5537f8b638e9c893ca45183aefb5040b",
+    "codebook-v1.md": "3bc3753f0f66033de218bd780a75b569ec13759c73042b1dc0ce2d9b0652a991",
+    "power/power_bootstrap.py": "13e15c6c21179013b75b1265f594c4a2149ac76ff8e1dd288604416a9cd55870"
+  },
+  "combined_sha256": "0e9069bfe7ae9ae5ea3621d3ba8dbec0f2b102e32de27a50b26ebfc0956a2cf9",
+  "level2_note": "corpus/encoder-prompts/fold-seeds generated FROM codebook-v1.md before Phase 0; committed as bundle-L2 referencing this combined hash"
+}
