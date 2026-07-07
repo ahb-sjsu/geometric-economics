@@ -1,0 +1,1785 @@
+{
+  "prereg": "prereg-coupling-angle-v1",
+  "level": 2,
+  "usd_scale": 10.0,
+  "round": 0.5,
+  "config": {
+    "risk_gain": {
+      "ev_ref": 20.0,
+      "sign": 1
+    },
+    "risk_loss": {
+      "ev_ref": 20.0,
+      "sign": -1
+    },
+    "social_adv": {
+      "own_ref": 25.0,
+      "oth_ref": 15.0
+    },
+    "social_dis": {
+      "own_ref": 15.0,
+      "oth_ref": 25.0
+    },
+    "patience": {
+      "m_ref": 25.0,
+      "t_days": 60.0
+    }
+  },
+  "max_encoding_drift_from_frozen": 0.025,
+  "menus": {
+    "risk_gain": [
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 16.5,
+          "b": 15.5
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 23.0,
+          "b": 16.0
+        },
+        "text": "A: 50% chance $16.50, 50% chance $15.50   |   B: 50% chance $23.00, 50% chance $16.00",
+        "encoded_A": [
+          0.4,
+          0.05
+        ],
+        "encoded_B": [
+          0.05,
+          0.35
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 15.5,
+          "b": 13.5
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 23.5,
+          "b": 14.0
+        },
+        "text": "A: 50% chance $15.50, 50% chance $13.50   |   B: 50% chance $23.50, 50% chance $14.00",
+        "encoded_A": [
+          0.55,
+          0.1
+        ],
+        "encoded_B": [
+          0.125,
+          0.475
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 15.5,
+          "b": 11.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 25.0,
+          "b": 10.5
+        },
+        "text": "A: 50% chance $15.50, 50% chance $11.00   |   B: 50% chance $25.00, 50% chance $10.50",
+        "encoded_A": [
+          0.675,
+          0.225
+        ],
+        "encoded_B": [
+          0.225,
+          0.725
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 17.5,
+          "b": 13.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 23.0,
+          "b": 12.5
+        },
+        "text": "A: 50% chance $17.50, 50% chance $13.00   |   B: 50% chance $23.00, 50% chance $12.50",
+        "encoded_A": [
+          0.475,
+          0.225
+        ],
+        "encoded_B": [
+          0.225,
+          0.525
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 17.5,
+          "b": 13.5
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 22.0,
+          "b": 13.0
+        },
+        "text": "A: 50% chance $17.50, 50% chance $13.50   |   B: 50% chance $22.00, 50% chance $13.00",
+        "encoded_A": [
+          0.45,
+          0.2
+        ],
+        "encoded_B": [
+          0.25,
+          0.45
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 19.0,
+          "b": 12.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 21.5,
+          "b": 11.5
+        },
+        "text": "A: 50% chance $19.00, 50% chance $12.00   |   B: 50% chance $21.50, 50% chance $11.50",
+        "encoded_A": [
+          0.45,
+          0.35
+        ],
+        "encoded_B": [
+          0.35,
+          0.5
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 18.5,
+          "b": 11.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 20.5,
+          "b": 11.0
+        },
+        "text": "A: 50% chance $18.50, 50% chance $11.00   |   B: 50% chance $20.50, 50% chance $11.00",
+        "encoded_A": [
+          0.525,
+          0.375
+        ],
+        "encoded_B": [
+          0.425,
+          0.475
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 19.5,
+          "b": 14.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 20.0,
+          "b": 14.0
+        },
+        "text": "A: 50% chance $19.50, 50% chance $14.00   |   B: 50% chance $20.00, 50% chance $14.00",
+        "encoded_A": [
+          0.325,
+          0.275
+        ],
+        "encoded_B": [
+          0.3,
+          0.3
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 20.0,
+          "b": 11.5
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 19.5,
+          "b": 10.5
+        },
+        "text": "A: 50% chance $20.00, 50% chance $11.50   |   B: 50% chance $19.50, 50% chance $10.50",
+        "encoded_A": [
+          0.425,
+          0.425
+        ],
+        "encoded_B": [
+          0.5,
+          0.45
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 21.0,
+          "b": 12.5
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 19.5,
+          "b": 12.5
+        },
+        "text": "A: 50% chance $21.00, 50% chance $12.50   |   B: 50% chance $19.50, 50% chance $12.50",
+        "encoded_A": [
+          0.325,
+          0.425
+        ],
+        "encoded_B": [
+          0.4,
+          0.35
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 21.5,
+          "b": 11.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 18.0,
+          "b": 11.5
+        },
+        "text": "A: 50% chance $21.50, 50% chance $11.00   |   B: 50% chance $18.00, 50% chance $11.50",
+        "encoded_A": [
+          0.375,
+          0.525
+        ],
+        "encoded_B": [
+          0.525,
+          0.325
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 22.0,
+          "b": 14.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 18.5,
+          "b": 14.5
+        },
+        "text": "A: 50% chance $22.00, 50% chance $14.00   |   B: 50% chance $18.50, 50% chance $14.50",
+        "encoded_A": [
+          0.2,
+          0.4
+        ],
+        "encoded_B": [
+          0.35,
+          0.2
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 22.0,
+          "b": 15.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 18.0,
+          "b": 15.0
+        },
+        "text": "A: 50% chance $22.00, 50% chance $15.00   |   B: 50% chance $18.00, 50% chance $15.00",
+        "encoded_A": [
+          0.15,
+          0.35
+        ],
+        "encoded_B": [
+          0.35,
+          0.15
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 24.0,
+          "b": 11.5
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 15.5,
+          "b": 11.0
+        },
+        "text": "A: 50% chance $24.00, 50% chance $11.50   |   B: 50% chance $15.50, 50% chance $11.00",
+        "encoded_A": [
+          0.225,
+          0.625
+        ],
+        "encoded_B": [
+          0.675,
+          0.225
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 23.5,
+          "b": 14.5
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 17.0,
+          "b": 14.5
+        },
+        "text": "A: 50% chance $23.50, 50% chance $14.50   |   B: 50% chance $17.00, 50% chance $14.50",
+        "encoded_A": [
+          0.1,
+          0.45
+        ],
+        "encoded_B": [
+          0.425,
+          0.125
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 26.5,
+          "b": 11.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": 13.5,
+          "b": 11.5
+        },
+        "text": "A: 50% chance $26.50, 50% chance $11.00   |   B: 50% chance $13.50, 50% chance $11.50",
+        "encoded_A": [
+          0.125,
+          0.775
+        ],
+        "encoded_B": [
+          0.75,
+          0.1
+        ]
+      }
+    ],
+    "risk_loss": [
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -15.5,
+          "b": -14.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -24.0,
+          "b": -14.5
+        },
+        "text": "A: 50% chance lose $15.50, 50% chance lose $14.00   |   B: 50% chance lose $24.00, 50% chance lose $14.50",
+        "encoded_A": [
+          0.525,
+          0.075
+        ],
+        "encoded_B": [
+          0.075,
+          0.475
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -15.0,
+          "b": -12.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -24.5,
+          "b": -12.0
+        },
+        "text": "A: 50% chance lose $15.00, 50% chance lose $12.00   |   B: 50% chance lose $24.50, 50% chance lose $12.00",
+        "encoded_A": [
+          0.65,
+          0.15
+        ],
+        "encoded_B": [
+          0.175,
+          0.625
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -15.5,
+          "b": -11.5
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -25.0,
+          "b": -11.0
+        },
+        "text": "A: 50% chance lose $15.50, 50% chance lose $11.50   |   B: 50% chance lose $25.00, 50% chance lose $11.00",
+        "encoded_A": [
+          0.65,
+          0.2
+        ],
+        "encoded_B": [
+          0.2,
+          0.7
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -17.0,
+          "b": -11.5
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -23.0,
+          "b": -11.5
+        },
+        "text": "A: 50% chance lose $17.00, 50% chance lose $11.50   |   B: 50% chance lose $23.00, 50% chance lose $11.50",
+        "encoded_A": [
+          0.575,
+          0.275
+        ],
+        "encoded_B": [
+          0.275,
+          0.575
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -17.5,
+          "b": -13.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -22.5,
+          "b": -12.5
+        },
+        "text": "A: 50% chance lose $17.50, 50% chance lose $13.00   |   B: 50% chance lose $22.50, 50% chance lose $12.50",
+        "encoded_A": [
+          0.475,
+          0.225
+        ],
+        "encoded_B": [
+          0.25,
+          0.5
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -18.0,
+          "b": -12.5
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -21.5,
+          "b": -13.0
+        },
+        "text": "A: 50% chance lose $18.00, 50% chance lose $12.50   |   B: 50% chance lose $21.50, 50% chance lose $13.00",
+        "encoded_A": [
+          0.475,
+          0.275
+        ],
+        "encoded_B": [
+          0.275,
+          0.425
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -19.5,
+          "b": -15.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -20.5,
+          "b": -15.0
+        },
+        "text": "A: 50% chance lose $19.50, 50% chance lose $15.00   |   B: 50% chance lose $20.50, 50% chance lose $15.00",
+        "encoded_A": [
+          0.275,
+          0.225
+        ],
+        "encoded_B": [
+          0.225,
+          0.275
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -20.0,
+          "b": -13.5
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -20.5,
+          "b": -13.0
+        },
+        "text": "A: 50% chance lose $20.00, 50% chance lose $13.50   |   B: 50% chance lose $20.50, 50% chance lose $13.00",
+        "encoded_A": [
+          0.325,
+          0.325
+        ],
+        "encoded_B": [
+          0.325,
+          0.375
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -20.5,
+          "b": -11.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -20.0,
+          "b": -10.0
+        },
+        "text": "A: 50% chance lose $20.50, 50% chance lose $11.00   |   B: 50% chance lose $20.00, 50% chance lose $10.00",
+        "encoded_A": [
+          0.425,
+          0.475
+        ],
+        "encoded_B": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -21.0,
+          "b": -12.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -18.5,
+          "b": -12.0
+        },
+        "text": "A: 50% chance lose $21.00, 50% chance lose $12.00   |   B: 50% chance lose $18.50, 50% chance lose $12.00",
+        "encoded_A": [
+          0.35,
+          0.45
+        ],
+        "encoded_B": [
+          0.475,
+          0.325
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -21.5,
+          "b": -14.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -19.0,
+          "b": -14.0
+        },
+        "text": "A: 50% chance lose $21.50, 50% chance lose $14.00   |   B: 50% chance lose $19.00, 50% chance lose $14.00",
+        "encoded_A": [
+          0.225,
+          0.375
+        ],
+        "encoded_B": [
+          0.35,
+          0.25
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -21.5,
+          "b": -14.0
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -18.0,
+          "b": -14.0
+        },
+        "text": "A: 50% chance lose $21.50, 50% chance lose $14.00   |   B: 50% chance lose $18.00, 50% chance lose $14.00",
+        "encoded_A": [
+          0.225,
+          0.375
+        ],
+        "encoded_B": [
+          0.4,
+          0.2
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -21.5,
+          "b": -15.5
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -18.0,
+          "b": -15.5
+        },
+        "text": "A: 50% chance lose $21.50, 50% chance lose $15.50   |   B: 50% chance lose $18.00, 50% chance lose $15.50",
+        "encoded_A": [
+          0.15,
+          0.3
+        ],
+        "encoded_B": [
+          0.325,
+          0.125
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -24.0,
+          "b": -11.5
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -15.0,
+          "b": -10.5
+        },
+        "text": "A: 50% chance lose $24.00, 50% chance lose $11.50   |   B: 50% chance lose $15.00, 50% chance lose $10.50",
+        "encoded_A": [
+          0.225,
+          0.625
+        ],
+        "encoded_B": [
+          0.725,
+          0.225
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -25.0,
+          "b": -11.5
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -14.5,
+          "b": -10.5
+        },
+        "text": "A: 50% chance lose $25.00, 50% chance lose $11.50   |   B: 50% chance lose $14.50, 50% chance lose $10.50",
+        "encoded_A": [
+          0.175,
+          0.675
+        ],
+        "encoded_B": [
+          0.75,
+          0.2
+        ]
+      },
+      {
+        "A": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -27.5,
+          "b": -10.5
+        },
+        "B": {
+          "kind": "gamble",
+          "p": 0.5,
+          "a": -12.5,
+          "b": -10.0
+        },
+        "text": "A: 50% chance lose $27.50, 50% chance lose $10.50   |   B: 50% chance lose $12.50, 50% chance lose $10.00",
+        "encoded_A": [
+          0.1,
+          0.85
+        ],
+        "encoded_B": [
+          0.875,
+          0.125
+        ]
+      }
+    ],
+    "social_adv": [
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 19.5,
+          "other": 14.0
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 24.0,
+          "other": 9.0
+        },
+        "text": "A: you get $19.50, other gets $14.00   |   B: you get $24.00, other gets $9.00",
+        "encoded_A": [
+          0.55,
+          0.1
+        ],
+        "encoded_B": [
+          0.1,
+          0.6
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 18.5,
+          "other": 13.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 23.5,
+          "other": 9.0
+        },
+        "text": "A: you get $18.50, other gets $13.50   |   B: you get $23.50, other gets $9.00",
+        "encoded_A": [
+          0.65,
+          0.15
+        ],
+        "encoded_B": [
+          0.15,
+          0.6
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 17.5,
+          "other": 12.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 22.5,
+          "other": 8.0
+        },
+        "text": "A: you get $17.50, other gets $12.50   |   B: you get $22.50, other gets $8.00",
+        "encoded_A": [
+          0.75,
+          0.25
+        ],
+        "encoded_B": [
+          0.25,
+          0.7
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 18.0,
+          "other": 11.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 22.0,
+          "other": 7.5
+        },
+        "text": "A: you get $18.00, other gets $11.50   |   B: you get $22.00, other gets $7.50",
+        "encoded_A": [
+          0.7,
+          0.35
+        ],
+        "encoded_B": [
+          0.3,
+          0.75
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 19.0,
+          "other": 12.0
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 21.5,
+          "other": 8.5
+        },
+        "text": "A: you get $19.00, other gets $12.00   |   B: you get $21.50, other gets $8.50",
+        "encoded_A": [
+          0.6,
+          0.3
+        ],
+        "encoded_B": [
+          0.35,
+          0.65
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 21.0,
+          "other": 12.0
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 22.0,
+          "other": 11.0
+        },
+        "text": "A: you get $21.00, other gets $12.00   |   B: you get $22.00, other gets $11.00",
+        "encoded_A": [
+          0.4,
+          0.3
+        ],
+        "encoded_B": [
+          0.3,
+          0.4
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 20.5,
+          "other": 11.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 21.5,
+          "other": 10.5
+        },
+        "text": "A: you get $20.50, other gets $11.50   |   B: you get $21.50, other gets $10.50",
+        "encoded_A": [
+          0.45,
+          0.35
+        ],
+        "encoded_B": [
+          0.35,
+          0.45
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 21.0,
+          "other": 10.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 20.5,
+          "other": 10.5
+        },
+        "text": "A: you get $21.00, other gets $10.50   |   B: you get $20.50, other gets $10.50",
+        "encoded_A": [
+          0.4,
+          0.45
+        ],
+        "encoded_B": [
+          0.45,
+          0.45
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 22.5,
+          "other": 12.0
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 22.5,
+          "other": 12.5
+        },
+        "text": "A: you get $22.50, other gets $12.00   |   B: you get $22.50, other gets $12.50",
+        "encoded_A": [
+          0.25,
+          0.3
+        ],
+        "encoded_B": [
+          0.25,
+          0.25
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 22.0,
+          "other": 11.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 21.0,
+          "other": 12.0
+        },
+        "text": "A: you get $22.00, other gets $11.50   |   B: you get $21.00, other gets $12.00",
+        "encoded_A": [
+          0.3,
+          0.35
+        ],
+        "encoded_B": [
+          0.4,
+          0.3
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 23.0,
+          "other": 12.0
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 22.0,
+          "other": 13.0
+        },
+        "text": "A: you get $23.00, other gets $12.00   |   B: you get $22.00, other gets $13.00",
+        "encoded_A": [
+          0.2,
+          0.3
+        ],
+        "encoded_B": [
+          0.3,
+          0.2
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 21.5,
+          "other": 9.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 19.0,
+          "other": 12.0
+        },
+        "text": "A: you get $21.50, other gets $9.50   |   B: you get $19.00, other gets $12.00",
+        "encoded_A": [
+          0.35,
+          0.55
+        ],
+        "encoded_B": [
+          0.6,
+          0.3
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 23.0,
+          "other": 10.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 20.0,
+          "other": 13.0
+        },
+        "text": "A: you get $23.00, other gets $10.50   |   B: you get $20.00, other gets $13.00",
+        "encoded_A": [
+          0.2,
+          0.45
+        ],
+        "encoded_B": [
+          0.5,
+          0.2
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 23.0,
+          "other": 9.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 19.0,
+          "other": 13.0
+        },
+        "text": "A: you get $23.00, other gets $9.50   |   B: you get $19.00, other gets $13.00",
+        "encoded_A": [
+          0.2,
+          0.55
+        ],
+        "encoded_B": [
+          0.6,
+          0.2
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 24.0,
+          "other": 11.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 21.0,
+          "other": 14.0
+        },
+        "text": "A: you get $24.00, other gets $11.50   |   B: you get $21.00, other gets $14.00",
+        "encoded_A": [
+          0.1,
+          0.35
+        ],
+        "encoded_B": [
+          0.4,
+          0.1
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 23.5,
+          "other": 8.0
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 17.0,
+          "other": 13.5
+        },
+        "text": "A: you get $23.50, other gets $8.00   |   B: you get $17.00, other gets $13.50",
+        "encoded_A": [
+          0.15,
+          0.7
+        ],
+        "encoded_B": [
+          0.8,
+          0.15
+        ]
+      }
+    ],
+    "social_dis": [
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 11.0,
+          "other": 24.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 14.5,
+          "other": 20.5
+        },
+        "text": "A: you get $11.00, other gets $24.50   |   B: you get $14.50, other gets $20.50",
+        "encoded_A": [
+          0.4,
+          0.05
+        ],
+        "encoded_B": [
+          0.05,
+          0.45
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 7.0,
+          "other": 23.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 13.0,
+          "other": 17.0
+        },
+        "text": "A: you get $7.00, other gets $23.50   |   B: you get $13.00, other gets $17.00",
+        "encoded_A": [
+          0.8,
+          0.15
+        ],
+        "encoded_B": [
+          0.2,
+          0.8
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 8.0,
+          "other": 23.0
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 13.0,
+          "other": 18.5
+        },
+        "text": "A: you get $8.00, other gets $23.00   |   B: you get $13.00, other gets $18.50",
+        "encoded_A": [
+          0.7,
+          0.2
+        ],
+        "encoded_B": [
+          0.2,
+          0.65
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 11.0,
+          "other": 23.0
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 13.5,
+          "other": 21.5
+        },
+        "text": "A: you get $11.00, other gets $23.00   |   B: you get $13.50, other gets $21.50",
+        "encoded_A": [
+          0.4,
+          0.2
+        ],
+        "encoded_B": [
+          0.15,
+          0.35
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 12.0,
+          "other": 23.0
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 13.5,
+          "other": 22.0
+        },
+        "text": "A: you get $12.00, other gets $23.00   |   B: you get $13.50, other gets $22.00",
+        "encoded_A": [
+          0.3,
+          0.2
+        ],
+        "encoded_B": [
+          0.15,
+          0.3
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 12.0,
+          "other": 23.0
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 13.0,
+          "other": 22.5
+        },
+        "text": "A: you get $12.00, other gets $23.00   |   B: you get $13.00, other gets $22.50",
+        "encoded_A": [
+          0.3,
+          0.2
+        ],
+        "encoded_B": [
+          0.2,
+          0.25
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 9.5,
+          "other": 20.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 11.0,
+          "other": 19.5
+        },
+        "text": "A: you get $9.50, other gets $20.50   |   B: you get $11.00, other gets $19.50",
+        "encoded_A": [
+          0.55,
+          0.45
+        ],
+        "encoded_B": [
+          0.4,
+          0.55
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 12.5,
+          "other": 22.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 13.0,
+          "other": 22.5
+        },
+        "text": "A: you get $12.50, other gets $22.50   |   B: you get $13.00, other gets $22.50",
+        "encoded_A": [
+          0.25,
+          0.25
+        ],
+        "encoded_B": [
+          0.2,
+          0.25
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 11.0,
+          "other": 21.0
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 11.0,
+          "other": 21.0
+        },
+        "text": "A: you get $11.00, other gets $21.00   |   B: you get $11.00, other gets $21.00",
+        "encoded_A": [
+          0.4,
+          0.4
+        ],
+        "encoded_B": [
+          0.4,
+          0.4
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 13.0,
+          "other": 22.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 12.5,
+          "other": 23.0
+        },
+        "text": "A: you get $13.00, other gets $22.50   |   B: you get $12.50, other gets $23.00",
+        "encoded_A": [
+          0.2,
+          0.25
+        ],
+        "encoded_B": [
+          0.25,
+          0.2
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 11.5,
+          "other": 19.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 10.0,
+          "other": 21.5
+        },
+        "text": "A: you get $11.50, other gets $19.50   |   B: you get $10.00, other gets $21.50",
+        "encoded_A": [
+          0.35,
+          0.55
+        ],
+        "encoded_B": [
+          0.5,
+          0.35
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 13.0,
+          "other": 21.0
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 11.5,
+          "other": 23.0
+        },
+        "text": "A: you get $13.00, other gets $21.00   |   B: you get $11.50, other gets $23.00",
+        "encoded_A": [
+          0.2,
+          0.4
+        ],
+        "encoded_B": [
+          0.35,
+          0.2
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 13.0,
+          "other": 20.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 10.0,
+          "other": 23.0
+        },
+        "text": "A: you get $13.00, other gets $20.50   |   B: you get $10.00, other gets $23.00",
+        "encoded_A": [
+          0.2,
+          0.45
+        ],
+        "encoded_B": [
+          0.5,
+          0.2
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 13.0,
+          "other": 19.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 9.5,
+          "other": 23.0
+        },
+        "text": "A: you get $13.00, other gets $19.50   |   B: you get $9.50, other gets $23.00",
+        "encoded_A": [
+          0.2,
+          0.55
+        ],
+        "encoded_B": [
+          0.55,
+          0.2
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 14.0,
+          "other": 21.5
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 11.5,
+          "other": 24.0
+        },
+        "text": "A: you get $14.00, other gets $21.50   |   B: you get $11.50, other gets $24.00",
+        "encoded_A": [
+          0.1,
+          0.35
+        ],
+        "encoded_B": [
+          0.35,
+          0.1
+        ]
+      },
+      {
+        "A": {
+          "kind": "alloc",
+          "own": 14.5,
+          "other": 19.0
+        },
+        "B": {
+          "kind": "alloc",
+          "own": 9.5,
+          "other": 24.0
+        },
+        "text": "A: you get $14.50, other gets $19.00   |   B: you get $9.50, other gets $24.00",
+        "encoded_A": [
+          0.05,
+          0.6
+        ],
+        "encoded_B": [
+          0.55,
+          0.1
+        ]
+      }
+    ],
+    "patience": [
+      {
+        "A": {
+          "kind": "delay",
+          "amount": 18.5,
+          "days": 6.0
+        },
+        "B": {
+          "kind": "delay",
+          "amount": 24.0,
+          "days": 37.0
+        },
+        "text": "A: $18.50 in 6 days   |   B: $24.00 in 37 days",
+        "encoded_A": [
+          0.65,
+          0.1
+        ],
+        "encoded_B": [
+          0.1,
+          0.6167
+        ]
+      },
+      {
+        "A": {
+          "kind": "delay",
+          "amount": 17.5,
+          "days": 12.0
+        },
+        "B": {
+          "kind": "delay",
+          "amount": 23.0,
+          "days": 49.0
+        },
+        "text": "A: $17.50 in 12 days   |   B: $23.00 in 49 days",
+        "encoded_A": [
+          0.75,
+          0.2
+        ],
+        "encoded_B": [
+          0.2,
+          0.8167
+        ]
+      },
+      {
+        "A": {
+          "kind": "delay",
+          "amount": 18.5,
+          "days": 14.0
+        },
+        "B": {
+          "kind": "delay",
+          "amount": 22.5,
+          "days": 41.0
+        },
+        "text": "A: $18.50 in 14 days   |   B: $22.50 in 41 days",
+        "encoded_A": [
+          0.65,
+          0.2333
+        ],
+        "encoded_B": [
+          0.25,
+          0.6833
+        ]
+      },
+      {
+        "A": {
+          "kind": "delay",
+          "amount": 18.5,
+          "days": 16.0
+        },
+        "B": {
+          "kind": "delay",
+          "amount": 22.0,
+          "days": 44.0
+        },
+        "text": "A: $18.50 in 16 days   |   B: $22.00 in 44 days",
+        "encoded_A": [
+          0.65,
+          0.2667
+        ],
+        "encoded_B": [
+          0.3,
+          0.7333
+        ]
+      },
+      {
+        "A": {
+          "kind": "delay",
+          "amount": 18.0,
+          "days": 22.0
+        },
+        "B": {
+          "kind": "delay",
+          "amount": 21.5,
+          "days": 40.0
+        },
+        "text": "A: $18.00 in 22 days   |   B: $21.50 in 40 days",
+        "encoded_A": [
+          0.7,
+          0.3667
+        ],
+        "encoded_B": [
+          0.35,
+          0.6667
+        ]
+      },
+      {
+        "A": {
+          "kind": "delay",
+          "amount": 21.5,
+          "days": 16.0
+        },
+        "B": {
+          "kind": "delay",
+          "amount": 22.5,
+          "days": 22.0
+        },
+        "text": "A: $21.50 in 16 days   |   B: $22.50 in 22 days",
+        "encoded_A": [
+          0.35,
+          0.2667
+        ],
+        "encoded_B": [
+          0.25,
+          0.3667
+        ]
+      },
+      {
+        "A": {
+          "kind": "delay",
+          "amount": 21.5,
+          "days": 14.0
+        },
+        "B": {
+          "kind": "delay",
+          "amount": 22.5,
+          "days": 19.0
+        },
+        "text": "A: $21.50 in 14 days   |   B: $22.50 in 19 days",
+        "encoded_A": [
+          0.35,
+          0.2333
+        ],
+        "encoded_B": [
+          0.25,
+          0.3167
+        ]
+      },
+      {
+        "A": {
+          "kind": "delay",
+          "amount": 21.0,
+          "days": 21.0
+        },
+        "B": {
+          "kind": "delay",
+          "amount": 21.5,
+          "days": 24.0
+        },
+        "text": "A: $21.00 in 21 days   |   B: $21.50 in 24 days",
+        "encoded_A": [
+          0.4,
+          0.35
+        ],
+        "encoded_B": [
+          0.35,
+          0.4
+        ]
+      },
+      {
+        "A": {
+          "kind": "delay",
+          "amount": 20.5,
+          "days": 30.0
+        },
+        "B": {
+          "kind": "delay",
+          "amount": 20.0,
+          "days": 27.0
+        },
+        "text": "A: $20.50 in 30 days   |   B: $20.00 in 27 days",
+        "encoded_A": [
+          0.45,
+          0.5
+        ],
+        "encoded_B": [
+          0.5,
+          0.45
+        ]
+      },
+      {
+        "A": {
+          "kind": "delay",
+          "amount": 21.5,
+          "days": 26.0
+        },
+        "B": {
+          "kind": "delay",
+          "amount": 21.0,
+          "days": 19.0
+        },
+        "text": "A: $21.50 in 26 days   |   B: $21.00 in 19 days",
+        "encoded_A": [
+          0.35,
+          0.4333
+        ],
+        "encoded_B": [
+          0.4,
+          0.3167
+        ]
+      },
+      {
+        "A": {
+          "kind": "delay",
+          "amount": 22.0,
+          "days": 28.0
+        },
+        "B": {
+          "kind": "delay",
+          "amount": 20.0,
+          "days": 19.0
+        },
+        "text": "A: $22.00 in 28 days   |   B: $20.00 in 19 days",
+        "encoded_A": [
+          0.3,
+          0.4667
+        ],
+        "encoded_B": [
+          0.5,
+          0.3167
+        ]
+      },
+      {
+        "A": {
+          "kind": "delay",
+          "amount": 22.0,
+          "days": 29.0
+        },
+        "B": {
+          "kind": "delay",
+          "amount": 19.5,
+          "days": 17.0
+        },
+        "text": "A: $22.00 in 29 days   |   B: $19.50 in 17 days",
+        "encoded_A": [
+          0.3,
+          0.4833
+        ],
+        "encoded_B": [
+          0.55,
+          0.2833
+        ]
+      },
+      {
+        "A": {
+          "kind": "delay",
+          "amount": 23.5,
+          "days": 22.0
+        },
+        "B": {
+          "kind": "delay",
+          "amount": 21.5,
+          "days": 9.0
+        },
+        "text": "A: $23.50 in 22 days   |   B: $21.50 in 9 days",
+        "encoded_A": [
+          0.15,
+          0.3667
+        ],
+        "encoded_B": [
+          0.35,
+          0.15
+        ]
+      },
+      {
+        "A": {
+          "kind": "delay",
+          "amount": 24.0,
+          "days": 20.0
+        },
+        "B": {
+          "kind": "delay",
+          "amount": 21.5,
+          "days": 6.0
+        },
+        "text": "A: $24.00 in 20 days   |   B: $21.50 in 6 days",
+        "encoded_A": [
+          0.1,
+          0.3333
+        ],
+        "encoded_B": [
+          0.35,
+          0.1
+        ]
+      },
+      {
+        "A": {
+          "kind": "delay",
+          "amount": 23.5,
+          "days": 37.0
+        },
+        "B": {
+          "kind": "delay",
+          "amount": 18.0,
+          "days": 9.0
+        },
+        "text": "A: $23.50 in 37 days   |   B: $18.00 in 9 days",
+        "encoded_A": [
+          0.15,
+          0.6167
+        ],
+        "encoded_B": [
+          0.7,
+          0.15
+        ]
+      },
+      {
+        "A": {
+          "kind": "delay",
+          "amount": 23.5,
+          "days": 51.0
+        },
+        "B": {
+          "kind": "delay",
+          "amount": 16.5,
+          "days": 8.0
+        },
+        "text": "A: $23.50 in 51 days   |   B: $16.50 in 8 days",
+        "encoded_A": [
+          0.15,
+          0.85
+        ],
+        "encoded_B": [
+          0.85,
+          0.1333
+        ]
+      }
+    ]
+  }
+}
