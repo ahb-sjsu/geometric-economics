@@ -137,7 +137,7 @@ No. The objection conflates two different cost functions, and the resolution ill
 
 > **Theorem 10 (Admissibility Depends on the Manifold).** *Let $h_\mathcal{E}^*(n)$ denote the true minimum remaining cost on the full manifold $\mathcal{E}$, and let $h_1^*(n)$ denote the true minimum remaining cost on the scalar projection $d_1$ alone. A moral heuristic $h_M(n)$ with $\beta_k = \infty$ for some boundary $k$ satisfies:*
 >
-> 1. *$h_M(n) \leq h_E^*(n)$ (admissible on the full manifold) whenever the true cost of crossing boundary $k$ on $\mathcal{E}$ -- including legal penalty, social sanction, psychological distress, identity damage, and downstream path costs on all nine dimensions -- is indeed infinite or exceeds $h_M(n)$.*
+> 1. *$h_M(n) \leq h_\mathcal{E}^*(n)$ (admissible on the full manifold) whenever the true cost of crossing boundary $k$ on $\mathcal{E}$ -- including legal penalty, social sanction, psychological distress, identity damage, and downstream path costs on all nine dimensions -- is indeed infinite or exceeds $h_M(n)$.*
 >
 > 2. *$h_M(n) > h_1^*(n)$ (inadmissible on the scalar projection) whenever the monetary cost alone of crossing boundary $k$ is finite.*
 >

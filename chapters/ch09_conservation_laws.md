@@ -136,7 +136,7 @@ This observation has a methodological implication: conservation violations, when
 
 The framework explains why some voluntary transactions feel exploitative: the voluntariness (conservation on $d_4$) does not prevent asymmetry on the other dimensions. A worker who "voluntarily" accepts a dangerous job for high pay may be experiencing conservation on $d_4$ (they chose freely) but violation on $d_3$ (the risk is disproportionate to the pay, measured on the full manifold).
 
-## 9.6 Value Conservation and the Price System
+## 9.8 Value Conservation and the Price System
 
 **[Modeling Axiom.]** The conservation law constrains the price system. A well-functioning price captures the $d_1$ component of the exchange — the monetary transfer. But the full exchange involves all nine dimensions. A price that reflects only $d_1$ systematically under-prices transactions that create evaluative value (trust, community, identity) and over-prices transactions that destroy it.
 
@@ -144,7 +144,7 @@ This is the geometric explanation for the persistent gap between market prices a
 
 Maria's fair-trade coffee costs $2/lb more than commodity coffee. On $d_1$, this is a pure loss. On the full manifold, the extra cost buys fairness ($d_3$), community development ($d_6$), identity consistency ($d_7$), and supply chain transparency ($d_9$). The "premium" is not irrational — it is the monetary cost of traversing a geodesic on the full manifold rather than the $d_1$-only projection.
 
-## 9.8 The Noether Derivation
+## 9.9 The Noether Derivation
 
 The conservation laws established above were proved directly from the structure of bilateral exchange. But there is a deeper route: deriving them from the Bond Invariance Principle via Noether's theorem. This derivation connects the conservation laws to the gauge invariance developed in Chapter 8 and reveals *why* certain dimensions are conserved and others are not.
 
@@ -168,7 +168,7 @@ for each transferable dimension $k$. The initial condition $J_k = 0$ (before the
 
 This is the deepest reason for the transferable/evaluative distinction. It is not a classification imposed by the modeler. It is a consequence of which symmetries the economic Lagrangian possesses. The conservation laws are not axioms — they are *derived* from the BIP, just as conservation of energy is derived from time-translation symmetry in physics.
 
-## 9.9 Connection to Physical Conservation Laws
+## 9.10 Connection to Physical Conservation Laws
 
 **[Speculation/Extension.]** The structural parallel between economic conservation and physical conservation is precise:
 
@@ -280,7 +280,7 @@ Markets are poor allocators of *evaluative* value. Trust ($d_5$), community ($d_
 
 The geometric prediction: economic systems that rely exclusively on markets will under-invest in evaluative dimensions, because the price system cannot see them. Systems that rely exclusively on institutions will under-invest in transferable efficiency, because institutions lack the information-aggregation power of the price system. The optimal economic system uses markets to allocate transferable value and institutions to cultivate evaluative value — with the covariance matrix $\Sigma$ determining the balance.
 
-This is not a new argument — it echoes Karl Polanyi's *The Great Transformation* (1944) and more recent work on social capital (Putnam, 2000) and institutional economics (Acemoglu and Robinson, 2012). What the geometric framework adds is the mathematical structure: the transferable/evaluative distinction is derived from the symmetry structure of the economic Lagrangian (Section 9.8), and the relative importance of markets versus institutions is encoded in the covariance matrix $\Sigma$, which is in principle measurable.
+This is not a new argument — it echoes Karl Polanyi's *The Great Transformation* (1944) and more recent work on social capital (Putnam, 2000) and institutional economics (Acemoglu and Robinson, 2012). What the geometric framework adds is the mathematical structure: the transferable/evaluative distinction is derived from the symmetry structure of the economic Lagrangian (Section 9.9), and the relative importance of markets versus institutions is encoded in the covariance matrix $\Sigma$, which is in principle measurable.
 
 ### Corporate Purpose and Stakeholder Theory
 
@@ -304,7 +304,7 @@ This completes Part III. The conservation laws developed in this chapter, togeth
 
 The conservation laws developed in this chapter have antecedents in accounting identity theory (the double-entry bookkeeping system, invented by Luca Pacioli in 1494, is the oldest conservation law in economics) and in Walras's law (total excess demand across all markets sums to zero — a conservation statement about monetary flows). The contribution here is the extension to the full nine-dimensional manifold and the distinction between transferable and evaluative dimensions, which is original.
 
-The Noether derivation (Section 9.8) follows the general structure of Noether (1918) as applied to field theories, adapted to the economic Lagrangian. The analogy between conservation laws in physics and economics has been noted informally by many authors (Samuelson's *Foundations of Economic Analysis*, 1947, explicitly drew on variational methods from physics) but has not, to my knowledge, been developed with the full BIP-Noether machinery applied here.
+The Noether derivation (Section 9.9) follows the general structure of Noether (1918) as applied to field theories, adapted to the economic Lagrangian. The analogy between conservation laws in physics and economics has been noted informally by many authors (Samuelson's *Foundations of Economic Analysis*, 1947, explicitly drew on variational methods from physics) but has not, to my knowledge, been developed with the full BIP-Noether machinery applied here.
 
 The distinction between extensive (conserved, transferable) and intensive (non-conserved, evaluative) economic quantities parallels the distinction in thermodynamics (Callen, 1985, *Thermodynamics and an Introduction to Thermostatistics*). The economic analogue of the second law of thermodynamics — asymmetric trust destruction — appears to be new.
 

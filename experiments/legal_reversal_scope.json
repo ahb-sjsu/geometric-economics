@@ -1,6 +1,7 @@
 {
-  "_status": "FINALIZED for freeze. All parameters fixed; run FREEZE_PROTOCOL (sha256 + signed tag prereg-legal-reversal-v1 + push) before any label linkage or S computation.",
+  "_status": "AMENDED to v2 (rule-only extractor). Re-freeze as prereg-legal-reversal-v2. No data unblinded between v1 and v2 (no S-vs-reversal examined), so the amendment is clean.",
   "_frozen_with": "PREREG_legal_reversal.md",
+  "_amendment": "v1 (prereg-legal-reversal-v1, frozen) specified an LLM+SRL extractor. v2 changes the extractor to RULE-ONLY (spaCy-SRL + LaBSE, no LLM). Rationale: (1) removes LLM stochasticity -> deterministic, reproducible pipeline; (2) removes the LLM-circularity vulnerability (an LLM trained on the behavioral/legal literature could reflect it rather than the geometry); (3) CPU-only, no LLM endpoint dependency. Validated: the rule extractor compiles real district opinions to the 9-dim MoralTensorV3 with no LLM. Nothing else in the frozen prediction changes. Amended before any label linkage / S computation was examined.",
 
   "corpus": {
     "source": "CourtListener bulk 2026-06-30 dump, loaded to the Atlas Postgres replica (public-domain, CC Public Domain Mark; reproducible). 10.8M opinions, 77.5M citation edges, 71.7M dockets, 973K originating-court-info, judges.",
@@ -52,7 +53,7 @@
     "coordinate_match": "these k-dimensions are ~the GDT 9-D decision-manifold coordinates (rights/fairness/autonomy/privacy/legitimacy/epistemic/virtue/social); the compiler is in effect a concrete GDT encoder -- the low-rank pillar and pathology score live in the same space as the rest of the program",
     "deontic_gates": ["universalizability", "mere_means", "valid_consent", "legitimate_authority"],
     "aggregates": ["gini", "gini_harm", "worst_off", "worst_off_harm", "deme_verdict"],
-    "extractor": "MoralGraph is built by LLM + spaCy-SRL annotation of the text -- a source of extraction noise/bias; see caveats.extractor",
+    "extractor": "v2: RULE-ONLY -- MoralGraph built by spaCy-SRL + LaBSE, NO LLM (erisml tier=rules, extractor=rule). Deterministic; validated on real district opinions -> 9-dim MoralTensorV3. Pinned as part of the frozen pipeline (erisml-compiler @ the commit installed on Atlas).",
     "input_text": "court's own opinion, redacted per label.leakage_redaction"
   },
 
@@ -90,7 +91,7 @@
 
   "caveats": {
     "moral_vs_legal": "the compiler encodes MORAL structure (GDT coordinates), not the full legal apparatus (precedent, statutory interpretation, procedure). Reversals driven by purely legal-technical error are invisible to it -- hence the gate-aligned primary target. A null on all-grounds reversal with a hit on gate-aligned reversal is the expected, honest shape.",
-    "extractor": "the MoralGraph is LLM/SRL-extracted, so the geometry partly reflects the extractor's reading. Mitigations: fix the extractor + version before freeze; report inter-extractor stability on a sample; treat the extractor as part of the frozen pipeline.",
+    "extractor": "v2: the MoralGraph is RULE/SRL-extracted (no LLM), so it is deterministic and free of LLM-absorbed-literature circularity. It still reflects the SRL extractor's reading (a source of noise), so the extractor + erisml-compiler version are pinned as part of the frozen pipeline.",
     "single_jurisdiction": "one court set / window; positive result is not universal (cross-court replication is future work)."
   }
 }

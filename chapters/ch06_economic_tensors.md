@@ -85,9 +85,9 @@ The resolution is not to add "certainty preference" or "ambiguity aversion" as a
 
 The irrecoverability theorem has a particularly striking consequence for the transitivity of preferences -- one of the foundational axioms of rational choice theory.
 
-> **Theorem 16 (Projected Intransitivity).** *Let $\succ_E$ denote the preference relation on the full manifold ("$x \succ_E y$ iff $w(v_0, x) < w(v_0, y)$") and let $\succ_\phi$ denote the projected preference ("$x \succ_\phi y$ iff $\phi(x) > \phi(y)$"). Then:*
+> **Theorem 16 (Projected Intransitivity).** *Let $\succ_{\mathcal{E}}$ denote the preference relation on the full manifold ("$x \succ_{\mathcal{E}} y$ iff $w(v_0, x) < w(v_0, y)$") and let $\succ_\phi$ denote the projected preference ("$x \succ_\phi y$ iff $\phi(x) > \phi(y)$"). Then:*
 >
-> 1. *$\succ_E$ is transitive (it is a total order induced by path cost from $v_0$).*
+> 1. *$\succ_{\mathcal{E}}$ is transitive (it is a total order induced by path cost from $v_0$).*
 >
 > 2. *$\succ_\phi$ may be intransitive: there exist alternatives $x, y, z$ such that $\phi(x) > \phi(y) > \phi(z) > \phi(x)$ is possible when the projection $\phi$ discards different dimensions for different pairwise comparisons.*
 

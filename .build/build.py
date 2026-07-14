@@ -88,6 +88,19 @@ BOOK_CONFIGS = {
                         "manuscript/part_iii", "manuscript/appendices"],
         "glob": "*.md",
     },
+    "geometric-ai": {
+        "number": 11, "title": "Geometric AI",
+        "subtitle": "Alignment, Safety, and the Structure-Preserving Path to Superintelligence",
+        "source_dirs": ["manuscript", "manuscript/part_i", "manuscript/part_ii",
+                        "manuscript/part_iii", "manuscript/part_iv", "manuscript/part_v",
+                        "manuscript/part_vi", "manuscript/appendices", "manuscript/backmatter"],
+        "glob": "*.md",
+    },
+    "geometric-gastronomy": {
+        "number": 12, "title": "Geometric Gastronomy",
+        "subtitle": "The Mathematical Structure of Flavor, Pairing, and Culinary Harmony",
+        "source_dirs": ["."], "glob": "OUTLINE.md",
+    },
 }
 
 
