@@ -87,11 +87,12 @@ entry completed. Section VII citations were verified earlier.
   resolved server-side by the NRP endpoint and are mapped to no upstream model
   id, version, or checkpoint in either repo. The paper must say so.
 - Data and code availability (L542): the public repo and its signed tags are
-  the pointer, but `ahb-sjsu/llm-panel` is PRIVATE, and `panel_run.py`,
-  `crosslingual_panel.py`, `translate.py`, and `human_pilot/llm_pilot_run.py`
-  import from it, so an external reader cannot run the panel today. Either
-  publish `llm-panel` or vendor `personas.py` and `nrp.py`; add a Zenodo
-  release for Part II; state the model-version gap above.
+  the pointer. `ahb-sjsu/llm-panel` was made public on 2026-09-10 with a MIT
+  LICENSE and release v0.1.0, so `panel_run.py`, `crosslingual_panel.py`,
+  `translate.py`, and `human_pilot/llm_pilot_run.py` now resolve their import
+  for external readers (`pip install git+https://github.com/ahb-sjsu/llm-panel`).
+  Remaining: a Zenodo release for Part II, and the model-version gap above,
+  which must be stated in the paper.
 
 **Needs a re-run (a few days of compute).**
 
