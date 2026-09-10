@@ -1,9 +1,9 @@
 # prereg-boundary-v1 — Locating the Stake Boundary of the Share-Normalized Geometric Model on Three High-Stakes Ultimatum Datasets
 
-**Status:** v1-rc1, release candidate. NOT frozen. Nothing in this document is a registered claim until Section 11 is executed (hash committed, pushed to the public repository, and registered on OSF) and the hash appears in the paper.
+**Status:** v1, FROZEN 2026-09-10 (Section 11 steps 1 to 3 executed; OSF registration is the owner's step and its URL is recorded in `prereg-boundary-v1.sha256`, not here, so that this file's hash stays fixed). No fit has been run.
 **Companion to:** Geometric Prediction of Economic Behavior I (IEEE TCSS, accepted 2026-09-06; Section VII.A states the income-scaled coordinate as an untested construction) and II; registrations `prereg-v1`, `prereg-v2`, `prereg-sigma-v1`, `prereg-coupling-v1`, `prereg-dimensions-v1`.
 **Author:** Andrew H. Bond, San José State University.
-**Drafted:** 2026-09-10.
+**Drafted and frozen:** 2026-09-10.
 
 > **What has and has not been done before this draft.** The bundled data were opened once, on 2026-09-10, to identify variables and to compute the descriptive table in Section 3. No model of any kind has been fitted to them. Andersen et al.'s own logit of rejection on the offered amount in days of wages is part of the published record and is treated here as prior knowledge, not as a result of this study.
 
@@ -64,14 +64,14 @@ All responder models are binary logits for `accept`. Let `x` be the offer share,
 - **M1 (shared monetary coordinate):** `logit P(accept) = a_s + b_s * x + g * log(1 + m)`. One coefficient `g` common to all studies. This is the one-finite-monetary-variance claim in logit form.
 - **M1s (study-specific money):** `a_s + b_s * x + g_s * log(1 + m)`.
 - **M2 (nominal stake added):** `M1 + h * log(pie_days)`. Tests whether the pie itself matters beyond the amount offered.
-- **G (geometric responder):** the Part I responder encoding with the income-scaled coordinate: reference `r` = the responder's state after rejection, alternative `s(x)` = acceptance, with `Δa_1 = m / M` (M = 200, the largest pie_days in the data, so the coordinate lies in [0, 1]) and the non-monetary displacements of Part I's responder encoding (eris-econ 0.1.1, `targets._predict_responder_mao`), whose constants are copied verbatim into this section at freeze (Section 11, step 1); choice by softmax over {accept, reject} on cost `c = sqrt(Δa_1²/σ_1² + Δa_3²/σ_3²)` at fixed temperature `T` (Part II information-price rule; Part I's cost-dependent temperature is not used). Free parameters: `σ_1², σ_3², T`, shared across studies, plus a study intercept. `Δa_3` and the functional form are fixed here and will not be changed after freeze.
+- **G (geometric responder):** Part I's responder encoding (eris-econ 0.1.1, `targets._predict_responder_mao`, constants copied verbatim) with the money coordinate re-expressed in the responder's income units. Reference `r`: d1 0.5, d2 1.0, d3 0.8, d4 1.0, d5 0.5, d6 0, d7 0.6, d8 0.5, d9 0.5. Reject: d1 0, d3 0.8, d7 0.7, all other coordinates equal to the reference. Accept at share `x`: d1 `x`, d3 `0.1 + 0.8 min(2x, 1)`, d7 `0.3 + 0.3 min(2x, 1)`, others equal to the reference. In Part I's selected model only d7 is active (σ_7² = 32.28; σ_1², σ_3² and the rest at 10⁶), and the accept/reject crossover then falls at x = 1/3, which is the 34% MAO of Table VII. Model G keeps every Part I constant and Σ entry and changes exactly one thing: the d1 coordinates are multiplied by `pie_days / 200` (reference 0.5 · pie_days/200, accept x · pie_days/200, reject 0), so that the monetary displacement of rejecting grows with the pie in days of wages, and `σ_1²` is freed. Choice is a softmax over {accept, reject} on `c = sqrt(Σ_k Δa_k²/σ_k²)` at a fixed temperature `T` (Part II's information-price rule; Part I's cost-dependent temperature is not used). Free parameters: `σ_1²` and `T`, shared across studies, plus one intercept per study. No other constant may change after freeze; if σ_1² is driven to its upper bound the model reduces to Part I's responder and P5 fails.
 
 Proposer analysis: OLS of `percent_offer` on `log10(pie_days)` within each study, robust standard errors.
 
 ## 5. Registered predictions (frozen signs and thresholds)
 
 - **P1 (money enters acceptance through the responder's own income units).** In M1, `g > 0`, and M1 improves on M0 by a likelihood-ratio test at α = 0.01.
-- **P2 (one coordinate, not three).** M1s does not improve on M1: likelihood-ratio test of `g_SR = g_C = g_IN` is not rejected at α = 0.05, **and** the three `g_s` lie within a factor of 2 of each other (equivalence bound fixed here).
+- **P2 (one coordinate, not three).** M1s does not improve on M1: the likelihood-ratio test of `g_SR = g_C = g_IN` (2 df) is not rejected at α = 0.05. The ratio of the largest to the smallest `g_s` is reported with a bootstrap 95% CI but carries no pass/fail threshold, because the Section 8 simulation shows a factor-of-2 bound would fail 31 to 60 percent of the time even when the coefficient is truly shared (Cameron contributes 178 decisions).
 - **P3 (nominal stake adds nothing given m and x).** In M2, `h` is not significant at α = 0.05 and |h| < 0.25 per log10 unit.
 - **P4 (leave-one-study-out).** Fit M1 on two studies, predict the third. Held-out log-loss of M1 is within 0.02 nats per decision of M1s fitted on the held-out study itself, for each of the three folds.
 - **P5 (geometric responder matches the logit).** Model G attains held-out log-loss within 0.03 nats per decision of M1 on every fold, with `σ_1²` finite (upper bound 10⁴ on the unit-scaled coordinate).
@@ -91,9 +91,18 @@ The strong prediction "offers depend on the stake only through Lambda/Y" is not 
 
 For every model: coefficients with 95% CIs, log-likelihood, AIC, BIC, held-out log-loss per fold, calibration plots of predicted against observed acceptance in ten offer_days bins per study. All six predictions are reported as pass or fail with the pre-set thresholds. Robustness (reported, not used to rescue a failure): `wealth` as a covariate in IN; SR excluded (pooled rounds); `m` in linear rather than log form.
 
-## 8. Power (to be completed before freeze)
+## 8. Power (completed 2026-09-10, before freeze)
 
-A bootstrap power script `power/power_boundary.py` will resample the 1,456 decisions under M1 with `g` at 0.5, 1.0, and 2.0 per log-day and report the power of P1 at α = 0.01 and the width of the equivalence test in P2. Freeze only if power for P1 at g = 0.5 exceeds 0.8; otherwise P1's α is left at 0.01 and the underpowered status is recorded.
+`power/power_boundary.py` simulates outcomes under M1 on the real covariates (x, m, study; the observed accept column is never read) with `b = 10` and per-study intercepts solved to reproduce the Section 3 acceptance rate at each study's lowest stake, then fits M0, M1, M1s and M2 by maximum likelihood. 500 replicates per `g`, seed 20260910.
+
+| g (per log-day) | P1 reject rate, α = 0.01 | P2 homogeneity reject rate, α = 0.05 | factor-of-2 pass rate | P3 pie term reject rate, α = 0.05 |
+|---|---|---|---|---|
+| 0 (null) | 0.002 | 0.048 | – | 0.060 |
+| 0.5 | 0.968 | 0.052 | 0.40 | 0.040 |
+| 1.0 | 1.000 | 0.062 | 0.69 | 0.052 |
+| 2.0 | 1.000 | 0.050 | 0.56 | 0.042 |
+
+Power for P1 at g = 0.5 is 0.97, above the 0.8 freeze criterion. The homogeneity test in P2 and the pie-term test in P3 hold their nominal size. The factor-of-2 equivalence bound originally drafted for P2 passes in only 40 to 69 percent of replicates when `g` is truly shared, so it was removed from P2 before freezing and the ratio is reported descriptively (Section 5). This is the only change made to the predictions as a result of the simulation, and it was made without reading any outcome.
 
 ## 9. Not claimed
 
@@ -105,7 +114,7 @@ Venue: JEBO or Experimental Economics. Title form: "Where stake invariance break
 
 ## 11. Freezing procedure
 
-1. Complete Section 8 and fix the Part I responder encoding constants in Section 4 against `eris-econ` 0.1.1.
-2. `sha256sum prereg-boundary-v1.md power/power_boundary.py` → `prereg-boundary-v1.sha256` (same JSON form as `prereg-dimensions-v1.sha256`).
-3. Commit and push to the public repository; register the document and hash on OSF; record the OSF URL and the commit hash here in a final line, which is the only edit permitted after freezing.
+1. Complete Section 8 and fix the Part I responder encoding constants in Section 4 against `eris-econ` 0.1.1. Done 2026-09-10.
+2. `sha256` of `prereg-boundary-v1.md` and `power/power_boundary.py` → `prereg-boundary-v1.sha256` (same JSON form as `prereg-dimensions-v1.sha256`). Done 2026-09-10.
+3. Commit, sign the tag `prereg-boundary-v1`, and push to the public repository. Done 2026-09-10. Register the document and hash on OSF (owner) and record the OSF URL in `prereg-boundary-v1.sha256`; this file is not edited again.
 4. Only then run any fit.

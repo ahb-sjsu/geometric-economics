@@ -1,0 +1,27 @@
+{
+  "prereg": "prereg-boundary-v1",
+  "title": "Locating the Stake Boundary of the Share-Normalized Geometric Model on Three High-Stakes Ultimatum Datasets",
+  "level": 1,
+  "author": "Andrew H. Bond, San Jose State University",
+  "companion_to": [
+    "prereg-v1",
+    "prereg-v2",
+    "prereg-sigma-v1",
+    "prereg-coupling-v1",
+    "prereg-dimensions-v1"
+  ],
+  "frozen_at": "2026-09-10",
+  "frozen_predictions": "P1-P6 in prereg-boundary-v1.md Section 5; falsifiers Section 6; no fit run before freeze",
+  "data": "openICPSR 112485-V1 (Andersen, Ertac, Gneezy, Hoffman, List 2011), 1,456 responder decisions from SR, C, IN",
+  "bundle_files": [
+    "prereg-boundary-v1.md",
+    "power/power_boundary.py"
+  ],
+  "component_sha256": {
+    "prereg-boundary-v1.md": "b6a93c8cff5f2d365e86d21117ab8832e96e0729f2e8ab277d521ce52c54fe56",
+    "power/power_boundary.py": "75a840aa68d542b5967bc6f401e96676d50900fcf2dad9e50940dc13009c8353"
+  },
+  "hash_note": "sha256 of each file with CRLF normalized to LF; combined = sha256 over the concatenated component hex digests in bundle_files order",
+  "combined_sha256": "175bad98ac871fc4e6b8e7869ad1edca7cbe48876aa83ee17343cfbe968de2c0",
+  "osf_registration": "PENDING (owner step; record URL here after registering)"
+}
