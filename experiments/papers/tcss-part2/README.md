@@ -79,11 +79,19 @@ entry completed. Section VII citations were verified earlier.
   and must be stated as such. No OSF registration exists for any of them.
 - Panel identity (L375): six models run (gemma-small, qwen3-small, gemma,
   gpt-oss, glm-5, qwen3), temperature 0.9 (`panel_run.py`), prompts in
-  `contrasts.py`. Missing: NRP alias to checkpoint mapping, and the `llmpanel`
-  persona package is not vendored. Persona ids are recoverable from
-  `results_full.jsonl`.
+  `contrasts.py`. The persona grid (risk x prosocial x culture x numeracy =
+  3 x 3 x 2 x 2 = 36) and the verbatim system-prompt template are in the
+  sibling repo `C:\source\llm-panel` (`llmpanel/personas.py`), endpoint
+  `https://ellm.nrp-nautilus.io/v1` (`llmpanel/nrp.py`); translation pass ran
+  `qwen3` at temperature 0.2. Still unresolved anywhere: the six aliases are
+  resolved server-side by the NRP endpoint and are mapped to no upstream model
+  id, version, or checkpoint in either repo. The paper must say so.
 - Data and code availability (L542): the public repo and its signed tags are
-  the pointer; missing a Zenodo release for Part II and the two items above.
+  the pointer, but `ahb-sjsu/llm-panel` is PRIVATE, and `panel_run.py`,
+  `crosslingual_panel.py`, `translate.py`, and `human_pilot/llm_pilot_run.py`
+  import from it, so an external reader cannot run the panel today. Either
+  publish `llm-panel` or vendor `personas.py` and `nrp.py`; add a Zenodo
+  release for Part II; state the model-version gap above.
 
 **Needs a re-run (a few days of compute).**
 
