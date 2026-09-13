@@ -549,7 +549,53 @@ crossings rather than the interiors are where a theory of choice earns its keep.
 We have not tested any of this as a model of search. It is what our measurements
 imply for one, and it is offered in that spirit.
 
-## 12. Relation to the prior claims
+## 12. Three gaps, closed
+
+The first draft of this paper named three gaps. Closing them changed two of its
+conclusions and confirmed a third.
+
+**The loss stratum is thin, and it is thinner than trial counts suggest.** It
+holds 4,146 trials over 251 distinct gambles, and the experience arm's 16,584
+further trials fall on 239 of the same gambles. The effective sample for a
+coordinate coefficient is the number of gambles, so **the second arm adds nothing
+here**, and this is the one place in the paper where a four times larger dataset
+buys no precision at all. Resampling the gambles, the probability slope is
+`−0.3609` with interval `−0.5034` to `−0.2368`. It is determined, it mirrors the
+gain side, and Section 9 is corrected accordingly.
+
+**The low agreement between the quadratic and the free surface is real structure,
+not cell noise.** A weighted agreement of `0.307` could mean the quadratic misses
+most of the structure or merely that the cells are noisily estimated. The way to
+tell is to simulate from the fitted quadratic, re-run the entire free-surface
+estimate on the simulated choices, and see what agreement the quadratic scores
+against itself. **If the quadratic were true it would score `0.930`**, mean of
+twelve simulations with a standard deviation of `0.004`. The observed `0.307`
+falls short by `0.623`, which is more than a hundred simulation standard
+deviations. The misspecification is real and it is large.
+
+**Separability is rejected, and the risk-sensitivity conclusions survive it.** The
+model assumes the expected-value coefficient does not depend on position. Allowing
+it to vary over the plane wins on **20 of 20 held-out splits by gamble**, with a
+margin of `+0.001401 plus or minus 0.000132`, and the expected-value coefficient
+turns out to depend strongly on the axis-distinguishing term, at
+`−0.4289 plus or minus 0.0662`. So the assumption is false and the paper should
+not have made it silently.
+
+What matters is whether that contaminates the risk-sensitivity surface, and it
+does not.
+
+| term | assuming separability | allowing both to vary |
+|---|---|---|
+| `d * q` | −0.0293 | −0.0290 |
+| `d^2 - q^2` | −0.6370 | −0.6020 |
+| `d` | +0.3265 | +0.3160 |
+| `q` | +0.2072 | +0.1948 |
+
+Every conclusion in Sections 5 through 9 is unchanged. **A rejected assumption
+that moves nothing is worth reporting precisely because the reflex is to assume it
+moved something.**
+
+## 13. Relation to the prior claims
 
 **The original corner reading was right and its evidence was not.**
 `RESULTS_d4_rotation.md` concluded that the fourfold product is a corner
@@ -573,7 +619,7 @@ as a nuisance. It is the interior term.
 
 ---
 
-## 13. Negatives, withdrawals and errors
+## 14. Negatives, withdrawals and errors
 
 Reported here rather than in a file nobody opens.
 
@@ -607,12 +653,23 @@ and had a size of 0.110 against a nominal 0.05, because folds split by scale
 differ in precision where random folds do not. It was replaced by the studentised
 form, whose size is 0.020.
 
-**The loss half of the fourfold pattern is not established here.** The probability
-slope among gambles that cannot win is `−0.1430 plus or minus 0.1196` in the
-description arm and `+0.0138 plus or minus 0.0632` in the experience arm. Opposite
-signs, both within one standard error of zero, on 4,146 description rows. This
-corpus does not contain enough pure-loss gambles to answer it, and we claim
-nothing about it.
+**The loss half of the fourfold pattern IS established, and an earlier draft of
+this paper said otherwise.** That draft quoted `−0.1430 plus or minus 0.1196`, a
+coefficient conditional on a quadratic probability term being in the same model,
+and read its overlap with zero as the linear slope being undetermined. Those are
+different quantities. Fitted as a slope, with uncertainty from resampling the 251
+distinct pure-loss gambles, the probability slope is
+**`−0.3609`, 95 percent interval `−0.5034` to `−0.2368`**, excluding zero. The
+detection limit at that sample is about `0.20` and the slope is `0.36`.
+
+So the probability slope is `+0.3372` among gambles that cannot lose and
+`−0.3609` among gambles that cannot win. **Mirror images, both determined.** That
+is the fourfold pattern, and this corpus supports both halves of it.
+
+The stratum remains the thinnest part of the corpus. It holds 4,146 trials over
+**251 distinct gambles**, and the experience arm's 16,584 further trials fall on
+**239 of those same gambles**, so they add trials and not information about a
+coordinate coefficient. A gap of this kind cannot be closed by more subjects.
 
 **The designed grid we built should not be run as specified.** It was constructed
 to place stimuli at chosen intermediate angles so a quadratic could be estimated
@@ -620,7 +677,7 @@ cleanly. Estimating a misspecified model cleanly is not progress.
 
 ---
 
-## 14. Conclusion
+## 15. Conclusion
 
 A coordinate whose endpoint coincides with a categorical change in the stimulus
 will manufacture structure there. The gain and loss axis used throughout this
@@ -659,6 +716,7 @@ laptop, with BLAS pinned to one thread per worker.
     robustness.py              held out, model form, participant halves
     c13k_two_outcome.py        the multi-branch hypothesis
     stratification_theory.py   rank, regularity, frontier, second seam
+    close_gaps.py              loss stratum, surface calibration, separability
 
 Registrations and run records are in `d4stability/`, with the full account of the
 seam in `d4stability/SEAM.md`.

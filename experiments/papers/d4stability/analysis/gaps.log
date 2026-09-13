@@ -1,0 +1,72 @@
+==============================================================================
+G1. THE LOSS STRATUM, AND WHAT ITS DATA CAN SUPPORT
+==============================================================================
+  peterson description     4146 trials over  251 distinct problems
+  peterson experience     16584 trials over  239 distinct gambles
+  ** the experience arm adds trials on the SAME gambles, so it
+     cannot raise the effective sample for a coordinate term **
+
+  q slope on pure-loss gambles   -0.3609
+  problem-clustered bootstrap    sd 0.0698   95% CI [-0.5034, -0.2368]
+  contains zero: NO
+
+  DETECTION LIMIT. with 251 problems the clustered sd is 0.070, so a
+  two-sided test at the conventional level can only detect a slope
+  of about 0.20 or larger. The gain-side slope is +0.34.
+  ** the mirror-image slope could be anything from zero to the size
+     of the gain-side slope and this corpus could not tell **
+
+==============================================================================
+G2. THE FREE SURFACE, FINER, AND CALIBRATED AGAINST CELL NOISE
+==============================================================================
+  mixed gambles 55985 trials over 3314 problems
+
+    grid   cells   weighted R^2   max resid
+     5x5      23          0.307       10.19
+     6x6      33          0.338       10.36
+     8x8      48          0.334        8.91
+    10x10     75          0.272        8.23
+
+  CALIBRATION. simulate from the FITTED QUADRATIC, re-estimate the
+  free surface, and project. If the quadratic were true this is the
+  R^2 it would score, and the deficit is cell noise rather than
+  missing structure.
+
+    observed R^2 at 5x5                 0.307
+    R^2 if the quadratic were TRUE      0.930  (mean of 12 simulations,
+                                              sd 0.021)
+    deficit attributable to real missing structure   0.623
+
+    ** the quadratic misses real structure, not just noise **
+
+==============================================================================
+G3. IS THE MODEL SEPARABLE? DOES b_EV DEPEND ON POSITION?
+==============================================================================
+  separable   parameters  7   nll 37120.3
+  full        parameters 12   nll 37014.0
+  in-sample gain 106.3 on 5 extra parameters
+
+  b_EV surface in the full model
+    bEV:const  +0.4917 +/- 0.0291
+    bEV:d2+q2  +0.0222 +/- 0.0375
+    bEV:d*q    -0.1013 +/- 0.0590
+    bEV:d      +0.0250 +/- 0.0391
+    bEV:q      +0.0225 +/- 0.0483
+    bEV:d2-q2  -0.4289 +/- 0.0662
+
+  do the kappa terms move when b_EV is allowed to vary?
+    term      separable        full
+    const    -0.1410         -0.1359
+    d2+q2    +0.1213         +0.1234
+    d*q      -0.0293         -0.0290
+    d        +0.3265         +0.3160
+    q        +0.2072         +0.1948
+    d2-q2    -0.6370         -0.6020
+
+  HELD OUT by problem, 20 splits
+    separable  -0.663403
+    full       -0.662001
+    difference +0.001401 +/- 0.000132   (20 of 20 splits favour the full model)
+    separability is REJECTED, b_EV varies with position
+
+written close_gaps.json
