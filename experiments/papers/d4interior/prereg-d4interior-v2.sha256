@@ -1,0 +1,40 @@
+{
+  "prereg": "prereg-d4interior-v2",
+  "title": "Does the Unpooled Interior Chirality Replicate on an Independent Corpus?",
+  "level": 1,
+  "author": "Andrew H. Bond, San Jose State University",
+  "supersedes": "prereg-d4gate-v1 (VOID: coordinate reimplemented, not imported)",
+  "companion_to": [
+    "prereg-v1",
+    "prereg-v2",
+    "prereg-sigma-v1",
+    "prereg-coupling-v1",
+    "prereg-dimensions-v1",
+    "prereg-boundary-v1"
+  ],
+  "frozen_at": "2026-09-13",
+  "frozen_predictions": "V1 and V2 in Section 5; falsifiers F1 to F4 in Section 6; bars from the Section 7 simulation; no fit run on bRate before freeze",
+  "bars": {
+    "T_pos_one_sided": 0.18774979541410625,
+    "factor_two_band": [
+      0.2218875240708106,
+      0.8875500962832424
+    ],
+    "cpc18_estimate": 0.4437750481416212,
+    "estimator_bias_under_null": 0.09206812148266742,
+    "held_in": "analysis/d4int_grade.py"
+  },
+  "data": "choices13k c13k_selections.csv, Block==1 and Feedback==0, 2380 rows; the coordinate is imported from d4_rotation and asserted at import, never restated",
+  "bundle_files": [
+    "prereg-d4interior-v2.md",
+    "power/power_d4interior.py"
+  ],
+  "component_sha256": {
+    "prereg-d4interior-v2.md": "6661bf327a22ebc874781574344df4e143cb0ad27e54f803d81667f850ec9fb1",
+    "power/power_d4interior.py": "57f8d128625a83076093b986973a8d457b85407a92994d8aed30677c144b923c"
+  },
+  "hash_note": "sha256 of each file with CRLF normalized to LF; combined = sha256 over the concatenated component hex digests in bundle_files order. The document was finalised before hashing. analysis/d4int_grade.py is not in the bundle because it carries this hash; the signed tag protects it.",
+  "combined_sha256": "49b2f3f5392e0b7cfade6612aa5b7ce0e355e51b3260588ae7b27037ebca141c",
+  "osf_registration": "OWNER STEP, not yet registered",
+  "osf_note": "OSF registration is the owner's step. Record the GUID here before any result is called externally preregistered. The signed tag and this hash are the internal record."
+}
