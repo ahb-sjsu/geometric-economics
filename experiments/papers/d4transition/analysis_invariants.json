@@ -1,0 +1,22 @@
+{
+  "note": "invariance suite for the transition study, no data exists yet",
+  "checks": {
+    "I1_direction_swap": true,
+    "I2_participant_permutation": true,
+    "I3_rescaling": true,
+    "I4_switching_bias": true,
+    "I5_plant": true,
+    "I6_clustering": true,
+    "I0_self_test": true
+  },
+  "all_pass": true,
+  "reference": {
+    "point": 0.5067327094387845,
+    "se": 0.015099603659370311,
+    "lo": 0.47964668498113505,
+    "hi": 0.5357836836375715,
+    "n_families": 60
+  },
+  "planted_beta": 0.5,
+  "planted_switch_bias": 0.35
+}
