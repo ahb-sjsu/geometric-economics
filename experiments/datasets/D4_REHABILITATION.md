@@ -157,3 +157,14 @@ A gating test needs a quantity that holds still when nothing is gating it. This
 one does not, because the model it lives in is the wrong shape. `prereg-d4gate-v1`
 remains void for its coordinate error and the gating claim remains untested, but
 it is not the next thing to test. See `../papers/d4stability/RESULTS-v2.md`.
+
+**Second note, same day, and it closes the file.** The reason there is no stable
+interior chirality is now known. `|d| = 1` is the set of gambles with no loss
+branch or no gain branch, not a region of the coordinate, and there `d·q`
+degenerates into `±q`. Inside mixed gambles, where `d·q` is a genuine product,
+the chirality is `−0.0303 ± 0.0728` and is never more than 0.8 standard errors
+from zero across six independent lines.
+
+**There is no rotation to gate.** The quantity the gating argument was about does
+not exist in the interior, and at the corners it is a probability effect wearing
+a product's name. See `../papers/d4stability/SEAM.md`.

@@ -1,0 +1,9 @@
+{
+  "n_rows": 95748,
+  "n_d_plus_one": 35617,
+  "n_d_minus_one": 4146,
+  "n_interior": 55985,
+  "d_plus_one_iff_no_loss_branch": true,
+  "d_minus_one_iff_no_gain_branch": true,
+  "abs_d_lt_one_iff_mixed": true
+}

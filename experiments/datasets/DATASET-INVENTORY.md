@@ -208,3 +208,12 @@ specified either, for the same reason. It was built to estimate a quadratic kapp
 cleanly, and estimating a misspecified model cleanly is not progress.
 
 See `../papers/d4stability/RESULTS-v2.md`.
+
+**And the reason, 2026-09-13.** `experiments/papers/d4stability/SEAM.md`. `|d| = 1`
+is the set of gambles with no loss branch or no gain branch, not a region of the
+coordinate, and there `d·q` degenerates into `±q`. Inside mixed gambles the
+chirality is `−0.0303 ± 0.0728`, never more than 0.8 standard errors from zero
+across six independent lines. **No corpus would have settled this**, because the
+quantity being compared between corpora does not exist in the interior and is a
+probability effect at the corners. The search closing was right, the designed
+grid is unnecessary, and the interior question is answered.

@@ -1,0 +1,16 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  d    matches the sealed covariates exactly (worst 0.0e+00)
+  q    matches the sealed covariates exactly (worst 0.0e+00)
+  dSD  matches the sealed covariates exactly (worst 0.0e+00)
+
+rows 95748, written seam_covariates.npz
+
+  d == +1 exactly : 35617 rows
+  d == -1 exactly : 4146 rows
+  |d| <  1        : 55985 rows
+  risky option is mixed (a gain branch AND a loss branch): 55985
+
+  d == +1  <=>  the risky option has NO loss branch : True
+  d == -1  <=>  the risky option has NO gain branch : True
+  |d| < 1  <=>  the risky option is mixed           : True
+written seam_covariates.json

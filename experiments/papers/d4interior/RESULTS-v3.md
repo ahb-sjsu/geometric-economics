@@ -118,3 +118,14 @@ Restricting this corpus to its 1,285 two-outcome rows, excluding the 1,095 with
 `LotNumB > 1` that the fit read through three columns, leaves the chirality at
 `−0.0659`. The multi-branch collapse is not what made it negative. See
 `../d4stability/RESULTS-v2.md`.
+
+**Second forward note, same day.** The reason its `−0.1216` was one draw from a
+spread is now known, and it vindicates this record's closing paragraph by a route
+it did not have. `|d| = 1` is the set of gambles with no loss branch or no gain
+branch, not a region of the coordinate, and there `d·q` is algebraically `±q`.
+Inside mixed gambles the chirality is `−0.0303 ± 0.0728`, never more than 0.8
+standard errors from zero across six independent lines.
+
+**This record said the earlier conclusion "happens to be right". It is right, and
+not by accident.** The fourfold `d·q` is a corner phenomenon because at the
+corners it is not a chirality. See `../d4stability/SEAM.md`.

@@ -81,6 +81,16 @@ the interior chirality vanishes. It does not vanish, the number that said so was
 the conjecture stays retired only because a second and independent ground holds. A rejection filed for
 the wrong reason is a claim like any other.
 
+**The `d·q` chirality is an artifact of the coordinate's endpoints, established on six lines.** `|d| = 1`
+is not a place in the (d, q) plane, it is the set of gambles with no loss branch (`d = +1`) or no gain
+branch (`d = −1`), verified on all 95,748 rows. There `d·q` degenerates into `±q`, so a pooled chirality
+cannot be told apart from a probability effect of opposite sign in the two domains. Separating regimes:
+pooled `d·q` = **+0.2506 ± 0.0423**, but **inside mixed gambles, where `d·q` is a genuine product, it is
+−0.0303 ± 0.0728**. Replicated on the description arm, the full 382,992-decision experience arm, and each
+of four experience press indices: never more than 0.8 se from zero in any of the six. The interior term
+is `d²−q²` at **−0.6943 ± 0.0873**. Do not read D₄ or V₄ onto the fourfold pattern; the pattern lives
+exactly where the coordinate degenerates. See `papers/d4stability/SEAM.md`.
+
 **A caveat that now attaches to every κ coefficient in this file.** Estimating κ freely over the (d, q)
 plane, with no functional form imposed, the six-term quadratic explains a weighted **R² = 0.361** of the
 resulting surface, with a largest cell residual of 6.39 standard errors and a discontinuity of 1.29 in κ

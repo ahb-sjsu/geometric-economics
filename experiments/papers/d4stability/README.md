@@ -5,7 +5,11 @@ is **not** stable, running from `+0.2279` at the smallest stakes to `−0.5003` 
 the largest, Cochran's Q `103.0` against a null mean of `9.93`, permutation
 `p = 0.0005`, range `0.728` against a bar of `0.565`. The reason is that the
 six-term model explains a weighted `R² = 0.361` of a freely estimated kappa
-surface. **Read `RESULTS-v2.md`.**
+surface.
+
+**And `SEAM.md` says why.** `|d| = 1` is not a location in the coordinate: it is exactly the set of gambles with no loss branch (`d = +1`) or no gain branch (`d = −1`), verified on all 95,748 rows. There `d·q` degenerates into `±q`, so the pooled chirality of `+0.2506 ± 0.0423` is a probability effect in disguise. **Inside mixed gambles it is `−0.0303 ± 0.0728`**, never more than 0.8 standard errors from zero across six independent lines including the 382,992-decision experience arm.
+
+**Read `SEAM.md` first, then `RESULTS-v2.md`.**
 
 ---
 

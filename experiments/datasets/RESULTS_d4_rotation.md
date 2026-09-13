@@ -128,3 +128,69 @@ multi-branch games of 270 and choices13k 1,095 rows of 2,380, all read through
 three columns. That approximation is shared across both corpora so it does not
 explain their disagreement, and restricting choices13k to its 1,285 two-outcome
 rows leaves the chirality at `−0.0659`, still negative.
+
+---
+
+**Addendum 2026-09-13, second and final. The chirality is an artifact of this
+coordinate's endpoints, and Part B's conclusion was right for the wrong reason.**
+
+The addendum above reported that the interior chirality is unstable. It is, and
+`experiments/papers/d4stability/SEAM.md` now says why, which changes what should
+be claimed rather than only how confidently.
+
+**`|d| = 1` is not a location in the coordinate.** From `_opt_coords`,
+`d = (pos − neg)/(pos + neg)`, so `d = +1` exactly when the option has no loss
+branch and `d = −1` exactly when it has no gain branch. Verified on all 95,748
+rows with no exceptions: `d = +1` iff no loss branch, `d = −1` iff no gain
+branch, `|d| < 1` iff mixed.
+
+**At those endpoints `d·q` degenerates into `±q`.** With `d = +1` the column *is*
+`q`; with `d = −1` it *is* `−q`. So a chirality coefficient fitted across the
+whole corpus cannot distinguish a `d·q` interaction from a probability effect
+with opposite signs in the two domains. They are the same column.
+
+Separating the regimes shows which it is:
+
+| | `d·q` |
+|---|---|
+| pooled across all regimes | **+0.2506 ± 0.0423** |
+| **inside mixed gambles, where `d·q` is a genuine product** | **−0.0303 ± 0.0728** |
+
+**The chirality is zero in the interior**, and the pooled value is assembled from
+the unmixed regimes where the column is algebraically `±q`. The pure-gain q-slope
+is `+0.3372`, which alone accounts for almost all of it, gain-only rows
+outnumbering loss-only nine to one.
+
+Replicated on six independent lines. The description arm, the full experience arm
+of 382,992 decisions, and each of the four experience press indices separately:
+**`d·q` inside mixed gambles is never more than 0.8 standard errors from zero**,
+while the pooled value is positive in all six.
+
+**So Part B's conclusion stands and its evidence does not.** The fourfold `d·q`
+*is* a corner phenomenon, and the reason is that at the corners it is not a
+chirality at all. The `+0.003` that Part B rested on was masked by pooling
+seventeen corner rows; the correct interior estimate is `−0.0303 ± 0.0728` and
+reaches the same place by measurement.
+
+**What the interior actually contains** is `d²−q²` at `−0.6943 ± 0.0873`, eight
+standard errors, replicated across all six lines. Part B's own numbers had
+`d²−q² = +0.34` as the dominant rotation-breaking term, which was right in
+substance and pooled across the seam.
+
+**The seam itself is real and large.** Estimating kappa freely in strata
+approaching the boundary, it diverges as gambles become barely mixed, reaching
+`+0.72` on the gain side and `−0.92` on the loss side, then reverses sign
+discontinuously at the point the last opposite branch disappears: a jump of
+`−0.874 ± 0.206` (4.2 se) on the gain side and `+1.339 ± 0.246` (5.4 se) on the
+loss side.
+
+**Removing the seam does not rescue the six-term model.** The weighted `R²` of
+the quadratic against a freely estimated surface is `0.361` on all rows and
+`0.306` on mixed gambles alone, so it fits the interior worse. Every projected
+coefficient flips sign between the two subsets. They are projections, not
+parameters.
+
+**The D₄ and V₄ framing should not be read onto the fourfold pattern.** The
+pattern lives exactly where this coordinate degenerates, and there the
+group-theoretic content is empty. The Part A corner decomposition is unaffected
+as arithmetic, but its `B` component is a probability effect in disguise.

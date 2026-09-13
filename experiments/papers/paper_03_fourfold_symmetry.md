@@ -141,9 +141,27 @@ errors. The dominant feature is a discontinuity at `|d| = 1`, where adjacent cel
 function of `(d, q)` can produce. Fitting a misspecified model to subsamples of differing composition
 moves its coefficients, which is what both the fold spread and the corpus disagreement are.
 
-A chiral component does survive: the free surface projects onto `d·q` at `+0.2155` without the term
-being imposed. **But it is a projection coefficient, not a parameter**, and the description of the
-fourfold `d·q` as a corner phenomenon is withdrawn rather than replaced.
+**And the chirality itself does not survive regime separation.** `|d| = 1` is not a location in the
+plane: it is exactly the set of gambles with no loss branch (`d = +1`) or no gain branch (`d = −1`),
+verified on all 95,748 rows without exception. There the product `d·q` degenerates into `±q`, so a
+chirality fitted across the corpus cannot be distinguished from a probability effect carrying opposite
+signs in the two domains. Fitting the regimes separately:
+
+| | `d·q` |
+|---|---|
+| pooled across regimes | **+0.2506 ± 0.0423** |
+| inside mixed gambles, where `d·q` is a real product | **−0.0303 ± 0.0728** |
+
+The pure-gain q-slope of `+0.3372` accounts for almost all of the pooled value on its own, gain-only rows
+outnumbering loss-only nine to one. Replicated on six independent lines (description, the full 382,992
+experience decisions, and four experience press indices separately): **`d·q` inside mixed gambles is never
+more than 0.8 standard errors from zero**. What the interior does contain is `d²−q²` at
+`−0.6943 ± 0.0873`.
+
+**So the corner-phenomenon description is restored, and for a reason this paper did not have.** The
+fourfold `d·q` is a corner phenomenon because at the corners it is not a chirality at all. This section's
+group-theoretic reading of it should be withdrawn: the pattern lives exactly where the coordinate
+degenerates, and there the D₄ content is empty. See `../d4stability/SEAM.md`.
 
 ## 5. Discussion — structure or re-description?
 

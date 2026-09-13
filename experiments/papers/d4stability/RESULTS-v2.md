@@ -200,3 +200,25 @@ actually is.
 4. **Do not report any of the six coefficients as parameters** until a form is
    found that fits the surface. They are projections and they move with whatever
    stimuli happen to be in the sample, which is precisely what this run measured.
+
+---
+
+## Followed up and resolved, same day
+
+`SEAM.md` characterises the `|d| = 1` seam and answers the question this record
+left open. In short: `|d| = 1` is not a location in the coordinate but exactly
+the set of gambles with no loss branch or no gain branch, verified on all 95,748
+rows, and there `d·q` degenerates algebraically into `±q`. Separating regimes,
+the pooled chirality of `+0.2506 ± 0.0423` becomes **`−0.0303 ± 0.0728` inside
+mixed gambles**, replicated across six independent lines including the
+382,992-decision experience arm, never more than 0.8 standard errors from zero.
+
+The interior term is `d²−q²` at `−0.6943 ± 0.0873`. Regime separation buys 195.8
+log-likelihood units on 6 parameters in the description arm and 398.0 in the
+experience arm.
+
+**The recommendations in the section above are superseded in one respect.** Item 2
+suggests finding a coordinate in which the surface is smooth. The seam is not a
+coordinate defect to be smoothed away, it is a real categorical boundary between
+mixed and unmixed gambles, and the right response is to model the regimes
+separately rather than to look for a chart that hides the join.
