@@ -1,0 +1,54 @@
+{
+  "n_rows": 2380,
+  "n_nonzero_dq": 2127,
+  "n_d_negative": 573,
+  "n_d_positive": 1793,
+  "distinct_d_values": 1033,
+  "subjects_per_problem_median": 16,
+  "reps": 300,
+  "seed": 20260913,
+  "generative_coefficients": {
+    "const": -0.4092295830090379,
+    "d2+q2": 0.29108000730471295,
+    "d*q": 0.4437750481416212,
+    "d": -0.48222159530440256,
+    "q": -0.28652038147063486,
+    "d2-q2": 0.37769283773597984
+  },
+  "note": "outcomes never read; synthetic draws only",
+  "null": {
+    "T_pos_95pct_one_sided": 0.18774979541410625,
+    "null_mean": 0.09206812148266742,
+    "null_sd": 0.057228980527230515
+  },
+  "power": {
+    "0.0": {
+      "V1_sign_and_presence": 0.05333333333333334,
+      "V2_within_factor_two_band": 0.006666666666666667,
+      "mean_estimate": 0.09354642144157789,
+      "sd_estimate": 0.055670923023744025
+    },
+    "0.2219": {
+      "V1_sign_and_presence": 0.96,
+      "V2_within_factor_two_band": 0.9466666666666667,
+      "mean_estimate": 0.3345021449398256,
+      "sd_estimate": 0.06373868229717096
+    },
+    "0.4438": {
+      "V1_sign_and_presence": 1.0,
+      "V2_within_factor_two_band": 1.0,
+      "mean_estimate": 0.562653196082349,
+      "sd_estimate": 0.07648567906046634
+    },
+    "0.8876": {
+      "V1_sign_and_presence": 1.0,
+      "V2_within_factor_two_band": 0.19,
+      "mean_estimate": 0.9437733545322525,
+      "sd_estimate": 0.060901150121644
+    }
+  },
+  "factor_two_band": [
+    0.2218875240708106,
+    0.8875500962832424
+  ]
+}

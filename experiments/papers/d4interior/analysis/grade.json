@@ -1,0 +1,41 @@
+{
+  "prereg": "prereg-d4interior-v2",
+  "corpus": "choices13k, Block==1 and Feedback==0",
+  "n_rows": 2380,
+  "chirality_dq": -0.1088197022692603,
+  "V1": {
+    "verdict": "FAIL",
+    "bar": 0.18774979541410625,
+    "statement": "the interior chirality replicates in sign"
+  },
+  "V2": {
+    "verdict": "FAIL",
+    "band": [
+      0.2218875240708106,
+      0.8875500962832424
+    ],
+    "statement": "and within a factor of two of the CPC18 estimate"
+  },
+  "cpc18_estimate": 0.4437750481416212,
+  "estimator_bias_under_null": 0.09206812148266742,
+  "power": {
+    "0.2219": {
+      "V1": 0.96,
+      "V2": 0.947
+    },
+    "0.4438": {
+      "V1": 1.0,
+      "V2": 1.0
+    },
+    "0.8876": {
+      "V1": 1.0,
+      "V2": 0.19
+    },
+    "size_at_zero": {
+      "V1": 0.053,
+      "V2": 0.007
+    }
+  },
+  "F3": "VOID. The two optimizer starts differ in the objective by 0.0182, over the registered tolerance of 1e-06.",
+  "F1": "FIRED. The interior chirality does not replicate. The CPC18 estimate is corpus-specific and the interior question is not settled by it."
+}
