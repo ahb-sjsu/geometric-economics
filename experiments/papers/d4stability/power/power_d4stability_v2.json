@@ -1,0 +1,82 @@
+{
+  "seed": 20260913,
+  "replicates": 200,
+  "inner_permutations": 250,
+  "n_folds": 4,
+  "gap_cpc18_minus_c13k": 0.5653585378279767,
+  "generative_source": "results_v3.json",
+  "by_true_spread": {
+    "0.00": {
+      "true_fold_sd": 0.0,
+      "true_fold_offsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "replicates_used": 200,
+      "nonconvergent": 0,
+      "mean_Q": 2.7030345238727578,
+      "mean_observed_spread": 0.07366850358216911,
+      "mean_observed_range": 0.16594526278337632,
+      "mean_fold_c2": -0.12120356215313517,
+      "W1": 0.02,
+      "W2": 0.0,
+      "W3": 0.225
+    },
+    "0.10": {
+      "true_fold_sd": 0.1,
+      "true_fold_offsets": [
+        -0.1161895003862225,
+        -0.03872983346207417,
+        0.03872983346207417,
+        0.1161895003862225
+      ],
+      "replicates_used": 200,
+      "nonconvergent": 0,
+      "mean_Q": 8.424437666114711,
+      "mean_observed_spread": 0.11901042245044063,
+      "mean_observed_range": 0.26471912081435234,
+      "mean_fold_c2": -0.12479755401284018,
+      "W1": 0.265,
+      "W2": 0.015,
+      "W3": 0.515
+    },
+    "0.20": {
+      "true_fold_sd": 0.2,
+      "true_fold_offsets": [
+        -0.232379000772445,
+        -0.07745966692414834,
+        0.07745966692414834,
+        0.232379000772445
+      ],
+      "replicates_used": 200,
+      "nonconvergent": 0,
+      "mean_Q": 25.727732902071057,
+      "mean_observed_spread": 0.21001134648160075,
+      "mean_observed_range": 0.47569292415636555,
+      "mean_fold_c2": -0.12472635028367512,
+      "W1": 0.95,
+      "W2": 0.23,
+      "W3": 0.79
+    },
+    "0.30": {
+      "true_fold_sd": 0.3,
+      "true_fold_offsets": [
+        -0.3485685011586675,
+        -0.1161895003862225,
+        0.1161895003862225,
+        0.3485685011586675
+      ],
+      "replicates_used": 200,
+      "nonconvergent": 0,
+      "mean_Q": 53.904469129971446,
+      "mean_observed_spread": 0.30046263471385537,
+      "mean_observed_range": 0.687659030541395,
+      "mean_fold_c2": -0.12442912878805233,
+      "W1": 1.0,
+      "W2": 0.805,
+      "W3": 0.965
+    }
+  }
+}

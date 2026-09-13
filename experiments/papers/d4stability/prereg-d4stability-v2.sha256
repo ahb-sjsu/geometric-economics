@@ -1,0 +1,48 @@
+{
+  "prereg": "prereg-d4stability-v2",
+  "title": "Is the Interior Chirality Stable Inside One Corpus? (v2, orientation fixed)",
+  "level": 1,
+  "author": "Andrew H. Bond, San Jose State University",
+  "supersedes": "prereg-d4stability-v1 (VOID: design oriented A-B against an outcome oriented chose-the-riskier, reversing 74.8% of rows)",
+  "follows": "prereg-d4interior-v3 (V1 FAIL, V2 FAIL, F2 fired)",
+  "frozen_at": "2026-09-13",
+  "bars": {
+    "F5_bEV_must_be_positive": true,
+    "F6_pipeline_invariants_must_pass": true,
+    "W1_permutation_alpha": 0.05,
+    "W2_range_at_least": 0.5653585378279767,
+    "W3": "fold estimates not all of one sign",
+    "grad_tol": 1e-05,
+    "held_in": "analysis/d4stab_grade_v1.py"
+  },
+  "statistic": "sample sd of c2 across four folds split by log10 outcome scale, against random partitions of the problems into folds of the same sizes; each fold standardised on its own dEV and dSD columns",
+  "estimator": "convex Newton on the logistic log-loss, d4interior/analysis/kappa_mle.py",
+  "size_at_true_spread_zero": 0.02,
+  "data": "Psych-101 peterson2021using/exp1.csv, first-press description trials of strictly two-outcome problems, 95748 trials over 5674 problems from 13735 participants",
+  "press_accounting_balances": true,
+  "bundle_files": [
+    "analysis/peterson_parse.py",
+    "analysis/stability_rows_v2.py",
+    "analysis/stability_stat.py",
+    "analysis/pipeline_invariants.py",
+    "analysis/d4stab_fit_v2.py",
+    "analysis/launch_fit_v2.sh",
+    "analysis/d4stab_grade_v2.py",
+    "power/power_d4stability_v2.py",
+    "prereg-d4stability-v2.md"
+  ],
+  "component_sha256": {
+    "analysis/peterson_parse.py": "a708eadbb13d3dd9135c50d57b827ffc19986c9040a61abc623812cb94618ce4",
+    "analysis/stability_rows_v2.py": "21f99c26c2a087513a135c8e0b6f662f4ee848f087de2bb50782667187842d54",
+    "analysis/stability_stat.py": "d76b17014f60176b94241ef42ff11d7c8a5c0160b94d2bd664b6d5a69aeb5b37",
+    "analysis/pipeline_invariants.py": "33e17ecc7b4d3d5133124e43958e4f25080809e60bd21d96b52ba963074dbc26",
+    "analysis/d4stab_fit_v2.py": "cc4273a7acf14038bba4c858eba6ced311047962c16ea80ad03eab3950800fa1",
+    "analysis/launch_fit_v2.sh": "669d79f79e9165f222e15483f6fc0c4034385dc60db78d9cea72fedc73c6288c",
+    "analysis/d4stab_grade_v2.py": "2229d05c0e749fb39896f76918b025148712419c6e216462a6616ea30ccd2672",
+    "power/power_d4stability_v2.py": "046619f0f65ece719a23811939c3280fc529f76539fd7ad40b6227350a23f730",
+    "prereg-d4stability-v2.md": "24d2398fbc47fc2cd69df617a14e0d8525646c3bab285f00b94ec4a0d329eb0b"
+  },
+  "hash_note": "sha256 per file with CRLF normalised to LF; combined = sha256 over concatenated digests in bundle order. Document finalised before hashing. The grader IS in the bundle and reads this hash at run time rather than storing it.",
+  "combined_sha256": "b1887b5d2d82aba92f75b507bebaff50bdb6582f75f44402579baec24273dbb6",
+  "osf_registration": "OWNER STEP, not yet registered"
+}

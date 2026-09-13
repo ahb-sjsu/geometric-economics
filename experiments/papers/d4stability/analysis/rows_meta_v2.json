@@ -1,0 +1,38 @@
+{
+  "press_accounting": {
+    "first_press_description": 96237,
+    "repeat_press_experience": 384948,
+    "ambiguous_unknown_probability": 210965,
+    "multi_outcome_out_of_scope": 405225,
+    "press_with_no_declared_menu": 0,
+    "press_key_not_on_menu": 0
+  },
+  "press_tokens_total": 1097375,
+  "excluded_zero_dSD": 489,
+  "excluded_zero_scale": 0,
+  "n_trials_kept": 95748,
+  "n_distinct_problems": 5672,
+  "n_participants": 13735,
+  "scale_invariance_checks": 191496,
+  "scale_invariance_violations": 0,
+  "orientation_guard": "all dSD > 0",
+  "min_dSD": 0.003847577293367266,
+  "log10_scale_cuts": [
+    1.380211241711606,
+    1.5797835966168101,
+    1.7708520116421442
+  ],
+  "fold_sizes_problems": [
+    1394,
+    1391,
+    1440,
+    1447
+  ],
+  "fold_sizes_trials": [
+    23003,
+    23608,
+    24197,
+    24940
+  ],
+  "marginal_risky_rate": 0.4892321510632076
+}
