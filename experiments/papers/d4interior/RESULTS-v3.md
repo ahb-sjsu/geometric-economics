@@ -1,0 +1,97 @@
+# prereg-d4interior-v3 — run record. The chirality does not replicate, and reverses
+
+**Run 2026-09-13 on Atlas.** choices13k, 2,380 rows. Seal verified and tag
+signature good before the fit. Bundle combined sha256
+`b18b1e8e12fdc4f4c8f06d4f4defbe719f49fb596b5e8890b52ccf919d62f807`, signed tag
+`prereg-d4interior-v3` on commit `977c52e`.
+
+**This run is valid.** Gradient infinity norm `1.5e-12` against a registered
+tolerance of `1e-5`, Hessian minimum eigenvalue `9.733`, and the estimate varies
+by `1.7e-15` across four starts. The optimum is unique and was reached, which is
+what v2 could not establish.
+
+---
+
+## Verdicts
+
+| | Prediction | Verdict | | |
+|---|---|---|---|---|
+| V1 | The chirality replicates in sign | **FAIL** | `c2` = **−0.1216** | bar 0.1043 |
+| V2 | And within a factor of two of CPC18 | **FAIL** | band [0.2219, 0.8876] | |
+
+**F2 fired.** The estimate is negative beyond the bar. The registration states
+that this is a sign reversal, a worse outcome than a null, and is to be reported
+as such and not as a near miss.
+
+## What this settles
+
+**The CPC18 interior chirality of `+0.4438` does not replicate.** On an
+independent corpus of nine times the size it comes out at `−0.1216`, reversed in
+sign and past the bar in the wrong direction.
+
+This is not a power failure. The design detects `+0.4438` with probability 1.000
+and half of it with probability 0.966, at a size of 0.034. Had the CPC18 value
+been a property of interior choice rather than of CPC18, this run would have
+found it.
+
+## What it does to the challenge this line was built on
+
+The pooling diagnostic remains arithmetically correct. On CPC18, dropping the
+seventeen corner rows does move the chirality from `+0.003` to `+0.4438`, and
+fit C does locate the masking in the corner rows' likelihood contribution. Those
+are facts about CPC18 and nothing here disturbs them.
+
+But the quantity that decomposition revealed is not stable. It is `+0.44` on one
+corpus and `−0.12` on another, and no consistent interior chirality survives the
+pair. **The challenge this line raised against `RESULTS_d4_rotation.md` does not
+survive its own test.**
+
+The earlier record concluded that the fourfold chirality is a corner phenomenon
+and not a property of the interior. This run supports that conclusion, by a
+different route than the one the record gave. The record reached it from a pooled
+estimate near zero, which the pooling diagnostic showed was masked rather than
+measured. This run reaches it from two unpooled estimates that disagree in sign.
+Either way there is no reliable interior chirality, and the record's conclusion
+should stand as written.
+
+The correction owed to the record is therefore smaller than it looked. Its Part B
+interior estimate of `+0.003` is a pooled quantity and its own caveat about
+attenuation understates what pooling does. The conclusion drawn from it happens
+to be right.
+
+## What it does to the D₄ rehabilitation
+
+`D4_REHABILITATION.md` argued two things. The first, that the earlier verdict was
+scored against a continuous rotation that the D₄ account of `sqnd-probe` does not
+claim, is a reading of two documents and is untouched by any measurement here.
+The second, that the rotation is gated rather than absent, was tested by
+`prereg-d4gate-v1` and that registration is void for an unrelated coding error,
+so it remains untested.
+
+What this run adds is that the interior has no stable chirality to be gated. That
+does not refute the gating reading, since a gated quantity could be unstable
+across corpora for gating reasons, but it removes the motivation that produced
+it. A future gating test would need to establish a stable interior quantity
+first, and this run says there is not one on these two corpora.
+
+## Record of the lineage
+
+Three registrations, one verdict.
+
+| | Outcome | Cause |
+|---|---|---|
+| `prereg-d4gate-v1` | VOID | the analysis reimplemented a coordinate instead of importing it, and got its form and sign wrong |
+| `prereg-d4interior-v2` | VOID under its own F3 | a derivative-free optimizer did not reach the optimum of a convex problem |
+| `prereg-d4interior-v3` | **Verdict: V1 FAIL, V2 FAIL, F2 fired** | valid run, gradient norm 1.5e-12 |
+
+The two voids are different in kind. The first was an error. The second was a
+falsifier written in advance against ourselves, firing as designed on a run that
+would otherwise have reported a number from an optimizer that had not converged.
+
+Section 11 of the registration lists five errors in this lineage with the
+structural fix for each. The useful generalisation is that every one was caught
+by machinery rather than by care. The coordinate error by a diagnostic that
+imported the original code, the optimizer failure by an estimator verified
+against a known answer before being trusted, the threshold error by counting
+failures instead of aborting on them, and two transcription errors by reading the
+values back out of the record rather than from the draft.

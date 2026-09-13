@@ -1,0 +1,51 @@
+{
+  "corpus": "choices13k, Block==1 and Feedback==0",
+  "estimator": "convex Newton, kappa_mle.fit",
+  "n_rows": 2380,
+  "n_nonzero_dq": 2127,
+  "n_d_negative": 573,
+  "n_d_positive": 1793,
+  "subjects_per_problem_median": 16,
+  "bEV": 0.5313319538603792,
+  "coefficients": {
+    "const": -0.0936179270479286,
+    "d2+q2": 0.17452084810031296,
+    "d*q": -0.12158348968635554,
+    "d": -0.6649845144806652,
+    "q": -0.21242695493813893,
+    "d2-q2": 0.25691297321916284
+  },
+  "chirality_dq": -0.12158348968635554,
+  "nll": 1560.3897540491262,
+  "grad_inf_norm": 1.496136547984861e-12,
+  "hessian_min_eig": 9.732971570565853,
+  "iterations": 5,
+  "converged": true,
+  "starts": {
+    "0.0": {
+      "dq": -0.12158348968635554,
+      "nll": 1560.3897540491262,
+      "grad_inf_norm": 1.496136547984861e-12,
+      "converged": true
+    },
+    "0.1": {
+      "dq": -0.12158348968635618,
+      "nll": 1560.3897540491262,
+      "grad_inf_norm": 3.668176873361517e-13,
+      "converged": true
+    },
+    "-0.1": {
+      "dq": -0.12158348968635589,
+      "nll": 1560.3897540491262,
+      "grad_inf_norm": 3.5704772471945034e-13,
+      "converged": true
+    },
+    "0.5": {
+      "dq": -0.1215834896863545,
+      "nll": 1560.3897540491262,
+      "grad_inf_norm": 1.219468970248272e-12,
+      "converged": true
+    }
+  },
+  "dq_spread_across_starts": 1.6792123247455493e-15
+}
