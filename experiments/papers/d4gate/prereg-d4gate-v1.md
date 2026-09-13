@@ -1,6 +1,16 @@
 # prereg-d4gate-v1 — Is the Fourfold Chirality Absent in the Interior, or Gated?
 
-**Status:** v1, FROZEN 2026-09-13 (Section 9 steps 1 and 2 executed; the signed
+**Status: VOID, 2026-09-13.** See `RESULTS.md` Section "Why this registration is
+void". Section 3 of this document states that the coordinates are those of
+`d4_rotation.py` and are not changed. They were changed. The analysis code
+reimplemented `_opt_coords` from assumption rather than importing it, and the
+reimplementation differs in both the form of the domain coordinate, three-valued
+where the original is continuous, and in its sign convention, so the run does not
+test what this document registers. The document, its hash, its signed tag and the
+run record are all kept. Nothing here is deleted, and a corrected registration
+must be a new one with a new hash.
+
+**Superseded status line, kept for the record:** v1, FROZEN 2026-09-13 (Section 9 steps 1 and 2 executed; the signed
 tag is step 3 and OSF registration is the owner's step, its GUID recorded in
 `prereg-d4gate-v1.sha256` and not here, so this file's hash stays fixed). No fit
 has been run on the outcome column.

@@ -1,87 +1,117 @@
-# prereg-d4gate-v1 — run record
+# prereg-d4gate-v1 — run record, and why the registration is void
 
-**Run 2026-09-13 on Atlas.** CPC18 description regime, `Trial == 1`, 270 interior
-rows, 169 certain and 101 uncertain, Kahneman and Tversky corners excluded as
-registered. Seal verified before the fit. Bundle combined sha256
+**Run 2026-09-13 on Atlas.** Seal verified and tag signature good before the fit.
+Bundle combined sha256
 `bc85ddd92cdabe48daa81014748d6e1e2732a850ca7212882540ed606501f35b`, signed tag
-`prereg-d4gate-v1` on commit `d7ede62`, good signature.
+`prereg-d4gate-v1` on commit `d7ede62`.
 
-`results.json` and `grade.json` are committed as executed. Bars live in
-`analysis/d4gate_grade.py`, written before any fit touched the outcome column and
-not edited.
+**The registration is VOID.** The graded verdicts below were computed on a
+coordinate the registration did not register. They are kept because deleting the
+record of a run that happened is the file drawer, and they are not evidence for
+or against anything.
 
-## Verdicts
+---
+
+## Why this registration is void
+
+Section 3 of `prereg-d4gate-v1.md` says the coordinates are those of
+`d4_rotation.py` and are not changed. The analysis code reimplemented
+`_opt_coords` instead of importing it, and reimplemented it wrongly.
+
+| | `d4_rotation.py` | `d4gate_fit.py` as run |
+|---|---|---|
+| domain coordinate `d` | continuous on `[-1, 1]`, the value-weighted balance `(pos − neg) / (pos + neg)` over the option's outcomes, **`+1` a pure gain** | three-valued indicator in `{-1, 0, +1}`, **`+1` a pure loss** |
+| probability coordinate `q` | `2p − 1` on the **salient** outcome, the one of largest absolute value | `2p − 1` on the high outcome |
+
+The domain coordinate differs in form and in sign, so `d·q` in the run is not the
+`d·q` of the earlier test and the run tests a different quantity than the document
+describes.
+
+The error was made in writing, not in running. `_opt_coords` was never read. It
+sits above the part of the file that was read, and a definition that looked
+obvious was written from the docstring of the surrounding function instead.
+
+**What falls with it.**
+
+- The cross-tabulation in Section 4 of the registration, and with it the claim
+  that the uncertain cell holds four pure-loss rows. "Pure loss" is a category the
+  real coordinate does not have, being continuous, so the estimability argument
+  that motivated the interaction design was about an artifact.
+- The power simulation, which used the same wrong design matrix.
+- Both graded verdicts.
+
+**What does not fall.** The registration, its hash, its signed tag, the run
+record, and this file are all kept. A corrected registration is a new one with a
+new hash and a new tag, not an edit of this one.
+
+## The verdicts as computed, kept and not claimed
 
 | | Prediction | Verdict | Statistic | Bar |
 |---|---|---|---|---|
-| G1 | The chirality differs by gate | **FAIL** | `gamma` = −0.0468 | 0.2778 |
-| G2 | A chirality is present where the gate fires | **PASS** | `c2 + gamma` = −0.7382 | 0.1810 |
+| G1 | The chirality differs by gate | FAIL | `gamma` = −0.0468 | 0.2778 |
+| G2 | A chirality is present where the gate fires | PASS | `c2 + gamma` = −0.7382 | 0.1810 |
 
-No falsifier fired. F1 requires both under their bars and F3 requires G1 passing
-with G2 failing. Neither describes this outcome.
+No falsifier fired. These numbers describe a fit on a coordinate nobody
+registered and are recorded for completeness only.
 
-## What the run says
+## The pooling diagnostic, which is valid and is the useful result
 
-**The gated reading is refuted.** `gamma` is −0.047 against a bar of 0.278, so the
-chirality does not differ between the cell where a sure outcome is on the menu and
-the cell where one is not. The certainty gate does nothing. Since the power
-simulation gives G1 a detection rate of 0.95 at a gated chirality of 0.50, a
-gating effect of that size would have been found and was not. The reading proposed
-in `D4_REHABILITATION.md`, that the rotation is gated rather than absent, does not
-survive its own test on this corpus under this gate.
+`analysis/diagnostic_pooling.py` does not reimplement anything. It imports
+`d4_rotation.build_continuous` and uses that module's own rows, coordinates and
+optimizer settings, so it is unaffected by the error above. It answers the
+question the earlier run raised, which is why the interior chirality is reported
+at `+0.003`.
 
-**The absent reading is also refuted, and by more.** The chirality is not near zero
-anywhere in the interior. It is −0.691 where the gate does not fire and −0.738
-where it does, against a bar of 0.181. It is large, negative, and uniform.
+287 rows, 270 CPC18 interior and 17 Kahneman and Tversky corners.
 
-So neither reading that motivated the registration is right. The interior carries
-a substantial chirality that does not care about the gate.
+| Fit | Rows fitted | Standardised over | `d·q` | nll |
+|---|---|---|---|---|
+| **A**, as published | all | all | **+0.0032** | 401.15 |
+| **B**, corners dropped | CPC18 | CPC18 | **+0.4438** | 168.70 |
+| C, corners in likelihood only | all | CPC18 | −0.0002 | 401.85 |
+| D, corners in scaling only | CPC18 | all | −2.3546 | 169.00 |
 
-## An open question this run raises about the earlier result
+**A reproduces the published number exactly.** `+0.0032` against the `+0.003` of
+`RESULTS_d4_rotation.md`, so the earlier pipeline is reproduced and is not in
+question.
 
-`RESULTS_d4_rotation.md` reports the interior chirality at **+0.003** and concludes
-the fourfold pattern is a corner phenomenon. This run, on the interior alone, puts
-it at about **−0.73**. That is not a small disagreement and it has to be explained
-before either number is used.
+**A against B is the answer.** Both are internally consistent, each standardised
+over the rows it fits. Dropping seventeen corner rows moves the interior chirality
+from `+0.003` to `+0.444`. The chirality does not vanish in the interior. It is
+masked when the corners are pooled with it.
 
-It is not an optimizer artifact. A diagnostic refit of the interior-only data with
-the earlier test's exact optimizer settings, one Powell start at zero with 20000
-iterations, returns −0.7509, and starts at +0.1 and −0.1 return −0.7499 and
-−0.7294 with likelihoods agreeing to three decimals. The interior-only estimate is
-stable.
+A against C separates the two channels and shows the masking is carried by the
+corner rows' own contribution to the likelihood rather than by their effect on
+standardisation, since holding the scaling to CPC18 while keeping the corners in
+the fit still gives `−0.0002`. D is reported for completeness and is not a
+sensible fit, since standardising CPC18 over a set containing the corners shrinks
+every interior predictor and the coefficients blow up to compensate.
 
-The difference must therefore come from what the earlier fit pools with the
-interior. It fits the Kahneman and Tversky corner rows together with CPC18 and
-standardises the two predictors over the combined set, so the corner rows both
-enter the likelihood and rescale every interior row. The earlier record's own
-caveat anticipates the direction of this, saying that pooling adversarial Kahneman
-and Tversky problems with normal CPC18 "can attenuate the `d·q` term". If the
-present estimate is right, the caveat understates what happens. The pooling does
-not attenuate the term, it removes it and reverses its sign.
+The earlier record's own caveat says pooling adversarial Kahneman and Tversky
+problems with normal CPC18 "can attenuate the `d·q` term". That is right in
+direction and understated in degree. On this decomposition the pooling does not
+attenuate the term, it removes it.
 
-**This is stated as a question and not as a verdict.** The earlier pooled fit has
-not been reproduced here, and until it is, the honest position is that two fits on
-overlapping data disagree and the reason is identified but not demonstrated.
-Reproducing `part_b` of `d4_rotation.py` and then refitting it with the corners
-dropped is the next step, and it is a diagnostic rather than a registration,
-because no prediction is at stake in it.
+## What follows
 
-## What this does not settle
+**The interior question is open again, and in the opposite direction.** The
+earlier conclusion that the fourfold pattern is a corner phenomenon rests on
+Part B, and Part B's interior estimate is a pooled estimate. Unpooled, the
+interior carries a chirality of `+0.44`. That does not restore D₄, it does not
+address Part A's `χ² = 75.4` breaking term at the corners, and it is a single
+diagnostic on one corpus. It does mean the sentence "the chirality vanishes in
+the interior" is not supported by the fit that produced it.
 
-The registration is spent. Anything further on this corpus is exploratory and must
-be labelled so, including the diagnostic above.
+**A corrected registration is worth writing, with three changes.** It must import
+`_opt_coords` rather than restate it. It must redo the estimability analysis on
+the real continuous coordinate, where the cross-tabulation that motivated the
+interaction design does not apply. And it should register the unpooled interior
+estimate as its own object, since that is now the live question and the gating
+question was always secondary to it.
 
-The run says nothing about the corners. Part A of the earlier test remains as
-written, with the exact D₄ broken at the corners at `χ² = 75.4`, and this run did
-not examine them.
-
-It says nothing about a continuous rotation, which nothing here tests, and
-nothing about the moral-domain generator asymmetry reported in `sqnd-probe`, which
-was measured on different subjects with a different instrument. What
-`D4_REHABILITATION.md` argued about the earlier verdict's target still stands. What
-it proposed as the repair does not.
-
-Power is the standing caveat in the other direction. At a true gated chirality of
-0.25 the design finds gating only 29 percent of the time, so the G1 failure rules
-out a gating effect of 0.5 and leaves one of 0.1 untested. The registration
-requires that sentence to appear here and it does.
+**A note for the next registration.** The failure here was not caught by the
+seal, the signature, the grader separation or the power analysis, all of which
+worked. It was caught by a diagnostic that imported the original code instead of
+restating it. An analysis that reimplements a definition it claims to inherit
+should import it, and where that is impossible the registration should carry the
+definition verbatim rather than a description of it.
