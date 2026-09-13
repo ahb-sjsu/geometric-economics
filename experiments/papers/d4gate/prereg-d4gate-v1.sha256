@@ -1,0 +1,34 @@
+{
+  "prereg": "prereg-d4gate-v1",
+  "title": "Is the Fourfold Chirality Absent in the Interior, or Gated?",
+  "level": 1,
+  "author": "Andrew H. Bond, San Jose State University",
+  "companion_to": [
+    "prereg-v1",
+    "prereg-v2",
+    "prereg-sigma-v1",
+    "prereg-coupling-v1",
+    "prereg-dimensions-v1",
+    "prereg-boundary-v1"
+  ],
+  "frozen_at": "2026-09-13",
+  "frozen_predictions": "G1 and G2 in prereg-d4gate-v1.md Section 5; falsifiers F1 to F3 in Section 6; bars from the Section 7 simulation; no fit run on the outcome column before freeze",
+  "bars": {
+    "T_gamma": 0.2778192266034961,
+    "T_presence": 0.18095219285614153,
+    "held_in": "analysis/d4gate_grade.py"
+  },
+  "data": "CPC18 raw, sha256 cb0dab5ca34adebc49f2dfe57f98096ab74468dea5a12a4558ce5c50ef07952d, description regime Trial==1, 270 interior rows, Kahneman and Tversky corners excluded",
+  "bundle_files": [
+    "prereg-d4gate-v1.md",
+    "power/power_d4gate.py"
+  ],
+  "component_sha256": {
+    "prereg-d4gate-v1.md": "c6e6779ec02885196ca25fecdda32e43bbe2f91e1ef5d776368e0a2a23ae3202",
+    "power/power_d4gate.py": "b408e2363a71057304071a3d44990c58f9056f04296e4dd62776c3e1d42651dc"
+  },
+  "hash_note": "sha256 of each file with CRLF normalized to LF; combined = sha256 over the concatenated component hex digests in bundle_files order. analysis/d4gate_grade.py is not in the bundle because it carries this hash; it is protected by the signed tag. Recomputed after the status line was finalised; the first hash was taken before that edit and is superseded.",
+  "combined_sha256": "bc85ddd92cdabe48daa81014748d6e1e2732a850ca7212882540ed606501f35b",
+  "osf_registration": "OWNER STEP, not yet registered",
+  "osf_note": "OSF registration is the owner's step. Record the GUID here before any result is described as externally preregistered. The signed git tag and this hash are the internal record."
+}
