@@ -194,3 +194,41 @@ parameters.
 pattern lives exactly where this coordinate degenerates, and there the
 group-theoretic content is empty. The Part A corner decomposition is unaffected
 as arithmetic, but its `B` component is a probability effect in disguise.
+
+
+---
+
+**Addendum 2026-09-13, third. Every standard error on a kappa coefficient in this
+programme is too narrow, and the CPC18 ones are too narrow by a factor that
+changes conclusions.**
+
+The coordinate `(d, q)` is a property of the PROBLEM, not of the trial. Subjects
+answering the same gamble do not supply independent observations about how kappa
+varies with that gamble's coordinate, so the effective sample for a `(d, q)`
+coefficient is the number of distinct problems.
+
+CPC18's 26,467 first-trial rows are **270 games**, and its mixed subset is 13,927
+trials over **137 problems**, about 102 subjects each. Resampling problems with
+replacement, 400 draws, refitting each time:
+
+| corpus | mixed trials | problems | `d·q` | trial se | **clustered se** | 95% CI |
+|---|---|---|---|---|---|---|
+| CPC18, all lotteries | 13,927 | 137 | +0.9679 | 0.0946 | **0.3179** | [+0.241, +1.484] |
+| CPC18, two-outcome | 7,923 | **81** | +0.7538 | 0.1241 | **0.5614** | **[−0.897, +1.380]** |
+| peterson | 55,985 | 3,314 | −0.0293 | 0.0306 | 0.0538 | [−0.140, +0.071] |
+
+**On like-for-like two-outcome data the intervals overlap and neither excludes
+zero.** The apparent ten standard error difference between CPC18 and the
+choices13k family is an artifact of counting 102 subjects on one gamble as 102
+independent facts about that gamble.
+
+**Consequence for the interior chirality of `+0.4438` that this record's
+successors have spent five registrations trying to replicate.** It rests on
+roughly 137 mixed problems and its honest clustered uncertainty is of order
+`±0.3` to `±0.6`. It was never shown to differ from zero. The registrations were
+correctly executed and were asking a question the uncertainty could not support.
+
+**A corpus of many subjects on few problems is a small corpus for this question.**
+More subjects on the same gambles buy precision about those gambles' choice rates
+and nothing about how kappa varies across the plane. See
+`../papers/d4stability/SEAM.md`.

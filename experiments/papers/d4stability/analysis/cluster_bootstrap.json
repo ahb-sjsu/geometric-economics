@@ -1,0 +1,32 @@
+{
+  "CPC18 trial 1, all lotteries": {
+    "n_mixed_trials": 13927,
+    "n_mixed_problems": 137,
+    "dq_mixed": 0.9679026860177229,
+    "boot_sd": 0.31788210205778594,
+    "ci_lo": 0.24090542987504396,
+    "ci_hi": 1.483580144863712,
+    "contains_zero": false,
+    "n_bootstrap_ok": 400
+  },
+  "CPC18 trial 1, two-outcome only": {
+    "n_mixed_trials": 7923,
+    "n_mixed_problems": 81,
+    "dq_mixed": 0.7538052666885809,
+    "boot_sd": 0.5614258408450801,
+    "ci_lo": -0.8974273161283204,
+    "ci_hi": 1.379963719889054,
+    "contains_zero": true,
+    "n_bootstrap_ok": 400
+  },
+  "peterson description, individual": {
+    "n_mixed_trials": 55985,
+    "n_mixed_problems": 3314,
+    "dq_mixed": -0.029284507376803107,
+    "boot_sd": 0.054900071492422015,
+    "ci_lo": -0.13955883676930253,
+    "ci_hi": 0.07137017702906054,
+    "contains_zero": true,
+    "n_bootstrap_ok": 400
+  }
+}

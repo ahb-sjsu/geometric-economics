@@ -1,0 +1,29 @@
+==============================================================================
+PROBLEM-CLUSTERED UNCERTAINTY ON THE INTERIOR CHIRALITY
+==============================================================================
+resampling PROBLEMS with replacement, 400 draws, refitting each time
+
+CPC18 trial 1, all lotteries
+   mixed trials  13927 over   137 distinct problems (102 trials each)
+   d*q inside mixed            +0.9679
+   problem-clustered bootstrap  sd 0.3179   95% CI [+0.2409, +1.4836]
+   contains zero: NO
+
+CPC18 trial 1, two-outcome only
+   mixed trials   7923 over    81 distinct problems (98 trials each)
+   d*q inside mixed            +0.7538
+   problem-clustered bootstrap  sd 0.5614   95% CI [-0.8974, +1.3800]
+   contains zero: YES
+
+peterson description, individual
+   mixed trials  55985 over  3314 distinct problems (17 trials each)
+   d*q inside mixed            -0.0293
+   problem-clustered bootstrap  sd 0.0549   95% CI [-0.1396, +0.0714]
+   contains zero: YES
+
+==============================================================================
+  CPC18 trial 1, all lotteries       +0.9679  CI [+0.2409, +1.4836]  excludes 0
+  CPC18 trial 1, two-outcome only    +0.7538  CI [-0.8974, +1.3800]  includes 0
+  peterson description, individual   -0.0293  CI [-0.1396, +0.0714]  includes 0
+==============================================================================
+written cluster_bootstrap.json

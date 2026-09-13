@@ -1,0 +1,77 @@
+{
+  "CPC18 trial 1, all lotteries": {
+    "n": 26467,
+    "regime_fraction": {
+      "gain_only": 0.3957380889409453,
+      "mixed": 0.5262024407753051,
+      "loss_only": 0.07805947028374957
+    },
+    "pooled_dq": 0.504069614595251,
+    "pooled_dq_se": 0.044694842992043425,
+    "mixed_dq": 0.9679026860177229,
+    "mixed_dq_se": 0.09457655614555689,
+    "mixed_d2q2": -0.3048557875610078,
+    "mixed_d2q2_se": 0.11534379062200409
+  },
+  "CPC18 trial 1, two-outcome only": {
+    "n": 14614,
+    "regime_fraction": {
+      "gain_only": 0.3821677843164089,
+      "mixed": 0.5421513617079513,
+      "loss_only": 0.0756808539756398
+    },
+    "pooled_dq": 0.31642363744676255,
+    "pooled_dq_se": 0.06697552103254523,
+    "mixed_dq": 0.7538052666885809,
+    "mixed_dq_se": 0.1241409251933591,
+    "mixed_d2q2": -0.32405187998663915,
+    "mixed_d2q2_se": 0.1533598848140824
+  },
+  "choices13k aggregate, all": {
+    "n": 2346,
+    "regime_fraction": {
+      "gain_only": 0.3674339300937766,
+      "mixed": 0.5814151747655584,
+      "loss_only": 0.05115089514066496
+    },
+    "pooled_dq": 0.3178191577554627,
+    "pooled_dq_se": 0.1373796005853867,
+    "mixed_dq": 0.03374076588234712,
+    "mixed_dq_se": 0.17967669526811136,
+    "mixed_d2q2": -0.6187672220387648,
+    "mixed_d2q2_se": 0.28086101869265856
+  },
+  "choices13k aggregate, two-outcome": {
+    "n": 1282,
+    "regime_fraction": {
+      "gain_only": 0.36817472698907955,
+      "mixed": 0.5803432137285491,
+      "loss_only": 0.0514820592823713
+    },
+    "pooled_dq": 0.4365835173451597,
+    "pooled_dq_se": 0.1796227671695579,
+    "mixed_dq": 0.12230983139316494,
+    "mixed_dq_se": 0.2405333214529367,
+    "mixed_d2q2": -0.6944514944728046,
+    "mixed_d2q2_se": 0.40017214424681324
+  },
+  "peterson description, individual": {
+    "n": 95748,
+    "regime_fraction": {
+      "gain_only": 0.37198688223252707,
+      "mixed": 0.584711952207879,
+      "loss_only": 0.043301165559593936
+    },
+    "pooled_dq": 0.2505655821061855,
+    "pooled_dq_se": 0.02327216724668353,
+    "mixed_dq": -0.029284507376803107,
+    "mixed_dq_se": 0.030568041855950988,
+    "mixed_d2q2": -0.6370314997949421,
+    "mixed_d2q2_se": 0.04512239798882342
+  },
+  "summary": {
+    "corr_pooled_dq_with_gain_share": 0.5595560694278761,
+    "spread_pooled_dq": 0.2535040324890655,
+    "spread_mixed_dq": 0.997187193394526
+  }
+}

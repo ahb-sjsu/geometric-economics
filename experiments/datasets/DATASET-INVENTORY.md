@@ -217,3 +217,11 @@ across six independent lines. **No corpus would have settled this**, because the
 quantity being compared between corpora does not exist in the interior and is a
 probability effect at the corners. The search closing was right, the designed
 grid is unnecessary, and the interior question is answered.
+
+**And the deepest reason, same day.** A corpus of many subjects on few problems is
+a SMALL corpus for this question. The coordinate is a property of the problem, so
+the effective sample for a kappa coefficient is the number of distinct problems,
+not trials. CPC18's 26,467 first-trial rows are 137 mixed problems. Peterson's
+95,748 are 3,314. **The inventory above should have been counting problems all
+along**, and by that measure peterson is twenty-four times the corpus CPC18 is,
+which is why its intervals are the narrow ones.

@@ -50,7 +50,10 @@ recorded without reference to it. The consequence is visible in the record.
   `−0.0303 ± 0.0728`, never more than 0.8 se from zero on six independent
   lines. The "rectangle not square" verdict survives; the fourfold pattern is
   a corner phenomenon because at the corners it is a probability effect and
-  not a rotation. See `experiments/papers/d4stability/SEAM.md`.
+  not a rotation. A further caution: the coordinate is a property of the
+  problem, not the trial, so problem-clustered intervals are the right ones,
+  and under them CPC18's interior chirality includes zero. See
+  `experiments/papers/d4stability/SEAM.md`.
   fields **on a stratified lattice**. These two results are about the same group
   on the same kind of space and neither cites the other.
 - The **V₄ held-out test** failed 0 of 3 and concluded that V₄ is specific to the

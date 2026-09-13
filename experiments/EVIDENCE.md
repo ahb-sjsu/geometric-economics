@@ -91,6 +91,15 @@ of four experience press indices: never more than 0.8 se from zero in any of the
 is `d²−q²` at **−0.6943 ± 0.0873**. Do not read D₄ or V₄ onto the fourfold pattern; the pattern lives
 exactly where the coordinate degenerates. See `papers/d4stability/SEAM.md`.
 
+**Every standard error on a κ coefficient in this file is too narrow.** The coordinate (d, q) is a
+property of the PROBLEM, not the trial, so the effective sample for a κ coefficient is the number of
+distinct problems. Problem-clustered bootstrap against trial-level intervals: CPC18's clean two-outcome
+interior chirality goes from `+0.7538 ± 0.1241` to `± 0.5614`, a 4.5× inflation, and its 95% interval
+`[−0.897, +1.380]` **includes zero**. Peterson goes from `± 0.0306` to `± 0.0538`. CPC18's 26,467
+first-trial rows are 137 mixed problems at ~102 subjects each; more subjects on the same gambles buy
+precision about those gambles and nothing about how κ varies across the plane. The `+0.4438` that five
+registrations tried to replicate was never shown to differ from zero.
+
 **A caveat that now attaches to every κ coefficient in this file.** Estimating κ freely over the (d, q)
 plane, with no functional form imposed, the six-term quadratic explains a weighted **R² = 0.361** of the
 resulting surface, with a largest cell residual of 6.39 standard errors and a discontinuity of 1.29 in κ

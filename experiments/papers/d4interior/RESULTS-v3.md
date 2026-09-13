@@ -129,3 +129,19 @@ standard errors from zero across six independent lines.
 **This record said the earlier conclusion "happens to be right". It is right, and
 not by accident.** The fourfold `d·q` is a corner phenomenon because at the
 corners it is not a chirality. See `../d4stability/SEAM.md`.
+
+**Third forward note, same day, and it is the one that matters most to this
+record.** This registration asked whether choices13k reproduced CPC18's
+`+0.4438`, and judged it against a bar of `0.1043` derived from choices13k's own
+null. **It never asked whether `+0.4438` was itself distinguishable from zero.**
+
+With problem-clustered uncertainty it is not. CPC18's interior rests on about 137
+mixed problems at roughly 102 subjects each, and a problem-resampling bootstrap
+puts its clean two-outcome estimate at `+0.7538` with a 95 percent interval of
+`[−0.897, +1.380]`. Peterson's is `−0.0293` with `[−0.140, +0.071]`. **Those
+intervals overlap.**
+
+The F2 sign reversal this record reported is real as arithmetic and rests on a
+comparison whose reference value had no demonstrated sign. Nothing in the
+execution was wrong. The question could not be answered by the data it was asked
+of. See `../d4stability/SEAM.md`.

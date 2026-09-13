@@ -161,7 +161,13 @@ more than 0.8 standard errors from zero**. What the interior does contain is `d�
 **So the corner-phenomenon description is restored, and for a reason this paper did not have.** The
 fourfold `d·q` is a corner phenomenon because at the corners it is not a chirality at all. This section's
 group-theoretic reading of it should be withdrawn: the pattern lives exactly where the coordinate
-degenerates, and there the D₄ content is empty. See `../d4stability/SEAM.md`.
+degenerates, and there the D₄ content is empty.
+
+**And the intervals in this paper are too narrow.** The coordinate is a property of the problem, not
+the trial, so the effective sample for a κ coefficient is the number of distinct problems. CPC18's
+interior rests on about 137 mixed problems at ~102 subjects each; problem-clustered, its chirality is
+`+0.7538` with a 95% interval of `[−0.897, +1.380]`, which includes zero. Every κ interval reported
+here should be widened accordingly. See `../d4stability/SEAM.md`.
 
 ## 5. Discussion — structure or re-description?
 

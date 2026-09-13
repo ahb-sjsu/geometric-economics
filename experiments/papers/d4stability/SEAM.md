@@ -223,6 +223,83 @@ cannot lose**, and that this single fact accounts for the whole of the apparent
 win is not answered here, and this corpus does not contain enough pure-loss
 gambles to answer it.
 
+## The cross-corpus test, which failed, and what the failure taught
+
+The seam account makes a sharp prediction: if the pooled chirality is an
+accounting artifact of regime mixing, corpora should differ in the pooled value
+because they differ in regime composition, and should agree at about zero inside
+mixed gambles.
+
+**Both halves of that prediction failed, and the second failure was the useful
+one.** `cross_corpus_regimes.py` fits five corpora, including CPC18 at the
+individual trial level for the first time, taking first-trial rows from
+`cpc18_raw.csv` where no feedback has been given.
+
+| corpus | n | gain-only share | pooled `d·q` | `d·q` inside mixed |
+|---|---|---|---|---|
+| CPC18 trial 1, all lotteries | 26,467 | 0.40 | +0.5041 | **+0.9679** |
+| CPC18 trial 1, two-outcome | 14,614 | 0.38 | +0.3164 | **+0.7538** |
+| choices13k aggregate, all | 2,346 | 0.37 | +0.3178 | +0.0337 |
+| choices13k aggregate, two-outcome | 1,282 | 0.37 | +0.4366 | +0.1223 |
+| peterson description | 95,748 | 0.37 | +0.2506 | −0.0293 |
+
+**The regime shares are nearly identical**, 0.37 to 0.40, so composition has
+almost no variation with which to explain anything. And the spread of the mixed
+chirality across corpora, `0.997`, is four times the spread of the pooled one,
+`0.254`. On its face that says the interior chirality really does differ between
+corpora, by about ten trial-level standard errors, which would overturn
+everything above.
+
+## The standard errors were wrong, in this line and before it
+
+CPC18's 26,467 first-trial rows come from **270 games**, and its mixed subset is
+13,927 trials over **137 distinct problems**, about 102 subjects apiece. The
+coordinate `(d, q)` is a property of the problem, not of the trial. Ninety-eight
+people answering the same gamble do not supply ninety-eight independent
+observations about how kappa varies with that gamble's coordinate. **The
+effective sample for a `(d, q)` coefficient is the number of problems.**
+
+`cluster_bootstrap.py` resamples problems with replacement, 400 draws, refitting
+each time:
+
+| corpus | mixed trials | **problems** | `d·q` | trial-level se | **clustered se** | 95% CI | |
+|---|---|---|---|---|---|---|---|
+| CPC18, all lotteries | 13,927 | **137** | +0.9679 | 0.0946 | **0.3179** | [+0.241, +1.484] | excludes 0 |
+| CPC18, two-outcome | 7,923 | **81** | +0.7538 | 0.1241 | **0.5614** | **[−0.897, +1.380]** | **includes 0** |
+| peterson | 55,985 | **3,314** | −0.0293 | 0.0306 | 0.0538 | **[−0.140, +0.071]** | **includes 0** |
+
+The clustered standard error is **4.5 times** the trial-level one on CPC18's
+clean subset and 1.8 times on peterson, exactly as the ratio of cluster sizes
+predicts.
+
+**On like-for-like two-outcome data with honest uncertainty the intervals
+overlap.** CPC18 at `[−0.897, +1.380]` and peterson at `[−0.140, +0.071]` are not
+in conflict, and neither excludes zero. The ten standard error corpus difference
+was an artifact of counting 102 subjects on one gamble as 102 independent facts
+about that gamble's coordinate.
+
+The one row that still excludes zero, CPC18 with all lotteries, rests on the
+multi-branch approximation that reads a ten-branch lottery through three columns.
+That is the approximation this line has documented as unsound, so it is the
+weakest row in the table and not the one to build on.
+
+## What this means for the number that started everything
+
+CPC18's interior chirality of `+0.4438` is the estimate the whole lineage has
+been trying to replicate, across five registrations. **It rests on roughly 137
+mixed problems, and its honest problem-clustered uncertainty is on the order of
+`±0.3` to `±0.6`.**
+
+`prereg-d4interior-v3` asked whether choices13k reproduced it, and judged that
+against a bar of `0.1043` derived from choices13k's own null. **It never asked
+whether `+0.4438` was itself distinguishable from zero.** With clustered
+uncertainty on clean data, it is not.
+
+So the disagreement that launched `prereg-d4gate-v1`, `prereg-d4interior-v2`,
+`prereg-d4interior-v3`, `prereg-d4stability-v1` and `prereg-d4stability-v2` was
+between two numbers whose intervals always overlapped. The registrations were
+correctly executed and asked a question that the uncertainty could not support.
+
 ## Consequences
 
 1. **Do not report `d·q` as an interior structure.** Inside mixed gambles it is
@@ -240,6 +317,15 @@ gambles to answer it.
 5. **`d` is the wrong variable near its endpoints.** It is continuous in value
    and categorical in meaning, and any model smooth in `d` is wrong across the
    seam. Regime separation, or a mixedness indicator, is the minimum fix.
+6. **Cluster every standard error by problem.** Trial-level intervals on a
+   coefficient of `(d, q)` are wrong by the square root of the subjects per
+   problem, which is about ten on CPC18 and four on peterson. Every published
+   interval on a kappa coefficient in this programme is too narrow, and the
+   CPC18-derived ones are too narrow by a factor that changes conclusions.
+7. **A corpus of many subjects on few problems is a small corpus** for this
+   question. CPC18's 26,467 first-trial rows are 137 mixed problems. More
+   subjects on the same gambles buy precision about those gambles' choice rates
+   and nothing about how kappa varies across the plane.
 
 ## Reproduce
 
@@ -247,3 +333,5 @@ gambles to answer it.
     python seam_analysis.py       # Q1 to Q5
     python refine_structure.py    # the free surface and the equivalence tests
     python experience_arm.py      # the 382,992 decisions from experience
+    python cross_corpus_regimes.py  # five corpora, CPC18 at the trial level
+    python cluster_bootstrap.py     # problem-clustered uncertainty
