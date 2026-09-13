@@ -1,0 +1,29 @@
+{
+  "prereg": "prereg-d4gate-v1",
+  "n_total": 270,
+  "G1": {
+    "verdict": "FAIL",
+    "gamma": -0.046831904593780116,
+    "abs_gamma": 0.046831904593780116,
+    "bar": 0.2778192266034961,
+    "statement": "the chirality differs by gate"
+  },
+  "G2": {
+    "verdict": "PASS",
+    "c2_plus_gamma": -0.7381675187826697,
+    "abs": 0.7381675187826697,
+    "bar": 0.18095219285614153,
+    "statement": "a chirality is present where the gate fires"
+  },
+  "c2_uncertain": -0.6913356141888896,
+  "power_at_alternatives": {
+    "0.25": {
+      "G1": 0.2925,
+      "G2": 0.6025
+    },
+    "0.50": {
+      "G1": 0.9525,
+      "G2": 1.0
+    }
+  }
+}

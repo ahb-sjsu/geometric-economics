@@ -1,0 +1,23 @@
+{
+  "n_total": 270,
+  "n_certain": 169,
+  "n_uncertain": 101,
+  "n_nonzero_dq_certain": 81,
+  "n_nonzero_dq_uncertain": 36,
+  "n_pure_loss_certain": 16,
+  "n_pure_loss_uncertain": 4,
+  "bEV": 0.7598821720013686,
+  "coefficients": {
+    "const": -0.478972262829019,
+    "d2+q2": 0.3976075205702396,
+    "d*q": -0.6913356141888896,
+    "d": 0.23541285229049902,
+    "q": -0.24991745647845742,
+    "d2-q2": 0.1528076702533756,
+    "gate*d*q": -0.046831904593780116
+  },
+  "chirality_uncertain_c2": -0.6913356141888896,
+  "gate_increment_gamma": -0.046831904593780116,
+  "chirality_certain_c2_plus_gamma": -0.7381675187826697,
+  "nll": 168.9976625655541
+}

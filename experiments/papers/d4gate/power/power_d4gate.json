@@ -1,0 +1,35 @@
+{
+  "n_total": 270,
+  "n_certain": 169,
+  "n_uncertain": 101,
+  "n_nonzero_dq_certain": 81,
+  "n_nonzero_dq_uncertain": 36,
+  "n_pure_loss_certain": 16,
+  "n_pure_loss_uncertain": 4,
+  "subjects_per_game_median": 120,
+  "reps": 400,
+  "seed": 20260912,
+  "note": "outcomes never read; synthetic draws only",
+  "null": {
+    "T_gamma_95pct": 0.2778192266034961,
+    "T_presence_95pct": 0.18095219285614153
+  },
+  "power": {
+    "0.1": {
+      "G1_gating_power": 0.045,
+      "G2_presence_power": 0.075
+    },
+    "0.25": {
+      "G1_gating_power": 0.2925,
+      "G2_presence_power": 0.6025
+    },
+    "0.5": {
+      "G1_gating_power": 0.9525,
+      "G2_presence_power": 1.0
+    },
+    "1.0": {
+      "G1_gating_power": 1.0,
+      "G2_presence_power": 1.0
+    }
+  }
+}
