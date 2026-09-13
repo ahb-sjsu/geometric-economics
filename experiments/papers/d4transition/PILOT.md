@@ -58,6 +58,12 @@ making the switch, a positive price is a charge. The list is presented in a fixe
 ascending order and the direction of the effect is therefore known in advance,
 which is what V1 checks.
 
+**This range is provisional and the pilot's own per-cell check decides whether it
+survives.** A simulation with plausible noise censored the crossing pair's forward
+cell at 22 percent on this range and needed roughly four times the span to
+bracket it. The range is the first thing to widen if Section 7's per-cell check
+fails, and widening it costs nothing but rows.
+
 The recorded indifference price is the midpoint of the interval containing the
 single switch from accept to decline.
 
@@ -141,8 +147,22 @@ result is reported.
 - **A between-family component at or below zero.** The design then has no
   between-family variation to speak of at this sample, and the confirmatory study
   needs more families rather than more participants.
-- **Floor or ceiling.** If more than fifteen percent of lists switch at the first
-  or last row, the price range does not bracket indifference and must be widened.
+- **Floor or ceiling, checked per cell and not pooled.** If more than fifteen
+  percent of lists in ANY cell type switch at the first or last row, the price
+  range does not bracket indifference there and must be widened.
+
+  **The pooled version of this check does not work, and building the analysis
+  found out why.** Four of the six cells are controls, which sit near the middle
+  of the price range by construction, so they dilute the statistic. In a
+  self-test the pooled share was 3.7 percent, comfortably inside any budget,
+  while the crossing pair's forward cell was censored 22 percent of the time and
+  the between-family standard deviation came out at 0.228 against a planted
+  0.300. **A pooled share of four percent concealed a twenty four percent
+  attenuation of the very number the pilot exists to measure.**
+
+  The crossing pair's forward cell is the one that carries the excess and it is
+  therefore the one whose tails leave the range first. `pilot_analysis.py`
+  reports the share for every cell type and the check applies to the worst.
 
 ---
 
