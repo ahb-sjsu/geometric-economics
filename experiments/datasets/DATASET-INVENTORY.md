@@ -1,0 +1,101 @@
+# Risky-choice dataset inventory for the interior (d, q) question
+
+*Searched 2026-09-13, after `prereg-d4interior-v3` found the CPC18 interior
+chirality of `+0.4438` does not replicate on choices13k, coming out at `−0.1216`.
+The question was whether a third corpus exists or whether new data must be
+collected. Written down because a search whose result is "no" is worth as much as
+one whose result is "yes", and neither survives being left in a chat log.*
+
+## What we already had, and what each can say about the interior
+
+| Source | Interior rows | `d` coverage | Verdict |
+|---|---|---|---|
+| CPC18 | 270 | continuous | used, gives `+0.4438` with corners dropped |
+| choices13k, aggregate | 2,380 | continuous, 573 negative against 1,793 positive | used, gives `−0.1216` |
+| **Ruggeri / KT, 17 problems** | **0** | **every problem at `\|d\| = 1` exactly** | **cannot test the interior at all** |
+| Fraser-Nettle | n/a | ultimatum, not lotteries | n/a |
+| bogota, 110 games | n/a | games, not lotteries | n/a |
+| Global Preferences Survey | n/a | preference scores, not choices | n/a |
+
+The Ruggeri result is the structural one and is worth keeping in mind whenever
+the corners come up. **The Kahneman and Tversky canon is the corners.** All
+seventeen problems sit at `d = ±1`. That is why Part A of the rotation test works
+on it and why it is silent about the interior, not for want of subjects but
+because the stimuli do not live there.
+
+`/archive` on Atlas holds no lottery data beyond the Fraser-Nettle and Ruggeri
+files already local.
+
+## Kaggle
+
+Searched with the CLI. One relevant dataset, `kylefengkfeng209/would-you-take-this-gamble`,
+which is **choices13k re-uploaded with renamed columns**. Verified rather than
+assumed: 14,568 rows against 14,568, 13,006 problems against 13,006, and a
+maximum absolute difference in the choice rate of **0.0**. It adds nothing.
+
+Its companion, `kylefengkfeng209/can-llms-predict-human-choices`, is small but
+carries `human_datasets.csv`, an index of the human corpora used across
+LLM-versus-human studies. That index is what turned the search around.
+
+## Psych-101, which is the answer
+
+`marcelbinz/Psych-101` on HuggingFace, from Binz et al. 2025 in *Nature*.
+Downloaded and inspected on Atlas, no authentication needed. 60,092 participants,
+76 experiment files, 10.7 million choices, stored as natural-language transcripts
+of trial-by-trial behaviour.
+
+Risky-choice experiments in it, by participant count:
+
+| Experiment | Participants | What it is |
+|---|---|---|
+| `peterson2021using/exp1.csv` | **13,735** | choices13k **at the individual trial level** |
+| `wulff2018sampling/exp1.csv` | 3,942 | sampling paradigm |
+| `wulff2018description/exp1.csv` | 1,981 | description-experience meta-analysis |
+| `ruggeri2022globalizability/exp1.csv` | 11,937 | the KT corners, known to have no interior |
+| `frey2017cct`, `frey2017risk` | 1,368, 1,331 | Columbia Card Task, risk-taking battery |
+| `plonsky2018when/exp1.csv` | 216 | |
+
+**The transcripts are trivially parseable.** Both formats are fully regular:
+
+```
+Lottery W offers 4.0 points with 80.0% probability or 0.0 points with 20.0% probability.
+Option L delivers 10.0 points with 80.0% chance, or -25.0 points with 20.0% chance.
+You press <<B>>.
+```
+
+so `(H, p, L)` and the individual choice both come out with a regular expression.
+The `peterson2021using` sample above is a mixed gamble, gain and loss in one
+option, which is interior `d` by construction.
+
+## What each of these would and would not buy
+
+**`peterson2021using` fixes precision, not coverage.** It is the same 13,006
+problems as the choices13k we already used, so its `(d, q)` coverage is
+identical. What changes is that the target becomes an individual binary choice
+rather than a rate over a median of 16 subjects. That is a large gain in
+information and it makes a within-subject stability test possible, which the
+aggregate file cannot support. It is **not** an independent replication, because
+it is the same stimuli and the same people.
+
+**`wulff2018description` and `wulff2018sampling` are the candidates for new
+coverage.** They come from a different literature with differently constructed
+gambles, so their `(d, q)` occupancy is unknown and worth measuring. That
+measurement is covariates-only and can be done before any registration.
+
+**Nothing here is a designed interior grid.** All of it is opportunistic. The
+designed set in `experiments/papers/d4design/` remains the only thing that would
+place stimuli at chosen intermediate angles, and whether it is needed depends on
+what the Wulff coverage turns out to be.
+
+## Not obtained
+
+Rieskamp 2008, 180 pairs spanning gain, loss and mixed domains, and Glöckner and
+Pachur 2012, are the right shape and no public download was found. Author contact
+or institutional access would be needed.
+
+## The next step, if this line is resumed
+
+Parse `wulff2018description` and `wulff2018sampling`, measure their `(d, q)`
+occupancy against CPC18 and choices13k, and only then decide between a third
+corpus, an individual-level refit of `peterson2021using`, and the designed grid.
+That measurement reads stimuli only and commits nothing.
