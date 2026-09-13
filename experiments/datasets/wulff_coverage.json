@@ -1,0 +1,47 @@
+{
+  "wulff2018description": {
+    "corpus": "wulff2018description",
+    "n_problems": 1575,
+    "n_choices": 27835,
+    "d_min": -1.0,
+    "d_max": 1.0,
+    "d_distinct": 89,
+    "q_min": -0.9988300000000001,
+    "q_max": 1.0,
+    "n_d_negative": 794,
+    "n_d_zero": 11,
+    "n_d_positive": 770,
+    "n_interior_absd_lt_0p9": 189,
+    "dq_sd": 0.5780244461789528
+  },
+  "cpc18": {
+    "corpus": "cpc18",
+    "n_problems": 270,
+    "n_choices": 270,
+    "d_min": -1.0,
+    "d_max": 1.0,
+    "d_distinct": 126,
+    "q_min": -0.98,
+    "q_max": 1.0,
+    "n_d_negative": 58,
+    "n_d_zero": 5,
+    "n_d_positive": 207,
+    "n_interior_absd_lt_0p9": 122,
+    "dq_sd": 0.5637487476548569
+  },
+  "choices13k": {
+    "corpus": "choices13k",
+    "n_problems": 2380,
+    "n_choices": 2380,
+    "d_min": -1.0,
+    "d_max": 1.0,
+    "d_distinct": 849,
+    "q_min": -0.98,
+    "q_max": 1.0,
+    "n_d_negative": 573,
+    "n_d_zero": 16,
+    "n_d_positive": 1791,
+    "n_interior_absd_lt_0p9": 1244,
+    "dq_sd": 0.5168635887989825
+  }
+}

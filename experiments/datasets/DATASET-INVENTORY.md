@@ -93,9 +93,56 @@ Rieskamp 2008, 180 pairs spanning gain, loss and mixed domains, and Glöckner an
 Pachur 2012, are the right shape and no public download was found. Author contact
 or institutional access would be needed.
 
-## The next step, if this line is resumed
+## The Wulff coverage, measured 2026-09-13
 
-Parse `wulff2018description` and `wulff2018sampling`, measure their `(d, q)`
-occupancy against CPC18 and choices13k, and only then decide between a third
-corpus, an individual-level refit of `peterson2021using`, and the designed grid.
-That measurement reads stimuli only and commits nothing.
+`wulff2018sampling` is **excluded on inspection**. It is the experience paradigm,
+where the participant samples rather than being shown the lottery, so `(H, p, L)`
+never appears in the transcript and could only be inferred from observed draws.
+
+`wulff2018description` was parsed: 1,981 participants, 27,835 choices, 1,575
+distinct problems. The transcripts are fully regular and the coordinate was
+imported rather than restated. Measured against the two corpora already used, on
+identical metrics:
+
+| | wulff2018description | CPC18 | choices13k |
+|---|---|---|---|
+| distinct problems | 1,575 | 270 | 2,380 |
+| distinct `d` values | 89 | 126 | **849** |
+| `d < 0` / `d > 0` | 794 / 770 | 58 / 207 | 573 / 1,791 |
+| interior, `\|d\| < 0.9` | 189 | 122 | **1,244** |
+| **interior share** | **12.0%** | 45.2% | **52.3%** |
+| sd of `d·q` | 0.578 | 0.564 | 0.517 |
+
+**Wulff does not help.** It is 88 percent corners. Its one virtue is near-perfect
+sign balance, 794 negative against 770 positive, which neither other corpus has,
+but its interior holds 189 problems against the 1,244 choices13k already
+supplied. Adding it would add corners to a question about the interior.
+
+**choices13k is the best interior corpus available and it has already been used.**
+It carries more interior problems than the other two combined, ten times the
+distinct `d` values of Wulff, and it is what `prereg-d4interior-v3` ran on. The
+verdict there, no replication with a sign reversal at power 1.000, is therefore
+the best available evidence and not a limitation of the corpus.
+
+## What that leaves
+
+**The search for a third corpus is closed.** Nothing public has better interior
+coverage than the corpus already used, and the negative is worth as much as the
+positive would have been.
+
+Two routes remain and they answer different questions.
+
+1. **`peterson2021using` at the individual level.** Same 13,006 problems, so no
+   coverage gain, but the target becomes an individual binary choice from 13,735
+   participants instead of a rate over a median of 16. That buys precision and,
+   more usefully, makes a **within-subject** stability test possible. If the
+   chirality will not hold still inside one subject or one corpus, the
+   between-corpus disagreement needs no further explanation and the question is
+   closed without new data.
+2. **The designed grid** in `experiments/papers/d4design/`. Still the only way to
+   place stimuli at chosen intermediate angles, and still requiring a study to be
+   run. Worth doing only if the stability test says the quantity is real but
+   poorly sampled.
+
+Route 1 first. It is cheaper, it uses data in hand, and its likeliest outcome
+makes route 2 unnecessary.
