@@ -1,0 +1,31 @@
+{
+  "prereg": "prereg-d4interior-v3",
+  "title": "Does the Unpooled Interior Chirality Replicate on an Independent Corpus?",
+  "level": 1,
+  "author": "Andrew H. Bond, San Jose State University",
+  "supersedes": "prereg-d4interior-v2 (VOID under its own F3: Powell did not converge)",
+  "frozen_at": "2026-09-13",
+  "bars": {
+    "T_pos_one_sided": 0.10431881348530625,
+    "factor_two_band": [
+      0.2218875240708106,
+      0.8875500962832424
+    ],
+    "cpc18_estimate": 0.4437750481416212,
+    "grad_tol": 1e-05,
+    "held_in": "analysis/d4int_grade_v3.py"
+  },
+  "estimator": "convex Newton on the logistic log-loss, analysis/kappa_mle.py; design condition number 6.1; null mean -0.0011965; zero non-convergence in 2000 simulated draws",
+  "data": "choices13k c13k_selections.csv, Block==1 and Feedback==0, 2380 rows",
+  "bundle_files": [
+    "prereg-d4interior-v3.md",
+    "power/power_d4interior_v3.py"
+  ],
+  "component_sha256": {
+    "prereg-d4interior-v3.md": "50ee24f6251a5418f1637f13be755162a555044fb49018a0d95d150436981ff3",
+    "power/power_d4interior_v3.py": "8db7568cefabd6fe6b5f6bc89236fab80fa3b5dace15becff3b00fec55b4168a"
+  },
+  "hash_note": "sha256 per file with CRLF normalised to LF; combined = sha256 over concatenated digests in bundle order. Document finalised before hashing. The grader carries this hash so is not in the bundle; the signed tag protects it.",
+  "combined_sha256": "b18b1e8e12fdc4f4c8f06d4f4defbe719f49fb596b5e8890b52ccf919d62f807",
+  "osf_registration": "OWNER STEP, not yet registered"
+}
