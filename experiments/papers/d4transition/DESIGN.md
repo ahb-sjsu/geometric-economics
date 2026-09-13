@@ -169,15 +169,26 @@ collected.
 
 ## 7. Measurement
 
-Indifference price by staircase, not by a single accept or decline. Each pair and
-direction gets its own staircase with a declared starting price, step schedule and
-stopping rule, and the reported quantity is the reversal mean.
+Indifference price by **multiple price list**, not by staircase and not by a
+single accept or decline. `PILOT.md` Section 2 records why this changed. A
+staircase needs about a dozen trials per cell, and a participant seeing three
+families faces eighteen cells, which is more than two hundred trials before any
+redundancy. A price list gives the same indifference point in one screen of
+eleven rows.
+
+Prices are set as fractions of the family's own spread rather than in absolute
+units, because a family at a stake scale of five and one at eighty would
+otherwise be incomparable and the between-family variance would be mostly a
+variance in units.
+
+A list with more than one switch is non-monotone and is the analogue of a
+staircase failing to converge. It counts against the V3 budget of Section 10.
 
 Direction order is randomised within participant and counterbalanced across
 participants, so an order effect cannot align with a direction.
 
-The two directions of a pair are separated by at least a declared number of
-intervening trials, so that the second is not answered by recalling the first.
+The two directions of a pair are separated by at least four intervening cells, so
+that the second is not answered by recalling the first.
 
 ---
 
@@ -207,17 +218,21 @@ precision because it fell on the same 251 gambles.
 
 So the design is sized in pairs first.
 
-**Stage one, a pilot** of a declared number of participants on a declared number
-of pairs, whose only purpose is to estimate the between-pair standard deviation of
-the direction difference. No hypothesis is tested and no bar is set from it beyond
-the noise scale.
+**Stage one, a pilot**, specified in full in `PILOT.md`. 60 participants, 30
+families, 3 families each. Its only purpose is to estimate the variance
+components of the per-family excess, and it emits a variance decomposition and
+nothing else. **It does not compute the mean excess**, which is the estimand, and
+the analysis script is written so that it cannot. No hypothesis is tested and no
+bar is set from it beyond the noise scale.
 
 **Stage two** sizes the confirmatory study for a declared effect, expressed as a
 multiple of the pilot's between-pair standard deviation rather than in absolute
 units, because a bar in absolute units measures its own tolerance.
 
-Both stages resample pairs, not trials, for every interval. Held-out splits, if
-any, split by pair.
+Both stages resample **families**, not pairs and not trials, for every interval.
+The three pairs of a family share states and are not independent. Held-out splits,
+if any, split by family. `build_stimuli.py` reports 160 families on 35 distinct
+shapes, and the shape count is the conservative effective sample.
 
 ---
 
