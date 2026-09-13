@@ -1,7 +1,8 @@
-# The Fourfold Pattern is Not a Rotation, and the Space it Lives On is Not a Plane
+# A Measured Boundary Penalty, and Why the Fourfold Pattern is Not a Rotation
 
 *Structural paper. Draft 2026-09-13. Supersedes the group-theoretic reading in
-`paper_03_fourfold_symmetry.md`. Every number here comes from a sealed
+`paper_03_fourfold_symmetry.md` and reports a measured boundary penalty for the
+pathfinding framework of `geometric-methods` Chapter 6. Every number here comes from a sealed
 registration or a committed script, and the exploratory work is marked as such
 throughout.*
 
@@ -29,6 +30,22 @@ where it would have to live and the term that distinguishes the two axes is larg
 and negative. The two regions do not join smoothly. Risk sensitivity diverges as
 a gamble becomes barely mixed and reverses discontinuously when the last opposite
 branch is removed.
+
+The discontinuity is not a new phenomenon. Volume 1 of this series already builds
+pathfinding on decision manifolds around a cost with a smooth part and a
+discontinuous part, and already tabulates a penalty for crossings in which a
+dimension goes from positive to zero. A loss branch vanishing is exactly such a
+crossing. That volume assigns an infinite penalty to the sacred case, meaning the
+path is forbidden. Risk sensitivity is not sacred, so here the penalty is finite
+and we measure it. These are the first values of a boundary penalty in this
+programme that come from data rather than from stipulation.
+
+What we add to that framework is a warning about how its spaces are given
+coordinates. A dimension built as a balance between two magnitudes that cannot be
+negative saturates exactly where one of them is absent, which is exactly where the
+framework places a boundary. So the coordinate degenerates at the boundary it is
+meant to help detect, and a smooth model fitted across it does not merely miss the
+penalty. It reports structure that is not there.
 
 We also report that the disagreement between two published estimates, which five
 preregistrations were written to resolve, was never demonstrated. The coordinate
@@ -142,7 +159,7 @@ used for replication in Section 7.
 Every row is oriented by risk rather than by the order the transcript happened to
 declare the two options, and the builder refuses to write a corpus in which that
 fails. An earlier version of this analysis was void for exactly that error, and
-Section 13 reports it.
+Section 15 reports it.
 
 ---
 
@@ -466,90 +483,147 @@ can tell, and we cannot tell very far.**
 
 ---
 
-## 10. A degeneracy that is not about gambles
+## 10. A measured boundary penalty, in the framework that predicted one
 
-What generalises is not the fourfold pattern and not a symmetry. It is a fact
-about a kind of coordinate that appears wherever a quantity is built as a balance
-between two magnitudes that cannot be negative.
+The seam this paper reports is not a new phenomenon. It is an instance of one
+that Volume 1 of this series already defines, and the contribution here is a
+measurement rather than a mechanism.
+
+**What the framework already says.** `geometric-methods` Chapter 6 builds
+pathfinding on decision manifolds, and Definition 6.1 gives the edge weight of the
+decision complex as a smooth part and a discontinuous part,
+
+    w(a -> b) = Mahalanobis distance from a to b
+              + sum over k of beta_k times an indicator that boundary k is crossed
+
+Section 6.1.2, "The Boundary Discontinuity Problem", states the difficulty
+squarely. The decision spaces have discontinuous cost functions, a path crossing a
+boundary incurs an additional cost that no smooth distance function can predict,
+and Section 6.1.3 concludes that even a perfectly calibrated smooth heuristic
+remains inadmissible in their presence. Section 6.4.3 tabulates the boundary
+types with their penalties, and one row of that table is the boundary this paper
+measures.
+
+| boundary | condition | penalty |
+|---|---|---|
+| sacred value | any dimension goes from positive to zero | infinite |
+
+**A loss branch vanishing is exactly that condition.** The probability-weighted
+negative part of a gamble goes from positive to zero, and the gamble changes kind.
+The framework assigns an infinite penalty to such crossings for sacred dimensions,
+meaning the edge is removed and no path may use it.
+
+**What this paper supplies is the penalty, measured, in a domain where it is
+finite.** Risk sensitivity is not a sacred dimension and the crossing is not
+forbidden, so the penalty is large rather than infinite.
+
+| crossing | measured discontinuity in risk sensitivity |
+|---|---|
+| the loss branch is eliminated | `0.8737 plus or minus 0.2056`, 4.2 standard errors |
+| the gain branch is eliminated | `1.3390 plus or minus 0.2459`, 5.4 standard errors |
+
+These are the first values of a boundary penalty in this programme that come from
+data rather than from stipulation. Chapter 6's moral heuristic, `h_M(n)` as the
+sum over boundaries of `beta_k` times the probability of crossing boundary `k`,
+takes the penalties as inputs. They have been posited throughout. One is now
+measured.
+
+**Two cautions about that comparison.** The measured quantities are
+discontinuities in the risk-sensitivity modifier, not in the edge weight of a
+nine-dimensional complex, so they are penalties in the sense of the same
+structure and not in the same units. And Chapter 6 notes at Definition 6.1 that
+boundary penalties need not be symmetric, since crossing in one direction may be
+penalised where the reverse is not. **We cannot test that here.** Our stimuli are
+static gambles rather than transitions, so the two rows above are two different
+boundaries and not one boundary taken in two directions.
+
+## 11. What this adds to the boundary problem, and it is not good news
+
+Section 6.1.2 says a smooth heuristic cannot predict a boundary penalty. This
+paper reports a sharper failure, one that the chapter does not anticipate and
+that bears on how the complex is coordinatised in the first place.
+
+**If a stratum is parameterised by a normalised difference, the coordinate itself
+degenerates at the boundary, and a smooth model fitted across it does not merely
+miss the penalty. It manufactures structure that is not there.**
 
 **Proposition.** Let `a` and `b` be non-negative and not both zero, and let
+`d = (a - b) / (a + b)`. Then `d` equals plus one exactly when `b` is zero and
+minus one exactly when `a` is zero. On the set where `b` is zero the gradient of
+`d` vanishes, so any chart containing `d` drops rank there. And on that same set,
+for any other coordinate `x`, the product `d * x` is identically `x`. **The two
+columns are the same column.** A model fitted across both regions therefore lets
+the coefficient on `d * x` absorb whatever `x` effect exists on the degenerate
+set.
 
-    d = (a - b) / (a + b)
+Verified here rather than asserted. The Jacobian of the coordinate map has rank
+two on the mixed region and rank one on both unmixed regions, at four hundred of
+four hundred random points in each.
 
-Then
+**That is the whole story of this paper in one sentence.** A probability effect
+living on gambles that cannot lose was read as a rotation-covariant chirality on a
+plane, because on that set the product of the two coordinates is a relabelling of
+one of them.
 
-1. `d` lies in the closed interval from minus one to plus one.
-2. `d` equals plus one exactly when `b` is zero, and minus one exactly when `a` is
-   zero.
-3. On the set where `b` is zero, `d` is identically plus one, so its gradient
-   vanishes and any chart containing `d` drops rank there.
-4. On that same set, for any other coordinate `x`, the product `d * x` is
-   identically `x`. **The two columns are the same column.**
-5. Therefore in a model fitted across both the set where `b` is zero and the set
-   where it is positive, the coefficient on the interaction `d * x` absorbs
-   whatever `x` effect exists on the degenerate set.
+**The consequence for Chapter 6 is a chart-selection rule, not a correction.**
+Definition 6.1 embeds the complex in a nine-dimensional space and takes the metric
+from a precision matrix. Nothing in that construction requires any coordinate to
+be a normalised difference. But the moment a dimension is built as a balance
+between two non-negative magnitudes, benefit against harm, consonance against
+dissonance, one claim against a competing claim, that dimension saturates exactly
+where one magnitude is absent, which is exactly where Section 6.4.3 places a
+boundary. **The chart degenerates precisely at the boundary the chart is supposed
+to help detect.**
 
-Points one to four are immediate from the definition. Point five follows because a
-projection cannot separate two identical columns, so the pooled estimate is a
-precision-weighted compromise between the region where they differ and the region
-where they do not.
+The rule that follows is short. Wherever a bounded balance coordinate is
+introduced, ask what its endpoints mean. If they mean absence rather than
+extremity, they are a stratum boundary in the sense of Section 6.4.3, the chart
+must not be assumed to extend across them, and interaction terms built on that
+coordinate are unidentified on the far side.
 
-**The interpretation is the part worth carrying between domains.** The endpoints of
-a normalised difference are not quantitative extremes. They are the configurations
-in which one of the two magnitudes is **absent**, and absence is a categorical
-condition rather than a limit of presence. The coordinate reaches its boundary
-exactly where the object changes kind, and any interaction built on it is
-unidentified there.
+We audited the other volumes for this pattern and it has not spread to them in
+code. A search of the ethics, aesthetics, law, cognition, reasoning and
+observation repositories found no normalised-difference coordinate in use. This is
+a guard for future work rather than a retraction of existing work.
 
-**Written for other domains**, a balance between benefit and harm reaches plus one
-exactly at acts with no harm, a balance between consonance and dissonance reaches
-plus one exactly at works with no dissonance, and a balance between competing
-claims reaches plus one exactly where only one claim is in play. In each case the
-endpoint is a pure case, pure cases are a different kind of object, and an
-interaction fitted across them reports structure belonging to the pure cases
-alone.
+**A second kind of information loss.** Section 6.4.2 motivates behavioural
+friction by the Scalar Irrecoverability Theorem of Chapter 1, that scalar utility
+at a single state discards all but one dimension. The degeneracy above is a
+different loss and worth naming separately. It is not a projection from many
+dimensions to one at a point. It is a chart whose rank falls on a subset, so an
+open region of stimulus space is collapsed onto an edge of the coordinate square
+and the coefficients fitted there describe the edge rather than the region.
 
-**We audited the other volumes of this programme and the coordinate has not spread
-to them in code.** A search of the ethics, aesthetics, law, cognition, reasoning
-and observation repositories found no normalised-difference coordinate in use. The
-proposition is a guard for future work rather than a retraction of existing work,
-and the check it licenses is short. **Wherever a bounded balance coordinate is
-introduced, ask what its endpoints mean, and if they mean absence rather than
-extremity, fit the regions separately.**
+## 12. What this says about paths and goals
 
-## 11. What this says about paths and goals
+Chapter 6 already contains the pathfinding consequences, and we restate only what
+our measurements bear on.
 
-If choice is search for a good path through a space of possibilities, the shape of
-that space decides what a search can be.
+**The crossing cost is not small, and it is now known for one boundary.** Section
+6.5 defines the moral heuristic as a sum of penalties weighted by the probability
+of crossing each boundary, and proves an admissibility condition for it. That
+condition is stated in terms of the penalties. Supplying a measured penalty makes
+the condition checkable for one boundary in one domain instead of assumed.
 
-The space here is stratified by absence. The top piece holds possibilities in
-which both magnitudes are present, and the lower pieces hold those in which one is
-missing. They are not a continuum. Our measurements say the quantity governing
-behaviour does not extend continuously from the top piece to the lower ones and
-jumps by an amount comparable to its own range.
+**A heuristic smooth across this frontier underestimates by about the full range
+of the quantity it is estimating.** Risk sensitivity ranges over roughly one unit
+across the whole plane, and the discontinuity at the frontier is `0.87` and
+`1.34`. Section 6.1.2's claim that no smooth distance function can predict the
+penalty is, in this domain, not a small correction.
 
-Three consequences follow for any account of choice as path-finding, and we state
-them as consequences rather than as findings.
+**Our measurements say nothing about search.** We observe choices between two
+gambles, not trajectories through a complex. Everything in this section is what a
+measured boundary penalty implies for the machinery of Chapter 6, offered so the
+two can be checked against each other, and none of it is a test of that machinery.
 
-**A cost defined by one smooth formula over one chart will be wrong.** The chart
-degenerates on the lower pieces, so a formula fitted across them projects their
-behaviour onto terms that mean something else. That is exactly how a probability
-effect on the pure cases became a rotation on the plane.
+**The one thing we would want next is a transition.** Chapter 6's boundary
+penalties are properties of edges, and an edge is a change of state. A design in
+which the same participant faces a gamble before and after a branch is added or
+removed would measure the penalty as the chapter defines it, directionally, and
+would settle whether the asymmetry between our two frontiers is a property of the
+boundaries or of the two populations of gambles that sit on either side of them.
 
-**A heuristic smooth across the frontier will misestimate the cost of crossing
-it.** The jump we measure is the crossing cost and it is not small. An admissible
-heuristic for a search of this space needs the frontier as an explicit feature,
-not as a place where a smooth function happens to change quickly.
-
-**The interesting decisions are at the frontier.** A gamble with a one percent
-chance of loss and the same gamble with that branch deleted are adjacent in every
-continuous description and are treated very differently. If that is general, the
-crossings rather than the interiors are where a theory of choice earns its keep.
-
-We have not tested any of this as a model of search. It is what our measurements
-imply for one, and it is offered in that spirit.
-
-## 12. Three gaps, closed
+## 13. Three gaps, closed
 
 The first draft of this paper named three gaps. Closing them changed two of its
 conclusions and confirmed a third.
@@ -595,7 +669,7 @@ Every conclusion in Sections 5 through 9 is unchanged. **A rejected assumption
 that moves nothing is worth reporting precisely because the reflex is to assume it
 moved something.**
 
-## 13. Relation to the prior claims
+## 14. Relation to the prior claims
 
 **The original corner reading was right and its evidence was not.**
 `RESULTS_d4_rotation.md` concluded that the fourfold product is a corner
@@ -619,7 +693,7 @@ as a nuisance. It is the interior term.
 
 ---
 
-## 14. Negatives, withdrawals and errors
+## 15. Negatives, withdrawals and errors
 
 Reported here rather than in a file nobody opens.
 
@@ -677,7 +751,7 @@ cleanly. Estimating a misspecified model cleanly is not progress.
 
 ---
 
-## 15. Conclusion
+## 16. Conclusion
 
 A coordinate whose endpoint coincides with a categorical change in the stimulus
 will manufacture structure there. The gain and loss axis used throughout this
