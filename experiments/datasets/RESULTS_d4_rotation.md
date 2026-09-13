@@ -232,3 +232,38 @@ correctly executed and were asking a question the uncertainty could not support.
 More subjects on the same gambles buy precision about those gambles' choice rates
 and nothing about how kappa varies across the plane. See
 `../papers/d4stability/SEAM.md`.
+
+
+---
+
+**Addendum 2026-09-13, fourth and last. The complete tally.**
+
+Every feature of the kappa surface and the number of independent lines behind it.
+Detail in `../papers/d4stability/SEAM.md`.
+
+**`d·q` inside mixed gambles is indistinguishable from zero — twenty-one lines.**
+Description arm, full experience arm, four experience press indices separately,
+problem-clustered bootstrap interval `[−0.140, +0.071]`, twelve participant
+halves, the variance risk measure, the probit link. The single deviation is
+semi-deviation at `−0.178 ± 0.054`, on the same side of zero as the rest and
+nowhere near the `+0.2506` a pooled fit reports.
+
+**`d²−q²` inside mixed gambles is strongly negative — twenty-one lines, all
+negative**, from `−0.378` to `−0.813`. **This is the interior term.** Part B of
+this record had `d²−q² = +0.34` as the dominant rotation-breaking quantity, which
+was right in substance, opposite in sign because it was pooled across the seam,
+and mislabelled as a nuisance.
+
+**Regime separation predicts out of sample**, winning on 20 of 20 held-out splits
+made by problem rather than by trial, so it is not six extra parameters fitting
+noise.
+
+**The loss half of the fourfold pattern is not established.** The pure-loss
+q-slope is `−0.143 ± 0.120` and `+0.014 ± 0.063` across the two arms, opposite
+signs, both within a standard error of zero, on 4,146 rows. Only the gain half is
+demonstrated here, at `+0.30` to `+0.34` across six lines.
+
+**What the six-term model is worth.** It beats expected value alone on 20 of 20
+held-out splits, so there is real structure in the plane. It explains a weighted
+`R² = 0.361` of a freely estimated surface, so the coefficients are projections.
+Both are true and neither should be quoted without the other.

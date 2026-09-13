@@ -300,6 +300,90 @@ So the disagreement that launched `prereg-d4gate-v1`, `prereg-d4interior-v2`,
 between two numbers whose intervals always overlapped. The registrations were
 correctly executed and asked a question that the uncertainty could not support.
 
+## Held out, model form, and individual heterogeneity
+
+Three checks a claimed structure has to survive.
+
+**A. Held out, splitting by problem and never by trial.** 20 splits, half the
+problems fitted, the other half scored. A trial-level split would leak the answer
+across the fold boundary, since trials inside a problem share a coordinate.
+
+| model | held-out log-likelihood per trial | splits positive |
+|---|---|---|
+| EV only | −0.654463 ± 0.000310 | |
+| pooled six-term | −0.651589 ± 0.000310 | **20 of 20** over EV only |
+| **regime-separated** | **−0.649791 ± 0.000333** | **20 of 20** over pooled |
+
+**Regime separation pays out of sample, on every split.** The margin is small,
+`+0.0018` log-likelihood per trial, but it is not an in-sample artifact of six
+extra parameters. The six-term kappa also beats EV alone on every split, so there
+is real structure in the plane; it is simply much smaller than the coefficients
+made it look.
+
+**B. Model form.** Inside mixed gambles, varying the risk measure and the link.
+Standard errors carry the clustering factor of 1.76.
+
+| risk measure | link | `d·q` | `d²−q²` |
+|---|---|---|---|
+| standard deviation | logit | −0.0293 ± 0.0538 | **−0.6370 ± 0.0794** |
+| variance | logit | −0.0413 ± 0.0699 | **−0.8128 ± 0.0925** |
+| semi-deviation | logit | **−0.1783 ± 0.0542** | **−0.5364 ± 0.0783** |
+| standard deviation | probit | −0.0186 (−0.0297 logit-scaled) | −0.3961 |
+
+Range and Gini were skipped because some mixed pairs have equal risk under them,
+which would divide by nothing; that is reported rather than worked around.
+
+`d·q` is indistinguishable from zero under three of the four, and under
+semi-deviation it is `−0.178 ± 0.054`, **negative**. Under no measure and no link
+does it approach the `+0.2506` the pooled model reported. `d²−q²` is strongly
+negative under all four.
+
+**C. Individual heterogeneity.** Twelve random halves of participants, six splits,
+refitted inside mixed gambles.
+
+| | mean | sd across halves | range |
+|---|---|---|---|
+| `d·q` | −0.0292 | 0.0425 | [−0.0966, +0.0402] |
+| `d²−q²` | **−0.6369** | 0.0593 | **[−0.7278, −0.5460]** |
+
+`d²−q²` is strongly negative in **all twelve** halves and `d·q` straddles zero in
+all twelve. The structure is not an aggregation artifact: it is present in
+independent halves of the participant pool, and so is its absence.
+
+## The complete tally
+
+Every feature, and how many independent lines support it.
+
+**`d·q` inside mixed gambles is indistinguishable from zero.** Description arm;
+full experience arm; four experience press indices separately; problem-clustered
+bootstrap interval `[−0.140, +0.071]`; twelve participant halves; the variance
+risk measure; the probit link. **Twenty-one lines.** The one deviation is
+semi-deviation at `−0.178 ± 0.054`, which is on the same side of zero as
+everything else and nowhere near `+0.25`.
+
+**`d²−q²` inside mixed gambles is strongly negative.** Description `−0.694`;
+experience `−0.407`; four press indices from `−0.378` to `−0.460`; twelve
+participant halves from `−0.546` to `−0.728`; variance `−0.813`; semi-deviation
+`−0.536`; probit `−0.396`. **Twenty-one lines, all negative.**
+
+**The pooled `d·q` is manufactured at the seam.** `d·q` degenerates into `±q`
+where `|d| = 1`, which is exactly the unmixed gambles; the pure-gain q-slope of
+`+0.30` to `+0.34` across six lines accounts for nearly all of the pooled value,
+gain-only rows outnumbering loss-only nine to one.
+
+**Regime separation is real, not overfitting.** 20 of 20 held-out problem splits,
+and 195.8 and 398.0 in-sample log-likelihood units on 6 parameters in the two
+arms.
+
+**The loss half of the fourfold pattern is not established.** `loss_only:q` is
+`−0.143 ± 0.120` and `+0.014 ± 0.063` across the two arms, opposite signs, both
+within one standard error of zero, on 4,146 description rows.
+
+**The corpus disagreement was never demonstrated.** With problem-clustered
+uncertainty, CPC18's clean interior estimate is `+0.7538` with interval
+`[−0.897, +1.380]` and peterson's is `−0.0293` with `[−0.140, +0.071]`. They
+overlap and neither excludes zero.
+
 ## Consequences
 
 1. **Do not report `d·q` as an interior structure.** Inside mixed gambles it is
@@ -335,3 +419,4 @@ correctly executed and asked a question that the uncertainty could not support.
     python experience_arm.py      # the 382,992 decisions from experience
     python cross_corpus_regimes.py  # five corpora, CPC18 at the trial level
     python cluster_bootstrap.py     # problem-clustered uncertainty
+    python robustness.py            # held out, model form, heterogeneity
