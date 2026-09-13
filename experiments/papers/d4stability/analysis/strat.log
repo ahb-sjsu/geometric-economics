@@ -1,0 +1,95 @@
+==============================================================================
+T1. RANK OF THE COORDINATE MAP phi(H, p, L) = (d, q)
+==============================================================================
+  mixed, H > 0 > L         rank {2: 400}   (400 random points)
+  no loss branch, L > 0    rank {1: 400}   (400 random points)
+  no gain branch, H < 0    rank {1: 400}   (400 random points)
+
+  rank two on the mixed region and rank one on the unmixed regions is
+  the precise statement that the coordinate degenerates there.
+
+==============================================================================
+T2. IS d DIFFERENTIABLE ACROSS L = 0 ?
+==============================================================================
+  analytic one-sided derivatives at L = 0:
+    from the mixed side   dd/dL = 2(1-p)/(pH)
+    from the gain side    dd/dL = 0
+
+     H      p     numeric from below   analytic   from above
+    50.0   0.50           0.040000   0.040000    0.000000
+    20.0   0.80           0.025000   0.025000    0.000000
+    80.0   0.25           0.075000   0.075000    0.000000
+    10.0   0.60           0.133333   0.133333    0.000000
+
+  d is continuous and NOT differentiable at L = 0. The derivative
+  from the mixed side is bounded away from zero and the derivative
+  from the other side is exactly zero.
+
+==============================================================================
+T3. FRONTIER CONDITION FOR THE GRAPH OF kappa
+==============================================================================
+  Whitney A and B presuppose that the closure of the big stratum
+  contains the small one. For a graph that is an empirical question.
+
+    stratum                n      kappa       se
+    inside_0.00_0.02       768    +0.7091   0.1594
+    inside_0.02_0.05      1266    +0.6653   0.1390
+    inside_0.05_0.10      1736    +0.3588   0.1285
+    inside_0.10_0.20      3584    -0.1002   0.0796
+    edge                 35617    -0.1530   0.0253
+
+    limit from inside  +0.7091
+    value on the edge  -0.1530
+    difference         -0.8621 +/- 0.1614   (5.3 se)
+
+    FRONTIER CONDITION: FAILS. kappa does not extend continuously to the edge, so the
+    graph is not a stratified set and Whitney A and B are
+    INAPPLICABLE to it, not merely unverified.
+
+==============================================================================
+T4. WHITNEY A FOR THE GRAPH, IN THE q DIRECTION
+==============================================================================
+  if the frontier condition held, A would require the q slope of
+  kappa just inside to converge to the q slope on the edge.
+
+    stratum                   n     kappa_0      q slope
+    inside 0.00 to 0.02         768    +3.6660    -3.0986 +/- 2.9959
+    inside 0.02 to 0.05        1266    +0.6652    -0.0196 +/- 0.1639
+    inside 0.05 to 0.10        1736    +0.3007    +0.3155 +/- 0.1840
+    inside 0.10 to 0.20        3584    -0.0450    +0.1285 +/- 0.1543
+    edge                     35617    -0.0299    +0.3896 +/- 0.0406
+
+    innermost minus edge  -3.4882 +/- 2.9961   (1.2 se)
+    WHITNEY A in q: consistent
+
+==============================================================================
+T5. A SECOND SEAM. q JUMPS WHERE |H| = |L|
+==============================================================================
+  q = 2 p_salient - 1 and the salient outcome is the larger in
+  absolute value, so at |H| = |L| the definition switches and q
+  jumps by 2|2p - 1|.
+
+    |L| clearly larger   n  10663   mean q -0.346   mean jump if switched 0.979
+    |L| just larger      n   2082   mean q -0.074   mean jump if switched 0.867
+    |H| just larger      n   1319   mean q +0.218   mean jump if switched 0.737
+    |H| clearly larger   n  41921   mean q -0.220   mean jump if switched 0.906
+
+    rows within 12 percent of |H| = |L|: 3401
+
+==============================================================================
+T6. DOES kappa JUMP ACROSS THE SECOND SEAM?
+==============================================================================
+    log10 |H|/|L| band        n      kappa       se
+    lr_-10.00_-0.30           5212    +0.1774   0.0805
+    lr_-0.30_-0.10            4200    +0.2725   0.0767
+    lr_-0.10_-0.02            2183    -0.0025   0.0919
+    lr_-0.02_+0.00            1150    +0.2321   0.1193   <-- seam
+    lr_+0.00_+0.02             326    +0.1318   0.2987   <-- seam
+    lr_+0.02_+0.10            3073    -0.0164   0.0629
+    lr_+0.10_+0.30            8151    -0.0949   0.0304
+    lr_+0.30_+10.00          31690    -0.1209   0.0171
+
+    jump across |H| = |L|:  -0.1003 +/- 0.3216   (0.3 se)
+    no detectable jump, the seam is benign for kappa
+
+written stratification_theory.json
