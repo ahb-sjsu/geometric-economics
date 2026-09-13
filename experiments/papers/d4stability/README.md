@@ -1,4 +1,14 @@
-# prereg-d4stability-v1
+# prereg-d4stability-v1 — **VOID**
+
+> **This registration is VOID and none of its numbers may be cited.** The design
+> matrix was built as `A − B`, differencing the options in declaration order,
+> while the outcome was built as "chose the riskier option". Those disagree
+> whenever B is the riskier option, which is 74.8 percent of rows, so the risk
+> term was fitted with its sign reversed on most of the corpus. Reorienting
+> improves the fit by 2,675 log-likelihood units and **flips the chirality from
+> `−0.1775` to `+0.2506`**. See `RESULTS.md` for the full account and the fix.
+> `prereg-d4interior-v3` does not share the defect and stands.
+
 
 **Does the interior chirality `c2` hold still inside one corpus?**
 

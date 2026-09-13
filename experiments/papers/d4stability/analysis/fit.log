@@ -1,0 +1,15 @@
+whole corpus c2 = -0.177524 +/- 0.041219   grad 4.591e-07   rows 95748
+
+  fold  problems  trials      c2        se        grad norm   min eig
+     0      1394   23003  -0.181744  0.046680  7.853e-10   276.529
+     1      1392   23608  -0.134521  0.071376  4.547e-13   110.540
+     2      1441   24197  -0.088466  0.089667  1.837e-13    67.398
+     3      1447   24940  -0.208945  0.153845  5.290e-10    18.431
+
+  Q (studentised, the statistic)  1.077903
+  spread (sd of the four)         0.053108   reported, not tested
+  range  (max minus min)          0.120479
+  random-split null on Q: 2000 usable of 2000, mean 13.0150, 95th pct 33.6244
+  permutation p                   0.963018
+
+written results_stability_v1.json

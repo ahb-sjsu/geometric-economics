@@ -1,0 +1,51 @@
+{
+  "prereg": "prereg-d4stability-v1",
+  "bundle_sha256": "e598ccb0f37a4976a17b16b625c3e4fd6fc43d5ffd8d354a5a229db3eaeffc68",
+  "corpus": "peterson2021using/exp1.csv, first-press description trials",
+  "void": false,
+  "max_grad_inf_norm": 4.590618729594098e-07,
+  "c2_by_fold": [
+    -0.18174440196477762,
+    -0.13452060399724572,
+    -0.08846609739352991,
+    -0.20894538211773972
+  ],
+  "c2_whole_corpus": -0.17752372506020606,
+  "Q": 1.0779034422416112,
+  "se_by_fold": [
+    0.046679736433430166,
+    0.07137608903493468,
+    0.08966741824577225,
+    0.15384466723048607
+  ],
+  "spread_reported_not_tested": 0.053108494097696086,
+  "range": 0.12047928472420981,
+  "permutation_p": 0.9630184907546226,
+  "W1_composition_sensitivity": {
+    "bar": "permutation p on Q < 0.05",
+    "value": 0.9630184907546226,
+    "pass": false
+  },
+  "W2_sufficiency": {
+    "bar": "range >= 0.5653585378279767",
+    "value": 0.12047928472420981,
+    "pass": false
+  },
+  "W3_sign_instability": {
+    "bar": "fold estimates not all of one sign",
+    "value": [
+      -0.18174440196477762,
+      -0.13452060399724572,
+      -0.08846609739352991,
+      -0.20894538211773972
+    ],
+    "pass": false
+  },
+  "reference": {
+    "cpc18": 0.4437750481416212,
+    "choices13k": -0.12158348968635554,
+    "gap": 0.5653585378279767
+  },
+  "verdict": "W1 FAIL, W2 FAIL, W3 FAIL",
+  "F1": "W1 FAILED. c2 is stable against outcome scale inside this corpus. The CPC18 and choices13k disagreement is a real corpus-level difference and is not explained by stimulus composition on this axis. The question is NOT closed and the designed grid is the next step."
+}
