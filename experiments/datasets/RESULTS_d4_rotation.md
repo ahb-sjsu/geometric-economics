@@ -60,3 +60,12 @@ different kinds of thing (one carries loss aversion, the other does not).
   the interior test cleanly.
 
 *Reproduce: `python d4_rotation.py`.*
+
+---
+
+**See `D4_REHABILITATION.md` (2026-09-12).** The closing verdict above is scored
+against a continuous 90 degree rotation. The D4 framework of `sqnd-probe` does not
+claim one and was created by abandoning the continuous group for exactly that
+reason, so this negative lands on SU(2) rather than on D4. The measurements here
+are unaffected and none of them changes. Whether a gated rotation survives is an
+open question with an unrun registered test, Prediction G in that file.
