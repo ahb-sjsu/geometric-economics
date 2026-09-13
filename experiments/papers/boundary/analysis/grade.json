@@ -1,0 +1,141 @@
+{
+  "P1": {
+    "verdict": "PASS",
+    "g": 0.8174703130306047,
+    "lr_p": 2.290824638857191e-10,
+    "alpha": 0.01,
+    "conditions": {
+      "g_positive": true,
+      "lr_rejects": true
+    },
+    "statement": "money enters acceptance through the responder's income units"
+  },
+  "P2": {
+    "verdict": "PASS",
+    "lr_p": 0.18992092910446243,
+    "alpha": 0.05,
+    "df": 2,
+    "note": "PASS is NON-rejection. The registered simulation establishes size, not power against heterogeneity, so a pass is evidence consistent with one shared coordinate, not a demonstration.",
+    "ratio_descriptive_no_threshold": 2.3172434684755836,
+    "ratio_ci95_descriptive": [
+      1.1342651804432906,
+      9.69637072533147
+    ],
+    "statement": "one monetary coordinate, not three"
+  },
+  "P3": {
+    "verdict": "PASS",
+    "h_natural_log": 0.0714730976894586,
+    "h_per_log10": 0.16457288928985456,
+    "h_p": 0.4623964262835507,
+    "alpha": 0.05,
+    "bound_per_log10": 0.25,
+    "conditions": {
+      "not_significant": true,
+      "magnitude_under_bound": true
+    },
+    "statement": "nominal stake adds nothing given the offered amount and share"
+  },
+  "P4": {
+    "verdict": "PASS",
+    "margin_nats": 0.02,
+    "folds": [
+      {
+        "held_out": "SR",
+        "m1": 0.29238218474794686,
+        "own": 0.28990101638408555,
+        "signed_diff": 0.002481168363861308,
+        "abs_diff": 0.002481168363861308,
+        "pass": true
+      },
+      {
+        "held_out": "C",
+        "m1": 0.2537828103462594,
+        "own": 0.25196067433493813,
+        "signed_diff": 0.0018221360113212515,
+        "abs_diff": 0.0018221360113212515,
+        "pass": true
+      },
+      {
+        "held_out": "IN",
+        "m1": 0.6138684386195855,
+        "own": 0.6109573248399147,
+        "signed_diff": 0.002911113779670793,
+        "abs_diff": 0.002911113779670793,
+        "pass": true
+      }
+    ],
+    "reading": "'within 0.02 nats' is applied as 'not worse by more than 0.02', i.e. signed difference M1 minus own-fit <= 0.02. The absolute difference is reported alongside; if the two readings ever disagree, both are reported and the disagreement disclosed.",
+    "abs_reading_pass": true,
+    "statement": "the shared coordinate transfers across countries"
+  },
+  "P5": {
+    "verdict": "FAIL",
+    "margin_nats": 0.03,
+    "folds": [
+      {
+        "held_out": "SR",
+        "modelG": 0.32518589697203937,
+        "m1": 0.29238218474794686,
+        "signed_diff": 0.03280371222409251,
+        "pass": false
+      },
+      {
+        "held_out": "C",
+        "modelG": 0.31418256783999854,
+        "m1": 0.2537828103462594,
+        "signed_diff": 0.06039975749373916,
+        "pass": false
+      },
+      {
+        "held_out": "IN",
+        "modelG": 0.9385541236227045,
+        "m1": 0.6138684386195855,
+        "signed_diff": 0.324685685003119,
+        "pass": false
+      }
+    ],
+    "sigma1_sq": 10000.0,
+    "sigma1_upper_bound": 10000.0,
+    "sigma1_finite": false,
+    "note": "sigma_1^2 at its bound means the income rescaling did no work and Model G has collapsed to Part I's responder; that is a failure on its own regardless of log-loss.",
+    "statement": "the geometric responder matches the logit"
+  },
+  "P6": {
+    "verdict": "PASS",
+    "point_bound_pp": 1.5,
+    "ci_margin_pp": 3.0,
+    "studies": {
+      "SR": {
+        "slope_pp_per_decade": -0.012413619280138184,
+        "ci95": [
+          -0.024276719099292143,
+          -0.0005505194609842258
+        ],
+        "point_within_1p5": true,
+        "ci_excludes_3": true,
+        "pass": true
+      },
+      "C": {
+        "slope_pp_per_decade": -0.0014986516647666828,
+        "ci95": [
+          -0.03348595367158355,
+          0.030488650342050186
+        ],
+        "point_within_1p5": true,
+        "ci_excludes_3": true,
+        "pass": true
+      },
+      "IN": {
+        "slope_pp_per_decade": -0.046404245180454204,
+        "ci95": [
+          -0.059483638683967985,
+          -0.03332485167694042
+        ],
+        "prior_holds": false,
+        "note": "registered as prior knowledge, NOT a test; reported only"
+      }
+    },
+    "statement": "the boundary is on the responder side"
+  }
+}
