@@ -1,0 +1,44 @@
+{
+  "prereg": "prereg-d4stability-v1",
+  "title": "Is the Interior Chirality Stable Inside One Corpus?",
+  "level": 1,
+  "author": "Andrew H. Bond, San Jose State University",
+  "supersedes": null,
+  "follows": "prereg-d4interior-v3 (V1 FAIL, V2 FAIL, F2 fired)",
+  "frozen_at": "2026-09-13",
+  "bars": {
+    "W1_permutation_alpha": 0.05,
+    "W2_range_at_least": 0.5653585378279767,
+    "W3": "fold estimates not all of one sign",
+    "grad_tol": 1e-05,
+    "held_in": "analysis/d4stab_grade_v1.py"
+  },
+  "statistic": "sample sd of c2 across four folds split by log10 outcome scale, against random partitions of the problems into folds of the same sizes; each fold standardised on its own dEV and dSD columns",
+  "estimator": "convex Newton on the logistic log-loss, d4interior/analysis/kappa_mle.py",
+  "size_at_true_spread_zero": 0.025,
+  "data": "Psych-101 peterson2021using/exp1.csv, first-press description trials of strictly two-outcome problems, 95748 trials over 5674 problems from 13735 participants",
+  "press_accounting_balances": true,
+  "bundle_files": [
+    "analysis/peterson_parse.py",
+    "analysis/stability_rows.py",
+    "analysis/stability_stat.py",
+    "analysis/d4stab_fit_v1.py",
+    "analysis/launch_fit.sh",
+    "analysis/d4stab_grade_v1.py",
+    "power/power_d4stability_v1.py",
+    "prereg-d4stability-v1.md"
+  ],
+  "component_sha256": {
+    "analysis/peterson_parse.py": "a708eadbb13d3dd9135c50d57b827ffc19986c9040a61abc623812cb94618ce4",
+    "analysis/stability_rows.py": "ab5611a37eafb3284a532558eb9db8e2c48eb83e5984ce80cf3650b920050212",
+    "analysis/stability_stat.py": "d76b17014f60176b94241ef42ff11d7c8a5c0160b94d2bd664b6d5a69aeb5b37",
+    "analysis/d4stab_fit_v1.py": "8353a4edb396687ef51a29923268e834f9abfb8ca2052784ddab6bb0abc99b97",
+    "analysis/launch_fit.sh": "1ac2284683db8589013f4a063b88674d63ce8a01e4041a3289d6f00c9b1b306e",
+    "analysis/d4stab_grade_v1.py": "a25b9e82903425558d6cfdc1b7e91c98cf47f5e294be1ce68244f738318f0a29",
+    "power/power_d4stability_v1.py": "f41a85b3f95f401b1ae66a036552792a77bbce0b66305f88d2abead037361f76",
+    "prereg-d4stability-v1.md": "50dbae079872f19f25a875f1854606facffcadf4935ae028226d2be4c218fdfa"
+  },
+  "hash_note": "sha256 per file with CRLF normalised to LF; combined = sha256 over concatenated digests in bundle order. Document finalised before hashing. The grader IS in the bundle and reads this hash at run time rather than storing it.",
+  "combined_sha256": "e598ccb0f37a4976a17b16b625c3e4fd6fc43d5ffd8d354a5a229db3eaeffc68",
+  "osf_registration": "OWNER STEP, not yet registered"
+}

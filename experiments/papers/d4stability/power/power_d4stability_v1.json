@@ -1,0 +1,100 @@
+{
+  "seed": 20260913,
+  "replicates": 200,
+  "inner_permutations": 250,
+  "n_folds": 4,
+  "gap_cpc18_minus_c13k": 0.5653585378279767,
+  "generative_source": "results_v3.json",
+  "by_true_spread": {
+    "0.00": {
+      "true_fold_sd": 0.0,
+      "true_fold_offsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "replicates_used": 200,
+      "nonconvergent": 0,
+      "mean_Q": 2.9824244680226513,
+      "mean_observed_spread": 0.09189460475458057,
+      "mean_observed_range": 0.20630546519085974,
+      "mean_fold_c2": -0.1252809047233146,
+      "W1": 0.025,
+      "W2": 0.005,
+      "W3": 0.3
+    },
+    "0.10": {
+      "true_fold_sd": 0.1,
+      "true_fold_offsets": [
+        -0.1161895003862225,
+        -0.03872983346207417,
+        0.03872983346207417,
+        0.1161895003862225
+      ],
+      "replicates_used": 200,
+      "nonconvergent": 0,
+      "mean_Q": 7.559566715103485,
+      "mean_observed_spread": 0.13448713564640072,
+      "mean_observed_range": 0.2995096321341083,
+      "mean_fold_c2": -0.11388051317446468,
+      "W1": 0.315,
+      "W2": 0.04,
+      "W3": 0.64
+    },
+    "0.20": {
+      "true_fold_sd": 0.2,
+      "true_fold_offsets": [
+        -0.232379000772445,
+        -0.07745966692414834,
+        0.07745966692414834,
+        0.232379000772445
+      ],
+      "replicates_used": 200,
+      "nonconvergent": 0,
+      "mean_Q": 19.562364076647658,
+      "mean_observed_spread": 0.21820119183735961,
+      "mean_observed_range": 0.49186252519242984,
+      "mean_fold_c2": -0.11884415248979777,
+      "W1": 0.9,
+      "W2": 0.285,
+      "W3": 0.84
+    },
+    "0.30": {
+      "true_fold_sd": 0.3,
+      "true_fold_offsets": [
+        -0.3485685011586675,
+        -0.1161895003862225,
+        0.1161895003862225,
+        0.3485685011586675
+      ],
+      "replicates_used": 200,
+      "nonconvergent": 0,
+      "mean_Q": 38.356325377371384,
+      "mean_observed_spread": 0.31074148959480935,
+      "mean_observed_range": 0.7115821124696012,
+      "mean_fold_c2": -0.11694929826838568,
+      "W1": 1.0,
+      "W2": 0.795,
+      "W3": 0.955
+    },
+    "0.40": {
+      "true_fold_sd": 0.4,
+      "true_fold_offsets": [
+        -0.46475800154489,
+        -0.15491933384829668,
+        0.15491933384829668,
+        0.46475800154489
+      ],
+      "replicates_used": 200,
+      "nonconvergent": 0,
+      "mean_Q": 64.81378610013707,
+      "mean_observed_spread": 0.4102434804657106,
+      "mean_observed_range": 0.9422825512879376,
+      "mean_fold_c2": -0.11607815575337177,
+      "W1": 1.0,
+      "W2": 0.995,
+      "W3": 0.995
+    }
+  }
+}

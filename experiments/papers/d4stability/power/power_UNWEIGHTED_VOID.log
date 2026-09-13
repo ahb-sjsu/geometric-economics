@@ -1,0 +1,13 @@
+generative coefficients read from results_v3.json, not transcribed:
+    const    -0.093618
+    d2+q2    +0.174521
+    d*q      -0.121583
+    d        -0.664985
+    q        -0.212427
+    d2-q2    +0.256913
+    bEV      +0.531332
+
+trials 95748, problems 5674, fold sizes in problems [1394, 1392, 1441, 1447]
+fold sizes in trials [23003, 23608, 24197, 24940]
+
+  true fold sd 0.00 : W1 0.110  W2 0.005  W3 0.300   mean spread 0.0919  mean range 0.2063  mean fold c2 -0.1253  nonconv 0

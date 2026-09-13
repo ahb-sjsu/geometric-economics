@@ -1,0 +1,12 @@
+{
+  "n_participants": 13735,
+  "n_zero_trial_participants": 206,
+  "n_zero_trial_with_press_token": 206,
+  "n_zero_trial_with_option_line": 164,
+  "n_distinct_problems": 11408,
+  "n_zero_scale_problems": 2,
+  "n_both_options_certain": 50,
+  "n_overlap_c13k_any": 11212,
+  "n_overlap_c13k_description": 2062,
+  "n_c13k_description_problems": 2366
+}

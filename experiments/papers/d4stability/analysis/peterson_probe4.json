@@ -1,0 +1,64 @@
+{
+  "n_participants": 13735,
+  "press_accounting": {
+    "first_press_description": 96237,
+    "repeat_press_experience": 384948,
+    "ambiguous_unknown_probability": 113510,
+    "press_with_no_declared_menu": 502680,
+    "press_key_not_on_menu": 0
+  },
+  "press_tokens_total": 1097375,
+  "description": {
+    "n_trials": 96237,
+    "n_participants": 13529,
+    "n_distinct_problems": 5706,
+    "marginal_risky_rate": 0.48934401529557237,
+    "n_rows_zero_dSD": 489,
+    "n_rows_zero_scale": 14,
+    "n_d_negative": 22354,
+    "n_d_positive": 73240
+  },
+  "log10_scale_cuts": [
+    1.380211241711606,
+    1.5797835966168101,
+    1.7708520116421442
+  ],
+  "scale_folds": {
+    "0": {
+      "n_problems": 1417,
+      "n_trials": 23366,
+      "n_interior_trials": 9963,
+      "n_d_negative": 7626,
+      "n_d_positive": 15504,
+      "dq_sd": 0.5800130024228609,
+      "mean_abs_dSD": 4.98349186540274
+    },
+    "1": {
+      "n_problems": 1395,
+      "n_trials": 23648,
+      "n_interior_trials": 11358,
+      "n_d_negative": 5628,
+      "n_d_positive": 17887,
+      "dq_sd": 0.5242196685415706,
+      "mean_abs_dSD": 10.416979709523675
+    },
+    "2": {
+      "n_problems": 1443,
+      "n_trials": 24226,
+      "n_interior_trials": 14709,
+      "n_d_negative": 4464,
+      "n_d_positive": 19675,
+      "dq_sd": 0.4161816036726124,
+      "mean_abs_dSD": 18.700048386986662
+    },
+    "3": {
+      "n_problems": 1450,
+      "n_trials": 24983,
+      "n_interior_trials": 15372,
+      "n_d_negative": 4636,
+      "n_d_positive": 20174,
+      "dq_sd": 0.41699778339169313,
+      "mean_abs_dSD": 27.736829667796027
+    }
+  }
+}

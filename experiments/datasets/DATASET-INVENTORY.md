@@ -146,3 +146,45 @@ Two routes remain and they answer different questions.
 
 Route 1 first. It is cheaper, it uses data in hand, and its likeliest outcome
 makes route 2 unnecessary.
+
+## Route 1 was taken, and the corpus is not what the file above assumed
+
+`experiments/papers/d4stability/` holds the registration. Two corrections to what
+is written above are owed, both found by auditing the transcripts rather than
+trusting them.
+
+**`peterson2021using` is not 13,006 problems of usable description data.** A
+problem is declared once and then chosen from five times, with outcome feedback
+inline after each press, so only the first press on a problem is a decision from
+description. The other four are decisions from experience. A first parser took
+the first press and discarded the rest in silence, losing 91 percent of the
+corpus without saying so.
+
+**Most of its options are not two-outcome gambles.** Many are lotteries of three
+to ten branches written as a comma list. The coordinate `_opt_coords` is a
+two-outcome function and extending it would mean writing a new coordinate and
+calling it the old one, so those problems are excluded and counted.
+
+Every one of the 1,097,375 press tokens is now accounted for in a named bucket,
+and the buckets sum to the corpus:
+
+| bucket | presses | share |
+|---|---|---|
+| `first_press_description` | 96,237 | 8.77% |
+| `repeat_press_experience` | 384,948 | 35.08% |
+| `ambiguous_unknown_probability` | 210,965 | 19.22% |
+| `multi_outcome_out_of_scope` | 405,225 | 36.93% |
+| `press_with_no_declared_menu` | 0 | 0.00% |
+| `press_key_not_on_menu` | 0 | 0.00% |
+
+What is usable is **95,748 first-choice description trials over 5,674 strictly
+two-outcome problems from 13,735 participants**, which is 40 times the 2,380
+aggregate rows the v3 fit used and still the largest individual-level interior
+sample available.
+
+**A correction the record is owed.** Both CPC18 and choices13k contain
+multi-branch lotteries, 122 of 270 games and 1,095 of 2,380 rows, and the fits
+that produced `+0.4438` and `−0.1216` read only the `(H, p, L)` columns for all
+of them. That approximation is shared across both corpora, so it does not explain
+their disagreement, but it is a limit on what either number measures and it was
+not previously written down.

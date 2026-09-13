@@ -1,0 +1,65 @@
+{
+  "n_press_tokens": 1097375,
+  "n_trials_parsed": 96237,
+  "n_dropped": 1001138,
+  "dropped_fraction": 0.912302540152637,
+  "n_feedback_marker_lines": 934995,
+  "feedback_examples": [
+    "For some problems, you are told the points you received and missed out on after each selection, while for others this information is suppres",
+    "You press <<B>>. You receive 5.0 points by selecting this option. You would have received 10.0 points had you chosen the other option.",
+    "You press <<B>>. You receive 5.0 points by selecting this option. You would have received -25.0 points had you chosen the other option.",
+    "You press <<B>>. You receive 5.0 points by selecting this option. You would have received 10.0 points had you chosen the other option.",
+    "You press <<B>>. You receive 5.0 points by selecting this option. You would have received -25.0 points had you chosen the other option.",
+    "You press <<B>>. You receive 0.0 points by selecting this option. You would have received -25.0 points had you chosen the other option."
+  ],
+  "line_templates_top12": [
+    [
+      1592,
+      "You press <<Z>>. You receive # points by selecting this option. You would have received # points had you chosen the othe"
+    ],
+    [
+      1449,
+      "You press <<U>>. You receive # points by selecting this option. You would have received # points had you chosen the othe"
+    ],
+    [
+      1423,
+      "You press <<R>>. You receive # points by selecting this option. You would have received # points had you chosen the othe"
+    ],
+    [
+      1329,
+      "You press <<X>>. You receive # points by selecting this option. You would have received # points had you chosen the othe"
+    ],
+    [
+      1329,
+      "You press <<I>>. You receive # points by selecting this option. You would have received # points had you chosen the othe"
+    ],
+    [
+      1295,
+      "You press <<K>>. You receive # points by selecting this option. You would have received # points had you chosen the othe"
+    ],
+    [
+      1290,
+      "You press <<V>>. You receive # points by selecting this option. You would have received # points had you chosen the othe"
+    ],
+    [
+      1277,
+      "You press <<G>>. You receive # points by selecting this option. You would have received # points had you chosen the othe"
+    ],
+    [
+      1259,
+      "You press <<P>>. You receive # points by selecting this option. You would have received # points had you chosen the othe"
+    ],
+    [
+      1249,
+      "You press <<Q>>. You receive # points by selecting this option. You would have received # points had you chosen the othe"
+    ],
+    [
+      1230,
+      "You press <<Y>>. You receive # points by selecting this option. You would have received # points had you chosen the othe"
+    ],
+    [
+      1177,
+      "You press <<J>>. You receive # points by selecting this option. You would have received # points had you chosen the othe"
+    ]
+  ]
+}

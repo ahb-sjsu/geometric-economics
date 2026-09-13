@@ -1,0 +1,55 @@
+{
+  "n_participants": 13735,
+  "n_trials": 96237,
+  "n_distinct_problems": 11408,
+  "off_menu_press_tokens": 0,
+  "trials_per_participant": {
+    "min": 0,
+    "median": 7,
+    "max": 16
+  },
+  "participants_per_problem": {
+    "min": 1,
+    "median": 8,
+    "mean": 8.435922159887799,
+    "max": 32
+  },
+  "scale_invariance_violations": 0,
+  "log10_scale_quartile_cuts": [
+    1.380211241711606,
+    1.5797835966168101,
+    1.7708520116421442
+  ],
+  "scale_folds": {
+    "0": {
+      "n_problems": 2835,
+      "n_interior": 1214,
+      "n_d_negative": 921,
+      "n_d_positive": 1881,
+      "dq_sd": 0.5746594143286631
+    },
+    "1": {
+      "n_problems": 2789,
+      "n_interior": 1354,
+      "n_d_negative": 676,
+      "n_d_positive": 2097,
+      "dq_sd": 0.5253430563853801
+    },
+    "2": {
+      "n_problems": 2884,
+      "n_interior": 1730,
+      "n_d_negative": 538,
+      "n_d_positive": 2336,
+      "dq_sd": 0.41868100300047567
+    },
+    "3": {
+      "n_problems": 2900,
+      "n_interior": 1786,
+      "n_d_negative": 536,
+      "n_d_positive": 2346,
+      "dq_sd": 0.41500277317809864
+    }
+  },
+  "n_interior_total": 6084,
+  "d_distinct": 1336
+}

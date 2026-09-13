@@ -1,0 +1,406 @@
+{
+  "templates": [
+    [
+      1500,
+      "You will encounter a series of gambling problems where you have to select between two options."
+    ],
+    [
+      1500,
+      "You can select an option by pressing the corresponding key."
+    ],
+    [
+      1500,
+      "For some problems, you are told the points you received and missed out on after each selection, while for others this information is suppressed."
+    ],
+    [
+      1500,
+      "In cases where the probabilities are unknown, they sum up to one and remain constant within a problem."
+    ],
+    [
+      1455,
+      "Option N delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1450,
+      "Option G delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1405,
+      "Option M delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1362,
+      "Option L delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1351,
+      "Option S delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1350,
+      "Option X delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1349,
+      "Option K delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1347,
+      "Option V delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1346,
+      "Option C delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1339,
+      "Option W delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1307,
+      "Option D delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1306,
+      "Option F delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1297,
+      "Option Z delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1275,
+      "Option Y delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1247,
+      "Option I delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1226,
+      "Option H delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1192,
+      "Option U delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1176,
+      "Option T delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1175,
+      "Option E delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1174,
+      "Option B delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1146,
+      "Option J delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1145,
+      "Option R delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1082,
+      "Option O delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1066,
+      "Option P delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1043,
+      "Option A delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      1032,
+      "Option Q delivers # points with #% chance, or # points with #% chance."
+    ],
+    [
+      269,
+      "Option K delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      260,
+      "Option X delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      252,
+      "Option Y delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      251,
+      "Option G delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      251,
+      "Option D delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      244,
+      "Option S delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      239,
+      "Option V delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      231,
+      "Option B delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      225,
+      "Option I delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      222,
+      "Option C delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      218,
+      "Option L delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      211,
+      "Option M delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      204,
+      "Option H delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      199,
+      "Option U delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      198,
+      "Option Z delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      192,
+      "Option E delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      192,
+      "Option C delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      192,
+      "Option Z delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      189,
+      "Option P delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      188,
+      "Option W delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      187,
+      "Option R delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      184,
+      "Option T delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      182,
+      "Option U delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      180,
+      "Option I delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      178,
+      "Option G delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      175,
+      "Option T delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      171,
+      "Option J delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      171,
+      "Option A delivers either # points with #% chance, or # points with #% chance."
+    ],
+    [
+      170,
+      "Option W delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      169,
+      "Option N delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ]
+  ],
+  "unmatched_option_like": [
+    [
+      199,
+      "Option U delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      198,
+      "Option Z delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      192,
+      "Option E delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      192,
+      "Option C delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      180,
+      "Option I delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      178,
+      "Option G delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      175,
+      "Option T delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      170,
+      "Option W delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      169,
+      "Option N delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      168,
+      "Option F delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      166,
+      "Option R delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      162,
+      "Option K delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      162,
+      "Option Q delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      151,
+      "Option H delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      148,
+      "Option V delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      139,
+      "Option O delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      136,
+      "Option S delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      134,
+      "Option J delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      132,
+      "Option B delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      132,
+      "Option P delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      129,
+      "Option I delivers # points with #% chance, # points with #% chance, or # points with #% chance."
+    ],
+    [
+      127,
+      "Option G delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, or # points with #% chance."
+    ],
+    [
+      126,
+      "Option L delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      124,
+      "Option D delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      122,
+      "Option C delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, or # points with #% chance."
+    ],
+    [
+      122,
+      "Option X delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      122,
+      "Option Q delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, or # points with #% chance."
+    ],
+    [
+      121,
+      "Option T delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, or # points with #% chance."
+    ],
+    [
+      115,
+      "Option M delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      113,
+      "Option Q delivers # points with #% chance, # points with #% chance, or # points with #% chance."
+    ],
+    [
+      113,
+      "Option I delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, or # points with #% chance."
+    ],
+    [
+      111,
+      "Option K delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, or # points with #% chance."
+    ],
+    [
+      111,
+      "Option E delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, or # points with #% chance."
+    ],
+    [
+      111,
+      "Option A delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      109,
+      "Option K delivers # points with #% chance, # points with #% chance, or # points with #% chance."
+    ],
+    [
+      109,
+      "Option U delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, or # points with #% chance."
+    ],
+    [
+      107,
+      "Option Y delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, # points with #% "
+    ],
+    [
+      104,
+      "Option G delivers # points with #% chance, # points with #% chance, or # points with #% chance."
+    ],
+    [
+      104,
+      "Option Z delivers # points with #% chance, # points with #% chance, # points with #% chance, # points with #% chance, or # points with #% chance."
+    ],
+    [
+      103,
+      "Option C delivers # points with #% chance, # points with #% chance, or # points with #% chance."
+    ]
+  ]
+}
