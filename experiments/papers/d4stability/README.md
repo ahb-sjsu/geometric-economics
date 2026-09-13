@@ -1,4 +1,15 @@
-# prereg-d4stability-v1 — **VOID**
+# prereg-d4stability — is the interior chirality stable inside one corpus?
+
+**v2 is the live registration and it ran.** W1, W2 and W3 all PASS: the chirality
+is **not** stable, running from `+0.2279` at the smallest stakes to `−0.5003` at
+the largest, Cochran's Q `103.0` against a null mean of `9.93`, permutation
+`p = 0.0005`, range `0.728` against a bar of `0.565`. The reason is that the
+six-term model explains a weighted `R² = 0.361` of a freely estimated kappa
+surface. **Read `RESULTS-v2.md`.**
+
+---
+
+## v1 — **VOID**
 
 > **This registration is VOID and none of its numbers may be cited.** The design
 > matrix was built as `A − B`, differencing the options in declaration order,

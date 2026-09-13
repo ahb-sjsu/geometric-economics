@@ -95,3 +95,26 @@ imported the original code, the optimizer failure by an estimator verified
 against a known answer before being trusted, the threshold error by counting
 failures instead of aborting on them, and two transcription errors by reading the
 values back out of the record rather than from the draft.
+
+---
+
+**Forward note, 2026-09-13.** This record concluded that "no consistent interior
+chirality survives the pair" and that the earlier corner-phenomenon reading
+happens to be right. `prereg-d4stability-v2` sharpens both halves.
+
+The quantity is not merely inconsistent between corpora. Split **one** corpus of
+95,748 individual choices by stake size and the chirality runs `+0.2279`,
+`−0.2609`, `−0.4216`, `−0.5003`, Cochran's Q `103.0` against a null mean of
+`9.93`, permutation `p = 0.0005`, range `0.728` against the `0.565` gap this
+record was trying to explain. **Its own `−0.1216` is one draw from that spread**,
+not a corpus-level fact, and the same applies to CPC18's `+0.4438`.
+
+The cause is that the six-term model explains a weighted `R² = 0.361` of a freely
+estimated kappa surface. The record's conclusion still stands, and now for a
+third reason: there is no interior chirality to find because kappa is not a
+quadratic in `(d, q)`.
+
+Restricting this corpus to its 1,285 two-outcome rows, excluding the 1,095 with
+`LotNumB > 1` that the fit read through three columns, leaves the chirality at
+`−0.0659`. The multi-branch collapse is not what made it negative. See
+`../d4stability/RESULTS-v2.md`.

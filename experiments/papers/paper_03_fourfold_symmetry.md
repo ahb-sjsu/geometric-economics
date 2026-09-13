@@ -22,10 +22,18 @@ appears as the domain main effect. Two independent analyses — a polar reflecti
 gain/loss mirror, and the interaction decomposition of the fourfold cells — recover the **same**
 loss-aversion magnitude (a −0.8 mirror instead of a perfect −1; a domain main effect of the matching
 size). We further test whether V₄ lifts to the full dihedral group D₄ (a 90° rotation mixing the two
-axes) and find it does **not**: with mixed gambles filling the interior of the (domain, probability)
-plane, the rotation-covariant term vanishes and rotation-breaking terms dominate. The structure is a
+axes) and find it does **not**: at the corners the rotation-breaking E component is significant
+(χ² = 75.4, p = 4×10⁻¹⁷) and the free V₄ model beats the D₄-constrained model on BIC. The structure is a
 **rectangle (V₄), not a square (D₄)** — the value and probability axes are genuinely different kinds
 of thing.
+
+> **Correction, 2026-09-13.** This abstract previously also said the
+> rotation-covariant term vanishes in the interior. It does not. That `+0.003`
+> was pooled over seventeen corner rows, and the unpooled interior chirality is
+> neither zero nor stable: `prereg-d4stability-v2` moves it from `+0.23` to
+> `−0.50` across the stake quartiles of a single corpus of 95,748 individual
+> choices. The D₄ rejection is unaffected, resting on the corner E component
+> above. See §4 and `../datasets/RESULTS_d4_rotation.md`.
 
 **Important negative (§8).** A pre-registered held-out test on representative gambles (CPC18 +
 choices13k) does **not** replicate the V₄: there, probability has a substantial main effect on risk
@@ -111,9 +119,31 @@ convergence, not either number alone, is the paper's strongest evidence that the
 
 **No lift to D₄.** At the corners the chirality is 80% of the structure, but the E component is
 significant (likelihood-ratio χ² = 75, p = 4×10⁻¹⁷; the V₄/free model beats the D₄-constrained model on
-BIC). In the interior, the rotation-covariant d·q term **vanishes** (+0.003) while rotation-breaking
-terms dominate (d²−q² = +0.34). The fourfold d·q is a **corner** phenomenon; there is no continuous 90°
-symmetry. **Rectangle, not square.**
+BIC). That is the ground on which the lift fails. **Rectangle, not square.**
+
+**Correction, 2026-09-13. The interior supplies no second ground, and the six-term model is not a
+description of the interior at all.** This section previously read that the rotation-covariant `d·q`
+term vanishes in the interior at `+0.003`, making the fourfold pattern a corner phenomenon. Three
+things are now known and each is on record.
+
+*The `+0.003` was masked.* It is pooled over seventeen Kahneman and Tversky corner rows that dominate
+the likelihood. Dropping them moves the CPC18 interior chirality to `+0.4438`.
+
+*The unpooled quantity is not stable.* `prereg-d4stability-v2`, on 95,748 individual description choices,
+splits one corpus by stake size and gets `+0.2279`, `−0.2609`, `−0.4216`, `−0.5003`. Cochran's Q of
+`103.0` against a null mean of `9.93`, permutation `p = 0.0005`, a range of `0.728` that exceeds the
+entire gap between CPC18 and choices13k.
+
+*The reason is misspecification.* Estimating κ freely over cells of the `(d, q)` plane, the six-term
+quadratic explains a weighted **R² = 0.361** of the free surface, largest cell residual 6.39 standard
+errors. The dominant feature is a discontinuity at `|d| = 1`, where adjacent cells at `d = +0.962` and
+`d = +1.000` carry κ of `+0.7397` and `−0.5535` — a jump of `1.29` across `Δd = 0.038` that no smooth
+function of `(d, q)` can produce. Fitting a misspecified model to subsamples of differing composition
+moves its coefficients, which is what both the fold spread and the corpus disagreement are.
+
+A chiral component does survive: the free surface projects onto `d·q` at `+0.2155` without the term
+being imposed. **But it is a projection coefficient, not a parameter**, and the description of the
+fourfold `d·q` as a corner phenomenon is withdrawn rather than replaced.
 
 ## 5. Discussion — structure or re-description?
 

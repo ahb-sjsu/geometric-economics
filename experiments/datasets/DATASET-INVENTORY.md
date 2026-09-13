@@ -188,3 +188,23 @@ that produced `+0.4438` and `−0.1216` read only the `(H, p, L)` columns for al
 of them. That approximation is shared across both corpora, so it does not explain
 their disagreement, but it is a limit on what either number measures and it was
 not previously written down.
+
+## Outcome, 2026-09-13. The line is closed and the corpus search was the right call
+
+`prereg-d4stability-v2` ran on the peterson corpus described above and returned
+**W1, W2 and W3 all PASS**: the interior chirality is not stable, moving from
+`+0.2279` at the smallest stakes to `−0.5003` at the largest, with a range of
+`0.728` that exceeds the entire CPC18-to-choices13k gap of `0.565`.
+
+**The decision recorded above, to stop looking for a third corpus, was correct
+for a better reason than the one given.** A third corpus would have supplied a
+third draw from a spread this wide and settled nothing. The problem was never
+coverage. The six-term model explains a weighted `R² = 0.361` of a freely
+estimated kappa surface, so every corpus projects the same non-quadratic surface
+onto a different quadratic and no amount of additional sampling converges.
+
+The designed grid in `experiments/papers/d4design/` should not be run as
+specified either, for the same reason. It was built to estimate a quadratic kappa
+cleanly, and estimating a misspecified model cleanly is not progress.
+
+See `../papers/d4stability/RESULTS-v2.md`.

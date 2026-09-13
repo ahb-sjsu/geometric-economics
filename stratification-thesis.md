@@ -34,6 +34,15 @@ recorded without reference to it. The consequence is visible in the record.
   dominates on the Kahneman and Tversky corners at B = 0.80 and vanishes in the
   CPC18 interior at +0.003, and filed it as a clean negative, "rectangle not
   square, no continuous rotation". Meanwhile `sqnd-probe` builds D₄ lattice gauge
+
+  *Amended 2026-09-13.* The `+0.003` was pooled over seventeen corner rows,
+  and the unpooled interior chirality is neither zero nor stable: it runs
+  from `+0.23` to `−0.50` across the stake quartiles of one corpus of 95,748
+  individual choices (`prereg-d4stability-v2`, Q = 103, p = 0.0005). The
+  six-term model explains a weighted R² = 0.361 of a freely estimated kappa
+  surface, so the coefficients are projections rather than parameters. The
+  "rectangle not square" verdict survives on the corner E component alone.
+  See `experiments/papers/d4stability/RESULTS-v2.md`.
   fields **on a stratified lattice**. These two results are about the same group
   on the same kind of space and neither cites the other.
 - The **V₄ held-out test** failed 0 of 3 and concluded that V₄ is specific to the

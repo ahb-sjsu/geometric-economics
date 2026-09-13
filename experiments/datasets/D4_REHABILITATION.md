@@ -130,3 +130,30 @@ Kahneman and Tversky problems with β_EV < 0 against normal CPC18.
 sentence, that the missing rotation "is a real gap the data does not fill", reads
 as a verdict on the D₄ account and is a verdict on continuity. The underlying
 measurements are unaffected and none of them changes.
+
+---
+
+## Closing note, 2026-09-13. The rehabilitation is moot, for a reason neither side anticipated
+
+This document argued that the earlier verdict was scored against a continuous
+rotation the D₄ account does not claim, and that the rotation is gated rather
+than absent. The first half is a reading of two documents and nothing measured
+since touches it.
+
+The second half is now unanswerable as posed. **There is no stable interior
+chirality to be gated.** `prereg-d4stability-v2`, on 95,748 individual
+description choices, splits one corpus by stake size and finds the chirality
+running `+0.2279`, `−0.2609`, `−0.4216`, `−0.5003`, at a Cochran's Q of `103.0`
+against a random-split null mean of `9.93` and a permutation `p` of `0.0005`.
+The range, `0.728`, exceeds the whole CPC18-to-choices13k gap.
+
+And the cause is not gating. Adding `scale` and `(d·q) × scale` to kappa gives an
+interaction of `+0.0002 ± 0.0293`, so the chirality does not depend on stakes at
+all. What moves it is that **the six-term quadratic explains a weighted
+`R² = 0.361` of a freely estimated kappa surface**, so every subsample projects
+the same non-quadratic surface onto a different quadratic.
+
+A gating test needs a quantity that holds still when nothing is gating it. This
+one does not, because the model it lives in is the wrong shape. `prereg-d4gate-v1`
+remains void for its coordinate error and the gating claim remains untested, but
+it is not the next thing to test. See `../papers/d4stability/RESULTS-v2.md`.

@@ -164,13 +164,36 @@ CPT                      & 5 & $0.118 \pm 0.008$ \\
 \bottomrule
 \end{tabular}
 \begin{flushleft}
-\footnotesize{Errors are mean~$\pm$~s.d.\ across folds. \rev{[TODO: since all models are evaluated on the same folds, report the \emph{paired} per-fold differences (mean $\pm$ s.d.\ of GDT$-$competitor across the $20$ folds, or a paired $t$/Wilcoxon), which is the correct comparison; marginal $\pm$s.d.\ columns overstate uncertainty of the difference.]} The geometric model beats expected value out of sample and lands within one standard deviation of the domain-specialized CPT with one fewer parameter.}
+\footnotesize{Errors are mean~$\pm$~s.d.\ across folds. These marginal columns overstate the uncertainty of a \emph{difference}, because every model is scored on the same folds and the fold-to-fold spread is common to all of them. Table~\ref{tab:cpc18paired} reports the paired per-fold differences, which are the correct comparison.}
 \end{flushleft}
 \end{table}
 
-The domain-general geometry beats expected value, \rev{matches} linear random-utility (a margin within fold noise), and ties the domain-specialized champion with fewer parameters.
-% CUT: "edges out linear random-utility" -- 0.124 vs 0.128 with overlapping
-% fold s.d. is a tie until the paired-fold test says otherwise.
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.15}
+\caption{Paired Per-Fold Differences in Held-Out MAE, Same $20$ Folds}
+\label{tab:cpc18paired}
+\centering
+\begin{tabular}{l r c r}
+\toprule
+\textbf{Contrast} & \textbf{Mean diff.} & \textbf{95\% CI} & \textbf{Folds won} \\
+\midrule
+GDT $-$ EV  & $-0.0253$ & $[-0.0284,\,-0.0222]$ & $20/20$ \\
+GDT $-$ RUM & $-0.0042$ & $[-0.0058,\,-0.0026]$ & $18/20$ \\
+GDT $-$ CPT & $+0.0059$ & $[+0.0035,\,+0.0083]$ & $2/20$ \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize{Negative favours the geometric model. Intervals are Student-$t$ on the $20$ paired differences; all three contrasts also reject at $p<10^{-3}$ under a Wilcoxon signed-rank test, and the same ordering holds on held-out negative log-likelihood. Three contrasts on two metrics are reported together and should be read as one family; no multiplicity correction is applied.}
+\end{flushleft}
+\end{table}
+
+\rev{The domain-general geometry beats expected value on every fold and linear random-utility on $18$ of $20$, both intervals clear of zero. CPT leads it by a small but consistent margin, about $0.006$ MAE, with one more parameter.}
+% RESOLVED 2026-09-10: the paired-fold test was run (datasets/RESULTS_cpc18_perfold.md,
+% results_cpc18_perfold.csv). It settles the two readings this comment left open.
+% "edges out linear random-utility" is now supported: paired diff -0.0042,
+% 95% CI [-0.0058,-0.0026], 18/20 folds. And the CPT gap is NOT a tie: paired
+% diff +0.0059, CI [+0.0035,+0.0083], 2/20 folds, so "within one s.d." was the
+% wrong hedge and has been removed from the table note.
 On its home turf CPT should---and does---lead narrowly; the point is that the geometry is competitive there \emph{and} portable, which CPT is not.
 \rev{One comparison is deliberately absent and should be addressed head-on: the CPC18 competition itself was won by BEAST-family and hybrid machine-learning models~\cite{plonsky2019}, which outpredict CPT on this benchmark. We compare against parameter-matched, interpretable decision \emph{theories}, not against the competition leaderboard, because the question is whether a four-parameter portable metric is competitive with four-to-five-parameter domain theories---not whether it beats a many-mechanism forecasting model. [TODO: confirm this is the intended positioning and cite the exact BEAST/CPC18 results paper; a reviewer familiar with CPC18 will raise this within the first read.]}
 
@@ -478,7 +501,7 @@ Four structural conjectures that looked promising were killed by held-out or der
 \midrule
 A universal aversion angle (one constant across all domains) & Problem-selection confound: adversarial Kahneman--Tversky sets shift the angle; it holds only within comparable samples. \\
 A Shannon--Hartley conserved quantity in the polar encoding & The normalized risk weight sign-flips with stakes; adaptation, not conservation. The real link is rational inattention (about form, not a conserved quantity). \\
-$D_4$ dihedral symmetry of the fourfold pattern & The rotation-covariant term vanishes in the interior; the structure is $V_4$ (Klein four), a rectangle, not a square. \\
+$D_4$ dihedral symmetry of the fourfold pattern & At the corners the rotation-breaking $E$ component is significant ($\chi^2=75.4$, $p=4	imes10^{-17}$) and the free $V_4$ model beats the $D_4$-constrained model on BIC; the structure is $V_4$ (Klein four), a rectangle, not a square. An earlier version rejected $D_4$ on the ground that the rotation-covariant term vanishes in the interior. That estimate was pooled over seventeen corner rows, and the unpooled interior chirality is neither zero nor stable, moving from $+0.23$ to $-0.50$ across the stake quartiles of a single corpus of 95{,}748 individual choices. The rejection rests on the corner term alone. \\
 $V_4$ as a general law of risky choice & A pre-registered held-out test on representative gambles scored $0/3$; the $V_4$ is specific to the curated problem set, and is not derivable from the low-rank metric (which is EV-dominated). \\
 \bottomrule
 \end{tabular}

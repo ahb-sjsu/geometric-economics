@@ -70,11 +70,23 @@ stated to be disarmed, not leaned on.
 |---|---|
 | a **universal aversion angle** (one constant across all domains) | problem-selection confound: adversarial KT sets shift the angle; only holds within comparable samples |
 | a **Shannon-Hartley conserved quantity** in the polar encoding | the normalized risk weight sign-flips with stakes (fourfold) — adaptation, not conservation. The real link is rational inattention (about *form*, not a conserved quantity) |
-| **D₄ dihedral symmetry** (a rotation mixing value and probability) | V₄ only; the rotation-covariant term vanishes in the interior. Rectangle, not square |
+| **D₄ dihedral symmetry** (a rotation mixing value and probability) | V₄ only; at the corners the rotation-breaking E component is significant (χ² = 75.4, p = 4×10⁻¹⁷; free V₄ beats D₄-constrained on BIC). Rectangle, not square. **Corrected 2026-09-13:** this row previously read "the rotation-covariant term vanishes in the interior". That `+0.003` was pooled over 17 corner rows, and the interior chirality is neither zero nor stable — `prereg-d4stability-v2` moves it from `+0.23` to `−0.50` across stake quartiles of one corpus (Q = 103, p = 0.0005). The D₄ rejection stands on the corner E component alone |
 | **V₄ as a general law** of risky choice | pre-registered held-out test on representative gambles: **0/3**. The V₄ is specific to the *curated* KT problem set, not choice in general; and it is **not** derived from the metric (low-rank Σ is EV-dominated, ≈0 weight on the risk coordinate) |
 
 **Pattern:** every pretty structural overclaim was killed by a held-out or derivation test. That is the
 method working. The survivors above are what remains after the firing squad.
+
+**The graveyard is not exempt from re-examination.** The D₄ row retired a conjecture on the ground that
+the interior chirality vanishes. It does not vanish, the number that said so was masked by pooling, and
+the conjecture stays retired only because a second and independent ground holds. A rejection filed for
+the wrong reason is a claim like any other.
+
+**A caveat that now attaches to every κ coefficient in this file.** Estimating κ freely over the (d, q)
+plane, with no functional form imposed, the six-term quadratic explains a weighted **R² = 0.361** of the
+resulting surface, with a largest cell residual of 6.39 standard errors and a discontinuity of 1.29 in κ
+across Δd = 0.038 at the |d| = 1 boundary. The six coefficients are **projections of a surface the basis
+fits badly**, not parameters, and they move with whatever stimuli are in the sample. See
+`papers/d4stability/RESULTS-v2.md`.
 
 ## Track A status (the reflection-motif push) — RESOLVED with real data
 

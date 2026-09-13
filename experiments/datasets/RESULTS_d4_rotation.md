@@ -69,3 +69,62 @@ claim one and was created by abandoning the continuous group for exactly that
 reason, so this negative lands on SU(2) rather than on D4. The measurements here
 are unaffected and none of them changes. Whether a gated rotation survives is an
 open question with an unrun registered test, Prediction G in that file.
+
+---
+
+**Addendum 2026-09-13. Part B's interior number is a pooling artifact, and the
+six-term model it rests on describes about a third of the surface.**
+
+Part B reports the rotation-covariant chirality `d·q` at `+0.003` in the interior
+and concludes the fourfold pattern is a corner phenomenon. **The arithmetic is
+right. Both the number and the conclusion are superseded, for separate reasons.**
+
+**The number was masked.** `d4gate/analysis/diagnostic_pooling.py` reproduces
+`+0.003` exactly at `+0.0032`, then shows it is pooled over seventeen Kahneman
+and Tversky corner rows that dominate the likelihood. Dropping them moves the
+CPC18 interior chirality to `+0.4438`. The chirality does not vanish in the
+interior, and the sentence above saying it does should not be cited.
+
+**The conclusion cannot be rescued by unpooling either**, because the quantity
+is not stable. `prereg-d4stability-v2`, on 95,748 individual description choices
+from peterson2021using, split the corpus into four folds by outcome scale:
+
+| fold | `c2` | | registration | interior `d·q` |
+|---|---|---|---|---|
+| smallest stakes | **+0.2279** | | `prereg-d4interior-v3`, choices13k | `−0.1216` |
+| | −0.2609 | | `prereg-d4stability-v2`, whole corpus | `+0.2506` |
+| | −0.4216 | | CPC18, corners dropped | `+0.4438` |
+| largest stakes | **−0.5003** | | | |
+
+Cochran's Q of `103.0` against a random-split null mean of `9.93`, permutation
+`p = 0.0005`, range `0.728`. **One corpus split by stake size moves the chirality
+by more than the entire gap between CPC18 and choices13k.**
+
+**And the reason is that the model is wrong.** Estimating kappa freely, one
+coefficient per cell of the `(d, q)` plane with no functional form imposed, the
+six-term quadratic explains a weighted `R² = 0.361` of the resulting surface,
+with a largest cell residual of 6.39 standard errors. The strongest feature is a
+discontinuity at `|d| = 1`: two adjacent cells at `d = +0.962` and `d = +1.000`
+carry kappa of `+0.7397` and `−0.5535`, a jump of `1.29` across `Δd = 0.038`.
+No smooth function of `(d, q)` can do that.
+
+Fit a badly misspecified model to subsamples of different stimulus composition
+and its coefficients move, because each subsample projects the same
+non-quadratic surface onto a different quadratic. **The fold heterogeneity and
+the corpus-to-corpus disagreement are the same artifact seen twice.** A chiral
+component does survive, the free surface projecting onto `d·q` at `+0.2155`
+without the term being imposed, but it is a projection coefficient and not a
+parameter of anything.
+
+**The D₄ verdict itself stands, on Part A and not on Part B.** The E component is
+significant at the corners, likelihood-ratio `χ² = 75.4`, `p = 4×10⁻¹⁷`, and the
+free V₄ model beats the D₄-constrained model on BIC. Nothing here touches that.
+What changes is that the interior is not a second and independent reason, and the
+reading that the chirality lives only at the corners is wrong.
+
+See `../papers/d4stability/RESULTS-v2.md`. Note also that this record's own
+`d4_rotation.py` coordinate is a two-outcome function, while CPC18 contains 122
+multi-branch games of 270 and choices13k 1,095 rows of 2,380, all read through
+three columns. That approximation is shared across both corpora so it does not
+explain their disagreement, and restricting choices13k to its 1,285 two-outcome
+rows leaves the chirality at `−0.0659`, still negative.
