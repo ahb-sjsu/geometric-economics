@@ -1,0 +1,39 @@
+{
+  "prereg": "prereg-d4transition-v1",
+  "title": "Is a Boundary Penalty Directional? Measuring an Edge Asymmetry with Bidirectional Price Lists",
+  "level": 1,
+  "author": "Andrew H. Bond, San Jose State University",
+  "companion_to": [
+    "prereg-d4stability-v2",
+    "prereg-boundary-v1"
+  ],
+  "frozen_predictions": "P1 and P2 in prereg-d4transition-v1.md Section 9; void conditions Section 10; sample and power Section 11; falsifiers Section 12. P3 was removed before any data and arm B is not registered.",
+  "data": "NONE COLLECTED. This is a prospective registration. The pilot has not run and the confirmatory sample has not been collected. The document is frozen BEFORE the pilot deliberately, so that nothing the pilot measures can reach back into a bar or the sample size.",
+  "hash_note": "sha256 of each file with CRLF normalized to LF; combined = sha256 over the concatenated component hex digests in bundle_files order",
+  "frozen_at": "2026-09-14",
+  "bundle_files": [
+    "prereg-d4transition-v1.md",
+    "DESIGN.md",
+    "PILOT.md",
+    "grade_transition.py",
+    "power_transition.py",
+    "pilot_analysis.py",
+    "analysis_invariants.py",
+    "build_stimuli.py",
+    "session_builder.py",
+    "task_template.html"
+  ],
+  "component_sha256": {
+    "prereg-d4transition-v1.md": "0caeba0850a0342dc91b76b6ae2b309fba6f641e61d6b437aaa7e1757c3fe9f6",
+    "DESIGN.md": "4c2b924ae12a787300bcb796208e4a35489a81cc504b8abf20de97f12c310950",
+    "PILOT.md": "6a74db23820f18e1e1c4fe314286a2d2b5c56c5dd85e7bfe053c4f17e21c3189",
+    "grade_transition.py": "40caf8737a51fa33391c00156f1d3ac35bc477ca2237f8e2957613fe41e571ab",
+    "power_transition.py": "8a4b035ca21ec7f8b65d14cd06f549a55b4c986a5a9d43f6c71c7af4eb167938",
+    "pilot_analysis.py": "516a8957fe6d8e10f018261b8723a697ab250065a1f56584d1cee49abfda0c02",
+    "analysis_invariants.py": "51a4b167f8710a6383e59e41d45c213567f690ae17e4d225c5b33a69dc32b2b9",
+    "build_stimuli.py": "b42c9f2ca8c27427585694edf65faee4221809dadd524afe0c22aecff95509d8",
+    "session_builder.py": "56f42374bfbdbf591decf20ce9ec6f6dc3a24c41c7e3f0056868fa37d66a6aa0",
+    "task_template.html": "68c902a9de15beec33981d72235437f627479a98eb0bf6fa3cc3fb6fe2fa3a48"
+  },
+  "combined_sha256": "0cd07acd508904debdbab14db6799b105a3f4f456afb14a79e07933829867b47"
+}

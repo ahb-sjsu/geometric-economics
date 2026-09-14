@@ -275,17 +275,19 @@ price rows sit either side of the family's gain rather than either side of zero.
     python session_builder.py --arm B --write --html
     python roundtrip_check.py
 
-The scale is measured per arm and this is enforced, not merely intended. A
-response file must declare its arm, `pilot_analysis.py` names its output
-`pilot_scale_arm_A.json` or `pilot_scale_arm_B.json` accordingly, and
-`grade_transition.py` refuses a scale whose declared arm is not the one being
-graded. A scale from one arm does not set bars for the other, because the price
-unit differs: Arm A's rows are multiples of the gamble spread and Arm B's are
-multiples of the gain. P3 compares the arms standardised, each by its own
-between-family spread.
+**Arm B is not registered in v1**, so this pilot is Arm A's. Arm B's instrument
+exists and running it would need its own pilot, because the scale is per arm and
+the arms do not share a price unit: Arm A's rows are multiples of the gamble
+spread, Arm B's are multiples of the gain. That is enforced rather than intended.
+A response file declares its arm, `pilot_analysis.py` names its output for that
+arm, and `grade_transition.py` refuses a scale whose arm does not match.
 
-Running both arms therefore needs a scale for each, so the pilot is either run
-twice or split across the arms.
+**What this pilot is for has narrowed.** Section 11 of the registration is sealed
+and did not need it: the bar and the estimate share units, so the scale cancels
+out of the power calculation. The pilot measures the RATIO `r` of participant and
+residual variance to family variance, which says which row of the registered
+table the study is in, and it runs the instrument checks below. It cannot move a
+bar or the sample size. Both are sealed before it runs.
 
 ## 11. Running it
 

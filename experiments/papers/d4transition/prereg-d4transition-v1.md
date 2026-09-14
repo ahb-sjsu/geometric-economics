@@ -263,35 +263,40 @@ must be bit identical with no family lost. A fourth broken pipeline in `I0`
 writes Arm A's control names into its own source, is correct on Arm A, and loses
 all 60 families on Arm B without raising.
 
-### 8.3 One scale per arm, and P3 restated
+### 8.3 Arm B is built and NOT REGISTERED in v1
 
 Arm A prices in multiples of a gamble's spread and Arm B in multiples of a
 permission's gain. Both excesses are money, but their magnitudes are set by
 unrelated design quantities, so **the raw difference between them is not a
 comparison of effect sizes and one arm's noise cannot bar the other's.**
 
-Each arm therefore carries its own sealed scale, `pilot_scale_arm_A.json` and
-`pilot_scale_arm_B.json`, and **P3 compares the arms standardised**, each divided
-by its own between-family spread. `P3_MULTIPLIER` is consequently dimensionless,
-where `P1_MULTIPLIER` is in Arm A's sigma. The multiplier's number is unchanged
-at 1.0 and its meaning is not, which is a change made before any data and
-recorded here because it could not be made after.
+Each arm therefore carries its own scale, `pilot_scale_arm_A.json` and
+`pilot_scale_arm_B.json`, and a scale file declares its arm so the grader can
+refuse one that does not match.
 
-The grader previously read one `pilot_scale.json` and tested
-`(exB - exA) > P3_MULTIPLIER * sigma`. Section 10b of `PILOT.md` already said the
-scale is measured per arm; the grader had not been brought along. It now refuses
-a scale whose declared arm does not match the one being graded, refuses a
-pre-split `pilot_scale.json` outright rather than reading it as either arm, and
-reports P3 NOT TESTED when Arm B ran but its scale is absent, rather than
-standing Arm A's in for it. A self-test grades identical raw excesses under two
-different Arm B spreads and the verdict follows, which under one shared scale
-would have been the same run twice.
+**P3 HAS BEEN REMOVED FROM THIS REGISTRATION**, before any data. It required Arm
+B's excess to exceed Arm A's, each standardised by its own spread. Arm B is built
+end to end and collecting it is a separate decision: it needs its own pilot and
+roughly doubles the sample. Registering a prediction nobody has decided to test
+would put a bar in the record with no intention behind it, and carrying it as
+NOT TESTED forever is worse than removing it while that is still free. **The
+grader no longer scores Arm B at all.** If a result carries Arm B numbers they are
+reported back untouched and labelled unregistered, because dropping them would
+hide a measurement and grading them would register a prediction after the fact.
 
-**What is still missing for Arm B is people.** Ethics approval, recruitment and
-the decision to run are the owner's, as for Arm A. A scale is needed per arm, so
-the pilot is either run twice or split. P3 remains NOT TESTED until Arm B data
-exists, and the grader reports it as such rather than as a failure, which was a
-defect found while writing this document and fixed.
+A later registration may add the arm back. What is written now is what it would
+read, which is why the per-arm scale guard stays.
+
+While P3 still existed the grader read one `pilot_scale.json` and tested
+`(exB - exA) > multiplier * sigma`, subtracting two quantities whose scales have
+nothing to do with each other and barring the result with Arm A's noise. Section
+10b of `PILOT.md` already said the scale is measured per arm; the grader had not
+been brought along. That was fixed before P3 was removed, and the per-arm guard
+outlived the prediction it was written for.
+
+**What Arm B still needs is a decision and then people.** Its own pilot, its own
+scale, and roughly twice the sample. Ethics approval, recruitment and the
+decision to run are the owner's.
 
 **Arm B runs through Arm A's analysis unchanged.** The pair names are read from
 the data rather than hardcoded, since a hardcoded lookup would have missed every
@@ -310,10 +315,16 @@ Bars live in `analysis/grade_transition.py` and nowhere else. The multipliers ar
 - **P2, it is directional.** The excess is positive, meaning acquiring a loss
   branch costs more than shedding it, and beyond two of its own standard errors.
   The sign convention is declared in the grader so it cannot be chosen later.
-- **P3, permissions differ from outcomes.** Arm B's excess exceeds Arm A's by
-  `1.0` pilot sigmas. **Not testable unless Section 8 is resolved.**
+**There is no P3.** A third prediction, that Arm B's excess exceeds Arm A's,
+was carried in the draft and **removed before any data** when Arm B was left out
+of this registration. See Section 8.3.
 
 Reported separately. **No composite verdict.**
+
+Neither prediction is sized the same way, and Section 11 says which is which. P2
+is what the sample buys. **P1 cannot be bought with sample at all**, because its
+bar is in the same units as the estimate, so a reader who sees P1 fail should
+know the sample was never what stood in its way.
 
 ## 10. Void conditions
 
@@ -342,22 +353,67 @@ F1, and that a penalty in the wrong direction is reported as such.
 
 ## 11. Power and size
 
-**PENDING THE PILOT.** This section is the only thing standing between this draft
-and a seal.
+The scale cancels, so this section did not need the pilot after all.
 
-Every bar in Section 9 is a multiple of the between-family standard deviation of
-the excess. **The multipliers are fixed and committed. The scale is not known.**
-The pilot measures it and nothing else, emitting a variance decomposition from
-which the scale at any number of participants per family follows.
+P1's bar is `excess > 2.5 x sigma_fam`, stated in the same units as the quantity
+it bars, so the absolute scale never enters. Writing the excess for participant
+`j` in family `i` as `d x sigma_fam + a_i + b_j + e_ij`, and `r` for
+`(var_part + var_res) / var_fam`, the estimator averages within family, then
+across families, and resamples families, so
 
-**The pilot must not be used to choose the multipliers.** They are already
-committed. If the measured scale makes the study infeasible at any reasonable
-sample, the correct response is to say so and stop, not to lower a bar.
+    SE = sigma_fam x sqrt(1 + r/k) / sqrt(n_fam)
 
-**A scale from simulated responses cannot be used.** `pilot_analysis.py` requires
-responses to declare their source and writes a simulated run to a different
-filename, and the grader refuses any scale not marked human. A rehearsal on
-simulated data confirms the chain runs and its numbers set nothing.
+**`sigma_fam` is in the bar and in the estimate alike and divides out.** Only the
+RATIO `r` and the design numbers matter. `power_transition.py` computes this and
+**checks the algebra against Monte Carlo with the estimator the study actually
+uses**, worst disagreement 0.008 against a bar of 0.05, across `sigma_fam` from
+0.05 to 2.50, which is the cancellation shown rather than asserted.
+
+**P1 CANNOT BE SIZED, AND SAYING SO IS PART OF THE REGISTRATION.** Its power is
+`Phi((d - 2.5) sqrt(n_fam) / sqrt(1 + r/k))`, which goes to one above the bar and
+to zero below it, so `n_fam` sharpens the step and does not move it. At `r = 6`:
+
+| true `d` | n=40 | n=80 | n=160 | n=640 |
+|---|---|---|---|---|
+| 2.0 | 0.013 | 0.001 | 0.000 | 0.000 |
+| 2.4 | 0.327 | 0.264 | 0.186 | 0.037 |
+| 2.6 | 0.673 | 0.736 | 0.814 | 0.963 |
+| 3.0 | 0.987 | 0.999 | 1.000 | 1.000 |
+
+Below the bar, **more families make P1 less likely to pass, not more.** No sample
+rescues a true effect under 2.5 `sigma_fam`. A reader who sees P1 fail should know
+the sample was never what stood in its way.
+
+**The study is therefore sized on P2**, whose bar is the ordinary one. Families
+needed at 6 participants each, 90 percent power:
+
+| smallest `d` | r=1 | r=3 | r=6 | r=10 |
+|---|---|---|---|---|
+| 0.20 | 315 | 404 | 539 | 718 |
+| 0.35 | 103 | 132 | 176 | 235 |
+| 0.50 | 51 | 65 | 87 | 115 |
+| 1.00 | 13 | 17 | 22 | 29 |
+
+**REGISTERED SAMPLE: 115 families, 6 participants per family, 230 participants**,
+each seeing 3 families. That is 90 percent power for P2 at `d = 0.50 sigma_fam`
+**under the worst `r` in the table**, chosen that way so that whatever the pilot
+measures the sample stands. Sizing at the middle of the range would mean revising
+the sample after a measurement, which is how a design starts negotiating with its
+data. The stimulus set holds 160 families on 35 shapes and can supply it. What the
+sample reaches at 90 percent power, by what the pilot finds:
+
+| `r` | smallest `d` detectable |
+|---|---|
+| 1 | 0.331 |
+| 3 | 0.375 |
+| 6 | 0.433 |
+| 10 | 0.500 |
+
+**The pilot's role is now narrow and it cannot move a bar or a sample size.** It
+measures `r`, which says which row of the last table applies, and it runs its own
+failure conditions on the instrument, including the resolution floor. If it finds
+`r` above 10, the correct response is to report that the design cannot reach
+`d = 0.50`, not to lower a bar. The multipliers are registered.
 
 ## 12. Falsifiers
 
@@ -391,18 +447,19 @@ pilot used are outside what it measured.
 
 ## 14. Freezing procedure
 
-1. Resolve Section 8. **Done for the instrument**: Arm B is built, stimuli
-   through task, and runs through the same analysis. What remains is whether to
-   collect Arm B at all. Seal with P1 and P2 alone and P3 stays NOT TESTED,
-   which the grader reports correctly and does not score as a failure.
-2. Run the pilot under `PILOT.md`, **once per arm being collected**. Check its
-   own failure conditions, including the resolution floor in Section 7b.
-3. Seal `pilot_scale_arm_A.json`, and `pilot_scale_arm_B.json` if Arm B runs.
-4. Fill Section 11 from the sealed scale and the committed multipliers.
-5. Finalise this document, **then** hash the bundle.
-6. Commit, sign the tag `prereg-d4transition-v1`, push.
-7. Only then collect the confirmatory sample.
-8. Grade with the sealed grader and **report the controls beside every estimate**.
+1. **DONE.** Resolve Section 8. Arm B is built and is NOT registered; P3 is
+   removed. The grader carries P1 and P2 only.
+2. **DONE.** Fill Section 11. It did not need the pilot, because the bar and the
+   estimate share units and the scale cancels. Sample registered at 115 families
+   and 230 participants, sized against the worst `r` in the table.
+3. **DONE.** Hash the bundle and record the hashes in `prereg-d4transition-v1.sha256`.
+4. Commit, sign the tag `prereg-d4transition-v1`, push.
+5. Run the pilot under `PILOT.md`. It measures `r` and checks the instrument. It
+   **cannot** move a bar or the sample size, both of which are sealed above, and
+   the order is now deliberate: the document is frozen BEFORE the pilot runs, so
+   nothing measured can reach back into it.
+6. Only then collect the confirmatory sample.
+7. Grade with the sealed grader and **report the controls beside every estimate**.
 
 ## 15. Errors in this lineage, carried forward
 

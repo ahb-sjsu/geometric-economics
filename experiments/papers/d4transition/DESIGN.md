@@ -233,10 +233,11 @@ that file and nowhere else.
   exceeds the control mean by more than a bar set from the pilot's own noise.
 - **P2, it is asymmetric.** The crossing pair's direction difference is non-zero
   in a declared direction, which is the question `paper_04` could not reach.
-- **P3, permissions and outcomes differ.** Arm B's excess exceeds Arm A's, each
-  standardised by its own arm's between-family spread. The two arms do not share
-  a price unit, so the raw difference is not a comparison of effect sizes and one
-  arm's noise cannot bar the other's.
+**P3 was here and has been removed.** It required Arm B's excess to exceed Arm
+A's, each standardised by its own between-family spread. Arm B is built end to
+end and is **not registered in v1**, because collecting it needs its own pilot and
+roughly doubles the sample, and that decision has not been taken. The grader does
+not score Arm B. Its numbers, if supplied, are reported unregistered and ungraded.
 
 Reported separately. **No composite verdict.**
 
