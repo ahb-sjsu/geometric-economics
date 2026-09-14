@@ -47,9 +47,17 @@ THE INVARIANTS
         square root of two, and the test reports both so the difference is
         visible.
 
-    I0  SELF-TEST. Three deliberately broken pipelines, each caught by a
+    I7  ARM INDEPENDENCE. Rename the control pairs to the other arm's names and
+        change nothing else. The estimate must be bit-identical and no family
+        may be lost. Arm A calls its controls CTRL_G and CTRL_M, arm B calls
+        them CTRL_LO and CTRL_HI, and a pipeline that writes either pair of
+        names in its own source drops the other arm's records WITHOUT RAISING.
+        That is the failure mode this programme keeps finding, so it gets an
+        invariant rather than a convention.
+
+    I0  SELF-TEST. Four deliberately broken pipelines, each caught by a
         different invariant. A suite never shown to reject anything licenses
-        nothing, and three distinct failures show the invariants are not
+        nothing, and four distinct failures show the invariants are not
         redundant.
 
     python analysis_invariants.py
@@ -61,10 +69,24 @@ import os
 
 import numpy as np
 
+import pilot_analysis as P
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 SEED = 20260913
 B_BOOT = 400
 PAIRS = ("CROSS", "CTRL_G", "CTRL_M")
+PAIRS_ARM_B = ("CROSS", "CTRL_LO", "CTRL_HI")
+
+
+def _pairs_in(rec):
+    """Which pair is the crossing one, read from the record.
+
+    One rule, shared with `pilot_analysis`, rather than two that can drift. Arm A
+    calls its controls CTRL_G and CTRL_M and arm B calls them CTRL_LO and
+    CTRL_HI, and a pipeline that names them in its own source silently drops
+    every record from the other arm.
+    """
+    return P.pair_names([{"pair": p} for (_f, p) in rec])
 
 
 # ----------------------------------------------------------------------------
@@ -84,13 +106,13 @@ def excess_by_family(rec):
     """Per family, the crossing pair's direction difference minus the mean of the
     two controls'. The control subtraction is here and nowhere else."""
     D = direction_differences(rec)
+    cross, controls = _pairs_in(rec)
     fams = sorted({f for (f, _p) in rec})
     out = {}
     for f in fams:
-        c = D.get((f, "CROSS"), np.nan)
-        g = D.get((f, "CTRL_G"), np.nan)
-        m = D.get((f, "CTRL_M"), np.nan)
-        out[f] = c - 0.5 * (g + m)
+        c = D.get((f, cross), np.nan)
+        ctl = [D.get((f, k), np.nan) for k in controls]
+        out[f] = c - float(np.mean(ctl))
     return out
 
 
@@ -109,8 +131,9 @@ def estimate(rec, b=B_BOOT, seed=SEED, cluster="family"):
             draws.append(float(np.nanmean(vals[pick])))
     else:  # trial-level, which is the error this suite exists to make visible
         flat = []
+        cross, _controls = _pairs_in(rec)
         for (f, p), v in rec.items():
-            if p == "CROSS":
+            if p == cross:
                 flat += [x for x in v["forward"]] + [-x for x in v["backward"]]
         flat = np.array(flat)
         for _ in range(b):
@@ -128,7 +151,7 @@ def estimate(rec, b=B_BOOT, seed=SEED, cluster="family"):
 # ----------------------------------------------------------------------------
 def simulate(n_families=60, n_participants=40, n_reps=2, beta=0.0,
              switch_bias=0.0, sd_family=0.30, sd_part=0.40, sd_noise=0.60,
-             seed=SEED):
+             seed=SEED, pairs=PAIRS):
     """Prices for every family, pair and direction.
 
     `beta` is a penalty that applies ONLY to the crossing pair and ONLY in the
@@ -140,8 +163,9 @@ def simulate(n_families=60, n_participants=40, n_reps=2, beta=0.0,
     fam_eff = rng.normal(0, sd_family, n_families)
     part_eff = rng.normal(0, sd_part, n_participants)
     rec = {}
+    cross = pairs[0]
     for fi in range(n_families):
-        for pair in PAIRS:
+        for pair in pairs:
             key = ("fam%03d" % fi, pair)
             rec[key] = {"forward": [], "backward": []}
             for pi in range(n_participants):
@@ -149,7 +173,7 @@ def simulate(n_families=60, n_participants=40, n_reps=2, beta=0.0,
                     base = fam_eff[fi] + part_eff[pi]
                     f = base + switch_bias + rng.normal(0, sd_noise)
                     b_ = base - switch_bias + rng.normal(0, sd_noise)
-                    if pair == "CROSS":
+                    if pair == cross:
                         f += beta
                     rec[key]["forward"].append(f)
                     rec[key]["backward"].append(b_)
@@ -172,6 +196,11 @@ def duplicate_within_family(rec):
             for k, v in rec.items()}
 
 
+def rename_pairs(rec, mapping):
+    """The same numbers under the other arm's pair names."""
+    return {(f, mapping.get(p, p)): v for (f, p), v in rec.items()}
+
+
 # ----------------------------------------------------------------------------
 # broken pipelines, for the self-test
 # ----------------------------------------------------------------------------
@@ -180,15 +209,33 @@ def broken_sum_instead_of_difference(rec):
     D = {}
     for (fam, pair), v in rec.items():
         D[(fam, pair)] = np.mean(v["forward"]) + np.mean(v["backward"])
+    cross, controls = _pairs_in(rec)
     fams = sorted({f for (f, _p) in rec})
-    return {f: D[(f, "CROSS")] - 0.5 * (D[(f, "CTRL_G")] + D[(f, "CTRL_M")])
+    return {f: D[(f, cross)] - float(np.mean([D[(f, k)] for k in controls]))
             for f in fams}
 
 
 def broken_no_control_subtraction(rec):
     """Reports the crossing pair's raw direction difference. I4 must catch it."""
     D = direction_differences(rec)
-    return {f: D[(f, "CROSS")] for f in sorted({x for (x, _p) in rec})}
+    cross, _controls = _pairs_in(rec)
+    return {f: D[(f, cross)] for f in sorted({x for (x, _p) in rec})}
+
+
+def broken_hardcoded_control_names(rec):
+    """Names arm A's controls in its own source. I7 must catch it.
+
+    This is the failure this programme keeps finding: the lookup misses, the
+    cell is dropped, and nothing raises. On arm A records it is correct. On arm
+    B records every family comes out not-a-number.
+    """
+    D = direction_differences(rec)
+    out = {}
+    for f in sorted({x for (x, _p) in rec}):
+        out[f] = (D.get((f, "CROSS"), np.nan)
+                  - 0.5 * (D.get((f, "CTRL_G"), np.nan)
+                           + D.get((f, "CTRL_M"), np.nan)))
+    return out
 
 
 def main():
@@ -296,9 +343,27 @@ def main():
           % tri_ratio)
     print("    -> %s" % ("PASS" if checks["I6_clustering"] else "FAIL"))
 
+    # ---- I7 arm independence ----------------------------------------------
+    ARM_B_NAMES = {"CTRL_G": "CTRL_LO", "CTRL_M": "CTRL_HI"}
+    renamed = rename_pairs(rec, ARM_B_NAMES)
+    ren = estimate(renamed)
+    d7 = abs(ren["point"] - base["point"])
+    checks["I7_arm_independence"] = bool(d7 < 1e-12
+                                         and ren["n_families"] == base["n_families"])
+    print()
+    print("I7 ARM INDEPENDENCE   the same numbers under arm B's pair names must")
+    print("   give the same answer. The analysis serves both arms and a pipeline")
+    print("   that names one arm's controls drops the other arm in silence.")
+    print("    arm A names %s" % ", ".join(PAIRS))
+    print("    arm B names %s" % ", ".join(PAIRS_ARM_B))
+    print("    excess %+.4f against %+.4f, residual %.2e, families %d against %d  -> %s"
+          % (ren["point"], base["point"], d7, ren["n_families"],
+             base["n_families"],
+             "PASS" if checks["I7_arm_independence"] else "FAIL"))
+
     # ---- I0 self-test ------------------------------------------------------
     print()
-    print("I0 SELF-TEST   three broken pipelines, each caught by a different")
+    print("I0 SELF-TEST   four broken pipelines, each caught by a different")
     print("   invariant. A suite never shown to reject anything licenses nothing.")
 
     def excess_from(per_fam):
@@ -324,7 +389,17 @@ def main():
     print("      interval shrinks to %.3f on duplicated data  -> %s"
           % (tri_ratio, "REJECTED" if i6_catches else "NOT REJECTED"))
 
-    checks["I0_self_test"] = bool(i1_catches and i4_catches and i6_catches)
+    h_a = broken_hardcoded_control_names(rec)
+    h_b = broken_hardcoded_control_names(renamed)
+    lost = sum(1 for v in h_b.values() if not np.isfinite(v))
+    right_on_a = abs(excess_from(h_a) - base["point"]) < 1e-12
+    i7_catches = right_on_a and lost == len(h_b)
+    print("    names arm A's controls in its own source")
+    print("      correct on arm A, and loses %d of %d families on arm B  -> %s"
+          % (lost, len(h_b), "REJECTED" if i7_catches else "NOT REJECTED"))
+
+    checks["I0_self_test"] = bool(i1_catches and i4_catches and i6_catches
+                                  and i7_catches)
     print("    -> %s" % ("PASS" if checks["I0_self_test"] else "FAIL"))
 
     ok = all(checks.values())

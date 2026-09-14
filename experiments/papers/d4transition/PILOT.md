@@ -189,6 +189,33 @@ result is reported.
 
 ---
 
+## 7b. The failure that hits no edge
+
+Section 7 lists failures that announce themselves. There is one that does not.
+
+When the grid step where a switch lands is wide compared with the spread of
+prices, the switch falls in the same interval whatever the family effect was, the
+shared covariance that estimates the between-family variance collapses, and **the
+scale comes out low with nothing censored.** It is the dangerous direction,
+because every bar in the confirmatory study is a multiple of this scale, so an
+attenuated scale makes the study easier to pass.
+
+`pilot_analysis.py` measures the width of the interval each switch actually lands
+in, takes the median, and reports it as `grid_step_median` with the
+`resolution_floor` it implies. The check `resolution_ok` fails when the measured
+spread is below that floor, and a pilot that fails it is not usable.
+
+**The constant is measured, not chosen.** Holding the rows fixed and varying only
+the planted spread, the recovered between-family standard deviation stays within
+six percent of the truth while the step is up to about two and a half spreads
+wide, then collapses to minus 35 percent at 3.8 and minus 60 percent at 5.0, with
+nothing hitting an edge at any of them. The bar is set at two, inside the measured
+knee. Self-test 7 plants a spread below the floor and confirms the check fires
+while every other check passes.
+
+This was found while choosing Arm B's price rows and applies to Arm A the same
+way, which is why it lives in the analysis and not in an arm.
+
 ## 8. What the pilot must not do
 
 **It must not compute or report the mean excess.** That is the estimand, and a
@@ -236,18 +263,36 @@ and the protocol must be repeated for the new range.
 
 ---
 
+## 10b. Arm B
+
+Arm B uses this protocol unchanged. The same 30 families, 60 participants, 3
+families each, 18 cells, the same separation and counterbalancing, and the same
+analysis. Two things differ and both are in Section 8.1 of the registration: a
+cell shows a board of permitted and closed actions rather than a gamble, and the
+price rows sit either side of the family's gain rather than either side of zero.
+
+    python session_builder.py --arm B --write --html
+    python roundtrip_check.py
+
+The scale is measured per arm. A scale from one arm does not set bars for the
+other, because the price unit differs: Arm A's rows are multiples of the gamble
+spread and Arm B's are multiples of the gain.
+
 ## 11. Running it
 
 The instrument is built and its output is proven to be what the analysis reads.
 
-    python build_stimuli.py                    # 160 families, all matches verified
-    python session_builder.py --write --html   # 60 sessions, every constraint checked
-    python roundtrip_check.py                  # task output into the analysis
+    python build_stimuli.py                             # arm A, 160 families
+    python build_stimuli_armb.py                        # arm B, 60 families
+    python session_builder.py --arm A --write --html    # 60 sessions, all checks
+    python session_builder.py --arm B --write --html    # 60 sessions, all checks
+    python roundtrip_check.py                           # both arms into the analysis
 
-`session_builder.py` emits `task/p000.html` through `task/p059.html`. Each is
+`session_builder.py` emits `task/p000.html` through `task/p059.html` for arm A
+and `task_armb/p000.html` through `task_armb/p059.html` for arm B. Each is
 self-contained at about sixteen kilobytes, needs no server, and opens by double
-clicking. The participant answers eighteen price lists of eleven rows and saves a
-JSON file at the end.
+clicking. The participant answers eighteen price lists and saves a JSON file at
+the end, eleven rows per list in arm A and twelve in arm B.
 
 **The interface does not force a single switch point**, and that is deliberate.
 The share of non-monotone lists is the instrument's own convergence diagnostic and

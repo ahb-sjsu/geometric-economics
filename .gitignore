@@ -19,5 +19,6 @@ __pycache__/
 # erisml data upload artifact
 experiments/legal/_erisml_data.tgz
 experiments/papers/d4transition/task/
+experiments/papers/d4transition/task_armb/
 experiments/papers/d4transition/_roundtrip_tmp.json
 experiments/papers/d4transition/rehearsal_responses.json

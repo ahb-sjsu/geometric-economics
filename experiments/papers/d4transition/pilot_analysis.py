@@ -109,7 +109,8 @@ PERMITTED = {
     "between_family_var", "participant_var", "residual_var",
     "implied_sd_by_k", "price_slope_z", "nonmonotone_share",
     "floor_ceiling_share", "floor_ceiling_by_cell",
-    "worst_cell_floor_ceiling", "checks", "usable", "provenance",
+    "worst_cell_floor_ceiling", "grid_step_median", "resolution_floor",
+    "checks", "usable", "provenance",
 }
 FORBIDDEN_SUBSTRINGS = ("mean_excess", "excess_mean", "grand_mean", "estimate",
                         "point", "effect_size", "beta")
@@ -152,12 +153,24 @@ def read_list(prices, accepts):
 
 
 def price_slope_z(records):
-    """Logistic of accept on price, pooled. Positive z means the expected
-    direction, that raising the charge lowers acceptance."""
+    """Logistic of accept on price WITHIN a cell. Positive z means the expected
+    direction, that raising the charge lowers acceptance.
+
+    The price is centred inside each cell before pooling. Pooling raw prices
+    works only while every cell offers the same rows, which is true of arm A and
+    false of arm B: there the forward list runs upward from zero and the
+    backward list downward from zero, so the two never overlap. Pooled raw, the
+    statistic compared two disjoint ranges with different acceptance rates and
+    came out at MINUS 3.8 on data where every participant responded to price in
+    the right direction. Centring within the cell removes every between-cell
+    level difference and leaves the question the check is meant to ask.
+    """
     xs, ys = [], []
     for r in records:
-        for p, a in zip(r["prices"], r["accepts"]):
-            xs.append(float(p))
+        pr = [float(p) for p in r["prices"]]
+        mid = sum(pr) / len(pr)
+        for p, a in zip(pr, r["accepts"]):
+            xs.append(p - mid)
             ys.append(1.0 if a else 0.0)
     x = np.array(xs)
     y = np.array(ys)
@@ -265,16 +278,67 @@ def variance_components(excess):
     return var_fam, var_part, var_res, total
 
 
+# A price list can only measure a spread it can straddle. When the step at the
+# centre of the grid is wide compared with the spread of prices, the switch lands
+# in the same interval whatever the family effect was, the shared covariance that
+# estimates the between-family variance collapses, and the SCALE COMES OUT LOW
+# WITH NOTHING HITTING AN EDGE. Censoring announces itself and this does not.
+#
+# It matters here more than anywhere, because every bar in the confirmatory study
+# is a multiple of this scale, so an attenuated scale makes the study easier to
+# pass. The failure was found while sweeping arm B's price rows and it applies to
+# arm A's the same way, which is why the check lives here and not in an arm.
+# The constant is MEASURED, not chosen. Holding the rows fixed and varying only
+# the planted spread, the recovered between-family standard deviation stays
+# within six percent of the truth while the step is up to about two and a half
+# spreads wide, and then collapses: minus thirty five percent at 3.8 and minus
+# sixty percent at 5.0, with nothing hitting an edge at any of them. The bar is
+# set at two, inside the measured knee.
+RESOLUTION = 2.0            # the local step may be at most this many spreads
+
+
+def grid_step(records):
+    """Median width of the interval the switch actually lands in.
+
+    Not the step at the centre of the grid. A list that is fine in the middle
+    and coarse in the tail resolves a switch near the middle and does not
+    resolve one out in the tail, and where the switch lands is a fact about the
+    participants rather than about the design. Cells with no single switch, and
+    cells censored at an end, have no interval and are left out.
+    """
+    widths = []
+    for r in records:
+        pr = [float(x) for x in r["prices"]]
+        a = [bool(x) for x in r["accepts"]]
+        sw = [i for i in range(len(a) - 1) if a[i] != a[i + 1]]
+        if len(sw) == 1 and a[0] and not a[-1]:
+            widths.append(pr[sw[0] + 1] - pr[sw[0]])
+    if len(widths) >= 0.2 * max(len(records), 1):
+        return float(np.median(widths))
+    # almost nothing switched inside the range. fall back to the narrowest gap
+    # on offer, and let the edge and monotonicity checks say what is wrong.
+    gaps = []
+    for r in records:
+        pr = sorted(float(x) for x in r["prices"])
+        if len(pr) > 1:
+            gaps.append(min(pr[i + 1] - pr[i] for i in range(len(pr) - 1)))
+    return float(np.median(gaps)) if gaps else 0.0
+
+
 def build_output(var_fam, var_part, var_res, n_part, n_fam, n_obs,
-                 slope_z, nonmono, edge, edge_by_cell):
+                 slope_z, nonmono, edge, edge_by_cell, step):
     """Assembled from the components only. The mean is not in scope here."""
     sd_fam = math.sqrt(var_fam)
+    sd_obs = math.sqrt(var_fam + var_part + var_res)
+    floor = step / RESOLUTION
     checks = {
         "price_slope_ok": bool(slope_z >= 3.0),
         "nonmonotone_ok": bool(nonmono <= 0.25),
         "between_family_positive": bool(var_fam > 0.0),
         # the WORST cell, not the pooled share, for the reason in excess_table
         "floor_ceiling_ok": bool(max(edge_by_cell.values(), default=0.0) <= 0.15),
+        # and the failure that hits no edge at all
+        "resolution_ok": bool(sd_obs >= floor),
     }
     out = {
         "study": "transition study pilot",
@@ -294,6 +358,8 @@ def build_output(var_fam, var_part, var_res, n_part, n_fam, n_obs,
         "floor_ceiling_share": edge,
         "floor_ceiling_by_cell": edge_by_cell,
         "worst_cell_floor_ceiling": max(edge_by_cell.values(), default=0.0),
+        "grid_step_median": step,
+        "resolution_floor": floor,
         "checks": checks,
         "usable": bool(all(checks.values())),
     }
@@ -330,7 +396,7 @@ def analyse(records, provenance="simulated"):
         price_slope_z(records),
         flags["nonmonotone"] / max(flags["total"], 1),
         flags["edge"] / max(flags["total"], 1),
-        flags["by_cell"])
+        flags["by_cell"], grid_step(records))
     out["provenance"] = provenance
     return _guard(out)
 
@@ -357,11 +423,15 @@ def simulate(n_fam=30, n_part=60, fam_per_part=3, mean_excess=0.0,
                 for direction in ("forward", "backward"):
                     s = switch_bias if direction == "forward" else -switch_bias
                     centre = s + (add if direction == "forward" else 0.0)
-                    accepts = [1 if pr < centre else 0 for pr in price_rows]
+                    # price_rows may be one tuple for both directions or a dict
+                    # keyed by direction, because arm B's rows are not symmetric
+                    rows = (price_rows[direction]
+                            if isinstance(price_rows, dict) else price_rows)
+                    accepts = [1 if pr < centre else 0 for pr in rows]
                     recs.append({"participant": "p%03d" % p,
                                  "family": "f%03d" % f, "pair": pair,
                                  "direction": direction,
-                                 "prices": list(price_rows),
+                                 "prices": list(rows),
                                  "accepts": accepts})
     return recs
 
@@ -442,6 +512,27 @@ def self_test():
     print("  a participant who never declines trips a pilot check -> %s"
           % ("PASS" if fired else "FAIL"))
     ok = ok and fired
+
+    # 7, THE FAILURE THAT HITS NO EDGE. a spread far finer than the grid is
+    # attenuated with nothing censored, and the attenuation runs DOWNWARD, which
+    # is the direction that makes every confirmatory bar too easy. The check
+    # must fire on data that passes every other check.
+    fine = [t / 8.0 for t in truth]
+    rf = analyse(simulate(sd_fam=fine[0], sd_part=fine[1], sd_res=fine[2],
+                          n_fam=40, n_part=120, seed=9))
+    others = {k: v for k, v in rf["checks"].items() if k != "resolution_ok"}
+    fired = (rf["checks"]["resolution_ok"] is False)
+    print("  a spread finer than the grid attenuates the scale with no edge hit")
+    print("    planted family %.4f, recovered %.4f, attenuation %+.0f%%"
+          % (fine[0], rf["between_family_sd"],
+             100 * (rf["between_family_sd"] - fine[0]) / fine[0]))
+    print("    worst cell at an edge %.3f, so nothing is censored"
+          % rf["worst_cell_floor_ceiling"])
+    print("    grid step %.3f, resolution floor %.3f"
+          % (rf["grid_step_median"], rf["resolution_floor"]))
+    print("    every other check passes: %s" % all(others.values()))
+    print("    resolution check fires -> %s" % ("PASS" if fired else "FAIL"))
+    ok = ok and fired and not rf["usable"]
 
     print("  SELF-TEST %s" % ("PASSED" if ok else "FAILED"))
     return ok

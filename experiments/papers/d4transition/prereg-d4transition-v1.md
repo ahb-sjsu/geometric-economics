@@ -100,6 +100,9 @@ The checker is run against five deliberately broken families and rejects each.
 
 ## 6. Instrument
 
+This section states Arm A's instrument. Arm B's is Section 8.1 and uses the same
+builder, the same schedule and the same checks.
+
 A multiple price list of eleven rows per cell, at
 `-3.0, -2.1, -1.5, -0.9, -0.45, 0, +0.45, +0.9, +1.5, +2.1, +3.0` times the
 family's spread. Prices are in units of the family's own spread because absolute
@@ -116,9 +119,14 @@ lists is the instrument's own convergence diagnostic and V3 below is computed fr
 it. An interface enforcing monotonicity would destroy the measurement it supports.
 
 `session_builder.py` builds the schedule and checks every constraint the protocol
-states, rejecting four deliberately broken schedules. `roundtrip_check.py`
-confirms that every cell the instrument delivers is read by the analysis, 1,080
-delivered and 1,080 read.
+states, rejecting seven deliberately broken schedules in Arm A and eight in Arm
+B, the extra one being a dominated price row, which cannot arise where a pair
+carries no value. Four of those checks were added with Arm B and apply to both
+arms: prices must be the value difference plus multiples of the unit, the
+stimulus must deliver the value difference the rows assume, the two directions of
+a pair must be worth opposite amounts, and no row may be dominated. `roundtrip_check.py` runs both arms and
+confirms that every cell each instrument delivers is read by the analysis, 1,080
+delivered and 1,080 read in each.
 
 ## 7. The estimand
 
@@ -167,7 +175,23 @@ and the controls could have been a difference in arithmetic rather than in
 permissions. With certain payoffs every pair is the same sum and only the route
 differs.
 
-`build_stimuli_armb.py` produces 60 families and rejects six deliberately broken
+**A closed action is shown, not hidden.** Every state displays every action with
+its payoff and marks which of them the participant may take. If `C` were simply
+absent from `L0`, then reaching `H1` would look like a new option arriving, which
+is what `CTRL_LO` already does when `B` improves, and there would be no boundary
+on the screen to cross. With the closed rows visible the contrast is exact.
+
+| pair | what changes |
+|---|---|
+| `CROSS` | `C` opens. **Not one number on the board changes.** |
+| `CTRL_LO` | `B` rises by `v`. `C` stays closed at the same number. |
+| `CTRL_HI` | `C` rises by `v`. Nothing opens or closes. |
+
+The cost of showing a closed action is that part of what is measured may be a
+response to being refused rather than to the permission itself. That is the
+construct. What would be a confound is a participant who never saw the boundary.
+
+`build_stimuli_armb.py` produces 60 families and rejects nine deliberately broken
 ones, including a state permitting an action with no payoff, which made an earlier
 version of the checker crash rather than reject. **A checker that raises where it
 should reject tells you nothing about the stimulus.**
@@ -175,18 +199,81 @@ should reject tells you nothing about the stimulus.**
 The elevation must not be nominal, so the checker requires the newly permitted
 action to be the one the participant would actually take.
 
+### 8.1 The instrument, and the one price rule
+
+`session_builder.py --arm B --write --html` emits 60 self-contained sessions into
+`task_armb/`, on the same schedule as Arm A: 30 families, 3 per participant, 18
+cells, direction separation at least five, counterbalanced deterministically.
+`task_template_armb.html` presents each state as a board of actions with their
+payoffs, marks each open or closed, states the best the participant may take, and
+asks a price list. One builder serves both arms and the schedule checks are shared.
+
+**Where the rows sit is one rule in both arms.**
+
+    price row = (value difference) + (multiple) x (unit)
+
+Arm A matches expected value across a pair, so its value difference is zero and
+its rows straddle zero. Arm B's pairs are all worth `v`, so the forward rows sit
+either side of `+v` and the backward rows either side of `-v`. **The value
+difference cancels out of the estimand**, since the excess is a difference of
+direction differences over three pairs that carry the same `v`, so this decides
+only where rows are spent.
+
+**The rows are not symmetric, and the reason is a mistake worth recording.** The
+first version capped the multiples at plus and minus one, so forward prices ran
+from zero to `2v`. A forward row below zero is dominated, because it pays the
+participant to take the better state. **A forward row above `v` is the opposite
+of dominated. It is the measurement.** Paying more than the money is worth is
+exactly what a premium on a permission looks like, and the cap put a ceiling on
+the premium the instrument could see. The round trip found it as 14 percent of
+one cell hitting an edge. `price_range_armb.py` now sweeps the direction effect
+alongside the noise, because the direction effect is the estimand and its size
+cannot be assumed while choosing the range. The adopted rows run from zero to
+`2.5v` going forward and mirror going back.
+
+### 8.2 A failure that hits no edge
+
+Choosing Arm B's rows turned up a defect in the pilot analysis that applies to
+Arm A equally. When the grid step where the switch lands is wide compared with
+the spread of prices, the switch falls in the same interval whatever the family
+effect was, **the scale comes out low, and nothing hits an edge.** Censoring
+announces itself and this does not. It matters because every bar in the
+confirmatory study is a multiple of that scale, so an attenuated scale makes the
+study easier to pass.
+
+`pilot_analysis.py` now measures the step where switches actually land and
+refuses a scale below the resolution the data can support. The constant is
+measured rather than chosen: holding the rows fixed and varying only the planted
+spread, recovery stays within six percent while the step is up to about two and a
+half spreads wide and then collapses, to minus 35 percent at 3.8 and minus 60
+percent at 5.0, with nothing censored at any of them. The bar is set at two. A
+self-test plants a spread below it and confirms the check fires while every other
+check passes.
+
+The same exercise found that the pooled price-slope diagnostic was reading
+**minus 3.8** on Arm B data where every participant responded to price correctly.
+Arm B's forward and backward lists occupy disjoint ranges, so pooling raw prices
+compared two ranges rather than measuring a slope. The price is now centred
+within its cell before pooling, which leaves Arm A's value unchanged at 48.8 and
+takes Arm B's to plus 45.9.
+
+Invariant **I7** was added for the class of defect behind both: rename the
+control pairs to the other arm's names and change nothing else, and the estimate
+must be bit identical with no family lost. A fourth broken pipeline in `I0`
+writes Arm A's control names into its own source, is correct on Arm A, and loses
+all 60 families on Arm B without raising.
+
+**What is still missing for Arm B is people.** Ethics approval, recruitment and
+the decision to run are the owner's, as for Arm A. P3 remains NOT TESTED until
+Arm B data exists, and the grader reports it as such rather than as a failure,
+which was a defect found while writing this document and fixed.
+
 **Arm B runs through Arm A's analysis unchanged.** The pair names are read from
 the data rather than hardcoded, since a hardcoded lookup would have missed every
 Arm B record and discarded the cell silently. What is enforced is structural,
 exactly three pair types with exactly one crossing pair, and `check_both_arms.py`
 confirms both arms recover all 30 families and that the rule rejects two pair
 types, four pair types, and a set with no crossing pair.
-
-**What is still missing for Arm B is the instrument.** The stimuli and the
-analysis are done. No task presents a permission state to a participant, and
-`session_builder.py` builds Arm A schedules only. P3 remains NOT TESTED until
-that exists, and the grader reports it as such rather than as a failure, which
-was a defect found while writing this document and fixed.
 
 ## 9. Predictions
 

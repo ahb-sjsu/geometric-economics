@@ -38,6 +38,24 @@ and the controls could be a difference in arithmetic rather than in permissions.
 With certain payoffs every pair is the same sum, "the best I may take goes from
 `X` to `X + v`", and the only thing that differs is how it got there.
 
+A CLOSED ACTION HAS TO BE VISIBLE
+
+If action `C` simply did not appear in `L0`, then moving to `H1` would look like
+a new option arriving, which is what `CTRL_LO` already does when `B` improves.
+There would be no boundary on the screen to cross. So every state shows every
+action with its payoff, and marks which of them the participant may take.
+
+That makes the contrast exact.
+
+    CROSS     opens `C`. **Not one number on the board changes.**
+    CTRL_LO   raises `B` by `v`. `C` stays closed at the same number.
+    CTRL_HI   raises `C` by `v`. Nothing opens or closes.
+
+The cost of showing a closed action is that some of what it measures may be a
+response to being refused rather than to the permission itself. That is the
+construct, not a confound. What would be a confound is a participant who never
+saw the boundary.
+
 **Arm B reuses Arm A's analysis unchanged.** The pair names are the same three,
 the excess is the same subtraction, and the clustering unit is still the family.
 Nothing in `pilot_analysis.py`, `analysis_invariants.py` or `grade_transition.py`
@@ -52,6 +70,8 @@ import math
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+
+ACTIONS = ("A", "B", "C")
 
 MIN_GAP = 2.0        # permitted payoffs must be legibly apart
 MIN_V = 1.0          # the gain under test must be legible
@@ -71,15 +91,21 @@ def build_family(a, b, v, name):
     if v <= 0:
         return None, "the newly permitted action is not better"
     r = lambda x: round(x, DECIMALS)
+    # Every state carries a payoff for every action. `permits` says which of them
+    # the participant may take. A closed action is SHOWN with its payoff and
+    # marked closed, for the reason in the module docstring.
     states = {
-        "L0": {"permits": ["A", "B"], "payoffs": {"A": r(a), "B": r(b)}},
-        "L1": {"permits": ["A", "B"], "payoffs": {"A": r(a), "B": r(b + v)}},
+        "L0": {"permits": ["A", "B"],
+               "payoffs": {"A": r(a), "B": r(b), "C": r(b + v)}},
+        "L1": {"permits": ["A", "B"],
+               "payoffs": {"A": r(a), "B": r(b + v), "C": r(b + v)}},
         "H1": {"permits": ["A", "B", "C"],
                "payoffs": {"A": r(a), "B": r(b), "C": r(b + v)}},
         "H2": {"permits": ["A", "B", "C"],
                "payoffs": {"A": r(a), "B": r(b), "C": r(b + 2 * v)}},
     }
     return {"name": name, "a": a, "b": b, "v": v, "arm": "B",
+            "actions": ACTIONS,
             "states": states,
             "pairs": {"CROSS": ["L0", "H1"],
                       "CTRL_LO": ["L0", "L1"],
@@ -120,6 +146,16 @@ def check_family(fam):
         missing = [x for x in st["permits"] if x not in st["payoffs"]]
         if missing:
             fails.append("%s permits %s with no payoff" % (k, ", ".join(missing)))
+
+    # 0b, the board must be complete. an action with no payoff cannot be shown,
+    # and an action that is not shown is not a boundary the participant can see.
+    for k, st in S.items():
+        absent = [x for x in fam["actions"] if x not in st["payoffs"]]
+        if absent:
+            fails.append("%s does not display %s" % (k, ", ".join(absent)))
+
+    # a structurally broken board makes every check below meaningless, and a
+    # checker that raises where it should report tells you nothing.
     if fails:
         return fails
 
@@ -154,7 +190,25 @@ def check_family(fam):
         if len(best_action(st)) > 1:
             fails.append("%s has a tie for the best permitted action" % k)
 
-    # 5, payoffs legible and in range
+    # 5, the crossing pair changes the PERMITTED SET AND NOTHING ELSE. if a
+    # payoff moved as well, the price would be paid for money and permission
+    # together and the two could not be told apart.
+    lo, hi = fam["pairs"]["CROSS"]
+    if S[lo]["payoffs"] != S[hi]["payoffs"]:
+        diff = [x for x in fam["actions"]
+                if S[lo]["payoffs"].get(x) != S[hi]["payoffs"].get(x)]
+        fails.append("CROSS also changes the payoff of %s, so the price would "
+                     "buy money and permission at once" % ", ".join(diff))
+
+    # 6, the closed action must be worth having before it opens, or the
+    # participant is being offered a permission with nothing behind it
+    closed = [x for x in fam["actions"] if x not in S[lo]["permits"]]
+    for x in closed:
+        if S[lo]["payoffs"][x] <= best(S[lo]):
+            fails.append("%s is closed in %s and pays no more than what is "
+                         "already open" % (x, lo))
+
+    # 7, payoffs legible and in range
     for k, st in S.items():
         for act, val in st["payoffs"].items():
             if val <= 0 or val > MAX_PAYOFF:
@@ -178,12 +232,21 @@ def self_test():
     import copy
     cases = [
         ("a control given a different permitted set",
-         lambda x: (x["states"]["L1"]["permits"].append("C"),
-                    x["states"]["L1"]["payoffs"].__setitem__("C", 99.0)),
+         lambda x: x["states"]["L1"]["permits"].append("C"),
          "must not"),
         ("a state permitting an action with no payoff",
-         lambda x: x["states"]["L0"]["permits"].append("C"),
+         lambda x: x["states"]["L0"]["permits"].append("D"),
          "with no payoff"),
+        ("a state not displaying one of the actions",
+         lambda x: x["states"]["L0"]["payoffs"].pop("C"),
+         "does not display"),
+        ("the crossing pair moving a payoff as well",
+         lambda x: x["states"]["H1"]["payoffs"].__setitem__("B", 9.5),
+         "buy money and permission at once"),
+        ("the closed action worth no more than what is open",
+         lambda x: (x["states"]["L0"]["payoffs"].__setitem__("C", 3.0),
+                    x["states"]["H1"]["payoffs"].__setitem__("C", 3.0)),
+         "pays no more than what is already open"),
         ("the crossing pair made not to cross",
          lambda x: x["states"]["H1"].__setitem__("permits", ["A", "B"]),
          "does not change the permitted set"),
