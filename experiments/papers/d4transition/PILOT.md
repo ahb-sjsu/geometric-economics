@@ -233,3 +233,37 @@ Nothing in the confirmatory design should rest on the participant component.
 **The scale is measured on these stimuli.** If the confirmatory study introduces
 families outside the shape grid used here, the scale does not transfer to them
 and the protocol must be repeated for the new range.
+
+---
+
+## 11. Running it
+
+The instrument is built and its output is proven to be what the analysis reads.
+
+    python build_stimuli.py                    # 160 families, all matches verified
+    python session_builder.py --write --html   # 60 sessions, every constraint checked
+    python roundtrip_check.py                  # task output into the analysis
+
+`session_builder.py` emits `task/p000.html` through `task/p059.html`. Each is
+self-contained at about sixteen kilobytes, needs no server, and opens by double
+clicking. The participant answers eighteen price lists of eleven rows and saves a
+JSON file at the end.
+
+**The interface does not force a single switch point**, and that is deliberate.
+The share of non-monotone lists is the instrument's own convergence diagnostic and
+the grader's V3 budget is computed from it. An interface that enforced
+monotonicity would destroy the measurement it is supposed to support.
+
+Collect the saved files, concatenate their `records` into one document with
+`"source": "human"`, and run
+
+    python pilot_analysis.py responses.json
+
+which writes `pilot_scale.json` only if the source is human, and
+`rehearsal_scale.json` otherwise. `grade_transition.py` refuses any scale not
+marked human and any scale reporting `usable` false.
+
+**What remains is entirely people.** Ethics approval, consent, recruitment,
+payment and the decision to run at all are the owner's, and nothing in this
+directory should be taken as a judgement that the study is ready to put in front
+of participants.

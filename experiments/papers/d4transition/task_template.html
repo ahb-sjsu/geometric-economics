@@ -1,0 +1,153 @@
+<meta charset="utf-8">
+<title>Choice task</title>
+<style>
+  :root {
+    --bg: #fbfaf7; --fg: #1a1a1a; --muted: #5c5c5c; --line: #d9d5cc;
+    --card: #ffffff; --accept: #1f6f43; --decline: #8a3324; --accent: #2b4c7e;
+  }
+  :root:not([data-theme="light"]) { }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #16181c; --fg: #e9e6e0; --muted: #9a968e; --line: #34383f;
+      --card: #1e2127; --accept: #57b27f; --decline: #d4796a; --accent: #7fa6d9;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #16181c; --fg: #e9e6e0; --muted: #9a968e; --line: #34383f;
+    --card: #1e2127; --accept: #57b27f; --decline: #d4796a; --accent: #7fa6d9;
+  }
+  body { background: var(--bg); color: var(--fg); font: 16px/1.5 system-ui, sans-serif;
+         padding-block: 24px; padding-left: 20px; padding-right: 20px; max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 1.25rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: .85rem; margin-bottom: 20px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+          padding: 16px 18px; margin-bottom: 16px; }
+  .states { display: flex; gap: 14px; flex-wrap: wrap; }
+  .state { flex: 1 1 260px; border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+  .state h3 { margin: 0 0 6px; font-size: .8rem; text-transform: uppercase;
+              letter-spacing: .06em; color: var(--muted); }
+  .state p { margin: 0; font-size: 1rem; }
+  .arrow { text-align: center; color: var(--accent); font-weight: 600; margin: 10px 0; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  th, td { padding: 9px 8px; border-bottom: 1px solid var(--line); text-align: left; }
+  th { font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+  td.price { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .opts { display: flex; gap: 8px; }
+  .opts label { display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+                border: 1px solid var(--line); border-radius: 999px; padding: 3px 11px; font-size: .88rem; }
+  .opts input { margin: 0; }
+  .opts label:has(input:checked) { border-color: var(--accent); font-weight: 600; }
+  .nav { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  button { font: inherit; padding: 9px 16px; border-radius: 8px; border: 1px solid var(--line);
+           background: var(--card); color: var(--fg); cursor: pointer; }
+  button.primary { background: var(--accent); color: #fff; border-color: transparent; }
+  button[disabled] { opacity: .45; cursor: not-allowed; }
+  .prog { color: var(--muted); font-size: .85rem; }
+  .warn { color: var(--decline); font-size: .85rem; margin-top: 8px; }
+  .done { text-align: center; padding: 30px 0; }
+  code { background: color-mix(in srgb, var(--fg) 8%, transparent); padding: 1px 5px; border-radius: 4px; }
+</style>
+
+<h1>Choice task</h1>
+<div class="sub" id="sub"></div>
+<div id="root"></div>
+
+<script>
+// SESSION is inlined by session_builder.py --html
+const SESSION = /*__SESSION__*/ null;
+
+// Responses are never forced to be monotone. A participant who switches back and
+// forth is recorded exactly as they answered, because the share of non-monotone
+// lists is the instrument's own convergence diagnostic and the grader's V3
+// budget is computed from it. A user interface that enforced a single switch
+// would destroy the measurement it is supposed to support.
+
+const state = { i: 0, answers: SESSION.trials.map(t => t.prices.map(() => null)) };
+const root = document.getElementById("root");
+document.getElementById("sub").textContent =
+  "Participant " + SESSION.participant + ". " + SESSION.trials.length +
+  " decisions. There are no right answers.";
+
+function describe(s) {
+  const pc = (p) => (p * 100).toFixed(0) + "%";
+  if (Math.abs(s.H - s.L) < 1e-9) return s.H.toFixed(2) + " points for certain";
+  return s.H.toFixed(2) + " points with " + pc(s.p) + " chance, otherwise " +
+         s.L.toFixed(2) + " points";
+}
+
+function render() {
+  if (state.i >= SESSION.trials.length) return finish();
+  const t = SESSION.trials[state.i];
+  const a = state.answers[state.i];
+  const rows = t.prices.map((pr, j) => `
+    <tr>
+      <td class="price">${pr > 0 ? "you pay " + pr.toFixed(2)
+                        : pr < 0 ? "you receive " + Math.abs(pr).toFixed(2)
+                        : "no payment"}</td>
+      <td><div class="opts">
+        <label><input type="radio" name="r${j}" value="1" ${a[j] === 1 ? "checked" : ""}> switch</label>
+        <label><input type="radio" name="r${j}" value="0" ${a[j] === 0 ? "checked" : ""}> keep</label>
+      </div></td>
+    </tr>`).join("");
+
+  root.innerHTML = `
+    <div class="card">
+      <div class="states">
+        <div class="state"><h3>You currently hold</h3><p>${describe(t.from)}</p></div>
+        <div class="state"><h3>You could switch to</h3><p>${describe(t.to)}</p></div>
+      </div>
+      <div class="arrow">For each amount below, would you switch?</div>
+      <table><thead><tr><th>Amount</th><th>Your choice</th></tr></thead>
+      <tbody>${rows}</tbody></table>
+      <div class="warn" id="warn" hidden>Please answer every row.</div>
+    </div>
+    <div class="nav">
+      <button id="back" ${state.i === 0 ? "disabled" : ""}>Back</button>
+      <button id="next" class="primary">Next</button>
+      <span class="prog">${state.i + 1} of ${SESSION.trials.length}</span>
+    </div>`;
+
+  root.querySelectorAll('input[type=radio]').forEach(el => {
+    el.addEventListener("change", e => {
+      const j = parseInt(e.target.name.slice(1), 10);
+      state.answers[state.i][j] = parseInt(e.target.value, 10);
+    });
+  });
+  document.getElementById("back").onclick = () => { state.i--; render(); window.scrollTo(0, 0); };
+  document.getElementById("next").onclick = () => {
+    if (state.answers[state.i].some(v => v === null)) {
+      document.getElementById("warn").hidden = false;
+      return;
+    }
+    state.i++; render(); window.scrollTo(0, 0);
+  };
+}
+
+function finish() {
+  const records = SESSION.trials.map((t, i) => ({
+    participant: SESSION.participant, family: t.family, pair: t.pair,
+    direction: t.direction, prices: t.prices, accepts: state.answers[i],
+  }));
+  const doc = { source: "human", participant: SESSION.participant,
+                generated: new Date().toISOString(), records };
+  const text = JSON.stringify(doc, null, 1);
+  root.innerHTML = `
+    <div class="card done">
+      <p><strong>Finished. Thank you.</strong></p>
+      <p class="prog">Save the file below and give it to the experimenter.</p>
+      <p><button id="save" class="primary">Save responses</button></p>
+      <p class="prog">If the button does nothing, copy the text below into a file
+         named <code>${SESSION.participant}.json</code>.</p>
+      <textarea readonly style="width:100%;height:150px;font-family:ui-monospace,monospace;font-size:.75rem">${text}</textarea>
+    </div>`;
+  document.getElementById("save").onclick = () => {
+    const blob = new Blob([text], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = SESSION.participant + ".json";
+    document.body.appendChild(a); a.click(); a.remove();
+  };
+}
+
+render();
+</script>
