@@ -66,7 +66,29 @@ import sys
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-PAIRS = ("CROSS", "CTRL_G", "CTRL_M")
+
+# Arm A names its controls CTRL_G and CTRL_M, arm B names them CTRL_LO and
+# CTRL_HI. The analysis does not care which arm produced a record, so the pair
+# names are READ FROM THE DATA rather than hardcoded. What is required is
+# structural and is enforced: exactly three pairs, exactly one of them the
+# crossing pair. Hardcoding arm A's names would have silently dropped every arm
+# B record, since the lookup would miss and the cell would be discarded.
+CROSS_PAIR = "CROSS"
+
+
+def pair_names(records):
+    names = sorted({r["pair"] for r in records})
+    if len(names) != 3:
+        raise AssertionError(
+            "expected exactly three pair types, found %d: %s. The excess is one "
+            "crossing pair minus the mean of two controls and is not defined "
+            "otherwise." % (len(names), names))
+    if CROSS_PAIR not in names:
+        raise AssertionError(
+            "no pair named %r among %s. The crossing pair must be identifiable "
+            "or the subtraction has no direction." % (CROSS_PAIR, names))
+    controls = [n for n in names if n != CROSS_PAIR]
+    return CROSS_PAIR, controls
 
 # The price rows, as multiples of the family's spread. Chosen by the sweep in
 # `price_range_sweep.py` rather than by widening until it looked safe. The
@@ -195,11 +217,12 @@ def excess_table(records):
         cell[(r["participant"], r["family"], r["pair"], r["direction"])] = v
     flags["by_cell"] = {k: v["edge"] / max(v["total"], 1)
                         for k, v in by_cell.items()}
+    cross, controls = pair_names(records)
     out = {}
     keys = {(p, f) for (p, f, _pa, _d) in cell}
     for (p, f) in keys:
         D = {}
-        for pair in PAIRS:
+        for pair in [cross] + controls:
             fwd = cell.get((p, f, pair, "forward"))
             bwd = cell.get((p, f, pair, "backward"))
             if fwd is None or bwd is None or not np.isfinite(fwd) or not np.isfinite(bwd):
@@ -207,7 +230,7 @@ def excess_table(records):
                 break
             D[pair] = fwd - bwd
         if D is not None:
-            out[(p, f)] = D["CROSS"] - 0.5 * (D["CTRL_G"] + D["CTRL_M"])
+            out[(p, f)] = D[cross] - sum(D[c] for c in controls) / len(controls)
     return out, flags
 
 
@@ -316,6 +339,7 @@ def analyse(records, provenance="simulated"):
 # synthetic pilot data, for the self-test only
 # ----------------------------------------------------------------------------
 def simulate(n_fam=30, n_part=60, fam_per_part=3, mean_excess=0.0,
+             pairs=("CROSS", "CTRL_G", "CTRL_M"),
              sd_fam=0.30, sd_part=0.40, sd_res=0.50, switch_bias=0.3,
              price_rows=PRICE_ROWS, seed=11):
     rng = np.random.default_rng(seed)
@@ -327,9 +351,9 @@ def simulate(n_fam=30, n_part=60, fam_per_part=3, mean_excess=0.0,
         for f in fams:
             # the excess this participant and family would show
             e = mean_excess + fam_eff[f] + part_eff[p] + rng.normal(0, sd_res)
-            for pair in PAIRS:
-                # put the whole excess on CROSS, none on the controls
-                add = e if pair == "CROSS" else 0.0
+            for pair in pairs:
+                # put the whole excess on the crossing pair, none on the controls
+                add = e if pair == CROSS_PAIR else 0.0
                 for direction in ("forward", "backward"):
                     s = switch_bias if direction == "forward" else -switch_bias
                     centre = s + (add if direction == "forward" else 0.0)

@@ -130,20 +130,63 @@ pairs of a family share states. `paper_04` Section 8 is why this matters, where 
 trial-level interval on a stimulus-level coefficient was too narrow by four and a
 half times and turned an estimate containing zero into a confident one.
 
-## 8. Arm B is deferred and its prediction is not testable
+## 8. Arm B, permission boundaries
 
-`DESIGN.md` Section 4 describes a second arm on permission boundaries, the
-auth-elevation case, where elevation changes which edges exist rather than moving
-within the complex. **It is designed and not instrumented.** No stimuli, no task
-and no analysis exist for it.
+The auth-elevation case. In Definition 6.1's terms an elevation is not a move
+within the complex, it is a change in **which edges exist**, making edges of
+infinite penalty traversable.
 
-So **P3 below cannot be tested by this registration**. The grader reports it as
-NOT TESTED rather than as a failure, which was a defect found while writing this
-document and fixed. An untested prediction reported as a failure puts a false
-negative in the record.
+**Its control is the part that had to be worked out and it is what makes the arm
+measure anything.** Arm A's controls hold value fixed and differ only in whether a
+loss branch exists. The analogue is not a permission change that changes no
+permissions, which is not a thing. It is **the same value gain delivered without
+the permitted set changing**.
 
-Either Arm B is built before sealing and P3 stands, or this registration seals
-with P1 and P2 only. **That decision belongs to the owner and is not made here.**
+A participant takes the best action they are permitted to take. With `a < b` two
+permitted payoffs and `v` the gain under test,
+
+| state | permits | payoffs | best |
+|---|---|---|---|
+| `L0` | A, B | `a`, `b` | `b` |
+| `L1` | A, B | `a`, `b+v` | `b+v` |
+| `H1` | A, B, C | `a`, `b`, `b+v` | `b+v` |
+| `H2` | A, B, C | `a`, `b`, `b+2v` | `b+2v` |
+
+| pair | gains `v` by |
+|---|---|
+| `CROSS`, `L0` to `H1` | **gaining a permission** |
+| `CTRL_LO`, `L0` to `L1` | improving an action already permitted |
+| `CTRL_HI`, `H1` to `H2` | improving an action already permitted |
+
+**All three are worth exactly `v` and only the first changes the permitted set.**
+
+**Payoffs are certain rather than risky, deliberately.** An earlier sketch gave
+the actions uncertain payoffs so a permission would carry option value. Valuing an
+option is harder than valuing a bonus, so a difference between the crossing pair
+and the controls could have been a difference in arithmetic rather than in
+permissions. With certain payoffs every pair is the same sum and only the route
+differs.
+
+`build_stimuli_armb.py` produces 60 families and rejects six deliberately broken
+ones, including a state permitting an action with no payoff, which made an earlier
+version of the checker crash rather than reject. **A checker that raises where it
+should reject tells you nothing about the stimulus.**
+
+The elevation must not be nominal, so the checker requires the newly permitted
+action to be the one the participant would actually take.
+
+**Arm B runs through Arm A's analysis unchanged.** The pair names are read from
+the data rather than hardcoded, since a hardcoded lookup would have missed every
+Arm B record and discarded the cell silently. What is enforced is structural,
+exactly three pair types with exactly one crossing pair, and `check_both_arms.py`
+confirms both arms recover all 30 families and that the rule rejects two pair
+types, four pair types, and a set with no crossing pair.
+
+**What is still missing for Arm B is the instrument.** The stimuli and the
+analysis are done. No task presents a permission state to a participant, and
+`session_builder.py` builds Arm A schedules only. P3 remains NOT TESTED until
+that exists, and the grader reports it as such rather than as a failure, which
+was a defect found while writing this document and fixed.
 
 ## 9. Predictions
 
