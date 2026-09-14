@@ -263,10 +263,35 @@ must be bit identical with no family lost. A fourth broken pipeline in `I0`
 writes Arm A's control names into its own source, is correct on Arm A, and loses
 all 60 families on Arm B without raising.
 
+### 8.3 One scale per arm, and P3 restated
+
+Arm A prices in multiples of a gamble's spread and Arm B in multiples of a
+permission's gain. Both excesses are money, but their magnitudes are set by
+unrelated design quantities, so **the raw difference between them is not a
+comparison of effect sizes and one arm's noise cannot bar the other's.**
+
+Each arm therefore carries its own sealed scale, `pilot_scale_arm_A.json` and
+`pilot_scale_arm_B.json`, and **P3 compares the arms standardised**, each divided
+by its own between-family spread. `P3_MULTIPLIER` is consequently dimensionless,
+where `P1_MULTIPLIER` is in Arm A's sigma. The multiplier's number is unchanged
+at 1.0 and its meaning is not, which is a change made before any data and
+recorded here because it could not be made after.
+
+The grader previously read one `pilot_scale.json` and tested
+`(exB - exA) > P3_MULTIPLIER * sigma`. Section 10b of `PILOT.md` already said the
+scale is measured per arm; the grader had not been brought along. It now refuses
+a scale whose declared arm does not match the one being graded, refuses a
+pre-split `pilot_scale.json` outright rather than reading it as either arm, and
+reports P3 NOT TESTED when Arm B ran but its scale is absent, rather than
+standing Arm A's in for it. A self-test grades identical raw excesses under two
+different Arm B spreads and the verdict follows, which under one shared scale
+would have been the same run twice.
+
 **What is still missing for Arm B is people.** Ethics approval, recruitment and
-the decision to run are the owner's, as for Arm A. P3 remains NOT TESTED until
-Arm B data exists, and the grader reports it as such rather than as a failure,
-which was a defect found while writing this document and fixed.
+the decision to run are the owner's, as for Arm A. A scale is needed per arm, so
+the pilot is either run twice or split. P3 remains NOT TESTED until Arm B data
+exists, and the grader reports it as such rather than as a failure, which was a
+defect found while writing this document and fixed.
 
 **Arm B runs through Arm A's analysis unchanged.** The pair names are read from
 the data rather than hardcoded, since a hardcoded lookup would have missed every
@@ -366,9 +391,13 @@ pilot used are outside what it measured.
 
 ## 14. Freezing procedure
 
-1. Resolve Section 8. Build Arm B, or seal with P1 and P2 and remove P3.
-2. Run the pilot under `PILOT.md`. Check its own failure conditions.
-3. Seal `pilot_scale.json`.
+1. Resolve Section 8. **Done for the instrument**: Arm B is built, stimuli
+   through task, and runs through the same analysis. What remains is whether to
+   collect Arm B at all. Seal with P1 and P2 alone and P3 stays NOT TESTED,
+   which the grader reports correctly and does not score as a failure.
+2. Run the pilot under `PILOT.md`, **once per arm being collected**. Check its
+   own failure conditions, including the resolution floor in Section 7b.
+3. Seal `pilot_scale_arm_A.json`, and `pilot_scale_arm_B.json` if Arm B runs.
 4. Fill Section 11 from the sealed scale and the committed multipliers.
 5. Finalise this document, **then** hash the bundle.
 6. Commit, sign the tag `prereg-d4transition-v1`, push.

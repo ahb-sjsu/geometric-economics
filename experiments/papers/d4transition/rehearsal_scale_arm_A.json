@@ -8,18 +8,18 @@
   "n_participants": 60,
   "n_families": 30,
   "n_observations": 180,
-  "between_family_var": 0.07913367701247165,
+  "between_family_var": 0.07913367701247163,
   "participant_var": 0.15987690972222218,
-  "residual_var": 0.31928043980161896,
+  "residual_var": 0.3192804398016191,
   "between_family_sd": 0.28130708667303717,
   "participant_sd": 0.3998461075491697,
-  "residual_sd": 0.5650490596413899,
+  "residual_sd": 0.56504905964139,
   "implied_sd_by_k": {
     "4": 0.44600786360044364,
-    "6": 0.39873955819111445,
+    "6": 0.3987395581911145,
     "8": 0.37286505025672734,
     "12": 0.34505572903439585,
-    "16": 0.330274145760324,
+    "16": 0.33027414576032393,
     "24": 0.3147992480549549
   },
   "price_slope_z": 42.22696280742355,
@@ -44,5 +44,6 @@
     "resolution_ok": true
   },
   "usable": true,
-  "provenance": "simulated"
+  "provenance": "simulated",
+  "arm": "A"
 }

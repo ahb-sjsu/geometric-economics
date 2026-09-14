@@ -150,7 +150,7 @@ participants contributed to each family, so a pilot at six per family and a
 confirmatory study at twelve would not share a scale. The decomposition lets the
 scale be computed for whatever the confirmatory design turns out to be.
 
-`pilot_scale.json` records the three components, the implied scale, the design
+`pilot_scale_arm_<A|B>.json` records the three components, the implied scale, the design
 they were measured under, and nothing else.
 
 ---
@@ -238,9 +238,10 @@ not to lower the bar.
 1. Fix the thirty-family selection rule in code. Run it. Record the families.
 2. Seal this protocol and the selection.
 3. Collect.
-4. Run `pilot_analysis.py`. It emits `pilot_scale.json` and nothing else.
+4. Run `pilot_analysis.py`. It emits `pilot_scale_arm_<A|B>.json`, named for the
+   arm the responses declare, and nothing else.
 5. Check Section 7. If any fails, fix the instrument and repeat from step 3.
-6. Seal `pilot_scale.json`.
+6. Seal the arm's scale file.
 7. Size the confirmatory study from the sealed scale and the fixed multipliers.
 8. Register the confirmatory study. Only then collect it.
 
@@ -274,9 +275,17 @@ price rows sit either side of the family's gain rather than either side of zero.
     python session_builder.py --arm B --write --html
     python roundtrip_check.py
 
-The scale is measured per arm. A scale from one arm does not set bars for the
-other, because the price unit differs: Arm A's rows are multiples of the gamble
-spread and Arm B's are multiples of the gain.
+The scale is measured per arm and this is enforced, not merely intended. A
+response file must declare its arm, `pilot_analysis.py` names its output
+`pilot_scale_arm_A.json` or `pilot_scale_arm_B.json` accordingly, and
+`grade_transition.py` refuses a scale whose declared arm is not the one being
+graded. A scale from one arm does not set bars for the other, because the price
+unit differs: Arm A's rows are multiples of the gamble spread and Arm B's are
+multiples of the gain. P3 compares the arms standardised, each by its own
+between-family spread.
+
+Running both arms therefore needs a scale for each, so the pilot is either run
+twice or split across the arms.
 
 ## 11. Running it
 
@@ -304,9 +313,11 @@ Collect the saved files, concatenate their `records` into one document with
 
     python pilot_analysis.py responses.json
 
-which writes `pilot_scale.json` only if the source is human, and
-`rehearsal_scale.json` otherwise. `grade_transition.py` refuses any scale not
-marked human and any scale reporting `usable` false.
+which writes `pilot_scale_arm_<A|B>.json` only if the source is human, and
+`rehearsal_scale_arm_<A|B>.json` otherwise. `grade_transition.py` refuses any
+scale not marked human, any scale reporting `usable` false, any scale whose arm
+does not match, and a pre-split `pilot_scale.json` outright rather than reading
+it as either arm.
 
 **What remains is entirely people.** Ethics approval, consent, recruitment,
 payment and the decision to run at all are the owner's, and nothing in this

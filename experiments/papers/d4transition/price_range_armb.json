@@ -107,7 +107,7 @@
     "S1 symmetric +/-1.0v @b0.10 n0.10": {
       "rows": 11,
       "worst_edge": 0.0,
-      "family_bias_pct": 2.7920722135758336,
+      "family_bias_pct": 2.79207221357583,
       "grid_step": 0.12,
       "resolution_ok": true
     },
@@ -121,21 +121,21 @@
     "P1 fine, tail to 1.5v @b0.10 n0.10": {
       "rows": 12,
       "worst_edge": 0.0,
-      "family_bias_pct": 2.7920722135758336,
+      "family_bias_pct": 2.79207221357583,
       "grid_step": 0.12,
       "resolution_ok": true
     },
     "P2 fine, tail to 2.2v @b0.10 n0.10": {
       "rows": 13,
       "worst_edge": 0.0,
-      "family_bias_pct": 2.7920722135758336,
+      "family_bias_pct": 2.79207221357583,
       "grid_step": 0.12,
       "resolution_ok": true
     },
     "P3 fine, tail to 3.0v @b0.10 n0.10": {
       "rows": 14,
       "worst_edge": 0.0,
-      "family_bias_pct": 2.7920722135758336,
+      "family_bias_pct": 2.79207221357583,
       "grid_step": 0.12,
       "resolution_ok": true
     },
@@ -149,56 +149,56 @@
     "S1 symmetric +/-1.0v @b0.10 n0.25": {
       "rows": 11,
       "worst_edge": 0.0,
-      "family_bias_pct": -2.17894649892291,
+      "family_bias_pct": -2.1789464989229153,
       "grid_step": 0.12,
       "resolution_ok": true
     },
     "S2 symmetric +/-1.5v @b0.10 n0.25": {
       "rows": 11,
       "worst_edge": 0.0,
-      "family_bias_pct": 0.7755913233186121,
+      "family_bias_pct": 0.7755913233186174,
       "grid_step": 0.18,
       "resolution_ok": true
     },
     "P1 fine, tail to 1.5v @b0.10 n0.25": {
       "rows": 12,
       "worst_edge": 0.0,
-      "family_bias_pct": -2.17894649892291,
+      "family_bias_pct": -2.1789464989229153,
       "grid_step": 0.12,
       "resolution_ok": true
     },
     "P2 fine, tail to 2.2v @b0.10 n0.25": {
       "rows": 13,
       "worst_edge": 0.0,
-      "family_bias_pct": -2.17894649892291,
+      "family_bias_pct": -2.1789464989229153,
       "grid_step": 0.12,
       "resolution_ok": true
     },
     "P3 fine, tail to 3.0v @b0.10 n0.25": {
       "rows": 14,
       "worst_edge": 0.0,
-      "family_bias_pct": -2.17894649892291,
+      "family_bias_pct": -2.1789464989229153,
       "grid_step": 0.12,
       "resolution_ok": true
     },
     "P4 coarse, tail to 2.2v @b0.10 n0.25": {
       "rows": 11,
       "worst_edge": 0.0,
-      "family_bias_pct": 2.0545147675212765,
+      "family_bias_pct": 2.0545147675212867,
       "grid_step": 0.15,
       "resolution_ok": true
     },
     "S1 symmetric +/-1.0v @b0.10 n0.40": {
       "rows": 11,
       "worst_edge": 0.010555555555555554,
-      "family_bias_pct": -1.6321285889910218,
+      "family_bias_pct": -1.6321285889910153,
       "grid_step": 0.12,
       "resolution_ok": true
     },
     "S2 symmetric +/-1.5v @b0.10 n0.40": {
       "rows": 11,
       "worst_edge": 0.0,
-      "family_bias_pct": -1.0693345252933866,
+      "family_bias_pct": -1.06933452529339,
       "grid_step": 0.18,
       "resolution_ok": true
     },
@@ -226,49 +226,49 @@
     "P4 coarse, tail to 2.2v @b0.10 n0.40": {
       "rows": 11,
       "worst_edge": 0.002777777777777778,
-      "family_bias_pct": -1.1489117086315586,
+      "family_bias_pct": -1.148911708631562,
       "grid_step": 0.15,
       "resolution_ok": true
     },
     "S1 symmetric +/-1.0v @b0.40 n0.10": {
       "rows": 11,
       "worst_edge": 0.0,
-      "family_bias_pct": -1.9028310816592933,
+      "family_bias_pct": -1.9028310816592802,
       "grid_step": 0.2,
       "resolution_ok": true
     },
     "S2 symmetric +/-1.5v @b0.40 n0.10": {
       "rows": 11,
       "worst_edge": 0.0,
-      "family_bias_pct": 8.418082389457837,
+      "family_bias_pct": 8.418082389457846,
       "grid_step": 0.30000000000000004,
       "resolution_ok": false
     },
     "P1 fine, tail to 1.5v @b0.40 n0.10": {
       "rows": 12,
       "worst_edge": 0.0,
-      "family_bias_pct": -1.9028310816592933,
+      "family_bias_pct": -1.9028310816592802,
       "grid_step": 0.2,
       "resolution_ok": true
     },
     "P2 fine, tail to 2.2v @b0.40 n0.10": {
       "rows": 13,
       "worst_edge": 0.0,
-      "family_bias_pct": -1.9028310816592933,
+      "family_bias_pct": -1.9028310816592802,
       "grid_step": 0.2,
       "resolution_ok": true
     },
     "P3 fine, tail to 3.0v @b0.40 n0.10": {
       "rows": 14,
       "worst_edge": 0.0,
-      "family_bias_pct": -1.9028310816592933,
+      "family_bias_pct": -1.9028310816592802,
       "grid_step": 0.2,
       "resolution_ok": true
     },
     "P4 coarse, tail to 2.2v @b0.40 n0.10": {
       "rows": 11,
       "worst_edge": 0.0,
-      "family_bias_pct": 0.5337614878802714,
+      "family_bias_pct": 0.5337614878802698,
       "grid_step": 0.30000000000000004,
       "resolution_ok": false
     },
@@ -310,7 +310,7 @@
     "P4 coarse, tail to 2.2v @b0.40 n0.25": {
       "rows": 11,
       "worst_edge": 0.0,
-      "family_bias_pct": -2.7612370946291596,
+      "family_bias_pct": -2.7612370946291516,
       "grid_step": 0.30000000000000004,
       "resolution_ok": true
     },
@@ -324,14 +324,14 @@
     "S2 symmetric +/-1.5v @b0.40 n0.40": {
       "rows": 11,
       "worst_edge": 0.0016666666666666666,
-      "family_bias_pct": -4.453809020062242,
+      "family_bias_pct": -4.453809020062248,
       "grid_step": 0.30000000000000004,
       "resolution_ok": true
     },
     "P1 fine, tail to 1.5v @b0.40 n0.40": {
       "rows": 12,
       "worst_edge": 0.0016666666666666666,
-      "family_bias_pct": -2.346424063575149,
+      "family_bias_pct": -2.346424063575152,
       "grid_step": 0.2,
       "resolution_ok": true
     },
@@ -373,28 +373,28 @@
     "P1 fine, tail to 1.5v @b0.80 n0.10": {
       "rows": 12,
       "worst_edge": 0.0,
-      "family_bias_pct": -32.45890896665282,
+      "family_bias_pct": -32.45890896665283,
       "grid_step": 0.30000000000000004,
       "resolution_ok": false
     },
     "P2 fine, tail to 2.2v @b0.80 n0.10": {
       "rows": 13,
       "worst_edge": 0.0,
-      "family_bias_pct": -32.45890896665282,
+      "family_bias_pct": -32.45890896665283,
       "grid_step": 0.30000000000000004,
       "resolution_ok": false
     },
     "P3 fine, tail to 3.0v @b0.80 n0.10": {
       "rows": 14,
       "worst_edge": 0.0,
-      "family_bias_pct": -32.45890896665282,
+      "family_bias_pct": -32.45890896665283,
       "grid_step": 0.30000000000000004,
       "resolution_ok": false
     },
     "P4 coarse, tail to 2.2v @b0.80 n0.10": {
       "rows": 11,
       "worst_edge": 0.0,
-      "family_bias_pct": -65.67335378486975,
+      "family_bias_pct": -65.67335378486978,
       "grid_step": 0.35,
       "resolution_ok": false
     },
@@ -408,35 +408,35 @@
     "S2 symmetric +/-1.5v @b0.80 n0.25": {
       "rows": 11,
       "worst_edge": 0.0011111111111111111,
-      "family_bias_pct": -1.855130024839116,
+      "family_bias_pct": -1.855130024839119,
       "grid_step": 0.3749999999999998,
       "resolution_ok": true
     },
     "P1 fine, tail to 1.5v @b0.80 n0.25": {
       "rows": 12,
       "worst_edge": 0.0011111111111111111,
-      "family_bias_pct": -0.6796647063127933,
+      "family_bias_pct": -0.6796647063127985,
       "grid_step": 0.30000000000000004,
       "resolution_ok": true
     },
     "P2 fine, tail to 2.2v @b0.80 n0.25": {
       "rows": 13,
       "worst_edge": 0.0,
-      "family_bias_pct": 0.2305895960256121,
+      "family_bias_pct": 0.23058959602560686,
       "grid_step": 0.30000000000000004,
       "resolution_ok": true
     },
     "P3 fine, tail to 3.0v @b0.80 n0.25": {
       "rows": 14,
       "worst_edge": 0.0,
-      "family_bias_pct": 0.2305895960256121,
+      "family_bias_pct": 0.23058959602560686,
       "grid_step": 0.30000000000000004,
       "resolution_ok": true
     },
     "P4 coarse, tail to 2.2v @b0.80 n0.25": {
       "rows": 11,
       "worst_edge": 0.0,
-      "family_bias_pct": -2.319750085816715,
+      "family_bias_pct": -2.3197500858167173,
       "grid_step": 0.35,
       "resolution_ok": true
     },
@@ -450,35 +450,35 @@
     "S2 symmetric +/-1.5v @b0.80 n0.40": {
       "rows": 11,
       "worst_edge": 0.02777777777777778,
-      "family_bias_pct": -9.711501300135849,
+      "family_bias_pct": -9.711501300135845,
       "grid_step": 0.3749999999999998,
       "resolution_ok": true
     },
     "P1 fine, tail to 1.5v @b0.80 n0.40": {
       "rows": 12,
       "worst_edge": 0.02777777777777778,
-      "family_bias_pct": -6.368587309424979,
+      "family_bias_pct": -6.368587309424971,
       "grid_step": 0.30000000000000004,
       "resolution_ok": true
     },
     "P2 fine, tail to 2.2v @b0.80 n0.40": {
       "rows": 13,
       "worst_edge": 0.0,
-      "family_bias_pct": -1.3699265208869462,
+      "family_bias_pct": -1.369926520886956,
       "grid_step": 0.30000000000000004,
       "resolution_ok": true
     },
     "P3 fine, tail to 3.0v @b0.80 n0.40": {
       "rows": 14,
       "worst_edge": 0.0,
-      "family_bias_pct": -1.3699265208869462,
+      "family_bias_pct": -1.369926520886956,
       "grid_step": 0.30000000000000004,
       "resolution_ok": true
     },
     "P4 coarse, tail to 2.2v @b0.80 n0.40": {
       "rows": 11,
       "worst_edge": 0.0,
-      "family_bias_pct": -2.158836891657023,
+      "family_bias_pct": -2.158836891657026,
       "grid_step": 0.35,
       "resolution_ok": true
     }
@@ -521,14 +521,14 @@
       "P1 fine, tail to 1.5v @b0.10 n0.10": {
         "rows": 12,
         "worst_edge": 0.0,
-        "family_bias_pct": 2.7920722135758336,
+        "family_bias_pct": 2.79207221357583,
         "grid_step": 0.12,
         "resolution_ok": true
       },
       "P1 fine, tail to 1.5v @b0.10 n0.25": {
         "rows": 12,
         "worst_edge": 0.0,
-        "family_bias_pct": -2.17894649892291,
+        "family_bias_pct": -2.1789464989229153,
         "grid_step": 0.12,
         "resolution_ok": true
       },
@@ -542,7 +542,7 @@
       "P1 fine, tail to 1.5v @b0.40 n0.10": {
         "rows": 12,
         "worst_edge": 0.0,
-        "family_bias_pct": -1.9028310816592933,
+        "family_bias_pct": -1.9028310816592802,
         "grid_step": 0.2,
         "resolution_ok": true
       },
@@ -556,28 +556,28 @@
       "P1 fine, tail to 1.5v @b0.40 n0.40": {
         "rows": 12,
         "worst_edge": 0.0016666666666666666,
-        "family_bias_pct": -2.346424063575149,
+        "family_bias_pct": -2.346424063575152,
         "grid_step": 0.2,
         "resolution_ok": true
       },
       "P1 fine, tail to 1.5v @b0.80 n0.10": {
         "rows": 12,
         "worst_edge": 0.0,
-        "family_bias_pct": -32.45890896665282,
+        "family_bias_pct": -32.45890896665283,
         "grid_step": 0.30000000000000004,
         "resolution_ok": false
       },
       "P1 fine, tail to 1.5v @b0.80 n0.25": {
         "rows": 12,
         "worst_edge": 0.0011111111111111111,
-        "family_bias_pct": -0.6796647063127933,
+        "family_bias_pct": -0.6796647063127985,
         "grid_step": 0.30000000000000004,
         "resolution_ok": true
       },
       "P1 fine, tail to 1.5v @b0.80 n0.40": {
         "rows": 12,
         "worst_edge": 0.02777777777777778,
-        "family_bias_pct": -6.368587309424979,
+        "family_bias_pct": -6.368587309424971,
         "grid_step": 0.30000000000000004,
         "resolution_ok": true
       }

@@ -98,23 +98,55 @@ Elevation makes edges with `beta = infinite` traversable.
 That is a different object from Arm A and it is worth measuring separately
 because the framework treats it the same way and it may not behave the same way.
 
-Participants act in a task with a stated permission level. Some actions are
-marked unavailable at the current level. A trial offers either
+Participants hold a board of actions, each with a stated payoff, each marked open
+or closed to them. They may take the best action that is open. A trial offers a
+move to another board, in one direction on one trial and the other direction on a
+matched trial, so the Section 2 cancellation applies.
 
-- **elevation**, at a price, which makes a named set of actions available, or
-- **de-elevation**, at a price paid to the participant, which removes them.
+**The control is the part that had to be worked out, and it is what makes the arm
+measure anything.** It cannot be a permission change that changes no permissions,
+which is not a thing. It is **the same value gain delivered without the permitted
+set changing**. With `a < b` two payoffs and `v` the gain under test,
 
-The same permission set is offered in both directions on matched trials, so the
-Section 2 cancellation applies. The control is a pair of permission sets that
-differ in size but contain no action the participant ever chooses, so the
-elevation is nominal.
+| state | open | payoffs (A, B, C) | best open |
+|---|---|---|---|
+| `L0` | A, B | `a`, `b`, `b+v` | `b` |
+| `L1` | A, B | `a`, `b+v`, `b+v` | `b+v` |
+| `H1` | A, B, C | `a`, `b`, `b+v` | `b+v` |
+| `H2` | A, B, C | `a`, `b`, `b+2v` | `b+2v` |
+
+| pair | gains `v` by |
+|---|---|
+| `CROSS`, `L0` to `H1` | **opening C.** not one number on the board changes |
+| `CTRL_LO`, `L0` to `L1` | raising `B`. `C` stays closed at the same number |
+| `CTRL_HI`, `H1` to `H2` | raising `C`. nothing opens or closes |
+
+**All three are worth exactly `v`, and only the first changes what is open.**
+
+**A closed action is shown, not hidden.** If `C` were absent from `L0`, reaching
+`H1` would look like a new option arriving, which is what `CTRL_LO` already does,
+and there would be no boundary on the screen to cross. Part of what this measures
+may then be a response to being refused rather than to the permission. That is
+the construct. A participant who never saw the boundary would be the confound.
+
+**Payoffs are certain, deliberately.** An earlier version of this section gave the
+actions uncertain payoffs so that a permission would carry option value, and
+reasoned from there that a rational agent pays for elevation and requires nothing
+to give up a permission it never uses. That reasoning is sound and the design was
+not, because valuing an option is harder than valuing a bonus, so a difference
+between the crossing pair and the controls could have been a difference in
+arithmetic rather than in permissions. With certain payoffs every pair is the same
+sum and only the route differs. The elevation is never nominal either: the checker
+requires the newly opened action to be the one the participant would actually
+take, which is the opposite of the control this section once proposed.
 
 **The prediction that separates this from Arm A** is that a permission boundary
-should be strongly asymmetric while an outcome boundary need not be. Acquiring an
-option you may decline is weakly better than not having it, so a rational agent
-pays something for elevation and requires nothing to give up a permission it never
-uses. If the measured cost of de-elevation is above zero on the control, that is a
-finding about agents rather than about the framework.
+should be more strongly asymmetric than an outcome boundary. What is measured is
+the excess for the crossing pair over the mean of the two controls, the same
+estimand as Arm A, so the two arms can be compared. They are compared
+**standardised**, each divided by its own between-family spread, because Arm A
+prices in multiples of a gamble's spread and Arm B in multiples of a permission's
+gain and the raw numbers are not commensurable.
 
 ---
 
@@ -201,7 +233,10 @@ that file and nowhere else.
   exceeds the control mean by more than a bar set from the pilot's own noise.
 - **P2, it is asymmetric.** The crossing pair's direction difference is non-zero
   in a declared direction, which is the question `paper_04` could not reach.
-- **P3, permissions and outcomes differ.** Arm B's excess exceeds Arm A's.
+- **P3, permissions and outcomes differ.** Arm B's excess exceeds Arm A's, each
+  standardised by its own arm's between-family spread. The two arms do not share
+  a price unit, so the raw difference is not a comparison of effect sizes and one
+  arm's noise cannot bar the other's.
 
 Reported separately. **No composite verdict.**
 

@@ -103,9 +103,13 @@ def run_arm(arm):
         tmp = os.path.join(HERE, "_roundtrip_tmp.json")
         with open(tmp, "w", encoding="utf-8") as fh:
             json.dump(doc, fh)
-        src, recs = P.load_responses(tmp)
+        src, got_arm, recs = P.load_responses(tmp)
         os.remove(tmp)
         assert src == "human", "task must declare human responses"
+        assert got_arm == arm.name, (
+            "task file declares arm %r but was built for arm %r. The arms do "
+            "not share a price unit and a mislabelled file would set the wrong "
+            "arm's scale." % (got_arm, arm.name))
         all_records += recs
 
     print("  price rows ascending in every cell:              %s" % ascending_ok)
@@ -132,7 +136,7 @@ def run_arm(arm):
         print("  MISMATCH. the instrument and the analysis do not agree.")
         return 1
 
-    out = P.analyse(all_records, provenance="simulated")
+    out = P.analyse(all_records, provenance="simulated", arm=arm.name)
     print("  the analysis runs end to end on task-shaped input")
     print("    non-monotone share      %.3f" % out["nonmonotone_share"])
     print("    worst cell at an edge   %.3f" % out["worst_cell_floor_ceiling"])

@@ -54,7 +54,7 @@ for `k` participants per family. `PILOT.md` Section 6 is why this matters. A pil
 at six per family and a confirmatory study at twelve do not share a raw scale.
 
     python pilot_analysis.py                 # self-test only
-    python pilot_analysis.py responses.json  # analyse and write pilot_scale.json
+    python pilot_analysis.py responses.json  # writes pilot_scale_arm_<A|B>.json
 """
 from __future__ import annotations
 
@@ -110,7 +110,7 @@ PERMITTED = {
     "implied_sd_by_k", "price_slope_z", "nonmonotone_share",
     "floor_ceiling_share", "floor_ceiling_by_cell",
     "worst_cell_floor_ceiling", "grid_step_median", "resolution_floor",
-    "checks", "usable", "provenance",
+    "checks", "usable", "provenance", "arm",
 }
 FORBIDDEN_SUBSTRINGS = ("mean_excess", "excess_mean", "grand_mean", "estimate",
                         "point", "effect_size", "beta")
@@ -367,11 +367,17 @@ def build_output(var_fam, var_part, var_res, n_part, n_fam, n_obs,
 
 
 def load_responses(path):
-    """Responses must declare where they came from.
+    """Responses must declare where they came from AND which arm they are.
 
     A scale computed from simulated responses would set every bar in the
     confirmatory study, silently and wrongly. The provenance is therefore a
     required field rather than a convention, and an undeclared file is refused.
+
+    THE ARM IS REQUIRED FOR THE SAME REASON. The two arms price in different
+    units, arm A in multiples of a gamble's spread and arm B in multiples of a
+    permission's gain, so their scales are not interchangeable. A response file
+    that does not say which arm it is could set the wrong arm's scale, and the
+    grader would then bar one arm with the other's noise.
     """
     with open(path, encoding="utf-8") as fh:
         doc = json.load(fh)
@@ -383,10 +389,16 @@ def load_responses(path):
     src = doc["source"]
     if src not in ("human", "simulated"):
         raise AssertionError("source must be 'human' or 'simulated', not %r" % src)
-    return src, doc["records"]
+    arm = doc.get("arm")
+    if arm not in ("A", "B"):
+        raise AssertionError(
+            "responses file must declare 'arm' as 'A' or 'B', not %r. The arms "
+            "price in different units and their scales are not "
+            "interchangeable." % arm)
+    return src, arm, doc["records"]
 
 
-def analyse(records, provenance="simulated"):
+def analyse(records, provenance="simulated", arm="A"):
     excess, flags = excess_table(records)
     vf, vp, vr, _total = variance_components(excess)
     n_part = len({p for (p, _f) in excess})
@@ -398,6 +410,7 @@ def analyse(records, provenance="simulated"):
         flags["edge"] / max(flags["total"], 1),
         flags["by_cell"], grid_step(records))
     out["provenance"] = provenance
+    out["arm"] = arm
     return _guard(out)
 
 
@@ -545,20 +558,22 @@ def main():
         print()
         print("self-test failed, refusing to analyse")
         return 1
-    src, records = load_responses(sys.argv[1])
-    out = analyse(records, provenance=src)
+    src, arm, records = load_responses(sys.argv[1])
+    out = analyse(records, provenance=src, arm=arm)
     print()
     print(json.dumps(out, indent=2))
 
-    # A scale from simulated responses is never written where the grader looks.
+    # A scale from simulated responses is never written where the grader looks,
+    # and a scale is always named for the arm it measures, because the arms do
+    # not share a unit and the grader refuses a scale whose arm does not match.
     if src == "human":
-        target = "pilot_scale.json"
+        target = "pilot_scale_arm_%s.json" % arm
     else:
-        target = "rehearsal_scale.json"
+        target = "rehearsal_scale_arm_%s.json" % arm
         print()
         print("SOURCE IS SIMULATED. This is a rehearsal of the chain and not a")
-        print("pilot. Writing to rehearsal_scale.json. grade_transition.py reads")
-        print("pilot_scale.json and will refuse anything not marked human.")
+        print("pilot. Writing to %s. grade_transition.py reads" % target)
+        print("pilot_scale_arm_%s.json and refuses anything not marked human." % arm)
     with open(os.path.join(HERE, target), "w", encoding="utf-8") as fh:
         json.dump(out, fh, indent=2)
     print()

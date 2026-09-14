@@ -128,7 +128,10 @@ function finish() {
     participant: SESSION.participant, family: t.family, pair: t.pair,
     direction: t.direction, prices: t.prices, accepts: state.answers[i],
   }));
-  const doc = { source: "human", participant: SESSION.participant,
+  // The arm is declared because the two arms price in different units and
+  // their scales are not interchangeable. pilot_analysis refuses a file that
+  // does not say, and names its output for the arm it measured.
+  const doc = { source: "human", arm: SESSION.arm, participant: SESSION.participant,
                 generated: new Date().toISOString(), records };
   const text = JSON.stringify(doc, null, 1);
   root.innerHTML = `

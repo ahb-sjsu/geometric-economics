@@ -14,8 +14,25 @@ error of `0.101`.
 
 So the registered quantity is the **multiplier**, fixed in this file now, before
 any data. The **scale** is the between-family standard deviation measured by the
-pilot, which is a sealed input recorded in `pilot_scale.json` and not a decision.
-Neither can be changed after the other is known.
+pilot, a sealed input and not a decision. Neither can be changed after the other
+is known.
+
+ONE SCALE PER ARM, BECAUSE THE ARMS DO NOT SHARE A UNIT
+
+Arm A prices in multiples of a gamble's spread and arm B in multiples of a
+permission's gain. Both excesses are money, but their magnitudes are set by
+unrelated design quantities, so the raw difference between them is not a
+comparison of effect sizes and one arm's noise cannot bar the other's. Each arm
+therefore carries its own sealed scale, `pilot_scale_arm_A.json` and
+`pilot_scale_arm_B.json`, and **P3 compares the two arms STANDARDISED, each by
+its own between-family spread.** `P3_MULTIPLIER` is consequently in standardised
+units and is dimensionless, where `P1_MULTIPLIER` is in arm A's sigma.
+
+An earlier version of this file read a single `pilot_scale.json` and tested
+`(exB - exA) > P3_MULTIPLIER * sigma`, which subtracted two quantities whose
+scales have nothing to do with each other and barred the result with arm A's
+noise. `PILOT.md` already said the scale is measured per arm; the grader had not
+been brought along.
 
 SIGN CONVENTION, DECLARED SO IT CANNOT BE CHOSEN LATER
 
@@ -37,7 +54,9 @@ import sys
 # ---------------------------------------------------------------------------
 P1_MULTIPLIER = 2.5      # excess must exceed this many pilot sigmas
 P2_DIRECTION = +1        # acquiring a loss branch costs more, not less
-P3_MULTIPLIER = 1.0      # arm B must exceed arm A by this many pilot sigmas
+P3_MULTIPLIER = 1.0      # arm B must exceed arm A by this many STANDARDISED
+                         # units, each arm divided by its own between-family
+                         # spread. dimensionless, unlike P1's multiplier.
 
 # ---------------------------------------------------------------------------
 # VOID CONDITIONS. Not predictions. A run failing any of these reports nothing.
@@ -57,33 +76,65 @@ V7_MAX_SINGLE_FAMILY_SHARE = 0.25   # no one family may carry this much of the
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 
-def pilot_sigma():
-    """The measured noise scale. A sealed input, not a decision.
+def scale_path(arm):
+    return os.path.join(HERE, "pilot_scale_arm_%s.json" % arm)
 
-    Refuses a scale that did not come from human responses. Every bar in this
-    file is a multiple of this number, so a scale computed from a simulation
-    would set the whole study silently. `pilot_analysis.py` writes simulated
-    runs to `rehearsal_scale.json` instead, and this is the other half of that
-    guard.
+
+def pilot_sigma(arm, required=True):
+    """The measured noise scale FOR ONE ARM. A sealed input, not a decision.
+
+    Refuses a scale that did not come from human responses, that reports itself
+    unusable, or that belongs to the other arm. Every bar in this file is a
+    multiple of one of these numbers, so a scale computed from a simulation, or
+    the wrong arm's scale, would set the study silently. `pilot_analysis.py`
+    writes simulated runs to a rehearsal filename instead, and this is the other
+    half of that guard.
+
+    Returns None when `required` is false and the file is absent, which is how
+    an unrun arm B reaches the grader.
     """
-    p = os.path.join(HERE, "pilot_scale.json")
+    # a file from before the split would be read as whichever arm asked for it
+    stale = os.path.join(HERE, "pilot_scale.json")
+    if os.path.exists(stale):
+        raise AssertionError(
+            "pilot_scale.json exists, from before the scale was split per arm. "
+            "The arms do not share a unit. Rename it to pilot_scale_arm_A.json "
+            "or pilot_scale_arm_B.json so it cannot be read as either.")
+    p = scale_path(arm)
+    if not os.path.exists(p):
+        if required:
+            raise AssertionError(
+                "%s is missing. Arm %s cannot be graded without its own scale."
+                % (os.path.basename(p), arm))
+        return None
     with open(p, encoding="utf-8") as fh:
         doc = json.load(fh)
     prov = doc.get("provenance")
     if prov != "human":
         raise AssertionError(
-            "pilot_scale.json has provenance %r and must be 'human'. Every bar "
-            "is a multiple of this scale, so a simulated one would set the "
-            "study without anyone choosing it." % prov)
+            "%s has provenance %r and must be 'human'. Every bar is a multiple "
+            "of this scale, so a simulated one would set the study without "
+            "anyone choosing it." % (os.path.basename(p), prov))
     if not doc.get("usable", False):
         raise AssertionError(
-            "pilot_scale.json reports usable false. Fix the instrument and "
-            "repeat the pilot before sizing anything.")
+            "%s reports usable false. Fix the instrument and repeat the pilot "
+            "before sizing anything." % os.path.basename(p))
+    got = doc.get("arm")
+    if got != arm:
+        raise AssertionError(
+            "%s reports arm %r but was read as arm %r. Barring one arm with the "
+            "other's noise is the error this split exists to prevent."
+            % (os.path.basename(p), got, arm))
     return float(doc["between_family_sd"])
 
 
-def grade(r, sigma):
-    """Returns the verdict dict. `r` is the analysis output."""
+def grade(r, sigma, sigma_b=None):
+    """Returns the verdict dict. `r` is the analysis output.
+
+    `sigma` is arm A's between-family spread and sets P1, P2 and V5. `sigma_b` is
+    arm B's, needed only for P3, and its absence makes P3 NOT TESTED rather than
+    letting arm A's scale stand in for it.
+    """
     voids = []
 
     # V1, the instrument must respond to price in the expected direction
@@ -159,10 +210,26 @@ def grade(r, sigma):
 
     p1 = exA > P1_MULTIPLIER * sigma
     p2 = (exA * P2_DIRECTION) > 0 and abs(exA) > 2.0 * seA
-    # P3 needs arm B, which is designed but not instrumented. An absent arm is
-    # NOT TESTED and must never be reported as FAIL, which would put a false
-    # negative in the record for a prediction nobody measured.
-    p3 = None if exB is None else ((exB - exA) > P3_MULTIPLIER * sigma)
+
+    # P3 compares the arms STANDARDISED, each by its own between-family spread,
+    # because the arms price in unrelated units. An absent arm, or an arm
+    # without its own scale, is NOT TESTED and must never be reported as FAIL:
+    # that would put a false negative in the record for a prediction nobody
+    # measured, and grading arm B against arm A's noise would be worse, because
+    # it would put a number there.
+    zA = exA / sigma
+    zB = None if (exB is None or sigma_b is None) else exB / sigma_b
+    p3 = None if zB is None else ((zB - zA) > P3_MULTIPLIER)
+    if exB is None:
+        p3_note = ("arm B was not run, so this prediction is untested. It is "
+                   "not a failure and must not be reported as one.")
+    elif sigma_b is None:
+        p3_note = ("arm B was run but pilot_scale_arm_B.json is absent. P3 "
+                   "needs arm B standardised by ITS OWN spread and must not be "
+                   "computed with arm A's, so it is untested rather than "
+                   "wrong.")
+    else:
+        p3_note = None
 
     out.update({
         "P1_penalty_exists": {
@@ -174,14 +241,15 @@ def grade(r, sigma):
                    "more, and beyond two of its own standard errors",
             "value": exA, "se": seA, "pass": bool(p2)},
         "P3_permission_exceeds_outcome": {
-            "bar": "arm B excess exceeds arm A by %.2f x %.4f"
-                   % (P3_MULTIPLIER, sigma),
-            "value": None if exB is None else exB - exA,
+            "bar": "arm B standardised exceeds arm A standardised by %.2f, "
+                   "each divided by its own between-family spread"
+                   % P3_MULTIPLIER,
+            "arm_a_standardised": zA,
+            "arm_b_standardised": zB,
+            "value": None if zB is None else zB - zA,
             "pass": None if p3 is None else bool(p3),
             "tested": p3 is not None,
-            "note": None if p3 is not None else
-                    "arm B was not run, so this prediction is untested. It is "
-                    "not a failure and must not be reported as one."},
+            "note": p3_note},
         "verdict": "P1 %s, P2 %s, P3 %s" % (
             "PASS" if p1 else "FAIL",
             "PASS" if p2 else "FAIL",
@@ -220,11 +288,12 @@ def _base_result():
 def self_test():
     """The grader must VOID when it should. Each case breaks one condition."""
     import copy
-    sigma = 0.12
+    sigma = 0.12          # arm A's between-family spread
+    sigma_b = 0.30        # arm B's, deliberately different
     print("SELF-TEST, the grader must void on each broken result")
     ok = True
 
-    good = grade(_base_result(), sigma)
+    good = grade(_base_result(), sigma, sigma_b)
     if good["void"]:
         print("  FAIL, a clean result was voided: %s" % good["void_reasons"])
         ok = False
@@ -247,7 +316,7 @@ def self_test():
     for label, patch, expect in cases:
         r = copy.deepcopy(_base_result())
         r.update(patch)
-        v = grade(r, sigma)
+        v = grade(r, sigma, sigma_b)
         hit = v["void"] and any(x.startswith(expect) for x in v["void_reasons"])
         print("  %-38s -> %s" % (label, "VOIDED" if hit else "NOT VOIDED"))
         if not hit:
@@ -257,7 +326,7 @@ def self_test():
     # and the predictions must be able to fail on a clean run
     r = _base_result()
     r["arm_a"] = {"excess": 0.02, "se": 0.05}
-    v = grade(r, sigma)
+    v = grade(r, sigma, sigma_b)
     f1 = (not v["void"]) and (not v["P1_penalty_exists"]["pass"]) and "F1" in v
     print("  %-38s -> %s" % ("a clean run with no penalty",
                              "F1 fires" if f1 else "F1 DID NOT FIRE"))
@@ -265,15 +334,43 @@ def self_test():
 
     r = _base_result()
     del r["arm_b"]
-    v = grade(r, sigma)
+    v = grade(r, sigma, sigma_b)
     nt = (not v["void"]) and v["P3_permission_exceeds_outcome"]["tested"] is False         and "NOT TESTED" in v["verdict"]
     print("  %-38s -> %s" % ("arm B absent",
                              "P3 reports NOT TESTED" if nt else "MISREPORTED"))
     ok = ok and nt
 
+    # arm B run, but no arm B scale. The tempting thing is to fall back on arm
+    # A's sigma, which would print a number that means nothing.
+    v = grade(_base_result(), sigma, None)
+    p3 = v["P3_permission_exceeds_outcome"]
+    nos = (p3["tested"] is False and p3["value"] is None
+           and "pilot_scale_arm_B.json" in (p3["note"] or ""))
+    print("  %-38s -> %s" % ("arm B run with no arm B scale",
+                             "NOT TESTED, names the reason" if nos
+                             else "MISREPORTED"))
+    ok = ok and nos
+
+    # THE POINT OF THE SPLIT. Identical raw excesses, and the verdict follows
+    # arm B's own spread. Under one shared scale these two are the same run.
+    r = _base_result()
+    r["arm_a"] = {"excess": 0.52, "se": 0.05}
+    r["arm_b"] = {"excess": 0.95, "se": 0.07}
+    loose = grade(r, sigma, 0.30)["P3_permission_exceeds_outcome"]
+    tight = grade(r, sigma, 0.06)["P3_permission_exceeds_outcome"]
+    split = (loose["pass"] is False) and (tight["pass"] is True)
+    print("  %-38s -> %s" % ("same raw excesses, arm B spread differs",
+                             "verdict follows arm B's own scale" if split
+                             else "SCALE IGNORED"))
+    print("       arm B sd 0.30: zB-zA %+.2f, pass %s"
+          % (loose["value"], loose["pass"]))
+    print("       arm B sd 0.06: zB-zA %+.2f, pass %s"
+          % (tight["value"], tight["pass"]))
+    ok = ok and split
+
     r = _base_result()
     r["arm_a"] = {"excess": -0.60, "se": 0.05}
-    v = grade(r, sigma)
+    v = grade(r, sigma, sigma_b)
     f2 = (not v["void"]) and ("F2" in v or not v["P2_direction"]["pass"])
     print("  %-38s -> %s" % ("a penalty in the wrong direction",
                              "reported as such" if f2 else "NOT REPORTED"))
@@ -295,7 +392,8 @@ def main():
     path = sys.argv[1]
     with open(path, encoding="utf-8") as fh:
         r = json.load(fh)
-    out = grade(r, pilot_sigma())
+    # arm A's scale is required, arm B's only if arm B was run
+    out = grade(r, pilot_sigma("A"), pilot_sigma("B", required=False))
     print(json.dumps(out, indent=2))
     with open(os.path.join(HERE, "grade_transition.json"), "w",
               encoding="utf-8") as fh:
