@@ -159,7 +159,10 @@ def grade(r, sigma):
 
     p1 = exA > P1_MULTIPLIER * sigma
     p2 = (exA * P2_DIRECTION) > 0 and abs(exA) > 2.0 * seA
-    p3 = (exB is not None) and (exB - exA) > P3_MULTIPLIER * sigma
+    # P3 needs arm B, which is designed but not instrumented. An absent arm is
+    # NOT TESTED and must never be reported as FAIL, which would put a false
+    # negative in the record for a prediction nobody measured.
+    p3 = None if exB is None else ((exB - exA) > P3_MULTIPLIER * sigma)
 
     out.update({
         "P1_penalty_exists": {
@@ -174,10 +177,15 @@ def grade(r, sigma):
             "bar": "arm B excess exceeds arm A by %.2f x %.4f"
                    % (P3_MULTIPLIER, sigma),
             "value": None if exB is None else exB - exA,
-            "pass": bool(p3)},
-        "verdict": "P1 %s, P2 %s, P3 %s" % ("PASS" if p1 else "FAIL",
-                                            "PASS" if p2 else "FAIL",
-                                            "PASS" if p3 else "FAIL"),
+            "pass": None if p3 is None else bool(p3),
+            "tested": p3 is not None,
+            "note": None if p3 is not None else
+                    "arm B was not run, so this prediction is untested. It is "
+                    "not a failure and must not be reported as one."},
+        "verdict": "P1 %s, P2 %s, P3 %s" % (
+            "PASS" if p1 else "FAIL",
+            "PASS" if p2 else "FAIL",
+            "NOT TESTED" if p3 is None else ("PASS" if p3 else "FAIL")),
     })
     if not p1:
         out["F1"] = ("P1 failed. This design found no boundary-specific "
@@ -254,6 +262,14 @@ def self_test():
     print("  %-38s -> %s" % ("a clean run with no penalty",
                              "F1 fires" if f1 else "F1 DID NOT FIRE"))
     ok = ok and f1
+
+    r = _base_result()
+    del r["arm_b"]
+    v = grade(r, sigma)
+    nt = (not v["void"]) and v["P3_permission_exceeds_outcome"]["tested"] is False         and "NOT TESTED" in v["verdict"]
+    print("  %-38s -> %s" % ("arm B absent",
+                             "P3 reports NOT TESTED" if nt else "MISREPORTED"))
+    ok = ok and nt
 
     r = _base_result()
     r["arm_a"] = {"excess": -0.60, "se": 0.05}
