@@ -51,18 +51,41 @@ units.
 
 The eleven rows of every list are
 
-    -1.0, -0.7, -0.5, -0.3, -0.15, 0, +0.15, +0.3, +0.5, +0.7, +1.0
+    -3.0, -2.1, -1.5, -0.9, -0.45, 0, +0.45, +0.9, +1.5, +2.1, +3.0
 
 times the family's spread. A negative price is a payment to the participant for
 making the switch, a positive price is a charge. The list is presented in a fixed
 ascending order and the direction of the effect is therefore known in advance,
 which is what V1 checks.
 
-**This range is provisional and the pilot's own per-cell check decides whether it
-survives.** A simulation with plausible noise censored the crossing pair's forward
-cell at 22 percent on this range and needed roughly four times the span to
-bracket it. The range is the first thing to widen if Section 7's per-cell check
-fails, and widening it costs nothing but rows.
+**This range was chosen by measuring, not by widening until it looked safe.**
+`price_range_sweep.py` puts six candidates against a planted truth and reports
+both failure modes, since they pull in opposite directions. Too narrow and the
+tails of the crossing cell fall off the end and the components are attenuated.
+Too coarse and every price is read to the nearest wide interval and the
+components are inflated by quantisation.
+
+| candidate | rows | worst cell at an edge | family bias |
+|---|---|---|---|
+| the provisional plus or minus one | 11 | 0.382 | **−41.5 percent** |
+| plus or minus two | 11 | 0.081 | −13.6 percent |
+| **plus or minus three, adopted** | **11** | **0.011** | **−6.9 percent** |
+| plus or minus three, hybrid | 17 | 0.011 | −5.4 percent |
+| plus or minus four, hybrid | 17 | 0.000 | −3.1 percent |
+
+read at **one and a half times the assumed noise**, because the real noise is
+unknown until this pilot measures it and a range chosen with no margin is a range
+that fails on contact with data.
+
+**Tripling the span over the same eleven rows costs nothing.** It is still 198
+rows per participant. The quantisation penalty that made widening look expensive
+does not bite, because the rows scale with the span, and the coarser grid costs
+about three percent of bias where the censoring it removes was costing
+twenty six. The denser seventeen-row grids buy under two further points for a
+fifty five percent longer session and were rejected.
+
+The per-cell check of Section 7 remains the guard. If the pilot's own data trips
+it, the range widens again.
 
 The recorded indifference price is the midpoint of the interval containing the
 single switch from accept to decline.

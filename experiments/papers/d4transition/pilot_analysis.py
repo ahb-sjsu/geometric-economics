@@ -68,6 +68,18 @@ import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
 PAIRS = ("CROSS", "CTRL_G", "CTRL_M")
 
+# The price rows, as multiples of the family's spread. Chosen by the sweep in
+# `price_range_sweep.py` rather than by widening until it looked safe. The
+# provisional range of plus or minus one censored the crossing pair's forward
+# cell 20 percent of the time and attenuated the between-family standard
+# deviation by 26 percent. Tripling the span with the SAME ELEVEN ROWS costs
+# nothing in participant time, takes the worst cell to zero and the bias to 3
+# percent, and still holds at one and a half times the assumed noise. Denser
+# hybrid grids of seventeen rows buy under two further points of bias for a
+# fifty five percent longer session and were rejected.
+PRICE_ROWS = (-3.0, -2.1, -1.5, -0.9, -0.45, 0.0, 0.45, 0.9, 1.5, 2.1, 3.0)
+NARROW_ROWS = (-1.0, -0.7, -0.5, -0.3, -0.15, 0.0, 0.15, 0.3, 0.5, 0.7, 1.0)
+
 # the only keys the pilot may emit
 PERMITTED = {
     "study", "design", "n_participants", "n_families", "n_observations",
@@ -283,8 +295,7 @@ def analyse(records):
 # ----------------------------------------------------------------------------
 def simulate(n_fam=30, n_part=60, fam_per_part=3, mean_excess=0.0,
              sd_fam=0.30, sd_part=0.40, sd_res=0.50, switch_bias=0.3,
-             price_rows=(-1.0, -0.7, -0.5, -0.3, -0.15, 0.0,
-                         0.15, 0.3, 0.5, 0.7, 1.0), seed=11):
+             price_rows=PRICE_ROWS, seed=11):
     rng = np.random.default_rng(seed)
     fam_eff = rng.normal(0, sd_fam, n_fam)
     part_eff = rng.normal(0, sd_part, n_part)
@@ -347,13 +358,11 @@ def self_test():
     ok = ok and caught
 
     # 4, components recovered when the range brackets the excess
-    wide = tuple(x * 4.0 for x in (-1.0, -0.7, -0.5, -0.3, -0.15, 0.0,
-                                   0.15, 0.3, 0.5, 0.7, 1.0))
     truth = (0.30, 0.40, 0.50)
     r = analyse(simulate(sd_fam=truth[0], sd_part=truth[1], sd_res=truth[2],
-                         n_fam=40, n_part=120, seed=9, price_rows=wide))
+                         n_fam=40, n_part=120, seed=9))
     got = (r["between_family_sd"], r["participant_sd"], r["residual_sd"])
-    print("  recovering planted components with a range that brackets them")
+    print("  recovering planted components on the ADOPTED range")
     for nm, t, g in zip(("family", "participant", "residual"), truth, got):
         print("    %-12s planted %.3f  recovered %.3f" % (nm, t, g))
     print("    worst cell at an edge %.3f" % r["worst_cell_floor_ceiling"])
@@ -363,8 +372,9 @@ def self_test():
 
     # 5, the narrow range that hid censoring in a pooled statistic
     rn = analyse(simulate(sd_fam=truth[0], sd_part=truth[1], sd_res=truth[2],
-                          n_fam=40, n_part=120, seed=9))
-    print("  the same data on a range that does NOT bracket it")
+                          n_fam=40, n_part=120, seed=9,
+                          price_rows=NARROW_ROWS))
+    print("  the same data on the REJECTED narrow range")
     print("    pooled edge share %.3f, which looks fine"
           % rn["floor_ceiling_share"])
     print("    worst cell %.3f on %s"
