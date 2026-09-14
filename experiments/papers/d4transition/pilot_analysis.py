@@ -87,7 +87,7 @@ PERMITTED = {
     "between_family_var", "participant_var", "residual_var",
     "implied_sd_by_k", "price_slope_z", "nonmonotone_share",
     "floor_ceiling_share", "floor_ceiling_by_cell",
-    "worst_cell_floor_ceiling", "checks", "usable",
+    "worst_cell_floor_ceiling", "checks", "usable", "provenance",
 }
 FORBIDDEN_SUBSTRINGS = ("mean_excess", "excess_mean", "grand_mean", "estimate",
                         "point", "effect_size", "beta")
@@ -277,17 +277,39 @@ def build_output(var_fam, var_part, var_res, n_part, n_fam, n_obs,
     return _guard(out)
 
 
-def analyse(records):
+def load_responses(path):
+    """Responses must declare where they came from.
+
+    A scale computed from simulated responses would set every bar in the
+    confirmatory study, silently and wrongly. The provenance is therefore a
+    required field rather than a convention, and an undeclared file is refused.
+    """
+    with open(path, encoding="utf-8") as fh:
+        doc = json.load(fh)
+    if not isinstance(doc, dict) or "source" not in doc or "records" not in doc:
+        raise AssertionError(
+            "responses file must be an object with a 'source' field and a "
+            "'records' list. An undeclared file cannot be told apart from a "
+            "simulation and is refused.")
+    src = doc["source"]
+    if src not in ("human", "simulated"):
+        raise AssertionError("source must be 'human' or 'simulated', not %r" % src)
+    return src, doc["records"]
+
+
+def analyse(records, provenance="simulated"):
     excess, flags = excess_table(records)
     vf, vp, vr, _total = variance_components(excess)
     n_part = len({p for (p, _f) in excess})
     n_fam = len({f for (_p, f) in excess})
-    return build_output(
+    out = build_output(
         vf, vp, vr, n_part, n_fam, len(excess),
         price_slope_z(records),
         flags["nonmonotone"] / max(flags["total"], 1),
         flags["edge"] / max(flags["total"], 1),
         flags["by_cell"])
+    out["provenance"] = provenance
+    return _guard(out)
 
 
 # ----------------------------------------------------------------------------
@@ -408,15 +430,24 @@ def main():
         print()
         print("self-test failed, refusing to analyse")
         return 1
-    with open(sys.argv[1], encoding="utf-8") as fh:
-        records = json.load(fh)
-    out = analyse(records)
+    src, records = load_responses(sys.argv[1])
+    out = analyse(records, provenance=src)
     print()
     print(json.dumps(out, indent=2))
-    with open(os.path.join(HERE, "pilot_scale.json"), "w", encoding="utf-8") as fh:
+
+    # A scale from simulated responses is never written where the grader looks.
+    if src == "human":
+        target = "pilot_scale.json"
+    else:
+        target = "rehearsal_scale.json"
+        print()
+        print("SOURCE IS SIMULATED. This is a rehearsal of the chain and not a")
+        print("pilot. Writing to rehearsal_scale.json. grade_transition.py reads")
+        print("pilot_scale.json and will refuse anything not marked human.")
+    with open(os.path.join(HERE, target), "w", encoding="utf-8") as fh:
         json.dump(out, fh, indent=2)
     print()
-    print("written pilot_scale.json")
+    print("written %s" % target)
     if not out["usable"]:
         print("PILOT NOT USABLE. See checks. Fix the instrument and repeat.")
         return 1

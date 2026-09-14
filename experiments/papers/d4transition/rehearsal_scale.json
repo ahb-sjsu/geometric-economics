@@ -1,0 +1,45 @@
+{
+  "study": "transition study pilot",
+  "design": {
+    "participants": 60,
+    "families": 30,
+    "observations": 180
+  },
+  "n_participants": 60,
+  "n_families": 30,
+  "n_observations": 180,
+  "between_family_var": 0.07913367701247163,
+  "participant_var": 0.1598769097222222,
+  "residual_var": 0.3192804398016189,
+  "between_family_sd": 0.28130708667303717,
+  "participant_sd": 0.3998461075491697,
+  "residual_sd": 0.5650490596413899,
+  "implied_sd_by_k": {
+    "4": 0.4460078636004436,
+    "6": 0.39873955819111445,
+    "8": 0.3728650502567273,
+    "12": 0.34505572903439585,
+    "16": 0.33027414576032393,
+    "24": 0.31479924805495485
+  },
+  "price_slope_z": 42.22696280742349,
+  "nonmonotone_share": 0.0,
+  "floor_ceiling_share": 0.0,
+  "floor_ceiling_by_cell": {
+    "CROSS_forward": 0.0,
+    "CROSS_backward": 0.0,
+    "CTRL_G_forward": 0.0,
+    "CTRL_G_backward": 0.0,
+    "CTRL_M_forward": 0.0,
+    "CTRL_M_backward": 0.0
+  },
+  "worst_cell_floor_ceiling": 0.0,
+  "checks": {
+    "price_slope_ok": true,
+    "nonmonotone_ok": true,
+    "between_family_positive": true,
+    "floor_ceiling_ok": true
+  },
+  "usable": true,
+  "provenance": "simulated"
+}

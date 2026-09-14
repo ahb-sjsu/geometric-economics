@@ -58,10 +58,28 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 def pilot_sigma():
-    """The measured noise scale. A sealed input, not a decision."""
+    """The measured noise scale. A sealed input, not a decision.
+
+    Refuses a scale that did not come from human responses. Every bar in this
+    file is a multiple of this number, so a scale computed from a simulation
+    would set the whole study silently. `pilot_analysis.py` writes simulated
+    runs to `rehearsal_scale.json` instead, and this is the other half of that
+    guard.
+    """
     p = os.path.join(HERE, "pilot_scale.json")
     with open(p, encoding="utf-8") as fh:
-        return float(json.load(fh)["between_family_sd"])
+        doc = json.load(fh)
+    prov = doc.get("provenance")
+    if prov != "human":
+        raise AssertionError(
+            "pilot_scale.json has provenance %r and must be 'human'. Every bar "
+            "is a multiple of this scale, so a simulated one would set the "
+            "study without anyone choosing it." % prov)
+    if not doc.get("usable", False):
+        raise AssertionError(
+            "pilot_scale.json reports usable false. Fix the instrument and "
+            "repeat the pilot before sizing anything.")
+    return float(doc["between_family_sd"])
 
 
 def grade(r, sigma):
