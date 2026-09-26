@@ -211,8 +211,11 @@ losses, rests on two numbers of very unequal quality.
 | `loss_only:q` | −0.1430 ± 0.1196 | +0.0138 ± 0.0632 | 4,146 / 16,584 |
 
 **The gain side is solid and the loss side is not determined.** Its two estimates
-differ in sign, both are within one standard error of zero, and the regime holds
-4,146 description rows against 35,617. With `gain_only` outnumbering `loss_only`
+differ in sign, one is 1.2 standard errors from zero and the other within one, and
+the regime holds 4,146 description rows against 35,617. (Correction 2026-09-25.
+This sentence first said "both are within one standard error of zero". The
+description estimate is 0.1430 / 0.1196 = 1.2 standard errors from zero, the
+experience estimate 0.0138 / 0.0632 = 0.2. The conclusion, not determined, stands.) With `gain_only` outnumbering `loss_only`
 nine to one, the pooled chirality is **essentially the pure-gain regime's
 probability slope, on its own**.
 
@@ -376,8 +379,9 @@ and 195.8 and 398.0 in-sample log-likelihood units on 6 parameters in the two
 arms.
 
 **The loss half of the fourfold pattern is not established.** `loss_only:q` is
-`−0.143 ± 0.120` and `+0.014 ± 0.063` across the two arms, opposite signs, both
-within one standard error of zero, on 4,146 description rows.
+`−0.143 ± 0.120` and `+0.014 ± 0.063` across the two arms, opposite signs, at 1.2
+and 0.2 standard errors from zero, on 4,146 description rows. (Correction
+2026-09-25. This first said "both within one standard error of zero".)
 
 **The corpus disagreement was never demonstrated.** With problem-clustered
 uncertainty, CPC18's clean interior estimate is `+0.7538` with interval
