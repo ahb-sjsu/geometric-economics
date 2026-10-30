@@ -1,0 +1,56 @@
+{
+ "void": [],
+ "verdict": "GRADED",
+ "predictions": {
+  "H1 learned coordinates beat the codebook coordinates": "PASS",
+  "H2 a learned metric beats a learned linear scalar": "PASS",
+  "H3 the learned metric is low rank (k* <= 8)": "FAIL",
+  "H4 the learned span contains the codebook axes beyond chance": "FAIL",
+  "H5 zero-fit sign transfer to the panel (1/5, need 4)": "FAIL"
+ },
+ "numbers": {
+  "k_star": 32,
+  "margin": 0.00047388076782226566,
+  "test_nll": {
+   "M0": 0.6927205324172974,
+   "LIN": 0.6538653373718262,
+   "ANCHOR": 0.6875078678131104,
+   "GDT": 0.6409692168235779
+  },
+  "comparisons": {
+   "GDT-LIN": {
+    "mean": -0.012896071188151836,
+    "ci_low": -0.01765584824606776,
+    "ci_high": -0.008239231724292041,
+    "se": 0.002414375077933073
+   },
+   "GDT-ANCHOR": {
+    "mean": -0.04653865471482277,
+    "ci_low": -0.053638506960123775,
+    "ci_high": -0.03926179250702262,
+    "se": 0.0037188767455518246
+   },
+   "GDT-M0": {
+    "mean": -0.0517512708902359,
+    "ci_low": -0.0589477127417922,
+    "ci_high": -0.04476309465244412,
+    "se": 0.003687948454171419
+   }
+  },
+  "alignment": {
+   "stat": 0.037682246416807175,
+   "null_p99": 0.0682028997655918
+  },
+  "panel_pred": {
+   "A1.1": -0.044348835945129395,
+   "A1.2": -0.018250465393066406,
+   "A2.1": -0.008285045623779297,
+   "A3.1": -0.020066499710083008,
+   "B1.1": 0.0014019012451171875,
+   "B1L.1": 0.02505326271057129,
+   "B2.1": -0.05805611610412598,
+   "P.A1": 0.001063227653503418,
+   "P.B1": -0.00554203987121582
+  }
+ }
+}
