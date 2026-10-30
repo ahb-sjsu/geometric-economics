@@ -43,6 +43,11 @@ Compiles clean (7 pages, no undefined refs/cites). References are inlined in a
 
 ## Status / TODO before submission (updated 2026-09-10)
 
+**Superseded 2026-10-30.** Part I is published (doi 10.1109/TCSS.2026.3734068). The corrections
+pass of 2026-10-30 resolved the items below and corrected several over-claims; the record is
+`CORRECTIONS-2026-10-30.md`. Learned coordinates moved to Part III (`../learned/`). Open items now:
+verify the five references marked `% verify vol/pages on final`, and confirm OSF osf.io/ead4x is public.
+
 Two source files exist. `part2_manuscript.tex` is the committed draft.
 `part2_manuscript_revised.tex` is a later revision pass (22 `\rev{}` blocks,
 13 `[TODO:]` notes) that was found untracked on 2026-09-10 and committed as
@@ -94,11 +99,22 @@ entry completed. Section VII citations were verified earlier.
   Remaining: a Zenodo release for Part II, and the model-version gap above,
   which must be stated in the paper.
 
-**Needs a re-run (a few days of compute).**
+**Needs a re-run — DONE 2026-09-10.**
 
-- Paired per-fold CPC18 differences (L167): `fit_transfer.py` uses seeds 0-19
-  shared across models but persists only mean and sd. Re-run with per-fold
-  NLL/MAE written to CSV; the folds are reproducible.
+- Paired per-fold CPC18 differences (L167): `fit_transfer.py` now writes
+  `datasets/results_cpc18_perfold.csv` (20 folds x 5 models) and prints the
+  paired contrasts. The re-run reproduced the published headline table to the
+  digit, and the run takes about a minute, not days. Record:
+  `datasets/RESULTS_cpc18_perfold.md`.
+  - Geometric beats EV on 20/20 folds and RUM on 18/20 (MAE) and 19/20 (NLL),
+    both intervals clear of zero. Pairing strengthens the claim, because the
+    fold-to-fold spread is common to the models and cancels.
+  - **One wording repair follows.** `datasets/RESULTS_cpc18.md` says the
+    geometric model "comes within ~0.006 MAE (< 1 sd)" of CPT. Paired on shared
+    folds CPT is better on 18/20 folds, CI [+0.00345, +0.00830], p = 6.7e-05,
+    so "< 1 sd" reads as indistinguishable when it is not. The manuscript's
+    prose conclusion is unaffected; only the hedge needs rewording, in both the
+    results file and any sentence in the manuscript that repeats it.
 
 **Needs new work or an explicit "not done" sentence.**
 

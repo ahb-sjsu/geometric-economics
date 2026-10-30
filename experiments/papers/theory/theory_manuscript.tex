@@ -1,0 +1,434 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[round,authoryear]{natbib}
+\usepackage{url}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\ip}[2]{\langle #1, #2\rangle_P}
+\DeclareMathOperator{\Prob}{Pr}
+
+\title{Testing Decision Theories by Matched Designs:\\Sufficient Statistics, Sign Identification, and Scale}
+\author{Andrew H. Bond\\San Jos\'e State University\\\small\texttt{andrew.bond@sjsu.edu}, ORCID 0009-0003-2599-6158}
+\date{Draft, October 30, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A decision theory that reads each option through a summary of its payoffs predicts that options with the same summary are chosen equally often.
+That prediction can be tested directly, by building pairs of options the summary cannot tell apart and asking whether choices differ.
+We state when such pairs exist for several theories at once and show that the test is complete.
+For a model in which the cost of an option is its distance from a reference under a shared metric and choice is logit in that cost, we give a condition under which the predicted direction of a choice difference holds in any coding of the manipulated attribute, for menus of any size.
+The condition can be checked on an estimated metric, in hand-specified coordinates or in the coordinates of a learned text encoder.
+We also show that choice data identify the shape of the metric and not its scale, that the difference between the costs of a move and its reverse isolates any one-directional penalty with the metric cancelled exactly, and that a constant temperature is the price of information in the rational-inattention account of logit choice.
+Each statement is matched to the empirical test that discharges it, and to the tests that remain.
+\end{abstract}
+
+\noindent\textbf{Keywords.} stochastic choice, logit, framing, invariance, identification, sufficient statistic, multi-attribute choice, rational inattention.
+
+\section{Introduction}
+
+Expected utility, payoff-based game theory, inequality aversion and cumulative prospect theory each read an option through a summary.
+Expected utility reads the distribution of money.
+Nash equilibrium reads own payoffs.
+Inequality aversion reads own and others' payoffs.
+Prospect theory reads stated outcomes and stated probabilities.
+Whatever else an option carries, such as who benefits from it, what it says about the chooser, or how reliable the information behind it is, does not enter the summary, and so cannot affect choice under that theory.
+
+That is a strong prediction, and it is testable in a particular way.
+Build two options that a theory's summary cannot tell apart, change something the summary omits, and ask whether choices move.
+The framing literature has done this for fifty years \citep{TverskyKahneman1981,TverskyKahneman1986}, and the theory of choice with frames gives it a formal home \citep{SalantRubinstein2008,BernheimRangel2009}.
+This paper states the test for a set of theories at once, says when it is complete, and pairs it with a model that predicts the direction in which choices should move.
+
+The model is a geometric one used in a series of companion papers \citep{BondPartI,BondPartII}.
+Each option is a point in a space of attributes.
+Its cost is its distance from a reference point under a metric shared across domains, and choice is logit in cost.
+The model also reduces each option to one number before choosing, so it is not a rejection of scalar utility.
+Every continuous preference on a connected separable space has a continuous utility \citep{Debreu1954}, so a scalar is always available.
+What distinguishes theories is which attributes their scalar depends on.
+A theory whose summary omits an attribute that behavior responds to is forced to predict no difference where there is one.
+
+Five results follow.
+The first characterizes matched designs as a complete test of whether behavior depends on options only through a given summary, and states when one pair of options can be matched under several theories simultaneously.
+The second gives a condition under which the predicted direction of a choice difference survives any strictly increasing recoding of the manipulated attribute, for menus of any size.
+The condition is an inequality in the metric's own inner product, so it can be checked on an estimated metric and does not require the attributes to be hand-specified.
+The third shows that logit choice data identify the metric's shape but not its magnitude.
+This explains why, in the companion work, a tradeoff shape transfers across domains while its scale must be set again in each.
+The fourth isolates a one-directional boundary penalty by comparing a move with its reverse, which cancels the metric exactly.
+The fifth reads a constant temperature as the price of information \citep{MatejkaMcKay2015}.
+
+None of these statements is evidence that the geometric model is true.
+Proposition~\ref{prop:limit} shows that logit game theory, and Nash equilibrium in the limit, arise as special cases of the model, and containment of that kind holds by construction.
+The empirical content of the programme lies in two places, whether one low-dimensional metric governs behavior across domains, and whether matched designs move choices in the predicted direction.
+Section~\ref{sec:map} pairs each statement with the test that bears on it.
+
+\section{Model and the class of projection models}\label{sec:model}
+
+Options are points $x \in \R^n$.
+A reference $r$ fixes the status quo, and $\Delta(x) = x - r$ is the displacement an option requires.
+Let $P$ be a symmetric positive semidefinite matrix.
+Write $\ip{u}{v} = u^\top P v$.
+The cost of $x$ is
+\begin{equation}\label{eq:cost}
+C(x) = \sqrt{\ip{\Delta(x)}{\Delta(x)}},
+\end{equation}
+and choice from a finite menu $X$ is
+\begin{equation}\label{eq:logit}
+\Prob(x; X) = \frac{\exp(-C(x)/T)}{\sum_{y \in X} \exp(-C(y)/T)}, \qquad T > 0.
+\end{equation}
+When $P$ has rank $k < n$ the cost is a pseudometric on a $k$-dimensional subspace.
+The companion papers report that $k$ of one or two describes held-out data in several domains \citep{BondPartII}.
+Nothing below depends on the coordinates having any particular meaning.
+Section~\ref{sec:learned} returns to this point.
+
+\begin{definition}[Projection model]
+A model of stochastic choice is a projection model with statistic $\pi : \R^n \to \R^m$ if there is a function $G$ such that $\Prob(x; X) = G(\pi(x), \{\pi(y) : y \in X\})$ for every menu $X$ and every $x \in X$.
+\end{definition}
+
+\begin{definition}[Discarded attribute]
+A function $z$ on options is discarded by $\pi$ if $z$ is not a function of $\pi$ on the set of options under study.
+\end{definition}
+
+Expected utility is a projection model whose statistic is the distribution of money.
+Payoff-based game theory, including logit quantal response, uses own payoffs.
+Inequality aversion \citep{FehrSchmidt1999} uses own and others' payoffs.
+Cumulative prospect theory \citep{TverskyKahneman1992} uses stated outcomes and stated probabilities.
+Each can be extended by adding an attribute to its statistic.
+Such an extension is a different projection model, with a larger statistic, and the results below apply to it in turn.
+
+\section{What a scalar loses}\label{sec:scalar}
+
+\begin{remark}[Scalars are always available]
+No continuous map from $\R^n$, $n \ge 2$, to $\R$ is injective.
+This is classical, and a machine-checked proof for any real normed space of rank above one is in the replication archive.
+It does not imply that scalar utility fails for choice over several attributes.
+\citet{Debreu1954} gives every continuous complete preorder on a connected separable space a continuous utility, and \eqref{eq:logit} itself contracts each option to the scalar $C(x)$ before choosing.
+A utility function is meant to give equal values to options among which the decider is indifferent.
+What a scalar summary can get wrong is not that it is a scalar but which attributes it depends on.
+\end{remark}
+
+\begin{proposition}[Limiting correspondence]\label{prop:limit}
+Encode the monetary coordinate of a player's strategy $s_i$ as payoff loss, $\Delta_1(s_i) = K - u_i(s_i, s_{-i})$ with $K \ge \max u_i$, and let every other coordinate be inactive.
+Then \eqref{eq:logit} is logit response in payoffs with precision $\sqrt{P_{11}}/T$.
+Its fixed points are logit quantal response equilibria \citep{McKelveyPalfrey1995}, and as $T \to 0$ their limit points are Nash equilibria.
+\end{proposition}
+
+\begin{proof}
+With one active coordinate and $\Delta_1 \ge 0$, $C(s_i) = \sqrt{P_{11}}\,(K - u_i)$, so $-C/T = (\sqrt{P_{11}}/T)\,u_i$ minus a constant that cancels in \eqref{eq:logit}.
+The remaining claims are those of \citet{McKelveyPalfrey1995}.
+\end{proof}
+
+The proposition shows only that the geometric model contains logit game theory as a special case.
+It carries no evidence that the larger model describes behavior better.
+
+\section{Matched designs}\label{sec:matched}
+
+\begin{theorem}[Matched designs test projections]\label{thm:matched}
+(a) A model's choice probabilities are those of a projection model with statistic $\pi$ if and only if any two menus that agree under $\pi$ element by element give equal choice probabilities to corresponding elements.
+
+(b) Let $\pi_1, \dots, \pi_m$ be the statistics of several projection models and $\Pi = (\pi_1, \dots, \pi_m)$.
+A pair of options with $\pi_i(x) = \pi_i(x')$ for every $i$ and $z(x) \ne z(x')$ exists if and only if $z$ is discarded by $\Pi$.
+In a menu that substitutes $x'$ for $x$, every one of the $m$ models predicts that the choice probability of the substituted option is unchanged.
+\end{theorem}
+
+\begin{proof}
+(a) If $\Prob = G \circ \pi$, menus that agree under $\pi$ give equal probabilities.
+Conversely, if they always do, setting $G$ equal to the common value on each fibre of $\pi$ is well defined, and $\Prob = G \circ \pi$.
+(b) The function $z$ fails to be a function of $\Pi$ exactly when some fibre of $\Pi$ contains two options with different values of $z$, and those two options form the pair.
+Each $\pi_i$ agrees on them, so each model predicts equality by (a).
+\end{proof}
+
+Part (a) unpacks a definition and is stated so it can be cited.
+Part (b) is a rule for design.
+It says which manipulations force all of a set of incumbents to the same null at once, and it says that such a manipulation exists only if the attribute is not recoverable from their statistics together.
+A manipulation of how reliable a stated probability is, for example, leaves stated outcomes and probabilities unchanged, and so forces prospect theory over stated probabilities to a null.
+It does not force a model of ambiguity aversion \citep{Ellsberg1961} to a null, because such a model's statistic includes the reliability of the probability.
+A matched design is therefore a test against named statistics, not against every theory a reader might have in mind.
+
+A null on finitely many matched pairs does not show that behavior depends only on $\pi$.
+It shows only that those pairs failed to refute it.
+A difference on one pair refutes every projection model whose statistic is constant on that pair.
+
+When a theory is extended to carry the manipulated attribute, it predicts the difference.
+Such an extension concedes the result of the test, since it adds the attribute the test showed to matter.
+A sequence of such extensions builds a coordinate system attribute by attribute.
+The geometric model fixes one coordinate system in advance and constrains it with one metric shared across domains, which is what Section~\ref{sec:shape} makes testable.
+
+\section{Sign identification}\label{sec:sign}
+
+\begin{theorem}[Sign identification]\label{thm:sign}
+Fix a menu and an alternative $A$ whose displacement is $\delta$ in a low menu.
+A high menu changes only $A$, moving its displacement to $\delta + t v$ for a direction $v$ and a step $t > 0$.
+If
+\begin{equation}\label{eq:signcond}
+\ip{v}{\delta} \ge 0 \quad\text{and}\quad \ip{v}{v} > 0,
+\end{equation}
+then $C_A$ is larger in the high menu, and $\Prob(A)$ is smaller in the high menu, for every $T > 0$ and every menu size.
+\end{theorem}
+
+\begin{proof}
+$C_A^2(t) = C_A^2(0) + 2t\,\ip{v}{\delta} + t^2\,\ip{v}{v} > C_A^2(0)$ under \eqref{eq:signcond}.
+Write $\Prob(A) = \bigl[1 + \sum_{B \ne A} \exp((C_A - C_B)/T)\bigr]^{-1}$.
+Every $C_B$ is unchanged, so $\Prob(A)$ falls as $C_A$ rises.
+\end{proof}
+
+Condition \eqref{eq:signcond} says the manipulation points away from the reference in the metric's own inner product.
+It does not require the metric to be diagonal.
+For a manipulation of a single coordinate $d$ with $\delta_d > 0$ it reads
+\begin{equation}\label{eq:coordcase}
+P_{dd}\,\delta_d + \sum_{j \ne d} P_{dj}\,\delta_j \ge 0,
+\end{equation}
+so cross-terms matter only when they oppose the diagonal term and exceed it.
+
+\begin{corollary}[Recoding the manipulated attribute]\label{cor:recode}
+Let $g$ be strictly increasing and recode coordinate $d$ as $g(x_d)$, with displacements $g(x_d) - g(r_d)$.
+If the high menu moves $A$ further from the reference on the same side of it before recoding, it does so after recoding.
+With no cross-term on $d$, the predicted sign of $\Prob(A; X_{\mathrm{hi}}) - \Prob(A; X_{\mathrm{lo}})$ is therefore the same under every such $g$.
+With cross-terms, it is the same under every $g$ for which \eqref{eq:coordcase} holds in the recoded metric.
+\end{corollary}
+
+\begin{proof}
+A strictly increasing $g$ preserves the sign and the order of differences from $g(r_d)$.
+With no cross-term, \eqref{eq:coordcase} reduces to $P_{dd}\delta_d \ge 0$, which holds.
+Theorem~\ref{thm:sign} then applies in every coding.
+\end{proof}
+
+The magnitude of the predicted difference changes with $g$.
+Only the sign is protected.
+
+This protection differs from the problem raised by \citet{BondLang2019}.
+They show that a comparison of group means on an ordinal response scale can be reversed by a monotone transformation of the scale unless the underlying distributions are stochastically ordered.
+That concerns a coded outcome.
+Corollary~\ref{cor:recode} concerns a coded attribute of the stimulus, and the outcome is a choice frequency, which has natural units.
+
+\section{What choice data identify}\label{sec:shape}
+
+\begin{proposition}[Shape, not scale]\label{prop:scale}
+Choice probabilities under \eqref{eq:cost} and \eqref{eq:logit} depend on $(P, T)$ only through $P/T^2$.
+For every $s > 0$, $(P, T)$ and $(s^2 P, sT)$ give the same choice probabilities on every menu.
+\end{proposition}
+
+\begin{proof}
+$C/T = \sqrt{\Delta^\top P \Delta}/T = \sqrt{\Delta^\top (P/T^2) \Delta}$.
+\end{proof}
+
+\begin{corollary}
+The direction of $P$, for example a ratio of two variances or the row space of a low-rank $P$, is identified by choice data.
+Its magnitude is identified only relative to $T$.
+\end{corollary}
+
+This is the familiar normalization of scale in logit models \citep{SwaitLouviere1993,Train2009}, applied to the metric.
+It has a consequence for comparisons across domains.
+Two domains measured in different payoff units may share a metric shape while their fitted magnitudes are incomparable.
+Transferring the shape from one domain to another and setting one scale parameter in the new domain transfers exactly what the data identify.
+The companion paper reports that a tradeoff shape fitted on lotteries, transferred in this way, predicts play in normal-form games almost as well as a fit on the games themselves, and the reverse also holds \citep{BondPartII}.
+The proposition explains why the raw transfer of the full metric does worse, since it also forces a scale the data never identified.
+
+\section{Stakes and directional penalties}\label{sec:identities}
+
+\begin{proposition}[Stake enters only through the monetary coding]\label{prop:stake}
+Suppose the stake $\Lambda$ enters the coding of options only through the monetary coordinate.
+(a) If money is coded as a share of the stake, every displacement is independent of $\Lambda$, and choice probabilities are independent of $\Lambda$ for every $P$ and $T$.
+(b) If money is coded in units of the decider's income $Y$, as $(\Lambda/Y)\,q(x)$, choice probabilities depend on $\Lambda$ and $Y$ only through $\Lambda/Y$.
+\end{proposition}
+
+\begin{proof}
+In (a) nothing in \eqref{eq:cost} or \eqref{eq:logit} depends on $\Lambda$.
+In (b) the only dependence is through the monetary coordinate, which depends on $\Lambda$ and $Y$ only through their ratio.
+\end{proof}
+
+Part (a) is why invariance to the stake, under a share coding, holds for every monetary variance.
+A rejection of invariance therefore rejects the coding and the metric together \citep{BondPartI}.
+Part (b) is the coding proposed in Part I as the alternative.
+A registered test on three high-stakes ultimatum studies supports the income coordinate on the responder side and rejects the full model that carries Part I's other constants \citep{BondPartII}.
+
+\begin{proposition}[Direction differences isolate one-directional penalties]\label{prop:edge}
+Let the cost of moving from state $a$ to state $b$ be
+\[
+w(a \to b) = \sqrt{\ip{b-a}{b-a}} + \sum_k \beta_k\, \mathbf{1}[\text{boundary } k \text{ is crossed going from } a \text{ to } b].
+\]
+Then
+\[
+w(a \to b) - w(b \to a) = \sum_k \beta_k \bigl(\mathbf{1}[k \text{ crossed } a \to b] - \mathbf{1}[k \text{ crossed } b \to a]\bigr).
+\]
+\end{proposition}
+
+\begin{proof}
+The first term is symmetric in $a$ and $b$.
+\end{proof}
+
+The proposition turns a hard estimation problem into a design.
+Presenting the same pair of states to the same person in both directions removes the metric from the comparison exactly, along with every confound that treats the two directions alike.
+A sealed registration that uses this design is described in Section~\ref{sec:map}.
+
+\section{Temperature as a price of information}\label{sec:temperature}
+
+\begin{proposition}\label{prop:ri}
+In the rational-inattention model of discrete choice \citep{MatejkaMcKay2015}, a decider paying $\lambda$ per unit of information chooses option $i$ with probability $P^0_i \exp(v_i/\lambda) / \sum_j P^0_j \exp(v_j/\lambda)$, where $P^0$ is the decider's unconditional choice distribution.
+When the options are exchangeable under the decider's prior, $P^0$ is uniform, and with $v_i = -C_i$ this is \eqref{eq:logit} with $T = \lambda$.
+\end{proposition}
+
+\begin{proof}
+Substitute the uniform $P^0$, which \citet{MatejkaMcKay2015} show for a priori homogeneous options, into their formula.
+\end{proof}
+
+A constant $T$ is then the price of information, the same across problems.
+A temperature that varies with the cost difference, as in Part I, has no such reading.
+The proposition does not say which rule fits data.
+The companion paper compares them, in sample, on language-model data \citep{BondPartII}.
+
+\section{Coordinates need not be hand-specified}\label{sec:learned}
+
+Nothing in Sections \ref{sec:model} to \ref{sec:temperature} uses the meaning of a coordinate.
+Let $\phi$ map descriptions of options to $\R^n$, for example a sentence encoder, and set $\Delta(x) = \phi(x) - \phi(r)$.
+Every statement holds as written.
+In such a chart a manipulation of an option's description is the displacement $v = \phi(x_{\mathrm{hi}}) - \phi(x_{\mathrm{lo}})$, and condition \eqref{eq:signcond} is computed from the fitted $P$ and the encoded descriptions.
+
+Two things change.
+A full $P$ on hundreds of dimensions cannot be estimated from choice data, so a restriction to low rank becomes a requirement rather than a hypothesis, and the rank becomes a quantity to estimate.
+By Proposition~\ref{prop:scale} only the direction of $P$ is identified, so learned metrics from different data sets are compared by their row spaces.
+Hand-specified coordinates then become a hypothesis about those row spaces.
+They are supported if the learned row space contains them beyond what a random subspace of the same dimension would.
+A study that tests this, with every prediction fixed before the outcome data are scored, is described in Section~\ref{sec:map}.
+
+\section{From statements to tests}\label{sec:map}
+
+Table~\ref{tab:map} pairs each statement with the empirical test that bears on it.
+The statements are true by proof.
+Whether they describe behavior is settled only by the tests.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Each statement and the test that bears on it. The last column states what has been run.}
+\label{tab:map}
+\begin{tabular}{@{}p{0.2\textwidth}p{0.37\textwidth}p{0.35\textwidth}@{}}
+\toprule
+Statement & Test & Status \\
+\midrule
+Theorem~\ref{thm:matched} & Matched designs on a panel of six language models, seven contrasts & Five of seven pass after placebo correction \citep{BondPartII}. Human study frozen, not run \\
+Theorem~\ref{thm:sign} & Condition \eqref{eq:signcond} on the fitted metric for each design & To be computed for the human study and for learned charts \\
+Proposition~\ref{prop:scale} & Transfer of a tradeoff shape between lotteries and games with one scale reset & Run, post hoc \citep{BondPartII} \\
+Proposition~\ref{prop:stake} & Income coordinate on three high-stakes ultimatum studies & Registered and run. Coordinate supported, full model rejected \citep{BondPartII} \\
+Proposition~\ref{prop:edge} & Each pair of states priced in both directions by the same person & Registered and sealed, no data \\
+Proposition~\ref{prop:ri} & Constant against cost-dependent temperature & In-sample comparison on language-model data \citep{BondPartII} \\
+Section~\ref{sec:learned} & Learned metric on human moral judgments, compared with hand-specified axes, with zero-fit transfer to the panel & Registered, to be run \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Conclusion}
+
+A theory that reads options through a summary of payoffs makes a testable prediction about options its summary cannot distinguish.
+Matched designs test it completely in the limit and test it against named statistics in practice.
+In a model where cost is distance under a metric, the predicted direction of a matched-design difference is protected against recoding whenever the manipulation points away from the reference in the metric, a condition that can be checked on an estimated metric in hand-specified or learned coordinates.
+Choice data identify the metric's shape and not its scale, which says what can transfer across domains.
+The statements make the empirical claims precise.
+They do not make them true.
+
+\section*{Acknowledgment}
+Generative AI tools (Claude, Anthropic) assisted with drafting, editing and checking the proofs of this manuscript.
+The model, the statements and the conclusions are the author's, and the author checked every proof.
+% OWNER: the sentence above is true only after you have read every proof. Confirm, or reword, before submission.
+
+\bibliographystyle{plainnat}
+\begin{thebibliography}{99}
+
+\bibitem[Bernheim and Rangel(2009)]{BernheimRangel2009}
+B.~D. Bernheim and A.~Rangel.
+\newblock Beyond revealed preference: Choice-theoretic foundations for behavioral welfare economics.
+\newblock \emph{Quarterly Journal of Economics}, 124(1):51--104, 2009.
+\newblock doi:10.1162/qjec.2009.124.1.51.
+
+\bibitem[Bond(2026a)]{BondPartI}
+A.~H. Bond.
+\newblock Geometric prediction of economic behavior: Cross-domain validation across game theory and prospect theory.
+\newblock \emph{IEEE Transactions on Computational Social Systems}, 2026.
+\newblock doi:10.1109/TCSS.2026.3734068. % verify vol/pages on final
+
+\bibitem[Bond(2026b)]{BondPartII}
+A.~H. Bond.
+\newblock Geometric prediction of economic behavior II: Held-out and cross-domain validation.
+\newblock Manuscript in preparation, 2026.
+
+\bibitem[Bond and Lang(2019)]{BondLang2019}
+T.~N. Bond and K.~Lang.
+\newblock The sad truth about happiness scales.
+\newblock \emph{Journal of Political Economy}, 127(4):1629--1640, 2019.
+\newblock doi:10.1086/701679.
+
+\bibitem[Debreu(1954)]{Debreu1954}
+G.~Debreu.
+\newblock Representation of a preference ordering by a numerical function.
+\newblock In R.~M. Thrall, C.~H. Coombs, and R.~L. Davis, editors, \emph{Decision Processes}, pages 159--165. Wiley, New York, 1954.
+
+\bibitem[Ellsberg(1961)]{Ellsberg1961}
+D.~Ellsberg.
+\newblock Risk, ambiguity, and the {S}avage axioms.
+\newblock \emph{Quarterly Journal of Economics}, 75(4):643--669, 1961.
+
+\bibitem[Fehr and Schmidt(1999)]{FehrSchmidt1999}
+E.~Fehr and K.~M. Schmidt.
+\newblock A theory of fairness, competition, and cooperation.
+\newblock \emph{Quarterly Journal of Economics}, 114(3):817--868, 1999.
+
+\bibitem[Mat{\v e}jka and McKay(2015)]{MatejkaMcKay2015}
+F.~Mat{\v e}jka and A.~McKay.
+\newblock Rational inattention to discrete choices: A new foundation for the multinomial logit model.
+\newblock \emph{American Economic Review}, 105(1):272--298, 2015.
+\newblock doi:10.1257/aer.20130047.
+
+\bibitem[McKelvey and Palfrey(1995)]{McKelveyPalfrey1995}
+R.~D. McKelvey and T.~R. Palfrey.
+\newblock Quantal response equilibria for normal form games.
+\newblock \emph{Games and Economic Behavior}, 10(1):6--38, 1995. % verify vol/pages on final
+
+\bibitem[Salant and Rubinstein(2008)]{SalantRubinstein2008}
+Y.~Salant and A.~Rubinstein.
+\newblock ({A}, f): Choice with frames.
+\newblock \emph{Review of Economic Studies}, 75(4):1287--1296, 2008.
+\newblock doi:10.1111/j.1467-937X.2008.00510.x.
+
+\bibitem[Swait and Louviere(1993)]{SwaitLouviere1993}
+J.~Swait and J.~Louviere.
+\newblock The role of the scale parameter in the estimation and comparison of multinomial logit models.
+\newblock \emph{Journal of Marketing Research}, 30(3):305--314, 1993.
+\newblock doi:10.1177/002224379303000303.
+
+\bibitem[Train(2009)]{Train2009}
+K.~E. Train.
+\newblock \emph{Discrete Choice Methods with Simulation}.
+\newblock Cambridge University Press, 2nd edition, 2009.
+\newblock doi:10.1017/CBO9780511805271.
+
+\bibitem[Tversky and Kahneman(1981)]{TverskyKahneman1981}
+A.~Tversky and D.~Kahneman.
+\newblock The framing of decisions and the psychology of choice.
+\newblock \emph{Science}, 211(4481):453--458, 1981.
+\newblock doi:10.1126/science.7455683.
+
+\bibitem[Tversky and Kahneman(1986)]{TverskyKahneman1986}
+A.~Tversky and D.~Kahneman.
+\newblock Rational choice and the framing of decisions.
+\newblock \emph{Journal of Business}, 59(4, Part 2):S251--S278, 1986.
+\newblock doi:10.1086/296365.
+
+\bibitem[Tversky and Kahneman(1992)]{TverskyKahneman1992}
+A.~Tversky and D.~Kahneman.
+\newblock Advances in prospect theory: Cumulative representation of uncertainty.
+\newblock \emph{Journal of Risk and Uncertainty}, 5(4):297--323, 1992.
+
+\end{thebibliography}
+
+\end{document}
