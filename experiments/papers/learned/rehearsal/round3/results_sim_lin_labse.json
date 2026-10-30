@@ -1,0 +1,686 @@
+{
+ "prereg": "prereg-learned-v1",
+ "encoder": {
+  "model": "sentence-transformers/LaBSE",
+  "snapshot": "836121a0533e5664b21c7aacc5d22951f2b8b25b",
+  "n_texts": 27982,
+  "dim": 768
+ },
+ "simulation": {
+  "truth": "lin"
+ },
+ "n": {
+  "train": 63586,
+  "dev": 2274,
+  "test": 2266
+ },
+ "dropped_overlap": {
+  "dev": 66,
+  "test": 94
+ },
+ "grid": [
+  {
+   "kind": "M0",
+   "k": 0,
+   "lambda": 0.0,
+   "final_loss": 0.6931473016738892,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.6931473016738892,
+   "dev_nll": 0.693146824836731
+  },
+  {
+   "kind": "LIN",
+   "k": 0,
+   "lambda": 0.0,
+   "final_loss": 0.41715922951698303,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.41250187158584595,
+   "dev_nll": 0.4159896969795227
+  },
+  {
+   "kind": "LIN",
+   "k": 0,
+   "lambda": 1e-06,
+   "final_loss": 0.4184022545814514,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4128285050392151,
+   "dev_nll": 0.4157353639602661
+  },
+  {
+   "kind": "LIN",
+   "k": 0,
+   "lambda": 1e-05,
+   "final_loss": 0.4270959198474884,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4173051118850708,
+   "dev_nll": 0.4189518690109253
+  },
+  {
+   "kind": "LIN",
+   "k": 0,
+   "lambda": 0.0001,
+   "final_loss": 0.46888259053230286,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4377928078174591,
+   "dev_nll": 0.43700411915779114
+  },
+  {
+   "kind": "LIN",
+   "k": 0,
+   "lambda": 0.001,
+   "final_loss": 0.5659672021865845,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.518273115158081,
+   "dev_nll": 0.5133680105209351
+  },
+  {
+   "kind": "ANCHOR",
+   "k": 10,
+   "lambda": 0.0,
+   "final_loss": 0.6746538281440735,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.6746457815170288,
+   "dev_nll": 0.6806119084358215
+  },
+  {
+   "kind": "ANCHOR",
+   "k": 10,
+   "lambda": 1e-06,
+   "final_loss": 0.6748030185699463,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.6746746301651001,
+   "dev_nll": 0.6805956959724426
+  },
+  {
+   "kind": "ANCHOR",
+   "k": 10,
+   "lambda": 1e-05,
+   "final_loss": 0.6757878065109253,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.674979567527771,
+   "dev_nll": 0.6805577278137207
+  },
+  {
+   "kind": "ANCHOR",
+   "k": 10,
+   "lambda": 0.0001,
+   "final_loss": 0.6815670132637024,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.6805520057678223,
+   "dev_nll": 0.681217610836029
+  },
+  {
+   "kind": "ANCHOR",
+   "k": 10,
+   "lambda": 0.001,
+   "final_loss": 0.6864802241325378,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.6834701299667358,
+   "dev_nll": 0.6834567189216614
+  },
+  {
+   "kind": "GDT",
+   "k": 1,
+   "lambda": 0.0,
+   "final_loss": 0.4170592725276947,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4123580753803253,
+   "dev_nll": 0.41593557596206665
+  },
+  {
+   "kind": "GDT",
+   "k": 1,
+   "lambda": 1e-06,
+   "final_loss": 0.4183126986026764,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4127768278121948,
+   "dev_nll": 0.41569316387176514
+  },
+  {
+   "kind": "GDT",
+   "k": 1,
+   "lambda": 1e-05,
+   "final_loss": 0.4270632266998291,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4173009693622589,
+   "dev_nll": 0.4189502000808716
+  },
+  {
+   "kind": "GDT",
+   "k": 1,
+   "lambda": 0.0001,
+   "final_loss": 0.46888163685798645,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4377882778644562,
+   "dev_nll": 0.4370003044605255
+  },
+  {
+   "kind": "GDT",
+   "k": 1,
+   "lambda": 0.001,
+   "final_loss": 0.5659672021865845,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.518273115158081,
+   "dev_nll": 0.5133680105209351
+  },
+  {
+   "kind": "GDT",
+   "k": 2,
+   "lambda": 0.0,
+   "final_loss": 0.414713054895401,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.41471293568611145,
+   "dev_nll": 0.4176304340362549
+  },
+  {
+   "kind": "GDT",
+   "k": 2,
+   "lambda": 1e-06,
+   "final_loss": 0.4164239764213562,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.41286712884902954,
+   "dev_nll": 0.41623008251190186
+  },
+  {
+   "kind": "GDT",
+   "k": 2,
+   "lambda": 1e-05,
+   "final_loss": 0.4264715015888214,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4178275167942047,
+   "dev_nll": 0.4195502698421478
+  },
+  {
+   "kind": "GDT",
+   "k": 2,
+   "lambda": 0.0001,
+   "final_loss": 0.46887731552124023,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4377395510673523,
+   "dev_nll": 0.4369341731071472
+  },
+  {
+   "kind": "GDT",
+   "k": 2,
+   "lambda": 0.001,
+   "final_loss": 0.5659672021865845,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.518273115158081,
+   "dev_nll": 0.5133680105209351
+  },
+  {
+   "kind": "GDT",
+   "k": 4,
+   "lambda": 0.0,
+   "final_loss": 0.41334158182144165,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.41334158182144165,
+   "dev_nll": 0.41732141375541687
+  },
+  {
+   "kind": "GDT",
+   "k": 4,
+   "lambda": 1e-06,
+   "final_loss": 0.41543787717819214,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4137120544910431,
+   "dev_nll": 0.4172671139240265
+  },
+  {
+   "kind": "GDT",
+   "k": 4,
+   "lambda": 1e-05,
+   "final_loss": 0.42630472779273987,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.41742590069770813,
+   "dev_nll": 0.4191935658454895
+  },
+  {
+   "kind": "GDT",
+   "k": 4,
+   "lambda": 0.0001,
+   "final_loss": 0.4688771069049835,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4377354085445404,
+   "dev_nll": 0.43692660331726074
+  },
+  {
+   "kind": "GDT",
+   "k": 4,
+   "lambda": 0.001,
+   "final_loss": 0.5659672021865845,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.518273115158081,
+   "dev_nll": 0.5133680105209351
+  },
+  {
+   "kind": "GDT",
+   "k": 8,
+   "lambda": 0.0,
+   "final_loss": 0.41212520003318787,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4114048182964325,
+   "dev_nll": 0.41757407784461975
+  },
+  {
+   "kind": "GDT",
+   "k": 8,
+   "lambda": 1e-06,
+   "final_loss": 0.4146301746368408,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4115177094936371,
+   "dev_nll": 0.4171074628829956
+  },
+  {
+   "kind": "GDT",
+   "k": 8,
+   "lambda": 1e-05,
+   "final_loss": 0.42624160647392273,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4172244071960449,
+   "dev_nll": 0.4190712571144104
+  },
+  {
+   "kind": "GDT",
+   "k": 8,
+   "lambda": 0.0001,
+   "final_loss": 0.4688771367073059,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.43773531913757324,
+   "dev_nll": 0.4369262456893921
+  },
+  {
+   "kind": "GDT",
+   "k": 8,
+   "lambda": 0.001,
+   "final_loss": 0.5659672021865845,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.518273115158081,
+   "dev_nll": 0.5133680105209351
+  },
+  {
+   "kind": "GDT",
+   "k": 16,
+   "lambda": 0.0,
+   "final_loss": 0.41051146388053894,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.40991297364234924,
+   "dev_nll": 0.4180850088596344
+  },
+  {
+   "kind": "GDT",
+   "k": 16,
+   "lambda": 1e-06,
+   "final_loss": 0.41508784890174866,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.41277825832366943,
+   "dev_nll": 0.4159521460533142
+  },
+  {
+   "kind": "GDT",
+   "k": 16,
+   "lambda": 1e-05,
+   "final_loss": 0.426220178604126,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4171360433101654,
+   "dev_nll": 0.4190067946910858
+  },
+  {
+   "kind": "GDT",
+   "k": 16,
+   "lambda": 0.0001,
+   "final_loss": 0.4688771367073059,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.43773531913757324,
+   "dev_nll": 0.4369262456893921
+  },
+  {
+   "kind": "GDT",
+   "k": 16,
+   "lambda": 0.001,
+   "final_loss": 0.5659672021865845,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.518273115158081,
+   "dev_nll": 0.5133680105209351
+  },
+  {
+   "kind": "GDT",
+   "k": 32,
+   "lambda": 0.0,
+   "final_loss": 0.40923091769218445,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.408834844827652,
+   "dev_nll": 0.41804733872413635
+  },
+  {
+   "kind": "GDT",
+   "k": 32,
+   "lambda": 1e-06,
+   "final_loss": 0.415055513381958,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.412725031375885,
+   "dev_nll": 0.41578376293182373
+  },
+  {
+   "kind": "GDT",
+   "k": 32,
+   "lambda": 1e-05,
+   "final_loss": 0.4262157082557678,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.41711029410362244,
+   "dev_nll": 0.418995201587677
+  },
+  {
+   "kind": "GDT",
+   "k": 32,
+   "lambda": 0.0001,
+   "final_loss": 0.4688771367073059,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.43773531913757324,
+   "dev_nll": 0.4369262456893921
+  },
+  {
+   "kind": "GDT",
+   "k": 32,
+   "lambda": 0.001,
+   "final_loss": 0.5659672617912292,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.5182730555534363,
+   "dev_nll": 0.5133679509162903
+  }
+ ],
+ "k_dev": {
+  "1": {
+   "dev_nll": 0.41569316387176514,
+   "minus_best": {
+    "mean": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "se": 0.0
+   }
+  },
+  "2": {
+   "dev_nll": 0.41623008251190186,
+   "minus_best": {
+    "mean": 0.0005369519931264222,
+    "ci_low": 0.00020741518128488678,
+    "ci_high": 0.0008722666476387531,
+    "se": 0.0001676333777140826
+   }
+  },
+  "4": {
+   "dev_nll": 0.4172671139240265,
+   "minus_best": {
+    "mean": 0.0015739890513941646,
+    "ci_low": 0.0009003010418382473,
+    "ci_high": 0.0022364124946761873,
+    "se": 0.00034119683550670743
+   }
+  },
+  "8": {
+   "dev_nll": 0.4171074628829956,
+   "minus_best": {
+    "mean": 0.001414262573234737,
+    "ci_low": 0.0006704163868562318,
+    "ci_high": 0.0021756345289759334,
+    "se": 0.0003897836140822619
+   }
+  },
+  "16": {
+   "dev_nll": 0.4159521460533142,
+   "minus_best": {
+    "mean": 0.00025898285093717277,
+    "ci_low": 8.999491365102585e-05,
+    "ci_high": 0.0004129608540097251,
+    "se": 8.451402391074225e-05
+   }
+  },
+  "32": {
+   "dev_nll": 0.41578376293182373,
+   "minus_best": {
+    "mean": 9.058966679731384e-05,
+    "ci_low": -3.8363905150617936e-05,
+    "ci_high": 0.0002312053409696091,
+    "se": 6.917531572980806e-05
+   }
+  }
+ },
+ "k_star": 1,
+ "selected": {
+  "M0": {
+   "kind": "M0",
+   "k": 0,
+   "lambda": 0.0,
+   "final_loss": 0.6931473016738892,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.6931473016738892,
+   "dev_nll": 0.693146824836731
+  },
+  "LIN": {
+   "kind": "LIN",
+   "k": 0,
+   "lambda": 1e-06,
+   "final_loss": 0.4184022545814514,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4128285050392151,
+   "dev_nll": 0.4157353639602661
+  },
+  "ANCHOR": {
+   "kind": "ANCHOR",
+   "k": 10,
+   "lambda": 1e-05,
+   "final_loss": 0.6757878065109253,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.674979567527771,
+   "dev_nll": 0.6805577278137207
+  },
+  "GDT": {
+   "kind": "GDT",
+   "k": 1,
+   "lambda": 1e-06,
+   "final_loss": 0.4183126986026764,
+   "converged": true,
+   "final_rel_change": 0.0,
+   "train_nll": 0.4127768278121948,
+   "dev_nll": 0.41569316387176514
+  }
+ },
+ "margin": 0.0027741146087646483,
+ "test_nll": {
+  "M0": 0.6931511163711548,
+  "LIN": 0.41057536005973816,
+  "ANCHOR": 0.6776373386383057,
+  "GDT": 0.41054174304008484
+ },
+ "test_comparisons": {
+  "GDT-LIN": {
+   "mean": -3.364991789567284e-05,
+   "ci_low": -0.00011812942339020082,
+   "ci_high": 4.813953819393643e-05,
+   "se": 4.246292155585252e-05
+  },
+  "GDT-ANCHOR": {
+   "mean": -0.26709556579589844,
+   "ci_low": -0.2794108189642429,
+   "ci_high": -0.25393929407000543,
+   "se": 0.006626973859965801
+  },
+  "GDT-M0": {
+   "mean": -0.28260940313339233,
+   "ci_low": -0.2951993428170681,
+   "ci_high": -0.2698537468910217,
+   "se": 0.006499738898128271
+  }
+ },
+ "reference_offset": 1.9085272550582886,
+ "alignment": {
+  "stat": 0.010807768441736698,
+  "null_p99": 0.13874125685255953,
+  "null_mean": 0.06586510773967698,
+  "per_axis_in_span": [
+   0.002100768033415079,
+   7.07785329723265e-06,
+   0.000501404982060194,
+   0.0007009527180343866,
+   0.002823170740157366,
+   0.000203374627744779,
+   2.5222594558726996e-05,
+   4.818947854801081e-05,
+   0.00029006501426920295,
+   0.0015505733899772167
+  ]
+ },
+ "anchor_axes": [
+  "d1",
+  "d2",
+  "d3",
+  "d4",
+  "d5a",
+  "d5b",
+  "d6",
+  "d7",
+  "d8",
+  "d9"
+ ],
+ "panel_transfer": {
+  "GDT": [
+   {
+    "id": "A1.1",
+    "kind": "real",
+    "pred": -0.11141395568847656
+   },
+   {
+    "id": "A1.2",
+    "kind": "real",
+    "pred": 0.06761837005615234
+   },
+   {
+    "id": "A2.1",
+    "kind": "real",
+    "pred": -0.00855255126953125
+   },
+   {
+    "id": "A3.1",
+    "kind": "real",
+    "pred": -0.009759902954101562
+   },
+   {
+    "id": "B1.1",
+    "kind": "real",
+    "pred": 0.16907787322998047
+   },
+   {
+    "id": "B1L.1",
+    "kind": "real",
+    "pred": 0.11084556579589844
+   },
+   {
+    "id": "B2.1",
+    "kind": "real",
+    "pred": -0.017171859741210938
+   },
+   {
+    "id": "P.A1",
+    "kind": "placebo",
+    "pred": -0.0027313232421875
+   },
+   {
+    "id": "P.B1",
+    "kind": "placebo",
+    "pred": -0.0888051986694336
+   }
+  ],
+  "LIN": [
+   {
+    "id": "A1.1",
+    "kind": "real",
+    "pred": 0.11184842884540558
+   },
+   {
+    "id": "A1.2",
+    "kind": "real",
+    "pred": -0.06720280647277832
+   },
+   {
+    "id": "A2.1",
+    "kind": "real",
+    "pred": 0.009383652359247208
+   },
+   {
+    "id": "A3.1",
+    "kind": "real",
+    "pred": 0.009492471814155579
+   },
+   {
+    "id": "B1.1",
+    "kind": "real",
+    "pred": -0.16723525151610374
+   },
+   {
+    "id": "B1L.1",
+    "kind": "real",
+    "pred": -0.10995444655418396
+   },
+   {
+    "id": "B2.1",
+    "kind": "real",
+    "pred": 0.016367681324481964
+   },
+   {
+    "id": "P.A1",
+    "kind": "placebo",
+    "pred": 0.0031088292598724365
+   },
+   {
+    "id": "P.B1",
+    "kind": "placebo",
+    "pred": 0.0871482826769352
+   }
+  ]
+ },
+ "seconds": 520.3
+}

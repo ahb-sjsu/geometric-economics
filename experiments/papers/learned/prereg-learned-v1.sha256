@@ -1,0 +1,29 @@
+{
+  "prereg": "prereg-learned-v1",
+  "title": "Learned Coordinates for the Geometric Decision Model",
+  "author": "Andrew H. Bond, San Jose State University",
+  "companion_to": [
+    "prereg-boundary-v1",
+    "prereg-v1"
+  ],
+  "frozen_predictions": "H1-H5 in prereg-learned-v1.md Section 6; void conditions Section 7.",
+  "data": "Scruples Dilemmas v1.0. Annotation counts not scored before freezing. Embeddings computed before freezing to fix encoder snapshots.",
+  "hash_note": "sha256 of each file with CRLF normalized to LF; combined = sha256 over the concatenated component hex digests in bundle_files order",
+  "bundle_files": [
+    "prereg-learned-v1.md",
+    "build_inputs.py",
+    "inputs.json",
+    "embed.py",
+    "fit_learned.py",
+    "grade_learned.py"
+  ],
+  "files": {
+    "prereg-learned-v1.md": "fd0f60824982e32b09f1f36def055cdf12c6aa94480d8bc2f79f896973589491",
+    "build_inputs.py": "232707c2f123ef33e7dc15ef95465d20089f56fc867f1fbc0dfbee27b4829ae2",
+    "inputs.json": "7313989b7ac9b418dc1ae01ce70884b5b7210007e11f7e7db442b7f84ffec747",
+    "embed.py": "f7969a0291358925bbe38d9f8a617a64e13bf7437cf74d279bcdf791b8390616",
+    "fit_learned.py": "a3861ebd275998d6371f8becd0110e1cde3305d680e69ad4f18f4afec75bc9a6",
+    "grade_learned.py": "c0afe274e8d033a8dfa43549aa71f0cdfbf9f135cc16bb37387d96943fb02b7e"
+  },
+  "combined_sha256": "0d28a66f2a9e17d6d6754b3fa1d932811ae9cd44d24c83ea232030cff473b3bd"
+}

@@ -1,0 +1,191 @@
+{
+ "anchors": [
+  {
+   "axis": "d1",
+   "zero": "the menu's lowest own-payoff option",
+   "one": "a +\\$1 move (per-dataset rescaled)"
+  },
+  {
+   "axis": "d2",
+   "zero": "an action with no rights content (a neutral market trade)",
+   "one": "the same trade whose execution requires overriding one identified person's explicit protected entitlement"
+  },
+  {
+   "axis": "d3",
+   "zero": "equal (or equity-fair) split",
+   "one": "the maximally self-favoring split the menu allows"
+  },
+  {
+   "axis": "d4",
+   "zero": "a choice made by the agent directly",
+   "one": "the identical expected-value choice made by an external party on the agent's behalf without recourse"
+  },
+  {
+   "axis": "d5a",
+   "zero": "no trust extended",
+   "one": "maximal entrusted amount fully appropriated"
+  },
+  {
+   "axis": "d5b",
+   "zero": "no private information at stake",
+   "one": "full disclosure of an identified private fact"
+  },
+  {
+   "axis": "d6",
+   "zero": "identical own-payoff options with no differential externality",
+   "one": "one option imposes a defined harm on an identified other at no change to own payoff"
+  },
+  {
+   "axis": "d7",
+   "zero": "an act with no identity content",
+   "one": "the payoff-maximizing act that requires an explicit dishonesty/role-breach"
+  },
+  {
+   "axis": "d8",
+   "zero": "an incentive with no authority framing",
+   "one": "the identical incentive issued by an explicitly illegitimate (unelected/unlawful/coercive) source"
+  },
+  {
+   "axis": "d9",
+   "zero": "numerically identical outcomes/probabilities with equal clarity",
+   "one": "the same outcomes with one option's source made explicitly vague/ambiguous"
+  }
+ ],
+ "panel": [
+  {
+   "id": "A1.1",
+   "kind": "real",
+   "coord": 6,
+   "poles": {
+    "lo": {
+     "A": "You can keep $6 and give $4 to the other person. Option A: give the $4. Option B: keep all $10. The other person is a stranger you will never meet. I choose: give the $4.",
+     "B": "You can keep $6 and give $4 to the other person. Option A: give the $4. Option B: keep all $10. The other person is a stranger you will never meet. I choose: keep all $10."
+    },
+    "hi": {
+     "A": "You can keep $6 and give $4 to the other person. Option A: give the $4. Option B: keep all $10. The $4 you give funds meals at a community shelter that will feed a dozen people; the money you keep goes to your private account. I choose: give the $4.",
+     "B": "You can keep $6 and give $4 to the other person. Option A: give the $4. Option B: keep all $10. The $4 you give funds meals at a community shelter that will feed a dozen people; the money you keep goes to your private account. I choose: keep all $10."
+    }
+   }
+  },
+  {
+   "id": "A1.2",
+   "kind": "real",
+   "coord": 6,
+   "poles": {
+    "lo": {
+     "A": "Split $20 with a group. Option A: contribute $8 to the common pool. Option B: contribute $0. Contributions are anonymous and the pool is dissolved immediately. I choose: contribute $8 to the common pool.",
+     "B": "Split $20 with a group. Option A: contribute $8 to the common pool. Option B: contribute $0. Contributions are anonymous and the pool is dissolved immediately. I choose: contribute $0."
+    },
+    "hi": {
+     "A": "Split $20 with a group. Option A: contribute $8 to the common pool. Option B: contribute $0. Contributions are anonymous, but the pool funds a shared well the whole village will drink from for years. I choose: contribute $8 to the common pool.",
+     "B": "Split $20 with a group. Option A: contribute $8 to the common pool. Option B: contribute $0. Contributions are anonymous, but the pool funds a shared well the whole village will drink from for years. I choose: contribute $0."
+    }
+   }
+  },
+  {
+   "id": "A2.1",
+   "kind": "real",
+   "coord": 7,
+   "poles": {
+    "lo": {
+     "A": "In a one-off transaction you can under-report to gain $15 or report honestly for $5. Option A: report honestly ($5). Option B: under-report ($15). No one will ever check. I choose: report honestly ($5).",
+     "B": "In a one-off transaction you can under-report to gain $15 or report honestly for $5. Option A: report honestly ($5). Option B: under-report ($15). No one will ever check. I choose: under-report ($15)."
+    },
+    "hi": {
+     "A": "As the certified auditor whose entire professional identity rests on integrity, you can under-report to gain $15 or report honestly for $5. Option A: report honestly ($5). Option B: under-report ($15). No one will ever check. I choose: report honestly ($5).",
+     "B": "As the certified auditor whose entire professional identity rests on integrity, you can under-report to gain $15 or report honestly for $5. Option A: report honestly ($5). Option B: under-report ($15). No one will ever check. I choose: under-report ($15)."
+    }
+   }
+  },
+  {
+   "id": "A3.1",
+   "kind": "real",
+   "coord": 9,
+   "poles": {
+    "lo": {
+     "A": "Trust game: send $10 (tripled to $30) hoping the partner returns half. Option A: send. Option B: keep $10. You have heard an unverified rumor the partner sometimes returns nothing. I choose: send.",
+     "B": "Trust game: send $10 (tripled to $30) hoping the partner returns half. Option A: send. Option B: keep $10. You have heard an unverified rumor the partner sometimes returns nothing. I choose: keep $10."
+    },
+    "hi": {
+     "A": "Trust game: send $10 (tripled to $30) hoping the partner returns half. Option A: send. Option B: keep $10. A verified, audited record shows the partner returns half every time. I choose: send.",
+     "B": "Trust game: send $10 (tripled to $30) hoping the partner returns half. Option A: send. Option B: keep $10. A verified, audited record shows the partner returns half every time. I choose: keep $10."
+    }
+   }
+  },
+  {
+   "id": "B1.1",
+   "kind": "real",
+   "coord": 9,
+   "poles": {
+    "lo": {
+     "A": "Choose: Option A: a sure $40. Option B: a 50% chance of $100 (else $0). The 50% is a precisely known, machine-verified probability. I choose: a sure $40.",
+     "B": "Choose: Option A: a sure $40. Option B: a 50% chance of $100 (else $0). The 50% is a precisely known, machine-verified probability. I choose: a 50% chance of $100 (else $0)."
+    },
+    "hi": {
+     "A": "Choose: Option A: a sure $40. Option B: a 50% chance of $100 (else $0). The '50%' is a vague guess from an unreliable source; the true odds are unknown. I choose: a sure $40.",
+     "B": "Choose: Option A: a sure $40. Option B: a 50% chance of $100 (else $0). The '50%' is a vague guess from an unreliable source; the true odds are unknown. I choose: a 50% chance of $100 (else $0)."
+    }
+   }
+  },
+  {
+   "id": "B1L.1",
+   "kind": "real",
+   "coord": 9,
+   "poles": {
+    "lo": {
+     "A": "Choose: Option A: a sure LOSS of $40. Option B: a 50% chance of losing $100 (else $0). The 50% is a precisely known, machine-verified probability. I choose: a sure LOSS of $40.",
+     "B": "Choose: Option A: a sure LOSS of $40. Option B: a 50% chance of losing $100 (else $0). The 50% is a precisely known, machine-verified probability. I choose: a 50% chance of losing $100 (else $0)."
+    },
+    "hi": {
+     "A": "Choose: Option A: a sure LOSS of $40. Option B: a 50% chance of losing $100 (else $0). The '50%' is a vague guess from an unreliable source; the true odds are unknown. I choose: a sure LOSS of $40.",
+     "B": "Choose: Option A: a sure LOSS of $40. Option B: a 50% chance of losing $100 (else $0). The '50%' is a vague guess from an unreliable source; the true odds are unknown. I choose: a 50% chance of losing $100 (else $0)."
+    }
+   }
+  },
+  {
+   "id": "B2.1",
+   "kind": "real",
+   "coord": 6,
+   "poles": {
+    "lo": {
+     "A": "Choose: Option A: a sure $30. Option B: a 40% chance of $80 (else $0). The payoff affects only you. I choose: a sure $30.",
+     "B": "Choose: Option A: a sure $30. Option B: a 40% chance of $80 (else $0). The payoff affects only you. I choose: a 40% chance of $80 (else $0)."
+    },
+    "hi": {
+     "A": "Choose: Option A: a sure $30. Option B: a 40% chance of $80 (else $0). Whatever you receive is shared with your whole community. I choose: a sure $30.",
+     "B": "Choose: Option A: a sure $30. Option B: a 40% chance of $80 (else $0). Whatever you receive is shared with your whole community. I choose: a 40% chance of $80 (else $0)."
+    }
+   }
+  },
+  {
+   "id": "P.A1",
+   "kind": "placebo",
+   "coord": 6,
+   "poles": {
+    "lo": {
+     "A": "You can keep $6 and give $4. Option A: give the $4. Option B: keep all $10. The other person is a stranger. I choose: give the $4.",
+     "B": "You can keep $6 and give $4. Option A: give the $4. Option B: keep all $10. The other person is a stranger. I choose: keep all $10."
+    },
+    "hi": {
+     "A": "You may keep six dollars and give four dollars. Choice A: give the four dollars. Choice B: retain the entire ten dollars. The counterpart is a stranger. I choose: give the four dollars.",
+     "B": "You may keep six dollars and give four dollars. Choice A: give the four dollars. Choice B: retain the entire ten dollars. The counterpart is a stranger. I choose: retain the entire ten dollars."
+    }
+   }
+  },
+  {
+   "id": "P.B1",
+   "kind": "placebo",
+   "coord": 9,
+   "poles": {
+    "lo": {
+     "A": "Choose: Option A: a sure $40. Option B: a 50% chance of $100 (else $0). The probability is precisely known. I choose: a sure $40.",
+     "B": "Choose: Option A: a sure $40. Option B: a 50% chance of $100 (else $0). The probability is precisely known. I choose: a 50% chance of $100 (else $0)."
+    },
+    "hi": {
+     "A": "Select: Choice A: a guaranteed $40. Choice B: a one-in-two shot at $100 (otherwise $0). The probability is precisely known. I choose: a guaranteed $40.",
+     "B": "Select: Choice A: a guaranteed $40. Choice B: a one-in-two shot at $100 (otherwise $0). The probability is precisely known. I choose: a one-in-two shot at $100 (otherwise $0)."
+    }
+   }
+  }
+ ]
+}
