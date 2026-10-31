@@ -1,0 +1,34 @@
+{
+  "prereg": "prereg-menus-v1",
+  "title": "Does the Menu Set the Scale of Evaluation?",
+  "author": "Andrew H. Bond, San Jose State University",
+  "companion_to": [
+    "prereg-strata-v1"
+  ],
+  "frozen_predictions": "H1-H5 in prereg-menus-v1.md Section 5; void condition there.",
+  "data": "Gluth, Spektor and Rieskamp 2018 (OSF 8r4fh); zip hashes in Section 2. No choice statistic computed before sealing (Section 9).",
+  "hash_note": "sha256 of each file with CRLF normalized to LF; combined = sha256 over the concatenated component hex digests in bundle_files order",
+  "bundle_files": [
+    "prereg-menus-v1.md",
+    "gluth_rows.py",
+    "gluth_stimuli.py",
+    "gluth_accounting.json",
+    "gluth_stimuli.json",
+    "menus_models.py",
+    "fit_menus.py",
+    "grade_menus.py",
+    "explore_molter3.json"
+  ],
+  "files": {
+    "prereg-menus-v1.md": "8c8a18f41a5b13b1baeef5437b0e3a3711b10252ea46366ab0f63b9ae442d500",
+    "gluth_rows.py": "c9d1f3b2c6d7ecafd5548c6622eb11d37b69065f84c82d85bf4eba756d72f197",
+    "gluth_stimuli.py": "e7a3d9c23aa86b755c8530a802abe8211c53fe109543c7a4afa4b6b68a17d7ef",
+    "gluth_accounting.json": "9b87add5f4b786ccf28615dd0f20069622ccfcb66e3861688339cddc6588cfb7",
+    "gluth_stimuli.json": "b7a5e767fa35e882ed173430a3f50c03a2d352de1e03f5a86d442a532168a218",
+    "menus_models.py": "07f210a645dc9bf17ae2c576b2a7b3a76fc18ecd704e32e505291bffbc72d8f3",
+    "fit_menus.py": "e6607148a083a6830103025341fe80b575b015974d9549c6c53362b9c5415be6",
+    "grade_menus.py": "dd9a927ebf7a4d656921b644b7001f074c4d1952ef7e9551b2470b34385c6b3e",
+    "explore_molter3.json": "29a0a6843a55563dbae6cbb0cf07c0cbd570f5f0839b60d43e5f2720d5ea6fca"
+  },
+  "combined_sha256": "60f698eb1719f25fbff7c024753888d708c3c2ba3b9ff5da7cb3f41bf009c758"
+}

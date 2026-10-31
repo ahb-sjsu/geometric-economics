@@ -1,0 +1,59 @@
+{
+ "verdict": "GRADED",
+ "nonconverged": 1,
+ "predictions": {
+  "H1 range scaling at Molter's exponent beats additive value on distractor trials": "FAIL",
+  "H2 it beats divisive normalisation": "FAIL",
+  "H3 it beats full range normalisation (rho = 1)": "PASS",
+  "H4 universality: Gluth's median rho lies in Molter's interquartile range, interval inside (0.1, 0.9)": "FAIL",
+  "H5 square-root-to-Weber crossover": "NOT ASSESSABLE"
+ },
+ "numbers": {
+  "margin": 0.001403763176162478,
+  "test_nll": {
+   "ADD": 0.5820119824963336,
+   "RNG": 0.5968038837585736,
+   "RNG1": 0.6273126395068362,
+   "DN": 0.5891922487214701
+  },
+  "comparisons": {
+   "RNG minus ADD": {
+    "mean": 0.014791901262240082,
+    "ci_low": 0.011855394613869065,
+    "ci_high": 0.017660045617200092
+   },
+   "RNG minus DN": {
+    "mean": 0.007611635037103465,
+    "ci_low": 0.003025978178765579,
+    "ci_high": 0.012018180515849583
+   },
+   "RNG minus RNG1": {
+    "mean": -0.030508755748262617,
+    "ci_low": -0.035024136921293386,
+    "ci_high": -0.026062037016021115
+   },
+   "DN minus ADD": {
+    "mean": 0.00718026622513662,
+    "ci_low": 0.0035682265367491714,
+    "ci_high": 0.010954982130662252
+   },
+   "RNG1 minus ADD": {
+    "mean": 0.045300657010502704,
+    "ci_low": 0.03977908302941077,
+    "ci_high": 0.05049027008721281
+   },
+   "per_experiment_RNG_minus_ADD": {
+    "exp1": 0.01894905236198601,
+    "exp2": 0.014674436455013356,
+    "exp3": 0.013891809993835566,
+    "exp4": 0.012464314685769397
+   }
+  },
+  "rho_free": {
+   "median": 0.02754217714611225,
+   "ci_low": 4.259793398273164e-06,
+   "ci_high": 0.05070544070838688
+  }
+ },
+ "rehearsal": "OK"
+}

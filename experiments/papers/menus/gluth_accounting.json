@@ -1,0 +1,38 @@
+{
+ "exp1": {
+  "files": 31,
+  "rows": 15232,
+  "buckets": {
+   "training": 2460,
+   "kept": 12071,
+   "non_choice": 701
+  }
+ },
+ "exp2": {
+  "files": 49,
+  "rows": 23120,
+  "buckets": {
+   "training": 2932,
+   "kept": 19565,
+   "non_choice": 623
+  }
+ },
+ "exp3": {
+  "files": 23,
+  "rows": 11112,
+  "buckets": {
+   "training": 1636,
+   "kept": 9081,
+   "non_choice": 395
+  }
+ },
+ "exp4": {
+  "files": 44,
+  "rows": 16416,
+  "buckets": {
+   "training": 3216,
+   "kept": 12401,
+   "non_choice": 799
+  }
+ }
+}
