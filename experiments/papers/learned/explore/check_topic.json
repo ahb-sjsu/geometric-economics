@@ -1,0 +1,105 @@
+{
+ "texts": 27982,
+ "kin_share": 0.27217496962332927,
+ "directions": [
+  {
+   "index": 0,
+   "r_with_kin": -0.27165128676210964,
+   "R2_from_kin": 0.07379442159950993,
+   "sd_all": 0.056395404040813446,
+   "sd_kin": 0.04971922188997269,
+   "sd_nonkin": 0.05588292330503464,
+   "mean_kin_minus_nonkin_in_sd": -0.6103435754776001,
+   "nonkin_low_end": [
+    "\"ruining\" my girlfriend's birthday",
+    "losing my shit at one of my flatmates",
+    "\"ruining\" my girlfriends birthday",
+    "cutting a possibly autistic friend off",
+    "shutting a friend down and ignoring her",
+    "cutting an autistic friend out of my life",
+    "\"abandoning\" my best friend on her birthday",
+    "potentially causing a girl to fail university",
+    "killing my friend's tarantula",
+    "ghosting my autistic 'friend'"
+   ],
+   "nonkin_high_end": [
+    "buying curtains",
+    "expecting the customer to pay for both of the beverages after they asked for a remake",
+    "asking for a refund",
+    "not wanting to renew the lease",
+    "changing laundry",
+    "not recycling",
+    "wanting to be presentable",
+    "being polite",
+    "telling a newly hired house cleaner that I have cameras in my home, as a warning not to steal things",
+    "asking for new brushes"
+   ]
+  },
+  {
+   "index": 1,
+   "r_with_kin": -0.27569880726943524,
+   "R2_from_kin": 0.0760098323297892,
+   "sd_all": 0.07682004570960999,
+   "sd_kin": 0.08018037676811218,
+   "sd_nonkin": 0.07132833451032639,
+   "mean_kin_minus_nonkin_in_sd": -0.6194372773170471,
+   "nonkin_low_end": [
+    "not caring about my relatives",
+    "not caring about myself",
+    "not wanting to help my disabled friend anymore",
+    "not caring about Christmas",
+    "not wanting to see my sil when she visits",
+    "not wanting to help him",
+    "not wanting to help my friend anymore",
+    "refusing to go to my grandfathers memorial service",
+    "not caring about nephews/nieces",
+    "not wanting to help mentally handicapped people"
+   ],
+   "nonkin_high_end": [
+    "making offensive jokes",
+    "flirting with and sexting a bunch of girls",
+    "making a Joke of an Accent kinda",
+    "saying a holocaust joke that made its way to a jewish girl",
+    "blowing off my friend on an assignment I said I would do a day before exams",
+    "making racist asian jokes",
+    "leveraging a racist Remark at Work into a promotion",
+    "ruining cheating ex's chances with other guys",
+    "exposing a girls nudes to the entire school triggering a dominoe effect",
+    "making \"racist\" jokes"
+   ]
+  },
+  {
+   "index": 2,
+   "r_with_kin": -0.2933543546221516,
+   "R2_from_kin": 0.08605677737577908,
+   "sd_all": 0.06322003155946732,
+   "sd_kin": 0.05921704322099686,
+   "sd_nonkin": 0.0608891025185585,
+   "mean_kin_minus_nonkin_in_sd": -0.6591055989265442,
+   "nonkin_low_end": [
+    "not attending a friend's wedding a couple years ago",
+    "expecting compensation from the company for 3 false deliveries",
+    "not sending flowers to my fathers funeral",
+    "giving a wedding gift 3 months late and not saying anything about it until it was 2 months past the wedding",
+    "lying to my bf and letting him believe his ex cheated on him",
+    "not telling my best man for my wedding that he wasn't my first choice",
+    "not giving my friend her wedding money back",
+    "not wanting to go to a wedding over something that happened 2 years ago",
+    "just not accepting that my current gf cheated on her ex-bf for three years",
+    "pretending to love my bf for a year then dumped him"
+   ],
+   "nonkin_high_end": [
+    "excluding my friend who has Asperger's",
+    "telling someone with ADHD to shut up",
+    "being fascinated with mentally handicapped/disabled, foremost the ones that stick their tongues in the bottom lip and make the nnurrr noise",
+    "being annoyed by someone with a mental disability",
+    "having a supposed autistic person banned from a discord",
+    "cutting off an autistic guy for being too clingy",
+    "being brusque with a person who may have aspergers",
+    "not wanting to be friends with someone who claims to have Aspergers / Autism",
+    "making an autistic person cry",
+    "allowing a mentally handicapped diabetic to have sugar"
+   ]
+  }
+ ]
+}

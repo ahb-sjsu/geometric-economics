@@ -98,6 +98,46 @@ dimension it needs two checks:
    already calls a moral-relevance detector;
 2. cross-corpus replication (step 3).
 
+### Direction 0 is not general valence (`check_valence.py`, `check_valence.json`)
+
+General valence was checked in both of moral-spectrum-analyzer's forms:
+
+- G, the trained channel `general_valence_joint`, at all three seeds (all passed their gates);
+- pc0, the first principal component of the nine axis scores.
+
+| | r with G (s0 / s1 / s2) | r with pc0 | R² nine axes | R² nine axes + G |
+|---|---|---|---|---|
+| Direction 0 | 0.26 / 0.18 / 0.19 | −0.25 | 0.130 | 0.144 |
+| Direction 1 | 0.08 / 0.16 / 0.17 | −0.28 | 0.440 | 0.441 |
+| Direction 2 | −0.09 / −0.08 / −0.06 | 0.09 | 0.084 | 0.091 |
+
+86% of direction 0 lies outside everything moral-spectrum-analyzer measures.
+
+### Not a family topic axis, and not pure gravity (`check_topic.py`, `probe_dir0.py`)
+
+- A kinship-word indicator explains 7% of direction 0 (r = −0.27).
+- Among actions that mention no kin, the spread is unchanged (SD 0.056 against 0.056 overall).
+- The ordering holds without kin. At the low end are "killing my friend's tarantula", "cutting an
+  autistic friend out of my life" and "potentially causing a girl to fail university". At the high
+  end are "buying curtains" and "asking for a refund".
+
+Median percentile on direction 0 by keyword group (0 = the low end):
+
+| Group | n | Median | IQR |
+|---|---|---|---|
+| violence | 201 | 0.25 | 0.08–0.57 |
+| kin | 6,122 | 0.33 | 0.15–0.55 |
+| friends and partners | 10,026 | 0.41 | 0.20–0.63 |
+| lying and cheating | 477 | 0.44 | 0.25–0.70 |
+| theft, fraud, scams | 141 | 0.50 | 0.21–0.74 |
+| strangers, customers, coworkers | 1,065 | 0.57 | 0.34–0.78 |
+
+Violence sits low, as a gravity reading predicts. Impersonal wrongs (theft, fraud) sit mid-range and
+acts toward strangers sit high, as a relational-stakes reading predicts. The best description these
+data support is *harm to people the actor is close to, scaled by severity*. The keyword groups are
+crude; the theft group includes "stealing my buddy's girl". A clean test needs independent ratings of
+severity and of relational closeness on a sample of actions, then a regression of direction 0 on both.
+
 Together with `../../strata2/DEVELOPMENT.md` and `../../menus/DEVELOPMENT.md`: in none of the three
 domains does the data prefer a Euclidean distance from a reference point over its nearest
 non-geometric rival. What the data do reward is curvature, and in menus a scale set by the menu.
