@@ -1,0 +1,99 @@
+{
+ "void": [],
+ "verdict": "GRADED",
+ "predictions": {
+  "H1 frozen GDT beats expected value refit on this corpus": "FAIL",
+  "H2 frozen GDT beats frozen linear random utility": "FAIL",
+  "H3 frozen CPT beats frozen GDT (Part II's ordering replicates)": "FAIL",
+  "H4 the CPC18 aversion angle lies inside this corpus's 95% interval": "PASS",
+  "H5 GDT's deficit to CPT is larger on problems with a loss": "FAIL"
+ },
+ "numbers": {
+  "margin": 0.0003107126247954839,
+  "test_nll": {
+   "M0": 0.6931150914619199,
+   "EV_transfer": 0.6634125777419968,
+   "EV_zerofit": 1.4607017646729195,
+   "EV_native": 0.6563943576459182,
+   "RUM_transfer": 0.6617198698647206,
+   "RUM_zerofit": 1.4484735628441594,
+   "RUM_native": 0.6552274059097278,
+   "GDT_transfer": 0.6612488152512787,
+   "GDT_zerofit": 1.434997862360508,
+   "GDT_native": 0.6550069612612474,
+   "CPT_transfer": 0.66270437664594,
+   "CPT_zerofit": 1.2566184056554484,
+   "CPT_native": 0.654920333060701,
+   "CPT_TK92_transfer": 0.6727482377884061,
+   "CPT_TK92_zerofit": 1.1158600502346454
+  },
+  "comparisons": {
+   "GDT_transfer-EV_native": {
+    "mean": 0.0048544576053603595,
+    "ci_low": 0.0017019868329911,
+    "ci_high": 0.009019306626940093,
+    "se": 0.0018337069309663898
+   },
+   "GDT_transfer-RUM_transfer": {
+    "mean": -0.0004710546134420366,
+    "ci_low": -0.0010938862134186116,
+    "ci_high": 0.0001917251488545911,
+    "se": 0.00032488228288662734
+   },
+   "CPT_transfer-GDT_transfer": {
+    "mean": 0.0014555613946615129,
+    "ci_low": -0.0013614687197022464,
+    "ci_high": 0.004770809315850786,
+    "se": 0.0015849085891909134
+   },
+   "GDT_transfer-CPT_TK92_transfer": {
+    "mean": -0.011499422537127508,
+    "ci_low": -0.02091012519529018,
+    "ci_high": -0.0036765594798673666,
+    "se": 0.004433320799696898
+   },
+   "GDT_native-GDT_transfer": {
+    "mean": -0.006241853990031154,
+    "ci_low": -0.01020065424050067,
+    "ci_high": -0.003075264518021986,
+    "se": 0.0018380971495966813
+   },
+   "CPT_native-CPT_transfer": {
+    "mean": -0.007784043585239208,
+    "ci_low": -0.011739556705590671,
+    "ci_high": -0.0042242651234794225,
+    "se": 0.0018794576523810402
+   },
+   "GDT_zerofit-CPT_zerofit": {
+    "mean": 0.17837945670505975,
+    "ci_low": 0.04711306826500599,
+    "ci_high": 0.31323009037270194,
+    "se": 0.06861959769031518
+   }
+  },
+  "angle": {
+   "frozen_ratio": 0.10462029201293119,
+   "native_ratio": 0.08892750731340177,
+   "native_ci_low": 0.0533038238990372,
+   "native_ci_high": 0.12689606008894913
+  },
+  "loss_domain_dd": {
+   "mean": -0.0033623665816267154,
+   "ci_low": -0.010184716556642652,
+   "ci_high": 0.0027595628672663674
+  },
+  "kappa": {
+   "EV": 0.06744316033211074,
+   "RUM": 0.07034312399422665,
+   "GDT": 0.07236543984838062,
+   "CPT": 0.0876449598441769,
+   "CPT_TK92": 0.14303162737328384
+  },
+  "transfer_efficiency": {
+   "GDT": 0.8363445699892872,
+   "CPT": 0.796372337912697,
+   "RUM": 0.828784215758635
+  }
+ },
+ "rehearsal": "FAILED: under a GDT truth the chain must find GDT's angle and not prefer CPT"
+}

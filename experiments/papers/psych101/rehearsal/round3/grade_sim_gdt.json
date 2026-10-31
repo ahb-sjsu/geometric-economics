@@ -1,0 +1,99 @@
+{
+ "void": [],
+ "verdict": "GRADED",
+ "predictions": {
+  "H1 frozen GDT beats expected value refit on this corpus": "PASS",
+  "H2 frozen GDT beats frozen linear random utility": "FAIL",
+  "H3 frozen CPT beats frozen GDT (Part II's ordering replicates)": "FAIL",
+  "H4 the CPC18 aversion angle lies inside this corpus's 95% interval": "PASS",
+  "H5 GDT's deficit to CPT is larger on problems with a loss": "FAIL"
+ },
+ "numbers": {
+  "margin": 0.0007860079193800784,
+  "test_nll": {
+   "M0": 0.6931499939768463,
+   "EV_transfer": 0.6171989302468973,
+   "EV_zerofit": 0.6172092702954857,
+   "EV_native": 0.617198929949706,
+   "RUM_transfer": 0.6134469085570695,
+   "RUM_zerofit": 0.6135350279530492,
+   "RUM_native": 0.6134265960269782,
+   "GDT_transfer": 0.6128192393434705,
+   "GDT_zerofit": 0.6128504066217335,
+   "GDT_native": 0.6128010926921036,
+   "CPT_transfer": 0.6199627915499746,
+   "CPT_zerofit": 0.6211558752910473,
+   "CPT_native": 0.6140769994820077,
+   "CPT_TK92_transfer": 0.6563554076176543,
+   "CPT_TK92_zerofit": 0.6512859784878033
+  },
+  "comparisons": {
+   "GDT_transfer-EV_native": {
+    "mean": -0.0043796906062354875,
+    "ci_low": -0.007166452978456976,
+    "ci_high": -0.0019745287221596443,
+    "se": 0.001334215676522537
+   },
+   "GDT_transfer-RUM_transfer": {
+    "mean": -0.0006276692135990162,
+    "ci_low": -0.001349883138503991,
+    "ci_high": 0.00011616044255742555,
+    "se": 0.0003734387105792585
+   },
+   "CPT_transfer-GDT_transfer": {
+    "mean": 0.007143552206504166,
+    "ci_low": 0.003793803466378889,
+    "ci_high": 0.011349128011553853,
+    "se": 0.0019303492681163065
+   },
+   "GDT_transfer-CPT_TK92_transfer": {
+    "mean": -0.04353616827418381,
+    "ci_low": -0.06853307745637602,
+    "ci_high": -0.023370298377784947,
+    "se": 0.011693879220724106
+   },
+   "GDT_native-GDT_transfer": {
+    "mean": -1.8146651366949404e-05,
+    "ci_low": -6.126065127877697e-05,
+    "ci_high": 2.6234692537958427e-05,
+    "se": 2.298023115380824e-05
+   },
+   "CPT_native-CPT_transfer": {
+    "mean": -0.005885792067966999,
+    "ci_low": -0.010019720630571147,
+    "ci_high": -0.002409285913804671,
+    "se": 0.0019453720213738874
+   },
+   "GDT_zerofit-CPT_zerofit": {
+    "mean": -0.008305468669313877,
+    "ci_low": -0.012441263524492067,
+    "ci_high": -0.0048696853475785696,
+    "se": 0.001957980114059851
+   }
+  },
+  "angle": {
+   "frozen_ratio": 0.10458190251122607,
+   "native_ratio": 0.10206323009763893,
+   "native_ci_low": 0.08243452361230746,
+   "native_ci_high": 0.12131023169347617
+  },
+  "loss_domain_dd": {
+   "mean": -0.006372106705264236,
+   "ci_low": -0.01429957403855489,
+   "ci_high": 0.0006740220847924358
+  },
+  "kappa": {
+   "EV": 1.0035673971781094,
+   "RUM": 1.0334918146718968,
+   "GDT": 1.0147474078700327,
+   "CPT": 1.234567726784539,
+   "CPT_TK92": 2.2494026889520096
+  },
+  "transfer_efficiency": {
+   "GDT": 0.9997741439334701,
+   "CPT": 0.9255624308971112,
+   "RUM": 0.9997452034476382
+  }
+ },
+ "rehearsal": "OK"
+}

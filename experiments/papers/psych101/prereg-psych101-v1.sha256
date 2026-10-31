@@ -1,0 +1,37 @@
+{
+  "prereg": "prereg-psych101-v1",
+  "title": "Part II's Risky-Choice Models, Frozen, on a Corpus They Have Not Seen",
+  "author": "Andrew H. Bond, San Jose State University",
+  "companion_to": [
+    "prereg-learned-v1",
+    "prereg-boundary-v1"
+  ],
+  "frozen_predictions": "H1-H5 in prereg-psych101-v1.md Section 5; void conditions Section 6.",
+  "data": "wulff2018description/exp1.csv in Psych-101. No choice statistic computed before freezing.",
+  "hash_note": "sha256 of each file with CRLF normalized to LF; combined = sha256 over the concatenated component hex digests in bundle_files order",
+  "bundle_files": [
+    "prereg-psych101-v1.md",
+    "inspect_stimuli.py",
+    "overlap_stimuli.py",
+    "build_rows.py",
+    "freeze_cpc18.py",
+    "frozen_cpc18.json",
+    "fit_psych101.py",
+    "grade_psych101.py",
+    "../../datasets/fit_transfer.py",
+    "../../datasets/cpc18.py"
+  ],
+  "files": {
+    "prereg-psych101-v1.md": "dc3bde7793f8dc13fcfc25818de4521029f60a2e45c43c6ca20e753d8c8153c2",
+    "inspect_stimuli.py": "2cafa39005fc24fec4a3e5a2b4f02c5537770f8312c9dec18fcee551f21b6edc",
+    "overlap_stimuli.py": "0b2d507003cca7b5d86e7d309edc426b2ffef1e62e3f2fc7d322893971c5d0b3",
+    "build_rows.py": "bf2afaa7d47b99d5f022293610093e3e5372f8b2fc54bf00b581c81cf3362c27",
+    "freeze_cpc18.py": "b29858e8a111db28ea31510969a45f2f7925e77cd94831c14173343640b1eb29",
+    "frozen_cpc18.json": "7827c5c14acc9a51af69694d5b0a6463fddb6b470b81d60abe06752ee615edde",
+    "fit_psych101.py": "7d89402328c407f3f7110f762612ecda6ed06fa2a3ef56e6a931274a6bef5f61",
+    "grade_psych101.py": "1a0b84d525079c09bb718adf55eb245a08248b41f10ac761233d8ce3d6fe52b9",
+    "../../datasets/fit_transfer.py": "0bf45f74022dcf295b51d81d58562108a68734c7ba3ca6e4000cc830c0c63bf2",
+    "../../datasets/cpc18.py": "6546a33f1cc12d6ceda142a5394d92aafee18cc91fbc2cbcfd5bd13609f6936f"
+  },
+  "combined_sha256": "ae6048fa1ab36c2893a761015e6aeb041e9c4c5195ecc04de0f803c8da7a306a"
+}

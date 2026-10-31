@@ -16,10 +16,17 @@ Scoring (held-out games): MAE on B-rate and mean binomial NLL (lower = better).
 """
 from __future__ import annotations
 
+import json
+import os
+
 import numpy as np
 from scipy.optimize import minimize
+from scipy import stats
 
 import cpc18
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+PERFOLD_CSV = os.path.join(HERE, "results_cpc18_perfold.csv")
 
 
 def _sig(x):
@@ -114,14 +121,30 @@ def main():
           f"n={int(df['n'].sum())} choices; {n_splits} random 70/30 splits by GameID\n")
     acc = {name: {"MAE": [], "NLL": []} for name in MODELS}
     acc["const"] = {"MAE": []}
+    rows = []  # per-fold record; the folds are shared across models by seed
     for seed in range(n_splits):
         train, test = cpc18.split_by_game(df, test_frac=0.3, seed=seed)
         for name, (fn, x0) in MODELS.items():
             theta = fit(fn, x0, train)
             te = evaluate(fn, theta, test)
             acc[name]["MAE"].append(te["MAE"]); acc[name]["NLL"].append(te["NLL"])
+            rows.append({
+                "seed": seed, "model": name, "n_params": len(x0),
+                "MAE": te["MAE"], "NLL": te["NLL"],
+                "n_train_games": int(len(train)), "n_test_games": int(len(test)),
+                "n_test_choices": int(test["n"].sum()),
+                "theta": json.dumps([float(t) for t in theta]),
+            })
         base = train["brate"].mean()
-        acc["const"]["MAE"].append(float(np.mean(np.abs(base - test["brate"].to_numpy()))))
+        const_mae = float(np.mean(np.abs(base - test["brate"].to_numpy())))
+        acc["const"]["MAE"].append(const_mae)
+        rows.append({
+            "seed": seed, "model": "const", "n_params": 1,
+            "MAE": const_mae, "NLL": float("nan"),
+            "n_train_games": int(len(train)), "n_test_games": int(len(test)),
+            "n_test_choices": int(test["n"].sum()),
+            "theta": json.dumps([float(base)]),
+        })
 
     print(f"{'model':10} {'#params':>7} {'TEST MAE (mean+-sd)':>22} {'TEST NLL (mean+-sd)':>22}")
     for name, (_, x0) in MODELS.items():
@@ -135,6 +158,36 @@ def main():
           "predictor on the lottery leg (beats EV/RUM), while CPT -- purpose-built "
           "for lotteries -- leads on its home turf. The geometric model's distinct "
           "claim is CROSS-DOMAIN transfer (games<->lotteries), which CPT cannot do.")
+
+    pd.DataFrame(rows).to_csv(PERFOLD_CSV, index=False)
+    print(f"\nPer-fold results written to {os.path.basename(PERFOLD_CSV)} "
+          f"({len(rows)} rows = {n_splits} folds x {len(MODELS) + 1} models).")
+
+    print("\nPaired per-fold differences (same 20 folds, seeds 0-19; "
+          "negative favours the first model)")
+    print(f"{'contrast':22} {'metric':6} {'mean diff':>10} {'95% CI':>20} "
+          f"{'t p':>9} {'Wilcoxon p':>11} {'wins':>6}")
+    for a, b in [("Geometric", "EV"), ("Geometric", "RUM"), ("Geometric", "CPT")]:
+        for metric in ("MAE", "NLL"):
+            da = np.array(acc[a][metric]); db = np.array(acc[b][metric])
+            d = da - db
+            n = len(d)
+            mean = d.mean()
+            se = d.std(ddof=1) / np.sqrt(n)
+            crit = stats.t.ppf(0.975, n - 1)
+            lo, hi = mean - crit * se, mean + crit * se
+            t_p = stats.ttest_rel(da, db).pvalue
+            try:
+                w_p = stats.wilcoxon(da, db).pvalue
+            except ValueError:
+                w_p = float("nan")
+            wins = int(np.sum(d < 0))
+            print(f"{a + ' - ' + b:22} {metric:6} {mean:>+10.5f} "
+                  f"[{lo:>+8.5f},{hi:>+8.5f}] {t_p:>9.2e} {w_p:>11.2e} "
+                  f"{wins:>3}/{n}")
+    print("\nPaired on shared folds, so these test the per-fold difference, not "
+          "the difference of two independent means. No multiplicity correction "
+          "is applied; three contrasts x two metrics are reported together.")
 
 
 if __name__ == "__main__":

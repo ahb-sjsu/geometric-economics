@@ -1,0 +1,99 @@
+{
+ "void": [],
+ "verdict": "GRADED",
+ "predictions": {
+  "H1 frozen GDT beats expected value refit on this corpus": "FAIL",
+  "H2 frozen GDT beats frozen linear random utility": "FAIL",
+  "H3 frozen CPT beats frozen GDT (Part II's ordering replicates)": "FAIL",
+  "H4 the CPC18 aversion angle lies inside this corpus's 95% interval": "PASS",
+  "H5 GDT's deficit to CPT is larger on problems with a loss": "FAIL"
+ },
+ "numbers": {
+  "margin": 0.00020768955990125405,
+  "test_nll": {
+   "M0": 0.6930987441839165,
+   "EV_transfer": 0.6666580611876578,
+   "EV_zerofit": 1.5590950131689765,
+   "EV_native": 0.6666563178860988,
+   "RUM_transfer": 0.6659959372440678,
+   "RUM_zerofit": 1.569382772376485,
+   "RUM_native": 0.6661316570469041,
+   "GDT_transfer": 0.6665137160159377,
+   "GDT_zerofit": 1.560541721202888,
+   "GDT_native": 0.666364472912108,
+   "CPT_transfer": 0.6673780462393849,
+   "CPT_zerofit": 1.3312384334290177,
+   "CPT_native": 0.6639355620890116,
+   "CPT_TK92_transfer": 0.6758675797892884,
+   "CPT_TK92_zerofit": 1.164656787364457
+  },
+  "comparisons": {
+   "GDT_transfer-EV_native": {
+    "mean": -0.00014260187016115695,
+    "ci_low": -0.0011130250770435787,
+    "ci_high": 0.0008555016185819885,
+    "se": 0.0004985895639217666
+   },
+   "GDT_transfer-RUM_transfer": {
+    "mean": 0.0005177787718697339,
+    "ci_low": 0.00011010954335056867,
+    "ci_high": 0.0009839283045797377,
+    "se": 0.00022623453795686096
+   },
+   "CPT_transfer-GDT_transfer": {
+    "mean": 0.0008643302234473397,
+    "ci_low": -0.00137491226297536,
+    "ci_high": 0.003110327865051065,
+    "se": 0.001157018708804532
+   },
+   "GDT_transfer-CPT_TK92_transfer": {
+    "mean": -0.009353863773350696,
+    "ci_low": -0.015443459347509148,
+    "ci_high": -0.003954847911383086,
+    "se": 0.0029416943906827578
+   },
+   "GDT_native-GDT_transfer": {
+    "mean": -0.00014924310382961268,
+    "ci_low": -0.0006022896102855864,
+    "ci_high": 0.0002602274047137785,
+    "se": 0.00022138230305354203
+   },
+   "CPT_native-CPT_transfer": {
+    "mean": -0.0034424841503732377,
+    "ci_low": -0.005508806662979851,
+    "ci_high": -0.0015712081588952808,
+    "se": 0.0010004664452573403
+   },
+   "GDT_zerofit-CPT_zerofit": {
+    "mean": 0.22930328777386996,
+    "ci_low": 0.0807092937067372,
+    "ci_high": 0.38877559959371505,
+    "se": 0.08014934530045725
+   }
+  },
+  "angle": {
+   "frozen_ratio": 0.10462029201293119,
+   "native_ratio": 0.0600097440018016,
+   "native_ci_low": 3.560547744817458e-08,
+   "native_ci_high": 0.1432358371663144
+  },
+  "loss_domain_dd": {
+   "mean": -0.0007726235849682856,
+   "ci_low": -0.005281249421605822,
+   "ci_high": 0.003915633222474334
+  },
+  "kappa": {
+   "EV": 0.03143758462287058,
+   "RUM": 0.031168783866087277,
+   "GDT": 0.0286890169574221,
+   "CPT": 0.06291183449624353,
+   "CPT_TK92": 0.11107924964508872
+  },
+  "transfer_efficiency": {
+   "GDT": 0.9944276319708945,
+   "CPT": 0.8821535974188265,
+   "RUM": 1.0050237709726713
+  }
+ },
+ "rehearsal": "FAILED: under a CPT truth the chain must prefer CPT"
+}
