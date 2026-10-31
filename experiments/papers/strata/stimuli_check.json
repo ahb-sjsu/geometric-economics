@@ -1,0 +1,93 @@
+{
+ "cpc18_environment": {
+  "prob_hist_fifths": [
+   0.22259136212624583,
+   0.13953488372093023,
+   0.2757475083056478,
+   0.08305647840531562,
+   0.27906976744186046
+  ],
+  "u_index": 0.22591362126245845
+ },
+ "gp2012": {
+  "rows": 17664,
+  "problems": 237,
+  "overlapping_problems_by_source": {
+   "wulff": 76
+  },
+  "overlapping_rows": 5504,
+  "prob_hist_fifths": [
+   0.15441176470588236,
+   0.17830882352941177,
+   0.33455882352941174,
+   0.15900735294117646,
+   0.17371323529411764
+  ],
+  "u_index": -0.006433823529411742,
+  "max_branches": 2
+ },
+ "pachur2017": {
+  "rows": 12810,
+  "problems": 105,
+  "overlapping_problems_by_source": {
+   "wulff": 16,
+   "cpc18": 4
+  },
+  "overlapping_rows": 2440,
+  "prob_hist_fifths": [
+   0.16585365853658537,
+   0.1975609756097561,
+   0.2731707317073171,
+   0.16829268292682928,
+   0.1951219512195122
+  ],
+  "u_index": 0.08780487804878045,
+  "max_branches": 2
+ },
+ "pachur2018": {
+  "rows": 6200,
+  "problems": 51,
+  "overlapping_problems_by_source": {},
+  "overlapping_rows": 0,
+  "prob_hist_fifths": [
+   0.10270161290322581,
+   0.08786290322580645,
+   0.6188709677419355,
+   0.07810483870967742,
+   0.11245967741935484
+  ],
+  "u_index": -0.4037096774193549,
+  "max_branches": 2
+ },
+ "zilker2020": {
+  "rows": 28976,
+  "problems": 112,
+  "overlapping_problems_by_source": {},
+  "overlapping_rows": 0,
+  "prob_hist_fifths": [
+   0.2549920524538049,
+   0.14226107689250944,
+   0.20549374130737136,
+   0.12636598450228492,
+   0.2708871448440294
+  ],
+  "u_index": 0.3203854559904629,
+  "max_branches": 2
+ },
+ "babula2018": {
+  "rows": 11120,
+  "problems": 160,
+  "overlapping_problems_by_source": {},
+  "overlapping_rows": 0,
+  "prob_hist_fifths": [
+   0.1819351181651696,
+   0.23020406383535363,
+   0.37869538676201275,
+   0.13185663207464898,
+   0.07730879916281504
+  ],
+  "u_index": -0.11945146943402812,
+  "max_branches": 3
+ },
+ "baselberlin": "no covariates"
+}

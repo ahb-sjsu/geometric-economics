@@ -1,0 +1,40 @@
+{
+ "gp2012": {
+  "raw_records": 17664,
+  "buckets": {
+   "kept": 17664
+  },
+  "participants": 64
+ },
+ "pachur2017": {
+  "raw_records": 12810,
+  "buckets": {
+   "kept": 12810
+  },
+  "participants": 122
+ },
+ "pachur2018": {
+  "raw_records": 6200,
+  "buckets": {
+   "kept": 6200
+  },
+  "participants": 120
+ },
+ "zilker2020": {
+  "raw_records": 47144,
+  "buckets": {
+   "kept": 28976,
+   "excluded_complex_safe": 17848,
+   "unparsed": 320
+  },
+  "participants": 318
+ },
+ "babula2018": {
+  "raw_records": 11166,
+  "buckets": {
+   "kept": 11120,
+   "unparsed": 46
+  },
+  "participants": 70
+ }
+}

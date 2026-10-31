@@ -1,0 +1,41 @@
+{
+  "prereg": "prereg-strata-v1",
+  "title": "Refusing the Early Projection: A Stratified Encoding of Lotteries",
+  "author": "Andrew H. Bond, San Jose State University",
+  "companion_to": [
+    "prereg-psych101-v1",
+    "prereg-learned-v1"
+  ],
+  "frozen_predictions": "H1-H8 in prereg-strata-v1.md Section 6; void conditions Section 8.",
+  "data": "Five public corpora (Appendix A). No choice statistic of any test corpus computed before freezing.",
+  "hash_note": "sha256 of each file with CRLF normalized to LF; combined = sha256 over the concatenated component hex digests in bundle_files order",
+  "bundle_files": [
+    "prereg-strata-v1.md",
+    "fetch_corpora.py",
+    "corpora.py",
+    "stimuli_check.py",
+    "accounting.json",
+    "stimuli_check.json",
+    "strata_models.py",
+    "fit_strata.py",
+    "frozen_strata.json",
+    "recovery_v4.json",
+    "grade_strata.py",
+    "../../datasets/cpc18_raw_sha256.txt"
+  ],
+  "files": {
+    "prereg-strata-v1.md": "8bacb856704d8a9fd2fb6bb308d3ad4f2c37cdcbf04c54559a0837c67d30ba6e",
+    "fetch_corpora.py": "7b5a53176efac8f7cb2883b846d26ea2539ae8e261d5f6e7312cd6850df8eb50",
+    "corpora.py": "4dbd2e67c76d56e9bb6092c683ef259293cdd3df49de571e65b71123b2e5ca6b",
+    "stimuli_check.py": "15267e7e107aa70ed8755570de55cc03f7cde2ff392ec4c2c7c3c02a1eba58ae",
+    "accounting.json": "74d024bb29c0408997b9cea09c760acc21f77db7b8de676ea3538356363e823a",
+    "stimuli_check.json": "aeeb487e3a28c8c216169affe336452366074fcc5938e9b775b1d487d99f423a",
+    "strata_models.py": "c451a9e4391e751234b4f7aa7ec71889b3679a9c4ba6f376fa969b48a0e158c5",
+    "fit_strata.py": "04cf57ccebeed01609a4d1a52ba6d7978703b2a54eb19411435a4ab3d4d028a6",
+    "frozen_strata.json": "a6b5921b4518e25261763e2cc0127f49ed3177730df9064565f7d827bcf80aa6",
+    "recovery_v4.json": "a53f3db12df4d4cce3d525c98519ae39b36c3e1d1f56167ae6ff0f694b0f6707",
+    "grade_strata.py": "d7ccf169480b77f292028939e46d1a50017009007b2d7e505274110c139ecee2",
+    "../../datasets/cpc18_raw_sha256.txt": "098c3cf24f821b771f9f378185cfa8f5679fdc35ca22f644a9675274e70d7d0b"
+  },
+  "combined_sha256": "97db42ac4bc2d26b06c31a7005ea5a59223b7adcce63dafc689877e383ade07b"
+}

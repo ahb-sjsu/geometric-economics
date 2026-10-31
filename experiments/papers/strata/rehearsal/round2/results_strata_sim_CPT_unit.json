@@ -1,0 +1,491 @@
+{
+ "prereg": "prereg-strata-v1",
+ "simulation": "CPT_unit",
+ "corpora": {
+  "gp2012": {
+   "rows": 12160,
+   "problems": 161,
+   "participants": 64,
+   "cal_problems": 80,
+   "test_problems": 81,
+   "kappa": {
+    "EV": 0.9870067008298136,
+    "RUM": 0.9432796828239199,
+    "GDT2": 0.8835949321956035,
+    "GDTS": 0.5268674596205963,
+    "GDTC": 0.5273814456446322,
+    "CPT_unit": 0.9691411326017879,
+    "CPT_share": 0.5368240423240803
+   },
+   "test_nll": {
+    "M0": 0.6938217210946233,
+    "EV": 0.6653878671939383,
+    "RUM": 0.666393201519101,
+    "GDT2": 0.6666876170300994,
+    "GDTS": 0.6665630584760561,
+    "GDTC": 0.6665082320801184,
+    "CPT_unit": 0.665640543106375,
+    "CPT_share": 0.6672902527116605,
+    "CPT": 0.665640543106375
+   },
+   "cpt_coding": "CPT_unit",
+   "margin": 0.0002807705322008358,
+   "gamma": {
+    "observed": 0.9017020455933491,
+    "observed_converged": true,
+    "predicted": 0.9925511413748009,
+    "predicted_converged": true
+   },
+   "consumer_vs_stratified_mean_abs_dp": 0.0018843140209317164,
+   "stake_groups": []
+  },
+  "pachur2017": {
+   "rows": 10370,
+   "problems": 85,
+   "participants": 122,
+   "cal_problems": 42,
+   "test_problems": 43,
+   "kappa": {
+    "EV": 0.9408340192452833,
+    "RUM": 0.976264775591703,
+    "GDT2": 0.8867854904265762,
+    "GDTS": 0.5799146894171495,
+    "GDTC": 0.58052082908532,
+    "CPT_unit": 0.999755440403787,
+    "CPT_share": 0.601460720533541
+   },
+   "test_nll": {
+    "M0": 0.6948785601867393,
+    "EV": 0.6372620524658027,
+    "RUM": 0.6365706199503544,
+    "GDT2": 0.6373024673193511,
+    "GDTS": 0.6484059173876163,
+    "GDTC": 0.6484010279323342,
+    "CPT_unit": 0.6332802479940421,
+    "CPT_share": 0.6430413531797183,
+    "CPT": 0.6332802479940421
+   },
+   "cpt_coding": "CPT_unit",
+   "margin": 0.0004734811313631704,
+   "gamma": {
+    "observed": 0.8763051718951231,
+    "observed_converged": true,
+    "predicted": 1.0491909576732446,
+    "predicted_converged": true
+   },
+   "consumer_vs_stratified_mean_abs_dp": 0.0015114327026627694,
+   "stake_groups": []
+  },
+  "pachur2018": {
+   "rows": 6200,
+   "problems": 51,
+   "participants": 120,
+   "cal_problems": 25,
+   "test_problems": 26,
+   "kappa": {
+    "EV": 0.8600295319054598,
+    "RUM": 0.8988639419478665,
+    "GDT2": 0.9629941834194419,
+    "GDTS": 0.8474437012844466,
+    "GDTC": 0.8561429038853864,
+    "CPT_unit": 0.9437080182152662,
+    "CPT_share": 0.7857787891948078
+   },
+   "test_nll": {
+    "M0": 0.684637064031598,
+    "EV": 0.627829228710921,
+    "RUM": 0.6308888562528892,
+    "GDT2": 0.6304400848821231,
+    "GDTS": 0.6434911263472898,
+    "GDTC": 0.6440307943667759,
+    "CPT_unit": 0.6259919846442971,
+    "CPT_share": 0.6396116512503232,
+    "CPT": 0.6259919846442971
+   },
+   "cpt_coding": "CPT_unit",
+   "margin": 0.00040426504677772645,
+   "gamma": {
+    "observed": 0.94187006656993,
+    "observed_converged": true,
+    "predicted": 1.0053351282803478,
+    "predicted_converged": true
+   },
+   "consumer_vs_stratified_mean_abs_dp": 0.0029562508333459674,
+   "stake_groups": [
+    {
+     "pred_shift_gdt2": 0.09572849811965412,
+     "obs_hi": [
+      67.0,
+      125.0
+     ],
+     "obs_lo": [
+      55.0,
+      125.0
+     ]
+    },
+    {
+     "pred_shift_gdt2": -0.030696864939333324,
+     "obs_hi": [
+      46.0,
+      121.0
+     ],
+     "obs_lo": [
+      54.0,
+      125.0
+     ]
+    },
+    {
+     "pred_shift_gdt2": -0.049216159859723885,
+     "obs_hi": [
+      41.0,
+      122.0
+     ],
+     "obs_lo": [
+      42.0,
+      124.0
+     ]
+    },
+    {
+     "pred_shift_gdt2": -0.16343089227562324,
+     "obs_hi": [
+      45.0,
+      122.0
+     ],
+     "obs_lo": [
+      47.0,
+      120.0
+     ]
+    },
+    {
+     "pred_shift_gdt2": -0.12745576914783274,
+     "obs_hi": [
+      27.0,
+      122.0
+     ],
+     "obs_lo": [
+      31.0,
+      121.0
+     ]
+    },
+    {
+     "pred_shift_gdt2": -0.1082811253854098,
+     "obs_hi": [
+      32.0,
+      120.0
+     ],
+     "obs_lo": [
+      44.0,
+      120.0
+     ]
+    }
+   ]
+  },
+  "zilker2020": {
+   "rows": 28976,
+   "problems": 112,
+   "participants": 318,
+   "cal_problems": 56,
+   "test_problems": 56,
+   "kappa": {
+    "EV": 0.9768733392857047,
+    "RUM": 0.930545974951921,
+    "GDT2": 0.8392123185538809,
+    "GDTS": 0.5560725018855216,
+    "GDTC": 0.5546666463407995,
+    "CPT_unit": 1.0334189267659049,
+    "CPT_share": 0.6079744134685398
+   },
+   "test_nll": {
+    "M0": 0.6945608663095925,
+    "EV": 0.6390572510252809,
+    "RUM": 0.6399315322055079,
+    "GDT2": 0.6391213948998572,
+    "GDTS": 0.6419538865473784,
+    "GDTC": 0.6420172930049791,
+    "CPT_unit": 0.6383076705958325,
+    "CPT_share": 0.6416424690732739,
+    "CPT": 0.6383076705958325
+   },
+   "cpt_coding": "CPT_unit",
+   "margin": 0.0005748065533213531,
+   "gamma": {
+    "observed": 0.9769284452399691,
+    "observed_converged": true,
+    "predicted": 1.0630272804863958,
+    "predicted_converged": true
+   },
+   "consumer_vs_stratified_mean_abs_dp": 0.00276008473861711,
+   "stake_groups": []
+  },
+  "babula2018": {
+   "rows": 11120,
+   "problems": 160,
+   "participants": 70,
+   "cal_problems": 80,
+   "test_problems": 80,
+   "kappa": {
+    "EV": 1.1687934941581088,
+    "RUM": 1.1480429497654139,
+    "GDT2": 1.1524637119970416,
+    "GDTS": 0.4969157097116017,
+    "GDTC": 0.4969483095579768,
+    "CPT_unit": 1.0770236679571912,
+    "CPT_share": 0.41608489291933604
+   },
+   "test_nll": {
+    "M0": 0.6917967895154574,
+    "EV": 0.6756469781962655,
+    "RUM": 0.675764405672248,
+    "GDT2": 0.6749063820685662,
+    "GDTS": 0.6738977937377438,
+    "GDTC": 0.6738915551250522,
+    "CPT_unit": 0.6712623177771329,
+    "CPT_share": 0.6725709497418991,
+    "CPT": 0.6712623177771329
+   },
+   "cpt_coding": "CPT_unit",
+   "margin": 0.0001162034164868686,
+   "gamma": {
+    "observed": 1.02793910714534,
+    "observed_converged": true,
+    "predicted": 1.0005814472327446,
+    "predicted_converged": true
+   },
+   "consumer_vs_stratified_mean_abs_dp": 0.0005572266684469578,
+   "stake_groups": []
+  }
+ },
+ "gamma_cpc18": {
+  "observed": 0.888135016508337,
+  "predicted": 0.8997605347075909
+ },
+ "pooled": {
+  "margin": 0.00036990533602999085,
+  "GDTS-GDT2": {
+   "mean": 0.005170767259217479,
+   "ci_low": 0.0009875876149589358,
+   "ci_high": 0.010192305870156838,
+   "corpora_won": 0
+  },
+  "GDTS-CPT": {
+   "mean": 0.007965803675680982,
+   "ci_low": 0.0038491789217756853,
+   "ci_high": 0.013049891984731445,
+   "corpora_won": 0
+  },
+  "GDTC-GDTS": {
+   "mean": 0.00010742400263508145,
+   "ci_low": 2.0748538113326e-05,
+   "ci_high": 0.0002119094198019682,
+   "corpora_won": 0
+  },
+  "CPT-GDT2": {
+   "mean": -0.0027950364164635033,
+   "ci_low": -0.004286768200525462,
+   "ci_high": -0.0014687798183742622,
+   "corpora_won": 2
+  },
+  "GDTC-CPT": {
+   "mean": 0.008073227678316064,
+   "ci_low": 0.0039268666653449955,
+   "ci_high": 0.013215836317141162,
+   "corpora_won": 0
+  },
+  "GDT2-EV": {
+   "mean": 0.0006549137215577483,
+   "ci_low": -0.0005036720491810886,
+   "ci_high": 0.002008568770061198,
+   "corpora_won": 0
+  },
+  "gap_closed": {
+   "point": -1.8499820713462956,
+   "ci_low": -4.910250817507616,
+   "ci_high": -0.2863352865091956
+  }
+ },
+ "stake_invariance": {
+  "groups": 6,
+  "assessable": true,
+  "mean": 0.04443823599783955,
+  "ci_low": -0.020650251902571286,
+  "ci_high": 0.10846418702666519
+ },
+ "effects": {
+  "GDT2": {
+   "reflection": {
+    "reproduced": false,
+    "p_B": [
+     0.9997551630130593,
+     1.9973582724790955e-22
+    ]
+   },
+   "common_ratio": {
+    "reproduced": false,
+    "p_B": [
+     0.9997551630130593,
+     0.018540455675405878
+    ]
+   },
+   "loss_aversion": {
+    "reproduced": true,
+    "p_B": [
+     0.4518251616959185,
+     0.126420013166977,
+     4.028390377217712e-09
+    ]
+   },
+   "possibility_gains": {
+    "reproduced": false,
+    "p_B": [
+     0.04501083158587959
+    ]
+   },
+   "insurance_losses": {
+    "reproduced": true,
+    "p_B": [
+     0.04501083158587959
+    ]
+   },
+   "stake_invariance": {
+    "reproduced": true,
+    "p_B": [
+     0.5207747154090504,
+     0.9997551630130593,
+     1.0
+    ]
+   }
+  },
+  "GDTS": {
+   "reflection": {
+    "reproduced": false,
+    "p_B": [
+     0.5348776581710594,
+     0.4383091036751759
+    ]
+   },
+   "common_ratio": {
+    "reproduced": false,
+    "p_B": [
+     0.5348776581710594,
+     0.5087324093862969
+    ]
+   },
+   "loss_aversion": {
+    "reproduced": true,
+    "p_B": [
+     0.3786001992431671,
+     0.3786001992431671,
+     0.3786001992431671
+    ]
+   },
+   "possibility_gains": {
+    "reproduced": false,
+    "p_B": [
+     0.3253593679718912
+    ]
+   },
+   "insurance_losses": {
+    "reproduced": false,
+    "p_B": [
+     0.5206597180931827
+    ]
+   },
+   "stake_invariance": {
+    "reproduced": true,
+    "p_B": [
+     0.5348776581710594,
+     0.5348776581710594,
+     0.5348776581710594
+    ]
+   }
+  },
+  "GDTC": {
+   "reflection": {
+    "reproduced": false,
+    "p_B": [
+     0.5340729920891982,
+     0.43453734935888727
+    ]
+   },
+   "common_ratio": {
+    "reproduced": false,
+    "p_B": [
+     0.5340729920891982,
+     0.5085305818590007
+    ]
+   },
+   "loss_aversion": {
+    "reproduced": true,
+    "p_B": [
+     0.3792200213081904,
+     0.3792200213081904,
+     0.3792200213081904
+    ]
+   },
+   "possibility_gains": {
+    "reproduced": false,
+    "p_B": [
+     0.3235063311044542
+    ]
+   },
+   "insurance_losses": {
+    "reproduced": false,
+    "p_B": [
+     0.5025640450866846
+    ]
+   },
+   "stake_invariance": {
+    "reproduced": true,
+    "p_B": [
+     0.5340729920891982,
+     0.5340729920891982,
+     0.5340729920891982
+    ]
+   }
+  },
+  "CPT_unit": {
+   "reflection": {
+    "reproduced": true,
+    "p_B": [
+     0.00037599821668117924,
+     0.9970694532887034
+    ]
+   },
+   "common_ratio": {
+    "reproduced": true,
+    "p_B": [
+     0.00037599821668117924,
+     0.9243088554882737
+    ]
+   },
+   "loss_aversion": {
+    "reproduced": false,
+    "p_B": [
+     0.5023353049365981,
+     0.2544852959769207,
+     2.2520660354444848e-07
+    ]
+   },
+   "possibility_gains": {
+    "reproduced": false,
+    "p_B": [
+     0.39029309954262253
+    ]
+   },
+   "insurance_losses": {
+    "reproduced": true,
+    "p_B": [
+     0.4959042373773124
+    ]
+   },
+   "stake_invariance": {
+    "reproduced": true,
+    "p_B": [
+     0.45123116919500683,
+     0.00037599821668117924,
+     1.0118239768391824e-138
+    ]
+   }
+  }
+ }
+}

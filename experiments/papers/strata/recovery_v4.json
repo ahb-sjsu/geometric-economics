@@ -1,0 +1,28 @@
+{
+ "truth": {
+  "budget_bits": 15.079312019489427,
+  "sigma_mag": 0.001662220114962218,
+  "sigma_prob": 0.01738010588416793
+ },
+ "refits": [
+  {
+   "budget_bits": 14.856315006017725,
+   "sigma_mag": 0.0017545789708086916,
+   "sigma_prob": 0.019218146181555925,
+   "converged": true
+  },
+  {
+   "budget_bits": 21.137771913189646,
+   "sigma_mag": 0.00019615569065540962,
+   "sigma_prob": 0.0022095140582798533,
+   "converged": true
+  },
+  {
+   "budget_bits": 13.081279471452163,
+   "sigma_mag": 0.0029712032161584973,
+   "sigma_prob": 0.03886330941555189,
+   "converged": true
+  }
+ ],
+ "V4_void": false
+}
