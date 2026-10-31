@@ -58,3 +58,84 @@ The interval is a bootstrap over participants.
    reading of Observation Theory's consumer: the code adapts to the spread of what is on offer.
 4. **Caveats.** The fits are pooled, although A and B were calibrated to indifference participant by
    participant. With α fitted near 0, the magnitude coordinate is effectively log m. There is one dataset.
+
+## Round 2: how much scaling, by what statistic, against which competitor (`explore_molter2.py`)
+
+New models:
+
+- **RNGρ** divides gaps by range^ρ, with ρ free in (0, 1.5). ρ = 0 is ADD and ρ = 1 is round 1's ADD-rng.
+- **SD** divides by the menu's standard deviation.
+- **L2ρ** is Euclidean on range^ρ-scaled gaps.
+- **DN** is divisive normalisation (Louie, Khaw and Glimcher 2013), the standard context model in
+  neuroeconomics.
+
+There are two protocols:
+
+- **pooled**, as in round 1;
+- **personal**, with one parameter set per participant and 5-fold cross-validation over that
+  participant's trials.
+
+The personal protocol matters here because A and B were calibrated to indifference participant by
+participant.
+
+| Model | pooled CV | minus ADD | personal CV | minus ADD |
+|---|---|---|---|---|
+| ADD | 1.039 | | 0.698 | |
+| RNG (ρ = 1) | 0.952 | −0.087 [−0.136, −0.044] | 0.766 | +0.068 [+0.028, +0.110] |
+| **RNGρ** | **0.938** | −0.101 [−0.129, −0.074] | **0.636** | **−0.062 [−0.083, −0.042]** |
+| SD | 0.958 | −0.081 [−0.129, −0.036] | 0.767 | +0.068 [+0.026, +0.112] |
+| L2ρ | 0.992 | −0.047 [−0.095, −0.003] | 0.731 | +0.033 [+0.005, +0.059] |
+| DN | 1.039 | −0.000 [−0.025, +0.023] | 0.696 | −0.002 [−0.015, +0.009] |
+
+Personal fits:
+
+- RNGρ beats DN by 0.060 [0.039, 0.082] and beats L2ρ by 0.095 [0.078, 0.113].
+- ρ has median 0.55 and interquartile range 0.39–0.75 across participants. Pooled, it is 0.84.
+- Cross-validated, RNGρ predicts relative target shares of 0.572 for attraction (observed 0.571) and
+  0.530 for compromise (observed 0.536). Its predicted P(C) is 0.230, against 0.217 observed.
+
+**Reading.**
+
+- Full range normalisation's pooled win was an artefact of pooling heterogeneous participants. Per
+  participant it loses to additive value.
+- What survives is partial scaling, with an exponent between 0 (absolute coding) and 1 (full scale
+  invariance), plus person-specific weights. It reproduces both context effects at their observed size.
+- Divisive normalisation does no better than additive value on these menus.
+- Euclidean combination loses under every protocol.
+
+**A physics reading of ρ (interpretation, not a result).** ρ = 1 is the scale-symmetric point (Weber).
+ρ = ½ is the square-root law of noise-limited discrimination (DeVries-Rose in vision). In the author's
+GE-P-2026-007 notation, ρ plays the part of the conservation coefficient κ, and an exponent whose
+interval excludes 0 and 1 is that registration's outcome (b), "anchored but leaky". Round 3 tests the
+two claims mathematical physics makes about such an exponent:
+
+- **universality:** the same exponent for probability and amount;
+- **crossover:** from ½ to 1 as the menu widens, with a single scale R₀.
+
+## Round 3: universality and crossover (`explore_molter3.py`, personal protocol)
+
+The models are:
+
+- **RHO2**, with separate exponents ρ_p and ρ_m;
+- **CROSS**, which divides gaps by √(R (R₀ + R)). Its exponents are fixed: ½ for ranges below R₀ and 1
+  above. Its only free parameters are one R₀ per attribute, so it has as many as RHO2.
+
+Results:
+
+| Comparison (per-participant CV, minus) | Difference |
+|---|---|
+| RNGρ minus ADD | −0.066 [−0.089, −0.046] (round 2 reproduces on new folds) |
+| RHO2 minus RNGρ | +0.0015 [−0.012, +0.018] |
+| CROSS minus RNGρ | −0.0002 [−0.009, +0.006] |
+| CROSS minus RHO2 | −0.0017 [−0.018, +0.009] |
+
+- **Universality.** The prediction does not need attribute-specific exponents. From the per-participant
+  fits on all trials, the median ρ_p is 0.49 and the median ρ_m is 0.66. The difference is −0.09
+  [−0.19, −0.003], marginal. The exponents correlate across people (Spearman 0.53), so each person
+  carries a common scaling tendency.
+- **Crossover.** The law with no free exponent predicts as well as a free exponent, but R₀ is not
+  identified. Its per-participant estimates run from about 0.1 to 10⁶: the interquartile range is
+  0.135 to 9.4 × 10⁵ for probability and 0.002 to 25 for amount. Molter's menus do not vary their
+  ranges enough to place a crossover, so this dataset can neither confirm nor refute it.
+- **Design consequence.** A test of the crossover needs menus whose ranges vary over an order of
+  magnitude or more. That should guide how the held-back Gluth data are used.
