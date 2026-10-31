@@ -56,6 +56,48 @@ Ranks are k ∈ {16, 32, 64} for the encoders and k = 9 (full) for xbse. The pen
    reference is best. Some axes are evaluated convexly, some concavely, and that differs from distance
    to a single ideal point.
 
+## Dimension discovery from choices, steps 1–2 (`discover_dims.py`, `discover_dims.json`)
+
+The candidate dimensions are the right singular vectors of the GDT metric U. U is k = 32, λ = 1e-5,
+refit on all training pairs; its directions agree with the registered metric's at |cos| = 1.00. Each
+candidate goes through the admission screens of moral-spectrum-analyzer's discovery roadmap that need
+no second corpus:
+
+- stability: the median over 20 bootstrap refits of the best |cos| (bar 0.70);
+- non-redundancy: the direction's score on all 27,982 action texts against the nine xbse axes
+  (max |r| < 0.35);
+- importance: the rise in dev loss when the direction is projected out of the metric.
+
+| Direction | Singular value | Dev loss if removed | Stability | Max \|r\| with xbse | R² from nine axes |
+|---|---|---|---|---|---|
+| 0 | 11.9 | +0.0315 | 0.93 | 0.25 (physical harm) | 0.13 |
+| 1 | 9.9 | +0.0108 | 0.80 | 0.59 (privacy, −) | 0.44 |
+| 2 | 9.5 | +0.0029 | 0.71 | 0.18 | 0.08 |
+| 3–31 | 8.9–2.7 | ≤ 0.0018 | 0.30–0.59 | ≤ 0.31 | ≤ 0.12 |
+
+Subspace stability (mean cos² of principal angles, median over resamples) is 0.65 for the top 4, 0.65
+for the top 8, 0.68 for the top 16 and 0.73 for all 32.
+
+- **Three directions are stable, and only two of them are also non-redundant: 0 and 2.** Past the
+  third, the 32-dimensional metric is a rotating fit, not structure.
+- **Direction 0 carries most of what the metric learned.** Removing it costs 0.032 nats per annotation,
+  more than GDT's whole advantage over a linear scalar. Its extremes are cruelty to or estrangement from
+  close family ("cutting my sick grandma out of my life", "despising my mentally handicap sister") at
+  one end, and mundane acts ("asking for a refund", "changing laundry", "being polite") at the other.
+  A plausible name is *moral gravity*, how serious the act is, as distinct from which value it touches.
+  The nine axes explain 13% of it.
+- **Direction 1 is mostly the xbse privacy and autonomy axes** (R² 0.44). It sets omitted care duties
+  to family against offensive jokes and exposure.
+- **Direction 2 looks like topic** (disability against weddings and family secrets) more than morality,
+  and it carries little (0.003).
+
+The names come from eight exemplars per end and are hypotheses. Before direction 0 is called a new
+dimension it needs two checks:
+
+1. whether it is moral-spectrum-analyzer's general-valence channel (its pc0 / G), which the roadmap
+   already calls a moral-relevance detector;
+2. cross-corpus replication (step 3).
+
 Together with `../../strata2/DEVELOPMENT.md` and `../../menus/DEVELOPMENT.md`: in none of the three
 domains does the data prefer a Euclidean distance from a reference point over its nearest
 non-geometric rival. What the data do reward is curvature, and in menus a scale set by the menu.

@@ -1,0 +1,74 @@
+/archive/experiments/learned-coords/code/fit_learned.py:160: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  trace.append(float(loss))
+reference fit {"final_loss": 0.6326339244842529, "converged": true, "final_rel_change": 0.0} dev 0.6328204274177551
+bootstrap 0 converged True median best cos 0.4216747581958771
+bootstrap 1 converged True median best cos 0.44354113936424255
+bootstrap 2 converged True median best cos 0.42130544781684875
+bootstrap 3 converged True median best cos 0.45184433460235596
+bootstrap 4 converged True median best cos 0.42231589555740356
+bootstrap 5 converged True median best cos 0.4664701223373413
+bootstrap 6 converged True median best cos 0.4217856526374817
+bootstrap 7 converged True median best cos 0.4157681167125702
+bootstrap 8 converged True median best cos 0.4260159730911255
+bootstrap 9 converged True median best cos 0.4631834030151367
+bootstrap 10 converged True median best cos 0.47183433175086975
+bootstrap 11 converged True median best cos 0.4297274053096771
+bootstrap 12 converged True median best cos 0.43102705478668213
+bootstrap 13 converged True median best cos 0.45524194836616516
+bootstrap 14 converged True median best cos 0.4084468483924866
+bootstrap 15 converged True median best cos 0.42884236574172974
+bootstrap 16 converged True median best cos 0.4640842378139496
+bootstrap 17 converged True median best cos 0.3844025731086731
+bootstrap 18 converged True median best cos 0.45308661460876465
+bootstrap 19 converged True median best cos 0.45683467388153076
+{
+ "note": "development on spent data; steps 1-2 of dimension discovery",
+ "K": 32,
+ "lambda": 1e-05,
+ "bootstraps": 20,
+ "reference_dev_nll": 0.6328204274177551,
+ "subspace_stability_mean_cos2": {
+  "4": 0.6515412926673889,
+  "8": 0.6484081447124481,
+  "16": 0.6759835779666901,
+  "32": 0.7322568595409393
+ },
+ "candidates_passing_both_screens": [
+  0,
+  2
+ ]
+}
+0 11.895 imp 0.0315 stab 0.926 maxr 0.25 R2 0.13
+1 9.936 imp 0.01084 stab 0.798 maxr 0.591 R2 0.44
+2 9.513 imp 0.00286 stab 0.713 maxr 0.184 R2 0.084
+3 8.926 imp 0.00061 stab 0.594 maxr 0.314 R2 0.122
+4 8.651 imp 0.00042 stab 0.562 maxr 0.23 R2 0.089
+5 8.394 imp 0.00139 stab 0.571 maxr 0.158 R2 0.067
+6 8.317 imp 0.00043 stab 0.532 maxr 0.194 R2 0.082
+7 8.13 imp 0.0018 stab 0.54 maxr 0.197 R2 0.123
+8 7.724 imp 0.00022 stab 0.536 maxr 0.049 R2 0.006
+9 7.45 imp 0.00123 stab 0.533 maxr 0.237 R2 0.105
+10 7.273 imp 7e-05 stab 0.439 maxr 0.13 R2 0.044
+11 7.108 imp 0.00062 stab 0.462 maxr 0.136 R2 0.052
+12 6.849 imp 0.00045 stab 0.421 maxr 0.139 R2 0.034
+13 6.738 imp 0.00054 stab 0.478 maxr 0.157 R2 0.048
+14 6.526 imp 0.00124 stab 0.417 maxr 0.148 R2 0.054
+15 6.402 imp 0.00089 stab 0.421 maxr 0.169 R2 0.094
+16 6.217 imp 0.00036 stab 0.411 maxr 0.125 R2 0.052
+17 6.118 imp 0.00037 stab 0.408 maxr 0.169 R2 0.055
+18 5.884 imp -0.00041 stab 0.394 maxr 0.084 R2 0.024
+19 5.713 imp 0.0006 stab 0.389 maxr 0.121 R2 0.038
+20 5.577 imp -0.0001 stab 0.391 maxr 0.157 R2 0.045
+21 5.277 imp 4e-05 stab 0.377 maxr 0.255 R2 0.105
+22 5.245 imp 0.00034 stab 0.373 maxr 0.107 R2 0.029
+23 5.092 imp -0.00045 stab 0.366 maxr 0.127 R2 0.06
+24 4.835 imp 0.00011 stab 0.373 maxr 0.138 R2 0.037
+25 4.642 imp -0.0002 stab 0.383 maxr 0.244 R2 0.087
+26 4.39 imp 0.00021 stab 0.374 maxr 0.145 R2 0.05
+27 4.164 imp 0.00024 stab 0.399 maxr 0.198 R2 0.07
+28 4.015 imp -0.00022 stab 0.371 maxr 0.118 R2 0.032
+29 3.862 imp 0.00023 stab 0.353 maxr 0.143 R2 0.042
+30 3.387 imp 0.00022 stab 0.334 maxr 0.088 R2 0.017
+31 2.669 imp -4e-05 stab 0.302 maxr 0.119 R2 0.033
+DONE
