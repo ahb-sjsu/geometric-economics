@@ -1,0 +1,96 @@
+gp2012 GDTS-llo-pow2-L1 0.57504 
+gp2012 GDTS-llo-pow2-L1-nos 0.5754 
+gp2012 GDTS-llo-pow2-L1-nobeta 0.57492 
+gp2012 GDTS-llo-pow2-L1-core 0.57659 
+gp2012 CPT_unit 0.55599 
+gp2012 CPT_share 0.57941 
+pachur2017 GDTS-llo-pow2-L1 0.63163 
+pachur2017 GDTS-llo-pow2-L1-nos 0.63265 
+pachur2017 GDTS-llo-pow2-L1-nobeta 0.63114 
+pachur2017 GDTS-llo-pow2-L1-core 0.6316 
+pachur2017 CPT_unit 0.65965 
+pachur2017 CPT_share 0.63045 
+pachur2018 GDTS-llo-pow2-L1 0.58067 
+pachur2018 GDTS-llo-pow2-L1-nos 0.57935 
+pachur2018 GDTS-llo-pow2-L1-nobeta 0.56976 
+pachur2018 GDTS-llo-pow2-L1-core 0.54115 
+pachur2018 CPT_unit 0.56998 
+pachur2018 CPT_share 0.54135 
+zilker2020 GDTS-llo-pow2-L1 0.48428 
+zilker2020 GDTS-llo-pow2-L1-nos 0.48408 
+zilker2020 GDTS-llo-pow2-L1-nobeta 0.4844 
+zilker2020 GDTS-llo-pow2-L1-core 0.48479 
+zilker2020 CPT_unit 0.50789 
+zilker2020 CPT_share 0.48709 
+babula2018 GDTS-llo-pow2-L1 0.61955 
+babula2018 GDTS-llo-pow2-L1-nos 0.61699 
+babula2018 GDTS-llo-pow2-L1-nobeta 0.61974 
+babula2018 GDTS-llo-pow2-L1-core 0.61556 
+babula2018 CPT_unit 0.63022 
+babula2018 CPT_share 0.61409 
+{
+ "pooled": {
+  "GDTS-llo-pow2-L1 minus CPT": {
+   "mean": 0.012440765507938064,
+   "ci_low": 0.007976024636059667,
+   "ci_high": 0.01690569702457515
+  },
+  "GDTS-llo-pow2-L1-nos minus CPT": {
+   "mean": 0.011902658017286141,
+   "ci_low": 0.00813514785216175,
+   "ci_high": 0.01565079199245067
+  },
+  "GDTS-llo-pow2-L1-nobeta minus CPT": {
+   "mean": 0.010197670207208494,
+   "ci_low": 0.005996924032976258,
+   "ci_high": 0.01423054007897984
+  },
+  "GDTS-llo-pow2-L1-core minus CPT": {
+   "mean": 0.004143849165550708,
+   "ci_low": 0.0013723888979294428,
+   "ci_high": 0.007320627774080112
+  },
+  "GDTS-llo-pow2-L1-nos minus GDTS-llo-pow2-L1": {
+   "mean": -0.0005381074906519237,
+   "ci_low": -0.001895378895891965,
+   "ci_high": 0.0008003446824521475
+  },
+  "GDTS-llo-pow2-L1-nobeta minus GDTS-llo-pow2-L1": {
+   "mean": -0.00224309530072957,
+   "ci_low": -0.0030053069180566404,
+   "ci_high": -0.0015139424211668552
+  },
+  "GDTS-llo-pow2-L1-core minus GDTS-llo-pow2-L1": {
+   "mean": -0.008296916342387356,
+   "ci_low": -0.012303648744124231,
+   "ci_high": -0.004251165095993246
+  }
+ },
+ "by_domain": {
+  "gains": {
+   "choices": 13214.0,
+   "GDTS-llo-pow2-L1": 0.5616462582110308,
+   "GDTS-llo-pow2-L1-nos": 0.5623363576177631,
+   "GDTS-llo-pow2-L1-nobeta": 0.5611349446555168,
+   "GDTS-llo-pow2-L1-core": 0.5612404144732671,
+   "CPT": 0.5592792161006647
+  },
+  "losses": {
+   "choices": 12271.0,
+   "GDTS-llo-pow2-L1": 0.5184234672441226,
+   "GDTS-llo-pow2-L1-nos": 0.5171195959470074,
+   "GDTS-llo-pow2-L1-nobeta": 0.5192307126133439,
+   "GDTS-llo-pow2-L1-core": 0.5195962409240891,
+   "CPT": 0.5205712039923279
+  },
+  "mixed": {
+   "choices": 8634.0,
+   "GDTS-llo-pow2-L1": 0.593764247669521,
+   "GDTS-llo-pow2-L1-nos": 0.5929875422366094,
+   "GDTS-llo-pow2-L1-nobeta": 0.5893359913679169,
+   "GDTS-llo-pow2-L1-core": 0.5776125453415394,
+   "CPT": 0.5667293234834019
+  }
+ }
+}
+DONE

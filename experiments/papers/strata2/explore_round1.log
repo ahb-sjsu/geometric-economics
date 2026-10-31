@@ -1,0 +1,68 @@
+gp2012 GDTS-lin 0.60231 
+gp2012 GDTS-fr 0.58608 
+gp2012 GDTS-llo 0.57627 
+gp2012 GDTS-eff 0.60263 256
+gp2012 CPT_unit 0.55599 
+gp2012 CPT_share 0.57941 
+pachur2017 GDTS-lin 0.65013 
+pachur2017 GDTS-fr 0.64248 
+pachur2017 GDTS-llo 0.63876 
+pachur2017 GDTS-eff 0.65003 256
+pachur2017 CPT_unit 0.65965 
+pachur2017 CPT_share 0.63045 
+pachur2018 GDTS-lin 0.58964 
+pachur2018 GDTS-fr 0.59115 
+pachur2018 GDTS-llo 0.5822 
+pachur2018 GDTS-eff 0.59088 256
+pachur2018 CPT_unit 0.56998 
+pachur2018 CPT_share 0.54135 
+zilker2020 GDTS-lin 0.52675 
+zilker2020 GDTS-fr 0.52214 
+zilker2020 GDTS-llo 0.49708 
+zilker2020 GDTS-eff 0.52646 256
+zilker2020 CPT_unit 0.50789 
+zilker2020 CPT_share 0.48709 
+babula2018 GDTS-lin 0.60344 
+babula2018 GDTS-fr 0.62845 
+babula2018 GDTS-llo 0.6194 
+babula2018 GDTS-eff 0.60356 256
+babula2018 CPT_unit 0.63022 
+babula2018 CPT_share 0.61409 
+{
+ "GDTS-fr minus GDTS-lin": {
+  "mean": -0.00038840606185678027,
+  "ci_low": -0.006029632732279545,
+  "ci_high": 0.005791485134247471
+ },
+ "GDTS-llo minus GDTS-lin": {
+  "mean": -0.011707513403126566,
+  "ci_low": -0.016832656200521653,
+  "ci_high": -0.006313891955484064
+ },
+ "GDTS-eff minus GDTS-lin": {
+  "mean": 0.00026179373079217175,
+  "ci_low": -0.00015596081083518002,
+  "ci_high": 0.0007954063854753616
+ },
+ "GDTS-lin minus CPT": {
+  "mean": 0.02865611994648191,
+  "ci_low": 0.021551953276278783,
+  "ci_high": 0.036461317015614475
+ },
+ "GDTS-fr minus CPT": {
+  "mean": 0.028267713884625133,
+  "ci_low": 0.020953034646228327,
+  "ci_high": 0.03630032435836463
+ },
+ "GDTS-llo minus CPT": {
+  "mean": 0.016948606543355345,
+  "ci_low": 0.012232675116161624,
+  "ci_high": 0.021791280537520268
+ },
+ "GDTS-eff minus CPT": {
+  "mean": 0.02891791367727408,
+  "ci_low": 0.02132430657616423,
+  "ci_high": 0.036617367568315684
+ }
+}
+DONE
