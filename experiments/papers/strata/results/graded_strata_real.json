@@ -1,0 +1,189 @@
+{
+ "void": [],
+ "verdict": "GRADED",
+ "consumer_arm_void": false,
+ "predictions": {
+  "H1 stratified beats two-number, pooled and in a majority": "FAIL",
+  "H2 at least half the gap to CPT closes": "FAIL",
+  "H3 stratified beats CPT, pooled": "FAIL",
+  "H4 people move with stake less than the two-number model predicts": "PASS",
+  "H5 stratified reproduces >= 4 of 6 effects and more than two-number (2 vs 3)": "FAIL",
+  "H6 consumer beats stratified": "NOT ASSESSABLE",
+  "H7 distortions shift between corpora as the frozen geometric model predicts from stimuli": "FAIL",
+  "H8 consumer reproduces the rare-event effects": "FAIL"
+ },
+ "numbers": {
+  "pooled": {
+   "margin": 0.0009231066988390577,
+   "GDTS-GDT2": {
+    "mean": -0.020177954760958627,
+    "ci_low": -0.03773651527265045,
+    "ci_high": -0.0060968251545428405,
+    "corpora_won": 2
+   },
+   "GDTS-CPT": {
+    "mean": 0.018513280745859673,
+    "ci_low": 0.01346329379473588,
+    "ci_high": 0.023851796980443193,
+    "corpora_won": 0
+   },
+   "GDTC-GDTS": {
+    "mean": -5.175859097918956e-05,
+    "ci_low": -0.00048591797260901876,
+    "ci_high": 0.0003656295822375599,
+    "corpora_won": 0
+   },
+   "CPT-GDT2": {
+    "mean": -0.0386912355068183,
+    "ci_low": -0.05582460876139717,
+    "ci_high": -0.024961644557386708,
+    "corpora_won": 4
+   },
+   "GDTC-CPT": {
+    "mean": 0.018461522154880484,
+    "ci_low": 0.013411245780424956,
+    "ci_high": 0.02371757425416875,
+    "corpora_won": 0
+   },
+   "GDT2-EV": {
+    "mean": -0.0028166034629973245,
+    "ci_low": -0.008718285525944667,
+    "ci_high": 0.003334523019859897,
+    "corpora_won": 1
+   },
+   "gap_closed": {
+    "point": 0.5215122881615605,
+    "ci_low": 0.22480174016015794,
+    "ci_high": 0.7030085002414287
+   }
+  },
+  "stake_invariance": {
+   "groups": 6,
+   "assessable": true,
+   "mean": 0.08841752049479007,
+   "ci_low": 0.00658539756194553,
+   "ci_high": 0.1662046897116385
+  },
+  "effects_reproduced": {
+   "GDT2": [
+    "loss_aversion",
+    "insurance_losses",
+    "stake_invariance"
+   ],
+   "GDTS": [
+    "loss_aversion",
+    "stake_invariance"
+   ],
+   "GDTC": [
+    "loss_aversion",
+    "stake_invariance"
+   ],
+   "CPT_unit": [
+    "reflection",
+    "common_ratio",
+    "insurance_losses",
+    "stake_invariance"
+   ]
+  },
+  "gamma": {
+   "cpc18": {
+    "observed": 0.888135016508337,
+    "predicted": 0.8997605347075909
+   },
+   "gp2012": {
+    "observed": 0.718020967284775,
+    "observed_converged": true,
+    "predicted": 0.9925511413748009,
+    "predicted_converged": true
+   },
+   "pachur2017": {
+    "observed": 0.714788596623241,
+    "observed_converged": true,
+    "predicted": 1.0491909576732446,
+    "predicted_converged": true
+   },
+   "pachur2018": {
+    "observed": 0.8099492657444803,
+    "observed_converged": true,
+    "predicted": 1.0053351282803478,
+    "predicted_converged": true
+   },
+   "zilker2020": {
+    "observed": 0.655353577561114,
+    "observed_converged": true,
+    "predicted": 1.0630272804863958,
+    "predicted_converged": true
+   },
+   "babula2018": {
+    "observed": 1.0188017254880322,
+    "observed_converged": true,
+    "predicted": 1.0005814472327446,
+    "predicted_converged": true
+   }
+  },
+  "test_nll": {
+   "gp2012": {
+    "M0": 0.6928056762755951,
+    "EV": 0.6039207395085086,
+    "RUM": 0.5812009582987199,
+    "GDT2": 0.5786855743972521,
+    "GDTS": 0.601937631424514,
+    "GDTC": 0.601599329806909,
+    "CPT_unit": 0.5662735715482691,
+    "CPT_share": 0.5885022805349533,
+    "CPT": 0.5662735715482691
+   },
+   "pachur2017": {
+    "M0": 0.7060357452197025,
+    "EV": 0.6990976100581727,
+    "RUM": 0.6913103831859106,
+    "GDT2": 0.6952183211671812,
+    "GDTS": 0.6495431315376776,
+    "GDTC": 0.6494847635974536,
+    "CPT_unit": 0.6762473040912269,
+    "CPT_share": 0.6369336608996975,
+    "CPT": 0.6369336608996975
+   },
+   "pachur2018": {
+    "M0": 0.6740968372973388,
+    "EV": 0.5800319459360853,
+    "RUM": 0.5958541180199184,
+    "GDT2": 0.59039015432295,
+    "GDTS": 0.5534406629447902,
+    "GDTC": 0.5537962500269836,
+    "CPT_unit": 0.5598975442276799,
+    "CPT_share": 0.5335741102264248,
+    "CPT": 0.5335741102264248
+   },
+   "zilker2020": {
+    "M0": 0.6936196448874902,
+    "EV": 0.5363312981353673,
+    "RUM": 0.5328589642235889,
+    "GDT2": 0.5359229297334702,
+    "GDTS": 0.5238402124551358,
+    "GDTC": 0.5233235032123202,
+    "CPT_unit": 0.5203427509073012,
+    "CPT_share": 0.5018963643162885,
+    "CPT": 0.5018963643162885
+   },
+   "babula2018": {
+    "M0": 0.6616127118614172,
+    "EV": 0.625872410352307,
+    "RUM": 0.630462692712086,
+    "GDT2": 0.6309540070546008,
+    "GDTS": 0.6015195745085435,
+    "GDTC": 0.6018185732720988,
+    "CPT_unit": 0.6129509719203147,
+    "CPT_share": 0.599037102150683,
+    "CPT": 0.599037102150683
+   }
+  },
+  "cpt_coding": {
+   "gp2012": "CPT_unit",
+   "pachur2017": "CPT_share",
+   "pachur2018": "CPT_share",
+   "zilker2020": "CPT_share",
+   "babula2018": "CPT_share"
+  }
+ }
+}

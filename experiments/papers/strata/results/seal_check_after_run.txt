@@ -1,0 +1,16 @@
+    prereg-strata-v1.md                      ok
+    fetch_corpora.py                         ok
+    corpora.py                               ok
+    stimuli_check.py                         ok
+    accounting.json                          ok
+    stimuli_check.json                       ok
+    strata_models.py                         ok
+    fit_strata.py                            ok
+    frozen_strata.json                       ok
+    recovery_v4.json                         ok
+    grade_strata.py                          ok
+    ../../datasets/cpc18_raw_sha256.txt      ok
+  SEAL INTACT
+bb2f43b0f1a16d15c5c90cebfed43e327624adb9fe0384ffbd3846251154b629  results_strata_real.json
+28c950649e873c204844d0fd342c8375c765873372dc66d1e355fb3f89a929af  graded_strata_real.json
+
