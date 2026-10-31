@@ -1,0 +1,11 @@
+    prereg-psych101-v1.md              ok
+    inspect_stimuli.py                 ok
+    overlap_stimuli.py                 ok
+    build_rows.py                      ok
+    freeze_cpc18.py                    ok
+    frozen_cpc18.json                  ok
+    fit_psych101.py                    ok
+    grade_psych101.py                  ok
+    ../../datasets/fit_transfer.py     ok
+    ../../datasets/cpc18.py            ok
+  SEAL INTACT
