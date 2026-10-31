@@ -1,0 +1,70 @@
+{
+ "dims": [
+  "physical_harm",
+  "fairness_equity",
+  "autonomy_respect",
+  "privacy_protection",
+  "societal_environmental",
+  "virtue_care",
+  "legitimacy_trust",
+  "epistemic_quality",
+  "identity_attack"
+ ],
+ "skipped_not_passed": [],
+ "per_dim": {
+  "physical_harm": {
+   "feeder": "physharm_joint",
+   "checkpoint_hash": "c17c6b9c492dff7e",
+   "mean": 0.18395213782787323,
+   "sd": 0.6019906401634216
+  },
+  "fairness_equity": {
+   "feeder": "fairness_joint",
+   "checkpoint_hash": "244eb06a357248fd",
+   "mean": -0.3542798161506653,
+   "sd": 0.48174893856048584
+  },
+  "autonomy_respect": {
+   "feeder": "autonomy_joint",
+   "checkpoint_hash": "67e39e7c26a00176",
+   "mean": 0.11799679696559906,
+   "sd": 0.5443708300590515
+  },
+  "privacy_protection": {
+   "feeder": "privacy_joint",
+   "checkpoint_hash": "2d8cecf2cca4c95c",
+   "mean": -0.178217351436615,
+   "sd": 0.8084720373153687
+  },
+  "societal_environmental": {
+   "feeder": "environmental_joint",
+   "checkpoint_hash": "168f26f72d538436",
+   "mean": -0.4554908573627472,
+   "sd": 0.2959980070590973
+  },
+  "virtue_care": {
+   "feeder": "care_joint",
+   "checkpoint_hash": "7fb3ae47db7a9ee0",
+   "mean": -0.07278605550527573,
+   "sd": 0.6233658194541931
+  },
+  "legitimacy_trust": {
+   "feeder": "legitimacy_joint",
+   "checkpoint_hash": "faa7cd2ab791ecb1",
+   "mean": 0.07986443489789963,
+   "sd": 0.6687575578689575
+  },
+  "epistemic_quality": {
+   "feeder": "epistemic_joint",
+   "checkpoint_hash": "53a09865cf94b69a",
+   "mean": -0.3873988687992096,
+   "sd": 0.44892385601997375
+  },
+  "identity_attack": {
+   "feeder": "identity_attack_joint",
+   "checkpoint_hash": "addf8f2561fed260",
+   "mean": 0.9077953100204468,
+   "sd": 0.36913758516311646
+  }
+ }
+}

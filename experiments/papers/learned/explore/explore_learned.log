@@ -1,0 +1,104 @@
+/archive/experiments/learned-coords/explore/explore_learned.py:113: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  prev, rel = float(closure()), float("inf")
+labse {"kind": "LIN", "k": 0, "lambda": 0.0, "train_obj": 0.6484023928642273, "converged": true, "dev_nll": 0.646377444267273, "test_nll": 0.6549289226531982}
+labse {"kind": "LIN", "k": 0, "lambda": 1e-05, "train_obj": 0.6548685431480408, "converged": true, "dev_nll": 0.6464763879776001, "test_nll": 0.6537322998046875}
+labse {"kind": "LIN", "k": 0, "lambda": 0.0001, "train_obj": 0.6617915630340576, "converged": true, "dev_nll": 0.6515706777572632, "test_nll": 0.6582796573638916}
+labse {"kind": "GDT", "k": 16, "lambda": 0.0, "train_obj": 0.5874616503715515, "converged": true, "dev_nll": 0.6562310457229614, "test_nll": 0.6641775965690613}
+labse {"kind": "GDT", "k": 16, "lambda": 1e-05, "train_obj": 0.6344507336616516, "converged": true, "dev_nll": 0.6348551511764526, "test_nll": 0.6429892778396606}
+labse {"kind": "GDT", "k": 16, "lambda": 0.0001, "train_obj": 0.6582016944885254, "converged": true, "dev_nll": 0.6441324949264526, "test_nll": 0.652619481086731}
+labse {"kind": "GDTq", "k": 16, "lambda": 0.0, "train_obj": 0.5714289546012878, "converged": true, "dev_nll": 0.7020658850669861, "test_nll": 0.7107161283493042, "q": 0.834121823310852}
+labse {"kind": "GDTq", "k": 16, "lambda": 1e-05, "train_obj": 0.5782060027122498, "converged": true, "dev_nll": 0.7268737554550171, "test_nll": 0.732916533946991, "q": 0.649867594242096}
+labse {"kind": "GDTq", "k": 16, "lambda": 0.0001, "train_obj": 0.5907420516014099, "converged": true, "dev_nll": 0.6909993886947632, "test_nll": 0.7068985104560852, "q": 0.5936441421508789}
+labse {"kind": "SQD", "k": 16, "lambda": 0.0, "train_obj": 0.5760104656219482, "converged": true, "dev_nll": 0.6855663061141968, "test_nll": 0.6907591223716736}
+labse {"kind": "SQD", "k": 16, "lambda": 1e-05, "train_obj": 0.6076734066009521, "converged": true, "dev_nll": 0.656507670879364, "test_nll": 0.6625935435295105}
+labse {"kind": "SQD", "k": 16, "lambda": 0.0001, "train_obj": 0.6370247602462769, "converged": true, "dev_nll": 0.6320248246192932, "test_nll": 0.6432780623435974}
+labse {"kind": "QUAD", "k": 16, "lambda": 0.0, "train_obj": 0.5442321300506592, "converged": true, "dev_nll": 0.8014253973960876, "test_nll": 0.850387692451477, "curvature_signs": {"pos": 6, "neg": 10}}
+labse {"kind": "QUAD", "k": 16, "lambda": 1e-05, "train_obj": 0.5757110714912415, "converged": true, "dev_nll": 0.7089235782623291, "test_nll": 0.7244997620582581, "curvature_signs": {"pos": 6, "neg": 10}}
+labse {"kind": "QUAD", "k": 16, "lambda": 0.0001, "train_obj": 0.6055496335029602, "converged": true, "dev_nll": 0.6582626700401306, "test_nll": 0.6637568473815918, "curvature_signs": {"pos": 6, "neg": 10}}
+labse {"kind": "GDT", "k": 32, "lambda": 0.0, "train_obj": 0.5574272274971008, "converged": true, "dev_nll": 0.6918104887008667, "test_nll": 0.6966726779937744}
+labse {"kind": "GDT", "k": 32, "lambda": 1e-05, "train_obj": 0.6326339244842529, "converged": true, "dev_nll": 0.6328204274177551, "test_nll": 0.6409692764282227}
+labse {"kind": "GDT", "k": 32, "lambda": 0.0001, "train_obj": 0.6581565737724304, "converged": true, "dev_nll": 0.6441540718078613, "test_nll": 0.6526353359222412}
+labse {"kind": "GDTq", "k": 32, "lambda": 0.0, "train_obj": 0.5279200673103333, "converged": true, "dev_nll": 0.801355242729187, "test_nll": 0.8144730925559998, "q": 0.8080466389656067}
+labse {"kind": "GDTq", "k": 32, "lambda": 1e-05, "train_obj": 0.5325336456298828, "converged": true, "dev_nll": 0.7820302248001099, "test_nll": 0.8125881552696228, "q": 0.685597836971283}
+labse {"kind": "GDTq", "k": 32, "lambda": 0.0001, "train_obj": 0.5506455302238464, "converged": true, "dev_nll": 0.7657445669174194, "test_nll": 0.7574682235717773, "q": 0.6295915842056274}
+labse {"kind": "SQD", "k": 32, "lambda": 0.0, "train_obj": 0.5427832007408142, "converged": true, "dev_nll": 0.7336933016777039, "test_nll": 0.748257040977478}
+labse {"kind": "SQD", "k": 32, "lambda": 1e-05, "train_obj": 0.5875033736228943, "converged": true, "dev_nll": 0.6801009774208069, "test_nll": 0.6889160871505737}
+labse {"kind": "SQD", "k": 32, "lambda": 0.0001, "train_obj": 0.6360741853713989, "converged": true, "dev_nll": 0.6320710182189941, "test_nll": 0.6420562267303467}
+labse {"kind": "QUAD", "k": 32, "lambda": 0.0, "train_obj": 0.5167848467826843, "converged": true, "dev_nll": 0.9335148930549622, "test_nll": 0.9374957084655762, "curvature_signs": {"pos": 15, "neg": 17}}
+labse {"kind": "QUAD", "k": 32, "lambda": 1e-05, "train_obj": 0.5478091239929199, "converged": true, "dev_nll": 0.7973268032073975, "test_nll": 0.7911741137504578, "curvature_signs": {"pos": 17, "neg": 15}}
+labse {"kind": "QUAD", "k": 32, "lambda": 0.0001, "train_obj": 0.5883467793464661, "converged": true, "dev_nll": 0.6837195158004761, "test_nll": 0.6810945868492126, "curvature_signs": {"pos": 15, "neg": 17}}
+labse {"kind": "GDT", "k": 64, "lambda": 0.0, "train_obj": 0.5315169095993042, "converged": true, "dev_nll": 0.7177079319953918, "test_nll": 0.7237194180488586}
+labse {"kind": "GDT", "k": 64, "lambda": 1e-05, "train_obj": 0.6326735615730286, "converged": true, "dev_nll": 0.6328911781311035, "test_nll": 0.6408648490905762}
+labse {"kind": "GDT", "k": 64, "lambda": 0.0001, "train_obj": 0.6582318544387817, "converged": true, "dev_nll": 0.6441625356674194, "test_nll": 0.6526318192481995}
+labse {"kind": "GDTq", "k": 64, "lambda": 0.0, "train_obj": 0.5059282183647156, "converged": true, "dev_nll": 0.8845771551132202, "test_nll": 0.9019356369972229, "q": 0.8858603835105896}
+labse {"kind": "GDTq", "k": 64, "lambda": 1e-05, "train_obj": 0.5240809321403503, "converged": true, "dev_nll": 0.801878035068512, "test_nll": 0.8052510023117065, "q": 0.7566323280334473}
+labse {"kind": "GDTq", "k": 64, "lambda": 0.0001, "train_obj": 0.5484214425086975, "converged": true, "dev_nll": 0.74767005443573, "test_nll": 0.7621647715568542, "q": 0.7183220982551575}
+labse {"kind": "SQD", "k": 64, "lambda": 0.0, "train_obj": 0.5154590010643005, "converged": true, "dev_nll": 0.8430550694465637, "test_nll": 0.8357645869255066}
+labse {"kind": "SQD", "k": 64, "lambda": 1e-05, "train_obj": 0.5729753971099854, "converged": true, "dev_nll": 0.7054215669631958, "test_nll": 0.7052581906318665}
+labse {"kind": "SQD", "k": 64, "lambda": 0.0001, "train_obj": 0.6360560059547424, "converged": true, "dev_nll": 0.6320592761039734, "test_nll": 0.642092227935791}
+labse {"kind": "QUAD", "k": 64, "lambda": 0.0, "train_obj": 0.5047528147697449, "converged": true, "dev_nll": 1.0376132726669312, "test_nll": 1.013576865196228, "curvature_signs": {"pos": 27, "neg": 37}}
+labse {"kind": "QUAD", "k": 64, "lambda": 1e-05, "train_obj": 0.5276539325714111, "converged": true, "dev_nll": 0.8879430294036865, "test_nll": 0.8675430417060852, "curvature_signs": {"pos": 28, "neg": 36}}
+labse {"kind": "QUAD", "k": 64, "lambda": 0.0001, "train_obj": 0.5840462446212769, "converged": true, "dev_nll": 0.696044921875, "test_nll": 0.6880418658256531, "curvature_signs": {"pos": 27, "neg": 37}}
+labse {"LIN": [0, 0.64638, 0.65493], "GDT": [32, 0.63282, 0.64097], "GDTq": [16, 0.691, 0.7069], "SQD": [16, 0.63202, 0.64328], "QUAD": [16, 0.65826, 0.66376]}
+labse {"GDT minus LIN": {"mean": -0.013959702104330063, "ci_low": -0.018893439322710037, "ci_high": -0.009299826808273792}, "GDT minus SQD": {"mean": -0.002308858558535576, "ci_low": -0.005762089043855667, "ci_high": 0.001279773423448205}, "GDT minus QUAD": {"mean": -0.02278769016265869, "ci_low": -0.03101007454097271, "ci_high": -0.014234999194741249}, "GDTq minus GDT": {"mean": 0.06592932343482971, "ci_low": 0.054704051464796066, "ci_high": 0.07806352525949478}, "SQD minus LIN": {"mean": -0.011650843545794487, "ci_low": -0.016075069084763527, "ci_high": -0.007158940192312002}, "QUAD minus LIN": {"mean": 0.008827988058328629, "ci_low": -0.00027646549278870225, "ci_high": 0.0178364310413599}}
+bgem3 {"kind": "LIN", "k": 0, "lambda": 0.0, "train_obj": 0.6324241757392883, "converged": true, "dev_nll": 0.6295711398124695, "test_nll": 0.6283009648323059}
+bgem3 {"kind": "LIN", "k": 0, "lambda": 1e-05, "train_obj": 0.6415714025497437, "converged": true, "dev_nll": 0.6316483020782471, "test_nll": 0.6308815479278564}
+bgem3 {"kind": "LIN", "k": 0, "lambda": 0.0001, "train_obj": 0.6515064239501953, "converged": true, "dev_nll": 0.6383455991744995, "test_nll": 0.6395235657691956}
+bgem3 {"kind": "GDT", "k": 16, "lambda": 0.0, "train_obj": 0.567221999168396, "converged": true, "dev_nll": 0.653809130191803, "test_nll": 0.6484652757644653}
+bgem3 {"kind": "GDT", "k": 16, "lambda": 1e-05, "train_obj": 0.624247133731842, "converged": true, "dev_nll": 0.6212826371192932, "test_nll": 0.6194988489151001}
+bgem3 {"kind": "GDT", "k": 16, "lambda": 0.0001, "train_obj": 0.6499956250190735, "converged": true, "dev_nll": 0.6344999074935913, "test_nll": 0.6358683109283447}
+bgem3 {"kind": "GDTq", "k": 16, "lambda": 0.0, "train_obj": 0.5585119128227234, "converged": true, "dev_nll": 0.7013733983039856, "test_nll": 0.6863686442375183, "q": 0.8783327341079712}
+bgem3 {"kind": "GDTq", "k": 16, "lambda": 1e-05, "train_obj": 0.5630454421043396, "converged": true, "dev_nll": 0.6933048963546753, "test_nll": 0.7040471434593201, "q": 0.6636112332344055}
+bgem3 {"kind": "GDTq", "k": 16, "lambda": 0.0001, "train_obj": 0.621274471282959, "converged": true, "dev_nll": 0.6424719095230103, "test_nll": 0.6315316557884216, "q": 0.5814003944396973}
+bgem3 {"kind": "SQD", "k": 16, "lambda": 0.0, "train_obj": 0.5661442279815674, "converged": true, "dev_nll": 0.6740258932113647, "test_nll": 0.6690365076065063}
+bgem3 {"kind": "SQD", "k": 16, "lambda": 1e-05, "train_obj": 0.5903218388557434, "converged": true, "dev_nll": 0.6420618295669556, "test_nll": 0.6375303864479065}
+bgem3 {"kind": "SQD", "k": 16, "lambda": 0.0001, "train_obj": 0.6262986063957214, "converged": true, "dev_nll": 0.6193711757659912, "test_nll": 0.6174042224884033}
+bgem3 {"kind": "QUAD", "k": 16, "lambda": 0.0, "train_obj": 0.5302297472953796, "converged": true, "dev_nll": 0.8409586548805237, "test_nll": 0.8438510894775391, "curvature_signs": {"pos": 5, "neg": 11}}
+bgem3 {"kind": "QUAD", "k": 16, "lambda": 1e-05, "train_obj": 0.5594755411148071, "converged": true, "dev_nll": 0.7121493220329285, "test_nll": 0.7043060064315796, "curvature_signs": {"pos": 5, "neg": 11}}
+bgem3 {"kind": "QUAD", "k": 16, "lambda": 0.0001, "train_obj": 0.5904755592346191, "converged": true, "dev_nll": 0.6401057839393616, "test_nll": 0.6468073129653931, "curvature_signs": {"pos": 5, "neg": 11}}
+bgem3 {"kind": "GDT", "k": 32, "lambda": 0.0, "train_obj": 0.5371591448783875, "converged": true, "dev_nll": 0.6817108988761902, "test_nll": 0.682624876499176}
+bgem3 {"kind": "GDT", "k": 32, "lambda": 1e-05, "train_obj": 0.623735249042511, "converged": true, "dev_nll": 0.6204276084899902, "test_nll": 0.6196300983428955}
+bgem3 {"kind": "GDT", "k": 32, "lambda": 0.0001, "train_obj": 0.6499895453453064, "converged": true, "dev_nll": 0.6345660090446472, "test_nll": 0.6359249353408813}
+bgem3 {"kind": "GDTq", "k": 32, "lambda": 0.0, "train_obj": 0.522972822189331, "converged": true, "dev_nll": 0.7717934250831604, "test_nll": 0.79536372423172, "q": 0.8583122491836548}
+bgem3 {"kind": "GDTq", "k": 32, "lambda": 1e-05, "train_obj": 0.5295114517211914, "converged": true, "dev_nll": 0.7584798336029053, "test_nll": 0.7590072751045227, "q": 0.6997675895690918}
+bgem3 {"kind": "GDTq", "k": 32, "lambda": 0.0001, "train_obj": 0.5393390655517578, "converged": true, "dev_nll": 0.7138741612434387, "test_nll": 0.7176645994186401, "q": 0.6478704214096069}
+bgem3 {"kind": "SQD", "k": 32, "lambda": 0.0, "train_obj": 0.5245451331138611, "converged": true, "dev_nll": 0.7419736981391907, "test_nll": 0.7468926906585693}
+bgem3 {"kind": "SQD", "k": 32, "lambda": 1e-05, "train_obj": 0.5732029676437378, "converged": true, "dev_nll": 0.6535149216651917, "test_nll": 0.6575579047203064}
+bgem3 {"kind": "SQD", "k": 32, "lambda": 0.0001, "train_obj": 0.6277619004249573, "converged": true, "dev_nll": 0.6187868714332581, "test_nll": 0.6170018911361694}
+bgem3 {"kind": "QUAD", "k": 32, "lambda": 0.0, "train_obj": 0.5078530311584473, "converged": true, "dev_nll": 1.0213218927383423, "test_nll": 1.0046647787094116, "curvature_signs": {"pos": 12, "neg": 20}}
+bgem3 {"kind": "QUAD", "k": 32, "lambda": 1e-05, "train_obj": 0.5351060032844543, "converged": true, "dev_nll": 0.7885102033615112, "test_nll": 0.7987152934074402, "curvature_signs": {"pos": 12, "neg": 20}}
+bgem3 {"kind": "QUAD", "k": 32, "lambda": 0.0001, "train_obj": 0.5820677876472473, "converged": true, "dev_nll": 0.6586524248123169, "test_nll": 0.6492822170257568, "curvature_signs": {"pos": 12, "neg": 20}}
+bgem3 {"kind": "GDT", "k": 64, "lambda": 0.0, "train_obj": 0.5190019607543945, "converged": true, "dev_nll": 0.6967788934707642, "test_nll": 0.7028372883796692}
+bgem3 {"kind": "GDT", "k": 64, "lambda": 1e-05, "train_obj": 0.6237318515777588, "converged": true, "dev_nll": 0.6204607486724854, "test_nll": 0.6196295022964478}
+bgem3 {"kind": "GDT", "k": 64, "lambda": 0.0001, "train_obj": 0.6500188112258911, "converged": true, "dev_nll": 0.6345674991607666, "test_nll": 0.6359085440635681}
+bgem3 {"kind": "GDTq", "k": 64, "lambda": 0.0, "train_obj": 0.5052727460861206, "converged": true, "dev_nll": 0.8133425116539001, "test_nll": 0.8022549748420715, "q": 0.9535874128341675}
+bgem3 {"kind": "GDTq", "k": 64, "lambda": 1e-05, "train_obj": 0.5151820778846741, "converged": true, "dev_nll": 0.7549607753753662, "test_nll": 0.7607642412185669, "q": 0.7584664821624756}
+bgem3 {"kind": "GDTq", "k": 64, "lambda": 0.0001, "train_obj": 0.6321166753768921, "converged": true, "dev_nll": 0.6272009015083313, "test_nll": 0.6279779076576233, "q": 0.8430888652801514}
+bgem3 {"kind": "SQD", "k": 64, "lambda": 0.0, "train_obj": 0.5122784972190857, "converged": true, "dev_nll": 0.8145845532417297, "test_nll": 0.8065047860145569}
+bgem3 {"kind": "SQD", "k": 64, "lambda": 1e-05, "train_obj": 0.563931941986084, "converged": true, "dev_nll": 0.6522427797317505, "test_nll": 0.6536136269569397}
+bgem3 {"kind": "SQD", "k": 64, "lambda": 0.0001, "train_obj": 0.6269441246986389, "converged": true, "dev_nll": 0.6186228394508362, "test_nll": 0.6175283789634705}
+bgem3 {"kind": "QUAD", "k": 64, "lambda": 0.0, "train_obj": 0.5025672912597656, "converged": true, "dev_nll": 1.0147396326065063, "test_nll": 0.99256432056427, "curvature_signs": {"pos": 27, "neg": 37}}
+bgem3 {"kind": "QUAD", "k": 64, "lambda": 1e-05, "train_obj": 0.5223836302757263, "converged": true, "dev_nll": 0.8340609669685364, "test_nll": 0.8173038363456726, "curvature_signs": {"pos": 27, "neg": 37}}
+bgem3 {"kind": "QUAD", "k": 64, "lambda": 0.0001, "train_obj": 0.5790005326271057, "converged": true, "dev_nll": 0.6675782799720764, "test_nll": 0.6624330282211304, "curvature_signs": {"pos": 39, "neg": 25}}
+bgem3 {"LIN": [0, 0.62957, 0.6283], "GDT": [32, 0.62043, 0.61963], "GDTq": [64, 0.6272, 0.62798], "SQD": [64, 0.61862, 0.61753], "QUAD": [16, 0.64011, 0.64681]}
+bgem3 {"GDT minus LIN": {"mean": -0.008670883253216743, "ci_low": -0.013140874914824963, "ci_high": -0.004060413222759962}, "GDT minus SQD": {"mean": 0.0021017089020460844, "ci_low": -0.0012303031980991364, "ci_high": 0.005514961667358875}, "GDT minus QUAD": {"mean": -0.027177201583981514, "ci_low": -0.036544445902109146, "ci_high": -0.01866495981812477}, "GDTq minus GDT": {"mean": 0.008347826078534126, "ci_low": 0.0036553083918988705, "ci_high": 0.013223666697740555}, "SQD minus LIN": {"mean": -0.010772592388093472, "ci_low": -0.013770295307040215, "ci_high": -0.007764989510178566}, "QUAD minus LIN": {"mean": 0.01850632019340992, "ci_low": 0.008855577558279037, "ci_high": 0.027886103838682175}}
+xbse {"kind": "LIN", "k": 0, "lambda": 0.0, "train_obj": 0.6790029406547546, "converged": true, "dev_nll": 0.6782898902893066, "test_nll": 0.6770235300064087}
+xbse {"kind": "LIN", "k": 0, "lambda": 1e-05, "train_obj": 0.6790033578872681, "converged": true, "dev_nll": 0.6782899498939514, "test_nll": 0.6770236492156982}
+xbse {"kind": "LIN", "k": 0, "lambda": 0.0001, "train_obj": 0.6790069937705994, "converged": true, "dev_nll": 0.6782904863357544, "test_nll": 0.6770244836807251}
+xbse {"kind": "GDT", "k": 9, "lambda": 0.0, "train_obj": 0.6759771704673767, "converged": true, "dev_nll": 0.6778888702392578, "test_nll": 0.673033595085144}
+xbse {"kind": "GDT", "k": 9, "lambda": 1e-05, "train_obj": 0.67598557472229, "converged": true, "dev_nll": 0.6778861880302429, "test_nll": 0.6730255484580994}
+xbse {"kind": "GDT", "k": 9, "lambda": 0.0001, "train_obj": 0.6760504841804504, "converged": true, "dev_nll": 0.6778318881988525, "test_nll": 0.6730529069900513}
+xbse {"kind": "GDTq", "k": 9, "lambda": 0.0, "train_obj": 0.6746087670326233, "converged": true, "dev_nll": 0.6777161955833435, "test_nll": 0.6723266243934631, "q": 4.469200134277344}
+xbse {"kind": "GDTq", "k": 9, "lambda": 1e-05, "train_obj": 0.6746335625648499, "converged": true, "dev_nll": 0.6776994466781616, "test_nll": 0.6723181009292603, "q": 4.468775272369385}
+xbse {"kind": "GDTq", "k": 9, "lambda": 0.0001, "train_obj": 0.6748320460319519, "converged": true, "dev_nll": 0.6775479316711426, "test_nll": 0.672261118888855, "q": 4.469302177429199}
+xbse {"kind": "SQD", "k": 9, "lambda": 0.0, "train_obj": 0.6766225695610046, "converged": true, "dev_nll": 0.6786652207374573, "test_nll": 0.6738272905349731}
+xbse {"kind": "SQD", "k": 9, "lambda": 1e-05, "train_obj": 0.676626980304718, "converged": true, "dev_nll": 0.678652286529541, "test_nll": 0.673822283744812}
+xbse {"kind": "SQD", "k": 9, "lambda": 0.0001, "train_obj": 0.6766809821128845, "converged": true, "dev_nll": 0.6787416934967041, "test_nll": 0.6738995313644409}
+xbse {"kind": "QUAD", "k": 9, "lambda": 0.0, "train_obj": 0.6738957166671753, "converged": true, "dev_nll": 0.6748654246330261, "test_nll": 0.6700092554092407, "curvature_signs": {"pos": 6, "neg": 3}}
+xbse {"kind": "QUAD", "k": 9, "lambda": 1e-05, "train_obj": 0.6739029884338379, "converged": true, "dev_nll": 0.6748706102371216, "test_nll": 0.670013427734375, "curvature_signs": {"pos": 6, "neg": 3}}
+xbse {"kind": "QUAD", "k": 9, "lambda": 0.0001, "train_obj": 0.6739205121994019, "converged": true, "dev_nll": 0.6748595833778381, "test_nll": 0.6700155735015869, "curvature_signs": {"pos": 6, "neg": 3}}
+xbse {"LIN": [0, 0.67829, 0.67702], "GDT": [9, 0.67783, 0.67305], "GDTq": [9, 0.67755, 0.67226], "SQD": [9, 0.67865, 0.67382], "QUAD": [9, 0.67486, 0.67002]}
+xbse {"GDT minus LIN": {"mean": -0.00397065794095397, "ci_low": -0.006073426455259323, "ci_high": -0.00191931810695678}, "GDT minus SQD": {"mean": -0.0007693970110267401, "ci_low": -0.0013089119456708431, "ci_high": -0.00023364662774838507}, "GDT minus QUAD": {"mean": 0.0030373174231499434, "ci_low": 0.001109920791350305, "ci_high": 0.0048921494744718075}, "GDTq minus GDT": {"mean": -0.0007917348411865532, "ci_low": -0.001746331574395299, "ci_high": 0.00015121405886020511}, "SQD minus LIN": {"mean": -0.003201261628419161, "ci_low": -0.00530649209395051, "ci_high": -0.0011151381768286228}, "QUAD minus LIN": {"mean": -0.00700797513127327, "ci_low": -0.009610563516616821, "ci_high": -0.004288644064217806}}
+WROTE explore_learned.json
+DONE
