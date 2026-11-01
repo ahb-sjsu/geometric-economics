@@ -1,0 +1,317 @@
+{
+  "per_contrast": {
+    "A1.1": {
+      "n": 8,
+      "mean_delta": -0.024999999999999994,
+      "sign_obs": -1,
+      "p": 1.0,
+      "cohens_d": -0.35355339059327373,
+      "ci_low": -0.07499999999999998,
+      "ci_high": 0.0,
+      "sign_pred": 1,
+      "delta_pred": 0.05628,
+      "kind": "real",
+      "family": "A1_social_impact",
+      "domain": "game",
+      "sign_match": false,
+      "mag_covered": false,
+      "fdr_sig": false
+    },
+    "A1.2": {
+      "n": 8,
+      "mean_delta": 0.25,
+      "sign_obs": 1,
+      "p": 0.25,
+      "cohens_d": 0.7132467526968196,
+      "ci_low": 0.0,
+      "ci_high": 0.47500000000000003,
+      "sign_pred": 1,
+      "delta_pred": 0.05628,
+      "kind": "real",
+      "family": "A1_social_impact",
+      "domain": "game",
+      "sign_match": true,
+      "mag_covered": true,
+      "fdr_sig": false
+    },
+    "A2.1": {
+      "n": 7,
+      "mean_delta": 0.31428571428571433,
+      "sign_obs": 1,
+      "p": 0.125,
+      "cohens_d": 0.8260331876309022,
+      "ci_low": 0.08571428571428572,
+      "ci_high": 0.6,
+      "sign_pred": 1,
+      "delta_pred": 0.087107,
+      "kind": "real",
+      "family": "A2_virtue_identity",
+      "domain": "game",
+      "sign_match": true,
+      "mag_covered": true,
+      "fdr_sig": false
+    },
+    "A3.1": {
+      "n": 8,
+      "mean_delta": 0.45,
+      "sign_obs": 1,
+      "p": 0.0625,
+      "cohens_d": 1.0285114588061341,
+      "ci_low": 0.175,
+      "ci_high": 0.725,
+      "sign_pred": 1,
+      "delta_pred": 0.088613,
+      "kind": "real",
+      "family": "A3_epistemic",
+      "domain": "game",
+      "sign_match": true,
+      "mag_covered": false,
+      "fdr_sig": false
+    },
+    "B1.1": {
+      "n": 8,
+      "mean_delta": 0.36875,
+      "sign_obs": 1,
+      "p": 0.125,
+      "cohens_d": 0.8925938478044609,
+      "ci_low": 0.09375,
+      "ci_high": 0.64375,
+      "sign_pred": 1,
+      "delta_pred": 0.088613,
+      "kind": "real",
+      "family": "B1_epistemic_gain",
+      "domain": "lottery",
+      "sign_match": true,
+      "mag_covered": false,
+      "fdr_sig": false
+    },
+    "B1L.1": {
+      "n": 8,
+      "mean_delta": -0.024999999999999994,
+      "sign_obs": -1,
+      "p": 1.0,
+      "cohens_d": -0.35355339059327373,
+      "ci_low": -0.07499999999999998,
+      "ci_high": 0.0,
+      "sign_pred": -1,
+      "delta_pred": -0.088613,
+      "kind": "real",
+      "family": "B1L_epistemic_loss",
+      "domain": "lottery",
+      "sign_match": true,
+      "mag_covered": false,
+      "fdr_sig": false
+    },
+    "B2.1": {
+      "n": 8,
+      "mean_delta": -0.025,
+      "sign_obs": -1,
+      "p": 1.0,
+      "cohens_d": -0.35355339059327373,
+      "ci_low": -0.07500000000000001,
+      "ci_high": 0.0,
+      "sign_pred": 1,
+      "delta_pred": 0.05628,
+      "kind": "real",
+      "family": "B2_social_impact",
+      "domain": "lottery",
+      "sign_match": false,
+      "mag_covered": false,
+      "fdr_sig": false
+    },
+    "P.A1": {
+      "n": 8,
+      "mean_delta": 0.05625000000000001,
+      "sign_obs": 1,
+      "p": 0.25,
+      "cohens_d": 0.6223303640087098,
+      "ci_low": 0.0,
+      "ci_high": 0.125,
+      "sign_pred": 0,
+      "delta_pred": 0.0,
+      "kind": "placebo",
+      "family": "placebo",
+      "domain": "game",
+      "sign_match": false,
+      "mag_covered": true
+    },
+    "P.B1": {
+      "n": 8,
+      "mean_delta": 0.175,
+      "sign_obs": 1,
+      "p": 0.25,
+      "cohens_d": 0.5066917474620124,
+      "ci_low": 0.024999999999999994,
+      "ci_high": 0.42500000000000004,
+      "sign_pred": 0,
+      "delta_pred": 0.0,
+      "kind": "placebo",
+      "family": "placebo",
+      "domain": "lottery",
+      "sign_match": false,
+      "mag_covered": false
+    },
+    "D9.1": {
+      "n": 8,
+      "mean_delta": 0.1,
+      "sign_obs": 1,
+      "p": 1.0,
+      "cohens_d": 0.27003086243366087,
+      "ci_low": -0.07500000000000001,
+      "ci_high": 0.375,
+      "sign_pred": 1,
+      "delta_pred": 0.241249,
+      "kind": "dose",
+      "family": "dose_d9",
+      "domain": "lottery",
+      "sign_match": true,
+      "mag_covered": true
+    },
+    "D9.2": {
+      "n": 8,
+      "mean_delta": 0.1,
+      "sign_obs": 1,
+      "p": 0.5,
+      "cohens_d": 0.46770717334674256,
+      "ci_low": 0.0,
+      "ci_high": 0.25000000000000006,
+      "sign_pred": 1,
+      "delta_pred": 0.443031,
+      "kind": "dose",
+      "family": "dose_d9",
+      "domain": "lottery",
+      "sign_match": true,
+      "mag_covered": false
+    },
+    "D9.3": {
+      "n": 8,
+      "mean_delta": 0.1,
+      "sign_obs": 1,
+      "p": 0.75,
+      "cohens_d": 0.3307189138830738,
+      "ci_low": -0.05,
+      "ci_high": 0.325,
+      "sign_pred": 1,
+      "delta_pred": 0.301617,
+      "kind": "dose",
+      "family": "dose_d9",
+      "domain": "lottery",
+      "sign_match": true,
+      "mag_covered": true
+    },
+    "D9.4": {
+      "n": 8,
+      "mean_delta": 0.0,
+      "sign_obs": 0,
+      "p": 1.0,
+      "cohens_d": 0.0,
+      "ci_low": -0.07500000000000001,
+      "ci_high": 0.07500000000000001,
+      "sign_pred": 1,
+      "delta_pred": 0.154313,
+      "kind": "dose",
+      "family": "dose_d9",
+      "domain": "lottery",
+      "sign_match": false,
+      "mag_covered": false
+    }
+  },
+  "cross_model": {
+    "A1.1": {
+      "n_models": 2,
+      "n_match": 0,
+      "frac_match": 0.0,
+      "model_sign": {
+        "gemma-small": 0,
+        "gpt-oss": -1
+      },
+      "sign_pred": 1
+    },
+    "A1.2": {
+      "n_models": 2,
+      "n_match": 1,
+      "frac_match": 0.5,
+      "model_sign": {
+        "gemma-small": 0,
+        "gpt-oss": 1
+      },
+      "sign_pred": 1
+    },
+    "A2.1": {
+      "n_models": 2,
+      "n_match": 2,
+      "frac_match": 1.0,
+      "model_sign": {
+        "gemma-small": 1,
+        "gpt-oss": 1
+      },
+      "sign_pred": 1
+    },
+    "A3.1": {
+      "n_models": 2,
+      "n_match": 2,
+      "frac_match": 1.0,
+      "model_sign": {
+        "gemma-small": 1,
+        "gpt-oss": 1
+      },
+      "sign_pred": 1
+    },
+    "B1.1": {
+      "n_models": 2,
+      "n_match": 2,
+      "frac_match": 1.0,
+      "model_sign": {
+        "gemma-small": 1,
+        "gpt-oss": 1
+      },
+      "sign_pred": 1
+    },
+    "B1L.1": {
+      "n_models": 2,
+      "n_match": 1,
+      "frac_match": 0.5,
+      "model_sign": {
+        "gemma-small": 0,
+        "gpt-oss": -1
+      },
+      "sign_pred": -1
+    },
+    "B2.1": {
+      "n_models": 2,
+      "n_match": 0,
+      "frac_match": 0.0,
+      "model_sign": {
+        "gemma-small": -1,
+        "gpt-oss": 0
+      },
+      "sign_pred": 1
+    }
+  },
+  "verdict": {
+    "H1_sign_significant": {
+      "A1.1": false,
+      "A1.2": false,
+      "A2.1": false,
+      "A3.1": false,
+      "B1.1": false,
+      "B1L.1": false,
+      "B2.1": false
+    },
+    "H1_pass_fraction": 0.0,
+    "H2_cross_domain": false,
+    "H3_magnitude_covered": {
+      "A1.1": false,
+      "A1.2": true,
+      "A2.1": true,
+      "A3.1": false,
+      "B1.1": false,
+      "B1L.1": false,
+      "B2.1": false
+    },
+    "H4_dose_peak_level": 1,
+    "H4_loss_reversal": true,
+    "H4_placebo_null": false,
+    "cross_model_mean_frac_match": 0.5714285714285714
+  }
+}

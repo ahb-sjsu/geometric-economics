@@ -23,5 +23,7 @@
   },
   "hash_note": "sha256 of each file with CRLF normalized to LF; combined = sha256 over the concatenated component hex digests in bundle_files order",
   "combined_sha256": "175bad98ac871fc4e6b8e7869ad1edca7cbe48876aa83ee17343cfbe968de2c0",
-  "osf_registration": "PENDING (owner step; record URL here after registering)"
+  "osf_registration": "https://osf.io/ead4x",
+  "osf_project": "https://osf.io/a29zn",
+  "osf_note": "osf_registration is the registration GUID; osf_project is the file container OSF created beside it. Registered 2026-09-10. Neither resolved publicly via the OSF API at the time of writing; confirm public visibility after the approval window."
 }
