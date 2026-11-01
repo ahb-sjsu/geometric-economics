@@ -57,4 +57,27 @@ curvature. That comparison was not registered and would be exploratory.
 The outcome is a judgment of which action is less ethical, not a choice with consequences. None of
 these results bears on monetary choice.
 
-The BGE-M3 replication run is reported separately when it finishes. It is not graded.
+## BGE-M3 replication (registered as reported, not graded)
+
+Same splits, same code, `BAAI/bge-m3` snapshot `5617a9f61b028005a4858fdac845db406aefb181`, 1024
+dimensions. All selected fits converged. Outputs: `results/results_bgem3.json`, `results/gdt_bgem3.npz`.
+
+| | LaBSE (graded) | BGE-M3 (not graded) |
+|---|---|---|
+| Learned metric minus codebook axes | −0.0465 [−0.0536, −0.0393] | −0.0589 [−0.0658, −0.0516] |
+| Learned metric minus linear scalar | −0.0129 [−0.0177, −0.0082] | −0.0079 [−0.0123, −0.0037] |
+| Selected rank `k*` | 32 | 32 |
+| Codebook alignment (null 99th pct, null mean) | 0.038 (0.068, 0.060) | 0.031 (0.048, 0.042) |
+| Panel targets with the predicted sign | 1 of 5 | 4 of 5 (A1.2 wrong) |
+
+Test log-loss for BGE-M3: constant 0.6927, codebook axes 0.6785, linear scalar 0.6275, learned metric
+0.6196.
+
+The first four rows replicate in a second encoder: the metric beats both the codebook axes and the
+linear scalar, the rank sits at the top of the grid, and the codebook axes overlap the learned span
+less than random subspaces do. The panel transfer does not replicate the LaBSE failure. BGE-M3 gets
+4 of 5 signs, which would meet the registered bar. It does not count as support. It is ungraded by
+registration, the two encoders disagree on three of the five signs, and the BGE-M3 prediction for the
+wording-only placebo P.A1 (+0.035) is as large as its predictions for the real contrasts (+0.015 to
++0.039). A transfer that moves a placebo as much as the real manipulations is not reading the
+manipulated coordinate.
