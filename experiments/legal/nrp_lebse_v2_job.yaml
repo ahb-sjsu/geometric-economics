@@ -1,0 +1,52 @@
+# LeBSE v2 citation-supervised training — one A10 GPU Job in ssu-atlas-ai.
+# Job-shape + short wall clock respects the NRP >40% utilization rule.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: lebse-v2-train
+  namespace: ssu-atlas-ai
+  labels: { app: lebse-v2 }
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800   # keep 2 days for log/model retrieval
+  activeDeadlineSeconds: 10800      # 3h hard cap (training is ~10-15 min)
+  template:
+    metadata:
+      labels: { app: lebse-v2 }
+    spec:
+      restartPolicy: Never
+      nodeSelector:
+        nvidia.com/gpu.product: NVIDIA-A10
+      tolerations:
+        - { key: nvidia.com/gpu, operator: Exists, effect: NoSchedule }
+      containers:
+        - name: train
+          image: pytorch/pytorch:2.4.0-cuda12.1-cudnn9-runtime
+          command: ["bash", "-lc"]
+          args:
+            - |
+              set -e
+              echo "[job] installing sentence-transformers ..."
+              pip install -q "sentence-transformers[train]" "accelerate>=0.26.0" datasets "huggingface_hub<1.0"
+              echo "[job] starting training ..."
+              python /data/lebse_v2_train.py \
+                --pairs /data/pairs_train.jsonl \
+                --batch 96 --max-seq-len 128 --epochs 2 \
+                --out /data/lebse-v2
+              echo "[job] DONE; model at /data/lebse-v2"
+          env:
+            - { name: HF_HOME, value: /data/hf }
+            - { name: PYTHONUNBUFFERED, value: "1" }
+            - { name: PYTORCH_CUDA_ALLOC_CONF, value: "expandable_segments:True" }
+          volumeMounts:
+            - { name: data, mountPath: /data }
+            - { name: shm, mountPath: /dev/shm }
+          resources:
+            requests: { cpu: "4", memory: 24Gi, nvidia.com/gpu: "1" }
+            limits: { cpu: "8", memory: 32Gi, nvidia.com/gpu: "1" }
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: lebse-v2
+        - name: shm
+          emptyDir: { medium: Memory, sizeLimit: 4Gi }

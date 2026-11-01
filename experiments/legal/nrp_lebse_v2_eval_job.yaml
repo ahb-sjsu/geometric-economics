@@ -1,0 +1,42 @@
+# LeBSE v2 held-out eval — CPU Job (light; avoids GPU scheduling wait). Compares base LaBSE vs the
+# trained /data/lebse-v2 on the disjoint held-out citation pairs.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: lebse-v2-eval
+  namespace: ssu-atlas-ai
+  labels: { app: lebse-v2-eval }
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  activeDeadlineSeconds: 3600
+  template:
+    metadata:
+      labels: { app: lebse-v2-eval }
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: eval
+          image: pytorch/pytorch:2.4.0-cuda12.1-cudnn9-runtime
+          command: ["bash", "-lc"]
+          args:
+            - |
+              set -e
+              pip install -q "sentence-transformers" "huggingface_hub<1.0"
+              python /data/lebse_v2_eval.py \
+                --pairs /data/pairs_eval.jsonl \
+                --base sentence-transformers/LaBSE \
+                --lebse /data/lebse-v2
+          env:
+            - { name: HF_HOME, value: /data/hf }
+            - { name: PYTHONUNBUFFERED, value: "1" }
+            - { name: OMP_NUM_THREADS, value: "8" }
+          volumeMounts:
+            - { name: data, mountPath: /data }
+          resources:
+            requests: { cpu: "8", memory: 16Gi }
+            limits: { cpu: "8", memory: 16Gi }
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: lebse-v2
