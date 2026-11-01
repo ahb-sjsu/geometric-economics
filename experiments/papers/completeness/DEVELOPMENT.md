@@ -482,3 +482,77 @@ Reading: a sealed test on one fresh corpus would most likely fail even if diamet
 on average, and a failure would say little. A sealed test that can carry weight needs many fresh
 corpora, or a claim restated as "beats Wilcox on average across corpora" and tested pooled. Which,
 and whether at all, is the owner's decision.
+
+## Fresh risky corpora: candidates, designs checked from the papers (2026-11-01)
+
+Owner: "find fresh risky choice corpora we could pool", then "verify the four candidates' designs from
+their papers". Designs read from the papers only; no data file was downloaded or opened.
+
+| corpus | problems | people | outcomes | domain | fits the test? |
+|---|---|---|---|---|---|
+| Spiliopoulos & Hertwig 2023, JEP:G (OSF p924g) | 120 pairs, same for all | 96 | 1-4 per prospect, 0-200 | gains | yes (description session) |
+| Rieskamp 2008 Study 2 (OSF eypgb, via Nilsson et al. 2011) | 180 pairs, random, no dominance | 30 | 2 per option, -100 to 100 | 60 gain, 60 loss, 60 mixed | yes |
+| Baillon, Bleichrodt & Spinu 2020, MS (INFORMS supplement) | 70, fixed optimal design, listed in Appendix A | 139 | 1-4 per option, all positive | gains | yes, with a caveat |
+| Frydman & Jin 2022, QJE (Dataverse, CC0) | 600 trials each, payoffs drawn per trial; 30 common problems per condition | 149 analysed | lottery (X, .5; 0) vs sure C | gains | poorly |
+
+- Spiliopoulos & Hertwig: description session first, on its own day; incentivised (two lotteries paid);
+  EV gap at most 10% of the larger EV, so problems are hard. Experience and belief sessions follow on
+  later days and are not used.
+- Rieskamp: design from Kellen et al. (2020, Cognitive Psychology, sec. 6); one pair paid. Whether
+  pairs repeated across sessions is not confirmed (the original paper is closed access).
+- Baillon et al.: prospects shown as bars sized by probability with payoffs printed (Fig. 1), not as
+  text; one-third chance of real payment, stakes up to a week's pay in Moldova. The display differs
+  from the other corpora.
+- Frydman & Jin: only the 30 common problems repeat across people, in two volatility contexts that
+  the authors show shift behaviour; p is always 0.5. As a problem-rate corpus it is 30 or 60 problems
+  under a context manipulation the model does not represent.
+
+Three usable corpora, about 370 problems. By the power table, pooled power with three or four corpora
+like the spent ones is about 0.47-0.55.
+
+## Power of a proposed new study (2026-11-01; `power_study.py`, `power_tree.py`, `aggregate_power.py`)
+
+A study built to vary the range: 60 base pairs (20 gain, 20 loss, 20 mixed) each at scales k = 1, 4,
+16, three Latin-square lists of 60 choices; then a tree section of 48 adaptive choices (six Psi
+staircases: 50% of +-20k against a sure amount, k = 1, 4, 16). Simulated people follow CPT_CUr with
+rho = 0.725 or 1 and the other parameters fitted to each of the six spent risky corpora; sensitivity
+varies between people by exp(N(0, sigma)), sigma = 0 or 0.5. 60 studies per cell, N = 60-240. Run
+on NRP, one pod per cell.
+
+### The estimand
+
+With sigma = 0.5 the freely fitted rho comes out near 0.757 when every simulated person has 0.725
+(sigma = 0: 0.722-0.730). The person-clustered SE matches the spread of the estimates, so this is
+not an SE problem: pooling over people of different sensitivity flattens the high-stakes problems
+most, and the pooled rho sits nearer Wilcox than any individual's. The frozen 0.725 was fitted to
+pooled rates, so it is the same, population-level, quantity. Adopted (owner, 2026-11-01): the rho
+claims are directional (interval excludes 1 and 0), 0.725 is checked against a band of +-0.05
+(fails if the 95% interval is wholly outside; confirmed if the 90% interval is wholly inside), and
+a mixed logit with a random sensitivity per person is a secondary, individual-level estimate.
+Point tests of 0.725 rejected it in up to 44% of studies at sigma = 0.5, N = 240.
+
+### Result (ladder 24/24 cells, tree 22/24)
+
+Means over the six corpora; per-corpus minima in `results_conf/power_new_study_partial.json`.
+
+| | N=60 | 120 | 180 | 240 |
+|---|---|---|---|---|
+| ladder, rho=.725: excludes 1 and 0 (sigma 0 / .5) | 1.00 / 1.00 | 1.00 / 1.00 | 1.00 / 1.00 | 1.00 / 1.00 |
+| ladder, rho=.725: H1 alone (sigma 0 / .5) | .91 / .87 | 1.00 / .97 | 1.00 / 1.00 | 1.00 / 1.00 |
+| ladder, rho=.725: band fails .725 (sigma 0 / .5) | .00 / .01 | .00 / .00 | .00 / .00 | .00 / .01 |
+| ladder, rho=.725: 90% interval inside band (sigma 0 / .5) | .01 / .01 | .28 / .11 | .50 / .21 | .69 / .27 |
+| ladder, rho=1: rejects rho=1 (sigma 0 / .5) | .05 / .06 | .04 / .03 | .05 / .08 | .04 / .10 |
+| ladder, rho=1: band fails .725 | 1.00 / 1.00 | 1.00 / 1.00 | 1.00 / 1.00 | 1.00 / 1.00 |
+| tree, rho=.725: exponent differs from 0 (sigma 0 / .5) | 1.00 / .99 | 1.00 / 1.00 | 1.00 / 1.00 | 1.00 / 1.00 |
+| tree, rho=1: exponent differs from 0 (sigma 0 / .5) | .08 / .05 | .04 / .04 | .05 / .03 | .06 / .05 |
+| tree, rho=.725: excludes 1 (sigma 0 / .5) | .81 / .49 | .94 / .69 | 1.00 / .77 | 1.00 / .80 |
+| tree, rho=.725: band fails .725 (sigma 0 / .5) | .01 / .09 | .00 / .12 | .00 / .12 | .00 / .16 |
+
+H1 pooled with three stand-in public corpora passes .74-.85 when rho = .725, limited by the
+stand-ins; it also passes .09-.12 when rho = 1, because the stand-ins are resampled from spent
+corpora where .725 beat Wilcox, so that rate is not the study's false-alarm rate.
+
+Reading: 120 participants carry every primary claim (ladder excludes Wilcox and plain CPT; H1 alone;
+tree exponent against Wilcox). Confirming 0.725 to +-0.05 succeeds in at most 27% of studies (N = 240) when
+people differ. The tree's rho is a cross-check only: it is weak and over-fails 0.725 when people
+differ.
