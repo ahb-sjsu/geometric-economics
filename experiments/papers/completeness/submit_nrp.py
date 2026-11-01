@@ -29,7 +29,7 @@ from pathlib import Path
 
 sys.path.insert(0, "/home/claude/step5")
 from nats_bursting.client import Client  # noqa: E402
-from nats_bursting.descriptor import JobDescriptor, Resources  # noqa: E402
+from nats_bursting.descriptor import JobDescriptor, Resources, Volume  # noqa: E402
 
 NS = "ssu-atlas-ai"
 BATCH = "ge-completeness"
@@ -49,13 +49,16 @@ def b64(path: Path):
     return base64.b64encode(raw).decode(), hashlib.sha256(raw).hexdigest()
 
 
-def command(src: Path, corpus: str, folds: int, draws: int, script: str, extra=()) -> str:
+def command(src: Path, corpus: str, folds: int, draws: int, script: str, extra=(), cfg="") -> str:
     files = {"score.py": src / "score.py", "strata_models.py": src / "strata_models.py", script: src / script,
-             f"problems_{corpus}.npz": src / "data" / f"problems_{corpus}.npz", **{e: src / e for e in extra}}
+             f"problems_{corpus.split('.p')[0]}.npz": src / "data" / f"problems_{corpus.split('.p')[0]}.npz", **{e: src / e for e in extra}}
     lines = ["set -euo pipefail", "export PYTHONUNBUFFERED=1 PIP_ROOT_USER_ACTION=ignore", "mkdir -p /work"]
     for name, path in files.items():
         enc, sha = b64(path)
-        lines.append(f"echo '{enc}' | base64 -d > /work/{name}")
+        if cfg and name.startswith("problems_"):           # too big for an argument: from the ConfigMap
+            lines.append(f"cp /cfg/{name} /work/{name}")
+        else:
+            lines.append(f"echo '{enc}' | base64 -d > /work/{name}")
         lines.append(f'echo "{sha}  /work/{name}" | sha256sum -c - || exit 3')
     lines += [f"pip install -q {PINS} 2>&1 | tail -1",
               f"cd /work && OMP_NUM_THREADS=1 python -u {script} /work {corpus} /work/out.json "
@@ -97,19 +100,21 @@ def main():
     ap.add_argument("--script", default="score.py")
     ap.add_argument("--tag", default="gec")
     ap.add_argument("--extra", nargs="*", default=[])
+    ap.add_argument("--corpora", nargs="*", default=CORPORA)
+    ap.add_argument("--configmap", default="", help="ConfigMap holding the problems files, mounted at /cfg")
     ap.add_argument("--nats-url", default="nats://localhost:4222")
     a = ap.parse_args()
     if not a.ack:
         sys.exit("refusing without --i-have-checked-nrp-policy")
     a.out.mkdir(parents=True, exist_ok=True)
     client = Client(nats_url=a.nats_url)
-    state = {c: {"attempt": 0, "done": False} for c in CORPORA}
+    state = {c: {"attempt": 0, "done": False} for c in a.corpora}
     stamp = datetime.now().strftime("%m%d%H%M")
     while not all(s["done"] for s in state.values()):
         for c, s in state.items():
             if s["done"]:
                 continue
-            name = f"{a.tag}-{c}-{stamp}-a{s['attempt']}" if s["attempt"] else ""
+            name = f"{a.tag}-{c.replace('_', '-').replace('.', '-')}-{stamp}-a{s['attempt']}" if s["attempt"] else ""
             st = job_state(name)[0] if name else "missing"
             if st == "active":
                 continue
@@ -128,10 +133,12 @@ def main():
                 print(f"{c}: PARKED after {MAX_TRIES} attempts", flush=True)
                 continue
             s["attempt"] += 1
-            d = JobDescriptor(name=f"{a.tag}-{c}-{stamp}-a{s['attempt']}", image=IMAGE,
-                              command=["/bin/bash", "-lc", command(a.src, c, a.folds, a.draws, a.script, a.extra)],
+            d = JobDescriptor(name=f"{a.tag}-{c.replace('_', '-').replace('.', '-')}-{stamp}-a{s['attempt']}", image=IMAGE,
+                              command=["/bin/bash", "-lc", command(a.src, c, a.folds, a.draws, a.script, a.extra, a.configmap)],
                               resources=Resources(cpu="1", memory="1Gi", gpu=0, ephemeral_storage="2Gi"),
-                              labels={"atlas.io/batch": BATCH, "atlas.io/role": c}, backoff_limit=0)
+                              labels={"atlas.io/batch": BATCH, "atlas.io/role": c.replace(".", "-")}, backoff_limit=0,
+                              volumes=[Volume(name="cfg", mount_path="/cfg", read_only=True, config_map=a.configmap)]
+                              if a.configmap else [])
             t_sub = time.time()
             client.submit_and_wait(d, timeout=120)
             st2, created = job_state(d.name)

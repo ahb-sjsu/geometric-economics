@@ -1,0 +1,190 @@
+{
+ "datasets": {
+  "babula2018": {
+   "parts_profile_points": 61
+  },
+  "cpc18": {
+   "parts_profile_points": 61
+  },
+  "gp2012": {
+   "parts_profile_points": 61
+  },
+  "menus_gluth": {
+   "parts_profile_points": 61
+  },
+  "menus_molter": {
+   "parts_profile_points": 61
+  },
+  "pachur2017": {
+   "parts_profile_points": 61
+  },
+  "pachur2018": {
+   "parts_profile_points": 61
+  },
+  "zilker2020": {
+   "parts_profile_points": 61
+  }
+ },
+ "A": {
+  "per_corpus": {
+   "cpc18": {
+    "rho_frozen": 0.725,
+    "grid_key": "0.725",
+    "completeness_frozen": 1.0112989801365098,
+    "completeness_rho1": 0.9821942283686749,
+    "diff": 0.02910475176783489,
+    "diff_ci95": [
+     0.0106424167622793,
+     0.04820985924858477
+    ]
+   },
+   "gp2012": {
+    "rho_frozen": 0.675,
+    "grid_key": "0.675",
+    "completeness_frozen": 1.0790260764110748,
+    "completeness_rho1": 1.081071007949829,
+    "diff": -0.002044931538754069,
+    "diff_ci95": [
+     -0.03506157213543577,
+     0.031191624460296115
+    ]
+   },
+   "pachur2017": {
+    "rho_frozen": 0.725,
+    "grid_key": "0.725",
+    "completeness_frozen": 1.2324146061315,
+    "completeness_rho1": 1.2046955963623582,
+    "diff": 0.027719009769141767,
+    "diff_ci95": [
+     0.007908751389865154,
+     0.053206647933212045
+    ]
+   },
+   "pachur2018": {
+    "rho_frozen": 0.725,
+    "grid_key": "0.725",
+    "completeness_frozen": 1.139684213237932,
+    "completeness_rho1": 1.1435110015434045,
+    "diff": -0.0038267883054725615,
+    "diff_ci95": [
+     -0.028748575215342125,
+     0.015881523860447312
+    ]
+   },
+   "zilker2020": {
+    "rho_frozen": 0.8,
+    "grid_key": "0.8",
+    "completeness_frozen": 0.9803093020878849,
+    "completeness_rho1": 0.9676107298956198,
+    "diff": 0.012698572192265112,
+    "diff_ci95": [
+     -0.0003281316195178711,
+     0.02677138537411608
+    ]
+   },
+   "babula2018": {
+    "rho_frozen": 0.725,
+    "grid_key": "0.725",
+    "completeness_frozen": 0.5569669411303602,
+    "completeness_rho1": 0.5426078989928783,
+    "diff": 0.014359042137481848,
+    "diff_ci95": [
+     -0.023326204700594946,
+     0.05953184310544678
+    ]
+   }
+  },
+  "pooled_diff": 0.013001609337082831,
+  "pooled_ci95": [
+   0.0022271234816864435,
+   0.024390337830643104
+  ],
+  "wins": 4,
+  "pass": true
+ },
+ "risky_pooled_rho": {
+  "rho": 0.725,
+  "ci": [
+   0.7,
+   0.725
+  ]
+ },
+ "B": {
+  "per_dataset": {
+   "menus_molter": {
+    "own_rho": 0.85,
+    "own_ci": [
+     0.825,
+     0.85
+    ],
+    "overlaps_risky": false,
+    "frozen_key": "0.725",
+    "vs_rho0": {
+     "mean": -0.0923430468299891,
+     "ci95": [
+      -0.11445659159721935,
+      -0.06833218309992263
+     ],
+     "loss_a": 0.9488356557997673,
+     "loss_b": 1.0411787026297563
+    },
+    "vs_rho1": {
+     "mean": -0.003317100056323552,
+     "ci95": [
+      -0.04553931882343281,
+      0.04402616130182168
+     ],
+     "loss_a": 0.9488356557997673,
+     "loss_b": 0.9521527558560908
+    },
+    "beats_both": false
+   },
+   "menus_gluth": {
+    "own_rho": 0.425,
+    "own_ci": [
+     0.4,
+     0.45
+    ],
+    "overlaps_risky": false,
+    "frozen_key": "0.725",
+    "vs_rho0": {
+     "mean": -0.0056149979874544065,
+     "ci95": [
+      -0.008160298714012878,
+      -0.0031501043655629986
+     ],
+     "loss_a": 0.5711302365133313,
+     "loss_b": 0.5767452345007857
+    },
+    "vs_rho1": {
+     "mean": -0.009597463593492568,
+     "ci95": [
+      -0.011315645684739075,
+      -0.007873728134521078
+     ],
+     "loss_a": 0.5711302365133313,
+     "loss_b": 0.580727700106824
+    },
+    "beats_both": true
+   }
+  },
+  "pass": false
+ },
+ "reverse": {
+  "menus_pooled_rho": 0.725,
+  "ci": [
+   0.725,
+   0.725
+  ],
+  "grid_key": "0.725",
+  "risky_completeness_diff_vs_wilcox": {
+   "cpc18": 0.02910475176783489,
+   "gp2012": -0.00015193099269428245,
+   "pachur2017": 0.027719009769141767,
+   "pachur2018": -0.0038267883054725615,
+   "zilker2020": 0.015163130625035381,
+   "babula2018": 0.014359042137481848
+  },
+  "mean": 0.01372786916688784
+ }
+}

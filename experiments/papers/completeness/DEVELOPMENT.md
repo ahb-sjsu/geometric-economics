@@ -335,3 +335,106 @@ support for a single law.
 **Readiness for a sealed test.** By the conditions as written, not yet: 2 and 4 fail. What a
 sealed test would need to fix in advance: which units rho is stated in (utility range, or raw range
 via alpha × rho), and one frozen value, then a fresh risky corpus and a fresh menus dataset.
+
+## Building confidence on the spent data (exploration)
+
+Written 2026-11-01, before any fit. Owner: "Why not build confidence on previous datasets first?",
+then "go ahead".
+
+**Two corrections to the diameter-scaling reading, found while designing this, before any new fit.**
+
+- Condition 4 compared the risky rho, fitted on choice rates pooled over participants, with the menus
+  range [0.31, 0.53], which comes from per-participant medians (Gluth 0.36, Molter 0.55). Pooled over
+  participants, Molter's rho was 0.84 (`../menus/DEVELOPMENT.md`, round 2). The like-for-like
+  comparison is pooled against pooled. Condition 4 as written stays failed; the comparison below is
+  the corrected one, stated as such.
+- The post-hoc alpha × rho conversion assumed the menus rho was in raw outcome units. It is not: the
+  menus model scales gaps in the coordinates (W(p), (m/20)^alpha), which already carry a power on
+  magnitude. The conversion is withdrawn.
+
+### A. Risky choice, leave one corpus out (`confidence.py risky`)
+
+A rehearsal of the sealed test on the six spent corpora.
+- Per corpus: profile of CPT_CUr on all data over rho in {0, 0.025, ..., 1.5} (other parameters
+  refit), and 10-fold CV predictions (same folds and ML predictor as before) with rho fixed at each
+  value in {0.40, 0.425, ..., 1.10}.
+- For each held-out corpus, rho is frozen at the minimum of the other five corpora's summed profiles
+  (total nats), and its held-out completeness at that rho is compared with rho = 1 (Wilcox).
+- **A passes** if frozen rho beats rho = 1 on held-out completeness, pooled over the six held-out
+  corpora with a paired 95% interval above 0, and in at least four of six corpora.
+
+### B. Menus, pooled over participants (`confidence.py menus`)
+
+Molter 2022 (9,000 trials, three available options) and Gluth 2018 (all four experiments; HV and LV
+choices, the distractor shown but not available; trials where it was pressed, or no choice was
+made, are dropped). The sealed menus model RNG (`../menus/menus_models.py`), fitted pooled over
+participants with rho fixed.
+- Per dataset: profile over rho in {0, 0.025, ..., 1.5} on all trials, and 5-fold CV over
+  participants with rho fixed at each of {0, 0.40, 0.425, ..., 1.10}.
+- **Corrected comparison:** each menus dataset's profile interval (within 1.92 nats) against the
+  pooled risky interval.
+- **Transfer:** rho frozen from the six risky corpora (summed profiles), applied to each menus
+  dataset, against rho = 0 (additive) and rho = 1 (full range scaling), paired over participants.
+- **B passes** if, in both menus datasets, the risky-frozen rho beats both rho = 0 and rho = 1 on CV
+  log-loss with paired 95% intervals excluding 0.
+- Reported, not graded: the reverse transfer, rho frozen from the two menus datasets, applied to the
+  risky corpora against Wilcox.
+
+### What follows
+
+- A and B pass: a cross-domain sealed test is designed (one frozen rho, fresh risky and menus data).
+- A passes, B fails: the sealed test is risky-only (Wilcox plus a frozen rho on a fresh risky
+  corpus); the cross-domain law is not supported.
+- A fails: no sealed test of diameter scaling.
+
+Known limits: Gluth's trials are mostly two available options, where rho partly acts as curvature
+of the gap (`../menus/RESULTS.md`, H4); the risky ranges are over outcomes, not options, so that
+confound does not carry over the same way. All eight datasets are spent.
+
+### Result (2026-11-01)
+
+Run on NRP (`submit_nrp.py`, tags geconf and geconf2; Gluth split into six parts over the rho grid).
+Outputs in `results_conf/`; summary `results_conf/conf_summary.json` from `aggregate_conf.py`.
+
+**A passes, at the minimum.** Frozen rho beats Wilcox on held-out completeness by +0.013
+[+0.002, +0.024], pooled over the six corpora, and in 4 of 6.
+
+| held out | frozen rho | completeness, frozen | completeness, rho = 1 | difference [95%] |
+|---|---|---|---|---|
+| cpc18 | 0.725 | 1.011 | 0.982 | +0.029 [+0.011, +0.048] |
+| gp2012 | 0.675 | 1.079 | 1.081 | -0.002 [-0.035, +0.031] |
+| pachur2017 | 0.725 | 1.232 | 1.205 | +0.028 [+0.008, +0.053] |
+| pachur2018 | 0.725 | 1.140 | 1.144 | -0.004 [-0.029, +0.016] |
+| zilker2020 | 0.800 | 0.980 | 0.968 | +0.013 [-0.000, +0.027] |
+| babula2018 | 0.725 | 0.557 | 0.543 | +0.014 [-0.023, +0.060] |
+
+The frozen rho is stable across held-out corpora (0.675 to 0.80). Pooled over all six: 0.725
+[0.70, 0.725].
+
+**B fails.** Risky-frozen rho 0.725, CV log-loss per participant (lower is better), paired
+differences:
+
+| dataset | own rho [interval] | loss at 0.725 / 0 / 1 | vs rho = 0 | vs rho = 1 | beats both |
+|---|---|---|---|---|---|
+| Molter | 0.85 [0.825, 0.85] | 0.9488 / 1.0412 / 0.9522 | -0.092 [-0.115, -0.068] | -0.003 [-0.046, +0.044] | no |
+| Gluth | 0.425 [0.40, 0.45] | 0.5711 / 0.5767 / 0.5807 | -0.006 [-0.008, -0.003] | -0.010 [-0.011, -0.008] | yes |
+
+Molter cannot tell 0.725 from full range scaling. Neither menus interval overlaps the risky one,
+and the two menus datasets do not overlap each other (0.85 against 0.425). Pooled, the two menus
+datasets put rho at 0.725, the same grid point as the risky corpora, but that is the minimum of two
+disagreeing profiles, not a shared value. The reverse transfer (reported only) is therefore the
+same rho, and gives +0.014 over Wilcox on the risky corpora.
+
+**Verdict, by the rule written above: A passes, B fails.** The next step is a risky-only sealed test
+(Wilcox against CPT_CUr with rho frozen at 0.725 on a fresh risky corpus). The cross-domain law is
+not supported. Designing that test waits for the owner.
+
+Before designing it:
+- The edge is small (+0.013 completeness pooled; significant in 2 of 6 corpora alone). One fresh
+  corpus may not resolve it; a power calculation from the six per-corpus intervals comes first.
+- Profile intervals treat every choice as independent. Choices cluster within participants and
+  problems, so these intervals are too narrow; the non-overlaps above are not precise.
+- Gluth is mostly two available options, where rho partly acts as gap curvature (known limit above).
+
+Fix during aggregation: `wins` was a numpy integer and broke the JSON write; cast to int. No number
+changed.
