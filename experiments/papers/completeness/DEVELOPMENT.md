@@ -438,3 +438,47 @@ Before designing it:
 
 Fix during aggregation: `wins` was a numpy integer and broke the JSON write; cast to int. No number
 changed.
+
+## Power of the risky-only sealed test (2026-11-01)
+
+Owner: "run the power calculation". `power.py`, run on Atlas (21 s); output `results_conf/power.json`.
+
+The test considered: CPT_CUr with rho frozen at 0.725 against Wilcox (rho = 1) on fresh data, passing
+when the 95% interval on the completeness difference is above 0. A fresh corpus is simulated by
+resampling problems from one spent corpus's held-out per-problem errors. The interval is the
+delta-method interval for the ratio; it matches the bootstrap intervals of part A on the real
+corpora (e.g. cpc18 [0.0104, 0.0478] against [0.0106, 0.0482]).
+
+**One fresh corpus of N problems, like each spent corpus** (P(interval above 0), 4,000 draws):
+
+| N | cpc18 | gp2012 | pachur2017 | pachur2018 | zilker2020 | babula2018 | mean |
+|---|---|---|---|---|---|---|---|
+| 50 | .32 | .01 | .46 | .02 | .15 | .02 | .16 |
+| 100 | .54 | .02 | .81 | .01 | .34 | .04 | .29 |
+| 200 | .81 | .02 | .98 | .00 | .60 | .08 | .42 |
+| 300 | .94 | .02 | 1.00 | .01 | .78 | .13 | .48 |
+| 500 | .99 | .02 | 1.00 | .00 | .95 | .22 | .53 |
+| 1200 | 1.00 | .02 | 1.00 | .00 | 1.00 | .50 | .59 |
+
+Power depends on which kind of corpus the fresh one is, not mainly on its size. In two of the six
+(gp2012, pachur2018) the edge over Wilcox is zero, and no size helps. Averaged over the six, power
+stays below 0.6 even at 1,200 problems; the spent corpora have 51 to 230.
+
+**Several fresh corpora pooled, as in part A** (k corpora drawn from the six, each at its own size):
+
+| k | 1 | 2 | 3 | 4 | 6 | 8 |
+|---|---|---|---|---|---|---|
+| power | .34 | .42 | .47 | .55 | .68 | .75 |
+| median 95% half-width | .022 | .017 | .014 | .012 | .010 | .009 |
+
+The pooled edge is about +0.013, and the half-width falls below it only at about four corpora.
+80% power needs roughly nine or ten fresh corpora of the usual size.
+
+Limits: the spread between corpora is estimated from six corpora only; each simulated corpus keeps
+its source corpus's choices per problem; the effect sizes are the leave-one-out estimates, not
+known true values.
+
+Reading: a sealed test on one fresh corpus would most likely fail even if diameter scaling is real
+on average, and a failure would say little. A sealed test that can carry weight needs many fresh
+corpora, or a claim restated as "beats Wilcox on average across corpora" and tested pooled. Which,
+and whether at all, is the owner's decision.
