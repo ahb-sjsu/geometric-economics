@@ -1,0 +1,102 @@
+{
+ "n": 971,
+ "n_with_role_duty": 334,
+ "weights_compiled": {
+  "parent": 0.9166666666666667,
+  "child": 0.9166666666666667,
+  "sibling": 0.7222222222222222,
+  "kin": 0.5555555555555556,
+  "spouse": 1.0,
+  "partner": 0.9444444444444445,
+  "friend": 0.5,
+  "guardian": 0.7777777777777778,
+  "caregiver": 0.5277777777777778,
+  "employer": 0.3194444444444444,
+  "roommate": 0.3055555555555555
+ },
+ "weight_other": 0.7180555555555557,
+ "spearman_models": 0.9675324675324675,
+ "type_ceiling_weights": {
+  "sibling": 0.9573170731707317,
+  "kin": 0.9166666666666666,
+  "parent": 0.9462962962962963,
+  "friend": 0.6130363036303631,
+  "partner": 0.956081081081081,
+  "other": 0.4393939393939394,
+  "child": 0.9916666666666666,
+  "spouse": 0.9345238095238095,
+  "employer": 0.34615384615384615,
+  "guardian": 0.6875,
+  "roommate": 0.75,
+  "friend, specifically confidentiality regarding personal requests": 0.75
+ },
+ "type_counts": {
+  "sibling": 41,
+  "kin": 23,
+  "parent": 45,
+  "friend": 101,
+  "partner": 74,
+  "other": 11,
+  "child": 10,
+  "spouse": 28,
+  "employer": 13,
+  "guardian": 4,
+  "roommate": 2,
+  "friend, specifically confidentiality regarding personal requests": 1
+ },
+ "corr_closeness_duty_strength": 0.46200950378865707,
+ "corr_closeness_duty_binary": 0.4052701268157488,
+ "R2": {
+  "dR2_C_given_SHKg": 0.05745129774687785,
+  "dR2_Kg_given_SCH": 0.0071738097129039335,
+  "dR2_C_given_SHK": 0.05491775109830188,
+  "grading_lowers_C_by": -0.0025335466485759683,
+  "dR2_C_given_SHKt": 0.050779956263996895,
+  "dR2_Kt_given_SCH": 0.012786359442712447,
+  "R2_Kg": 0.07280711738910617,
+  "R2_K": 0.0959161724811406,
+  "R2_Kt": 0.09247354326565915
+ },
+ "ci95": {
+  "dR2_C_given_SHKg": [
+   0.03684053058769535,
+   0.08431913410190202
+  ],
+  "dR2_Kg_given_SCH": [
+   0.0020923753947525796,
+   0.019693091533277543
+  ],
+  "dR2_C_given_SHK": [
+   0.03426024998407773,
+   0.08106683009210079
+  ],
+  "grading_lowers_C_by": [
+   -0.009921521855519899,
+   0.004582695282130447
+  ],
+  "dR2_C_given_SHKt": [
+   0.031838602817406164,
+   0.07661581523353986
+  ],
+  "dR2_Kt_given_SCH": [
+   0.00489928099705072,
+   0.02866144938177433
+  ],
+  "R2_Kg": [
+   0.04578177589334935,
+   0.10750903669631132
+  ],
+  "R2_K": [
+   0.06488811416702339,
+   0.13623917295160257
+  ],
+  "R2_Kt": [
+   0.061076169906188194,
+   0.1326653837956748
+  ]
+ },
+ "readings": {
+  "relationships_decompose_into_graded_duties": false,
+  "closeness_survives_graded_duties": true
+ }
+}

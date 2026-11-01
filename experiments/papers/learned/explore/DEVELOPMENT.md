@@ -438,3 +438,90 @@ would have to be fixed beforehand, or fit on another corpus.
 Together with `../../strata2/DEVELOPMENT.md` and `../../menus/DEVELOPMENT.md`: in none of the three
 domains does the data prefer a Euclidean distance from a reference point over its nearest
 non-geometric rival. What the data do reward is curvature, and in menus a scale set by the menu.
+
+### Graded duty strength (`duty_weights.py`, `compile_graded.py`)
+
+Written 2026-10-31, before the weights were rated or any graded feature was computed.
+
+**Question.** The rerun left closeness 0.055 beyond the compiled duties. The duties there are
+yes/no: a sibling and a friend weigh the same. Does closeness's remaining share go once each duty
+is weighted by how strong that kind of duty is?
+
+**The weights are not fit on direction 0, and not chosen by me.** I have seen direction 0 by
+relation in the rater test (partners near the middle, family and friends low), so any weights I
+picked would be shaped by the target. The weights come from the two LLM raters instead, shown
+only a list of relation types and never an action, direction 0 or the closeness labels:
+
+- Prompt: how strong are the special obligations a person has toward someone in this relation,
+  beyond what they owe anyone; 0 = nothing beyond what anyone is owed, 6 = the strongest
+  obligations people have.
+- 21 entries: the 17 extractor relation types, with guardian, caregiver, employer and service
+  asked in both directions ("someone in your charge" and "your guardian", and so on). Parent and
+  child are already two types. Both directions matter because the compiled duty text names the
+  relation but not its direction.
+- Three calls per model, the list shuffled each time (seeds 1, 2, 3), temperature 0, thinking off.
+- Weight = mean over the six ratings, scaled to 0–1. Where the compiled text loses direction
+  ("the duties of parent"), the weight is the mean of the two directions.
+- Reported: the two models' Spearman correlation across entries.
+
+**Features Kg, in place of K.** From the rerun's saved IR (`compiled_v2_qwen3-small.jsonl`), no
+recompile:
+
+- duty_strength: the largest weight among the narrator's role duties ("the duties of X").
+  A role duty with other text gets the mean weight of the ten duty relations. 0 if none.
+- breach_strength: the largest weight × severity over the parties in `duties_breached`
+  (severity map as in `compile_analyze.py`). A breached party with no role duty gets the mean
+  weight.
+- commit_violated: as in K.
+
+**Rules, as before with Kg for K.**
+
+- Decompose: ΔR²(C | S, H, Kg) < 0.02, and ΔR²(Kg | S, C, H) ≥ 0.02 with its interval above 0.
+- Closeness survives: ΔR²(C | S, H, Kg) ≥ 0.02 with its interval above 0.
+- Also reported, with a paired bootstrap: how much grading lowers closeness's share,
+  ΔR²(C | S, H, K) − ΔR²(C | S, H, Kg).
+
+**Diagnostic, not a test.** A type ceiling Kt: the same features with each type's weight set to
+the raters' mean closeness for actions with that duty type. It uses closeness, not direction 0,
+so it selects nothing on the target. It shows how much of closeness lives at the level of
+relation type at all. If even Kt leaves closeness its share, no weight per type can remove it,
+and the remainder is closeness within a type (this sister against that sister).
+
+**Limits known now.** Only the ten duty relations reach the saved IR; colleagues, neighbours and
+strangers all read 0. 637 of 971 actions carry no role duty, so grading can act only on the 334
+that do.
+
+**Result (2026-10-31; `hohfeld/duty_weights.json`, `hohfeld/compile_graded_analysis.json`).**
+
+The weights. The two models agree closely across the 21 entries (Spearman 0.97). Compiled weights,
+0–1: spouse 1.00, partner 0.94, parent and child 0.92, guardian 0.78, sibling 0.72, kin 0.56,
+caregiver 0.53, friend 0.50, employer 0.32, roommate 0.31. Free-text duties get 0.72.
+
+On 971 actions, 334 of them with a role duty:
+
+| | Binary K (rerun) | Graded Kg [95%] | Type ceiling Kt [95%] |
+|---|---|---|---|
+| R² of the duty block alone | 0.096 | 0.073 [0.046, 0.108] | 0.092 [0.061, 0.133] |
+| Duties' share beyond S, C, H | 0.016 | 0.007 [0.002, 0.020] | 0.013 [0.005, 0.029] |
+| Closeness's share beyond S, H and the duties | 0.055 | **0.057** [0.037, 0.084] | 0.051 [0.032, 0.077] |
+
+- Readings: closeness survives graded duties; decompose: no.
+- Grading lowers closeness's share by −0.003 [−0.010, +0.005], so not at all.
+
+What this says:
+
+- **Weighting duties by how strong people say they are makes the fit worse, not better.** The
+  graded block explains 7% of direction 0, against 10% for plain yes/no duties. The raters put
+  partners next to spouses and friends at half strength; direction 0 does not order them that
+  way (in the rater test, partners sat near the middle and friends near family).
+- **No weight per relation type could remove closeness's share.** Even with each type weighted by
+  the raters' own mean closeness for that type, closeness keeps 0.051. What is left is closeness
+  within a type: this sister against that sister, an estranged father against a close one.
+- **So the remainder is not duty strength by relation type.** It is item-level closeness. Whether
+  that is real closeness as the text describes it, or something the LLM raters fold into their
+  closeness label, this design cannot tell. Human closeness labels could.
+
+Disclosed: one action's duty text was "the duties of friend, specifically confidentiality ...".
+It took the free-text weight in Kg, as the design says, and its own weight in Kt (one action).
+The first weights call used the full model IDs, which the gateway rejects (404); the rerun used
+the gateway names `gemma` and `qwen3-small`. No rating was returned by the failed call.
