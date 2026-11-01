@@ -7,15 +7,15 @@
 
 > **RUNNING EXAMPLE -- MARIA'S COFFEE SHOP**
 >
-> *Maria's lease is up for renewal. Her landlord, the REIT, wants to raise the rent from $5,000 to $7,000 per month. Maria wants to keep the rent at $5,000. They are playing a game.*
+> *Maria's lease is up for renewal. Her landlord, the REIT, wants to raise the rent from \$5,000 to \$7,000 per month. Maria wants to keep the rent at \$5,000. They are playing a game.*
 >
-> *The Nash equilibrium of this game -- computed on the monetary dimension $d_1$ alone -- is stark. The landlord has the property rights and the legal authority to set any rent the market will bear. Maria either pays or leaves. If comparable spaces in the Mission rent for $7,000, the Nash equilibrium is: landlord charges $7,000; Maria pays (if profitable) or closes (if not). There is no room for negotiation, no account of relationship, no consideration of community. The equilibrium is determined entirely by the outside option on both sides.*
+> *The Nash equilibrium of this game -- computed on the monetary dimension $d_1$ alone -- is stark. The landlord has the property rights and the legal authority to set any rent the market will bear. Maria either pays or leaves. If comparable spaces in the Mission rent for \$7,000, the Nash equilibrium is: landlord charges \$7,000; Maria pays (if profitable) or closes (if not). There is no room for negotiation, no account of relationship, no consideration of community. The equilibrium is determined entirely by the outside option on both sides.*
 >
 > *But Maria and her landlord are not playing the game on $d_1$ alone. Their interaction unfolds on the full nine-dimensional manifold:*
 >
 > *The landlord values long-term tenant stability ($d_5$: trust reduces vacancy risk), neighborhood vitality ($d_6$: empty storefronts depress surrounding property values), and regulatory goodwill ($d_8$: cities with rent-stabilization movements punish landlords seen as extractive). Maria values fairness ($d_3$: she helped create the neighborhood value the landlord is capturing), autonomy ($d_4$: the increase forces operational changes she opposes), and identity ($d_7$: she will not be squeezed into compromising her values).*
 >
-> *On the full manifold, a different equilibrium emerges: a moderate rent increase ($5,000 $\to$ $6,000) with a five-year lease guaranteeing no further increases. The landlord gets stable, above-current income and a reliable tenant who maintains the property's neighborhood value. Maria gets a manageable increase with long-term certainty that allows business planning. Both parties are better off than under the $d_1$-only Nash equilibrium -- not because they are being altruistic, but because they are optimizing on a richer manifold.*
+> *On the full manifold, a different equilibrium emerges: a moderate rent increase (\$5,000 $\to$ \$6,000) with a five-year lease guaranteeing no further increases. The landlord gets stable, above-current income and a reliable tenant who maintains the property's neighborhood value. Maria gets a manageable increase with long-term certainty that allows business planning. Both parties are better off than under the $d_1$-only Nash equilibrium -- not because they are being altruistic, but because they are optimizing on a richer manifold.*
 >
 > *This is the Bond Geodesic Equilibrium. It does not replace Nash. It reveals Nash as a special case -- the equilibrium you get when you collapse the manifold to a single dimension.*
 
@@ -121,20 +121,20 @@ The theorem says three things, each with profound implications:
 >
 > *The Maria-landlord game on $d_1$ alone:*
 >
-> | | Maria pays $7K | Maria leaves |
+> | | Maria pays \$7K | Maria leaves |
 > |---|---|---|
-> | **Landlord charges $7K** | Landlord: +$2K/mo; Maria: $-$2K/mo margin | Landlord: $0 (vacancy); Maria: $-$relocation |
-> | **Landlord charges $5K** | Landlord: $0 increase; Maria: status quo | Landlord: $0; Maria: $-$relocation |
+> | **Landlord charges \$7K** | Landlord: +\$2K/mo; Maria: $-$2K/mo margin | Landlord: \$0 (vacancy); Maria: $-$relocation |
+> | **Landlord charges \$5K** | Landlord: \$0 increase; Maria: status quo | Landlord: \$0; Maria: $-$relocation |
 >
-> *Nash on $d_1$: If Maria's business is viable at $7K, the landlord charges $7K and Maria pays. Nash outcome: ($7K, pay).*
+> *Nash on $d_1$: If Maria's business is viable at \$7K, the landlord charges \$7K and Maria pays. Nash outcome: (\$7K, pay).*
 >
 > *The same game on the full manifold:*
 >
-> *The landlord's augmented payoff for charging $7K includes: $+\$2K/month$ on $d_1$, but $-\beta_{\text{fairness}}$ on $d_3$ (capturing community-created value), $-\beta_{\text{trust}}$ on $d_5$ (damaging a reliable tenant relationship), $-$ cost on $d_6$ (risking neighborhood degradation if Maria closes), and $-$ cost on $d_8$ (risking regulatory backlash in a gentrification-sensitive city).*
+> *The landlord's augmented payoff for charging \$7K includes: $+\$2K/month$ on $d_1$, but $-\beta_{\text{fairness}}$ on $d_3$ (capturing community-created value), $-\beta_{\text{trust}}$ on $d_5$ (damaging a reliable tenant relationship), $-$ cost on $d_6$ (risking neighborhood degradation if Maria closes), and $-$ cost on $d_8$ (risking regulatory backlash in a gentrification-sensitive city).*
 >
-> *Maria's augmented payoff for paying $7K includes the $d_1$ cost plus identity costs ($d_7$: accepting exploitation) and autonomy costs ($d_4$: forced operational changes).*
+> *Maria's augmented payoff for paying \$7K includes the $d_1$ cost plus identity costs ($d_7$: accepting exploitation) and autonomy costs ($d_4$: forced operational changes).*
 >
-> *The BGE of the augmented game: landlord offers $6K with a 5-year guarantee; Maria accepts. The total behavioral friction for both players is lower than under the $d_1$-only Nash, because the boundary penalties on $d_3$, $d_5$, and $d_7$ are avoided.*
+> *The BGE of the augmented game: landlord offers \$6K with a 5-year guarantee; Maria accepts. The total behavioral friction for both players is lower than under the $d_1$-only Nash, because the boundary penalties on $d_3$, $d_5$, and $d_7$ are avoided.*
 
 ---
 
@@ -200,7 +200,7 @@ The key uniqueness result is the *contraction lemma*, which specifies when the b
 
 Intuitively: if Maria's business decisions are mostly about her own costs, her own values, and her own customers (high $\alpha$), and only weakly affected by the landlord's specific rent number (low $\kappa$), then the game has a unique BGE. Maria's optimal path is *almost* independent of the landlord's strategy, and the game converges quickly to the unique equilibrium where both parties are doing their individual best.
 
-When coupling is strong ($\kappa_i \approx \alpha_i$), multiple BGE can coexist -- as in coordination games, where the equilibrium depends on which region of the manifold the agents coordinate on. The rent negotiation becomes a coordination problem: both Maria and the landlord would benefit from the $6K-with-guarantee outcome, but they might also end up at the $7K-with-adversarial-relationship outcome if neither party trusts the other enough to propose the cooperative path.
+When coupling is strong ($\kappa_i \approx \alpha_i$), multiple BGE can coexist -- as in coordination games, where the equilibrium depends on which region of the manifold the agents coordinate on. The rent negotiation becomes a coordination problem: both Maria and the landlord would benefit from the \$6K-with-guarantee outcome, but they might also end up at the \$7K-with-adversarial-relationship outcome if neither party trusts the other enough to propose the cooperative path.
 
 ### Computation
 
@@ -226,13 +226,13 @@ The BGE framework resolves several longstanding puzzles in behavioral game theor
 
 ### Example 31: The Ultimatum Game
 
-In the standard ultimatum game, a proposer is given $10 and makes an offer to split it with a responder. The responder can accept (both get their shares) or reject (both get nothing).
+In the standard ultimatum game, a proposer is given \$10 and makes an offer to split it with a responder. The responder can accept (both get their shares) or reject (both get nothing).
 
-**Classical Nash prediction ($d_1$ only):** The proposer offers $0.01 (the smallest positive amount). The responder accepts, since $0.01 > $0. In subgame-perfect equilibrium, any positive offer is accepted.
+**Classical Nash prediction ($d_1$ only):** The proposer offers \$0.01 (the smallest positive amount). The responder accepts, since \$0.01 > \$0. In subgame-perfect equilibrium, any positive offer is accepted.
 
 **Experimental reality:** Offers below approximately 30% of the endowment are rejected roughly half the time. Modal offers are 40-50% of the endowment. The prediction fails spectacularly.
 
-**BGE analysis:** The responder's decision complex includes $d_3$ (fairness). The attribute-vector change for accepting an unfair offer (say, $1 out of $10) is:
+**BGE analysis:** The responder's decision complex includes $d_3$ (fairness). The attribute-vector change for accepting an unfair offer (say, \$1 out of \$10) is:
 
 - $\Delta d_1 = +1$ (monetary gain)
 - $\Delta d_3 = -\text{large}$ (accepting an unfair split violates fairness norms)
@@ -246,9 +246,9 @@ The edge weight for rejecting is:
 
 $$w_{\text{reject}} = \frac{1^2}{\sigma_1^2}$$
 
-(The monetary loss of $1 is the only cost, since rejection does not cross any moral boundary.)
+(The monetary loss of \$1 is the only cost, since rejection does not cross any moral boundary.)
 
-When the fairness boundary penalty $\beta_{\text{fairness}}$ exceeds the monetary gain ($\$1^2/\sigma_1^2$), rejection is the Bond geodesic. The responder's $h(n)$ fires the fairness alarm (System 1: "this is insulting"), and System 2's calculation of the $1 gain cannot overcome the fairness penalty on the full manifold. The responder rejects -- rationally, on the correct manifold.
+When the fairness boundary penalty $\beta_{\text{fairness}}$ exceeds the monetary gain ($\$1^2/\sigma_1^2$), rejection is the Bond geodesic. The responder's $h(n)$ fires the fairness alarm (System 1: "this is insulting"), and System 2's calculation of the \$1 gain cannot overcome the fairness penalty on the full manifold. The responder rejects -- rationally, on the correct manifold.
 
 The proposer, anticipating this (via the BGE best-response dynamics), offers 40-50% to avoid triggering the responder's fairness boundary. The BGE of the ultimatum game is an approximately equal split -- exactly what the experiments show.
 
@@ -288,7 +288,7 @@ All three predictions are confirmed by the experimental literature (see, e.g., L
 
 ### Example 33: Public Goods Provision
 
-$N$ agents each receive an endowment of $10. Each can contribute any amount $c_i \in [0, 10]$ to a public pool. The pool is multiplied by a factor $m$ (with $1 < m < N$) and divided equally. The payoff to agent $i$ on $d_1$ is:
+$N$ agents each receive an endowment of \$10. Each can contribute any amount $c_i \in [0, 10]$ to a public pool. The pool is multiplied by a factor $m$ (with $1 < m < N$) and divided equally. The payoff to agent $i$ on $d_1$ is:
 
 $$\pi_i = (10 - c_i) + \frac{m \sum_j c_j}{N}$$
 
@@ -325,14 +325,14 @@ Let us work through the full BGE computation for the Maria-landlord lease negoti
 ### Players and Strategy Spaces
 
 **Agent 1: The landlord (REIT)**
-- Start state: Current lease at $5K/month, stable tenant, good neighborhood reputation
+- Start state: Current lease at \$5K/month, stable tenant, good neighborhood reputation
 - Goal: Maximize return on property investment (on all relevant dimensions)
-- Strategy set $S_1$: {Charge $5K, Charge $6K, Charge $6K + 5yr guarantee, Charge $7K, Charge $7K + buyout offer}
+- Strategy set $S_1$: {Charge \$5K, Charge \$6K, Charge \$6K + 5yr guarantee, Charge \$7K, Charge \$7K + buyout offer}
 
 **Agent 2: Maria**
 - Start state: Operating business with thin margins, strong community ties
 - Goal: Maintain viable business with identity and community preserved
-- Strategy set $S_2$: {Accept any offer, Accept $\leq$ $6K only, Accept $\leq$ $6K with guarantee only, Reject all increases, Negotiate + community campaign}
+- Strategy set $S_2$: {Accept any offer, Accept $\leq$ \$6K only, Accept $\leq$ \$6K with guarantee only, Reject all increases, Negotiate + community campaign}
 
 ### Behavioral Friction Matrix
 
@@ -342,46 +342,46 @@ For each strategy pair, we compute the behavioral friction (total manifold cost)
 
 | Landlord \ Maria | Accept any | Accept $\leq$6K | Accept $\leq$6K+guar | Reject all | Negotiate+campaign |
 |---|---|---|---|---|---|
-| $5K (no change) | $d_1$: 0 | $d_1$: 0 | $d_1$: 0 | $d_1$: 0 | $d_1$: 0, $d_8$: $-$small |
-| $6K | $d_1$: $-$1K gain | $d_1$: $-$1K | $d_1$: $-$1K | vacancy cost | $d_1$: $-$1K, $d_8$: $-$mod |
-| $6K + 5yr | $d_1$: $-$1K, $d_5$: +stab | $d_1$: $-$1K, $d_5$: + | $d_1$: $-$1K, $d_5$: + | vacancy cost | $d_1$: $-$1K, $d_5$: + |
-| $7K | $d_1$: $-$2K, $d_3$: $-\beta$ | $d_1$: vacancy | $d_1$: vacancy | vacancy cost | $d_1$: vac, $d_8$: $-$large |
-| $7K + buyout | $d_1$: $-$2K + buyout | vacancy | vacancy | vacancy + buyout | $d_8$: $-$very large |
+| \$5K (no change) | $d_1$: 0 | $d_1$: 0 | $d_1$: 0 | $d_1$: 0 | $d_1$: 0, $d_8$: $-$small |
+| \$6K | $d_1$: $-$1K gain | $d_1$: $-$1K | $d_1$: $-$1K | vacancy cost | $d_1$: $-$1K, $d_8$: $-$mod |
+| \$6K + 5yr | $d_1$: $-$1K, $d_5$: +stab | $d_1$: $-$1K, $d_5$: + | $d_1$: $-$1K, $d_5$: + | vacancy cost | $d_1$: $-$1K, $d_5$: + |
+| \$7K | $d_1$: $-$2K, $d_3$: $-\beta$ | $d_1$: vacancy | $d_1$: vacancy | vacancy cost | $d_1$: vac, $d_8$: $-$large |
+| \$7K + buyout | $d_1$: $-$2K + buyout | vacancy | vacancy | vacancy + buyout | $d_8$: $-$very large |
 
-The critical insight: the landlord's BF for charging $7K includes a fairness boundary penalty $\beta_{\text{fairness}}$ on $d_3$ (capturing gentrification-created value) and a legitimacy cost on $d_8$ (reputational risk in a gentrification-sensitive city). These penalties do not appear in the $d_1$-only analysis.
+The critical insight: the landlord's BF for charging \$7K includes a fairness boundary penalty $\beta_{\text{fairness}}$ on $d_3$ (capturing gentrification-created value) and a legitimacy cost on $d_8$ (reputational risk in a gentrification-sensitive city). These penalties do not appear in the $d_1$-only analysis.
 
 **Maria's BF for each strategy pair (selected cells):**
 
-- **Accept $7K**: $d_1$: $-$2K/month margin loss; $d_3$: $-\beta_{\text{fairness}}$ (accepting exploitation); $d_4$: $-$moderate (forced operational changes); $d_7$: $-$moderate (identity compromise)
-- **Accept $6K with guarantee**: $d_1$: $-$1K/month (manageable); $d_3$: small (increase is within fair range); $d_5$: + (long-term stability builds trust); $d_7$: 0 (no identity compromise)
+- **Accept \$7K**: $d_1$: $-$2K/month margin loss; $d_3$: $-\beta_{\text{fairness}}$ (accepting exploitation); $d_4$: $-$moderate (forced operational changes); $d_7$: $-$moderate (identity compromise)
+- **Accept \$6K with guarantee**: $d_1$: $-$1K/month (manageable); $d_3$: small (increase is within fair range); $d_5$: + (long-term stability builds trust); $d_7$: 0 (no identity compromise)
 - **Negotiate + campaign**: $d_1$: uncertain; $d_4$: + (exercising autonomy); $d_6$: + (community engagement); $d_7$: + (acting on values); $d_8$: $-$small (adversarial)
 
 ### Computing the BGE
 
 **Step 1: Landlord's best response to each of Maria's strategies.**
 
-- If Maria accepts any offer: Landlord's BF is minimized at $6K + 5yr guarantee (good $d_1$ return, trust benefit from stability, avoids fairness boundary of $7K)
-- If Maria accepts $\leq$6K: Landlord must offer $\leq$6K; best response is $6K
-- If Maria accepts $\leq$6K with guarantee: Landlord's best response is $6K + 5yr
-- If Maria rejects all increases: Landlord's best response is $5K (avoid vacancy cost)
-- If Maria negotiates: Landlord's best response is $6K + 5yr (avoids campaign costs on $d_8$)
+- If Maria accepts any offer: Landlord's BF is minimized at \$6K + 5yr guarantee (good $d_1$ return, trust benefit from stability, avoids fairness boundary of \$7K)
+- If Maria accepts $\leq$6K: Landlord must offer $\leq$6K; best response is \$6K
+- If Maria accepts $\leq$6K with guarantee: Landlord's best response is \$6K + 5yr
+- If Maria rejects all increases: Landlord's best response is \$5K (avoid vacancy cost)
+- If Maria negotiates: Landlord's best response is \$6K + 5yr (avoids campaign costs on $d_8$)
 
 **Step 2: Maria's best response to each of the landlord's strategies.**
 
-- If landlord charges $5K: Maria accepts (status quo is optimal)
-- If landlord charges $6K: Maria accepts (manageable, no boundaries crossed)
-- If landlord charges $6K + 5yr: Maria accepts with guarantee (best BF -- manageable cost + long-term stability)
-- If landlord charges $7K: Maria negotiates + campaigns (high BF for accepting; lower BF for fighting)
-- If landlord charges $7K + buyout: Maria negotiates (high BF for both accepting and buyout)
+- If landlord charges \$5K: Maria accepts (status quo is optimal)
+- If landlord charges \$6K: Maria accepts (manageable, no boundaries crossed)
+- If landlord charges \$6K + 5yr: Maria accepts with guarantee (best BF -- manageable cost + long-term stability)
+- If landlord charges \$7K: Maria negotiates + campaigns (high BF for accepting; lower BF for fighting)
+- If landlord charges \$7K + buyout: Maria negotiates (high BF for both accepting and buyout)
 
 **Step 3: Find fixed points.**
 
 The best-response correspondence has a fixed point at:
-- **Landlord: $6K + 5-year guarantee**
+- **Landlord: \$6K + 5-year guarantee**
 - **Maria: Accept $\leq$6K with guarantee**
 
 At this profile:
-- Landlord's BF: $d_1$ gain of $12K/year; $d_5$ gain from stability; no fairness boundary crossed; moderate legitimacy
+- Landlord's BF: $d_1$ gain of \$12K/year; $d_5$ gain from stability; no fairness boundary crossed; moderate legitimacy
 - Maria's BF: $d_1$ cost manageable; $d_3$ within fair range; $d_5$ gain from certainty; $d_7$ no identity compromise
 
 This is the **Bond Geodesic Equilibrium** of the lease negotiation.
@@ -396,22 +396,22 @@ Maria's $\alpha$: High. Maria's costs are determined by her own financial positi
 
 Maria's $\kappa$: Moderate. Maria's costs depend on the landlord's offer, but her values and community are largely independent of the landlord's specific number.
 
-Since $\alpha_i > \kappa_i$ for both players (each agent's situation is dominated by their own manifold structure rather than by the other's strategy), the contraction condition (Lemma 26) is satisfied. The BGE is unique. Iterated best response converges geometrically to the $6K + guarantee equilibrium.
+Since $\alpha_i > \kappa_i$ for both players (each agent's situation is dominated by their own manifold structure rather than by the other's strategy), the contraction condition (Lemma 26) is satisfied. The BGE is unique. Iterated best response converges geometrically to the \$6K + guarantee equilibrium.
 
 ### Comparison with $d_1$-Only Nash
 
 | | Nash ($d_1$ only) | BGE (full manifold) |
 |---|---|---|
-| Landlord's strategy | Charge $7K | Charge $6K + 5yr guarantee |
-| Maria's strategy | Pay or leave | Accept $6K with guarantee |
-| Landlord's $d_1$ payoff | +$2K/month | +$1K/month |
+| Landlord's strategy | Charge \$7K | Charge \$6K + 5yr guarantee |
+| Maria's strategy | Pay or leave | Accept \$6K with guarantee |
+| Landlord's $d_1$ payoff | +\$2K/month | +\$1K/month |
 | Landlord's full-manifold BF | High ($d_3$, $d_5$, $d_8$ costs) | Low (no boundaries crossed) |
 | Maria's $d_1$ payoff | $-$2K/month | $-$1K/month |
 | Maria's full-manifold BF | Very high ($d_3$, $d_4$, $d_7$ costs) | Low (manageable, identity preserved) |
 | Stability | Unstable (Maria may leave) | Stable (5-year lock-in) |
 | Pareto comparison | Pareto-dominated on full manifold | Pareto improvement over Nash |
 
-The BGE is strictly Pareto superior to the Nash outcome on the full manifold. Both players have lower total behavioral friction. The landlord sacrifices $1K/month in $d_1$ but gains stability ($d_5$), community preservation ($d_6$), and regulatory goodwill ($d_8$). Maria absorbs a $1K/month increase but gains certainty ($d_9$) and preserves identity ($d_7$), fairness ($d_3$), and community ($d_6$).
+The BGE is strictly Pareto superior to the Nash outcome on the full manifold. Both players have lower total behavioral friction. The landlord sacrifices \$1K/month in $d_1$ but gains stability ($d_5$), community preservation ($d_6$), and regulatory goodwill ($d_8$). Maria absorbs a \$1K/month increase but gains certainty ($d_9$) and preserves identity ($d_7$), fairness ($d_3$), and community ($d_6$).
 
 This is not a coincidence. It is a structural feature of the BGE: by optimizing on the full manifold, agents find paths that create value on evaluative dimensions ($d_3$, $d_5$, $d_6$, $d_7$) that the scalar projection cannot see. The evaluative dimensions are not conserved (Attribute Conservation theorem), so *both* parties can gain on them simultaneously. The BGE exploits this positive-sum structure; the Nash equilibrium, limited to $d_1$, misses it entirely.
 

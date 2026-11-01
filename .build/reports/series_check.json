@@ -1,0 +1,491 @@
+{
+ "repo": "geometric-economics",
+ "book": {
+  "number": 4,
+  "title": "Geometric Economics"
+ },
+ "generated": "2026-09-10 08:59:29",
+ "files": 17,
+ "words": 105533,
+ "hard_defects": 9,
+ "counts": {
+  "prose-brackets": 11,
+  "prose-dup": 4,
+  "xref": 9,
+  "spelling": 6,
+  "spelling-candidate": 36
+ },
+ "stats": {
+  "katex": "3824 snippets parsed, 0 failures",
+  "xrefs": "259 references checked, 9 dangling; targets: Chapter=16, Corollary=5, Definition=25, Lemma=1, Proposition=26, Section=105, Theorem=22",
+  "codespell": "6 suggestions",
+  "rare-tokens": "136 unknown tokens, 98 rare (<=2 uses) listed as candidates (first 150)",
+  "code-blocks": "0 python blocks run: 0 ok, 0 not clean (see findings)",
+  "code-results": [],
+  "build": "18 pages, 0 broken internal links (temp build)"
+ },
+ "findings": [
+  {
+   "check": "prose-brackets",
+   "file": "chapters/ch01_the_scalar_economy.md",
+   "line": 67,
+   "msg": "unbalanced () in paragraph (0 vs 1)",
+   "severity": "candidate"
+  },
+  {
+   "check": "prose-dup",
+   "file": "chapters/ch02_historical_precursors.md",
+   "line": 274,
+   "msg": "duplicate word 'MATH MATH'",
+   "severity": "candidate"
+  },
+  {
+   "check": "prose-brackets",
+   "file": "chapters/ch03_decision_manifold.md",
+   "line": 231,
+   "msg": "unbalanced () in paragraph (0 vs 1)",
+   "severity": "candidate"
+  },
+  {
+   "check": "prose-dup",
+   "file": "chapters/ch04_economic_metric.md",
+   "line": 408,
+   "msg": "duplicate word 'MATH MATH'",
+   "severity": "candidate"
+  },
+  {
+   "check": "prose-brackets",
+   "file": "chapters/ch04_economic_metric.md",
+   "line": 206,
+   "msg": "unbalanced () in paragraph (0 vs 1)",
+   "severity": "candidate"
+  },
+  {
+   "check": "prose-brackets",
+   "file": "chapters/ch05_price_as_heuristic.md",
+   "line": 405,
+   "msg": "unbalanced () in paragraph (1 vs 2)",
+   "severity": "candidate"
+  },
+  {
+   "check": "prose-brackets",
+   "file": "chapters/ch06_economic_tensors.md",
+   "line": 190,
+   "msg": "unbalanced () in paragraph (2 vs 3)",
+   "severity": "candidate"
+  },
+  {
+   "check": "prose-brackets",
+   "file": "chapters/ch07_bond_geodesic_equilibrium.md",
+   "line": 112,
+   "msg": "unbalanced () in paragraph (5 vs 6)",
+   "severity": "candidate"
+  },
+  {
+   "check": "prose-brackets",
+   "file": "chapters/ch07_bond_geodesic_equilibrium.md",
+   "line": 217,
+   "msg": "unbalanced () in paragraph (2 vs 1)",
+   "severity": "candidate"
+  },
+  {
+   "check": "prose-brackets",
+   "file": "chapters/ch07_bond_geodesic_equilibrium.md",
+   "line": 301,
+   "msg": "unbalanced () in paragraph (1 vs 3)",
+   "severity": "candidate"
+  },
+  {
+   "check": "prose-brackets",
+   "file": "chapters/ch10_market_failures.md",
+   "line": 69,
+   "msg": "unbalanced () in paragraph (0 vs 1)",
+   "severity": "candidate"
+  },
+  {
+   "check": "prose-dup",
+   "file": "chapters/ch11_financial_crises.md",
+   "line": 431,
+   "msg": "duplicate word 'MATH MATH'",
+   "severity": "candidate"
+  },
+  {
+   "check": "prose-brackets",
+   "file": "chapters/ch12_inequality.md",
+   "line": 208,
+   "msg": "unbalanced () in paragraph (0 vs 1)",
+   "severity": "candidate"
+  },
+  {
+   "check": "prose-dup",
+   "file": "chapters/ch13_trade.md",
+   "line": 247,
+   "msg": "duplicate word 'MATH MATH'",
+   "severity": "candidate"
+  },
+  {
+   "check": "prose-brackets",
+   "file": "chapters/ch13_trade.md",
+   "line": 160,
+   "msg": "unbalanced () in paragraph (5 vs 6)",
+   "severity": "candidate"
+  },
+  {
+   "check": "xref",
+   "file": "chapters/ch01_the_scalar_economy.md",
+   "line": 285,
+   "msg": "Chapter 20 referenced but no such chapter is defined in this book",
+   "severity": "hard"
+  },
+  {
+   "check": "xref",
+   "file": "chapters/ch01_the_scalar_economy.md",
+   "line": 175,
+   "msg": "Appendix C referenced but no such appendix is defined in this book",
+   "severity": "hard"
+  },
+  {
+   "check": "xref",
+   "file": "chapters/ch01_the_scalar_economy.md",
+   "line": 209,
+   "msg": "Appendix C referenced but no such appendix is defined in this book",
+   "severity": "hard"
+  },
+  {
+   "check": "xref",
+   "file": "chapters/ch01_the_scalar_economy.md",
+   "line": 213,
+   "msg": "Appendix A referenced but no such appendix is defined in this book",
+   "severity": "hard"
+  },
+  {
+   "check": "xref",
+   "file": "chapters/ch01_the_scalar_economy.md",
+   "line": 263,
+   "msg": "Appendix C referenced but no such appendix is defined in this book",
+   "severity": "hard"
+  },
+  {
+   "check": "xref",
+   "file": "chapters/ch03_decision_manifold.md",
+   "line": 54,
+   "msg": "Appendix C referenced but no such appendix is defined in this book",
+   "severity": "hard"
+  },
+  {
+   "check": "xref",
+   "file": "chapters/ch04_economic_metric.md",
+   "line": 500,
+   "msg": "Appendix C referenced but no such appendix is defined in this book",
+   "severity": "hard"
+  },
+  {
+   "check": "xref",
+   "file": "chapters/ch07_bond_geodesic_equilibrium.md",
+   "line": 528,
+   "msg": "Chapter 20 referenced but no such chapter is defined in this book",
+   "severity": "hard"
+  },
+  {
+   "check": "xref",
+   "file": "chapters/ch16_open_questions.md",
+   "line": 34,
+   "msg": "Chapter 18 referenced but no such chapter is defined in this book",
+   "severity": "hard"
+  },
+  {
+   "check": "spelling",
+   "file": "chapters\\ch02_historical_precursors.md",
+   "line": 344,
+   "msg": "codespell: AER -> ARE",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling",
+   "file": "chapters\\ch05_price_as_heuristic.md",
+   "line": 451,
+   "msg": "codespell: Hart -> Heart, Harm",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling",
+   "file": "chapters\\ch05_price_as_heuristic.md",
+   "line": 512,
+   "msg": "codespell: Hart -> Heart, Harm",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling",
+   "file": "chapters\\ch12_inequality.md",
+   "line": 407,
+   "msg": "codespell: Studi -> Study, Studio",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling",
+   "file": "chapters\\ch13_trade.md",
+   "line": 162,
+   "msg": "codespell: Autor -> Author",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling",
+   "file": "chapters\\ch13_trade.md",
+   "line": 280,
+   "msg": "codespell: Autor -> Author",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch14_regulation.md",
+   "line": null,
+   "msg": "'baristas' (x1) — maybe 'aristas'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch06_economic_tensors.md",
+   "line": null,
+   "msg": "'bijections' (x1) — maybe 'bisections'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch06_economic_tensors.md",
+   "line": null,
+   "msg": "'cafes' (x1) — maybe 'cafés'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch11_financial_crises.md",
+   "line": null,
+   "msg": "'collateralized' (x1) — maybe 'collateralize'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch03_decision_manifold.md",
+   "line": null,
+   "msg": "'comp' (x1) — maybe 'come'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch07_bond_geodesic_equilibrium.md",
+   "line": null,
+   "msg": "'dans' (x1) — maybe 'days'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch02_historical_precursors.md",
+   "line": null,
+   "msg": "'debias' (x1) — maybe 'debits'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch06_economic_tensors.md",
+   "line": null,
+   "msg": "'devant' (x1) — maybe 'deviant'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch12_inequality.md",
+   "line": null,
+   "msg": "'equalizations' (x1) — maybe 'equalization'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch10_market_failures.md",
+   "line": null,
+   "msg": "'gentrifiers' (x1) — maybe 'gentrifier'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch07_bond_geodesic_equilibrium.md",
+   "line": null,
+   "msg": "'guar' (x1) — maybe 'guard'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch10_market_failures.md",
+   "line": null,
+   "msg": "'incentivized' (x1) — maybe 'incentivize'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch13_trade.md",
+   "line": null,
+   "msg": "'intra' (x1) — maybe 'infra'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch07_bond_geodesic_equilibrium.md",
+   "line": null,
+   "msg": "'leur' (x1) — maybe 'lemur'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch09_conservation_laws.md",
+   "line": null,
+   "msg": "'literatures' (x1) — maybe 'literature'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch08_gauge_invariance.md",
+   "line": null,
+   "msg": "'mapsto' (x1) — maybe 'maputo'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch10_market_failures.md",
+   "line": null,
+   "msg": "'misestimates' (x1) — maybe 'misestimate'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch02_historical_precursors.md",
+   "line": null,
+   "msg": "'parameterization' (x1) — maybe 'parametrization'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch03_decision_manifold.md",
+   "line": null,
+   "msg": "'parameterize' (x1) — maybe 'parametrize'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch11_financial_crises.md",
+   "line": null,
+   "msg": "'parameterizes' (x1) — maybe 'parametrizes'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch03_decision_manifold.md",
+   "line": null,
+   "msg": "'priori' (x1) — maybe 'prior'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch01_the_scalar_economy.md",
+   "line": null,
+   "msg": "'proto' (x1) — maybe 'photo'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch11_financial_crises.md",
+   "line": null,
+   "msg": "'regularizations' (x1) — maybe 'regularization'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch16_open_questions.md",
+   "line": null,
+   "msg": "'roastery' (x1) — maybe 'roaster'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch02_historical_precursors.md",
+   "line": null,
+   "msg": "'satisfices' (x1) — maybe 'satisfies'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch05_price_as_heuristic.md",
+   "line": null,
+   "msg": "'tech' (x1) — maybe 'teach'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch12_inequality.md",
+   "line": null,
+   "msg": "'unbanked' (x1) — maybe 'unbacked'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch08_gauge_invariance.md",
+   "line": null,
+   "msg": "'unbundles' (x1) — maybe 'unbundled'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch05_price_as_heuristic.md",
+   "line": null,
+   "msg": "'versa' (x1) — maybe 'verse'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch06_economic_tensors.md",
+   "line": null,
+   "msg": "'covector' (x2) — maybe 'convector'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch00_front_matter.md",
+   "line": null,
+   "msg": "'covectors' (x2) — maybe 'convectors'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch08_gauge_invariance.md",
+   "line": null,
+   "msg": "'doesn' (x2) — maybe 'does'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch02_historical_precursors.md",
+   "line": null,
+   "msg": "'preorder' (x2) — maybe 'reorder'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch12_inequality.md",
+   "line": null,
+   "msg": "'tensorial' (x2) — maybe 'tonsorial'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch10_market_failures.md",
+   "line": null,
+   "msg": "'timelines' (x2) — maybe 'timeline'",
+   "severity": "candidate"
+  },
+  {
+   "check": "spelling-candidate",
+   "file": "chapters\\ch04_economic_metric.md",
+   "line": null,
+   "msg": "'underweights' (x2) — maybe 'underweight'",
+   "severity": "candidate"
+  }
+ ]
+}

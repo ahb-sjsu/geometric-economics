@@ -7,7 +7,7 @@
 
 > **RUNNING EXAMPLE -- MARIA'S COFFEE SHOP**
 >
-> *Maria is staring at her wholesale invoice. Her Oakland roaster, Elena, has raised the price of fair-trade Ethiopian Yirgacheffe by 18%. Her System 1 fires instantly: this feels wrong -- she has been loyal to this supplier for six years, and the increase feels like it violates the relationship. Her System 2 opens a spreadsheet: current margin per cup is $2.10; the increase cuts it to $1.53; at 200 cups a day, that is $114/day in lost margin, $3,420/month.*
+> *Maria is staring at her wholesale invoice. Her Oakland roaster, Elena, has raised the price of fair-trade Ethiopian Yirgacheffe by 18%. Her System 1 fires instantly: this feels wrong -- she has been loyal to this supplier for six years, and the increase feels like it violates the relationship. Her System 2 opens a spreadsheet: current margin per cup is \$2.10; the increase cuts it to \$1.53; at 200 cups a day, that is \$114/day in lost margin, \$3,420/month.*
 >
 > *But the decision Maria faces is not "absorb or pass through." It is a pathfinding problem on a nine-dimensional manifold. Absorb the cost and her monetary position erodes ($d_1$). Pass the full increase to customers and she risks losing the price-sensitive regulars who are also her community ($d_6$). Switch to a cheaper, non-fair-trade supplier and she violates her identity as an ethical sourcer ($d_7$) and breaks faith with the Oakland roaster ($d_5$). Split the increase -- raise prices modestly, absorb some margin loss, and negotiate a smaller increase with the roaster -- and she navigates a path through the manifold that balances all nine dimensions.*
 >
@@ -42,7 +42,7 @@ The starting point is the formal definition of an economic decision as a search 
 
 This definition reframes every economic choice as a question about paths, not points. The classical economist asks: "Which outcome maximizes utility?" The geometric economist asks: "Which *path* through the decision manifold reaches the goal region at minimum total cost -- where cost is measured on all nine dimensions?"
 
-The distinction matters. Two paths may reach the same monetary outcome ($d_1$) but at radically different costs on the other dimensions. A company that reaches $10M in revenue through fair dealing and one that reaches $10M through fraud arrive at the same $d_1$ destination, but the second has accumulated catastrophic costs on $d_2$ (rights violations), $d_5$ (trust destruction), $d_7$ (identity corruption), and $d_8$ (legitimacy erosion). The scalar economist sees identical outcomes. The geometric economist sees two paths with vastly different total costs -- and correctly predicts that the second path is unstable, because the accumulated non-monetary costs will eventually cascade back into $d_1$ (through lawsuits, loss of customers, regulatory action).
+The distinction matters. Two paths may reach the same monetary outcome ($d_1$) but at radically different costs on the other dimensions. A company that reaches \$10M in revenue through fair dealing and one that reaches \$10M through fraud arrive at the same $d_1$ destination, but the second has accumulated catastrophic costs on $d_2$ (rights violations), $d_5$ (trust destruction), $d_7$ (identity corruption), and $d_8$ (legitimacy erosion). The scalar economist sees identical outcomes. The geometric economist sees two paths with vastly different total costs -- and correctly predicts that the second path is unstable, because the accumulated non-monetary costs will eventually cascade back into $d_1$ (through lawsuits, loss of customers, regulatory action).
 
 ### The System 1 / System 2 Mapping
 
@@ -61,7 +61,7 @@ The correspondence between A* search and dual-process theory is not approximate.
 | Optimal path $\gamma^*$ | Chosen course of action |
 | Path not found | Decision paralysis / no acceptable option |
 
-Consider what each component does. The $g(n)$ function accumulates *actual costs* as the agent moves through the decision complex. This is the spreadsheet work: Maria knows she has spent $14,000 this month on rent, $6,200 on supplies, $9,800 on wages. These are recorded, verifiable, deliberate calculations. System 2 is slow because it operates on concrete data that must be retrieved, processed, and summed.
+Consider what each component does. The $g(n)$ function accumulates *actual costs* as the agent moves through the decision complex. This is the spreadsheet work: Maria knows she has spent \$14,000 this month on rent, \$6,200 on supplies, \$9,800 on wages. These are recorded, verifiable, deliberate calculations. System 2 is slow because it operates on concrete data that must be retrieved, processed, and summed.
 
 The $h(n)$ function estimates *remaining costs* from the current state to the goal. This is the intuitive assessment: Maria feels that switching to a non-fair-trade supplier would "cost too much" -- not in dollars, but in identity ($d_7$), trust ($d_5$), and community standing ($d_6$). She does not compute these costs; she *perceives* them, the way you perceive that a dark alley is dangerous without computing the conditional probability of assault. System 1 is fast because it operates on compressed, pre-computed estimates -- heuristics -- rather than on raw data.
 
@@ -69,7 +69,7 @@ The genius of A* search is that it combines both: $f(n) = g(n) + h(n)$. The deci
 
 ### The Price Signal as Scalar Heuristic
 
-Where does the *price signal* fit in this architecture? Prices are the most ubiquitous heuristic in economic life. When Maria sees that fair-trade Ethiopian Yirgacheffe costs $8.20 per pound and conventional Colombian costs $4.50 per pound, the prices are providing her with a *scalar estimate* of the cost of transitioning between states on the decision manifold.
+Where does the *price signal* fit in this architecture? Prices are the most ubiquitous heuristic in economic life. When Maria sees that fair-trade Ethiopian Yirgacheffe costs \$8.20 per pound and conventional Colombian costs \$4.50 per pound, the prices are providing her with a *scalar estimate* of the cost of transitioning between states on the decision manifold.
 
 But prices are heuristics about $d_1$ only. The price of a good does not encode its fairness ($d_3$), the labor conditions under which it was produced ($d_4$), the trust relationship with the supplier ($d_5$), or its environmental impact ($d_6$). The price is a *projection* of the full edge weight onto the monetary dimension:
 
@@ -213,7 +213,7 @@ With the A* framework in hand, we can now give a precise geometric account of th
 
 ### Prices as $d_1$-Heuristics
 
-The price of a good or service is a scalar estimate of the $d_1$ cost of a transition on the economic decision manifold. When Maria sees that a pound of coffee beans costs $8.20, the price is telling her: "The monetary cost of transitioning from the state 'I do not have these beans' to the state 'I have these beans' is approximately $8.20 along $d_1$."
+The price of a good or service is a scalar estimate of the $d_1$ cost of a transition on the economic decision manifold. When Maria sees that a pound of coffee beans costs \$8.20, the price is telling her: "The monetary cost of transitioning from the state 'I do not have these beans' to the state 'I have these beans' is approximately \$8.20 along $d_1$."
 
 This is a heuristic in the technical A* sense: it estimates the cost-to-go without requiring the agent to trace through the full sequence of intermediate states (sourcing, shipping, roasting, packaging, retailing). The market aggregates this information and presents it as a single number.
 
@@ -250,12 +250,12 @@ The pattern is not random. It is predicted by the dimensionality of the active m
 
 ## Worked Example: Maria's Coffee Pricing Decision
 
-Let us work through a complete A* analysis of a concrete economic decision: Maria is considering whether to raise her coffee prices from $4.50 to $5.00 per cup in response to her supplier's 18% cost increase.
+Let us work through a complete A* analysis of a concrete economic decision: Maria is considering whether to raise her coffee prices from \$4.50 to \$5.00 per cup in response to her supplier's 18% cost increase.
 
 ### Step 1: Define the Search Space
 
 **Start node** $v_0$: Maria's current state.
-- $d_1$: Revenue $18,900/month; costs $17,500/month; margin $1,400/month
+- $d_1$: Revenue \$18,900/month; costs \$17,500/month; margin \$1,400/month
 - $d_3$: Prices perceived as fair by customers and community
 - $d_5$: High trust with regulars and supplier
 - $d_6$: Community anchor -- known gathering place for neighborhood
@@ -265,7 +265,7 @@ Let us work through a complete A* analysis of a concrete economic decision: Mari
 
 ### Step 2: Enumerate the Paths
 
-**Path A: Absorb the full cost increase.** No price change; margin drops to roughly $-$2,020/month (from $1,400 to -$620 after the $3,420/month cost increase from the 18% supplier price hike on $19,000 of annual bean costs). Business becomes unsustainable within months.
+**Path A: Absorb the full cost increase.** No price change; margin drops to roughly $-$2,020/month (from \$1,400 to -\$620 after the \$3,420/month cost increase from the 18% supplier price hike on \$19,000 of annual bean costs). Business becomes unsustainable within months.
 
 | Dimension | $\Delta$ | Assessment |
 |-----------|----------|------------|
@@ -277,11 +277,11 @@ Let us work through a complete A* analysis of a concrete economic decision: Mari
 
 Total cost: Very high. The $d_1$ catastrophe eventually cascades to $d_6$ (closure), making this path dominated despite its short-term preservation of $d_3$ and $d_5$.
 
-**Path B: Pass the full cost increase ($4.50 $\to$ $5.50/cup).** A $1.00 increase covers the cost increase and adds margin.
+**Path B: Pass the full cost increase (\$4.50 $\to$ \$5.50/cup).** A \$1.00 increase covers the cost increase and adds margin.
 
 | Dimension | $\Delta$ | Assessment |
 |-----------|----------|------------|
-| $d_1$ | +$2,580/month | Strong: margin increases to $3,980 |
+| $d_1$ | +\$2,580/month | Strong: margin increases to \$3,980 |
 | $d_3$ | $-$ large | 22% price jump feels unfair; crosses fairness boundary |
 | $d_5$ | $-$ moderate | Price-sensitive regulars feel betrayed |
 | $d_6$ | $-$ moderate | Some community members priced out |
@@ -289,11 +289,11 @@ Total cost: Very high. The $d_1$ catastrophe eventually cascades to $d_6$ (closu
 
 Total cost: The $d_1$ gain is offset by boundary penalties on $d_3$ (fairness threshold crossed for a jump over 15%) and friction on $d_5$ and $d_6$. The edge weight $w_B$ includes $\beta_{\text{fairness}}$ for the sharp increase.
 
-**Path C: Moderate increase ($4.50 $\to$ $5.00/cup) + negotiate with supplier + slight menu adjustment.** Raise prices by $0.50, negotiate a 5% reduction in the supplier's increase (from 18% to 13%), and slightly reduce the proportion of the most expensive beans in the house blend.
+**Path C: Moderate increase (\$4.50 $\to$ \$5.00/cup) + negotiate with supplier + slight menu adjustment.** Raise prices by \$0.50, negotiate a 5% reduction in the supplier's increase (from 18% to 13%), and slightly reduce the proportion of the most expensive beans in the house blend.
 
 | Dimension | $\Delta$ | Assessment |
 |-----------|----------|------------|
-| $d_1$ | +$600/month | Modest improvement; margin $2,000/month |
+| $d_1$ | +\$600/month | Modest improvement; margin \$2,000/month |
 | $d_3$ | $-$ slight | 11% increase is within the "fair adjustment" range |
 | $d_5$ | 0 | Regulars understand cost pressures; supplier relationship preserved |
 | $d_6$ | 0 | No customers priced out |
@@ -305,7 +305,7 @@ Total cost: Low friction on all dimensions. No boundary penalties triggered. The
 
 | Dimension | $\Delta$ | Assessment |
 |-----------|----------|------------|
-| $d_1$ | +$4,200/month | Excellent: margin jumps to $5,600 |
+| $d_1$ | +\$4,200/month | Excellent: margin jumps to \$5,600 |
 | $d_3$ | $-$ moderate | Abandoning fair-trade sourcing feels unfair to growers |
 | $d_5$ | $-\infty$ | Destroys six-year trust relationship with Oakland roaster |
 | $d_6$ | $-$ moderate | Impact on supplier's workers and community |
@@ -428,9 +428,9 @@ To solidify the A* interpretation, consider the economic decision that classical
 
 An agent stands in a grocery store. Two paths are available:
 
-**Path A (buy):** Pay $50. Attribute-vector change: $\Delta d_1 = -50$, all other dimensions $\approx 0$. Edge weight: $w_A = 50^2 / \sigma_1^2$ (Mahalanobis distance on $d_1$ alone).
+**Path A (buy):** Pay \$50. Attribute-vector change: $\Delta d_1 = -50$, all other dimensions $\approx 0$. Edge weight: $w_A = 50^2 / \sigma_1^2$ (Mahalanobis distance on $d_1$ alone).
 
-**Path B (steal):** Pay $0. Attribute-vector change: $\Delta d_1 = 0$, but $\Delta d_2 = -\infty$ (rights violation), $\Delta d_6 = -\text{large}$ (social sanction risk), $\Delta d_7 = -\text{large}$ (identity violation). Edge weight: $w_B = \infty$ (boundary penalty dominates).
+**Path B (steal):** Pay \$0. Attribute-vector change: $\Delta d_1 = 0$, but $\Delta d_2 = -\infty$ (rights violation), $\Delta d_6 = -\text{large}$ (social sanction risk), $\Delta d_7 = -\text{large}$ (identity violation). Edge weight: $w_B = \infty$ (boundary penalty dominates).
 
 Under scalar utility ($\phi = d_1$): $\phi(B) > \phi(A)$, so Homo economicus steals.
 

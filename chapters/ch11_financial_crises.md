@@ -7,11 +7,11 @@
 
 > **RUNNING EXAMPLE -- MARIA'S COFFEE SHOP**
 >
-> *Maria's landlord is not a person. It is Meridian Capital Partners REIT, a real estate investment trust that owns 340 commercial properties across the Bay Area. The REIT's portfolio is leveraged: it borrowed $2.1 billion against properties collectively appraised at $3.4 billion, a loan-to-value ratio of 62%. The interest payments are covered by rental income. The model works as long as two things hold: rents stay high and property values do not fall.*
+> *Maria's landlord is not a person. It is Meridian Capital Partners REIT, a real estate investment trust that owns 340 commercial properties across the Bay Area. The REIT's portfolio is leveraged: it borrowed \$2.1 billion against properties collectively appraised at \$3.4 billion, a loan-to-value ratio of 62%. The interest payments are covered by rental income. The model works as long as two things hold: rents stay high and property values do not fall.*
 >
 > *In the spring of 2024, the commercial real estate market cracks. Remote work has permanently reduced office demand. Retail vacancies climb. Three of the REIT's largest tenants default on their leases. The appraisals drop. The loan-to-value ratio rises from 62% to 89%. The credit facility demands additional collateral. The REIT's CFO opens a spreadsheet and discovers that no combination of rent increases, asset sales, and refinancing produces a path from the current state to solvency. The financial model has run out of geodesics.*
 >
-> *Maria does not understand credit default swaps or loan covenants. But she notices something strange: her rent, which the REIT has been relentlessly increasing for three years, suddenly stops going up. Then the REIT's property manager calls to offer a two-year rent reduction -- $5,500 instead of $6,000 -- if Maria will sign a lease extension. The REIT needs cash flow more than it needs optimal rents. The manifold has changed shape, and the new geometry favors Maria.*
+> *Maria does not understand credit default swaps or loan covenants. But she notices something strange: her rent, which the REIT has been relentlessly increasing for three years, suddenly stops going up. Then the REIT's property manager calls to offer a two-year rent reduction -- \$5,500 instead of \$6,000 -- if Maria will sign a lease extension. The REIT needs cash flow more than it needs optimal rents. The manifold has changed shape, and the new geometry favors Maria.*
 >
 > *This chapter explains what happened to the REIT's manifold, why the financial model broke, and what it means for the geometry to develop a singularity.*
 
@@ -189,9 +189,9 @@ This is a singularity in the precise mathematical sense: the metric became degen
 
 The hallmark of divergent curvature is sensitivity to perturbation: arbitrarily small changes in initial conditions produce arbitrarily large changes in outcomes. This is the mechanism of financial contagion.
 
-In September 2008, Lehman Brothers held approximately $639 billion in assets and $613 billion in liabilities. The bankruptcy was a perturbation -- a large one, certainly, but finite. The global financial system held approximately $180 trillion in assets. Lehman's bankruptcy was a displacement of 0.35% of the global balance sheet. In a system with bounded curvature, a 0.35% perturbation would have produced a response of comparable magnitude.
+In September 2008, Lehman Brothers held approximately \$639 billion in assets and \$613 billion in liabilities. The bankruptcy was a perturbation -- a large one, certainly, but finite. The global financial system held approximately \$180 trillion in assets. Lehman's bankruptcy was a displacement of 0.35% of the global balance sheet. In a system with bounded curvature, a 0.35% perturbation would have produced a response of comparable magnitude.
 
-The actual response was catastrophic. Global equity markets lost approximately $34 trillion in value between September 2008 and March 2009 -- a response roughly 50 times larger than the initial perturbation. The amplification factor was not 2x or 5x but 50x. This is the signature of divergent curvature.
+The actual response was catastrophic. Global equity markets lost approximately \$34 trillion in value between September 2008 and March 2009 -- a response roughly 50 times larger than the initial perturbation. The amplification factor was not 2x or 5x but 50x. This is the signature of divergent curvature.
 
 The mechanism, in geometric terms:
 
@@ -265,7 +265,7 @@ The geometric framework explains why the recovery was slow and uneven: each dime
 >
 > *Phase 3 ($d_1$): With the covenant waived and the portfolio revalued, the REIT negotiates a restructured credit facility at a higher interest rate but with more realistic covenants. The $d_1$ geodesic from "current state" to "solvency" now exists, though it is longer and more costly than the pre-crisis path.*
 >
-> *Phase 4 ($d_6$): The REIT reduces rents for tenants who commit to long-term leases, stabilizing occupancy and community vitality. Maria's rent drops to $5,500 with a guaranteed two-year term.*
+> *Phase 4 ($d_6$): The REIT reduces rents for tenants who commit to long-term leases, stabilizing occupancy and community vitality. Maria's rent drops to \$5,500 with a guaranteed two-year term.*
 >
 > *Maria benefits from the singularity not because she negotiated well but because the geometry changed. The REIT's manifold deformed from one in which "maximize rents" was the geodesic to one in which "retain tenants at reduced rents" was the only finite-cost path. The rent reduction was determined by the manifold, not by the negotiation.*
 
@@ -315,7 +315,7 @@ Bear Stearns's position on the decision manifold, evaluated across all nine dime
 
 $$\mathbf{a}_{\text{Bear}} = (a_1, a_2, a_3, a_4, a_5, a_6, a_7, a_8, a_9)$$
 
-- $d_1 = +2.1$ (above average): Record revenue of $16.2 billion in fiscal 2007. Profits appeared strong.
+- $d_1 = +2.1$ (above average): Record revenue of \$16.2 billion in fiscal 2007. Profits appeared strong.
 - $d_2 = +0.6$ (moderate): Contractual positions complex but legal. Extensive derivative obligations.
 - $d_3 = -0.8$ (below average): Compensation ratios extreme. Top executives earned 300-500x median employee salary.
 - $d_4 = +0.3$ (slightly above average): Firm operated with high autonomy within regulatory constraints.
@@ -337,15 +337,15 @@ Similarly, $d_5$ (trust) was tightly coupled to $d_9$ (information quality), bec
 
 On Monday, March 10, a rumor circulated that Bear Stearns was experiencing liquidity problems. This was a $d_9$ perturbation: the information environment shifted from "Bear is fine (assumed)" to "Bear might not be fine (rumored)." The perturbation was small -- a rumor, not a fact.
 
-**Day 1 (Monday, March 10):** The $d_9$ perturbation propagated through $g_{59}$ to $d_5$. Counterparties began to pull repo financing. Bear's overnight borrowing capacity dropped by approximately $10 billion. The trust metric $g_{55}$ jumped.
+**Day 1 (Monday, March 10):** The $d_9$ perturbation propagated through $g_{59}$ to $d_5$. Counterparties began to pull repo financing. Bear's overnight borrowing capacity dropped by approximately \$10 billion. The trust metric $g_{55}$ jumped.
 
-**Day 2 (Tuesday, March 11):** The $d_5$ shock propagated through $g_{15}$ to $d_1$. Without repo financing, Bear could not fund its trading positions. The firm's cash reserves fell from $18 billion to $12 billion. The monetary metric $g_{11}$ began to destabilize.
+**Day 2 (Tuesday, March 11):** The $d_5$ shock propagated through $g_{15}$ to $d_1$. Without repo financing, Bear could not fund its trading positions. The firm's cash reserves fell from \$18 billion to \$12 billion. The monetary metric $g_{11}$ began to destabilize.
 
 **Day 3 (Wednesday, March 12):** The $d_1$ deterioration fed back to $d_9$ and $d_5$. Clients withdrew funds. Counterparties demanded additional collateral. The metrics $g_{55}$ and $g_{99}$ entered feedback amplification: distrust caused information demands, information demands revealed further problems, revealed problems caused further distrust.
 
-**Day 4 (Thursday, March 13):** Bear Stearns's cash reserves fell to $2 billion -- insufficient to open for business the next day. The curvature had diverged: the firm's manifold had reached a singularity. No geodesic from "current state" to "operational tomorrow" existed.
+**Day 4 (Thursday, March 13):** Bear Stearns's cash reserves fell to \$2 billion -- insufficient to open for business the next day. The curvature had diverged: the firm's manifold had reached a singularity. No geodesic from "current state" to "operational tomorrow" existed.
 
-**Day 5 (Friday, March 14):** The Federal Reserve arranged an emergency acquisition by JPMorgan Chase at $2 per share, down from $93 two weeks earlier. This was metric regularization: the Fed provided a bridge loan to prevent the singularity from propagating to Bear's counterparties.
+**Day 5 (Friday, March 14):** The Federal Reserve arranged an emergency acquisition by JPMorgan Chase at \$2 per share, down from \$93 two weeks earlier. This was metric regularization: the Fed provided a bridge loan to prevent the singularity from propagating to Bear's counterparties.
 
 ### Dimensional Analysis
 
@@ -362,7 +362,7 @@ The collapse can be analyzed as curvature divergence with specific dimensional s
 
 The table reveals the cascade structure: the perturbation entered on $d_9$, propagated to $d_5$ through the $g_{59}$ coupling, propagated to $d_1$ through the $g_{15}$ coupling, and then fed back through the full coupling structure to drive all three dimensions to extremes simultaneously.
 
-The amplification factor: a rumor (a perturbation of perhaps 0.1 standard deviations on $d_9$) destroyed a firm with $400 billion in assets in five days. The ratio of response to perturbation exceeds $10^4$. This amplification is possible only in a region of extreme curvature -- and the curvature was extreme because the pre-crisis manifold had been deformed by the housing bubble's dimensional divergence.
+The amplification factor: a rumor (a perturbation of perhaps 0.1 standard deviations on $d_9$) destroyed a firm with \$400 billion in assets in five days. The ratio of response to perturbation exceeds $10^4$. This amplification is possible only in a region of extreme curvature -- and the curvature was extreme because the pre-crisis manifold had been deformed by the housing bubble's dimensional divergence.
 
 ### What Scalar Analysis Missed
 

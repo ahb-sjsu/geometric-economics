@@ -7,9 +7,9 @@
 
 > **RUNNING EXAMPLE -- MARIA'S COFFEE SHOP**
 >
-> *Maria is pricing her signature latte. She charges $5.50. A tourist from Berlin glances at the chalkboard, converts mentally, and thinks: "About €5.10 -- reasonable." A cryptocurrency enthusiast opens his phone: "0.000088 BTC -- sure." A local regular doesn't convert at all: "Five-fifty, same as last week."*
+> *Maria is pricing her signature latte. She charges \$5.50. A tourist from Berlin glances at the chalkboard, converts mentally, and thinks: "About €5.10 -- reasonable." A cryptocurrency enthusiast opens his phone: "0.000088 BTC -- sure." A local regular doesn't convert at all: "Five-fifty, same as last week."*
 >
-> *Three descriptions of the same economic state. Three different labels for the same cup of coffee. The latte is the same latte. The decision to buy or not should be the same decision. If a customer would buy at $5.50 but refuse at €5.10 -- for the same coffee, at the same real cost -- something has gone wrong. Not with the coffee, but with the customer's evaluation.*
+> *Three descriptions of the same economic state. Three different labels for the same cup of coffee. The latte is the same latte. The decision to buy or not should be the same decision. If a customer would buy at \$5.50 but refuse at €5.10 -- for the same coffee, at the same real cost -- something has gone wrong. Not with the coffee, but with the customer's evaluation.*
 >
 > *This chapter is about what "going wrong" means mathematically. The evaluation should be invariant under the relabeling. When it isn't, we have a gauge violation -- a crack in the rationality of the economic agent, measurable, quantifiable, and (in principle) correctable.*
 
@@ -41,7 +41,7 @@ What counts as "meaning-preserving" in economics? Three classes of transformatio
 
 2. **Unit scaling**: expressing the same quantity in different units -- ounces vs. grams, barrels vs. liters, hourly wage vs. annual salary. The transformation $\tau_{\text{unit}}: d_k \mapsto \lambda_k \cdot d_k$ rescales dimension $k$ without changing the physical quantity.
 
-3. **Numeraire choice**: expressing prices relative to different reference goods. When we say "a latte costs $5.50," we are expressing the latte's value relative to the dollar. We could equally express it as "a latte costs 1.1 sandwiches" or "a latte costs 0.55 hours of minimum-wage labor." The numeraire transformation $\tau_{\text{num}}$ permutes the role of which good serves as the measuring stick.
+3. **Numeraire choice**: expressing prices relative to different reference goods. When we say "a latte costs \$5.50," we are expressing the latte's value relative to the dollar. We could equally express it as "a latte costs 1.1 sandwiches" or "a latte costs 0.55 hours of minimum-wage labor." The numeraire transformation $\tau_{\text{num}}$ permutes the role of which good serves as the measuring stick.
 
 The economic BIP says: a rational economic evaluation must be invariant under all three. If your decision to buy Maria's latte changes when you express the price in euros instead of dollars -- at the same exchange rate, for the same coffee -- your evaluation violates the BIP. The decision is gauge-variant.
 
@@ -136,11 +136,11 @@ Subjects rated Scenario A as better, despite Scenario B being superior in real t
 
 > **RUNNING EXAMPLE -- MARIA'S COFFEE SHOP**
 >
-> *Maria's neighborhood has a mix of long-term residents and newcomers. The long-term residents remember when a latte cost $3.50; they see $5.50 as expensive. The newcomers, arriving from Manhattan where lattes cost $7.00, see $5.50 as a bargain. Same latte. Same real cost (measured by the fraction of median neighborhood income required to buy it). Different evaluations -- because the reference nominal price differs.*
+> *Maria's neighborhood has a mix of long-term residents and newcomers. The long-term residents remember when a latte cost \$3.50; they see \$5.50 as expensive. The newcomers, arriving from Manhattan where lattes cost \$7.00, see \$5.50 as a bargain. Same latte. Same real cost (measured by the fraction of median neighborhood income required to buy it). Different evaluations -- because the reference nominal price differs.*
 >
-> *This is a gauge violation on the time dimension of the scaling group: the long-term residents are evaluating the latte against the nominal anchor of $3.50, while the newcomers evaluate against $7.00. Neither group is evaluating the real cost of the latte relative to their current purchasing power -- they are responding to the nominal gap between the current price and their reference price.*
+> *This is a gauge violation on the time dimension of the scaling group: the long-term residents are evaluating the latte against the nominal anchor of \$3.50, while the newcomers evaluate against \$7.00. Neither group is evaluating the real cost of the latte relative to their current purchasing power -- they are responding to the nominal gap between the current price and their reference price.*
 >
-> *Maria's pricing decision must account for this gauge violation in her customer base. If she raises the price to $6.00, the long-term residents experience it as a $2.50 increase from the remembered baseline (71% markup); the newcomers experience it as a continued $1.00 discount from the Manhattan baseline (14% savings). Same fifty-cent increase, two different gauge frames, two different psychological responses. Rational pricing on the manifold must account for the gauge-variant heuristics of the agents she serves.*
+> *Maria's pricing decision must account for this gauge violation in her customer base. If she raises the price to \$6.00, the long-term residents experience it as a \$2.50 increase from the remembered baseline (71% markup); the newcomers experience it as a continued \$1.00 discount from the Manhattan baseline (14% savings). Same fifty-cent increase, two different gauge frames, two different psychological responses. Rational pricing on the manifold must account for the gauge-variant heuristics of the agents she serves.*
 
 ---
 
@@ -158,7 +158,7 @@ The geometric account goes deeper. The sunk cost fallacy is a violation of *re-d
 
 Re-description invariance is a gauge condition: the "description" that must be stripped away is the history of how you got here. Two agents standing at the same point on the decision manifold -- same wealth, same opportunities, same constraints -- should evaluate future actions identically, regardless of whether one arrived at that point through a series of profitable investments and the other through a series of losses that happened to cancel out.
 
-The sunk cost fallacy violates this condition. An agent who has invested $100,000 in a project that is now worth $50,000 evaluates "continue vs. abandon" differently from an agent who starts fresh at the $50,000 point -- even though the future costs and benefits are identical. The $100,000 already spent is not part of the current state; it is part of the *path* to the current state. The evaluation depends on the path, not the state. This is gauge-variant.
+The sunk cost fallacy violates this condition. An agent who has invested \$100,000 in a project that is now worth \$50,000 evaluates "continue vs. abandon" differently from an agent who starts fresh at the \$50,000 point -- even though the future costs and benefits are identical. The \$100,000 already spent is not part of the current state; it is part of the *path* to the current state. The evaluation depends on the path, not the state. This is gauge-variant.
 
 > **Theorem 40 (Sunk Cost as Gauge Violation).** *The sunk cost fallacy is a violation of re-description invariance under the path history transformation. Specifically, for an agent with path-dependent heuristic $h(n; \gamma)$:*
 >
@@ -198,9 +198,9 @@ The sunk cost fallacy is ubiquitous:
 
 > **RUNNING EXAMPLE -- MARIA'S COFFEE SHOP**
 >
-> *Maria spent $15,000 on a high-end espresso machine two years ago. The machine is now unreliable -- the repair costs are $300/month, and a new machine would cost $8,000 but would be more efficient and reliable. The future-only analysis is clear: the $300/month repair cost exceeds the amortized cost of a new machine ($8,000 over 5 years = $133/month), plus the new machine saves on energy costs and reduces customer wait times.*
+> *Maria spent \$15,000 on a high-end espresso machine two years ago. The machine is now unreliable -- the repair costs are \$300/month, and a new machine would cost \$8,000 but would be more efficient and reliable. The future-only analysis is clear: the \$300/month repair cost exceeds the amortized cost of a new machine (\$8,000 over 5 years = \$133/month), plus the new machine saves on energy costs and reduces customer wait times.*
 >
-> *But Maria hesitates. "I just paid $15,000 for this machine. I can't throw it away after two years." The $15,000 is sunk -- it is gone regardless of her decision. The gauge-invariant evaluation compares only the future costs: $300/month in repairs versus $133/month for the new machine. The sunk-cost-laden evaluation adds the "waste" of the $15,000 to the cost of replacement, making replacement seem $15,000 more expensive than it actually is.*
+> *But Maria hesitates. "I just paid \$15,000 for this machine. I can't throw it away after two years." The \$15,000 is sunk -- it is gone regardless of her decision. The gauge-invariant evaluation compares only the future costs: \$300/month in repairs versus \$133/month for the new machine. The sunk-cost-laden evaluation adds the "waste" of the \$15,000 to the cost of replacement, making replacement seem \$15,000 more expensive than it actually is.*
 >
 > *Maria's heuristic $h(n)$ is path-dependent: it evaluates the "replace the machine" path as more costly because of the historical investment in the current machine. This is a gauge violation -- the same future economic state evaluated differently depending on the path by which Maria arrived at the current decision point.*
 
@@ -212,7 +212,7 @@ Money illusion and sunk cost are the most studied gauge violations, but they are
 
 ### Denomination Effects
 
-Raghubir and Srivastava (2009) demonstrated the *denomination effect*: people spend more freely when a given sum is in small denominations than when it is in a single large denomination. A person given four $5 bills spends more than a person given one $20 bill. The real economic state is identical ($20 of purchasing power). The description differs (four pieces of paper vs. one piece of paper). The evaluation differs. Gauge violation.
+Raghubir and Srivastava (2009) demonstrated the *denomination effect*: people spend more freely when a given sum is in small denominations than when it is in a single large denomination. A person given four \$5 bills spends more than a person given one \$20 bill. The real economic state is identical (\$20 of purchasing power). The description differs (four pieces of paper vs. one piece of paper). The evaluation differs. Gauge violation.
 
 Geometrically, the denomination effect is a violation under the scaling subgroup applied to the *granularity* of the monetary representation. The gauge transformation $\tau: \{4 \times \$5\} \mapsto \{1 \times \$20\}$ is meaning-preserving (same total purchasing power), but the heuristic $h$ assigns different costs to spending from the two representations. The small-denomination representation has lower heuristic *spending cost* -- because breaking a large bill triggers a psychological "payment pain" boundary that spending small bills does not.
 
@@ -230,7 +230,7 @@ This is a violation of the relabeling subgroup $S_n$ of the gauge group. The cur
 
 ### Accounting Frame Effects
 
-Thaler's (1985) mental accounting research demonstrated that people categorize money into different "accounts" -- housing money, food money, entertainment money -- and exhibit different spending behavior depending on which account a windfall is assigned to. A $500 tax refund assigned to "savings" is treated differently from $500 found in a coat pocket, which is assigned to "free money." The real economic state is identical (net worth increased by $500). The accounting frame differs. The evaluation differs. Gauge violation.
+Thaler's (1985) mental accounting research demonstrated that people categorize money into different "accounts" -- housing money, food money, entertainment money -- and exhibit different spending behavior depending on which account a windfall is assigned to. A \$500 tax refund assigned to "savings" is treated differently from \$500 found in a coat pocket, which is assigned to "free money." The real economic state is identical (net worth increased by \$500). The accounting frame differs. The evaluation differs. Gauge violation.
 
 In the language of the gauge group, mental accounting is a violation under the *partition* subgroup of $S_n$: the permutation group permutes not just the numeraire but the *categories* into which monetary value is sorted. The gauge-invariant quantity is total net worth; the gauge-variant behavior is differential treatment of identical values based on categorical assignment.
 
@@ -303,14 +303,14 @@ The gauge violation tensor has been measured, though not under this name, in the
 >
 > *Consider a wage negotiation between Maria and a prospective employee, Alex. Maria offers Alex a salary. We measure the gauge violation tensor by presenting the same real salary under different nominal descriptions.*
 >
-> **Setup.** The real salary is $48,000/year in purchasing-power terms. We present it under three descriptions:
+> **Setup.** The real salary is \$48,000/year in purchasing-power terms. We present it under three descriptions:
 >
 > | Description ($\tau_i$) | Nominal value | Framing |
 > |---|---|---|
-> | $\tau_0$: Baseline | $48,000/year | Annual salary |
-> | $\tau_1$: Monthly | $4,000/month | Monthly salary |
-> | $\tau_2$: Hourly | $23.08/hour | Hourly wage |
-> | $\tau_3$: Post-inflation | $49,440/year (3% inflation) | Nominal raise from $48K |
+> | $\tau_0$: Baseline | \$48,000/year | Annual salary |
+> | $\tau_1$: Monthly | \$4,000/month | Monthly salary |
+> | $\tau_2$: Hourly | \$23.08/hour | Hourly wage |
+> | $\tau_3$: Post-inflation | \$49,440/year (3% inflation) | Nominal raise from \$48K |
 >
 > All four descriptions are gauge-equivalent: they represent the same real purchasing power ($\tau_0 = \tau_1 = \tau_2$ by unit conversion; $\tau_3 = \tau_0$ by inflation adjustment).
 >
@@ -318,10 +318,10 @@ The gauge violation tensor has been measured, though not under this name, in the
 >
 > | Description | Mean attractiveness $\pm$ SE |
 > |---|---|
-> | $\tau_0$: $48,000/year | $6.2 \pm 0.3$ |
-> | $\tau_1$: $4,000/month | $5.8 \pm 0.3$ |
-> | $\tau_2$: $23.08/hour | $5.1 \pm 0.3$ |
-> | $\tau_3$: $49,440/year (after 3% inflation) | $7.1 \pm 0.3$ |
+> | $\tau_0$: \$48,000/year | $6.2 \pm 0.3$ |
+> | $\tau_1$: \$4,000/month | $5.8 \pm 0.3$ |
+> | $\tau_2$: \$23.08/hour | $5.1 \pm 0.3$ |
+> | $\tau_3$: \$49,440/year (after 3% inflation) | $7.1 \pm 0.3$ |
 >
 > **Gauge violation tensor components:**
 >
@@ -331,7 +331,7 @@ The gauge violation tensor has been measured, though not under this name, in the
 >
 > **Interpretation.** The gauge violation tensor is non-zero with distinct components:
 >
-> - The *unit scaling* violation ($V_{\tau_1}$, $V_{\tau_2}$) shows that smaller unit descriptions reduce perceived attractiveness. The hourly framing ($23.08) activates a different comparison set than the annual framing ($48,000) -- the small number triggers a "low wage" heuristic even though the annual equivalent is the same. The magnitude increases with the granularity of the unit ($|V_{\tau_2}| > |V_{\tau_1}|$), consistent with the denomination effect.
+> - The *unit scaling* violation ($V_{\tau_1}$, $V_{\tau_2}$) shows that smaller unit descriptions reduce perceived attractiveness. The hourly framing (\$23.08) activates a different comparison set than the annual framing (\$48,000) -- the small number triggers a "low wage" heuristic even though the annual equivalent is the same. The magnitude increases with the granularity of the unit ($|V_{\tau_2}| > |V_{\tau_1}|$), consistent with the denomination effect.
 >
 > - The *inflation scaling* violation ($V_{\tau_3}$) is money illusion in its purest form. A 3% nominal increase with 3% inflation is a zero real change, but the evaluation improves by 0.9 points. The heuristic responds to the nominal change ($+\$1,440$) rather than the real change ($\$0$).
 >
@@ -373,7 +373,7 @@ This is the economic instantiation of the general debiasing strategy from *Geome
 
 The Efficient Market Hypothesis (EMH), in its strongest form, asserts that market prices reflect all available information. The geometric framework offers a precise restatement: *the market price heuristic is gauge-invariant*.
 
-An efficient market is one where the price of an asset does not depend on the currency in which it is quoted (after exchange-rate adjustment), the denomination in which it is offered, or the accounting frame in which it is reported. Arbitrageurs enforce gauge invariance: when the price of a stock is $100 in New York and the equivalent of $101 in London (after exchange-rate conversion), arbitrageurs buy in New York and sell in London until the prices converge. The arbitrage trade is, literally, a gauge correction -- it eliminates the gauge violation in the price field.
+An efficient market is one where the price of an asset does not depend on the currency in which it is quoted (after exchange-rate adjustment), the denomination in which it is offered, or the accounting frame in which it is reported. Arbitrageurs enforce gauge invariance: when the price of a stock is \$100 in New York and the equivalent of \$101 in London (after exchange-rate conversion), arbitrageurs buy in New York and sell in London until the prices converge. The arbitrage trade is, literally, a gauge correction -- it eliminates the gauge violation in the price field.
 
 > **Proposition 44 (Market Efficiency as Gauge Invariance).** *A market is efficient with respect to the gauge group $\mathcal{G}$ if and only if the price heuristic $h_{\text{price}}$ satisfies the BIP:*
 >
@@ -401,11 +401,11 @@ Not every apparent gauge violation is a genuine miscalibration. Sometimes the vi
 >
 > 2. *Pseudo-gauge violation:* The transformation $\tau$ is not actually meaning-preserving; the different descriptions carry genuinely different information. The non-zero $V$ reflects real economic content, not miscalibration.
 
-Example: if Maria's latte is priced at $5.50 in the U.S. and €5.10 in Germany, and a customer prefers the dollar price, this might be because:
+Example: if Maria's latte is priced at \$5.50 in the U.S. and €5.10 in Germany, and a customer prefers the dollar price, this might be because:
 
 **(a)** The customer is exhibiting money illusion (the number "5.10" seems cheaper than "5.50" even though the real cost is identical). This is genuine gauge violation.
 
-**(b)** The customer is in the U.S., where the $5.50 price comes with a U.S. supply chain, U.S. labor standards, and U.S. food safety regulation. The dollar price and the euro price are not actually describing the same economic state -- they describe the same cup of coffee in different institutional contexts. The different evaluation reflects the different institutional context, not a gauge miscalibration.
+**(b)** The customer is in the U.S., where the \$5.50 price comes with a U.S. supply chain, U.S. labor standards, and U.S. food safety regulation. The dollar price and the euro price are not actually describing the same economic state -- they describe the same cup of coffee in different institutional contexts. The different evaluation reflects the different institutional context, not a gauge miscalibration.
 
 Distinguishing (a) from (b) requires checking whether the transformation $\tau$ is truly meaning-preserving. This is the economic analogue of the distinction in *Geometric Ethics* between genuine moral invariance (the judgment should not change when you switch languages) and apparent invariance failure (the judgment changes because the different language activates different cultural norms that carry genuine moral information).
 
@@ -415,9 +415,9 @@ The gauge violation tensor does not distinguish between (a) and (b) automaticall
 
 > **RUNNING EXAMPLE -- MARIA'S COFFEE SHOP**
 >
-> *Maria recently started accepting Bitcoin for coffee. She displays a small screen showing the BTC price updated in real time. When Bitcoin's price spiked to $90,000, a customer paid 0.0000611 BTC for a $5.50 latte. The customer remarked: "Wow, that's basically free!" When Bitcoin dropped to $30,000, the same latte cost 0.000183 BTC, and a different customer hesitated: "That seems like a lot of Bitcoin for a latte."*
+> *Maria recently started accepting Bitcoin for coffee. She displays a small screen showing the BTC price updated in real time. When Bitcoin's price spiked to \$90,000, a customer paid 0.0000611 BTC for a \$5.50 latte. The customer remarked: "Wow, that's basically free!" When Bitcoin dropped to \$30,000, the same latte cost 0.000183 BTC, and a different customer hesitated: "That seems like a lot of Bitcoin for a latte."*
 >
-> *Both customers are exhibiting gauge violation. The latte costs $5.50 regardless of Bitcoin's price. The BTC denomination is a gauge transformation -- a relabeling of the same monetary value in different units. The first customer's evaluation ("basically free") responds to the small number (0.0000611); the second customer's evaluation ("a lot") responds to the larger number (0.000183). Neither is responding to the real cost.*
+> *Both customers are exhibiting gauge violation. The latte costs \$5.50 regardless of Bitcoin's price. The BTC denomination is a gauge transformation -- a relabeling of the same monetary value in different units. The first customer's evaluation ("basically free") responds to the small number (0.0000611); the second customer's evaluation ("a lot") responds to the larger number (0.000183). Neither is responding to the real cost.*
 >
 > *Maria observes this gauge violation daily. She noticed that customers tip more generously when paying in Bitcoin during price peaks (the small BTC amounts feel trivial) and less during dips (the larger BTC amounts feel substantial). The gauge violation tensor for Bitcoin tipping has a large component along the denomination-scaling axis.*
 >

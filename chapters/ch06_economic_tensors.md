@@ -7,7 +7,7 @@
 
 > **RUNNING EXAMPLE -- MARIA'S COFFEE SHOP**
 >
-> *An appraiser has valued Maria's coffee shop at $200,000. The number sits on a single sheet of paper -- clean, precise, authoritative. The REIT that owns her building wants to buy her out. The number is what they will negotiate from.*
+> *An appraiser has valued Maria's coffee shop at \$200,000. The number sits on a single sheet of paper -- clean, precise, authoritative. The REIT that owns her building wants to buy her out. The number is what they will negotiate from.*
 >
 > *But what does the number contain? The appraiser used a standard discounted-cash-flow model: projected revenue minus projected costs, discounted at the market rate, summed over a reasonable time horizon. The methodology is impeccable -- on $d_1$. The number captures the monetary value of the business as a going concern.*
 >
@@ -21,13 +21,13 @@
 >
 > *The cultural identity ($d_7$): The shop is part of what makes the Mission District the Mission District. Its displacement would be one more step in the homogenization that erodes the neighborhood's character. This is value of a kind that no scalar can express.*
 >
-> *The Scalar Irrecoverability Theorem proves that these dimensions cannot be recovered from the $200,000 alone. The appraiser's number is not an approximation. It is a projection that has destroyed information -- mathematically, irreversibly.*
+> *The Scalar Irrecoverability Theorem proves that these dimensions cannot be recovered from the \$200,000 alone. The appraiser's number is not an approximation. It is a projection that has destroyed information -- mathematically, irreversibly.*
 
 ---
 
 ## The Problem of the Single Number
 
-Economics traffics in single numbers. A company is "worth" $4.2 billion. A policy "costs" $300 million. A worker "earns" $85,000. A nation's economy "grew" 2.3%. In each case, a complex, multi-dimensional economic reality has been compressed to a scalar -- a single point on the real line.
+Economics traffics in single numbers. A company is "worth" \$4.2 billion. A policy "costs" \$300 million. A worker "earns" \$85,000. A nation's economy "grew" 2.3%. In each case, a complex, multi-dimensional economic reality has been compressed to a scalar -- a single point on the real line.
 
 The previous chapters have built the apparatus to understand what this compression does. Chapter 3 constructed the economic decision complex $\mathcal{E}$ with its nine-dimensional attribute vectors. Chapter 4 equipped it with a metric that encodes the interactions between dimensions. Chapter 5 showed that the price signal is a heuristic field on $d_1$ alone, unable to capture the full manifold structure.
 
@@ -63,7 +63,7 @@ This theorem is the mathematical core of the book's argument. Let us prove it in
 
 The theorem establishes three things:
 
-**First**, scalar utility is not merely an imprecise approximation -- it is a lossy compression that maps entire families of distinct economic states to the same number. Maria's coffee shop valued at $200,000 occupies a *level set* -- an eight-dimensional surface of all possible business configurations that happen to generate the same discounted cash flow. Some of these configurations involve exploitative labor practices, broken supplier relationships, and community-destroying operations. Others involve fair wages, trusted relationships, and community enrichment. The scalar cannot distinguish them.
+**First**, scalar utility is not merely an imprecise approximation -- it is a lossy compression that maps entire families of distinct economic states to the same number. Maria's coffee shop valued at \$200,000 occupies a *level set* -- an eight-dimensional surface of all possible business configurations that happen to generate the same discounted cash flow. Some of these configurations involve exploitative labor practices, broken supplier relationships, and community-destroying operations. Others involve fair wages, trusted relationships, and community enrichment. The scalar cannot distinguish them.
 
 **Second**, the information destroyed by the projection is *mathematically irrecoverable*. This is not a claim about measurement difficulty or data availability. It is a topological impossibility: you cannot continuously embed a nine-dimensional space in a one-dimensional space. The "missing dimensions" do not exist in the scalar representation and cannot be reconstructed from it by any means.
 
@@ -75,7 +75,7 @@ The theorem immediately resolves two classical paradoxes that have troubled expe
 
 > **Corollary 15 (The Allais and Ellsberg Paradoxes Are Not Paradoxes).** *The Allais paradox (violation of the independence axiom) and the Ellsberg paradox (violation of subjective expected utility under ambiguity) are both consequences of Scalar Irrecoverability.*
 >
-> 1. **Allais**: *The agent's preference reversal between "certain $1M" and "89% chance of $1M, 10% chance of $5M, 1% chance of $0" reflects the activation of $d_9$ (epistemic certainty has value beyond expected monetary value) and $d_7$ (identity: "I am prudent"). On the scalar projection, independence is violated. On the full manifold, preferences are consistent: the attribute-vector difference between certainty and risk includes non-zero components on $d_7$ and $d_9$ that the expected-value calculation discards.*
+> 1. **Allais**: *The agent's preference reversal between "certain \$1M" and "89% chance of \$1M, 10% chance of \$5M, 1% chance of \$0" reflects the activation of $d_9$ (epistemic certainty has value beyond expected monetary value) and $d_7$ (identity: "I am prudent"). On the scalar projection, independence is violated. On the full manifold, preferences are consistent: the attribute-vector difference between certainty and risk includes non-zero components on $d_7$ and $d_9$ that the expected-value calculation discards.*
 >
 > 2. **Ellsberg**: *Ambiguity aversion (preferring known to unknown probabilities) reflects $d_9$ directly: known probabilities have higher epistemic-status scores than ambiguous ones. The Mahalanobis distance from the ambiguous gamble to the goal is larger than from the known-probability gamble, even when expected values are equal, because $\Delta d_9 \neq 0$ for the ambiguous case.*
 
@@ -125,9 +125,9 @@ To make the irrecoverability theorem concrete, consider the example from the pap
 
 > **Example 17 (The Grocery Store).** An agent stands in a grocery store. Two paths are available:
 >
-> - **Path A (buy):** Pay $50. Attribute-vector change: $\Delta d_1 = -50$, all other dimensions $\approx 0$. Edge weight: $w_A = 50^2 / \sigma_1^2$.
+> - **Path A (buy):** Pay \$50. Attribute-vector change: $\Delta d_1 = -50$, all other dimensions $\approx 0$. Edge weight: $w_A = 50^2 / \sigma_1^2$.
 >
-> - **Path B (steal):** Pay $0. Attribute-vector change: $\Delta d_1 = 0$, but $\Delta d_2 = -\infty$ (rights violation), $\Delta d_6 = -\text{large}$ (social sanction risk), $\Delta d_7 = -\text{large}$ (identity violation). Edge weight: $w_B = \infty$.
+> - **Path B (steal):** Pay \$0. Attribute-vector change: $\Delta d_1 = 0$, but $\Delta d_2 = -\infty$ (rights violation), $\Delta d_6 = -\text{large}$ (social sanction risk), $\Delta d_7 = -\text{large}$ (identity violation). Edge weight: $w_B = \infty$.
 >
 > Under scalar utility ($\phi = d_1$): $\phi(B) > \phi(A)$, so Homo economicus steals.
 >
@@ -199,11 +199,11 @@ What would recover it is *not projecting in the first place*: reporting the full
 
 ### The Tensor Structure of Business Valuation
 
-Maria's coffee shop valuation of $200,000 is a contraction of the full business tensor:
+Maria's coffee shop valuation of \$200,000 is a contraction of the full business tensor:
 
 $$\text{Valuation} = \phi(\mathbf{B}) = \phi(B_1, B_2, \ldots, B_9)$$
 
-where $\mathbf{B}$ is the attribute vector of the business and $\phi$ is the discounted-cash-flow function. The theorem says: this valuation maps many distinct businesses to the same number. Some businesses worth $200,000 in DCF terms are thriving community institutions with deep trust networks and ethical supply chains. Others worth $200,000 are extractive operations with high turnover, adversarial supplier relationships, and no community value. The number cannot distinguish them.
+where $\mathbf{B}$ is the attribute vector of the business and $\phi$ is the discounted-cash-flow function. The theorem says: this valuation maps many distinct businesses to the same number. Some businesses worth \$200,000 in DCF terms are thriving community institutions with deep trust networks and ethical supply chains. Others worth \$200,000 are extractive operations with high turnover, adversarial supplier relationships, and no community value. The number cannot distinguish them.
 
 ---
 
@@ -235,7 +235,7 @@ To demonstrate concretely how the valuation changes depending on which dimension
 
 ### Projection 1: Pure DCF ($\phi = \pi_{d_1}$)
 
-The standard discounted-cash-flow projection considers only the monetary dimension. Inputs: annual revenue $226,800 (from the monthly figure), annual costs $210,000 (rent + supplies + wages + utilities), discount rate 10%, assumed 10-year horizon with 2% growth.
+The standard discounted-cash-flow projection considers only the monetary dimension. Inputs: annual revenue \$226,800 (from the monthly figure), annual costs \$210,000 (rent + supplies + wages + utilities), discount rate 10%, assumed 10-year horizon with 2% growth.
 
 $$\text{Value}_1 = \sum_{t=1}^{10} \frac{(226{,}800 \times 1.02^{t-1}) - 210{,}000}{1.10^t} \approx \$200{,}000$$
 
@@ -243,15 +243,15 @@ This is the appraiser's number. It captures one dimension.
 
 ### Projection 2: DCF + Community Value ($\phi = \pi_{d_1, d_6}$)
 
-Suppose we attempt to monetize the community value. The shop serves as a gathering place for approximately 120 neighborhood residents who use it as their primary social space. If the closure of the shop forced even 20% of these residents to use alternative venues (coworking spaces, other cafes farther away), the additional cost to them would be approximately $50/month each -- $14,400/year in monetized community value. Adding this stream:
+Suppose we attempt to monetize the community value. The shop serves as a gathering place for approximately 120 neighborhood residents who use it as their primary social space. If the closure of the shop forced even 20% of these residents to use alternative venues (coworking spaces, other cafes farther away), the additional cost to them would be approximately \$50/month each -- \$14,400/year in monetized community value. Adding this stream:
 
 $$\text{Value}_2 \approx \$200{,}000 + \$88{,}000 = \$288{,}000$$
 
-But this monetization is itself a projection -- converting $d_6$ to $d_1$ at an exchange rate that may not be well-defined. The community value of a neighborhood gathering place is not commensurable with monetary flow. The $88K figure is an estimate, not a measurement.
+But this monetization is itself a projection -- converting $d_6$ to $d_1$ at an exchange rate that may not be well-defined. The community value of a neighborhood gathering place is not commensurable with monetary flow. The \$88K figure is an estimate, not a measurement.
 
 ### Projection 3: DCF + Supply Chain Value ($\phi = \pi_{d_1, d_3, d_5, d_7}$)
 
-The fair-trade supply chain represents six years of relationship-building. The cost of re-establishing an equivalent chain from scratch (finding reliable fair-trade cooperatives, building trust, achieving quality consistency) can be estimated at 18-24 months of procurement effort, or approximately $35,000-$50,000 in search costs, quality failures, and relationship development. Adding the supply chain's relational value:
+The fair-trade supply chain represents six years of relationship-building. The cost of re-establishing an equivalent chain from scratch (finding reliable fair-trade cooperatives, building trust, achieving quality consistency) can be estimated at 18-24 months of procurement effort, or approximately \$35,000-\$50,000 in search costs, quality failures, and relationship development. Adding the supply chain's relational value:
 
 $$\text{Value}_3 \approx \$200{,}000 + \$88{,}000 + \$42{,}000 = \$330{,}000$$
 
@@ -263,11 +263,11 @@ $$\mathbf{B} = (\$200K, 0.7, 0.8, 0.6, 0.9, 0.85, 0.9, 0.7, 0.4)$$
 
 This representation preserves the fact that the business is strong on trust ($B_5 = 0.9$) and identity ($B_7 = 0.9$) but weak on epistemic status ($B_9 = 0.4$ -- uncertainty about the future). A buyer can see which dimensions are strong and which are fragile. A scalar valuation hides this structure entirely.
 
-The progression from $200K to $288K to $330K is not convergence toward a "true" scalar value. Each additional dimension reveals additional value, but the scalar still destroys the *structure* of the value. The $330K number does not tell you that the business is trust-rich and certainty-poor. Only the tensor does.
+The progression from \$200K to \$288K to \$330K is not convergence toward a "true" scalar value. Each additional dimension reveals additional value, but the scalar still destroys the *structure* of the value. The \$330K number does not tell you that the business is trust-rich and certainty-poor. Only the tensor does.
 
 ### The Irrecoverability in Action
 
-Here is the critical point: given only the scalar $200,000, can you determine whether this is a community-embedded, trust-rich, fair-trade coffee shop or a sterile chain location with no community ties, adversarial supplier relationships, and high employee turnover? No. Both could generate identical cash flows. The scalar maps them to the same number. The information needed to distinguish them has been destroyed, and the Scalar Irrecoverability Theorem proves that no procedure can reconstruct it.
+Here is the critical point: given only the scalar \$200,000, can you determine whether this is a community-embedded, trust-rich, fair-trade coffee shop or a sterile chain location with no community ties, adversarial supplier relationships, and high employee turnover? No. Both could generate identical cash flows. The scalar maps them to the same number. The information needed to distinguish them has been destroyed, and the Scalar Irrecoverability Theorem proves that no procedure can reconstruct it.
 
 This is not an academic curiosity. It is the mechanism by which real economic damage occurs. When the REIT evaluates whether to buy Maria out and install a chain tenant, the DCF analysis says: "The chain tenant pays higher rent and generates higher cash flow. The acquisition is value-creating." On $d_1$, this is correct. On the full manifold, the acquisition destroys community value ($d_6$), trust networks ($d_5$), fair-trade supply chains ($d_3$, $d_7$), and neighborhood identity ($d_7$). The REIT cannot see what it is destroying because its valuation methodology operates on a scalar projection of a nine-dimensional reality.
 
@@ -338,7 +338,7 @@ A tensor representation preserves it. The change vector $\Delta\mathbf{B} = (50K
 
 One structural feature of the economic tensor deserves special emphasis. Not all nine dimensions behave the same way in exchange.
 
-**Transferable dimensions** ($d_1$: monetary value, $d_2$: rights/entitlements, $d_4$: autonomy) are *conserved* in bilateral exchange: what one party gains, the other loses. If Maria pays $7,000 in rent, the landlord receives $7,000. If a property right is transferred, one party gains it and the other loses it. These dimensions are zero-sum.
+**Transferable dimensions** ($d_1$: monetary value, $d_2$: rights/entitlements, $d_4$: autonomy) are *conserved* in bilateral exchange: what one party gains, the other loses. If Maria pays \$7,000 in rent, the landlord receives \$7,000. If a property right is transferred, one party gains it and the other loses it. These dimensions are zero-sum.
 
 **Evaluative dimensions** ($d_3$: fairness, $d_5$: trust, $d_6$: social impact, $d_7$: identity/virtue) are *not conserved*. Both parties to an exchange can simultaneously perceive increased fairness. Both can experience increased trust. A fair exchange creates mutual value on $d_3$ that did not exist before the exchange. An unfair exchange can destroy value on $d_3$ for both parties (the exploiter loses self-respect on $d_7$ even as they gain on $d_1$).
 
@@ -356,7 +356,7 @@ The implication is that for *consequential* decisions -- business valuations, po
 
 The economic tensor makes this information explicit. It does not replace judgment with calculation -- you still need to decide how to weigh the dimensions against each other. But it ensures that the dimensions are visible, so that the judgment is made with full information rather than with eight-ninths of the information destroyed.
 
-Maria's coffee shop is worth $200,000 on $d_1$. On the full manifold, it is something richer and more complex: a configuration of monetary value, contractual rights, fairness relationships, autonomy constraints, trust networks, community anchoring, personal identity, institutional standing, and epistemic uncertainty that no single number can capture, and that no single number should be asked to.
+Maria's coffee shop is worth \$200,000 on $d_1$. On the full manifold, it is something richer and more complex: a configuration of monetary value, contractual rights, fairness relationships, autonomy constraints, trust networks, community anchoring, personal identity, institutional standing, and epistemic uncertainty that no single number can capture, and that no single number should be asked to.
 
 ---
 
@@ -372,7 +372,7 @@ The theorem is non-trivial (Cantor showed that $\mathbb{R}^m$ and $\mathbb{R}^n$
 
 **[Established Mathematics.]** For differentiable $\phi: \mathbb{R}^9 \to \mathbb{R}$, the derivative $d\phi_x: \mathbb{R}^9 \to \mathbb{R}$ is a linear map with rank $\leq 1$ and kernel dimension $\geq 8$ at every point $x$. By the inverse function theorem, $\phi$ cannot be locally injective at any regular point (where the rank is 1), because the kernel is non-trivial. At critical points (where the rank is 0), $\phi$ is constant to first order.
 
-This means that every level set $\phi^{-1}(c)$ is either empty or has dimension $\geq 8$ in a neighborhood of any regular point. The pre-image of the appraiser's $200K figure is an eight-dimensional surface in the nine-dimensional attribute space -- a vast family of businesses that all produce the same cash flow but differ on every other dimension.
+This means that every level set $\phi^{-1}(c)$ is either empty or has dimension $\geq 8$ in a neighborhood of any regular point. The pre-image of the appraiser's \$200K figure is an eight-dimensional surface in the nine-dimensional attribute space -- a vast family of businesses that all produce the same cash flow but differ on every other dimension.
 
 ### Tensor Contraction in Index Notation
 

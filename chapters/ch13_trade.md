@@ -9,7 +9,7 @@
 
 > **RUNNING EXAMPLE — MARIA'S COFFEE SHOP**
 >
-> *Maria Esperanza sources her coffee beans from a small cooperative in Huila, Colombia. The cheapest option would be commodity beans from a large Brazilian plantation at $12/lb — the $d_1$-optimal geodesic. But Maria pays $25/lb for single-origin Colombian beans through her Oakland roaster Elena, who has a direct relationship with the cooperative. On the full manifold, the Colombian path traverses lower-cost regions: fair wages ($d_3$), transparent supply chain ($d_5$, $d_9$), community development in Huila ($d_6$), and alignment with Maria's identity ($d_7$). The $d_1$ premium of $13/lb buys a geodesic that is shorter on the full manifold than the "cheaper" commodity path.*
+> *Maria Esperanza sources her coffee beans from a small cooperative in Huila, Colombia. The cheapest option would be commodity beans from a large Brazilian plantation at \$12/lb — the $d_1$-optimal geodesic. But Maria pays \$25/lb for single-origin Colombian beans through her Oakland roaster Elena, who has a direct relationship with the cooperative. On the full manifold, the Colombian path traverses lower-cost regions: fair wages ($d_3$), transparent supply chain ($d_5$, $d_9$), community development in Huila ($d_6$), and alignment with Maria's identity ($d_7$). The $d_1$ premium of \$13/lb buys a geodesic that is shorter on the full manifold than the "cheaper" commodity path.*
 >
 > *International trade is not about finding the cheapest goods. It is about finding the shortest path on the multi-national decision manifold — and the cheapest path on $d_1$ is rarely the shortest on all nine dimensions.*
 
@@ -85,7 +85,7 @@ The framework explains why trade relationships are more durable and more valuabl
 
 **[Empirical.]** The fair-trade movement is, in geometric terms, an explicit shift from $d_1$-optimal to full-manifold-optimal trade. Fair-trade certification ensures that the supply chain geodesic respects minimum values on $d_3$ (fair wages), $d_4$ (worker autonomy), $d_6$ (community development), and $d_8$ (regulatory compliance).
 
-The willingness-to-pay premium for fair-trade goods ($1.40–$3.50 per pound for coffee, depending on study) is the market's estimate of the evaluative-dimension surplus created by the full-manifold geodesic. The framework predicts that the premium varies with the buyer's covariance matrix $\Sigma$ — buyers who weight evaluative dimensions heavily pay higher premiums, as the empirical data confirms.
+The willingness-to-pay premium for fair-trade goods (\$1.40–\$3.50 per pound for coffee, depending on study) is the market's estimate of the evaluative-dimension surplus created by the full-manifold geodesic. The framework predicts that the premium varies with the buyer's covariance matrix $\Sigma$ — buyers who weight evaluative dimensions heavily pay higher premiums, as the empirical data confirms.
 
 ### The Fair-Trade Premium as Manifold Distance
 
@@ -135,7 +135,7 @@ The framework does not automatically endorse free trade or protectionism. It say
 
 **[Modeling Axiom.]** International trade introduces a gauge complication absent from domestic exchange: goods are priced in different currencies, and the exchange rate between currencies is itself a market-determined variable subject to speculation, manipulation, and misalignment.
 
-In the geometric framework, a currency denomination is a *gauge choice* — a labeling convention that should not affect the evaluation of the underlying economic state. The same good, priced at $100 in the US and €92 in Europe, is the same good. The evaluation of whether to buy it should be invariant under the currency transformation. When it is not — when agents make different trade decisions depending on the denomination — we have a gauge violation.
+In the geometric framework, a currency denomination is a *gauge choice* — a labeling convention that should not affect the evaluation of the underlying economic state. The same good, priced at \$100 in the US and €92 in Europe, is the same good. The evaluation of whether to buy it should be invariant under the currency transformation. When it is not — when agents make different trade decisions depending on the denomination — we have a gauge violation.
 
 Exchange rate misalignment is a systematic gauge violation that distorts the entire trade manifold. An undervalued currency makes a country's exports appear cheaper on $d_1$ than they actually are — the price heuristic is biased by the gauge. An overvalued currency has the opposite effect. The standard policy debate about "currency manipulation" is, in geometric terms, a debate about deliberate gauge violations: a country that artificially suppresses its exchange rate is distorting the price heuristic on the trade manifold, routing geodesics through its economy that would otherwise pass through other countries.
 
@@ -167,24 +167,24 @@ The "China shock" literature (Autor, Dorn, and Hanson, 2013) documented exactly 
 
 Maria evaluates three supply chain options:
 
-**Option A: Commodity (Brazil, $12/lb)**
-- $d_1$: -$960/month (80 lbs × $12)
+**Option A: Commodity (Brazil, \$12/lb)**
+- $d_1$: -\$960/month (80 lbs × \$12)
 - $d_3$: -0.6 (underpaid workers, exploitative conditions)
 - $d_5$: -0.3 (anonymous broker, no relationship)
 - $d_6$: -0.4 (plantation monoculture, community disruption)
 - $d_7$: -0.7 (violates Maria's identity as ethical sourcer)
 - Total BF: $960/\sigma_1^2 + 0.6^2/\sigma_3^2 + 0.3^2/\sigma_5^2 + 0.4^2/\sigma_6^2 + 0.7^2/\sigma_7^2$ ≈ **high**
 
-**Option B: Fair-trade (Colombia via Elena, $25/lb)**
-- $d_1$: -$2,000/month
+**Option B: Fair-trade (Colombia via Elena, \$25/lb)**
+- $d_1$: -\$2,000/month
 - $d_3$: +0.5 (fair wages, cooperative structure)
 - $d_5$: +0.4 (trusted relationship with Elena)
 - $d_6$: +0.6 (community development fund)
 - $d_7$: +0.8 (identity-consistent sourcing)
 - Total BF: $2,000/\sigma_1^2 - (0.5^2 + 0.4^2 + 0.6^2 + 0.8^2)/\sigma_k^2$ ≈ **moderate**
 
-**Option C: Direct-trade (Colombia, no intermediary, $18/lb)**
-- $d_1$: -$1,440/month
+**Option C: Direct-trade (Colombia, no intermediary, \$18/lb)**
+- $d_1$: -\$1,440/month
 - $d_3$: +0.3 (fair but unverified)
 - $d_5$: -0.2 (no trusted intermediary)
 - $d_9$: -0.4 (quality uncertainty)
@@ -196,9 +196,9 @@ The $d_1$-only ranking: A > C > B. The full-manifold ranking: B > C > A. Maria c
 
 Applying the conservation framework (Chapter 9) to Maria's sourcing decision:
 
-**Option B (Elena, fair-trade):** The $2,000 monetary transfer is conserved — Maria pays, Elena receives. But the evaluative surplus is substantial: trust (+0.4 each), community (+0.6 each), identity (+0.8 Maria, +0.5 Elena). Total evaluative value created per transaction: approximately 2.3 units.
+**Option B (Elena, fair-trade):** The \$2,000 monetary transfer is conserved — Maria pays, Elena receives. But the evaluative surplus is substantial: trust (+0.4 each), community (+0.6 each), identity (+0.8 Maria, +0.5 Elena). Total evaluative value created per transaction: approximately 2.3 units.
 
-**Option A (commodity):** The $960 monetary transfer is conserved. The evaluative surplus is approximately zero — no trust, no community, no identity affirmation. The $1,040/month Maria saves on $d_1$ comes at the cost of 2.3 units of evaluative value per transaction.
+**Option A (commodity):** The \$960 monetary transfer is conserved. The evaluative surplus is approximately zero — no trust, no community, no identity affirmation. The \$1,040/month Maria saves on $d_1$ comes at the cost of 2.3 units of evaluative value per transaction.
 
 The conservation law reveals the hidden structure: Maria's "willingness to pay more" for fair-trade beans is not a consumption preference on $d_1$. It is the purchase of evaluative surplus that cannot be obtained at any price through the commodity channel. The premium is the monetary cost of accessing a different region of the manifold — a region where evaluative value can be created.
 

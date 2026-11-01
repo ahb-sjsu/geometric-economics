@@ -7,19 +7,19 @@
 
 > **RUNNING EXAMPLE -- MARIA'S COFFEE SHOP**
 >
-> *Maria and Richard Crane, the CEO of Meridian Capital Partners REIT, both buy a cup of coffee. The coffee costs $5. The transaction is identical for both parties on $d_1$: a five-dollar displacement along the monetary dimension. The barista does not charge Maria less because she earns less or charge Crane more because he earns more. The price is a scalar. It treats them as identical.*
+> *Maria and Richard Crane, the CEO of Meridian Capital Partners REIT, both buy a cup of coffee. The coffee costs \$5. The transaction is identical for both parties on $d_1$: a five-dollar displacement along the monetary dimension. The barista does not charge Maria less because she earns less or charge Crane more because he earns more. The price is a scalar. It treats them as identical.*
 >
-> *But $5 is not the same displacement on their respective manifolds.*
+> *But \$5 is not the same displacement on their respective manifolds.*
 >
-> *For Maria, $5 is approximately 1.5% of her daily gross margin. The coffee is a meaningful cost that she tracks in a mental ledger of daily discretionary spending. The $5 activates $d_1$ (she feels the expenditure), $d_7$ (the coffee is a small ritual that affirms her identity as someone who appreciates quality), and $d_9$ (she is aware of the trade-off between this coffee and other uses of the money). The Mahalanobis distance from her current state to her post-coffee state is:*
+> *For Maria, \$5 is approximately 1.5% of her daily gross margin. The coffee is a meaningful cost that she tracks in a mental ledger of daily discretionary spending. The \$5 activates $d_1$ (she feels the expenditure), $d_7$ (the coffee is a small ritual that affirms her identity as someone who appreciates quality), and $d_9$ (she is aware of the trade-off between this coffee and other uses of the money). The Mahalanobis distance from her current state to her post-coffee state is:*
 >
 > $$w_{\text{Maria}} = \frac{5^2}{\sigma_{1,\text{Maria}}^2} + \frac{\delta_7^2}{\sigma_{7,\text{Maria}}^2} + \frac{\delta_9^2}{\sigma_{9,\text{Maria}}^2} + \text{cross terms}$$
 >
-> *For Crane, $5 is approximately 0.0003% of his daily income. The coffee is below his perceptual threshold -- a purchase so small relative to his monetary scale that his System 1 does not register it as an economic event. The $5 activates $d_1$ negligibly (no felt expenditure), $d_7$ slightly (the coffee confirms his identity as a person of taste), and $d_9$ not at all (no perceived trade-off). The Mahalanobis distance is:*
+> *For Crane, \$5 is approximately 0.0003% of his daily income. The coffee is below his perceptual threshold -- a purchase so small relative to his monetary scale that his System 1 does not register it as an economic event. The \$5 activates $d_1$ negligibly (no felt expenditure), $d_7$ slightly (the coffee confirms his identity as a person of taste), and $d_9$ not at all (no perceived trade-off). The Mahalanobis distance is:*
 >
 > $$w_{\text{Crane}} = \frac{5^2}{\sigma_{1,\text{Crane}}^2} + \frac{\delta_7'^2}{\sigma_{7,\text{Crane}}^2} \approx \frac{5^2}{\sigma_{1,\text{Crane}}^2}$$
 >
-> *Since Crane's monetary variance $\sigma_{1,\text{Crane}}^2$ is vastly larger than Maria's $\sigma_{1,\text{Maria}}^2$ (his normal daily monetary fluctuations span thousands of dollars, while hers span hundreds), the Mahalanobis distance $w_{\text{Crane}} \ll w_{\text{Maria}}$. The same $5 coffee is a larger displacement on Maria's manifold than on Crane's.*
+> *Since Crane's monetary variance $\sigma_{1,\text{Crane}}^2$ is vastly larger than Maria's $\sigma_{1,\text{Maria}}^2$ (his normal daily monetary fluctuations span thousands of dollars, while hers span hundreds), the Mahalanobis distance $w_{\text{Crane}} \ll w_{\text{Maria}}$. The same \$5 coffee is a larger displacement on Maria's manifold than on Crane's.*
 >
 > *This is not diminishing marginal utility -- the claim that each additional dollar provides less satisfaction. It is a stronger and more precise claim: Maria and Crane experience different metrics on the same underlying manifold. A dollar is not "worth less" to Crane in some abstract utility sense; it *covers less distance* on his manifold. The geometry of their economic experience is different.*
 
@@ -39,7 +39,7 @@ This chapter develops a geometric theory of inequality. The central claim is tha
 
 Chapter 4 established that the economic metric is position-dependent: the cost of a displacement depends on the agent's current location on the manifold. This is not a special feature of the geometric framework; it is a standard property of Riemannian manifolds. Just as the metric of spacetime varies with position (stronger near massive objects, flatter far away), the economic metric varies with the agent's endowment, social position, and history.
 
-The key insight for inequality is that *wealth affects the metric*. An agent's monetary variance $\sigma_1^2$ -- the normal range of monetary fluctuation in their daily life -- is a function of their wealth. A person with $1 million in liquid assets experiences daily monetary fluctuations of perhaps $\pm$5,000 from investment returns, spending, and income. For this person, $\sigma_1^2 \approx (5{,}000)^2$. A person living paycheck to paycheck experiences daily monetary fluctuations of perhaps $\pm$50 from variable expenses and income timing. For this person, $\sigma_1^2 \approx (50)^2$.
+The key insight for inequality is that *wealth affects the metric*. An agent's monetary variance $\sigma_1^2$ -- the normal range of monetary fluctuation in their daily life -- is a function of their wealth. A person with \$1 million in liquid assets experiences daily monetary fluctuations of perhaps $\pm$5,000 from investment returns, spending, and income. For this person, $\sigma_1^2 \approx (5{,}000)^2$. A person living paycheck to paycheck experiences daily monetary fluctuations of perhaps $\pm$50 from variable expenses and income timing. For this person, $\sigma_1^2 \approx (50)^2$.
 
 The metric component $g_{11} = 1/\sigma_1^2$ is therefore *inversely proportional to the square of the monetary scale*. For the wealthy agent, $g_{11} \approx 1/(5{,}000)^2 = 4 \times 10^{-8}$. For the poor agent, $g_{11} \approx 1/(50)^2 = 4 \times 10^{-4}$. A dollar displacement has metric cost:
 
@@ -65,7 +65,7 @@ The geometric account is richer in three ways.
 
 **First**, the metric distortion operates on all nine dimensions, not just $d_1$. Wealth affects not only the monetary metric $g_{11}$ but also the fairness metric $g_{33}$, the autonomy metric $g_{44}$, and the epistemic metric $g_{99}$. A poor person is more sensitive to fairness violations ($g_{33}$ is larger) because unfairness at low wealth can be existentially threatening, while unfairness at high wealth is merely irritating. A poor person has less autonomy ($g_{44}$ is larger, meaning autonomy displacements are more costly) because economic constraints narrow the option set. A poor person faces greater epistemic challenges ($g_{99}$ is larger) because financial complexity imposes information costs that scale with the sophistication of the financial system, not with the agent's resources to navigate it.
 
-**Second**, the metric distortion includes cross-dimensional couplings that the scalar account cannot capture. For a poor person, the coupling between $d_1$ (money) and $d_4$ (autonomy) is tight: losing $100 may mean losing the ability to choose between transportation options, food options, or medical options. The off-diagonal component $g_{14}$ is large. For a wealthy person, this coupling is loose: losing $100 has no impact on autonomy. The metric is not just different in magnitude; it is different in *structure*.
+**Second**, the metric distortion includes cross-dimensional couplings that the scalar account cannot capture. For a poor person, the coupling between $d_1$ (money) and $d_4$ (autonomy) is tight: losing \$100 may mean losing the ability to choose between transportation options, food options, or medical options. The off-diagonal component $g_{14}$ is large. For a wealthy person, this coupling is loose: losing \$100 has no impact on autonomy. The metric is not just different in magnitude; it is different in *structure*.
 
 **Third**, the metric distortion has boundary consequences. A poor person's manifold has moral-economic boundaries that a wealthy person's manifold does not. The boundary between "able to pay rent" and "evicted" is a discontinuity on the poor person's manifold -- a region where a small monetary displacement produces an infinite change in living circumstances. The wealthy person's manifold has no such boundary at the same dollar amount. The boundary structure of the manifold -- the phase transitions between economic regimes -- is wealth-dependent.
 
@@ -73,11 +73,11 @@ The geometric account is richer in three ways.
 
 > **RUNNING EXAMPLE -- MARIA'S COFFEE SHOP**
 >
-> *The metric distortion between Maria and Crane extends far beyond the $5 coffee.*
+> *The metric distortion between Maria and Crane extends far beyond the \$5 coffee.*
 >
-> *Maria's manifold has a boundary at approximately $-\$3{,}000$ from her current state: if her monthly margin drops by more than $3,000, she cannot make rent, and the business fails. This boundary creates a *cliff* on her manifold -- a region of discontinuously infinite metric cost. Every decision Maria makes is conditioned by the proximity of this boundary. She cannot take risks that would move her close to the cliff, even if the expected $d_1$ payoff is positive, because the boundary penalty is infinite.*
+> *Maria's manifold has a boundary at approximately $-\$3{,}000$ from her current state: if her monthly margin drops by more than \$3,000, she cannot make rent, and the business fails. This boundary creates a *cliff* on her manifold -- a region of discontinuously infinite metric cost. Every decision Maria makes is conditioned by the proximity of this boundary. She cannot take risks that would move her close to the cliff, even if the expected $d_1$ payoff is positive, because the boundary penalty is infinite.*
 >
-> *Crane's manifold has no corresponding boundary. A $3,000 loss is 0.002% of his annual compensation. His nearest equivalent boundary -- the point at which the REIT faces a liquidity crisis -- is tens of millions of dollars away from his personal financial position. His decisions are unconstrained by survival boundaries.*
+> *Crane's manifold has no corresponding boundary. A \$3,000 loss is 0.002% of his annual compensation. His nearest equivalent boundary -- the point at which the REIT faces a liquidity crisis -- is tens of millions of dollars away from his personal financial position. His decisions are unconstrained by survival boundaries.*
 >
 > *The consequence: Maria's option set is geometrically smaller than Crane's. She is confined to a narrow corridor on the manifold by the proximity of the boundary. Crane can explore a vast region. The *effective dimension* of Maria's decision manifold is lower than Crane's -- not because she has fewer aspirations but because the boundaries on her manifold constrain her movement to a lower-dimensional subspace.*
 >
@@ -141,7 +141,7 @@ The geometric framework provides a precise mathematical interpretation of the ve
 
 This interpretation explains several features of Rawls's theory:
 
-**Why the veil produces egalitarian preferences.** Behind the veil, a $100 tax on the wealthy and a $100 transfer to the poor have the *same* metric cost to the decision-maker (who does not know whether they are wealthy or poor). Without the veil, the wealthy person's metric assigns low cost to the tax ($g_{11}$ is small) and the poor person's metric assigns high value to the transfer ($g_{11}$ is large). The veil eliminates this asymmetry by averaging the metrics.
+**Why the veil produces egalitarian preferences.** Behind the veil, a \$100 tax on the wealthy and a \$100 transfer to the poor have the *same* metric cost to the decision-maker (who does not know whether they are wealthy or poor). Without the veil, the wealthy person's metric assigns low cost to the tax ($g_{11}$ is small) and the poor person's metric assigns high value to the transfer ($g_{11}$ is large). The veil eliminates this asymmetry by averaging the metrics.
 
 **Why Rawls arrives at maximin.** The average metric $\bar{g}_{\mu\nu}$ is dominated by the contributions from agents with the largest metric components -- the worst-off, who experience the highest costs for any given displacement. To see why: if agent $j$ has $g_{11}^{(j)} = 10^{-3}$ (wealthy) and agent $k$ has $g_{11}^{(k)} = 10^{1}$ (poor), the average $\bar{g}_{11} \approx 5 \times 10^{0}$ is much closer to the poor agent's metric than to the wealthy agent's. Decisions made using the average metric disproportionately weight the interests of those with the largest metric components -- which, by the inequality metric (Proposition 40), are the poorest agents. This is the maximin principle, derived from metric averaging rather than from risk aversion.
 
@@ -163,17 +163,17 @@ The metric-averaging interpretation also reveals limitations of the Rawlsian fra
 >
 > *Behind the veil, the rational agent does not know whether they will be Maria, Crane, or one of Maria's minimum-wage employees. They evaluate the economic system using the average metric:*
 >
-> *Maria's metric: $\sigma_{1,\text{Maria}}^2 \approx (300)^2 = 90{,}000$. Daily monetary fluctuations of ~$300.*
+> *Maria's metric: $\sigma_{1,\text{Maria}}^2 \approx (300)^2 = 90{,}000$. Daily monetary fluctuations of ~\$300.*
 >
-> *Crane's metric: $\sigma_{1,\text{Crane}}^2 \approx (5{,}000)^2 = 25{,}000{,}000$. Daily monetary fluctuations of ~$5,000.*
+> *Crane's metric: $\sigma_{1,\text{Crane}}^2 \approx (5{,}000)^2 = 25{,}000{,}000$. Daily monetary fluctuations of ~\$5,000.*
 >
-> *Sofia's metric (Maria's minimum-wage barista): $\sigma_{1,\text{Sofia}}^2 \approx (50)^2 = 2{,}500$. Daily monetary fluctuations of ~$50.*
+> *Sofia's metric (Maria's minimum-wage barista): $\sigma_{1,\text{Sofia}}^2 \approx (50)^2 = 2{,}500$. Daily monetary fluctuations of ~\$50.*
 >
 > *The average monetary variance: $\bar{\sigma}_1^2 \approx (90{,}000 + 25{,}000{,}000 + 2{,}500)/3 \approx 8{,}364{,}167$.*
 >
 > *But the average metric $\bar{g}_{11} = 1/\bar{\sigma}_1^2$ is dominated by Crane's metric, making the average metric insensitive to Sofia's experience. This is a known limitation of the mean as an average -- it is pulled by outliers.*
 >
-> *The Rawlsian maximin corrects for this: instead of the average metric, use the metric of the worst-off agent (Sofia). Under Sofia's metric, the cost of economic displacements is extreme: $g_{11}^{\text{Sofia}} = 1/2{,}500 = 4 \times 10^{-4}$. A $100 expense has metric cost $100^2 / 2{,}500 = 4.0$ for Sofia, compared to $100^2 / 90{,}000 \approx 0.11$ for Maria and $100^2 / 25{,}000{,}000 = 0.0004$ for Crane. The maximin principle says: design institutions that minimize the metric cost experienced by Sofia, because she experiences the largest costs for any given displacement.*
+> *The Rawlsian maximin corrects for this: instead of the average metric, use the metric of the worst-off agent (Sofia). Under Sofia's metric, the cost of economic displacements is extreme: $g_{11}^{\text{Sofia}} = 1/2{,}500 = 4 \times 10^{-4}$. A \$100 expense has metric cost $100^2 / 2{,}500 = 4.0$ for Sofia, compared to $100^2 / 90{,}000 \approx 0.11$ for Maria and $100^2 / 25{,}000{,}000 = 0.0004$ for Crane. The maximin principle says: design institutions that minimize the metric cost experienced by Sofia, because she experiences the largest costs for any given displacement.*
 
 ---
 
@@ -211,25 +211,25 @@ This compounding explains why inequality is so persistent despite substantial tr
 
 ---
 
-## 12.5 Worked Example: $100 on Three Manifolds
+## 12.5 Worked Example: \$100 on Three Manifolds
 
-We now construct a detailed comparison of the metric experienced by Maria, her minimum-wage employee Sofia, and her REIT landlord Richard Crane for the same $100 expense.
+We now construct a detailed comparison of the metric experienced by Maria, her minimum-wage employee Sofia, and her REIT landlord Richard Crane for the same \$100 expense.
 
 ### The Agents
 
-**Sofia** is Maria's barista. She earns $18/hour, works 30 hours/week, and takes home approximately $2,160/month after taxes. She rents a room in a shared apartment for $1,100/month. After rent, utilities, transportation, and food, she has approximately $200/month in discretionary income. Her nearest survival boundary (unable to pay rent) is approximately $200 away from her current state.
+**Sofia** is Maria's barista. She earns \$18/hour, works 30 hours/week, and takes home approximately \$2,160/month after taxes. She rents a room in a shared apartment for \$1,100/month. After rent, utilities, transportation, and food, she has approximately \$200/month in discretionary income. Her nearest survival boundary (unable to pay rent) is approximately \$200 away from her current state.
 
-**Maria** is the shop owner. She takes home approximately $4,500/month in owner's draw after business expenses. She rents an apartment for $2,200/month. After personal expenses, she has approximately $800/month in discretionary income. Her nearest survival boundary (business failure) is approximately $3,000 away from her current state.
+**Maria** is the shop owner. She takes home approximately \$4,500/month in owner's draw after business expenses. She rents an apartment for \$2,200/month. After personal expenses, she has approximately \$800/month in discretionary income. Her nearest survival boundary (business failure) is approximately \$3,000 away from her current state.
 
-**Crane** is the REIT CEO. He earns approximately $4.5 million annually, or $375,000/month. His monthly discretionary income, after mortgage, taxes, and living expenses, is approximately $150,000. His nearest financial boundary (material lifestyle change) is millions of dollars away.
+**Crane** is the REIT CEO. He earns approximately \$4.5 million annually, or \$375,000/month. His monthly discretionary income, after mortgage, taxes, and living expenses, is approximately \$150,000. His nearest financial boundary (material lifestyle change) is millions of dollars away.
 
-### The $100 Expense
+### The \$100 Expense
 
-Each agent must pay an unexpected $100 expense -- a medical co-pay, a parking ticket, a broken appliance.
+Each agent must pay an unexpected \$100 expense -- a medical co-pay, a parking ticket, a broken appliance.
 
 #### Sofia's Manifold
 
-**$d_1$ (monetary):** $100 is 50% of Sofia's monthly discretionary income. The monetary scale $\sigma_{1,\text{Sofia}} \approx 50$ (her normal daily variation).
+**$d_1$ (monetary):** \$100 is 50% of Sofia's monthly discretionary income. The monetary scale $\sigma_{1,\text{Sofia}} \approx 50$ (her normal daily variation).
 
 $$w_1^{\text{Sofia}} = \frac{100^2}{50^2} = 4.0$$
 
@@ -237,7 +237,7 @@ $$w_1^{\text{Sofia}} = \frac{100^2}{50^2} = 4.0$$
 
 $$w_3^{\text{Sofia}} = \frac{0.6^2}{0.8^2} = 0.5625$$
 
-**$d_4$ (autonomy):** The $100 eliminates Sofia's discretionary budget for two weeks. She cannot choose to go out with friends, buy new shoes, or visit her family. The autonomy metric activates: $\Delta d_4 \approx -0.7$, $\sigma_4 \approx 0.6$.
+**$d_4$ (autonomy):** The \$100 eliminates Sofia's discretionary budget for two weeks. She cannot choose to go out with friends, buy new shoes, or visit her family. The autonomy metric activates: $\Delta d_4 \approx -0.7$, $\sigma_4 \approx 0.6$.
 
 $$w_4^{\text{Sofia}} = \frac{0.7^2}{0.6^2} = 1.361$$
 
@@ -253,11 +253,11 @@ $$w_{14}^{\text{Sofia}} = 2 \times 0.3 \times \frac{100}{50} \times \frac{0.7}{0
 
 $$w_{\text{total}}^{\text{Sofia}} = 4.0 + 0.5625 + 1.361 + 1.0 + 1.4 + \text{other cross terms} \approx 9.1$$
 
-**Boundary proximity:** The $100 expense moves Sofia from $200 discretionary to $100 discretionary -- cutting her distance from the survival boundary in half. This boundary proximity does not appear in the Mahalanobis distance but enters through increased anxiety ($d_9$) and reduced autonomy ($d_4$) in subsequent decisions. The effective metric cost, accounting for boundary proximity effects, exceeds 9.1.
+**Boundary proximity:** The \$100 expense moves Sofia from \$200 discretionary to \$100 discretionary -- cutting her distance from the survival boundary in half. This boundary proximity does not appear in the Mahalanobis distance but enters through increased anxiety ($d_9$) and reduced autonomy ($d_4$) in subsequent decisions. The effective metric cost, accounting for boundary proximity effects, exceeds 9.1.
 
 #### Maria's Manifold
 
-**$d_1$ (monetary):** $100 is 12.5% of Maria's monthly discretionary income. The monetary scale $\sigma_{1,\text{Maria}} \approx 300$.
+**$d_1$ (monetary):** \$100 is 12.5% of Maria's monthly discretionary income. The monetary scale $\sigma_{1,\text{Maria}} \approx 300$.
 
 $$w_1^{\text{Maria}} = \frac{100^2}{300^2} = 0.111$$
 
@@ -265,7 +265,7 @@ $$w_1^{\text{Maria}} = \frac{100^2}{300^2} = 0.111$$
 
 $$w_3^{\text{Maria}} = \frac{0.2^2}{0.8^2} = 0.0625$$
 
-**$d_4$ (autonomy):** The $100 reduces Maria's options slightly but does not eliminate any category of choice. $\Delta d_4 \approx -0.15$, $\sigma_4 \approx 0.6$.
+**$d_4$ (autonomy):** The \$100 reduces Maria's options slightly but does not eliminate any category of choice. $\Delta d_4 \approx -0.15$, $\sigma_4 \approx 0.6$.
 
 $$w_4^{\text{Maria}} = \frac{0.15^2}{0.6^2} = 0.0625$$
 
@@ -281,15 +281,15 @@ $$w_{14}^{\text{Maria}} \approx 2 \times 0.1 \times \frac{100}{300} \times \frac
 
 $$w_{\text{total}}^{\text{Maria}} = 0.111 + 0.0625 + 0.0625 + 0.04 + 0.017 + \text{other small terms} \approx 0.33$$
 
-**Boundary proximity:** The $100 moves Maria from $800 discretionary to $700 discretionary -- a 12.5% reduction in her distance from the survival boundary. The effect is noticeable but not threatening.
+**Boundary proximity:** The \$100 moves Maria from \$800 discretionary to \$700 discretionary -- a 12.5% reduction in her distance from the survival boundary. The effect is noticeable but not threatening.
 
 #### Crane's Manifold
 
-**$d_1$ (monetary):** $100 is 0.00007% of Crane's monthly discretionary income. The monetary scale $\sigma_{1,\text{Crane}} \approx 5{,}000$.
+**$d_1$ (monetary):** \$100 is 0.00007% of Crane's monthly discretionary income. The monetary scale $\sigma_{1,\text{Crane}} \approx 5{,}000$.
 
 $$w_1^{\text{Crane}} = \frac{100^2}{5{,}000^2} = 0.0004$$
 
-**$d_3$, $d_4$, $d_9$:** These dimensions are not activated by a $100 expense. The expense is below Crane's perceptual threshold -- he may not even notice it on his credit card statement. All cross-dimensional activations are approximately zero.
+**$d_3$, $d_4$, $d_9$:** These dimensions are not activated by a \$100 expense. The expense is below Crane's perceptual threshold -- he may not even notice it on his credit card statement. All cross-dimensional activations are approximately zero.
 
 **Total metric cost for Crane:**
 
@@ -305,7 +305,7 @@ $$w_{\text{total}}^{\text{Crane}} \approx 0.0004$$
 | Maria | 0.111 | 0.33 | 825x |
 | Crane | 0.0004 | 0.0004 | 1x |
 
-The $d_1$-only inequality ratio between Sofia and Crane is $4.0 / 0.0004 = 10{,}000$. The full-manifold inequality ratio is $9.1 / 0.0004 = 22{,}750$. The multi-dimensional metric more than doubles the measured inequality, because the cross-dimensional activations (fairness, autonomy, anxiety) that the $100 expense triggers for Sofia are invisible on the $d_1$ projection.
+The $d_1$-only inequality ratio between Sofia and Crane is $4.0 / 0.0004 = 10{,}000$. The full-manifold inequality ratio is $9.1 / 0.0004 = 22{,}750$. The multi-dimensional metric more than doubles the measured inequality, because the cross-dimensional activations (fairness, autonomy, anxiety) that the \$100 expense triggers for Sofia are invisible on the $d_1$ projection.
 
 This is the central empirical prediction of the geometric theory of inequality: *scalar measures underestimate inequality by a factor of 2-3x*, because they capture only the $d_1$ metric distortion while the full metric distortion includes cross-dimensional effects that amplify the inequality.
 

@@ -66,7 +66,7 @@ Should we build the highway through the wetland? Cost-benefit analysis sums the 
 
 Before turning to what geometry provides, consider a paradox that crystallizes the scalar failure.
 
-In 1974, Richard Easterlin documented a striking finding: beyond a threshold of approximately $15,000 per capita (in 2024 dollars, roughly $75,000), national increases in GDP do not predict increases in reported life satisfaction. Japan's real GDP per capita quadrupled between 1960 and 1990; average life satisfaction did not budge. The United States grew richer than any large nation in history; its happiness surveys flatlined from the 1970s onward, even as GDP per capita tripled.
+In 1974, Richard Easterlin documented a striking finding: beyond a threshold of approximately \$15,000 per capita (in 2024 dollars, roughly \$75,000), national increases in GDP do not predict increases in reported life satisfaction. Japan's real GDP per capita quadrupled between 1960 and 1990; average life satisfaction did not budge. The United States grew richer than any large nation in history; its happiness surveys flatlined from the 1970s onward, even as GDP per capita tripled.
 
 **[Empirical.]** The standard explanations — hedonic adaptation, relative income effects, aspiration adjustment — describe the phenomenon without explaining it structurally. Why should there be a threshold? Why should money stop working at a particular level? Why should the relationship between income and happiness be logarithmic rather than linear?
 
@@ -78,9 +78,9 @@ The Easterlin paradox is not a paradox. It is the expected behavior of a system 
 
 > **MARIA'S COFFEE SHOP — THE EASTERLIN PARADOX IN MINIATURE**
 >
-> *Maria's coffee shop nets $4,200 per month after the old rent. If her net income fell to $1,500, everything would degrade — she would cut employee hours ($d_4$), stop buying fair-trade beans ($d_3$, $d_7$), lose her community role ($d_6$), and live in constant financial anxiety ($d_9$). At $1,500, raising income to $4,200 would improve all nine dimensions. The correlation between $d_1$ and $d_5$–$d_9$ is strong.*
+> *Maria's coffee shop nets \$4,200 per month after the old rent. If her net income fell to \$1,500, everything would degrade — she would cut employee hours ($d_4$), stop buying fair-trade beans ($d_3$, $d_7$), lose her community role ($d_6$), and live in constant financial anxiety ($d_9$). At \$1,500, raising income to \$4,200 would improve all nine dimensions. The correlation between $d_1$ and $d_5$–$d_9$ is strong.*
 >
-> *But if Maria's net income rose from $4,200 to $8,000 — if she doubled her revenue by converting to a franchise model — the additional money might come at the cost of autonomy ($d_4$: franchise rules replace her judgment), identity ($d_7$: she is no longer "Maria's place" but "Starbucks #4287"), community ($d_6$: the regulars leave when the character changes), and trust ($d_5$: her employees feel betrayed). More money, less welfare on the full manifold. The Easterlin paradox, at the scale of one small business.*
+> *But if Maria's net income rose from \$4,200 to \$8,000 — if she doubled her revenue by converting to a franchise model — the additional money might come at the cost of autonomy ($d_4$: franchise rules replace her judgment), identity ($d_7$: she is no longer "Maria's place" but "Starbucks #4287"), community ($d_6$: the regulars leave when the character changes), and trust ($d_5$: her employees feel betrayed). More money, less welfare on the full manifold. The Easterlin paradox, at the scale of one small business.*
 
 ## The Monetization Trap
 
@@ -90,13 +90,13 @@ The monetization trap is seductive because it is sometimes correct. When the dec
 
 The trap springs when monetization is applied to decisions where multiple dimensions are active and the dimensions are not all reducible to $d_1$. Consider three canonical examples:
 
-**The value of a statistical life (VSL).** Regulatory agencies in the United States use a VSL of approximately $11.6 million (EPA, 2023) to evaluate safety regulations. A regulation that prevents one death and costs less than $11.6 million passes the cost-benefit test; one that costs more fails. The number is derived from revealed-preference studies: how much extra pay do workers demand for jobs with higher fatality risk?
+**The value of a statistical life (VSL).** Regulatory agencies in the United States use a VSL of approximately \$11.6 million (EPA, 2023) to evaluate safety regulations. A regulation that prevents one death and costs less than \$11.6 million passes the cost-benefit test; one that costs more fails. The number is derived from revealed-preference studies: how much extra pay do workers demand for jobs with higher fatality risk?
 
 The geometric objection is not that the number is wrong but that the procedure is incoherent. Revealed-preference VSL estimates reflect $d_1$ trade-offs made by agents in specific labor-market contexts, with specific informational constraints ($d_9$), specific outside options ($d_4$), and specific social-norm structures ($d_3$, $d_6$). The resulting number is not a property of the value of life. It is a property of the specific manifold configuration in which the revealed preference was elicited. Transporting the number to a different policy context — say, environmental regulation affecting children who never made a labor-market choice — is parallel transporting a vector on a curved manifold. The vector arrives rotated. The number arrives wrong.
 
-**The social cost of carbon (SCC).** The Interagency Working Group on the Social Cost of Greenhouse Gases sets the SCC at approximately $51 per ton of CO₂ (2020 dollars). This number enters cost-benefit calculations for every federal regulation that affects emissions. It is the monetary estimate of the damage caused by emitting one additional ton of CO₂.
+**The social cost of carbon (SCC).** The Interagency Working Group on the Social Cost of Greenhouse Gases sets the SCC at approximately \$51 per ton of CO₂ (2020 dollars). This number enters cost-benefit calculations for every federal regulation that affects emissions. It is the monetary estimate of the damage caused by emitting one additional ton of CO₂.
 
-The SCC compresses intergenerational harm ($d_6$ across decades and centuries), ecological irreversibility ($d_2$: rights of future populations to a livable planet), distributional injustice ($d_3$: poor nations bear disproportionate climate costs), and civilizational risk ($d_9$: epistemic uncertainty about tail outcomes) into a single dollar figure. The choice of discount rate alone — a parameter that encodes the temporal curvature of the decision manifold (Chapter 15) — swings the SCC from $14 to $200+ per ton. The "answer" depends entirely on the metric, and the metric is chosen before the calculation begins.
+The SCC compresses intergenerational harm ($d_6$ across decades and centuries), ecological irreversibility ($d_2$: rights of future populations to a livable planet), distributional injustice ($d_3$: poor nations bear disproportionate climate costs), and civilizational risk ($d_9$: epistemic uncertainty about tail outcomes) into a single dollar figure. The choice of discount rate alone — a parameter that encodes the temporal curvature of the decision manifold (Chapter 15) — swings the SCC from \$14 to \$200+ per ton. The "answer" depends entirely on the metric, and the metric is chosen before the calculation begins.
 
 **The compensation principle.** The Kaldor-Hicks criterion declares a policy change "efficient" if the winners could, in principle, compensate the losers and still be better off — even if they do not actually compensate them. The geometric objection: the claim that the winners "could" compensate the losers is a statement about $d_1$ only. A policy that displaces a community (severe $d_6$ loss), destroys trust networks ($d_5$), and eliminates cultural identity ($d_7$) cannot be compensated by any transfer on $d_1$, because the losses are on dimensions that are not fungible with money. The compensation principle assumes a non-degenerate metric between all dimensions. The actual metric is degenerate: some losses cannot be offset by gains on other dimensions, at any exchange rate.
 
@@ -142,7 +142,7 @@ The scalar optimizer is functioning correctly. It is finding the minimum-cost pa
 
 ### Case Study 2: The Opioid Crisis
 
-Purdue Pharma's decision to market OxyContin aggressively to general practitioners was a scalar optimization: maximize revenue from pain medication. On $d_1$, the strategy was brilliantly successful — $35 billion in cumulative revenue. On the full manifold, the strategy crossed sacred-value boundaries on $d_2$ (patients' rights to accurate medical information, violated by misleading claims about addiction risk), $d_3$ (fairness: profiting from misrepresented risk), $d_5$ (trust: physicians' trust in pharmaceutical companies, permanently degraded), and $d_6$ (social impact: 500,000 opioid-related deaths in the United States between 1999 and 2020).
+Purdue Pharma's decision to market OxyContin aggressively to general practitioners was a scalar optimization: maximize revenue from pain medication. On $d_1$, the strategy was brilliantly successful — \$35 billion in cumulative revenue. On the full manifold, the strategy crossed sacred-value boundaries on $d_2$ (patients' rights to accurate medical information, violated by misleading claims about addiction risk), $d_3$ (fairness: profiting from misrepresented risk), $d_5$ (trust: physicians' trust in pharmaceutical companies, permanently degraded), and $d_6$ (social impact: 500,000 opioid-related deaths in the United States between 1999 and 2020).
 
 The Sackler family's personal wealth increased by billions. The full-manifold cost of their strategy was, on any reasonable metric, among the largest economic-ethical disasters in American history. A scalar accounting of the firm's performance showed consistently excellent returns. A geometric accounting would have shown boundary crossings on $d_2$ and $d_3$ from the earliest marketing decisions — crossings that were invisible on the $d_1$ projection but that a nine-dimensional evaluation would have flagged as catastrophic.
 
@@ -214,11 +214,11 @@ A note on notation: throughout the book, $d_k$ denotes the $k$-th dimension of t
 
 ## Worked Example: Maria's Rent Increase
 
-Let us formalize the opening scenario. Maria's landlord has raised the rent by 40%, from $5,000/month to $7,000/month. On the scalar projection ($d_1$ only), this is a simple calculation: $7,000 < revenue, so Maria can pay; $7,000 > revenue, so she closes.
+Let us formalize the opening scenario. Maria's landlord has raised the rent by 40%, from \$5,000/month to \$7,000/month. On the scalar projection ($d_1$ only), this is a simple calculation: \$7,000 < revenue, so Maria can pay; \$7,000 > revenue, so she closes.
 
 On the full manifold, the decision is richer:
 
-| Dimension | Status quo ($5,000 rent) | After increase ($7,000 rent) |
+| Dimension | Status quo (\$5,000 rent) | After increase (\$7,000 rent) |
 |-----------|--------------------------|-------------------------------|
 | $d_1$: Consequences | Profitable, small margin | Break-even or loss |
 | $d_2$: Rights | Lease respected | Lease terms exploited |
@@ -232,7 +232,7 @@ On the full manifold, the decision is richer:
 
 The Mahalanobis distance between the status quo and the post-increase state is not 40% (the scalar) but a much larger displacement on the full manifold, because multiple dimensions shift simultaneously and the covariance matrix $\Sigma$ amplifies displacements along dimensions that co-vary (fairness and trust are correlated; when one drops, the other drops further).
 
-The landlord's analysis, operating on $d_1$ alone, sees a rent increase of $2,000/month. The geometric analysis, operating on the full manifold, sees a displacement that crosses moral boundaries ($d_3$, $d_7$), degrades trust ($d_5$), destroys social capital ($d_6$), and creates existential uncertainty ($d_9$). The boundary penalties $\beta_k$ for the crossed thresholds dominate the Mahalanobis distance. The "rational" $d_1$ decision — raise rent to market — is revealed as a suboptimal path on the full manifold.
+The landlord's analysis, operating on $d_1$ alone, sees a rent increase of \$2,000/month. The geometric analysis, operating on the full manifold, sees a displacement that crosses moral boundaries ($d_3$, $d_7$), degrades trust ($d_5$), destroys social capital ($d_6$), and creates existential uncertainty ($d_9$). The boundary penalties $\beta_k$ for the crossed thresholds dominate the Mahalanobis distance. The "rational" $d_1$ decision — raise rent to market — is revealed as a suboptimal path on the full manifold.
 
 This is not a rejection of the landlord's right to charge market rent. It is a demonstration that the *market rate* itself is a scalar projection of a richer economic reality, and that decisions made on the projection can be strictly dominated by decisions made on the full manifold — dominated in the Pareto sense, where both landlord and community are better off under a path that respects the full geometry.
 

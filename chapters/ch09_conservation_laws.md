@@ -9,7 +9,7 @@
 
 > **RUNNING EXAMPLE — MARIA'S COFFEE SHOP**
 >
-> *Maria Esperanza buys twenty pounds of single-origin coffee beans from her Oakland roaster, Elena, for $500. The monetary transaction is zero-sum: Maria's $500 leaves her account and enters Elena's. The rights transfer is similarly conserved: Elena surrenders ownership of the beans; Maria acquires it. The autonomy exchange is balanced: Elena freely chose to sell; Maria freely chose to buy.*
+> *Maria Esperanza buys twenty pounds of single-origin coffee beans from her Oakland roaster, Elena, for \$500. The monetary transaction is zero-sum: Maria's \$500 leaves her account and enters Elena's. The rights transfer is similarly conserved: Elena surrenders ownership of the beans; Maria acquires it. The autonomy exchange is balanced: Elena freely chose to sell; Maria freely chose to buy.*
 >
 > *But something remarkable happens on the evaluative dimensions. Maria's trust in Elena increases ($\Delta d_5 > 0$ for both). The community bond strengthens ($\Delta d_6 > 0$ for both). Elena's identity as a craft roaster is affirmed ($\Delta d_7 > 0$), and Maria's identity as an ethical sourcer is reinforced ($\Delta d_7 > 0$). Value has been created — not monetary value, which is conserved, but relational value, which is not zero-sum.*
 >
@@ -68,9 +68,9 @@ This distinction has a profound implication for economic policy. Policies that f
 
 > **MARIA'S COFFEE SHOP — CONSERVATION AND CREATION**
 >
-> *Maria's monthly rent payment is pure conservation on $d_1$: her $6,000 becomes the REIT's $6,000. Zero sum. But the stable lease relationship builds mutual trust ($d_5$) — the REIT gets a reliable tenant, Maria gets predictable costs — which is positive-sum. The community gathering that happens in the shop creates social value ($d_6$) for everyone involved, at no one's expense. The identity affirmation ($d_7$) that Maria derives from running an ethical business does not diminish Elena's identity as a craft roaster.*
+> *Maria's monthly rent payment is pure conservation on $d_1$: her \$6,000 becomes the REIT's \$6,000. Zero sum. But the stable lease relationship builds mutual trust ($d_5$) — the REIT gets a reliable tenant, Maria gets predictable costs — which is positive-sum. The community gathering that happens in the shop creates social value ($d_6$) for everyone involved, at no one's expense. The identity affirmation ($d_7$) that Maria derives from running an ethical business does not diminish Elena's identity as a craft roaster.*
 >
-> *The scalar economist sees only the $6,000 transfer. The geometric economist also sees the 2.4 units of evaluative value created. The first sees a zero-sum exchange. The second sees a transaction that is zero-sum on three dimensions and positive-sum on five.*
+> *The scalar economist sees only the \$6,000 transfer. The geometric economist also sees the 2.4 units of evaluative value created. The first sees a zero-sum exchange. The second sees a transaction that is zero-sum on three dimensions and positive-sum on five.*
 
 ### The Asymmetry of Value Destruction
 
@@ -142,7 +142,7 @@ The framework explains why some voluntary transactions feel exploitative: the vo
 
 This is the geometric explanation for the persistent gap between market prices and "true" economic value. The gap is not a market failure in the traditional sense — the price system is functioning correctly on $d_1$. It is a dimensional projection: the price captures one dimension of a nine-dimensional transaction, and the Scalar Irrecoverability Theorem (Chapter 6) says the other eight dimensions cannot be recovered from the price alone.
 
-Maria's fair-trade coffee costs $2/lb more than commodity coffee. On $d_1$, this is a pure loss. On the full manifold, the extra cost buys fairness ($d_3$), community development ($d_6$), identity consistency ($d_7$), and supply chain transparency ($d_9$). The "premium" is not irrational — it is the monetary cost of traversing a geodesic on the full manifold rather than the $d_1$-only projection.
+Maria's fair-trade coffee costs \$2/lb more than commodity coffee. On $d_1$, this is a pure loss. On the full manifold, the extra cost buys fairness ($d_3$), community development ($d_6$), identity consistency ($d_7$), and supply chain transparency ($d_9$). The "premium" is not irrational — it is the monetary cost of traversing a geodesic on the full manifold rather than the $d_1$-only projection.
 
 ## 9.9 The Noether Derivation
 
@@ -193,13 +193,13 @@ The second law of thermodynamics — entropy of a closed system never decreases 
 
 ## Worked Example: Maria's Supply Chain Transaction
 
-Maria places her monthly order with Elena: 80 pounds of single-origin Colombian beans at $25/lb = $2,000.
+Maria places her monthly order with Elena: 80 pounds of single-origin Colombian beans at \$25/lb = \$2,000.
 
 **Transferable dimensions (conserved):**
 
 | Dimension | $\Delta d_k$(Maria) | $\Delta d_k$(Elena) | Sum |
 |-----------|---------------------|---------------------|-----|
-| $d_1$: Money | -$2,000 | +$2,000 | 0 |
+| $d_1$: Money | -\$2,000 | +\$2,000 | 0 |
 | $d_2$: Rights | +ownership of beans | -ownership of beans | 0 |
 | $d_4$: Autonomy | -committed to menu | -committed to delivery | balanced |
 
@@ -214,21 +214,21 @@ Maria places her monthly order with Elena: 80 pounds of single-origin Colombian 
 
 **Total value created**: 0 on transferable dimensions (conservation holds) + 2.4 units on evaluative dimensions (positive-sum). The transaction creates value *even though no new goods are produced* — the value is in the relational, identity, and epistemic dimensions that the price cannot capture.
 
-Now compare with a transaction where Maria buys commodity beans from an anonymous broker at $18/lb:
+Now compare with a transaction where Maria buys commodity beans from an anonymous broker at \$18/lb:
 
-**Evaluative dimensions:** All near zero. No trust built ($\Delta d_5 \approx 0$), no community ($d_6 \approx 0$), no identity affirmation ($d_7 \approx 0$). The monetary savings ($7/lb × 80 = $560) come at a cost of 2.4 units of evaluative value — a cost invisible to $d_1$-only accounting.
+**Evaluative dimensions:** All near zero. No trust built ($\Delta d_5 \approx 0$), no community ($d_6 \approx 0$), no identity affirmation ($d_7 \approx 0$). The monetary savings (\$7/lb × 80 = \$560) come at a cost of 2.4 units of evaluative value — a cost invisible to $d_1$-only accounting.
 
 The Bond geodesic for Maria — the minimum-cost path on the full manifold — depends on the Mahalanobis metric $\Sigma$. If Maria's $\Sigma$ weights evaluative dimensions heavily (as the behavioral data suggests for morally loaded transactions), the fair-trade geodesic has lower total cost despite higher monetary cost.
 
 ### What Conservation Reveals About This Transaction
 
-The conservation law tells us something that neither the price nor the satisfaction of both parties reveals: the *structure* of value creation. The $2,000 monetary exchange is zero-sum. The 2.4 units of evaluative surplus are positive-sum. The total economic value of the transaction is:
+The conservation law tells us something that neither the price nor the satisfaction of both parties reveals: the *structure* of value creation. The \$2,000 monetary exchange is zero-sum. The 2.4 units of evaluative surplus are positive-sum. The total economic value of the transaction is:
 
 $$V_{\text{total}} = \underbrace{0}_{\text{transferable (conserved)}} + \underbrace{+2.4}_{\text{evaluative (created)}} = +2.4$$
 
-This means that if a well-meaning policymaker replaced Maria's personal relationship with Elena by a more "efficient" commodity market — matching buyers and sellers anonymously at lower transaction costs — the $d_1$ efficiency would improve (lower prices) but 2.4 units of evaluative value per transaction would be destroyed. Over the course of a year (12 transactions), that is 28.8 units of evaluative value — trust, community, identity, epistemic clarity — sacrificed for a monetary saving of $560 × 12 = $6,720.
+This means that if a well-meaning policymaker replaced Maria's personal relationship with Elena by a more "efficient" commodity market — matching buyers and sellers anonymously at lower transaction costs — the $d_1$ efficiency would improve (lower prices) but 2.4 units of evaluative value per transaction would be destroyed. Over the course of a year (12 transactions), that is 28.8 units of evaluative value — trust, community, identity, epistemic clarity — sacrificed for a monetary saving of \$560 × 12 = \$6,720.
 
-Is the trade-off worth it? The conservation framework does not answer this question — it depends on $\Sigma$. But it *reveals* the question. The scalar analysis saw only the $6,720 saving and called it an efficiency gain. The geometric analysis sees the $6,720 saving and the 28.8-unit evaluative loss, and asks: what does the metric say?
+Is the trade-off worth it? The conservation framework does not answer this question — it depends on $\Sigma$. But it *reveals* the question. The scalar analysis saw only the \$6,720 saving and called it an efficiency gain. The geometric analysis sees the \$6,720 saving and the 28.8-unit evaluative loss, and asks: what does the metric say?
 
 ## Implications for Economic Theory
 

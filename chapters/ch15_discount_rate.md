@@ -9,7 +9,7 @@
 
 > **RUNNING EXAMPLE — MARIA'S COFFEE SHOP**
 >
-> *Maria Esperanza is deciding whether to invest $30,000 in solar panels for her coffee shop. The payback period is 8 years. At a 3% discount rate (her personal rate), the investment has positive net present value. At a 12% discount rate (her landlord's REIT rate), it does not. The same investment, evaluated by two agents, produces opposite decisions — not because they disagree about the facts, but because they experience different curvature on the temporal manifold.*
+> *Maria Esperanza is deciding whether to invest \$30,000 in solar panels for her coffee shop. The payback period is 8 years. At a 3% discount rate (her personal rate), the investment has positive net present value. At a 12% discount rate (her landlord's REIT rate), it does not. The same investment, evaluated by two agents, produces opposite decisions — not because they disagree about the facts, but because they experience different curvature on the temporal manifold.*
 >
 > *The discount rate is not a preference parameter. It is the curvature of the agent's decision manifold along the time axis — and the Stern-Nordhaus debate about climate change is, at bottom, a disagreement about this curvature.*
 
@@ -39,7 +39,7 @@ $$\delta_k = K(t, d_k)$$
 
 *where $K(t, d_k)$ is the sectional curvature of the temporal-$d_k$ plane. If $K(t, d_1) > K(t, d_6)$ — if the temporal manifold curves more steeply on the monetary axis than on the social-impact axis — then monetary value is discounted faster than social value.*
 
-**[Empirical.]** This prediction is testable. Ask subjects: "Would you rather receive $100 today or $110 in a year?" (monetary discounting on $d_1$). Then ask: "Would you rather your neighborhood park be clean today or slightly cleaner in a year?" (social-impact discounting on $d_6$). The monetary discount rate is typically 5–15% (subjects require $105–$115 in a year to match $100 today). The social-impact discount rate is much lower — subjects treat future community benefits as nearly as valuable as present ones.
+**[Empirical.]** This prediction is testable. Ask subjects: "Would you rather receive \$100 today or \$110 in a year?" (monetary discounting on $d_1$). Then ask: "Would you rather your neighborhood park be clean today or slightly cleaner in a year?" (social-impact discounting on $d_6$). The monetary discount rate is typically 5–15% (subjects require \$105–\$115 in a year to match \$100 today). The social-impact discount rate is much lower — subjects treat future community benefits as nearly as valuable as present ones.
 
 The standard approach of applying a single discount rate to all dimensions — computing the net present value of a policy by discounting monetary costs, environmental benefits, health impacts, and community effects at the same rate — is a scalar contraction. The Scalar Irrecoverability Theorem (Chapter 6) says this contraction destroys information. The lost information is *which dimensions are properly discounted at which rates*.
 
@@ -127,7 +127,7 @@ This explanation makes a testable prediction: hyperbolic discounting should be *
 
 ### Time-Inconsistency as Curvature Change
 
-The classic problem with hyperbolic discounting is *time-inconsistency*: a preference expressed today about future trade-offs changes when the future arrives. Today, I prefer $110 in 31 days to $100 in 30 days. When day 30 arrives, I prefer $100 today to $110 tomorrow. My preferences have reversed.
+The classic problem with hyperbolic discounting is *time-inconsistency*: a preference expressed today about future trade-offs changes when the future arrives. Today, I prefer \$110 in 31 days to \$100 in 30 days. When day 30 arrives, I prefer \$100 today to \$110 tomorrow. My preferences have reversed.
 
 In the geometric framework, this is not a "bias." It is the natural consequence of position-dependent curvature. The curvature at time $t$ determines the discount rate at time $t$. When the agent moves forward to time $t + 30$, the curvature at that position is different (higher, because the manifold is steeper near the present). The "reversal" is the agent experiencing the same manifold from a different position — seeing different curvature because they are at a different point.
 
@@ -135,7 +135,7 @@ This reframing has a practical consequence: *commitment devices* (Laibson, 1997)
 
 > **MARIA'S COFFEE SHOP — DISCOUNTING IN PRACTICE**
 >
-> *Maria thinks about the solar panels differently depending on her time horizon. When she imagines next month (high temporal curvature), the $30,000 cost looms large — it is a full month's revenue, tangible, immediate, visceral. Her System 1 fires a boundary alarm on $d_1$. When she imagines the 25-year lifespan of the panels (low temporal curvature), the cost becomes a small investment relative to the total energy savings, the community signaling, and the regulatory anticipation. Her System 1 fires an identity alarm on $d_7$: "I am the kind of person who invests in the future."*
+> *Maria thinks about the solar panels differently depending on her time horizon. When she imagines next month (high temporal curvature), the \$30,000 cost looms large — it is a full month's revenue, tangible, immediate, visceral. Her System 1 fires a boundary alarm on $d_1$. When she imagines the 25-year lifespan of the panels (low temporal curvature), the cost becomes a small investment relative to the total energy savings, the community signaling, and the regulatory anticipation. Her System 1 fires an identity alarm on $d_7$: "I am the kind of person who invests in the future."*
 >
 > *The discount rate she applies is different on different dimensions. On $d_1$ (monetary cost), she discounts at roughly 5% — the cost becomes manageable when spread over years. On $d_7$ (identity), she discounts at roughly 0% — the identity benefit of being an environmentally responsible business owner does not diminish with time. On $d_6$ (community impact), she discounts at roughly 1% — the neighborhood's appreciation of her environmental commitment persists but fades slightly as newer buildings adopt solar as standard.*
 >
@@ -179,9 +179,9 @@ Maria evaluates the solar panel investment on two manifolds.
 
 | Year | Cash flow | PV factor | PV |
 |------|-----------|-----------|-----|
-| 0 | -$30,000 | 1.00 | -$30,000 |
-| 1-8 | +$4,500/yr | $\sum e^{-0.03t}$ | +$31,200 |
-| NPV | | | **+$1,200** |
+| 0 | -\$30,000 | 1.00 | -\$30,000 |
+| 1-8 | +\$4,500/yr | $\sum e^{-0.03t}$ | +\$31,200 |
+| NPV | | | **+\$1,200** |
 
 Positive but marginal. The investment barely clears the hurdle.
 

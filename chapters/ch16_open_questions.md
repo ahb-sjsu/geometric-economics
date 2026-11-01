@@ -129,13 +129,13 @@ The economic map has been one-dimensional for too long. This book has drawn the 
 
 > **MARIA'S COFFEE SHOP — EPILOGUE**
 >
-> *Maria Esperanza retires in 2050. She sells her coffee shop to Daniela, a former barista who grew up in the Mission District. The sale price — $280,000 — captures the shop's monetary value. The transition captures much more.*
+> *Maria Esperanza retires in 2050. She sells her coffee shop to Daniela, a former barista who grew up in the Mission District. The sale price — \$280,000 — captures the shop's monetary value. The transition captures much more.*
 >
 > *The sale agreement includes a five-year mentoring commitment from Maria to Daniela ($d_5$: trust transfer). The supplier relationship with Elena's roastery in Oakland passes to Daniela with a formal introduction and a shared lunch ($d_5$, $d_7$: relationship and identity continuity). The neighborhood knows Daniela — she has been behind the counter for six years — and the community gathering role continues without interruption ($d_6$: social continuity). The fair-wage policy, the ethical sourcing, the wheelchair-accessible entrance — all continue ($d_3$, $d_4$, $d_8$: institutional continuity).*
 >
-> *Maria's accountant sees a $280,000 sale. Maria's geometric economist sees a nine-dimensional transition: $280,000 on $d_1$ (conserved — Maria receives what Daniela pays), plus approximately 4.2 units of evaluative value preserved and transferred — trust, community, identity, legitimacy, epistemic continuity — that would have been destroyed if the shop had been sold to the highest bidder (a chain restaurant offering $340,000 but proposing to demolish the interior and rename it).*
+> *Maria's accountant sees a \$280,000 sale. Maria's geometric economist sees a nine-dimensional transition: \$280,000 on $d_1$ (conserved — Maria receives what Daniela pays), plus approximately 4.2 units of evaluative value preserved and transferred — trust, community, identity, legitimacy, epistemic continuity — that would have been destroyed if the shop had been sold to the highest bidder (a chain restaurant offering \$340,000 but proposing to demolish the interior and rename it).*
 >
-> *Maria took the lower offer. On $d_1$, she left $60,000 on the table. On the full manifold, she chose the geodesic.*
+> *Maria took the lower offer. On $d_1$, she left \$60,000 on the table. On the full manifold, she chose the geodesic.*
 
 The work begins here.
 
