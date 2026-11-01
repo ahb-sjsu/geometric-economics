@@ -1,0 +1,76 @@
+{
+ "compiled": 1000,
+ "compile_errors": 29,
+ "void": false,
+ "served": [
+  "Qwen/Qwen3.8-27B-FP8"
+ ],
+ "no_agent": 0,
+ "K_means_duty_owed_harm_under_duty_commit_violated": [
+  0.4191555097837281,
+  0.1184346035015448,
+  0.008238928939237899
+ ],
+ "corr_closeness_with_K": [
+  0.4052701268157488,
+  0.27236727641707953,
+  0.0184529985760542
+ ],
+ "Q2": {
+  "n": 971,
+  "R2": {
+   "dR2_C_given_SHK": 0.05491775109830177,
+   "dR2_K_given_SCH": 0.01598602029068552,
+   "dR2_C_given_SH": 0.08613475016933958,
+   "R2_K": 0.0959161724811407,
+   "R2_SCHK": 0.270737853604636
+  },
+  "ci95": {
+   "dR2_C_given_SHK": [
+    0.03426024998407762,
+    0.08106683009210079
+   ],
+   "dR2_K_given_SCH": [
+    0.006396704036095677,
+    0.03269869088946806
+   ],
+   "dR2_C_given_SH": [
+    0.06019385312111175,
+    0.11869818891701987
+   ],
+   "R2_K": [
+    0.06488811416702339,
+    0.13623917295160246
+   ],
+   "R2_SCHK": [
+    0.22825063290801806,
+    0.3263627625966736
+   ]
+  },
+  "readings": {
+   "relationships_decompose_into_duties": false,
+   "closeness_survives_duties": true
+  }
+ },
+ "Q1": {
+  "n_with_vector": 818,
+  "cv_R2_deme_vector": 0.11355697926850894,
+  "cv_R2_xbse_axes": 0.1339525003970694,
+  "deme_minus_xbse_ci95": [
+   -0.08325699675606944,
+   0.04352927334703331
+  ],
+  "dims_constant": [],
+  "dims_sd": {
+   "physical_harm": 0.18644766327504247,
+   "rights_respect": 0.2022678586957557,
+   "fairness_equity": 0.11845994513671611,
+   "autonomy_respect": 0.17019161341578712,
+   "privacy_protection": 0.01842087361761903,
+   "societal_environmental": 0.028917900185010104,
+   "virtue_care": 0.19629919341628468,
+   "legitimacy_trust": 0.01842087361761903,
+   "epistemic_quality": 0.021767334344028205
+  }
+ }
+}

@@ -1,0 +1,24 @@
+gemma: 1000 to rate
+  gemma 100/1000 554s
+  gemma 200/1000 637s
+  gemma 300/1000 713s
+  gemma 400/1000 790s
+  gemma 500/1000 1334s
+  gemma 600/1000 1513s
+  gemma 700/1000 2126s
+  gemma 800/1000 2289s
+  gemma 900/1000 2904s
+  gemma 1000/1000 3553s
+gemma DONE
+qwen3-small: 1000 to rate
+  qwen3-small 100/1000 22s
+  qwen3-small 200/1000 43s
+  qwen3-small 300/1000 66s
+  qwen3-small 400/1000 86s
+  qwen3-small 500/1000 108s
+  qwen3-small 600/1000 132s
+  qwen3-small 700/1000 153s
+  qwen3-small 800/1000 176s
+  qwen3-small 900/1000 200s
+  qwen3-small 1000/1000 225s
+qwen3-small DONE
