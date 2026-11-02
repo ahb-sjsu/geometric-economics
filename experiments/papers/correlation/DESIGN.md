@@ -147,13 +147,29 @@ rehearsal.
   is the additive value for equal-marginal pairs.
 - **H2.** It beats RDU on additive value per outcome, calibrated on the same set.
 - **H3.** It beats EU with a concave aggregator, calibrated on the same set.
-- **The claim that the metric is supported requires H2 and H3 together.** Each H is still reported on
-  its own, but neither alone counts as support. The rehearsal (`REHEARSAL.md`, version 2) shows why.
-  - With a concave aggregator as the truth, the fitted GEO mimics the true model almost exactly
-    (median held-out log-loss 0.511 against CAG's 0.508). It therefore beat RDU (0.600) in every
-    simulated study at n = 60, 120 and 200, so H2 passed while the metric was false.
-  - H3 failed in every one of those studies, so the conjunction did not pass.
-  - The registration states the conjunction as the claim.
+- **The claim that the metric is supported requires H1, H2 and H3 together.** Each H is still reported
+  on its own, but none alone counts as support. The rehearsal (`REHEARSAL.md`, version 2) shows why
+  each is needed.
+  - **H3 guards against a concave aggregator.** With CAG as the truth, the fitted GEO mimics the true
+    model almost exactly (median held-out log-loss 0.511 against CAG's 0.508). It beat RDU (0.600) in
+    every simulated study at n = 60, 120 and 200, so H2 passed while the metric was false. H3 failed
+    in every one of those studies.
+  - **H1 guards against additive value.** With linear additive value as the truth, H2 and H3 passed
+    together in 24%, 34% and 38% of studies at n = 60, 120 and 200. RDU's and CAG's noisy fits
+    predict correlation attitudes that are not there, and GEO wins those comparisons by default. H1
+    failed in every one of those studies, because EARLY, the metric on the mean bundle, contains
+    linear additive value.
+  - With all three required, the conjunction passed in no simulated study under the RDU, CAG or ADD
+    truths. [EARLY truth: pending]
+  - The registration states the three-way conjunction as the claim.
+- **Power depends on the kind of cost.**
+  - If cost behaves like distance (`κ = 1`), the conjunction passed in 70%, 92% and 96% of studies at
+    n = 60, 120 and 200.
+  - If it behaves like squared distance (`κ = 2`), it passed in only 36%, 28% and 42%, and H1 alone in
+    32% to 42%. Squared distance has no background dependence. Its correlation attitude takes its sign
+    from `P12`, which varies across people. So little separates it from EARLY's even odds.
+  - The design is therefore powered against distance-like cost. A null result does not rule out
+    squared distance.
 - **H4. Comparative test across people.** Each fitted model predicts each person's preference for the
   correlated option in block X from the calibration set alone. GEO's predictions must track the
   observed preferences better than RDU's and CAG's do.
