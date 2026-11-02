@@ -108,9 +108,11 @@ The two strongest rivals are RDU on additive value and EU with a concave aggrega
 
 ## Stimuli and procedure
 
-The exact set is `stimuli.py` (seed 20261102): 40 riskless pairs, 32 single-attribute lotteries, 24
-correlation pairs and 8 attention checks. The crossing set described below is not built yet. The
-rehearsal may still change the set before it is registered.
+The exact set is `stimuli.py` version 3 (seed 20261102): 40 riskless pairs, 48 single-attribute
+lotteries, 24 correlation pairs and 8 attention checks, 120 trials in all. Version 2 had 32
+single-attribute lotteries; version 3 adds 16 at the ideal, because `κ` fitted from 4 per attribute was
+biased upward (`REHEARSAL.md`). The crossing set described below is not built yet. The rehearsal may
+still change the set before it is registered.
 
 - **Charity.** Each participant first picks one charity from a short list, so that charity points
   carry value.
@@ -119,10 +121,12 @@ rehearsal may still change the set before it is registered.
   flip resolves any lottery. There is no deception.
 - **Block R, riskless calibration, about 40 choices.** Pairs of sure bundles spread across directions
   in the shortfall plane. They measure the tilt and shape of `P`.
-- **Block S, single-attribute lotteries, about 32 choices.** Even-odds lotteries over self points
-  against sure self points, at four charity levels (charity shortfall 0 and three larger values), and
-  the mirror over charity points. The `b = 0` cells measure `κ` alone, because the metric adds nothing
-  there.
+- **Block S, single-attribute lotteries, 48 choices.** Even-odds lotteries over self points against
+  sure self points, at four charity levels (charity shortfall 0 and three larger values), and the
+  mirror over charity points.
+  - At the other attribute's ideal there are 12 per attribute, with varied spreads and levels. These
+    cells measure `κ` alone, because the metric adds nothing there.
+  - Off the ideal there are 4 per level.
 - **Block X, correlation pairs, about 24 choices.** Correlated against anticorrelated even-odds
   lotteries with equal marginals, at several base points and spreads. Sides are counterbalanced.
 - **Attention checks.** About 8 dominated pairs.
@@ -131,7 +135,7 @@ rehearsal may still change the set before it is registered.
 - **Avoiding equality crossings.** In the main set every charity shortfall exceeds every self
   shortfall, so no outcome crosses `m = c` and inequality aversion predicts nothing. A smaller,
   registered secondary set does cross, to show inequality aversion's signature if it is there.
-- **Length.** About 25 to 30 minutes, online or in the lab.
+- **Length.** About 30 minutes for 120 trials, online or in the lab.
 
 ## Analysis (to be registered)
 
@@ -141,7 +145,9 @@ rehearsal may still change the set before it is registered.
   test set with no refit.
 
 Intervals are clustered by person, the unit `P` lives on. Margins are set in noise units by the
-rehearsal.
+rehearsal. The margin for H1 to H3 is open: 0, or 0.005 nats per trial. At 0, the claim passed in 1 of
+50 simulated studies under CAG in rehearsal version 3. At 0.005 it passed in none, at some cost in
+power (`REHEARSAL.md`).
 
 - **H1.** Late-contraction Mahalanobis beats early contraction on held-out log-loss. Early contraction
   is the additive value for equal-marginal pairs.
@@ -183,8 +189,25 @@ rehearsal.
     them.
 - **Model-free checks, reported first.**
   - Does the choice rate in block X depart from even odds?
-  - Does risk attitude over self points change with the charity level?
+  - Does risk attitude over self points change with the charity level? This compares only the 4
+    lotteries offered at every level. Comparing all lotteries at the ideal with those off it compared
+    different gambles, and gave false positives in rehearsal version 3.
   - If both are null, additive value wins and the metric is not detected for these attributes.
+- **Secondary: the population `κ`.** This says whether cost behaves like distance (`κ` near 1) or like
+  squared distance (near 2), which is what decides how to read a null on the claim.
+  - Method: GEO fitted hierarchically on the calibration set and sampled by NUTS (`hier.py`). It
+    reports the posterior median and 95% interval of the population median `κ`.
+  - Per-person `κ` is not interpreted. At any feasible session length the per-person estimate is
+    biased upward, through small samples and the incidental-parameter problem (`REHEARSAL.md`).
+  - A null on the claim with the interval excluding 1 means cost is not distance-like, and the design
+    had little power. A null with the interval excluding 2 counts against the metric.
+  - In a first check at n = 120 the interval was 0.86 to 1.06 for a true 1 and 1.75 to 2.09 for a
+    true 2. Rehearsal version 3 tests this over more studies.
+  - **It means something only if GEO is the right model.** In rehearsal version 3 the fitted
+    population `κ` was 1.64 under RDU and 1.86 under CAG, because the misspecified GEO absorbs
+    pessimism or concavity into `κ`. A null on the claim with a high `κ` therefore cannot tell squared
+    distance from those. The H2 and H3 comparisons, and the sign of MF1, have to carry that
+    distinction.
 
 The registered secondary is the crossing set, scored against inequality aversion.
 

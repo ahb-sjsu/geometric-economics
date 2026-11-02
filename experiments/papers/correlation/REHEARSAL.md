@@ -71,6 +71,89 @@ Atlas smoke test, 2 studies of 30 people:
   −0.11.
 - In both truths the true model wins, and the second pass improves every model.
 
+## Version 3 (2026-11-02, four of six truths in; GEO1 and EARLY running)
+
+- **Stimuli.** `stimuli.py` version 3: 12 calibration lotteries per attribute at the ideal instead of
+  4, 120 trials in all.
+- **The population `κ`.** The first 10 studies of each truth also get it, from their first 120
+  people, by a hierarchical GEO sampled with NUTS (`hier.py`, NumPyro 0.22.0 on JAX 0.12.0.1, one
+  chain of 500 warm-up and 500 draws).
+- **Analysis.** Otherwise the analysis is version 2's.
+- **First check on Atlas, one simulated study of 120 people per truth.**
+
+| Truth | Population median `κ`, posterior median [95% interval] | Divergences | Run time |
+|---|---|---|---|
+| GEO1 (true 1) | 0.96 [0.86, 1.06] | 0 | 400 s |
+| GEO2 (true 2) | 1.91 [1.75, 2.09] | 0 | 290 s |
+
+  - The per-person bias does not appear, and each interval excludes the other truth.
+  - Peak memory was 0.57 GiB.
+- **Where it runs.** NRP, driver screen `corr-reh3`, outputs `nrp_reh_v3`, at cpu 1 and memory 2Gi
+  (the exempt maximum).
+
+### Two faults found during the run, both fixed
+
+- **`hier.py` failed on NRP.** Every first attempt failed in NumPyro's initialization with an invalid
+  Bernoulli probability. At an extreme draw `κ` reaches the tens, `C^κ` overflows to infinity, and
+  `inf − inf` or `0 · inf` (the zero-probability outcome of a sure option) is NaN.
+  - The overflow is platform-dependent. On Atlas the old code ran on the same data.
+  - The fix (commit `7dc62b2`) computes `C^κ` in log space, capped at `exp(60)`. It clips the logit,
+    turns off argument validation, and starts the chain at the hyperprior centre.
+  - On the failing study's data, run on Atlas, the old and fixed code give the same posterior:
+    1.784 [1.655, 1.925] against 1.786 [1.661, 1.930].
+  - All six truths' version 3 results come from the fixed code. The retries used it. RDU and GEO2,
+    parked after two old-code attempts, were rerun in their own drivers (`corr-reh3b`, `corr-reh3c`).
+- **MF2 compared different gambles.** Version 3 has 12 lotteries per attribute at the ideal but 4 per
+  level off it. The background check compares choice rates at and off the ideal, so it compared
+  different gambles.
+  - The fix (commit `66a2ce0`) uses only the 4 lotteries offered at every level.
+  - `mf2_check.py` reran MF2 on 200 fresh studies per truth (`results/mf2_check.json`). Percent of
+    studies passing at n = 60 / 120 / 200:
+
+| Truth | Matched (corrected) | Unmatched (as version 3 ran) |
+|---|---|---|
+| GEO1, which has background dependence | 77 / 94 / 99 | 93 / 99 / 100 |
+| CAG, which has background dependence | 8 / 20 / 24 | 4 / 3 / 3 |
+| GEO2 | 8 / 4 / 4 | 34 / 58 / 81 |
+| EARLY | 7 / 6 / 10 | 10 / 7 / 7 |
+| RDU | 6 / 6 / 6 | 18 / 28 / 55 |
+| ADD | 4 / 5 / 6 | 9 / 6 / 6 |
+
+  - The MF2 figures in the version 3 NRP outputs are the unmatched check and should not be read.
+
+### Results so far (ADD, RDU, CAG and GEO2)
+
+- **The claim (H1, H2 and H3 together, margin 0).** Percent of studies passing at n = 60 / 120 / 200:
+  - ADD: 0 / 0 / 0.
+  - RDU: 0 / 0 / 0.
+  - CAG: 2 / 2 / 2, one study of 50 at each n. It is H3, GEO beating the true CAG. At a margin of
+    0.005 nats per trial that study does not pass, and the claim passes in none.
+  - GEO2: 32 / 48 / 68, against 36 / 28 / 42 with the version 2 stimuli. At margin 0.005 it is
+    16 / 30 / 46.
+- **H4 (comparative).**
+  - GEO2: 54 / 74 / 90.
+  - ADD and RDU: 0.
+  - CAG: 4 / 0 / 2.
+- **The population `κ` (hierarchical, 10 studies per truth).**
+
+| Truth | Median | Interval excludes 1 | Interval excludes 2 | Covers the truth |
+|---|---|---|---|---|
+| ADD | 0.96 | 1 of 10 | 10 of 10 | (none defined) |
+| RDU | 1.64 | 10 of 10 | 10 of 10 | (none defined) |
+| CAG | 1.86 | 10 of 10 | 5 of 10 | (none defined) |
+| GEO2 | 1.93 | 10 of 10 | 3 of 10 | 7 of 10 |
+
+- **Readings so far.**
+  - **The population `κ` means something only if GEO is the right model.** Under RDU and CAG the
+    misspecified GEO absorbs pessimism or the aggregator's concavity into `κ`. So a null on the claim
+    with a high `κ` cannot tell squared distance from either. The H2 and H3 comparisons, and MF1's
+    sign, have to carry that distinction.
+  - **Under GEO2 the interval covered the true 2 in only 7 of 10 studies.** The intervals may be too
+    narrow. The hierarchical model's normal population distributions do not match the uniform ones
+    the simulated people come from, and the lapse differs. Ten studies are too few to be sure.
+  - **The margin for H1 to H3 is open.** At 0, CAG gave one false positive in 50 studies. At 0.005
+    there were none, but GEO2's power fell to 16 / 30 / 46. The GEO1 cost is still to come.
+
 ## Results (version 2, complete 2026-11-02)
 
 - **Scale.** 50 simulated studies of 200 people per truth, with tests on the first 60, 120 and 200.
