@@ -800,30 +800,30 @@
   },
   "rho0.725_sigma0.5_N60": {
    "reject_wilcox_e0": {
-    "mean": 0.993,
+    "mean": 0.994,
     "min": 0.983
    },
    "reject_rho1": {
-    "mean": 0.493,
+    "mean": 0.475,
     "min": 0.267
    },
    "reject_rho0": {
-    "mean": 0.68,
+    "mean": 0.647,
     "min": 0.383
    },
    "reject_rho0725": {
-    "mean": 0.137,
+    "mean": 0.144,
     "min": 0.067
    },
    "reject_band0725": {
-    "mean": 0.09,
+    "mean": 0.1,
     "min": 0.033
    },
    "within_band0725": {
     "mean": 0.0,
     "min": 0.0
    },
-   "corpora": 5
+   "corpora": 6
   },
   "rho0.725_sigma0.5_N120": {
    "reject_wilcox_e0": {
@@ -831,26 +831,26 @@
     "min": 1.0
    },
    "reject_rho1": {
-    "mean": 0.687,
+    "mean": 0.644,
     "min": 0.417
    },
    "reject_rho0": {
-    "mean": 0.74,
-    "min": 0.517
+    "mean": 0.692,
+    "min": 0.45
    },
    "reject_rho0725": {
-    "mean": 0.15,
+    "mean": 0.169,
     "min": 0.017
    },
    "reject_band0725": {
-    "mean": 0.123,
+    "mean": 0.147,
     "min": 0.0
    },
    "within_band0725": {
     "mean": 0.0,
     "min": 0.0
    },
-   "corpora": 5
+   "corpora": 6
   },
   "rho0.725_sigma0.5_N180": {
    "reject_wilcox_e0": {
@@ -858,26 +858,26 @@
     "min": 1.0
    },
    "reject_rho1": {
-    "mean": 0.773,
-    "min": 0.533
+    "mean": 0.714,
+    "min": 0.417
    },
    "reject_rho0": {
-    "mean": 0.807,
-    "min": 0.583
+    "mean": 0.75,
+    "min": 0.467
    },
    "reject_rho0725": {
-    "mean": 0.17,
+    "mean": 0.183,
     "min": 0.033
    },
    "reject_band0725": {
-    "mean": 0.123,
+    "mean": 0.144,
     "min": 0.0
    },
    "within_band0725": {
     "mean": 0.0,
     "min": 0.0
    },
-   "corpora": 5
+   "corpora": 6
   },
   "rho0.725_sigma0.5_N240": {
    "reject_wilcox_e0": {
@@ -885,38 +885,38 @@
     "min": 1.0
    },
    "reject_rho1": {
-    "mean": 0.803,
+    "mean": 0.764,
     "min": 0.567
    },
    "reject_rho0": {
-    "mean": 0.81,
+    "mean": 0.781,
     "min": 0.533
    },
    "reject_rho0725": {
-    "mean": 0.207,
+    "mean": 0.242,
     "min": 0.017
    },
    "reject_band0725": {
-    "mean": 0.163,
+    "mean": 0.206,
     "min": 0.0
    },
    "within_band0725": {
     "mean": 0.0,
     "min": 0.0
    },
-   "corpora": 5
+   "corpora": 6
   },
   "rho1.0_sigma0.0_N60": {
    "reject_wilcox_e0": {
-    "mean": 0.077,
+    "mean": 0.075,
     "min": 0.05
    },
    "reject_rho1": {
-    "mean": 0.027,
+    "mean": 0.025,
     "min": 0.017
    },
    "reject_rho0": {
-    "mean": 0.923,
+    "mean": 0.928,
     "min": 0.817
    },
    "reject_rho0725": {
@@ -924,22 +924,22 @@
     "min": 0.733
    },
    "reject_band0725": {
-    "mean": 0.803,
+    "mean": 0.8,
     "min": 0.667
    },
    "within_band0725": {
     "mean": 0.0,
     "min": 0.0
    },
-   "corpora": 5
+   "corpora": 6
   },
   "rho1.0_sigma0.0_N120": {
    "reject_wilcox_e0": {
-    "mean": 0.037,
+    "mean": 0.039,
     "min": 0.017
    },
    "reject_rho1": {
-    "mean": 0.01,
+    "mean": 0.011,
     "min": 0.0
    },
    "reject_rho0": {
@@ -947,18 +947,18 @@
     "min": 0.983
    },
    "reject_rho0725": {
-    "mean": 0.96,
+    "mean": 0.967,
     "min": 0.883
    },
    "reject_band0725": {
-    "mean": 0.95,
+    "mean": 0.953,
     "min": 0.85
    },
    "within_band0725": {
     "mean": 0.0,
     "min": 0.0
    },
-   "corpora": 5
+   "corpora": 6
   },
   "rho1.0_sigma0.0_N180": {
    "reject_wilcox_e0": {
@@ -966,7 +966,7 @@
     "min": 0.017
    },
    "reject_rho1": {
-    "mean": 0.027,
+    "mean": 0.028,
     "min": 0.0
    },
    "reject_rho0": {
@@ -974,26 +974,26 @@
     "min": 0.983
    },
    "reject_rho0725": {
-    "mean": 0.99,
+    "mean": 0.989,
     "min": 0.983
    },
    "reject_band0725": {
-    "mean": 0.987,
+    "mean": 0.986,
     "min": 0.967
    },
    "within_band0725": {
     "mean": 0.0,
     "min": 0.0
    },
-   "corpora": 5
+   "corpora": 6
   },
   "rho1.0_sigma0.0_N240": {
    "reject_wilcox_e0": {
-    "mean": 0.06,
+    "mean": 0.061,
     "min": 0.017
    },
    "reject_rho1": {
-    "mean": 0.043,
+    "mean": 0.044,
     "min": 0.017
    },
    "reject_rho0": {
@@ -1012,7 +1012,7 @@
     "mean": 0.0,
     "min": 0.0
    },
-   "corpora": 5
+   "corpora": 6
   },
   "rho1.0_sigma0.5_N60": {
    "reject_wilcox_e0": {
@@ -1364,6 +1364,14 @@
     "beta": 0.812,
     "a_loss": 0.766,
     "rho_median": 0.707
+   },
+   {
+    "corpus": "zilker2020",
+    "alpha": 0.568,
+    "a_gain": 0.1,
+    "beta": 1.024,
+    "a_loss": 0.93,
+    "rho_median": 0.307
    }
   ],
   "rho0.725_sigma0.5_N120": [
@@ -1406,6 +1414,14 @@
     "beta": 0.812,
     "a_loss": 0.771,
     "rho_median": 0.709
+   },
+   {
+    "corpus": "zilker2020",
+    "alpha": 0.568,
+    "a_gain": 0.046,
+    "beta": 1.024,
+    "a_loss": 0.934,
+    "rho_median": -0.458
    }
   ],
   "rho0.725_sigma0.5_N180": [
@@ -1448,6 +1464,14 @@
     "beta": 0.812,
     "a_loss": 0.733,
     "rho_median": 0.721
+   },
+   {
+    "corpus": "zilker2020",
+    "alpha": 0.568,
+    "a_gain": 0.09,
+    "beta": 1.024,
+    "a_loss": 0.929,
+    "rho_median": 0.081
    }
   ],
   "rho0.725_sigma0.5_N240": [
@@ -1490,6 +1514,14 @@
     "beta": 0.812,
     "a_loss": 0.779,
     "rho_median": 0.694
+   },
+   {
+    "corpus": "zilker2020",
+    "alpha": 0.568,
+    "a_gain": 0.039,
+    "beta": 1.024,
+    "a_loss": 0.972,
+    "rho_median": -0.588
    }
   ],
   "rho1.0_sigma0.0_N60": [
@@ -1516,6 +1548,14 @@
     "beta": 0.924,
     "a_loss": 0.893,
     "rho_median": 1.016
+   },
+   {
+    "corpus": "pachur2017",
+    "alpha": 0.601,
+    "a_gain": 0.604,
+    "beta": 0.954,
+    "a_loss": 0.952,
+    "rho_median": 1.019
    },
    {
     "corpus": "pachur2018",
@@ -1560,6 +1600,14 @@
     "rho_median": 0.992
    },
    {
+    "corpus": "pachur2017",
+    "alpha": 0.601,
+    "a_gain": 0.586,
+    "beta": 0.954,
+    "a_loss": 0.958,
+    "rho_median": 0.985
+   },
+   {
     "corpus": "pachur2018",
     "alpha": 0.748,
     "a_gain": 0.74,
@@ -1602,6 +1650,14 @@
     "rho_median": 1.012
    },
    {
+    "corpus": "pachur2017",
+    "alpha": 0.601,
+    "a_gain": 0.617,
+    "beta": 0.954,
+    "a_loss": 0.953,
+    "rho_median": 1.009
+   },
+   {
     "corpus": "pachur2018",
     "alpha": 0.748,
     "a_gain": 0.767,
@@ -1642,6 +1698,14 @@
     "beta": 0.924,
     "a_loss": 0.919,
     "rho_median": 0.997
+   },
+   {
+    "corpus": "pachur2017",
+    "alpha": 0.601,
+    "a_gain": 0.613,
+    "beta": 0.954,
+    "a_loss": 0.966,
+    "rho_median": 1.001
    },
    {
     "corpus": "pachur2018",

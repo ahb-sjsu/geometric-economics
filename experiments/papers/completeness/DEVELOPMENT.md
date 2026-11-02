@@ -531,9 +531,9 @@ claims are directional (interval excludes 1 and 0), 0.725 is checked against a b
 a mixed logit with a random sensitivity per person is a secondary, individual-level estimate.
 Point tests of 0.725 rejected it in up to 44% of studies at sigma = 0.5, N = 240.
 
-### Result (ladder 24/24 cells, tree 22/24)
+### Result (all 24 + 24 cells)
 
-Means over the six corpora; per-corpus minima in `results_conf/power_new_study_partial.json`.
+Means over the six corpora; per-corpus minima in `results_conf/power_new_study.json`.
 
 | | N=60 | 120 | 180 | 240 |
 |---|---|---|---|---|
@@ -545,8 +545,8 @@ Means over the six corpora; per-corpus minima in `results_conf/power_new_study_p
 | ladder, rho=1: band fails .725 | 1.00 / 1.00 | 1.00 / 1.00 | 1.00 / 1.00 | 1.00 / 1.00 |
 | tree, rho=.725: exponent differs from 0 (sigma 0 / .5) | 1.00 / .99 | 1.00 / 1.00 | 1.00 / 1.00 | 1.00 / 1.00 |
 | tree, rho=1: exponent differs from 0 (sigma 0 / .5) | .08 / .05 | .04 / .04 | .05 / .03 | .06 / .05 |
-| tree, rho=.725: excludes 1 (sigma 0 / .5) | .81 / .49 | .94 / .69 | 1.00 / .77 | 1.00 / .80 |
-| tree, rho=.725: band fails .725 (sigma 0 / .5) | .01 / .09 | .00 / .12 | .00 / .12 | .00 / .16 |
+| tree, rho=.725: excludes 1 (sigma 0 / .5) | .81 / .48 | .94 / .64 | 1.00 / .71 | 1.00 / .76 |
+| tree, rho=.725: band fails .725 (sigma 0 / .5) | .01 / .10 | .00 / .15 | .00 / .14 | .00 / .21 |
 
 H1 pooled with three stand-in public corpora passes .74-.85 when rho = .725, limited by the
 stand-ins; it also passes .09-.12 when rho = 1, because the stand-ins are resampled from spent
