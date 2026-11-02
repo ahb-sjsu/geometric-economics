@@ -68,8 +68,11 @@ SEED = 20261102
 # HIER_SIMS studies. Needs jax and numpyro; REHEARSAL_HIER_SIMS=0 skips it.
 HIER_SIMS = int(os.environ.get("REHEARSAL_HIER_SIMS", "10"))
 HIER_N = 120
-# the population median kappa each truth implies (EARLY draws kappa from U(1, 2)); None where GEO is not true
-TRUE_KAPPA = {"GEO1": 1.0, "GEO2": 2.0, "EARLY": 1.5, "RDU": None, "CAG": None, "ADD": None}
+# the population median kappa of the GEO truths; None elsewhere. EARLY is not GEO: its kappa (drawn from
+# U(1, 2)) shapes only riskless choices, its lotteries are risk-neutral, and GEO's fitted kappa has no
+# reason to equal it. Version 3 ran with EARLY set to 1.5, which made a coverage figure for EARLY that
+# means nothing (REHEARSAL.md); aggregate_rehearsal.py reports coverage for GEO truths only.
+TRUE_KAPPA = {"GEO1": 1.0, "GEO2": 2.0, "EARLY": None, "RDU": None, "CAG": None, "ADD": None}
 if os.environ.get("REHEARSAL_QUICK"):
     NS, SIMS = [30], 2
     HIER_SIMS, HIER_N = min(HIER_SIMS, 1), 30

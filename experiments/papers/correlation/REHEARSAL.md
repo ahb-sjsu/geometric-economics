@@ -71,7 +71,7 @@ Atlas smoke test, 2 studies of 30 people:
   −0.11.
 - In both truths the true model wins, and the second pass improves every model.
 
-## Version 3 (2026-11-02, four of six truths in; GEO1 and EARLY running)
+## Version 3 (2026-11-02, five of six truths in; GEO1 running)
 
 - **Stimuli.** `stimuli.py` version 3: 12 calibration lotteries per attribute at the ideal instead of
   4, 120 trials in all.
@@ -121,18 +121,19 @@ Atlas smoke test, 2 studies of 30 people:
 
   - The MF2 figures in the version 3 NRP outputs are the unmatched check and should not be read.
 
-### Results so far (ADD, RDU, CAG and GEO2)
+### Results so far (ADD, RDU, CAG, GEO2 and EARLY)
 
 - **The claim (H1, H2 and H3 together, margin 0).** Percent of studies passing at n = 60 / 120 / 200:
   - ADD: 0 / 0 / 0.
   - RDU: 0 / 0 / 0.
+  - EARLY: 0 / 0 / 0, also at margin 0.005.
   - CAG: 2 / 2 / 2, one study of 50 at each n. It is H3, GEO beating the true CAG. At a margin of
     0.005 nats per trial that study does not pass, and the claim passes in none.
   - GEO2: 32 / 48 / 68, against 36 / 28 / 42 with the version 2 stimuli. At margin 0.005 it is
     16 / 30 / 46.
 - **H4 (comparative).**
   - GEO2: 54 / 74 / 90.
-  - ADD and RDU: 0.
+  - ADD, RDU and EARLY: 0.
   - CAG: 4 / 0 / 2.
 - **The population `κ` (hierarchical, 10 studies per truth).**
 
@@ -142,6 +143,15 @@ Atlas smoke test, 2 studies of 30 people:
 | RDU | 1.64 | 10 of 10 | 10 of 10 | (none defined) |
 | CAG | 1.86 | 10 of 10 | 5 of 10 | (none defined) |
 | GEO2 | 1.93 | 10 of 10 | 3 of 10 | 7 of 10 |
+| EARLY | 1.13 | 9 of 10 | 10 of 10 | (none defined) |
+
+  - **Coverage is defined only under the GEO truths.**
+    - EARLY is not GEO. Its `κ`, drawn from 1 to 2, shapes only riskless choices, and its lotteries
+      are risk-neutral, so GEO's fitted `κ` has no reason to equal it.
+    - Version 3 ran with EARLY's "true" `κ` set to 1.5, the median of its draws. Against that, the
+      coverage was 0 of 10, which means nothing.
+    - *Correction, 2026-11-02:* `rehearsal.py` now sets EARLY to none, and `aggregate_rehearsal.py`
+      reports coverage for GEO truths only.
 
 - **Readings so far.**
   - **The population `κ` means something only if GEO is the right model.** Under RDU and CAG the
