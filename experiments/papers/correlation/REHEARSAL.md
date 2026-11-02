@@ -36,9 +36,12 @@ GEO1 truth, 60 studies of 200 people:
   at n = 60 and all at n = 120.
 - **The model comparisons did not.** GEO beat EARLY in 7% of studies at n = 200, RDU in 48% and CAG in
   42%. The rate did not rise with n.
-- **Every fitted model was worse than chance on the test trials.** Median held-out log-loss per trial
-  was GEO 0.736, RDU 0.754 and CAG 0.916, against 0.693 for chance. Only EARLY did better (0.679),
-  because it predicts even odds on block X.
+- **On average, the fitted models were worse than chance on the test trials.** Held-out log-loss per
+  trial, averaged over studies, was GEO 0.736, RDU 0.754 and CAG 0.916, against 0.693 for chance.
+  Only EARLY did better (0.679), because it predicts even odds on block X.
+  - The median study was better than average (GEO 0.675, EARLY 0.663, RDU 0.746, CAG 0.738). A few
+    studies with near-certain wrong predictions pull the average up.
+  - *Correction, 2026-11-02:* an earlier version of this record called the averages medians.
 - **The predictions were right in direction and wrong in size.** GEO's person-level predictions
   correlated with behaviour in block X (Spearman about 0.4). But kappa was overestimated (mean 1.37
   for a true 1), and because cost is raised to the power kappa, a small overestimate inflates the
