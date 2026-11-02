@@ -147,8 +147,23 @@ rehearsal.
   is the additive value for equal-marginal pairs.
 - **H2.** It beats RDU on additive value per outcome, calibrated on the same set.
 - **H3.** It beats EU with a concave aggregator, calibrated on the same set.
-- **H4.** Across people, the size of both effects rises with `det(P)` from block R. This is a
-  rank-correlation test.
+- **The claim that the metric is supported requires H2 and H3 together.** Each H is still reported on
+  its own, but neither alone counts as support. The rehearsal (`REHEARSAL.md`, version 2) shows why.
+  - With a concave aggregator as the truth, the fitted GEO mimics the true model almost exactly
+    (median held-out log-loss 0.511 against CAG's 0.508). It therefore beat RDU (0.600) in every
+    simulated study at n = 60, 120 and 200, so H2 passed while the metric was false.
+  - H3 failed in every one of those studies, so the conjunction did not pass.
+  - The registration states the conjunction as the claim.
+- **H4. Comparative test across people.** Each fitted model predicts each person's preference for the
+  correlated option in block X from the calibration set alone. GEO's predictions must track the
+  observed preferences better than RDU's and CAG's do.
+  - The statistic is GEO's Spearman correlation with the observed preferences, minus the larger of
+    RDU's and CAG's. It passes when the lower end of a bootstrap interval over people is above zero.
+  - An earlier, non-comparative version required only that the size of the effects rise with
+    `det(P)`, tested through GEO's correlation alone. In the version 1 rehearsal that test passed in
+    every simulated study at n = 200 when RDU or CAG was the truth, not only GEO. Pessimism, a
+    concave aggregator and `κ > 1` all show as risk aversion at the ideal, so GEO's fitted `κ` tracks
+    them.
 - **Model-free checks, reported first.**
   - Does the choice rate in block X depart from even odds?
   - Does risk attitude over self points change with the charity level?
