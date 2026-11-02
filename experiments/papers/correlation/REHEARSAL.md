@@ -134,13 +134,40 @@ model-free checks the median estimate is in brackets.
   - Its log ratio is recovered at 0.89 and 0.90.
   - Each person's predicted preference for the correlated option correlates with the true one at
     0.56 and 0.69.
-  - `κ` is recovered at 1.92 for a true 2. It is biased upward for a true 1 (1.30), and EARLY's
-    fitted `κ` is also high (1.40).
+  - `κ` is recovered at 1.92 for a true 2. It is biased upward for a true 1 (1.30). The diagnosis
+    is below.
+  - Under the EARLY truth, whose `κ` is drawn from 1 to 2 (mean 1.5), GEO's fitted `κ` averages
+    1.40 and does not track the individual values (correlation 0.06). *Correction, 2026-11-02:* an
+    earlier line called this high, but it sits near the truth's mean.
 
 ### Open before sealing
 
-- **The upward bias in `κ`.** It does not break the claim's specificity, but its source is not
-  known. Candidates are the lapse mismatch, the prior, or too few calibration lotteries.
+- **The upward bias in `κ`: diagnosed, not yet fixed.** It does not break the claim's specificity.
+  Its source is a small-sample bias of the estimator: `κ` is not only a curvature but also a carrier
+  of sensitivity. Costs here are mostly above 1, so raising `κ` enlarges every utility difference.
+  When a person's few choices are very consistent, the fit wants more sensitivity, the classic
+  small-sample inflation of logit coefficients, and part of it flows into `κ`.
+  - **Evidence** (`diag_kappa.py`, GEO1 truth, 300 simulated people per configuration;
+    `results/diag_kappa_round1.json` and `round2.json`). Round 1 ran an earlier version of the
+    script with a different configuration order, so the committed version does not reproduce its
+    seeds exactly. It does reproduce round 2.
+    - With the true metric known and `κ` fitted alone, the median `κ` was 1.63 from 8 lottery
+      choices, 1.02 from 40 and 1.00 from 160.
+    - The full fit fell from 1.38 (mean) with 48 choices to 1.16 with every trial answered five
+      times.
+    - It did not move with the prior (1.31 with the prior centred at 1, 1.57 with no prior), nor
+      with the lapse (1.42 with no simulated lapse, 1.17 with the lapse matched exactly at 240
+      choices).
+    - It grew with sharper choosers (1.61 at three times the sensitivity), as separation makes it.
+  - **The rehearsal's second pass cannot remove it.** It re-centres every person on the median of
+    first-pass estimates, which share the bias.
+  - **Candidate fixes, not chosen yet.**
+    - Centre the second-pass prior on a pooled `κ`, fitted jointly on all people's lottery choices
+      with each person's metric held fixed. That is about 480 lottery choices at n = 60, enough that
+      the bias is small. This changes only the analysis.
+    - Add calibration lotteries at the ideal. This lengthens the session.
+    - A bias-reduced (Firth-type) likelihood.
+    - Or accept the bias, and do not interpret individual `κ`.
 - **The crossing set is not built.** The secondary test of inequality aversion has neither stimuli
   nor rehearsal.
 - **The parameter ranges are assumptions.** The scale target, the lapse range and the shape ranges
