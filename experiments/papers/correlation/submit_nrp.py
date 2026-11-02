@@ -3,10 +3,12 @@
 follows the NRP PREFLIGHT (reference_nrp_job_policies) line by line, as
 ../../papers-archive/completeness/submit_nrp.py did:
 
-  * CPU-only, exempt class: cpu=1, memory=1Gi, ephemeral-storage declared. Footprint measured on Atlas
-    with REHEARSAL_QUICK (30 people, GEO1 and RDU): peak RSS 0.10 GiB, 99% of one CPU, about 0.2 s per
-    simulated person, so a full cell (60 studies x 200 people) runs about 40 minutes. Version 2 fits
-    each model twice: about 0.28 s per person, so 50 studies x 200 people run about 47 minutes.
+  * CPU-only, exempt class: cpu=1, memory=2Gi (the exempt maximum), ephemeral-storage declared.
+    Footprint measured on Atlas with REHEARSAL_QUICK (30 people, GEO1 and RDU): peak RSS 0.10 GiB, 99%
+    of one CPU, about 0.2 s per simulated person, so a full cell (60 studies x 200 people) runs about 40
+    minutes. Version 2 fits each model twice: about 0.28 s per person, so 50 studies x 200 people run
+    about 47 minutes. Version 3 adds the hierarchical fit (hier.py, JAX on one CPU), measured on Atlas
+    at n = 120: 290 to 400 s per fit, peak RSS 0.57 GiB. Ten fits per truth add about an hour.
   * Self-contained: rehearsal.py, models.py and stimuli.py ride in as base64, each checked by sha256
     in the pod. Versions pinned to Atlas's.
   * Self-terminating, no sleep in the pod, backoff_limit=0; the result is printed gzip+base64 between
@@ -36,9 +38,9 @@ from nats_bursting.descriptor import JobDescriptor, Resources  # noqa: E402
 NS = "ssu-atlas-ai"
 BATCH = "ge-correlation"
 IMAGE = "python:3.12-slim"
-PINS = "numpy==2.2.6 scipy==1.17.1"          # the versions the Atlas smoke test ran
+PINS = "numpy==2.2.6 scipy==1.17.1 jax==0.12.0.1 numpyro==0.22.0"   # the versions tested on Atlas
 TRUTHS = ["GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD"]
-FILES = ["rehearsal.py", "models.py", "stimuli.py"]
+FILES = ["rehearsal.py", "models.py", "stimuli.py", "hier.py"]
 MAX_TRIES = 2
 POLL_S = 60
 
@@ -122,7 +124,7 @@ def main():
             s["attempt"] += 1
             d = JobDescriptor(name=f"{a.tag}-{t.lower()}-{stamp}-a{s['attempt']}", image=IMAGE,
                               command=["/bin/bash", "-lc", command(a.src, t)],
-                              resources=Resources(cpu="1", memory="1Gi", gpu=0, ephemeral_storage="2Gi"),
+                              resources=Resources(cpu="1", memory="2Gi", gpu=0, ephemeral_storage="2Gi"),
                               labels={"atlas.io/batch": BATCH, "atlas.io/role": t.lower()}, backoff_limit=0)
             t_sub = time.time()
             client.submit_and_wait(d, timeout=120)

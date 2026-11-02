@@ -48,6 +48,18 @@ def main(d, out):
         rec = [s["recovery"] for s in r["sims"] if s["recovery"]]
         if rec:
             res[f"recovery_{truth}"] = {k: float(np.median([x[k] for x in rec if k in x])) for k in rec[0]}
+        hs = [s["hier"] for s in r["sims"] if "hier" in s]
+        if hs:          # version 3: the hierarchical population median kappa
+            tk = r.get("true_kappa")
+            h = {"studies": len(hs), "kappa_median": float(np.median([x["kappa_median"] for x in hs])),
+                 "width": float(np.median([x["hi"] - x["lo"] for x in hs])),
+                 "excludes_1": float(np.mean([x["lo"] > 1 or x["hi"] < 1 for x in hs])),
+                 "excludes_2": float(np.mean([x["lo"] > 2 or x["hi"] < 2 for x in hs])),
+                 "divergences": float(np.mean([x["divergences"] for x in hs]))}
+            if tk is not None:
+                h["true"] = tk
+                h["covers_truth"] = float(np.mean([x["lo"] <= tk <= x["hi"] for x in hs]))
+            res[f"hier_{truth}"] = h
     res["table"] = table
     json.dump(res, open(out, "w"), indent=1)
     print(f"{'truth/n':<12} {'H1 vs EARLY':>14} {'H2 vs RDU':>14} {'H3 vs CAG':>14} {'H4':>11} {'MF1 corr':>15} {'MF2 bg':>15}")
@@ -67,7 +79,7 @@ def main(d, out):
                   ("   first pass: " + "  ".join(f"{k} {v:.3f}" for k, v in row["mean_ll_pass1"].items())
                    if "mean_ll_pass1" in row else ""))
     for k, v in res.items():
-        if k.startswith("recovery_"):
+        if k.startswith("recovery_") or k.startswith("hier_"):
             print(k, {kk: round(vv, 3) for kk, vv in v.items()})
 
 

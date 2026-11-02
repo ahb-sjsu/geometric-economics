@@ -8,6 +8,10 @@ runs them through the exact stimulus set (stimuli.py), fits every candidate mode
 calibration trials, and scores held-out log-loss on the test trials with no refit. Needs models.py and
 stimuli.py beside it. REHEARSAL_QUICK=1 for a smoke test.
 
+Version 3 (2026-11-02). The stimulus set has 12 calibration lotteries per attribute at the ideal
+(stimuli.py version 3), and the first HIER_SIMS studies of each truth also get the hierarchical
+population kappa (hier.py) from their first HIER_N people, to check that it recovers the truth.
+
 Version 2 (2026-11-02). Simulated people lapse at a rate drawn from U(0, 0.06); every model chooses
 with a fixed 4% lapse; each model is fit twice, first with fixed weak priors, then with an empirical-
 Bayes prior (median and MAD of the first-pass estimates over the first NS[0] people). Version 1 had
@@ -60,8 +64,15 @@ NS = [60, 120, 200]
 SIMS = 50
 MARGINS = [0.0, 0.002, 0.005, 0.01]
 SEED = 20261102
+# Version 3: the hierarchical population kappa (hier.py, NumPyro) on the first HIER_N people of the first
+# HIER_SIMS studies. Needs jax and numpyro; REHEARSAL_HIER_SIMS=0 skips it.
+HIER_SIMS = int(os.environ.get("REHEARSAL_HIER_SIMS", "10"))
+HIER_N = 120
+# the population median kappa each truth implies (EARLY draws kappa from U(1, 2)); None where GEO is not true
+TRUE_KAPPA = {"GEO1": 1.0, "GEO2": 2.0, "EARLY": 1.5, "RDU": None, "CAG": None, "ADD": None}
 if os.environ.get("REHEARSAL_QUICK"):
     NS, SIMS = [30], 2
+    HIER_SIMS, HIER_N = min(HIER_SIMS, 1), 30
 
 TRIALS = stimuli.build()
 ALL = M.arrays(TRIALS)
@@ -218,9 +229,15 @@ def main(truth, out, *_):
         f2 = [{k: M.fit(M.MODELS[k], d, y, rng, starts=1, prior=priors[k], x0=f[k]) for k in FIT}
               for (d, y), f in zip(calib, f1)]
         ps = [evaluate(p, b, a) for p, a, b in zip(people, f1, f2)]
-        sims.append({**{f"n{n}": tests(ps[:n]) for n in NS}, "recovery": recovery(ps)})
+        record = {**{f"n{n}": tests(ps[:n]) for n in NS}, "recovery": recovery(ps)}
+        if sim < HIER_SIMS:
+            import hier  # noqa: PLC0415  (jax is needed only here)
+            Y = np.stack([p["y"][IDX["calib"]] for p in people[:HIER_N]])
+            record["hier"] = {**hier.fit(SUB["calib"], Y, seed=sim), "n": HIER_N}
+        sims.append(record)
         print(sim, f"{time.time() - t0:.0f}s", flush=True)
-    res = {"truth": truth, "version": 2, "ns": NS, "sims_n": SIMS, "margins": MARGINS, "lapse": M.LAPSE,
+    res = {"truth": truth, "version": 3, "ns": NS, "sims_n": SIMS, "margins": MARGINS, "lapse": M.LAPSE,
+           "hier_sims": HIER_SIMS, "hier_n": HIER_N, "true_kappa": TRUE_KAPPA[truth],
            "sims": sims, "seconds": time.time() - t0}
     json.dump(res, open(out, "w"))
     print("RESULT-BEGIN")
