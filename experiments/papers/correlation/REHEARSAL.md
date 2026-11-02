@@ -71,7 +71,7 @@ Atlas smoke test, 2 studies of 30 people:
   −0.11.
 - In both truths the true model wins, and the second pass improves every model.
 
-## Version 3 (2026-11-02, five of six truths in; GEO1 running)
+## Version 3 (complete 2026-11-02)
 
 - **Stimuli.** `stimuli.py` version 3: 12 calibration lotteries per attribute at the ideal instead of
   4, 120 trials in all.
@@ -121,24 +121,42 @@ Atlas smoke test, 2 studies of 30 people:
 
   - The MF2 figures in the version 3 NRP outputs are the unmatched check and should not be read.
 
-### Results so far (ADD, RDU, CAG, GEO2 and EARLY)
+### Results (all six truths)
 
-- **The claim (H1, H2 and H3 together, margin 0).** Percent of studies passing at n = 60 / 120 / 200:
-  - ADD: 0 / 0 / 0.
-  - RDU: 0 / 0 / 0.
-  - EARLY: 0 / 0 / 0, also at margin 0.005.
-  - CAG: 2 / 2 / 2, one study of 50 at each n. It is H3, GEO beating the true CAG. At a margin of
-    0.005 nats per trial that study does not pass, and the claim passes in none.
-  - GEO2: 32 / 48 / 68, against 36 / 28 / 42 with the version 2 stimuli. At margin 0.005 it is
-    16 / 30 / 46.
+- **Scale.** 50 studies of 200 people per truth, as in version 2.
+- **Files.**
+  - Per truth: `results/rehearsal_v3_<TRUTH>.json`.
+  - Summary: `results/summary_v3.json`.
+- **Runtime.** 23 to 214 minutes per truth on one NRP CPU.
+- **Code.** All six truths ran the fixed `hier.py`.
+
+**The claim: H1, H2 and H3 together.** Percent of studies passing at n = 60 / 120 / 200.
+
+| Truth | Margin 0 | Margin 0.005 | Version 2, margin 0 |
+|---|---|---|---|
+| GEO1, distance | 96 / 100 / 100 | 84 / 98 / 100 | 70 / 92 / 96 |
+| GEO2, squared distance | 32 / 48 / 68 | 16 / 30 / 46 | 36 / 28 / 42 |
+| EARLY | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| RDU | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| CAG | 2 / 2 / 2 (one study) | 0 / 0 / 0 | 0 / 0 / 0 |
+| ADD | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+
+- **CAG's false positive is H3, GEO beating the true CAG in one study.** At margin 0.005 it does not
+  pass.
 - **H4 (comparative).**
+  - GEO1: 30 / 60 / 80.
   - GEO2: 54 / 74 / 90.
   - ADD, RDU and EARLY: 0.
   - CAG: 4 / 0 / 2.
+- **Held-out log-loss at n = 200, median over studies.** The true model is best, or tied with GEO
+  under CAG (0.502 against 0.500). Under GEO1, GEO scored 0.579 against 0.620 to 0.627 for the
+  others.
+- **Per-person `κ` under GEO1.** It averaged 1.21, against 1.30 in version 2.
 - **The population `κ` (hierarchical, 10 studies per truth).**
 
 | Truth | Median | Interval excludes 1 | Interval excludes 2 | Covers the truth |
 |---|---|---|---|---|
+| GEO1 | 0.95 | 1 of 10 | 10 of 10 | 9 of 10 |
 | ADD | 0.96 | 1 of 10 | 10 of 10 | (none defined) |
 | RDU | 1.64 | 10 of 10 | 10 of 10 | (none defined) |
 | CAG | 1.86 | 10 of 10 | 5 of 10 | (none defined) |
@@ -153,16 +171,29 @@ Atlas smoke test, 2 studies of 30 people:
     - *Correction, 2026-11-02:* `rehearsal.py` now sets EARLY to none, and `aggregate_rehearsal.py`
       reports coverage for GEO truths only.
 
-- **Readings so far.**
+- **Readings.**
+  - **The extra calibration lotteries raised the power substantially for distance-like cost.** At
+    n = 120 the claim now passes in 100% of studies at margin 0 and 98% at 0.005, against 92% in
+    version 2. They did little for squared distance.
+  - **The margin decides one false positive.**
+    - At margin 0, the claim passed in 1 of the 200 studies per n under truths without the metric
+      (four truths, 50 studies each). Each time it was a CAG study: study 35 at n = 60, and study 41
+      at n = 120 and 200.
+    - At 0.005 it passed in none.
+    - The cost at n = 120 is 2 points of power for distance-like cost (100% to 98%) and 18 for
+      squared distance (48% to 30%).
+    - The owner chose 0.005 (2026-11-02). It keeps the claim free of false positives in these
+      studies, with 98% power for distance-like cost at n = 120.
   - **The population `κ` means something only if GEO is the right model.** Under RDU and CAG the
     misspecified GEO absorbs pessimism or the aggregator's concavity into `κ`. So a null on the claim
     with a high `κ` cannot tell squared distance from either. The H2 and H3 comparisons, and MF1's
     sign, have to carry that distinction.
-  - **Under GEO2 the interval covered the true 2 in only 7 of 10 studies.** The intervals may be too
-    narrow. The hierarchical model's normal population distributions do not match the uniform ones
-    the simulated people come from, and the lapse differs. Ten studies are too few to be sure.
-  - **The margin for H1 to H3 is open.** At 0, CAG gave one false positive in 50 studies. At 0.005
-    there were none, but GEO2's power fell to 16 / 30 / 46. The GEO1 cost is still to come.
+  - **The interval tells distance from squared distance when GEO is true.**
+    - Under GEO1 it excluded 2 in 10 of 10 studies and covered 1 in 9.
+    - Under GEO2 it excluded 1 in 10 of 10 but covered 2 in only 7. The GEO2 intervals may be too
+      narrow. The hierarchical model's normal population distributions do not match the uniform ones
+      the simulated people come from, and the lapse differs. Ten studies per truth are too few to be
+      sure.
 
 ## Results (version 2, complete 2026-11-02)
 

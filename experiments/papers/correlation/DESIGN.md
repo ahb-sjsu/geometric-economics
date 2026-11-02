@@ -144,10 +144,14 @@ still change the set before it is registered.
 - **Fitting.** Each model is fit per person on the calibration set, hierarchically, and predicts the
   test set with no refit.
 
-Intervals are clustered by person, the unit `P` lives on. Margins are set in noise units by the
-rehearsal. The margin for H1 to H3 is open: 0, or 0.005 nats per trial. At 0, the claim passed in 1 of
-50 simulated studies under CAG in rehearsal version 3. At 0.005 it passed in none, at some cost in
-power (`REHEARSAL.md`).
+Intervals are clustered by person, the unit `P` lives on.
+
+**The margin is 0.005 nats per trial,** set by the owner on 2026-11-02 from rehearsal version 3. Each
+of H1 to H3 passes when the upper end of the 95% interval on GEO's held-out log-loss difference lies
+below −0.005.
+- At margin 0, the claim passed in one CAG study of 50 at each n.
+- At 0.005 it passed in none.
+- The cost was 2 points of power at n = 120 under distance-like cost (`REHEARSAL.md`).
 
 - **H1.** Late-contraction Mahalanobis beats early contraction on held-out log-loss. Early contraction
   is the additive value for equal-marginal pairs.
@@ -169,14 +173,18 @@ power (`REHEARSAL.md`).
     without the metric (EARLY, RDU, CAG and ADD, 50 studies each at every n). Under EARLY, H2 again
     passed by default in 54%, 74% and 82% of studies, while H1 and H3 never did.
   - The registration states the three-way conjunction as the claim.
-- **Power depends on the kind of cost.**
-  - If cost behaves like distance (`κ = 1`), the conjunction passed in 70%, 92% and 96% of studies at
-    n = 60, 120 and 200.
-  - If it behaves like squared distance (`κ = 2`), it passed in only 36%, 28% and 42%, and H1 alone in
-    32% to 42%. Squared distance has no background dependence. Its correlation attitude takes its sign
-    from `P12`, which varies across people. So little separates it from EARLY's even odds.
-  - The design is therefore powered against distance-like cost. A null result does not rule out
-    squared distance.
+- **Power depends on the kind of cost.** Figures are from rehearsal version 3, with the stimulus set
+  above, at n = 60, 120 and 200.
+  - If cost behaves like distance (`κ = 1`), the conjunction passed in 96%, 100% and 100% of studies at
+    margin 0, and in 84%, 98% and 100% at margin 0.005. Version 2's stimuli gave 70%, 92% and 96%.
+  - If it behaves like squared distance (`κ = 2`), it passed in only 32%, 48% and 68% at margin 0, and
+    in 16%, 30% and 46% at 0.005. Squared distance has no background dependence. Its correlation
+    attitude takes its sign from `P12`, which varies across people. So little separates it from
+    EARLY's even odds.
+  - Under the four truths without the metric, the conjunction passed in none of the 200 studies per n
+    at margin 0.005. At margin 0 it passed in one, a CAG study.
+  - The design is therefore powered against distance-like cost: 98% at n = 120 with margin 0.005. A
+    null result does not rule out squared distance.
 - **H4. Comparative test across people.** Each fitted model predicts each person's preference for the
   correlated option in block X from the calibration set alone. GEO's predictions must track the
   observed preferences better than RDU's and CAG's do.
@@ -201,8 +209,9 @@ power (`REHEARSAL.md`).
     biased upward, through small samples and the incidental-parameter problem (`REHEARSAL.md`).
   - A null on the claim with the interval excluding 1 means cost is not distance-like, and the design
     had little power. A null with the interval excluding 2 counts against the metric.
-  - In a first check at n = 120 the interval was 0.86 to 1.06 for a true 1 and 1.75 to 2.09 for a
-    true 2. Rehearsal version 3 tests this over more studies.
+  - In rehearsal version 3 (10 studies per truth, n = 120), the interval excluded 2 in every study
+    under GEO1 and covered 1 in 9. Under GEO2 it excluded 1 in every study but covered 2 in only 7,
+    so the intervals may be somewhat narrow.
   - **It means something only if GEO is the right model.** In rehearsal version 3 the fitted
     population `κ` was 1.64 under RDU and 1.86 under CAG, because the misspecified GEO absorbs
     pessimism or concavity into `κ`. A null on the claim with a high `κ` therefore cannot tell squared
