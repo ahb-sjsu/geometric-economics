@@ -10,9 +10,10 @@ trial crosses self = charity and inequality aversion is linear inside each trial
 
   R  40 riskless pairs, neither option dominating. Locations a in 5..40 and b in 50..100; tradeoff
      ratios of 0.5, 1, 2 and 3 charity points per self point, 10 pairs each.        role calib
-  S  32 even-odds lotteries against a sure amount on one attribute. Self lotteries at charity
+  S  48 even-odds lotteries against a sure amount on one attribute. Self lotteries at charity
      shortfall b = 0, 50, 75, 100; charity lotteries at self shortfall a = 0, 10, 25, 40. The b = 0
-     and a = 0 cells are calibration, because the metric adds nothing there; the rest are test.
+     and a = 0 cells (12 each) are calibration, because the metric adds nothing there; the rest (4
+     per level) are test. Version 2 had 4 calibration lotteries per attribute (32 S trials).
   X  24 correlation pairs: equal marginals, correlated against anticorrelated, 12 configurations
      in both left-right orders.                                                       role test
   A  8 dominated riskless pairs, attention checks.                                    role check
@@ -70,15 +71,23 @@ def build():
             pair = pair[::-1]
         add("R", f"R_ratio{ratio}", "calib", *pair)
 
-    # S: single-attribute lotteries against a sure amount
+    # S: single-attribute lotteries against a sure amount. At the other attribute's ideal there are 12 per
+    # attribute (version 3; version 2 had 4): fitted kappa from 4 is biased upward by small samples
+    # (REHEARSAL.md). Off the ideal there are 4 per level, as before.
+    self_cells = (((5, 35), 15), ((5, 35), 25), ((10, 40), 20), ((10, 40), 30),
+                  ((5, 25), 10), ((5, 25), 20), ((15, 35), 20), ((15, 35), 30),
+                  ((20, 40), 25), ((20, 40), 35), ((5, 40), 15), ((5, 40), 30))
+    charity_cells = (((50, 100), 65), ((50, 100), 85), ((60, 100), 70), ((60, 100), 90),
+                     ((50, 80), 60), ((50, 80), 70), ((70, 100), 80), ((70, 100), 90),
+                     ((50, 70), 55), ((50, 70), 65), ((60, 90), 70), ((60, 90), 80))
     for b in (0, 50, 75, 100):
-        for (lo, hi), sure in (((5, 35), 15), ((5, 35), 25), ((10, 40), 20), ((10, 40), 30)):
+        for (lo, hi), sure in (self_cells if b == 0 else self_cells[:4]):
             left = int(rng.random() < 0.5)
             lot, s = opt((lo, b), (hi, b)), opt((sure, b))
             add("S", f"S_self_b{b}", "calib" if b == 0 else "test", *((lot, s) if left else (s, lot)),
                 lot_option=0 if left else 1, side="self", level=b)
     for a in (0, 10, 25, 40):
-        for (lo, hi), sure in (((50, 100), 65), ((50, 100), 85), ((60, 100), 70), ((60, 100), 90)):
+        for (lo, hi), sure in (charity_cells if a == 0 else charity_cells[:4]):
             left = int(rng.random() < 0.5)
             lot, s = opt((a, lo), (a, hi)), opt((a, sure))
             add("S", f"S_charity_a{a}", "calib" if a == 0 else "test", *((lot, s) if left else (s, lot)),

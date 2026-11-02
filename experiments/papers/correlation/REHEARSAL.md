@@ -161,13 +161,32 @@ model-free checks the median estimate is in brackets.
     - It grew with sharper choosers (1.61 at three times the sensitivity), as separation makes it.
   - **The rehearsal's second pass cannot remove it.** It re-centres every person on the median of
     first-pass estimates, which share the bias.
-  - **Candidate fixes, not chosen yet.**
-    - Centre the second-pass prior on a pooled `κ`, fitted jointly on all people's lottery choices
-      with each person's metric held fixed. That is about 480 lottery choices at n = 60, enough that
-      the bias is small. This changes only the analysis.
-    - Add calibration lotteries at the ideal. This lengthens the session.
-    - A bias-reduced (Firth-type) likelihood.
-    - Or accept the bias, and do not interpret individual `κ`.
+  - **Fixes tried, 2026-11-02.** True `κ` = 1 throughout. Files: `results/diag_kappa_round3.json` and
+    `round4.json` (version 2 stimuli, as in git history before this change) and `v3stim.json`
+    (version 3 stimuli).
+    - **Option 1, a pooled `κ` as the centre of the second-pass prior.** The profile maximum over 60
+      people, with each person's other parameters re-fitted, was itself biased: 1.41. This is the
+      incidental-parameter problem. With only 48 choices per person, maximizing over each person's
+      nuisance parameters favours larger `κ`, however many people are pooled. Per-person estimates
+      came out at 1.34, no better than the plain second pass (1.26).
+    - **Option 1 with the nuisance parameters integrated out** (a Laplace approximation). The pooled
+      centre was erratic: 0.68, 0.94 and 0.86 in three configurations. Per-person estimates landed at
+      1.00 in one configuration only because a low centre cancelled an upward per-person pull. With
+      sharper choosers they were 1.31. Option 1 is not adopted. `models.pooled_center` keeps both
+      versions for the record.
+    - **Option 2, more calibration lotteries.** `stimuli.py` version 3 has 12 lotteries per
+      attribute at the ideal instead of 4, adding 16 trials (about 3 minutes).
+      - The second pass fell from 1.26 to 1.19 (first pass 1.38 to 1.30).
+      - Sharper choosers fell from 1.50 to 1.46.
+      - Repeating the original 8 cells three times did better (1.15), so the new distinct cells carry
+        less information about `κ` than repeats of the original ones.
+    - **The bias decays slowly with session length.** In round 2, 240 calibration choices per person
+      still left the first pass at 1.16. A per-person `κ` cannot be estimated without upward bias at
+      any feasible session length.
+  - **Still open.** Whether to keep version 3's extra lotteries. That needs a rehearsal rerun to
+    check that power and specificity hold with the new set. The other open question is how to
+    estimate the population `κ`, whether cost is distance-like or squared, without this bias. A
+    hierarchical model fitted by full marginal likelihood (MCMC) is the standard route.
 - **The crossing set is not built.** The secondary test of inequality aversion has neither stimuli
   nor rehearsal.
 - **The parameter ranges are assumptions.** The scale target, the lapse range and the shape ranges

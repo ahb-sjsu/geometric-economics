@@ -22,7 +22,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 import numpy as np
-from scipy.optimize import minimize
+from scipy.optimize import minimize, minimize_scalar
 
 
 def arrays(trials):
@@ -130,6 +130,70 @@ def eb_prior(m, thetas, floor=0.25):
     med = np.median(th, axis=0)
     mad = 1.4826 * np.median(np.abs(th - med), axis=0)
     return med, np.maximum(mad, floor)
+
+
+# The curvature parameter of each model: kappa for GEO and EARLY, log eta for RDU, rho for CAG.
+CURV = {"GEO": 3, "EARLY": 3, "RDU": 1, "CAG": 2}
+
+
+def fit_fixed(m, data, y, j, value, mu, sd, x0):
+    """MAP with parameter j held at `value`; the other parameters start from x0."""
+    free = np.array([i for i in range(len(x0)) if i != j])
+    th = np.array(x0, float)
+    th[j] = value
+
+    def f(z):
+        th[free] = z
+        return neg_log_post(th, m, data, y, mu, sd)
+
+    r = minimize(f, th[free], method="L-BFGS-B", bounds=[m.bounds[i] for i in free])
+    th[free] = r.x
+    return th.copy(), float(r.fun)
+
+
+def _logdet_hessian(f, x, h=1e-3):
+    n = len(x)
+    H = np.zeros((n, n))
+    for i in range(n):
+        for k in range(i, n):
+            ei, ek = np.zeros(n), np.zeros(n)
+            ei[i], ek[k] = h, h
+            H[i, k] = H[k, i] = (f(x + ei + ek) - f(x + ei - ek) - f(x - ei + ek) + f(x - ei - ek)) / (4 * h * h)
+    return float(np.log(np.clip(np.linalg.eigvalsh(H), 1e-8, None)).sum())
+
+
+def pooled_center(m, j, people, firsts, laplace=False):
+    """One value of parameter j for a group of people, each person's other parameters re-fitted at every
+    candidate value. The prior on j is switched off here, so that the group's many copies of it cannot
+    pull the value toward its mean.
+
+    laplace=False: the profile maximum of the summed penalized likelihood. With few choices per person
+    this is biased by the per-person nuisance parameters (the incidental-parameter problem): pooled over
+    60 people at the rehearsal's design it put kappa at 1.41 for a true 1 (REHEARSAL.md).
+    laplace=True: the maximum of the summed Laplace-approximated marginal likelihood. Each person's term
+    adds half the log determinant of the Hessian at their fit, which integrates the nuisance parameters
+    out instead of maximizing over them, and charges for the sharper fits a larger value allows."""
+    sd = m.sd.copy()
+    sd[j] = 1e6
+    lo, hi = m.bounds[j]
+    free = np.array([i for i in range(len(m.mu)) if i != j])
+
+    def term(d, y, v, f0):
+        th, fun = fit_fixed(m, d, y, j, v, m.mu, sd, f0)
+        if not laplace:
+            return fun
+
+        def g(z):
+            t = th.copy()
+            t[free] = z
+            return neg_log_post(t, m, d, y, m.mu, sd)
+
+        return fun + 0.5 * _logdet_hessian(g, th[free])
+
+    def total(v):
+        return sum(term(d, y, v, f0) for (d, y), f0 in zip(people, firsts))
+
+    return float(minimize_scalar(total, bounds=(lo, hi), method="bounded", options={"xatol": 0.02}).x)
 
 
 def log_loss(m, th, data, y):

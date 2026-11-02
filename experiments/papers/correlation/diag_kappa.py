@@ -23,6 +23,11 @@ trials, and reports the mean, median and spread of fitted kappa. One factor chan
   kappa_only       kappa alone fitted on the 8 S cells, P and bias fixed at the truth (no prior)
   kappa_only_x5    the same with each S cell answered 5 times (40 choices)
   kappa_only_x20   the same with each S cell answered 20 times (160 choices)
+  eb_pooled        the second pass with its kappa prior centred on a pooled kappa (option 1)
+  eb_sharp, eb_pooled_sharp   the plain and pooled second pass for three-times-sharper choosers
+  eb_s_x3, eb_pooled_s_x3     the same with the 8 S cells answered three times each (option 2)
+  eb_laplace, eb_laplace_sharp, eb_laplace_s_x3   option 1 with the pooled kappa from the summed
+                   Laplace-approximated marginal likelihood (nuisance parameters integrated out)
 """
 from __future__ import annotations
 
@@ -44,7 +49,16 @@ SPEC = {"base": {}, "prior_1": {"kmu": 1.0}, "prior_flat": {"ksd": 1000.0}, "no_
         "s_x3": {"s_rep": 3}, "eb": {"eb": True}, "all_x5": {"rep": 5},
         "all_x5_lapse04": {"rep": 5, "lapse": 0.04}, "all_x5_flat": {"rep": 5, "ksd": 1000.0},
         "kappa_only": {"kappa_only": True}, "kappa_only_x5": {"kappa_only": True, "s_rep": 5},
-        "kappa_only_x20": {"kappa_only": True, "s_rep": 20}}
+        "kappa_only_x20": {"kappa_only": True, "s_rep": 20},
+        # option 1: second-pass prior centred on a pooled kappa (models.pooled_center); option 2: more
+        # lottery choices at the ideal (s_rep). Compared with the plain second pass (eb).
+        "eb_pooled": {"eb": True, "pooled": True}, "eb_sharp": {"eb": True, "sharp": 3.0},
+        "eb_pooled_sharp": {"eb": True, "pooled": True, "sharp": 3.0},
+        "eb_s_x3": {"eb": True, "s_rep": 3}, "eb_pooled_s_x3": {"eb": True, "pooled": True, "s_rep": 3},
+        # option 1 with the nuisance parameters integrated out (Laplace) instead of maximized over
+        "eb_laplace": {"eb": True, "pooled": "laplace"},
+        "eb_laplace_sharp": {"eb": True, "pooled": "laplace", "sharp": 3.0},
+        "eb_laplace_s_x3": {"eb": True, "pooled": "laplace", "s_rep": 3}}
 CONFIGS = list(SPEC)
 
 
@@ -99,13 +113,19 @@ def run(config, people, seed):
         f = M.fit(GEO, data, y, rng, prior=(mu, sd))
         firsts.append((f, data, y))
         est.append(f[3])
+    extra = {}
     if sp.get("eb"):
         prior = M.eb_prior(GEO, [f for f, _, _ in firsts[:60]])
+        if sp.get("pooled"):
+            ref = firsts[:60]
+            prior[0][3] = extra["pooled_center"] = M.pooled_center(GEO, 3, [(d, y) for _, d, y in ref],
+                                                                   [f for f, _, _ in ref],
+                                                                   laplace=sp["pooled"] == "laplace")
         est = [M.fit(GEO, d, y, rng, starts=1, prior=prior, x0=f)[3] for f, d, y in firsts]
     k = np.array(est)
     return {"mean": float(k.mean()), "median": float(np.median(k)), "sd": float(k.std()),
             "q10": float(np.quantile(k, 0.1)), "q90": float(np.quantile(k, 0.9)),
-            "at_upper_bound": float(np.mean(k > 3.99)), "at_lower_bound": float(np.mean(k < 0.51))}
+            "at_upper_bound": float(np.mean(k > 3.99)), "at_lower_bound": float(np.mean(k < 0.51)), **extra}
 
 
 if __name__ == "__main__":
@@ -118,5 +138,6 @@ if __name__ == "__main__":
         res[c] = run(c, people, 20261103)
         print(f"{c:<15} mean {res[c]['mean']:.3f}  median {res[c]['median']:.3f}  sd {res[c]['sd']:.3f}  "
               f"q10-q90 {res[c]['q10']:.2f}-{res[c]['q90']:.2f}  bounds lo {res[c]['at_lower_bound']:.2f} "
-              f"hi {res[c]['at_upper_bound']:.2f}", flush=True)
+              f"hi {res[c]['at_upper_bound']:.2f}" +
+              (f"  pooled centre {res[c]['pooled_center']:.3f}" if "pooled_center" in res[c] else ""), flush=True)
     json.dump({"people": people, "true_kappa": 1.0, "configs": res}, open(out, "w"), indent=1)
