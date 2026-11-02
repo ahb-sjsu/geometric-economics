@@ -125,10 +125,13 @@ def corr_pref(p_left):
     return float(np.where(CORR == 0, p_left, 1 - p_left).mean() - 0.5)
 
 
-def lottery_rates(y, side, base_level):
+def lottery_rates(y, side, base_level, matched_only=True):
+    """Lottery-choice rate off the ideal minus at the ideal, on one attribute. Only the lotteries offered
+    at every level enter (`matched`); the version 3 rehearsal ran with matched_only=False in effect,
+    which compares different gambles and gave false positives under RDU (REHEARSAL.md)."""
     at, off = [], []
     for t in S_ALL:
-        if t["side"] != side:
+        if t["side"] != side or (matched_only and not t.get("matched", True)):
             continue
         took = y[t["id"]] if t["lot_option"] == 0 else 1 - y[t["id"]]
         (at if t["level"] == base_level else off).append(took)

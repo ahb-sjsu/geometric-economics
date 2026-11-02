@@ -80,18 +80,20 @@ def build():
     charity_cells = (((50, 100), 65), ((50, 100), 85), ((60, 100), 70), ((60, 100), 90),
                      ((50, 80), 60), ((50, 80), 70), ((70, 100), 80), ((70, 100), 90),
                      ((50, 70), 55), ((50, 70), 65), ((60, 90), 70), ((60, 90), 80))
+    # `matched` marks the 4 lotteries that appear at every level. A model-free comparison across levels
+    # must use only those, or it compares different gambles (the version 3 rehearsal found this).
     for b in (0, 50, 75, 100):
-        for (lo, hi), sure in (self_cells if b == 0 else self_cells[:4]):
+        for k, ((lo, hi), sure) in enumerate(self_cells if b == 0 else self_cells[:4]):
             left = int(rng.random() < 0.5)
             lot, s = opt((lo, b), (hi, b)), opt((sure, b))
             add("S", f"S_self_b{b}", "calib" if b == 0 else "test", *((lot, s) if left else (s, lot)),
-                lot_option=0 if left else 1, side="self", level=b)
+                lot_option=0 if left else 1, side="self", level=b, matched=k < 4)
     for a in (0, 10, 25, 40):
-        for (lo, hi), sure in (charity_cells if a == 0 else charity_cells[:4]):
+        for k, ((lo, hi), sure) in enumerate(charity_cells if a == 0 else charity_cells[:4]):
             left = int(rng.random() < 0.5)
             lot, s = opt((a, lo), (a, hi)), opt((a, sure))
             add("S", f"S_charity_a{a}", "calib" if a == 0 else "test", *((lot, s) if left else (s, lot)),
-                lot_option=0 if left else 1, side="charity", level=a)
+                lot_option=0 if left else 1, side="charity", level=a, matched=k < 4)
 
     # X: correlated against anticorrelated, equal marginals
     for alo, ahi in ((5, 25), (10, 40), (5, 40), (20, 40)):
