@@ -159,8 +159,9 @@ rehearsal.
     predict correlation attitudes that are not there, and GEO wins those comparisons by default. H1
     failed in every one of those studies, because EARLY, the metric on the mean bundle, contains
     linear additive value.
-  - With all three required, the conjunction passed in no simulated study under the RDU, CAG or ADD
-    truths. [EARLY truth: pending]
+  - With all three required, the conjunction passed in no simulated study under any of the four truths
+    without the metric (EARLY, RDU, CAG and ADD, 50 studies each at every n). Under EARLY, H2 again
+    passed by default in 54%, 74% and 82% of studies, while H1 and H3 never did.
   - The registration states the three-way conjunction as the claim.
 - **Power depends on the kind of cost.**
   - If cost behaves like distance (`κ = 1`), the conjunction passed in 70%, 92% and 96% of studies at

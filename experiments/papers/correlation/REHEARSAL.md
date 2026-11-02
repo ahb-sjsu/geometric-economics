@@ -49,6 +49,10 @@ GEO1 truth, 60 studies of 200 people:
   predictions dominate the mean.
 - **The person-level test was not specific.** In the smoke test it also passed under RDU. Pessimism and
   kappa > 1 both show as risk aversion at the ideal, so GEO's fitted kappa tracks RDU's pessimism.
+- **The complete run confirmed both failures.** All six truths are in `results/summary_v1.json`.
+  - GEO beat EARLY in at most 45% of studies under any truth.
+  - The non-comparative H4 passed in every study at n = 200 under RDU and CAG, as well as under
+    GEO1 and GEO2.
 
 ## Version 2 (2026-11-02)
 
@@ -67,6 +71,78 @@ Atlas smoke test, 2 studies of 30 people:
   −0.11.
 - In both truths the true model wins, and the second pass improves every model.
 
-## Results
+## Results (version 2, complete 2026-11-02)
 
-Pending. Version 2 runs on NRP (driver screen `corr-reh2`, outputs `nrp_reh_v2`).
+- **Scale.** 50 simulated studies of 200 people per truth, with tests on the first 60, 120 and 200.
+- **Runtime.** Each truth ran on one NRP CPU and took between 37 and 112 minutes.
+- **Files.**
+  - Per truth: `results/rehearsal_v2_<TRUTH>.json`.
+  - Summary: `results/summary_v2.json`.
+  - Version 1 summary: `results/summary_v1.json`.
+
+**The registered claim: H1, H2 and H3 together.** Share of studies in which it passed.
+
+| Truth | n = 60 | 120 | 200 |
+|---|---|---|---|
+| GEO1, distance (`κ = 1`) | 70% | 92% | 96% |
+| GEO2, squared distance (`κ = 2`) | 36% | 28% | 42% |
+| EARLY | 0 | 0 | 0 |
+| RDU | 0 | 0 | 0 |
+| CAG | 0 | 0 | 0 |
+| ADD | 0 | 0 | 0 |
+
+**Each test alone.** Percent of studies passing at margin 0, at n = 60 / 120 / 200. For the
+model-free checks the median estimate is in brackets.
+
+| Truth | H1 vs EARLY | H2 vs RDU | H3 vs CAG | H4 comparative | MF1 correlation | MF2 background |
+|---|---|---|---|---|---|---|
+| GEO1 | 82/94/98 | 82/94/98 | 88/96/96 | 20/36/58 | 100/100/100 (+0.17) | 72/100/100 (−0.05) |
+| GEO2 | 38/32/42 | 78/90/98 | 80/88/100 | 40/72/86 | 2/6/2 | 4/4/8 |
+| EARLY | 0/0/0 | 54/74/82 | 0/0/0 | 0/0/0 | 2/6/4 | 2/6/4 |
+| RDU | 98/100/100 | 2/2/2 | 4/2/4 | 0/0/0 | 100/100/100 (−0.24) | 12/10/10 |
+| CAG | 100/100/100 | 100/100/100 | 0/0/0 | 0/0/0 | 100/100/100 (−0.28) | 10/14/28 (+0.02) |
+| ADD | 0/0/0 | 50/62/66 | 48/58/60 | 0/0/0 | 12/8/4 | 6/14/4 |
+
+### Reading
+
+- **The claim is specific.** It passed in none of the 600 simulated studies under truths without the
+  metric (four truths, three values of n, 50 studies each). Each of H1, H2 and H3 passes under some
+  false truth when taken alone, which is why the claim needs all three.
+- **The power depends on the kind of cost.**
+  - With distance-like cost, 120 people give 92% and 200 give 96%.
+  - With squared distance it never passed in more than 42% of studies at any n tried.
+- **H4 adds no specificity and costs power.** Adding it to the claim would cut power under GEO1 to
+  20%, 36% and 56%, and it removes no false positive, because there were none.
+- **The model-free checks behave as intended.**
+  - The correlation check (MF1) finds an attitude whenever the population leans one way: seeking
+    under GEO1, aversion under RDU and CAG. It finds nothing under GEO2, whose sign varies across
+    people. Under truths with no attitude it passed in 2% to 12% of studies, so the false-positive
+    rate reached 12% (ADD at n = 60).
+  - The background check (MF2) finds GEO1's shift. CAG shows a weak shift in the opposite direction.
+    Its false-positive rate was 2% to 14%.
+- **The true model has the best held-out log-loss in every truth.** At n = 200, median over studies:
+  - GEO1: GEO 0.591, against 0.631 to 0.639 for the others.
+  - GEO2: GEO 0.621.
+  - EARLY: EARLY 0.620.
+  - RDU: RDU 0.562.
+  - CAG: CAG 0.508, with GEO close behind at 0.511.
+  - ADD: EARLY 0.588. ADD has no fitted model of its own, and EARLY contains it.
+  - The second fitting pass improved every model under every truth. Under GEO1, for example, GEO
+    went from 0.658 to 0.591.
+- **Recovery under the GEO truths.**
+  - The metric's correlation is recovered at 0.68 (GEO1) and 0.72 (GEO2).
+  - Its log ratio is recovered at 0.89 and 0.90.
+  - Each person's predicted preference for the correlated option correlates with the true one at
+    0.56 and 0.69.
+  - `κ` is recovered at 1.92 for a true 2. It is biased upward for a true 1 (1.30), and EARLY's
+    fitted `κ` is also high (1.40).
+
+### Open before sealing
+
+- **The upward bias in `κ`.** It does not break the claim's specificity, but its source is not
+  known. Candidates are the lapse mismatch, the prior, or too few calibration lotteries.
+- **The crossing set is not built.** The secondary test of inequality aversion has neither stimuli
+  nor rehearsal.
+- **The parameter ranges are assumptions.** The scale target, the lapse range and the shape ranges
+  were chosen, not measured. A pilot with people would check them.
+- **N.** 120 gives 92% power if the cost behaves like distance.
