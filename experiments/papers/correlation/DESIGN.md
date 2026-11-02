@@ -106,7 +106,11 @@ The two strongest rivals are RDU on additive value and EU with a concave aggrega
 - **EU with a concave aggregator** produces both effects, but its correlation effect is always
   aversion. Its effect sizes are not tied to the riskless tradeoffs.
 
-## Stimuli and procedure (planning layout, to be fixed by the rehearsal)
+## Stimuli and procedure
+
+The exact set is `stimuli.py` (seed 20261102): 40 riskless pairs, 32 single-attribute lotteries, 24
+correlation pairs and 8 attention checks. The crossing set described below is not built yet. The
+rehearsal may still change the set before it is registered.
 
 - **Charity.** Each participant first picks one charity from a short list, so that charity points
   carry value.
@@ -161,7 +165,8 @@ The registered secondary is the crossing set, scored against inequality aversion
    - which N gives adequate power at the person level.
 
    Noise attenuates `det(P)`, and with it the predicted effects, so recovery has to be checked rather
-   than assumed.
+   than assumed. Code: `rehearsal.py` with `models.py`, run on NRP by `submit_nrp.py` and summarised by
+   `aggregate_rehearsal.py`. The run record is `REHEARSAL.md`.
 2. **Language-model panel, optional.** An instrument check of wording and answer format only. It is
    not evidence about people.
 3. **Human study**, sealed with a signed tag before recruitment.
