@@ -10,7 +10,12 @@ P(choose option 0, the left one) = sigmoid(logit). All models carry a left-side 
          pi on the better outcome: rank-dependent, late contraction, no metric.
   CAG    expected utility with a concave aggregator: U = -(a + lam b + 1)^rho / rho.
 
-Fitting is maximum a posteriori with fixed weak Gaussian priors on the free parameters.
+Fitting is maximum a posteriori. The first pass uses fixed weak Gaussian priors; a second pass can take
+an empirical-Bayes prior from the first pass across people (`fit(..., prior=(mu, sd))`). Every model
+chooses with a fixed lapse: P(left) = LAPSE/2 + (1 - LAPSE) * sigmoid(logit), so no trial costs more
+than -log(LAPSE/2) nats. The first rehearsal (v1, no lapse, one pass) showed why: the fitted models
+were overconfident on test trials far from the calibration region, and held-out log-loss was worse
+than chance for the true model.
 """
 from __future__ import annotations
 
@@ -93,27 +98,44 @@ MODELS = {
 }
 
 
-def neg_log_post(th, m, data, y):
-    z = m.logit(th, *data)
-    nll = (y * np.logaddexp(0.0, -z) + (1 - y) * np.logaddexp(0.0, z)).sum()
-    return nll + 0.5 * (((th - m.mu) / m.sd) ** 2).sum()
+LAPSE = 0.04
 
 
-def fit(m, data, y, rng, starts=2):
+def p_choice(z, lapse=LAPSE):
+    return lapse / 2 + (1 - lapse) / (1.0 + np.exp(-z))
+
+
+def neg_log_post(th, m, data, y, mu, sd):
+    p = p_choice(m.logit(th, *data))
+    nll = -(y * np.log(p) + (1 - y) * np.log(1 - p)).sum()
+    return nll + 0.5 * (((th - mu) / sd) ** 2).sum()
+
+
+def fit(m, data, y, rng, starts=2, prior=None, x0=None):
     lo, hi = np.array([b[0] for b in m.bounds]), np.array([b[1] for b in m.bounds])
+    mu, sd = prior if prior is not None else (m.mu, m.sd)
+    base = m.start if x0 is None else x0
     best = None
     for k in range(starts):
-        x0 = m.start if k == 0 else np.clip(m.start + rng.normal(0, 0.7, len(m.start)), lo, hi)
-        r = minimize(neg_log_post, x0, args=(m, data, y), method="L-BFGS-B", bounds=m.bounds)
+        x = base if k == 0 else np.clip(base + rng.normal(0, 0.7, len(base)), lo, hi)
+        r = minimize(neg_log_post, x, args=(m, data, y, mu, sd), method="L-BFGS-B", bounds=m.bounds)
         if best is None or r.fun < best.fun:
             best = r
     return best.x
 
 
+def eb_prior(m, thetas, floor=0.25):
+    """Empirical-Bayes prior from first-pass estimates: median and 1.4826 MAD per parameter."""
+    th = np.asarray(thetas)
+    med = np.median(th, axis=0)
+    mad = 1.4826 * np.median(np.abs(th - med), axis=0)
+    return med, np.maximum(mad, floor)
+
+
 def log_loss(m, th, data, y):
-    z = m.logit(th, *data)
-    return float((y * np.logaddexp(0.0, -z) + (1 - y) * np.logaddexp(0.0, z)).mean())
+    p = p_choice(m.logit(th, *data))
+    return float(-(y * np.log(p) + (1 - y) * np.log(1 - p)).mean())
 
 
 def p_left(m, th, data):
-    return 1.0 / (1.0 + np.exp(-m.logit(th, *data)))
+    return p_choice(m.logit(th, *data))

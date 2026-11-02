@@ -8,6 +8,12 @@ runs them through the exact stimulus set (stimuli.py), fits every candidate mode
 calibration trials, and scores held-out log-loss on the test trials with no refit. Needs models.py and
 stimuli.py beside it. REHEARSAL_QUICK=1 for a smoke test.
 
+Version 2 (2026-11-02). Simulated people lapse at a rate drawn from U(0, 0.06); every model chooses
+with a fixed 4% lapse; each model is fit twice, first with fixed weak priors, then with an empirical-
+Bayes prior (median and MAD of the first-pass estimates over the first NS[0] people). Version 1 had
+neither: its fitted models were overconfident on test trials far from the calibration region, and
+held-out log-loss was worse than chance even for the true model (REHEARSAL.md).
+
 Truths (shape drawn per person; scale set so that the median |logit| over block R is ~1.5, a
 moderately noisy chooser; a left bias drawn per person):
   GEO1   late contraction, full metric, kappa = 1. Shape: sqrt(P22/P11) ~ U(0.25, 1), the metric's
@@ -23,8 +29,11 @@ Tests, on the first n people of each simulated study (n in NS), intervals over p
   H_vs_EARLY  (H1)  GEO's held-out log-loss below EARLY's: the interval's upper end below -margin.
   H_vs_RDU    (H2)  the same against RDU.
   H_vs_CAG    (H3)  the same against CAG.
-  H4                Spearman correlation, across people, between the correlated-option preference GEO
-                    predicts from calibration and the one observed in block X; lower end above 0.
+  H4                comparative: across people, the Spearman correlation between the correlated-option
+                    preference GEO predicts from calibration and the one observed in block X, minus
+                    the larger of RDU's and CAG's; bootstrap lower end above 0. (Version 1 used GEO's
+                    correlation alone, which also passed under RDU, because pessimism and kappa > 1
+                    both show as risk aversion at the ideal.)
   MF1               model-free: the block X choice rate of the correlated option differs from 0.5.
   MF2               model-free: lottery choice rate on one attribute changes when the other attribute
                     leaves its ideal (S test cells against S calibration cells).
@@ -48,7 +57,7 @@ import stimuli  # noqa: E402
 TRUTHS = ["GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD"]
 FIT = ["GEO", "EARLY", "RDU", "CAG"]
 NS = [60, 120, 200]
-SIMS = 60
+SIMS = 50
 MARGINS = [0.0, 0.002, 0.005, 0.01]
 SEED = 20261102
 if os.environ.get("REHEARSAL_QUICK"):
@@ -115,16 +124,23 @@ def lottery_rates(y, side, base_level):
     return float(np.mean(off) - np.mean(at))
 
 
-def person(truth, rng):
+def simulate(truth, rng):
+    """One simulated person: true model, choices on every trial, with a lapse drawn U(0, 0.06)."""
     m, th, shape = draw(truth, rng)
-    pl = M.p_left(m, th, ALL)
-    y = (rng.random(len(TRIALS)) < pl).astype(float)
-    fits = {k: M.fit(M.MODELS[k], SUB["calib"], y[IDX["calib"]], rng) for k in FIT}
-    out = {"ll": {k: M.log_loss(M.MODELS[k], fits[k], SUB["test"], y[IDX["test"]]) for k in FIT},
+    pl = M.p_choice(m.logit(th, *ALL), lapse=float(rng.uniform(0.0, 0.06)))
+    return {"y": (rng.random(len(TRIALS)) < pl).astype(float), "pl": pl, "shape": shape}
+
+
+def evaluate(sim, fits, fits1):
+    y, pl, shape = sim["y"], sim["pl"], sim["shape"]
+    out = {"ll1": {k: M.log_loss(M.MODELS[k], fits1[k], SUB["test"], y[IDX["test"]]) for k in FIT},
+           "ll": {k: M.log_loss(M.MODELS[k], fits[k], SUB["test"], y[IDX["test"]]) for k in FIT},
            "ll_S": {k: M.log_loss(M.MODELS[k], fits[k], SUB["S_test"], y[IDX["S_test"]]) for k in FIT},
            "ll_X": {k: M.log_loss(M.MODELS[k], fits[k], SUB["X"], y[IDX["X"]]) for k in FIT},
            "obs_corr": float(np.where(CORR == 0, y[IDX["X"]], 1 - y[IDX["X"]]).mean() - 0.5),
            "pred_corr": corr_pref(M.p_left(M.MODELS["GEO"], fits["GEO"], SUB["X"])),
+           "pred_corr_RDU": corr_pref(M.p_left(M.MODELS["RDU"], fits["RDU"], SUB["X"])),
+           "pred_corr_CAG": corr_pref(M.p_left(M.MODELS["CAG"], fits["CAG"], SUB["X"])),
            "true_corr": corr_pref(pl[IDX["X"]]),
            "bg": 0.5 * (lottery_rates(y, "self", 0) + lottery_rates(y, "charity", 0))}
     if shape:
@@ -148,16 +164,29 @@ def tests(ps):
         res[f"H_vs_{k}"] = {"est": est, "lo": lo, "hi": hi, "pass": [bool(hi < -mg) for mg in MARGINS],
                             "est_S": ci([p["ll_S"]["GEO"] - p["ll_S"][k] for p in ps])[0],
                             "est_X": ci([p["ll_X"]["GEO"] - p["ll_X"][k] for p in ps])[0]}
-    rho = spearmanr([p["pred_corr"] for p in ps], [p["obs_corr"] for p in ps]).statistic
-    if np.isfinite(rho):
-        z, se = np.arctanh(np.clip(rho, -0.999, 0.999)), np.sqrt(1.06 / (n - 3))
-        res["H4"] = {"rho": float(rho), "lo": float(np.tanh(z - 1.96 * se)), "pass": bool(np.tanh(z - 1.96 * se) > 0)}
-    else:
-        res["H4"] = {"rho": None, "lo": None, "pass": False}
+    # H4, comparative: GEO's person-level predictions of the correlated-option preference track the
+    # observed ones better than RDU's and CAG's do. Bootstrap over people.
+    obs = np.array([p["obs_corr"] for p in ps])
+    pred = {k: np.array([p[f"pred_corr{s}"] for p in ps]) for k, s in (("GEO", ""), ("RDU", "_RDU"), ("CAG", "_CAG"))}
+
+    def rho(k, i):
+        r = spearmanr(pred[k][i], obs[i]).statistic
+        return r if np.isfinite(r) else 0.0
+
+    def gap(i):
+        return rho("GEO", i) - max(rho("RDU", i), rho("CAG", i))
+
+    allp = np.arange(n)
+    brng = np.random.default_rng([SEED, n])
+    boots = np.array([gap(brng.integers(0, n, n)) for _ in range(300)])
+    lo = float(np.quantile(boots, 0.025))
+    res["H4"] = {"rho": float(rho("GEO", allp)), "rho_RDU": float(rho("RDU", allp)),
+                 "rho_CAG": float(rho("CAG", allp)), "gap": float(gap(allp)), "lo": lo, "pass": bool(lo > 0)}
     for key, name in (("obs_corr", "MF1"), ("bg", "MF2")):
         est, lo, hi = ci([p[key] for p in ps])
         res[name] = {"est": est, "lo": lo, "hi": hi, "pass": bool(lo > 0 or hi < 0)}
     res["mean_ll"] = {k: float(np.mean([p["ll"][k] for p in ps])) for k in FIT}
+    res["mean_ll_pass1"] = {k: float(np.mean([p["ll1"][k] for p in ps])) for k in FIT}
     return res
 
 
@@ -181,10 +210,18 @@ def main(truth, out, *_):
     t0, sims = time.time(), []
     for sim in range(SIMS):
         rng = np.random.default_rng([SEED, TRUTHS.index(truth), sim])
-        ps = [person(truth, rng) for _ in range(max(NS))]
+        people = [simulate(truth, rng) for _ in range(max(NS))]
+        calib = [(SUB["calib"], p["y"][IDX["calib"]]) for p in people]
+        f1 = [{k: M.fit(M.MODELS[k], d, y, rng) for k in FIT} for d, y in calib]
+        # empirical-Bayes prior from the first NS[0] people, used for everyone in the study
+        priors = {k: M.eb_prior(M.MODELS[k], [f[k] for f in f1[:NS[0]]]) for k in FIT}
+        f2 = [{k: M.fit(M.MODELS[k], d, y, rng, starts=1, prior=priors[k], x0=f[k]) for k in FIT}
+              for (d, y), f in zip(calib, f1)]
+        ps = [evaluate(p, b, a) for p, a, b in zip(people, f1, f2)]
         sims.append({**{f"n{n}": tests(ps[:n]) for n in NS}, "recovery": recovery(ps)})
         print(sim, f"{time.time() - t0:.0f}s", flush=True)
-    res = {"truth": truth, "ns": NS, "sims_n": SIMS, "margins": MARGINS, "sims": sims, "seconds": time.time() - t0}
+    res = {"truth": truth, "version": 2, "ns": NS, "sims_n": SIMS, "margins": MARGINS, "lapse": M.LAPSE,
+           "sims": sims, "seconds": time.time() - t0}
     json.dump(res, open(out, "w"))
     print("RESULT-BEGIN")
     print(json.dumps({k: v for k, v in res.items() if k != "sims"}))

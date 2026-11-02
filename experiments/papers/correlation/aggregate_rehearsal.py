@@ -36,9 +36,14 @@ def main(d, out):
                           "est_X": float(np.median([x[h]["est_X"] for x in rows]))}
             row["H4"] = {"pass": float(np.mean([x["H4"]["pass"] for x in rows])),
                          "rho": float(np.median([x["H4"]["rho"] for x in rows if x["H4"]["rho"] is not None] or [np.nan]))}
+            if "gap" in rows[0]["H4"]:
+                row["H4"]["gap"] = float(np.median([x["H4"]["gap"] for x in rows]))
             for mf in ("MF1", "MF2"):
                 row[mf] = {"pass": float(np.mean([x[mf]["pass"] for x in rows])),
                            "est": float(np.median([x[mf]["est"] for x in rows]))}
+            for key in ("mean_ll", "mean_ll_pass1"):
+                if key in rows[0]:
+                    row[key] = {k: float(np.median([x[key][k] for x in rows])) for k in rows[0][key]}
             table[f"{truth}_n{n}"] = row
         rec = [s["recovery"] for s in r["sims"] if s["recovery"]]
         if rec:
@@ -51,9 +56,16 @@ def main(d, out):
         cell = lambda h: (f"{row[h]['pass0']:.2f}/{row[h]['pass005']:.2f}" +  # noqa: E731
                           ("*" if truth in EXPECT[h] else " "))
         print(f"{key:<12} {cell('H_vs_EARLY'):>14} {cell('H_vs_RDU'):>14} {cell('H_vs_CAG'):>14} "
-              f"{row['H4']['pass']:>6.2f}{'*' if truth in EXPECT['H4'] else ' '} rho{row['H4']['rho']:+.2f} "
+              f"{row['H4']['pass']:>6.2f}{'*' if truth in EXPECT['H4'] else ' '} "
+              f"{'gap' if 'gap' in row['H4'] else 'rho'}{row['H4'].get('gap', row['H4']['rho']):+.2f} "
               f"{row['MF1']['pass']:>5.2f} ({row['MF1']['est']:+.3f}) {row['MF2']['pass']:>5.2f} ({row['MF2']['est']:+.3f})")
     print("pass rates at margin 0 / 0.005; * = the test should pass under this truth")
+    print("held-out log-loss per test trial at the largest n (chance = 0.693), median over studies:")
+    for key, row in table.items():
+        if key.endswith(f"_n{max(int(k.split('_n')[1]) for k in table)}"):
+            print(f"  {key:<12} " + "  ".join(f"{k} {v:.3f}" for k, v in row["mean_ll"].items()) +
+                  ("   first pass: " + "  ".join(f"{k} {v:.3f}" for k, v in row["mean_ll_pass1"].items())
+                   if "mean_ll_pass1" in row else ""))
     for k, v in res.items():
         if k.startswith("recovery_"):
             print(k, {kk: round(vv, 3) for kk, vv in v.items()})

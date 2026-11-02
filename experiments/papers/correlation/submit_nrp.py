@@ -5,7 +5,8 @@ follows the NRP PREFLIGHT (reference_nrp_job_policies) line by line, as
 
   * CPU-only, exempt class: cpu=1, memory=1Gi, ephemeral-storage declared. Footprint measured on Atlas
     with REHEARSAL_QUICK (30 people, GEO1 and RDU): peak RSS 0.10 GiB, 99% of one CPU, about 0.2 s per
-    simulated person, so a full cell (60 studies x 200 people) runs about 40 minutes.
+    simulated person, so a full cell (60 studies x 200 people) runs about 40 minutes. Version 2 fits
+    each model twice: about 0.28 s per person, so 50 studies x 200 people run about 47 minutes.
   * Self-contained: rehearsal.py, models.py and stimuli.py ride in as base64, each checked by sha256
     in the pod. Versions pinned to Atlas's.
   * Self-terminating, no sleep in the pod, backoff_limit=0; the result is printed gzip+base64 between
