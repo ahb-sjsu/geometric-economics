@@ -9,14 +9,16 @@ follows the NRP PREFLIGHT (reference_nrp_job_policies) line by line, as
     minutes. Version 2 fits each model twice: about 0.28 s per person, so 50 studies x 200 people run
     about 47 minutes. Version 3 adds the hierarchical fit (hier.py, JAX on one CPU), measured on Atlas
     at n = 120: 290 to 400 s per fit, peak RSS 0.57 GiB. Ten fits per truth add about an hour.
+    Version 4 ran 22 to 93 minutes per truth at 200 people; a version 5 cell has 240.
   * Self-contained: rehearsal.py, models.py and stimuli.py ride in as base64, each checked by sha256
     in the pod. Versions pinned to Atlas's.
   * Self-terminating, no sleep in the pod, backoff_limit=0; the result is printed gzip+base64 between
     markers and collected from the log.
   * Submitted via nats-bursting, a fresh name per attempt, creationTimestamp checked. Finished Jobs
-    are deleted after their log is saved. At most 2 attempts per truth.
+    are deleted after their log is saved; an active Job is never deleted. At most --max-tries attempts
+    per truth (2 until version 4, 3 from version 5: a pod can be lost at any time).
 
-    python submit_nrp.py --i-have-checked-nrp-policy --src DIR --out DIR [--truths GEO1 ...]
+    python submit_nrp.py --i-have-checked-nrp-policy --src DIR --out DIR [--truths GEO1 ...] [--max-tries 3]
 """
 from __future__ import annotations
 
@@ -42,7 +44,6 @@ PINS = "numpy==2.2.6 scipy==1.17.1"                  # the versions tested on At
 PINS_HIER = "jax==0.12.0.1 numpyro==0.22.0"          # only when the hierarchical fit runs
 TRUTHS = ["GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD", "IA"]
 FILES = ["rehearsal.py", "models.py", "stimuli.py", "hier.py"]
-MAX_TRIES = 2
 POLL_S = 60
 
 
@@ -97,6 +98,7 @@ def main():
     ap.add_argument("--hier-sims", type=int, default=None,
                     help="studies per truth that get the hierarchical fit (rehearsal default 10); 0 skips it and jax")
     ap.add_argument("--nats-url", default="nats://localhost:4222")
+    ap.add_argument("--max-tries", type=int, default=3)
     a = ap.parse_args()
     if not a.ack:
         sys.exit("refusing without --i-have-checked-nrp-policy")
@@ -122,9 +124,9 @@ def main():
                 print(f"{t}: {name} {st} without a result", flush=True)
             elif name:
                 print(f"{t}: {name} disappeared", flush=True)
-            if s["attempt"] >= MAX_TRIES:
+            if s["attempt"] >= a.max_tries:
                 s["done"] = s["parked"] = True
-                print(f"{t}: PARKED after {MAX_TRIES} attempts", flush=True)
+                print(f"{t}: PARKED after {a.max_tries} attempts", flush=True)
                 continue
             s["attempt"] += 1
             d = JobDescriptor(name=f"{a.tag}-{t.lower()}-{stamp}-a{s['attempt']}", image=IMAGE,

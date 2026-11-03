@@ -66,7 +66,9 @@ def fit(data, Y, seed=0, warmup=500, samples=500):
     s = mcmc.get_samples()
     mu_lk = np.asarray(s["mu"][:, 3])
     k_med = 0.5 + np.exp(mu_lk)
+    # q80: the pilot's kappa row is the smallest tabulated kappa at or above it (PILOT.md)
     return {"kappa_median": float(np.median(k_med)), "lo": float(np.quantile(k_med, 0.025)),
-            "hi": float(np.quantile(k_med, 0.975)), "sigma_lk": float(np.median(np.asarray(s["sigma"][:, 3]))),
+            "hi": float(np.quantile(k_med, 0.975)), "q80": float(np.quantile(k_med, 0.8)),
+            "sigma_lk": float(np.median(np.asarray(s["sigma"][:, 3]))),
             "divergences": int(np.asarray(mcmc.get_extra_fields()["diverging"]).sum()),
             "ess_mu_lk": float(numpyro.diagnostics.effective_sample_size(mu_lk[None, :]))}

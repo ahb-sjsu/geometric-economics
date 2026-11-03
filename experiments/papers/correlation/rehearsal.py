@@ -4,10 +4,21 @@
     python rehearsal.py TRUTH OUT.json
 
 TRUTH is one of GEO1, GEO2, EARLY, RDU, CAG, ADD, IA, or IA02, IA05, IA10, IA20 (inequality aversion at a
-fixed gamma of 0.02 to 0.20). Each simulated study draws people from that model,
+fixed gamma of 0.02 to 0.20), or a version 5 cell (below). Each simulated study draws people from that model,
 runs them through the exact stimulus set (stimuli.py), fits every candidate model per person on the
 calibration trials, and scores held-out log-loss on the test trials with no refit. Needs models.py and
 stimuli.py beside it. REHEARSAL_QUICK=1 for a smoke test.
+
+Version 5 (2026-11-03), the power table the pilot reads (PILOT.md). A cell is named by its base model, then
+T and the centre of the noise target (the median |logit| over block R) times ten, then optionally S and the
+share of rank-one people in percent, and L and the lapse ceiling in percent:
+  G125T15     GEO with kappa 1.25 for everyone (the digits after G are kappa times 100), target around 1.5
+  G150T15S40  the same at kappa 1.5, with 40% of people of rank one, who weigh only their own points
+  RDUT20L15   RDU drawn as in version 4, target around 2.0, lapses drawn from U(0, 0.15)
+Cells run 50 studies of 240 people, with tests on the first 60, 120, 160, 200 and 240 (NS5). TABLE_V5 lists
+the table's 22 cells. A cell is seeded by a checksum of its name; the version 4 truths keep their seeds,
+their n and their draws, so their results reproduce. `simulate` takes another trial set (`data`), which
+pilot_analysis.py uses to run simulated pilots through the pilot-only trials.
 
 Version 4 (2026-11-02). The stimulus set adds the crossing set (stimuli.py: 8 XC pairs and 12 SC straddle
 lotteries, role "secondary"), the truths add IA (inequality aversion between self and charity, gamma ~
@@ -58,8 +69,10 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 import time
+import zlib
 
 import numpy as np
 from scipy.stats import spearmanr
@@ -71,8 +84,14 @@ import stimuli  # noqa: E402
 # IA02 .. IA20: inequality aversion at a fixed gamma of 0.02, 0.05, 0.10 and 0.20, for the power of the
 # secondary claim against weaker aversion than IA's U(0.1, 0.6). Appended, so earlier truths keep their seeds.
 TRUTHS = ["GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD", "IA", "IA02", "IA05", "IA10", "IA20"]
+# version 5, the power table (PILOT.md): 15 GEO cells (kappa by noise target), 2 rank-one cells and 5
+# specificity cells (the non-GEO truths, sharp choosers, lapses up to 0.15)
+TABLE_V5 = ([f"G{k}T{t}" for k in (100, 125, 150, 175, 200) for t in (10, 15, 20)] + ["G100T15S40", "G150T15S40"]
+            + [f"{b}T20L15" for b in ("EARLY", "RDU", "CAG", "ADD", "IA")])
+CELL = re.compile(r"(?:G(\d{3})|(EARLY|RDU|CAG|ADD|IA))T(\d{2})(?:S(\d{2}))?(?:L(\d{2}))?")
 FIT = ["GEO", "EARLY", "RDU", "CAG", "IA"]
 NS = [60, 120, 200]
+NS5 = [60, 120, 160, 200, 240]
 SIMS = 50
 MARGINS = [0.0, 0.002, 0.005, 0.01]
 SEED = 20261102
@@ -80,14 +99,9 @@ SEED = 20261102
 # HIER_SIMS studies. Needs jax and numpyro; REHEARSAL_HIER_SIMS=0 skips it.
 HIER_SIMS = int(os.environ.get("REHEARSAL_HIER_SIMS", "10"))
 HIER_N = 120
-# the population median kappa of the GEO truths; None elsewhere. EARLY is not GEO: its kappa (drawn from
-# U(1, 2)) shapes only riskless choices, its lotteries are risk-neutral, and GEO's fitted kappa has no
-# reason to equal it. Version 3 ran with EARLY set to 1.5, which made a coverage figure for EARLY that
-# means nothing (REHEARSAL.md); aggregate_rehearsal.py reports coverage for GEO truths only.
-TRUE_KAPPA = {"GEO1": 1.0, "GEO2": 2.0, "EARLY": None, "RDU": None, "CAG": None, "ADD": None, "IA": None}
 SEC_MARGIN = 0.005      # the registered margin, applied to the secondary comparison too
 if os.environ.get("REHEARSAL_QUICK"):
-    NS, SIMS = [30], 2
+    NS, NS5, SIMS = [30], [30], 2
     HIER_SIMS, HIER_N = min(HIER_SIMS, 1), 30
 
 TRIALS = stimuli.build()
@@ -113,32 +127,59 @@ def diff(m, th, data):
     return v[:, 0] - v[:, 1]
 
 
+def spec(truth):
+    """The truth's parameters: base model, kappa (GEO, the same for everyone), gamma (IA, fixed), the
+    centre of the noise target, the share of rank-one people and the lapse ceiling."""
+    sp = {"base": truth, "kappa": None, "gamma": None, "target": 1.5, "share": 0.0, "lapse": 0.06, "v5": False}
+    if truth in ("GEO1", "GEO2"):
+        sp.update(base="GEO", kappa=float(truth[3]))
+    elif truth in TRUTHS and truth.startswith("IA") and truth != "IA":
+        sp.update(base="IA", gamma=int(truth[2:]) / 100)
+    elif truth not in TRUTHS:
+        m = CELL.fullmatch(truth)
+        if m is None:
+            raise ValueError(f"unknown truth {truth!r}")
+        k, base, t, s, lapse = m.groups()
+        if s and not k:
+            raise ValueError(f"{truth}: a rank-one share is defined for GEO cells only")
+        sp.update(base=base or "GEO", kappa=int(k) / 100 if k else None, target=int(t) / 10,
+                  share=int(s) / 100 if s else 0.0, lapse=int(lapse) / 100 if lapse else 0.06, v5=True)
+    return sp
+
+
 def draw(truth, rng):
-    target = float(np.exp(rng.normal(np.log(1.5), 0.35)))
+    sp = spec(truth)
+    target = float(np.exp(rng.normal(np.log(sp["target"]), 0.35)))
     bias = float(rng.normal(0.0, 0.3))
-    if truth in ("GEO1", "GEO2", "EARLY"):
-        kappa = {"GEO1": 1.0, "GEO2": 2.0}.get(truth) or float(rng.uniform(1.0, 2.0))
+    if sp["base"] in ("GEO", "EARLY"):
+        kappa = sp["kappa"] or float(rng.uniform(1.0, 2.0))
         ratio, r = float(rng.uniform(0.25, 1.0)), float(rng.uniform(-0.6, 0.6))
         L = np.linalg.cholesky(np.array([[1.0, r * ratio], [r * ratio, ratio * ratio]]))
         th = np.array([np.log(L[0, 0]), L[1, 0], np.log(L[1, 1]), kappa, 0.0])
-        m = M.MODELS["EARLY" if truth == "EARLY" else "GEO"]
+        m = M.MODELS[sp["base"]]
         s = (target / np.median(np.abs(diff(m, th, SUB["R"])))) ** (1.0 / kappa)
         th[0] += np.log(s)
         th[1] *= s
         th[2] += np.log(s)
         th[4] = bias
+        if sp["share"] and rng.random() < sp["share"]:
+            # version 5: rank one, the same person with no weight on the charity. Their sensitivity to
+            # their own points is kept, not rescaled to the noise target, so they choose consistently in
+            # block R, as someone who ignores the charity would.
+            th[1], th[2] = 0.0, -30.0
+            return m, th, {"rank_one": True, "kappa": kappa}
         return m, th, {"r": r, "ratio": ratio, "kappa": kappa}
-    if truth in ("RDU", "ADD"):
-        eta = 1.0 if truth == "ADD" else float(rng.uniform(0.8, 1.6))
-        pi = 0.5 if truth == "ADD" else float(rng.uniform(0.30, 0.48))
+    if sp["base"] in ("RDU", "ADD"):
+        eta = 1.0 if sp["base"] == "ADD" else float(rng.uniform(0.8, 1.6))
+        pi = 0.5 if sp["base"] == "ADD" else float(rng.uniform(0.30, 0.48))
         th = np.array([0.0, np.log(eta), np.log(rng.uniform(0.25, 1.0)), np.log(pi / (1 - pi)), 0.0])
         m = M.MODELS["RDU"]
-    elif truth == "CAG":
+    elif sp["base"] == "CAG":
         th = np.array([0.0, np.log(rng.uniform(0.25, 1.0)), rng.uniform(1.5, 3.0), 0.0])
         m = M.MODELS["CAG"]
     else:  # IA: inequality aversion between self and charity, gamma ~ U(0.1, 0.6); IAxx: gamma fixed at xx/100
         lam = rng.uniform(0.25, 1.0)
-        gamma = rng.uniform(0.1, 0.6) if truth == "IA" else int(truth[2:]) / 100
+        gamma = rng.uniform(0.1, 0.6) if sp["gamma"] is None else sp["gamma"]
         th = np.array([0.0, np.log(lam), gamma, 0.0])
         m = M.MODELS["IA"]
     th[0] = np.log(target / np.median(np.abs(diff(m, th, SUB["R"]))))
@@ -177,11 +218,12 @@ def xc_pref(p):
     return float(np.where(CORR_XC == 0, p[IDX["XC"]], 1 - p[IDX["XC"]]).mean() - 0.5)
 
 
-def simulate(truth, rng):
-    """One simulated person: true model, choices on every trial, with a lapse drawn U(0, 0.06)."""
+def simulate(truth, rng, data=None):
+    """One simulated person: true model, choices on every trial of the main set (or of `data`), with a
+    lapse drawn from U(0, the truth's ceiling), 0.06 unless the truth says otherwise."""
     m, th, shape = draw(truth, rng)
-    pl = M.p_choice(m.logit(th, *ALL), lapse=float(rng.uniform(0.0, 0.06)))
-    return {"y": (rng.random(len(TRIALS)) < pl).astype(float), "pl": pl, "shape": shape}
+    pl = M.p_choice(m.logit(th, *(ALL if data is None else data)), lapse=float(rng.uniform(0.0, spec(truth)["lapse"])))
+    return {"y": (rng.random(len(pl)) < pl).astype(float), "pl": pl, "shape": shape}
 
 
 def evaluate(sim, fits, fits1):
@@ -202,7 +244,7 @@ def evaluate(sim, fits, fits1):
                          for k in ("GEO", "IA")},
                   "straddle_obs": straddle(y), "straddle_geo": straddle(p_geo),
                   "xc_obs": xc_pref(y), "xc_geo": xc_pref(p_geo)}
-    if shape:
+    if "ratio" in shape:        # GEO and EARLY people who trade the two off; not the rank-one ones
         P11, P12, P22 = M.metric(fits["GEO"])
         out["rec"] = {**shape, "r_hat": float(P12 / np.sqrt(P11 * P22)), "ratio_hat": float(np.sqrt(P22 / P11)),
                       "kappa_hat": float(fits["GEO"][3])}
@@ -283,27 +325,34 @@ def recovery(ps):
 
 def main(truth, out, *_):
     np.seterr(all="ignore")
+    sp = spec(truth)
+    ns = NS5 if sp["v5"] else NS
     t0, sims = time.time(), []
     for sim in range(SIMS):
-        rng = np.random.default_rng([SEED, TRUTHS.index(truth), sim])
-        people = [simulate(truth, rng) for _ in range(max(NS))]
+        key = [SEED, TRUTHS.index(truth), sim] if truth in TRUTHS else [SEED, 5, zlib.crc32(truth.encode()), sim]
+        rng = np.random.default_rng(key)
+        people = [simulate(truth, rng) for _ in range(max(ns))]
         calib = [(SUB["calib"], p["y"][IDX["calib"]]) for p in people]
         f1 = [{k: M.fit(M.MODELS[k], d, y, rng) for k in FIT} for d, y in calib]
-        # empirical-Bayes prior from the first NS[0] people, used for everyone in the study
-        priors = {k: M.eb_prior(M.MODELS[k], [f[k] for f in f1[:NS[0]]]) for k in FIT}
+        # empirical-Bayes prior from the first ns[0] people, used for everyone in the study
+        priors = {k: M.eb_prior(M.MODELS[k], [f[k] for f in f1[:ns[0]]]) for k in FIT}
         f2 = [{k: M.fit(M.MODELS[k], d, y, rng, starts=1, prior=priors[k], x0=f[k]) for k in FIT}
               for (d, y), f in zip(calib, f1)]
         ps = [evaluate(p, b, a) for p, a, b in zip(people, f1, f2)]
-        record = {**{f"n{n}": tests(ps[:n]) for n in NS}, "recovery": recovery(ps)}
+        record = {**{f"n{n}": tests(ps[:n]) for n in ns}, "recovery": recovery(ps)}
         if sim < HIER_SIMS:
             import hier  # noqa: PLC0415  (jax is needed only here)
             Y = np.stack([p["y"][IDX["calib"]] for p in people[:HIER_N]])
             record["hier"] = {**hier.fit(SUB["calib"], Y, seed=sim), "n": HIER_N}
         sims.append(record)
         print(sim, f"{time.time() - t0:.0f}s", flush=True)
-    res = {"truth": truth, "version": 4, "ns": NS, "sims_n": SIMS, "margins": MARGINS, "lapse": M.LAPSE,
-           "hier_sims": HIER_SIMS, "hier_n": HIER_N, "true_kappa": TRUE_KAPPA.get(truth),
-           "sims": sims, "seconds": time.time() - t0}
+    # true_kappa: the population median kappa of the GEO truths; None elsewhere. EARLY is not GEO: its kappa
+    # (drawn from U(1, 2)) shapes only riskless choices, its lotteries are risk-neutral, and GEO's fitted
+    # kappa has no reason to equal it. Version 3 ran with EARLY set to 1.5, which made a coverage figure
+    # for EARLY that means nothing (REHEARSAL.md); aggregate_rehearsal.py reports coverage for GEO only.
+    res = {"truth": truth, "version": 5, "spec": sp, "ns": ns, "sims_n": SIMS, "margins": MARGINS,
+           "lapse": M.LAPSE, "hier_sims": HIER_SIMS, "hier_n": HIER_N,
+           "true_kappa": sp["kappa"] if sp["base"] == "GEO" else None, "sims": sims, "seconds": time.time() - t0}
     json.dump(res, open(out, "w"))
     print("RESULT-BEGIN")
     print(json.dumps({k: v for k, v in res.items() if k != "sims"}))

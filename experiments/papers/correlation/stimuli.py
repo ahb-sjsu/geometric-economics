@@ -28,7 +28,12 @@ each. The crossing set (XC, SC) crosses on purpose.
 Option 0 is shown on the left. S and SC trials record which option is the lottery (`lot_option`), X and
 XC trials which is the correlated one (`corr_option`). `order` is the presentation order: R first,
 then everything else shuffled together. Only the crossing set (`cross`) crosses self = charity.
+
+The pilot (PILOT.md) adds 20 trials after the main set, role "pilot", from their own random stream, so
+build() is unchanged (`pilot_extras`). `presentation` gives one participant's order from their recorded
+seed; `order` is one such shuffle. `digest` is the hash the instrument's export must declare.
 """
+import hashlib
 import json
 import sys
 
@@ -148,7 +153,84 @@ def build():
     return trials
 
 
+def self_option(trial):
+    """The self-favouring option of a riskless tradeoff pair (R, PR, PW): the one with the smaller self
+    shortfall."""
+    return int(trial["options"][1][0][1] < trial["options"][0][0][1])
+
+
+def pilot_extras(trials=None):
+    """The 20 pilot-only trials (PILOT.md), shown after the main set and numbered after it, role "pilot".
+
+      PR  8 repeats: two block R pairs from each tradeoff ratio, shown again with the sides swapped
+          (`repeat_of`). Agreement with the first answer measures choice noise without a model.
+      PW  8 wide-ratio riskless pairs at block R's locations: 4 offer the charity 30 points for 5 of the
+          participant's own (ratio 6), 4 offer 5 for 20 (ratio 1/4).
+      PS  4 even-odds lotteries at the ideal whose sure amount is 12 to 15 points worse than the
+          lottery's expected value (`premium`), two per attribute. For any kappa up to 4 the lottery
+          has the lower expected cost.
+    """
+    trials = build() if trials is None else trials
+    rng3 = np.random.default_rng([SEED, 3])
+    extra = []
+
+    def add(block, cell, o0, o1, **kw):
+        t = {"id": len(trials) + len(extra), "block": block, "cell": cell, "role": "pilot", "options": [o0, o1], **kw}
+        assert one_side(t), t
+        extra.append(t)
+
+    for ratio in (0.5, 1, 2, 3):
+        cell = [t for t in trials if t["cell"] == f"R_ratio{ratio}"]
+        for k in sorted(rng3.choice(len(cell), 2, replace=False)):
+            t = cell[int(k)]
+            add("PR", f"PR_ratio{ratio}", t["options"][1], t["options"][0], repeat_of=t["id"],
+                self_option=1 - self_option(t))
+    seen = set()
+    for da, db, name in ((5, 30, "PW_ratio6"), (20, 5, "PW_ratio0.25")):
+        while sum(t["cell"] == name for t in extra) < 4:
+            a1 = int(rng3.choice(np.arange(5, 41 - da, 5)))
+            b2 = int(rng3.choice(np.arange(50, 101 - db, 5)))
+            if (a1, b2, da) in seen:
+                continue
+            seen.add((a1, b2, da))
+            pair = (opt((a1, b2 + db)), opt((a1 + da, b2)))      # self-favouring first
+            left = int(rng3.random() < 0.5)
+            add("PW", name, *(pair if left else pair[::-1]), self_option=0 if left else 1, ratio=db / da)
+    for side, (lo, hi), sure in (("self", (5, 35), 32), ("self", (10, 40), 37),
+                                 ("charity", (50, 100), 90), ("charity", (60, 100), 92)):
+        if side == "self":
+            lot, s = opt((lo, 0), (hi, 0)), opt((sure, 0))
+        else:
+            lot, s = opt((0, lo), (0, hi)), opt((0, sure))
+        left = int(rng3.random() < 0.5)
+        add("PS", f"PS_{side}", *((lot, s) if left else (s, lot)), lot_option=0 if left else 1, side=side,
+            level=0, premium=sure - (lo + hi) / 2)
+    for pos, k in enumerate(rng3.permutation(len(extra))):
+        extra[int(k)]["order"] = len(trials) + pos
+    return extra
+
+
+def presentation(seed, trials=None, extras=None):
+    """One participant's order of trial ids (PILOT.md): block R first, then the rest of the main set
+    interleaved, then the pilot-only trials (none in the main study: extras=[]), each part shuffled
+    afresh from the participant's recorded seed."""
+    trials = build() if trials is None else trials
+    extras = pilot_extras(trials) if extras is None else extras
+    rng = np.random.default_rng([SEED, 4, int(seed)])
+    parts = ([t["id"] for t in trials if t["block"] == "R"], [t["id"] for t in trials if t["block"] != "R"],
+             [t["id"] for t in extras])
+    return [int(i) for part in parts for i in (rng.permutation(part) if part else [])]
+
+
+def digest(trials=None, extras=None):
+    """sha256 of the stimulus set as the instrument shows it, the main set and the pilot-only trials."""
+    trials = build() if trials is None else trials
+    extras = pilot_extras(trials) if extras is None else extras
+    return hashlib.sha256(json.dumps(trials + extras, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+
+
 if __name__ == "__main__":
     tr = build()
-    json.dump({"seed": SEED, "trials": tr}, open(sys.argv[1], "w"), indent=1)
-    print({blk: sum(t["block"] == blk for t in tr) for blk in ("R", "S", "X", "A", "XC", "SC")})
+    ex = pilot_extras(tr)
+    json.dump({"seed": SEED, "trials": tr, "pilot_extras": ex, "sha256": digest(tr, ex)}, open(sys.argv[1], "w"), indent=1)
+    print({blk: sum(t["block"] == blk for t in tr + ex) for blk in ("R", "S", "X", "A", "XC", "SC", "PR", "PW", "PS")})

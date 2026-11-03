@@ -64,7 +64,7 @@ def main(d, out):
         hs = [s["hier"] for s in r["sims"] if "hier" in s]
         if hs:          # version 3: the hierarchical population median kappa
             # coverage is defined only for the GEO truths; version 3's EARLY file carries 1.5, which is
-            # not a GEO kappa (rehearsal.py, TRUE_KAPPA)
+            # not a GEO kappa (rehearsal.py, true_kappa)
             tk = r.get("true_kappa") if truth in ("GEO1", "GEO2") else None
             h = {"studies": len(hs), "kappa_median": float(np.median([x["kappa_median"] for x in hs])),
                  "width": float(np.median([x["hi"] - x["lo"] for x in hs])),
