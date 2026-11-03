@@ -106,13 +106,13 @@ Atlas smoke test, 2 studies of 30 people:
     margin of `0.005 / (1 − s)`, 0.008 at `s = 0.4`.
   - The effect should show where power is not already near 100%, so at `κ = 1.5` more than at `κ = 1`.
 
-### Results (21 of 22 cells, 2026-11-03)
+### Results (complete 2026-11-03)
 
 - **Run.**
   - Every cell finished at its first attempt except G150T15. Its Job failed and lost its pod, and the
     driver then crashed trying to read the missing log.
   - The fix is in `submit_nrp.py`: a finished Job whose pod is gone counts as lost and is resubmitted.
-  - G150T15 has been resubmitted and is not yet in this record.
+  - G150T15 finished at its second attempt, under a second driver (`corr-reh5b`).
   - Cells took 43 to 132 minutes on one NRP CPU.
 - **Files.** `results/rehearsal_v5_<CELL>.json`, and `results/power_table_v5.json` from `power_table.py`.
 
@@ -123,7 +123,7 @@ Atlas smoke test, 2 studies of 30 people:
 |---|---|---|---|
 | 1 | 62 / 86 / 90 / 92 / 96 | 84 / 96 / 98 / 98 / 100 | 84 / 90 / 96 / 98 / 100 |
 | 1.25 | 24 / 38 / 40 / 56 / 66 | 52 / 74 / 80 / 84 / 88 | 70 / 80 / 90 / 92 / 94 |
-| 1.5 | 8 / 14 / 16 / 16 / 20 | pending | 38 / 66 / 68 / 64 / 72 |
+| 1.5 | 8 / 14 / 16 / 16 / 20 | 32 / 40 / 42 / 48 / 56 | 38 / 66 / 68 / 64 / 72 |
 | 1.75 | 4 / 2 / 6 / 4 / 2 | 20 / 30 / 30 / 40 / 44 | 18 / 38 / 52 / 66 / 72 |
 | 2 | 4 / 8 / 12 / 16 / 14 | 18 / 40 / 46 / 56 / 58 | 26 / 72 / 78 / 86 / 96 |
 
@@ -133,7 +133,7 @@ Atlas smoke test, 2 studies of 30 people:
   - G100T15 (GEO1) gave 84 / 96 / 98, against 84 / 94 / 100;
   - G200T15 (GEO2) gave 18 / 40 / 56, against 20 / 34 / 52.
 - **Power falls fast with `κ` and with noise.**
-  - At n = 120 and target 1.5 it is 96% at `κ = 1`, 74% at 1.25, and 30% to 40% at 1.75 and 2.
+  - At n = 120 and target 1.5 it is 96% at `κ = 1`, 74% at 1.25, 40% at 1.5, 30% at 1.75 and 40% at 2.
   - At target 1.0 and n = 120 it is under 40% for every `κ` above 1.
 - **Power is not monotone in `κ`.** It is lowest around `κ` of 1.5 to 1.75, and recovers at `κ = 2` when
   choices are less noisy: at target 2.0 and n = 120 it is 66% at 1.5, 38% at 1.75 and 72% at 2.
@@ -147,13 +147,15 @@ Atlas smoke test, 2 studies of 30 people:
 - **Specificity holds.**
   - Under EARLY, RDU, CAG, ADD and IA at target 2.0, with lapses up to 0.15, the claim passed in no
     study at any n.
-  - The secondary claim (SH1 and SH2) passed in every IA study and in no study of any other finished
-    cell.
+  - The secondary claim (SH1 and SH2) passed in every IA study and in no study of any other cell.
 - **The rank-one check misses, in the direction predicted before the run.**
   - G100T15S40 passed in 58 / 66 / 74 / 80% at n = 120 / 160 / 200 / 240. The `n(1 − s)` rule predicts
     86 / 91 / 96 / 97% from G100T15. The misses are 2.8 to 3.5 standard errors.
-  - G150T15S40 passed in 0 / 4 / 6 / 6 / 8%. Its base cell is the pending one, so its check is not
-    computed yet.
+  - G150T15S40 passed in 4 / 6 / 6 / 8% at the same n, against 34 / 37 / 40 / 41% predicted from
+    G150T15. The misses are 4.3 to 5.1 standard errors.
+  - The miss is larger at `κ = 1.5` than at `κ = 1`, as predicted. In absolute points it is 30 at
+    `κ = 1.5` against 28 at `κ = 1` at n = 120, and 33 against 17 at n = 240. Relative to the predicted
+    power it is far larger.
   - By PILOT.md's rule, `s` becomes a dimension of the table before the seal.
 
 ## Version 4 (complete 2026-11-02): the crossing set

@@ -2,8 +2,8 @@
 
 **Status: DRAFT, 2026-11-03.** Not sealed and not run. It needs people, ethics approval and money,
 which are the owner's to arrange. The analysis code is written and passes its self-test. The power table
-is rehearsal version 5, with 21 of its 22 cells in (see "The power table" and REHEARSAL.md). The table's
-own checks call for two rule changes before the seal. The instrument is not built, because it depends on
+is rehearsal version 5, all 22 cells (see "The power table" and REHEARSAL.md). The table's own checks
+call for two rule changes before the seal. The instrument is not built, because it depends on
 the platform.
 
 ## What it is for
@@ -152,18 +152,17 @@ Rehearsal version 5 runs the main claim (H1, H2 and H3 at margin 0.005) on the v
   changes.
 - **Cost.** 22 one-CPU jobs on NRP. Version 3 took 23 to 214 minutes per truth at 200 people.
 
-**Result (2026-11-03, 21 of 22 cells; G150T15 resubmitted after its job was lost).** The numbers are
-in REHEARSAL.md and `results/power_table_v5.json`.
-- **Power falls fast with `κ` and with noise.** At n = 120 the claim passed in 96% of studies at `κ = 1`
-  and target 1.5, 74% at 1.25, and 30% to 40% at 1.75 and 2. At target 1.0 it passed in under 40% for
-  every `κ` above 1.
+**Result (complete 2026-11-03).** The numbers are in REHEARSAL.md and `results/power_table_v5.json`.
+- **Power falls fast with `κ` and with noise.** At n = 120 and target 1.5 the claim passed in 96% of
+  studies at `κ = 1`, 74% at 1.25, 40% at 1.5, 30% at 1.75 and 40% at 2. At target 1.0 it passed in
+  under 40% for every `κ` above 1.
 - **It is not monotone in `κ`.** It is lowest around 1.5 to 1.75, and recovers at 2 for less noisy
   choosers: 66%, 38% and 72% at target 2.0 and n = 120. Rounding `κ` up is therefore not always the
   cautious choice (open decision, below).
 - **Specificity holds.** The five specificity cells passed in no study at any n.
-- **The rank-one check misses.** With 40% of people of rank one at `κ = 1`, power was 58% at n = 120,
-  against the 86% that `n(1 − s)` predicts. So `s` becomes a dimension of the table before the seal, as
-  the rule above requires. The direction was predicted before the run (REHEARSAL.md): the margin applies
+- **The rank-one check misses.** With 40% of people of rank one, power at n = 120 was 58% at `κ = 1`
+  and 4% at `κ = 1.5`, against the 86% and 34% that `n(1 − s)` predicts. So `s` becomes a dimension of
+  the table before the seal, as the rule above requires. The direction was predicted before the run (REHEARSAL.md): the margin applies
   to the mean over everyone, which the rank-one people pull toward zero.
 - Cells took 43 to 132 minutes each.
 
