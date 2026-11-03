@@ -121,6 +121,8 @@ The rehearsal may still change the set before it is registered.
 - **Payment.** One trial is drawn and paid for real. Self points go to the participant and charity
   points are donated, at the same rate per point. Receipts for the donations are published. A coin
   flip resolves any lottery. There is no deception.
+- **Comprehension quiz,** before block R. Four questions: what self and charity points become, how a
+  lottery is resolved, and how many trials are paid. Two attempts (`PILOT.md`).
 - **Block R, riskless calibration, about 40 choices.** Pairs of sure bundles spread across directions
   in the shortfall plane. They measure the tilt and shape of `P`.
 - **Block S, single-attribute lotteries, 48 choices.** Even-odds lotteries over self points against
@@ -152,6 +154,11 @@ The rehearsal may still change the set before it is registered.
 - **Test set.** The other cells of block S, plus block X.
 - **Fitting.** Each model is fit per person on the calibration set, hierarchically, and predicts the
   test set with no refit.
+- **Inclusion.** Finished the session, passed the comprehension quiz within two attempts, and chose the
+  dominated option in at most 2 of the 8 attention checks (`PILOT.md`). Recruitment continues until n
+  people qualify.
+- **Sample size.** n is 120, 160, 200 or 240, chosen from the pilot by a rule sealed with this design
+  (`PILOT.md`).
 
 Intervals are clustered by person, the unit `P` lives on.
 
@@ -270,7 +277,12 @@ below −0.005.
    `aggregate_rehearsal.py`. The run record is `REHEARSAL.md`.
 2. **Language-model panel, optional.** An instrument check of wording and answer format only. It is
    not evidence about people.
-3. **Human study**, sealed with a signed tag before recruitment.
+3. **Pilot, 40 people** (`PILOT.md`). It measures the person-level quantities the rehearsal assumed
+   and checks the instrument. It reads no test or secondary choice. A power table and a sample-size
+   rule are sealed with this design before it runs, and the pilot only says which row of the table
+   applies.
+4. **Human study.** The design is sealed with a signed tag before the pilot. The n the pilot selects
+   is recorded under a second signed tag before recruitment.
 
 ## What each result would mean
 
@@ -308,6 +320,7 @@ None of these has been read for this design yet. The citations are from memory a
 
 - Population and platform, and who runs it.
 - The charity list and the point-to-dollar rate.
+- The cap on the sample size. The pilot's power table runs to 240 (`PILOT.md`).
 - The ideal point: fixed at the top of the scales (this draft) or estimated. Under GET's uniqueness
   theorem the ideal is identified up to the metric's kernel.
 - Whether to keep the crossing set. It adds 20 trials, about 5 minutes. In rehearsal version 4 it
