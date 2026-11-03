@@ -121,8 +121,39 @@ Percent of studies passing at n = 60 / 120 / 200.
 - **SH1r, GEO beating IA on the crossing set,** passed in 82 / 94 / 98% under GEO1 and 56 / 76 / 88%
   under GEO2. When the metric is true it accounts for the crossing set better than inequality
   aversion does.
-- **The IA truths are strong ones** (`γ` from 0.1 to 0.6). Weaker inequality aversion would be found
-  less often. The power at smaller `γ` has not been rehearsed.
+- **The IA truth is a strong one** (`γ` from 0.1 to 0.6). Weaker aversion was rehearsed next, below.
+
+### Weaker inequality aversion (2026-11-02)
+
+- **Setup.** Four more truths with `γ` fixed at 0.02, 0.05, 0.10 and 0.20 (`IA02` to `IA20` in
+  `rehearsal.py`, commit `75bbdfc`). There were 50 studies of 200 people each.
+  - `γ` is the penalty for each unit of `|self shortfall − charity shortfall|`, in units of the
+    marginal value of the participant's own points. So 0.10 means a point of inequality costs a tenth
+    of a point of the participant's own money.
+  - For scale, Fehr and Schmidt's two-person money-game estimates (`α ≈ 0.85`, `β ≈ 0.3`) correspond
+    to `γ ≈ 0.6`.
+- **Run.** NRP, driver screen `corr-reh4w`, every truth at the first attempt, 38 to 67 minutes.
+- **Files.** `results/rehearsal_v4_IA02.json` to `IA20.json`, and `results/summary_v4_weak_ia.json`.
+
+**Power of the secondary claim (SH1 and SH2 together).** Percent of studies passing at n = 60 / 120 /
+200.
+
+| `γ` | SH1 and SH2 | SH1 | SH2 | Main claim |
+|---|---|---|---|---|
+| 0.02 | 0 / 0 / 0 | 4 / 2 / 4 | 8 / 14 / 22 | 0 / 0 / 0 |
+| 0.05 | 4 / 26 / 64 | 32 / 50 / 72 | 14 / 46 / 78 | 0 / 0 / 0 |
+| 0.10 | 88 / 98 / 100 | 96 / 100 / 100 | 90 / 98 / 100 | 0 / 0 / 0 |
+| 0.20 | 100 / 100 / 100 | 100 / 100 / 100 | 100 / 100 / 100 | 0 / 0 / 0 |
+| 0.1 to 0.6 (version 4 IA) | 100 / 100 / 100 | 100 / 100 / 100 | 100 / 100 / 100 | 0 / 0 / 0 |
+
+- **At the planned n = 120, the secondary claim detects `γ` of 0.10 or more** (98%). It mostly misses
+  0.05 (26%) and cannot see 0.02.
+  - In the money-game scale above, it detects inequality aversion toward a charity if it is at least
+    about a sixth as strong as aversion toward another person.
+  - A null on the secondary claim therefore rules out strong inequality aversion toward the charity,
+    not weak.
+- **The main claim passed in no study under any of these truths.** Weak inequality aversion does not
+  leak into it either.
 
 ## Version 3 (complete 2026-11-02)
 

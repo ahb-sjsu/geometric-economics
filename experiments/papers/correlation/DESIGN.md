@@ -245,6 +245,11 @@ below −0.005.
   - Under the six other truths it passed in none.
   - Taken alone, SH1 or SH2 passed in up to 12% of studies under truths without inequality aversion
     (SH2 under EARLY and GEO2). So neither counts alone.
+  - **Power depends on the strength of the aversion.** `γ` is the penalty for each point of
+    inequality, in units of the participant's own points. At n = 120 the conjunction detected `γ` =
+    0.10 in 98% of studies, 0.05 in 26%, and 0.02 in none.
+  - So a null rules out strong inequality aversion toward the charity, not weak. For scale, two-person
+    money-game estimates correspond to `γ ≈ 0.6`.
 - **SH3, reported only.** It asks whether the equal-split option in the crossing pairs is chosen more
   than GEO predicts. Rehearsal version 4 showed it is not specific.
   - The plain form passed in 28% to 58% of studies under GEO1, and in 90% to 100% under ADD.
