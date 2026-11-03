@@ -15,11 +15,11 @@ import numpy as np
 
 EXPECT = {"H_vs_EARLY": {"GEO1", "GEO2", "RDU", "CAG"}, "H_vs_RDU": {"GEO1", "GEO2"},
           "H_vs_CAG": {"GEO1", "GEO2"}, "H4": {"GEO1", "GEO2"}}
-ORDER = ["GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD", "IA"]
+ORDER = ["GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD", "IA", "IA02", "IA05", "IA10", "IA20"]
 # version 4, the crossing set: the truths under which each secondary test should pass
 SEC_EXPECT = {"SH1_IA_beats_GEO": {"IA"}, "SH1r_GEO_beats_IA": {"GEO1", "GEO2"},
               "SH2_straddle_beyond_GEO": {"IA"}, "SH3_equal_splits_beyond_GEO": {"IA"}, "straddle_raw": {"IA"},
-              "SH3_did": {"IA"}}
+              "SH3_did": {"IA"}, "SH1_and_SH2": {"IA"}}
 
 
 def main(d, out):
@@ -52,6 +52,11 @@ def main(d, out):
                 row["secondary"] = {k: {"pass": float(np.mean([x["secondary"][k]["pass"] for x in rows])),
                                         "est": float(np.median([x["secondary"][k]["est"] for x in rows]))}
                                     for k in rows[0]["secondary"]}
+                # the registered secondary claim (DESIGN.md): SH1 and SH2 together
+                row["secondary"]["SH1_and_SH2"] = {
+                    "pass": float(np.mean([x["secondary"]["SH1_IA_beats_GEO"]["pass"] and
+                                           x["secondary"]["SH2_straddle_beyond_GEO"]["pass"] for x in rows])),
+                    "est": 0.0}
             table[f"{truth}_n{n}"] = row
         rec = [s["recovery"] for s in r["sims"] if s["recovery"]]
         if rec:
@@ -98,8 +103,9 @@ def main(d, out):
         print(f"{'truth/n':<12} " + " ".join(f"{s[:24]:>27}" for s in names))
         for key, sec in sec_rows.items():
             truth = key.split("_n")[0]
+            base = "IA" if truth.startswith("IA") else truth        # IA02 .. IA20 are IA at a fixed gamma
             print(f"{key:<12} " + " ".join(
-                f"{sec[s]['pass']:>8.2f}{'*' if truth in SEC_EXPECT.get(s, ()) else ' '} ({sec[s]['est']:+.3f})".rjust(27)
+                f"{sec[s]['pass']:>8.2f}{'*' if base in SEC_EXPECT.get(s, ()) else ' '} ({sec[s]['est']:+.3f})".rjust(27)
                 for s in names))
 
 

@@ -3,7 +3,8 @@
 
     python rehearsal.py TRUTH OUT.json
 
-TRUTH is one of GEO1, GEO2, EARLY, RDU, CAG, ADD, IA. Each simulated study draws people from that model,
+TRUTH is one of GEO1, GEO2, EARLY, RDU, CAG, ADD, IA, or IA02, IA05, IA10, IA20 (inequality aversion at a
+fixed gamma of 0.02 to 0.20). Each simulated study draws people from that model,
 runs them through the exact stimulus set (stimuli.py), fits every candidate model per person on the
 calibration trials, and scores held-out log-loss on the test trials with no refit. Needs models.py and
 stimuli.py beside it. REHEARSAL_QUICK=1 for a smoke test.
@@ -67,7 +68,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import models as M  # noqa: E402
 import stimuli  # noqa: E402
 
-TRUTHS = ["GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD", "IA"]
+# IA02 .. IA20: inequality aversion at a fixed gamma of 0.02, 0.05, 0.10 and 0.20, for the power of the
+# secondary claim against weaker aversion than IA's U(0.1, 0.6). Appended, so earlier truths keep their seeds.
+TRUTHS = ["GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD", "IA", "IA02", "IA05", "IA10", "IA20"]
 FIT = ["GEO", "EARLY", "RDU", "CAG", "IA"]
 NS = [60, 120, 200]
 SIMS = 50
@@ -133,8 +136,10 @@ def draw(truth, rng):
     elif truth == "CAG":
         th = np.array([0.0, np.log(rng.uniform(0.25, 1.0)), rng.uniform(1.5, 3.0), 0.0])
         m = M.MODELS["CAG"]
-    else:  # IA: inequality aversion between self and charity, gamma ~ U(0.1, 0.6)
-        th = np.array([0.0, np.log(rng.uniform(0.25, 1.0)), rng.uniform(0.1, 0.6), 0.0])
+    else:  # IA: inequality aversion between self and charity, gamma ~ U(0.1, 0.6); IAxx: gamma fixed at xx/100
+        lam = rng.uniform(0.25, 1.0)
+        gamma = rng.uniform(0.1, 0.6) if truth == "IA" else int(truth[2:]) / 100
+        th = np.array([0.0, np.log(lam), gamma, 0.0])
         m = M.MODELS["IA"]
     th[0] = np.log(target / np.median(np.abs(diff(m, th, SUB["R"]))))
     th[-1] = bias
@@ -297,7 +302,7 @@ def main(truth, out, *_):
         sims.append(record)
         print(sim, f"{time.time() - t0:.0f}s", flush=True)
     res = {"truth": truth, "version": 4, "ns": NS, "sims_n": SIMS, "margins": MARGINS, "lapse": M.LAPSE,
-           "hier_sims": HIER_SIMS, "hier_n": HIER_N, "true_kappa": TRUE_KAPPA[truth],
+           "hier_sims": HIER_SIMS, "hier_n": HIER_N, "true_kappa": TRUE_KAPPA.get(truth),
            "sims": sims, "seconds": time.time() - t0}
     json.dump(res, open(out, "w"))
     print("RESULT-BEGIN")
