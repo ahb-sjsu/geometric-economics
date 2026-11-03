@@ -108,11 +108,13 @@ The two strongest rivals are RDU on additive value and EU with a concave aggrega
 
 ## Stimuli and procedure
 
-The exact set is `stimuli.py` version 3 (seed 20261102): 40 riskless pairs, 48 single-attribute
-lotteries, 24 correlation pairs and 8 attention checks, 120 trials in all. Version 2 had 32
-single-attribute lotteries; version 3 adds 16 at the ideal, because `κ` fitted from 4 per attribute was
-biased upward (`REHEARSAL.md`). The crossing set described below is not built yet. The rehearsal may
-still change the set before it is registered.
+The exact set is `stimuli.py` version 4 (seed 20261102), 140 trials in all.
+- **The main set, 120 trials.** 40 riskless pairs, 48 single-attribute lotteries, 24 correlation pairs
+  and 8 attention checks. Version 2 had 32 single-attribute lotteries; version 3 added 16 at the
+  ideal, because `κ` fitted from 4 per attribute was biased upward (`REHEARSAL.md`).
+- **The crossing set, 20 trials (version 4).** Described below.
+
+The rehearsal may still change the set before it is registered.
 
 - **Charity.** Each participant first picks one charity from a short list, so that charity points
   carry value.
@@ -130,12 +132,19 @@ still change the set before it is registered.
 - **Block X, correlation pairs, about 24 choices.** Correlated against anticorrelated even-odds
   lotteries with equal marginals, at several base points and spreads. Sides are counterbalanced.
 - **Attention checks.** About 8 dominated pairs.
-- **Ordering.** Block R comes first. Blocks S and X are interleaved at random, so the correlation pairs
-  do not read as a family.
-- **Avoiding equality crossings.** In the main set every charity shortfall exceeds every self
-  shortfall, so no outcome crosses `m = c` and inequality aversion predicts nothing. A smaller,
-  registered secondary set does cross, to show inequality aversion's signature if it is there.
-- **Length.** About 30 minutes for 120 trials, online or in the lab.
+- **Ordering.** Block R comes first. Everything else is interleaved at random, so the correlation
+  pairs do not read as a family.
+- **Avoiding equality crossings in the main set.** Every charity shortfall exceeds every self
+  shortfall, so no outcome crosses `m = c` and inequality aversion predicts nothing there.
+- **The crossing set crosses on purpose,** to show inequality aversion's signature if it is there. It
+  is a registered secondary and never enters H1 to H4.
+  - **8 crossing correlation pairs.** The correlated option pays an equal split in both outcomes
+    (shortfalls 10 and 50, 20 and 60, 30 and 70, 40 and 80 on both attributes). The anticorrelated
+    option pays one split favouring self and one favouring the charity. Both orders are shown.
+  - **12 straddle lotteries.** An even-odds lottery against its expected value on one attribute,
+    with the other attribute held at 50. Sure shortfalls are 25, 50 and 75, with spreads 10 and 20.
+    At 50 the outcomes straddle `m = c`. The 25 and 75 cells are controls with the same spread.
+- **Length.** About 35 minutes for 140 trials, online or in the lab.
 
 ## Analysis (to be registered)
 
@@ -183,6 +192,9 @@ below −0.005.
     EARLY's even odds.
   - Under the four truths without the metric, the conjunction passed in none of the 200 studies per n
     at margin 0.005. At margin 0 it passed in one, a CAG study.
+  - Rehearsal version 4 added the crossing set and IA as a truth. The conjunction again passed in no
+    study under the five truths without the metric (EARLY, RDU, CAG, ADD and IA) at margin 0.005. It
+    passed in 84%, 94% and 100% under GEO1.
   - The design is therefore powered against distance-like cost: 98% at n = 120 with margin 0.005. A
     null result does not rule out squared distance.
 - **H4. Comparative test across people.** Each fitted model predicts each person's preference for the
@@ -218,7 +230,27 @@ below −0.005.
     distance from those. The H2 and H3 comparisons, and the sign of MF1, have to carry that
     distinction.
 
-The registered secondary is the crossing set, scored against inequality aversion.
+**The registered secondary: the crossing set, scored against inequality aversion.**
+- **The model (IA).** Inequality aversion in the Fehr-Schmidt form. Over shortfalls it is additive
+  value minus a penalty `γ |a − b|`, which is linear inside the main set and kinked at `m = c`. It is
+  calibrated, like the other models, on the calibration set alone. The calibration set never crosses,
+  but its two regions identify the kink.
+- **SH1.** On the crossing set, IA predicts held-out choices better than GEO, at the registered margin
+  of 0.005. The reverse, GEO better than IA, is reported too.
+- **SH2.** At the straddle lotteries, the lottery-choice rate minus the mean of the same-spread controls
+  falls below GEO's zero-fit prediction of that difference. This is the kink.
+- **The secondary claim, inequality aversion, requires SH1 and SH2 together.** The figures below are
+  from rehearsal version 4, seven truths, 50 studies each at n = 60, 120 and 200.
+  - With IA as the truth (`γ` from 0.1 to 0.6), the conjunction passed in every study at every n.
+  - Under the six other truths it passed in none.
+  - Taken alone, SH1 or SH2 passed in up to 12% of studies under truths without inequality aversion
+    (SH2 under EARLY and GEO2). So neither counts alone.
+- **SH3, reported only.** It asks whether the equal-split option in the crossing pairs is chosen more
+  than GEO predicts. Rehearsal version 4 showed it is not specific.
+  - The plain form passed in 28% to 58% of studies under GEO1, and in 90% to 100% under ADD.
+  - The difference-in-differences form passed in 8% to 18% under GEO1, and in 22% to 66% under ADD.
+  - GEO's zero-fit prediction for these pairs, far from the calibration region, is biased. Fitted
+    `κ` is too high, so GEO under-predicts correlation seeking.
 
 ## Stages
 
@@ -273,5 +305,6 @@ None of these has been read for this design yet. The citations are from memory a
 - The charity list and the point-to-dollar rate.
 - The ideal point: fixed at the top of the scales (this draft) or estimated. Under GET's uniqueness
   theorem the ideal is identified up to the metric's kernel.
-- Whether to keep the crossing set.
+- Whether to keep the crossing set. It adds 20 trials, about 5 minutes. In rehearsal version 4 it
+  detected inequality aversion in every study and gave no false positive.
 - Sealing.

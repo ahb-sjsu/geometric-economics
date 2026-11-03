@@ -5,8 +5,9 @@
 
 Units are points. `a` is the self shortfall (100 minus self points) and `b` the charity shortfall
 (100 minus charity points), so the ideal is (0, 0). An option has one outcome (sure) or two at even
-odds, each outcome an (a, b) pair. Within every trial all outcomes sit on one side of a = b, so no
-trial crosses self = charity and inequality aversion is linear inside each trial.
+odds, each outcome an (a, b) pair. Within every trial of the main set (R, S, X, A) all outcomes sit on
+one side of a = b, so no main trial crosses self = charity and inequality aversion is linear inside
+each. The crossing set (XC, SC) crosses on purpose.
 
   R  40 riskless pairs, neither option dominating. Locations a in 5..40 and b in 50..100; tradeoff
      ratios of 0.5, 1, 2 and 3 charity points per self point, 10 pairs each.        role calib
@@ -17,10 +18,16 @@ trial crosses self = charity and inequality aversion is linear inside each trial
   X  24 correlation pairs: equal marginals, correlated against anticorrelated, 12 configurations
      in both left-right orders.                                                       role test
   A  8 dominated riskless pairs, attention checks.                                    role check
+  XC 8 crossing correlation pairs (version 4): the correlated option pays equal splits (a = b in both
+     outcomes), the anticorrelated one pays one split favouring self and one favouring the charity;
+     4 spreads in both orders.                                                   role secondary
+  SC 12 straddle lotteries (version 4): an even-odds lottery against its expected value on one
+     attribute, the other attribute at 50; sure shortfalls 25, 50 and 75 with spreads 10 and 20. At 50
+     the outcomes straddle self = charity (`straddle`); 25 and 75 are the controls.  role secondary
 
-Option 0 is shown on the left. S trials record which option is the lottery (`lot_option`), X trials
-which is the correlated one (`corr_option`). `order` is the presentation order: R first, then S, X
-and A shuffled together.
+Option 0 is shown on the left. S and SC trials record which option is the lottery (`lot_option`), X and
+XC trials which is the correlated one (`corr_option`). `order` is the presentation order: R first,
+then everything else shuffled together. Only the crossing set (`cross`) crosses self = charity.
 """
 import json
 import sys
@@ -47,7 +54,7 @@ def build():
 
     def add(block, cell, role, o0, o1, **extra):
         t = {"id": len(trials), "block": block, "cell": cell, "role": role, "options": [o0, o1], **extra}
-        assert one_side(t), t
+        assert extra.get("cross") or one_side(t), t
         trials.append(t)
 
     # R: riskless tradeoffs. The self-favouring option gives up `da` self points less, the other gives
@@ -110,6 +117,29 @@ def build():
         left = int(rng.random() < 0.5)
         add("A", "A_dominated", "check", *((good, bad) if left else (bad, good)), good_option=0 if left else 1)
 
+    # XC and SC: the crossing set (version 4; DESIGN.md, secondary). Outcomes cross self = charity on
+    # purpose, so inequality aversion, linear inside the main set, shows its kink here. Role "secondary":
+    # H1 to H4 never see these trials. Sides come from a separate stream, so the main set's draws are
+    # unchanged; the main trials keep their ids and contents.
+    rng2 = np.random.default_rng([SEED, 2])
+    for lo, hi in ((10, 50), (20, 60), (30, 70), (40, 80)):
+        cor = opt((lo, lo), (hi, hi))          # equal splits in both outcomes
+        anti = opt((lo, hi), (hi, lo))         # one outcome favours self, the other the charity
+        add("XC", f"XC_s{lo}-{hi}", "secondary", cor, anti, corr_option=0, cross=True)
+        add("XC", f"XC_s{lo}-{hi}", "secondary", anti, cor, corr_option=1, cross=True)
+    for side in ("self", "charity"):
+        for level in (25, 50, 75):             # sure shortfall on the varied attribute; the other is at 50
+            for d in (10, 20):
+                lo, hi = level - d, level + d
+                if side == "self":
+                    lot, s = opt((lo, 50), (hi, 50)), opt((level, 50))
+                else:
+                    lot, s = opt((50, lo), (50, hi)), opt((50, level))
+                left = int(rng2.random() < 0.5)
+                add("SC", f"SC_{side}_{level}_d{d}", "secondary", *((lot, s) if left else (s, lot)),
+                    lot_option=0 if left else 1, side=side, level=level, spread=d, straddle=level == 50,
+                    cross=True)
+
     rest = [t["id"] for t in trials if t["block"] != "R"]
     rng.shuffle(rest)
     order = [t["id"] for t in trials if t["block"] == "R"] + rest
@@ -121,4 +151,4 @@ def build():
 if __name__ == "__main__":
     tr = build()
     json.dump({"seed": SEED, "trials": tr}, open(sys.argv[1], "w"), indent=1)
-    print({blk: sum(t["block"] == blk for t in tr) for blk in "RSXA"})
+    print({blk: sum(t["block"] == blk for t in tr) for blk in ("R", "S", "X", "A", "XC", "SC")})

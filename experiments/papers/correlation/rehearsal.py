@@ -3,10 +3,19 @@
 
     python rehearsal.py TRUTH OUT.json
 
-TRUTH is one of GEO1, GEO2, EARLY, RDU, CAG, ADD. Each simulated study draws people from that model,
+TRUTH is one of GEO1, GEO2, EARLY, RDU, CAG, ADD, IA. Each simulated study draws people from that model,
 runs them through the exact stimulus set (stimuli.py), fits every candidate model per person on the
 calibration trials, and scores held-out log-loss on the test trials with no refit. Needs models.py and
 stimuli.py beside it. REHEARSAL_QUICK=1 for a smoke test.
+
+Version 4 (2026-11-02). The stimulus set adds the crossing set (stimuli.py: 8 XC pairs and 12 SC straddle
+lotteries, role "secondary"), the truths add IA (inequality aversion between self and charity, gamma ~
+U(0.1, 0.6)), and the fitted models add IA. The main tests are unchanged and never see the crossing set.
+Secondary tests, on the crossing set, intervals over people:
+  SH1   IA predicts the crossing set better than GEO (held-out log-loss, margin 0.005); SH1r the reverse.
+  SH2   lottery choice at the straddling lotteries falls below GEO's zero-fit prediction (the kink).
+  SH3   the correlated, equal-split option in XC is chosen above GEO's zero-fit prediction; SH3_did the
+        same minus the person's residual on the main X pairs (GEO's calibration bias cancels).
 
 Version 3 (2026-11-02). The stimulus set has 12 calibration lotteries per attribute at the ideal
 (stimuli.py version 3), and the first HIER_SIMS studies of each truth also get the hierarchical
@@ -58,8 +67,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import models as M  # noqa: E402
 import stimuli  # noqa: E402
 
-TRUTHS = ["GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD"]
-FIT = ["GEO", "EARLY", "RDU", "CAG"]
+TRUTHS = ["GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD", "IA"]
+FIT = ["GEO", "EARLY", "RDU", "CAG", "IA"]
 NS = [60, 120, 200]
 SIMS = 50
 MARGINS = [0.0, 0.002, 0.005, 0.01]
@@ -72,7 +81,8 @@ HIER_N = 120
 # U(1, 2)) shapes only riskless choices, its lotteries are risk-neutral, and GEO's fitted kappa has no
 # reason to equal it. Version 3 ran with EARLY set to 1.5, which made a coverage figure for EARLY that
 # means nothing (REHEARSAL.md); aggregate_rehearsal.py reports coverage for GEO truths only.
-TRUE_KAPPA = {"GEO1": 1.0, "GEO2": 2.0, "EARLY": None, "RDU": None, "CAG": None, "ADD": None}
+TRUE_KAPPA = {"GEO1": 1.0, "GEO2": 2.0, "EARLY": None, "RDU": None, "CAG": None, "ADD": None, "IA": None}
+SEC_MARGIN = 0.005      # the registered margin, applied to the secondary comparison too
 if os.environ.get("REHEARSAL_QUICK"):
     NS, SIMS = [30], 2
     HIER_SIMS, HIER_N = min(HIER_SIMS, 1), 30
@@ -85,10 +95,14 @@ IDX = {k: np.array([t["id"] for t in TRIALS if cond(t)]) for k, cond in {
     "test": lambda t: t["role"] == "test",
     "S_test": lambda t: t["block"] == "S" and t["role"] == "test",
     "X": lambda t: t["block"] == "X",
+    "secondary": lambda t: t["role"] == "secondary",
+    "XC": lambda t: t["block"] == "XC",
 }.items()}
 SUB = {k: tuple(arr[v] for arr in ALL) for k, v in IDX.items()}
 CORR = np.array([TRIALS[i]["corr_option"] for i in IDX["X"]])
+CORR_XC = np.array([TRIALS[i]["corr_option"] for i in IDX["XC"]])
 S_ALL = [t for t in TRIALS if t["block"] == "S"]
+SC_ALL = [t for t in TRIALS if t["block"] == "SC"]
 
 
 def diff(m, th, data):
@@ -116,9 +130,12 @@ def draw(truth, rng):
         pi = 0.5 if truth == "ADD" else float(rng.uniform(0.30, 0.48))
         th = np.array([0.0, np.log(eta), np.log(rng.uniform(0.25, 1.0)), np.log(pi / (1 - pi)), 0.0])
         m = M.MODELS["RDU"]
-    else:
+    elif truth == "CAG":
         th = np.array([0.0, np.log(rng.uniform(0.25, 1.0)), rng.uniform(1.5, 3.0), 0.0])
         m = M.MODELS["CAG"]
+    else:  # IA: inequality aversion between self and charity, gamma ~ U(0.1, 0.6)
+        th = np.array([0.0, np.log(rng.uniform(0.25, 1.0)), rng.uniform(0.1, 0.6), 0.0])
+        m = M.MODELS["IA"]
     th[0] = np.log(target / np.median(np.abs(diff(m, th, SUB["R"]))))
     th[-1] = bias
     return m, th, {}
@@ -141,6 +158,20 @@ def lottery_rates(y, side, base_level, matched_only=True):
     return float(np.mean(off) - np.mean(at))
 
 
+def straddle(p):
+    """Lottery-choice probability (or rate) at the straddling lotteries minus the mean of the two
+    non-straddling controls with the same spread, averaged over attribute and spread. Negative = more
+    risk-averse exactly where the outcomes cross self = charity, the kink inequality aversion predicts."""
+    took = {(t["side"], t["level"], t["spread"]): (p[t["id"]] if t["lot_option"] == 0 else 1 - p[t["id"]])
+            for t in SC_ALL}
+    return float(np.mean([took[(s, 50, d)] - 0.5 * (took[(s, 25, d)] + took[(s, 75, d)])
+                          for s in ("self", "charity") for d in (10, 20)]))
+
+
+def xc_pref(p):
+    return float(np.where(CORR_XC == 0, p[IDX["XC"]], 1 - p[IDX["XC"]]).mean() - 0.5)
+
+
 def simulate(truth, rng):
     """One simulated person: true model, choices on every trial, with a lapse drawn U(0, 0.06)."""
     m, th, shape = draw(truth, rng)
@@ -160,6 +191,12 @@ def evaluate(sim, fits, fits1):
            "pred_corr_CAG": corr_pref(M.p_left(M.MODELS["CAG"], fits["CAG"], SUB["X"])),
            "true_corr": corr_pref(pl[IDX["X"]]),
            "bg": 0.5 * (lottery_rates(y, "self", 0) + lottery_rates(y, "charity", 0))}
+    # version 4: the crossing set, never used by H1 to H4. GEO's and IA's zero-fit predictions there.
+    p_geo = M.p_left(M.MODELS["GEO"], fits["GEO"], ALL)
+    out["sec"] = {"ll": {k: M.log_loss(M.MODELS[k], fits[k], SUB["secondary"], y[IDX["secondary"]])
+                         for k in ("GEO", "IA")},
+                  "straddle_obs": straddle(y), "straddle_geo": straddle(p_geo),
+                  "xc_obs": xc_pref(y), "xc_geo": xc_pref(p_geo)}
     if shape:
         P11, P12, P22 = M.metric(fits["GEO"])
         out["rec"] = {**shape, "r_hat": float(P12 / np.sqrt(P11 * P22)), "ratio_hat": float(np.sqrt(P22 / P11)),
@@ -204,6 +241,23 @@ def tests(ps):
         res[name] = {"est": est, "lo": lo, "hi": hi, "pass": bool(lo > 0 or hi < 0)}
     res["mean_ll"] = {k: float(np.mean([p["ll"][k] for p in ps])) for k in FIT}
     res["mean_ll_pass1"] = {k: float(np.mean([p["ll1"][k] for p in ps])) for k in FIT}
+    # version 4, the crossing set (secondary). Intervals over people; margin as registered.
+    sec = {}
+    est, lo, hi = ci([p["sec"]["ll"]["IA"] - p["sec"]["ll"]["GEO"] for p in ps])
+    sec["SH1_IA_beats_GEO"] = {"est": est, "hi": hi, "pass": bool(hi < -SEC_MARGIN)}
+    sec["SH1r_GEO_beats_IA"] = {"est": -est, "hi": -lo, "pass": bool(-lo < -SEC_MARGIN)}
+    est, lo, hi = ci([p["sec"]["straddle_obs"] - p["sec"]["straddle_geo"] for p in ps])
+    sec["SH2_straddle_beyond_GEO"] = {"est": est, "lo": lo, "hi": hi, "pass": bool(hi < 0)}
+    est, lo, hi = ci([p["sec"]["straddle_obs"] for p in ps])
+    sec["straddle_raw"] = {"est": est, "lo": lo, "hi": hi, "pass": bool(hi < 0)}
+    est, lo, hi = ci([p["sec"]["xc_obs"] - p["sec"]["xc_geo"] for p in ps])
+    sec["SH3_equal_splits_beyond_GEO"] = {"est": est, "lo": lo, "hi": hi, "pass": bool(lo > 0)}
+    # SH3 as a difference in differences: the XC residual minus the same person's residual on the main X
+    # pairs, which never cross. GEO's calibration bias (kappa, REHEARSAL.md) enters both; an equal-split
+    # preference enters only XC. In the smoke test the plain SH3 passed under GEO1.
+    est, lo, hi = ci([(p["sec"]["xc_obs"] - p["sec"]["xc_geo"]) - (p["obs_corr"] - p["pred_corr"]) for p in ps])
+    sec["SH3_did"] = {"est": est, "lo": lo, "hi": hi, "pass": bool(lo > 0)}
+    res["secondary"] = sec
     return res
 
 
@@ -242,7 +296,7 @@ def main(truth, out, *_):
             record["hier"] = {**hier.fit(SUB["calib"], Y, seed=sim), "n": HIER_N}
         sims.append(record)
         print(sim, f"{time.time() - t0:.0f}s", flush=True)
-    res = {"truth": truth, "version": 3, "ns": NS, "sims_n": SIMS, "margins": MARGINS, "lapse": M.LAPSE,
+    res = {"truth": truth, "version": 4, "ns": NS, "sims_n": SIMS, "margins": MARGINS, "lapse": M.LAPSE,
            "hier_sims": HIER_SIMS, "hier_n": HIER_N, "true_kappa": TRUE_KAPPA[truth],
            "sims": sims, "seconds": time.time() - t0}
     json.dump(res, open(out, "w"))

@@ -15,7 +15,11 @@ import numpy as np
 
 EXPECT = {"H_vs_EARLY": {"GEO1", "GEO2", "RDU", "CAG"}, "H_vs_RDU": {"GEO1", "GEO2"},
           "H_vs_CAG": {"GEO1", "GEO2"}, "H4": {"GEO1", "GEO2"}}
-ORDER = ["GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD"]
+ORDER = ["GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD", "IA"]
+# version 4, the crossing set: the truths under which each secondary test should pass
+SEC_EXPECT = {"SH1_IA_beats_GEO": {"IA"}, "SH1r_GEO_beats_IA": {"GEO1", "GEO2"},
+              "SH2_straddle_beyond_GEO": {"IA"}, "SH3_equal_splits_beyond_GEO": {"IA"}, "straddle_raw": {"IA"},
+              "SH3_did": {"IA"}}
 
 
 def main(d, out):
@@ -44,6 +48,10 @@ def main(d, out):
             for key in ("mean_ll", "mean_ll_pass1"):
                 if key in rows[0]:
                     row[key] = {k: float(np.median([x[key][k] for x in rows])) for k in rows[0][key]}
+            if "secondary" in rows[0]:
+                row["secondary"] = {k: {"pass": float(np.mean([x["secondary"][k]["pass"] for x in rows])),
+                                        "est": float(np.median([x["secondary"][k]["est"] for x in rows]))}
+                                    for k in rows[0]["secondary"]}
             table[f"{truth}_n{n}"] = row
         rec = [s["recovery"] for s in r["sims"] if s["recovery"]]
         if rec:
@@ -83,6 +91,16 @@ def main(d, out):
     for k, v in res.items():
         if k.startswith("recovery_") or k.startswith("hier_"):
             print(k, {kk: round(vv, 3) for kk, vv in v.items()})
+    sec_rows = {k: v["secondary"] for k, v in table.items() if "secondary" in v}
+    if sec_rows:
+        names = list(next(iter(sec_rows.values())))
+        print("crossing set (secondary): pass rate (median estimate); * = should pass under this truth")
+        print(f"{'truth/n':<12} " + " ".join(f"{s[:24]:>27}" for s in names))
+        for key, sec in sec_rows.items():
+            truth = key.split("_n")[0]
+            print(f"{key:<12} " + " ".join(
+                f"{sec[s]['pass']:>8.2f}{'*' if truth in SEC_EXPECT.get(s, ()) else ' '} ({sec[s]['est']:+.3f})".rjust(27)
+                for s in names))
 
 
 if __name__ == "__main__":

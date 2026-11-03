@@ -38,8 +38,9 @@ from nats_bursting.descriptor import JobDescriptor, Resources  # noqa: E402
 NS = "ssu-atlas-ai"
 BATCH = "ge-correlation"
 IMAGE = "python:3.12-slim"
-PINS = "numpy==2.2.6 scipy==1.17.1 jax==0.12.0.1 numpyro==0.22.0"   # the versions tested on Atlas
-TRUTHS = ["GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD"]
+PINS = "numpy==2.2.6 scipy==1.17.1"                  # the versions tested on Atlas
+PINS_HIER = "jax==0.12.0.1 numpyro==0.22.0"          # only when the hierarchical fit runs
+TRUTHS = ["GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD", "IA"]
 FILES = ["rehearsal.py", "models.py", "stimuli.py", "hier.py"]
 MAX_TRIES = 2
 POLL_S = 60
@@ -49,14 +50,16 @@ def sh(*cmd):
     return subprocess.run(cmd, check=True, capture_output=True, text=True).stdout
 
 
-def command(src: Path, truth: str) -> str:
+def command(src: Path, truth: str, hier_sims=None) -> str:
     lines = ["set -euo pipefail", "export PYTHONUNBUFFERED=1 PIP_ROOT_USER_ACTION=ignore", "mkdir -p /work"]
     for name in FILES:
         raw = (src / name).read_bytes()
         lines.append(f"echo '{base64.b64encode(raw).decode()}' | base64 -d > /work/{name}")
         lines.append(f'echo "{hashlib.sha256(raw).hexdigest()}  /work/{name}" | sha256sum -c - || exit 3')
-    lines += [f"pip install -q {PINS} 2>&1 | tail -1",
-              f"cd /work && OMP_NUM_THREADS=1 python -u rehearsal.py {truth} /work/out.json > /work/run.log",
+    env = "" if hier_sims is None else f"REHEARSAL_HIER_SIMS={hier_sims} "
+    pins = PINS if hier_sims == 0 else f"{PINS} {PINS_HIER}"
+    lines += [f"pip install -q {pins} 2>&1 | tail -1",
+              f"cd /work && {env}OMP_NUM_THREADS=1 python -u rehearsal.py {truth} /work/out.json > /work/run.log",
               'echo "----BEGIN result----"', "gzip -c /work/out.json | base64 -w0",
               'echo; echo "----END result----"']
     return "\n".join(lines)
@@ -91,6 +94,8 @@ def main():
     ap.add_argument("--out", required=True, type=Path)
     ap.add_argument("--truths", nargs="*", default=TRUTHS)
     ap.add_argument("--tag", default="gecr")
+    ap.add_argument("--hier-sims", type=int, default=None,
+                    help="studies per truth that get the hierarchical fit (rehearsal default 10); 0 skips it and jax")
     ap.add_argument("--nats-url", default="nats://localhost:4222")
     a = ap.parse_args()
     if not a.ack:
@@ -123,7 +128,7 @@ def main():
                 continue
             s["attempt"] += 1
             d = JobDescriptor(name=f"{a.tag}-{t.lower()}-{stamp}-a{s['attempt']}", image=IMAGE,
-                              command=["/bin/bash", "-lc", command(a.src, t)],
+                              command=["/bin/bash", "-lc", command(a.src, t, a.hier_sims)],
                               resources=Resources(cpu="1", memory="2Gi", gpu=0, ephemeral_storage="2Gi"),
                               labels={"atlas.io/batch": BATCH, "atlas.io/role": t.lower()}, backoff_limit=0)
             t_sub = time.time()

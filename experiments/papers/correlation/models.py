@@ -9,6 +9,8 @@ P(choose option 0, the left one) = sigmoid(logit). All models carry a left-side 
   RDU    additive value per outcome, v = -(a^eta + lam b^eta), even-odds lotteries weighted
          pi on the better outcome: rank-dependent, late contraction, no metric.
   CAG    expected utility with a concave aggregator: U = -(a + lam b + 1)^rho / rho.
+  IA     inequality aversion between self and charity (version 4, for the crossing set):
+         v = -(a + lam b + gamma |a - b|) per outcome, expected over outcomes.
 
 Fitting is maximum a posteriori. The first pass uses fixed weak Gaussian priors; a second pass can take
 an empirical-Bayes prior from the first pass across people (`fit(..., prior=(mu, sd))`). Every model
@@ -67,6 +69,15 @@ def v_cag(th, p, a, b):
     return -(p * (a + lam * b + 1.0) ** rho).sum(-1) / rho
 
 
+def v_ia(th, p, a, b):
+    """Inequality aversion between self and charity (Fehr-Schmidt). Over shortfalls the penalties
+    alpha max(a - b, 0) + beta max(b - a, 0) are a linear term plus gamma |a - b|, gamma = (alpha +
+    beta) / 2; the linear term is absorbed by the weights. Linear inside the main set, kinked at the
+    crossing (version 4)."""
+    lam, gamma = np.exp(th[1]), th[2]
+    return -(p * (a + lam * b + gamma * np.abs(a - b))).sum(-1)
+
+
 @dataclass
 class Model:
     name: str
@@ -95,6 +106,10 @@ MODELS = {
     "CAG": Model("CAG", v_cag, True, bounds=[(-12, 6), (-6, 2), (1.0, 6.0), (-4, 4)],
                  mu=np.array([-1.0, -1.0, 2.0, 0.0]), sd=np.array([4.0, 2.0, 2.0, 1.5]),
                  start=np.array([-1.0, -0.7, 2.0, 0.0])),
+    # version 4, for the crossing set: (log scale, log lam, gamma >= 0, bias)
+    "IA": Model("IA", v_ia, True, bounds=[(-8, 6), (-6, 2), (0.0, 3.0), (-4, 4)],
+                mu=np.array([0.0, -1.0, 0.2, 0.0]), sd=np.array([3.0, 2.0, 1.0, 1.5]),
+                start=np.array([0.0, -0.7, 0.1, 0.0])),
 }
 
 

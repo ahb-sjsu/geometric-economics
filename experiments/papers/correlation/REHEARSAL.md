@@ -71,6 +71,59 @@ Atlas smoke test, 2 studies of 30 people:
   −0.11.
 - In both truths the true model wins, and the second pass improves every model.
 
+## Version 4 (complete 2026-11-02): the crossing set
+
+- **Stimuli.** `stimuli.py` version 4 adds the crossing set: 8 crossing correlation pairs and 12
+  straddle lotteries, role "secondary". The 120 main trials are identical to version 3 apart from
+  presentation order; checked on the generated sets.
+- **Truths and models.** IA, inequality aversion between self and charity (`models.v_ia`), is both a
+  new truth (`γ` drawn from U(0.1, 0.6)) and a new fitted model.
+- **Analysis.** The main tests are unchanged and never see the crossing set. The secondary tests SH1,
+  SH2, SH3 and SH3_did are computed on the crossing set (`DESIGN.md`).
+- **The hierarchical fit is off** (`--hier-sims 0`). Version 3 already checked it.
+- **Atlas smoke test** (2 studies of 30 people):
+  - Under IA the main claim failed, as it should.
+  - SH2 (−0.25 against GEO's prediction) and SH3 (+0.24) passed in both studies, and SH1 in one.
+  - Under GEO1, SH1 and SH2 stayed quiet.
+  - **But the plain SH3 passed in both GEO1 studies (+0.08).** GEO's calibration bias under-predicts
+    correlation seeking far from the calibration region. SH3_did passed in one of the two (+0.04).
+- **Where it ran.** NRP, driver screen `corr-reh4`, outputs `nrp_reh_v4`, 7 truths of 50 studies of 200
+  people each. Every truth finished at the first attempt, in 22 to 93 minutes.
+- **Files.**
+  - Per truth: `results/rehearsal_v4_<TRUTH>.json`.
+  - Summary: `results/summary_v4.json`.
+
+### Results
+
+Percent of studies passing at n = 60 / 120 / 200.
+
+| Truth | Main claim (margin 0.005) | SH1 and SH2 (secondary claim) | SH1 or SH2 |
+|---|---|---|---|
+| GEO1 | 84 / 94 / 100 | 0 / 0 / 0 | 2 / 0 / 0 |
+| GEO2 | 20 / 34 / 52 | 0 / 0 / 0 | 6 / 8 / 10 |
+| EARLY | 0 / 0 / 0 | 0 / 0 / 0 | 8 / 10 / 12 |
+| RDU | 0 / 0 / 0 | 0 / 0 / 0 | 4 / 0 / 0 |
+| CAG | 0 / 0 / 0 | 0 / 0 / 0 | 4 / 4 / 0 |
+| ADD | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 2 / 0 |
+| IA | 0 / 0 / 0 | 100 / 100 / 100 | 100 / 100 / 100 |
+
+- **The main claim stays specific with the crossing set and IA as a truth.** It passed in no study
+  under the five truths without the metric. Under GEO1 it reproduced version 3.
+- **The secondary claim is SH1 and SH2 together.** It detected IA in every study at every n and passed
+  under no other truth. Alone, SH1 or SH2 passed in up to 12% of studies without IA, mostly SH2
+  under EARLY and GEO2.
+- **SH3 is not specific in either form.**
+  - The plain form passed in 28 / 44 / 58% under GEO1 and in 90 / 100 / 100% under ADD.
+  - The difference-in-differences form passed in 14 / 8 / 18% under GEO1, 22 / 40 / 66% under ADD and
+    10% under RDU.
+  - GEO's zero-fit prediction for the crossing pairs, far from the calibration region, is biased by
+    the fitted `κ`, and the bias differs between the crossing and main pairs. SH3 is reported only.
+- **SH1r, GEO beating IA on the crossing set,** passed in 82 / 94 / 98% under GEO1 and 56 / 76 / 88%
+  under GEO2. When the metric is true it accounts for the crossing set better than inequality
+  aversion does.
+- **The IA truths are strong ones** (`γ` from 0.1 to 0.6). Weaker inequality aversion would be found
+  less often. The power at smaller `γ` has not been rehearsed.
+
 ## Version 3 (complete 2026-11-02)
 
 - **Stimuli.** `stimuli.py` version 3: 12 calibration lotteries per attribute at the ideal instead of
