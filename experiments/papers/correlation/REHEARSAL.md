@@ -71,6 +71,91 @@ Atlas smoke test, 2 studies of 30 people:
   −0.11.
 - In both truths the true model wins, and the second pass improves every model.
 
+## Version 5 (2026-11-03): the power table the pilot reads
+
+- **Purpose.** The pilot puts the study in one row of a power table that is computed and sealed before
+  the pilot runs (`PILOT.md`). This is that table.
+- **Cells.** 22 cells, listed in `rehearsal.TABLE_V5`.
+  - **GEO, 15 cells.** `κ` of 1, 1.25, 1.5, 1.75 or 2, crossed with a noise target of 1.0, 1.5 or 2.0. The
+    target is the centre of each person's median `|logit|` over block R, so a higher target means a less
+    noisy chooser. Everyone trades the two attributes off, as in GEO1 and GEO2.
+  - **Rank one, 2 cells.** In `G100T15S40` and `G150T15S40`, 40% of people weigh only their own points.
+  - **Specificity, 5 cells.** EARLY, RDU, CAG, ADD and IA drawn as in version 4, at target 2.0, with
+    lapses drawn from U(0, 0.15).
+- **Scale.** 50 studies of 240 people per cell. Tests run on the first 60, 120, 160, 200 and 240.
+- **The rank-one people.**
+  - Each is drawn as a person who trades off and is scaled to the noise target. Then the charity weight
+    is removed (`P12 = P22 = 0`).
+  - Their sensitivity to their own points is kept. So they are not perfectly consistent. They chose the
+    self-favouring option in 36.6 of the 40 block R pairs on average under `G100T15S40`, and in 34.1
+    under `G150T15S40`.
+  - With convex cost (`κ > 1`) they sit at small costs, where choices are noisier.
+- **Checks on Atlas before launch.**
+  - The version 4 truths reproduce exactly under the version 5 code. GEO1, RDU and IA05 were run with
+    REHEARSAL_QUICK under both versions, and the outputs were identical apart from run time and the
+    version fields.
+  - `stimuli.build()` is unchanged: identical to `stimuli_v4.json`.
+  - A quick cell used 0.10 GiB and about 0.3 s per simulated person.
+- **Where it ran.** NRP, 22 one-CPU Jobs, at most 3 attempts per cell. Driver screen `corr-reh5`, outputs
+  `nrp_reh_v5`.
+- **Expected before the run.** This was written while the jobs ran, before any result. The `n(1 − s)` rule
+  for the rank-one share should overstate power.
+  - The claim's test puts the margin on the mean over all n people.
+  - Rank-one people pull that mean toward zero, since every model predicts them alike.
+  - Under true dilution the margin would apply to the traders' mean alone. Mixing them in acts like a
+    margin of `0.005 / (1 − s)`, 0.008 at `s = 0.4`.
+  - The effect should show where power is not already near 100%, so at `κ = 1.5` more than at `κ = 1`.
+
+### Results (21 of 22 cells, 2026-11-03)
+
+- **Run.**
+  - Every cell finished at its first attempt except G150T15. Its Job failed and lost its pod, and the
+    driver then crashed trying to read the missing log.
+  - The fix is in `submit_nrp.py`: a finished Job whose pod is gone counts as lost and is resubmitted.
+  - G150T15 has been resubmitted and is not yet in this record.
+  - Cells took 43 to 132 minutes on one NRP CPU.
+- **Files.** `results/rehearsal_v5_<CELL>.json`, and `results/power_table_v5.json` from `power_table.py`.
+
+**The main claim (H1, H2 and H3 at margin 0.005).** Percent of 50 studies passing at n = 60 / 120 /
+160 / 200 / 240. A higher noise target means a less noisy chooser.
+
+| `κ` | Target 1.0 | Target 1.5 | Target 2.0 |
+|---|---|---|---|
+| 1 | 62 / 86 / 90 / 92 / 96 | 84 / 96 / 98 / 98 / 100 | 84 / 90 / 96 / 98 / 100 |
+| 1.25 | 24 / 38 / 40 / 56 / 66 | 52 / 74 / 80 / 84 / 88 | 70 / 80 / 90 / 92 / 94 |
+| 1.5 | 8 / 14 / 16 / 16 / 20 | pending | 38 / 66 / 68 / 64 / 72 |
+| 1.75 | 4 / 2 / 6 / 4 / 2 | 20 / 30 / 30 / 40 / 44 | 18 / 38 / 52 / 66 / 72 |
+| 2 | 4 / 8 / 12 / 16 / 14 | 18 / 40 / 46 / 56 / 58 | 26 / 72 / 78 / 86 / 96 |
+
+- **Precision.** With 50 studies per cell, a rate near 80% is known to about ±12 points. The table file
+  gives 95% Wilson intervals.
+- **The rerun cells agree with version 4** at n = 60 / 120 / 200:
+  - G100T15 (GEO1) gave 84 / 96 / 98, against 84 / 94 / 100;
+  - G200T15 (GEO2) gave 18 / 40 / 56, against 20 / 34 / 52.
+- **Power falls fast with `κ` and with noise.**
+  - At n = 120 and target 1.5 it is 96% at `κ = 1`, 74% at 1.25, and 30% to 40% at 1.75 and 2.
+  - At target 1.0 and n = 120 it is under 40% for every `κ` above 1.
+- **Power is not monotone in `κ`.** It is lowest around `κ` of 1.5 to 1.75, and recovers at `κ = 2` when
+  choices are less noisy: at target 2.0 and n = 120 it is 66% at 1.5, 38% at 1.75 and 72% at 2.
+  - H1 (GEO against EARLY) drives this. Medians over studies at n = 240:
+    - on block X, GEO's held-out advantage over EARLY falls from 0.03 to 0.09 nats per trial at
+      `κ = 1` to between −0.01 and 0.02 at `κ` of 1.75 and 2;
+    - on block S, its advantage grows with `κ`, from 0.01 to 0.04 at `κ = 1` to 0.02 to 0.06 at
+      `κ = 2`.
+  - So the pilot's `κ` rule, which rounds up to the next row as the cautious choice, is not always
+    cautious (PILOT.md).
+- **Specificity holds.**
+  - Under EARLY, RDU, CAG, ADD and IA at target 2.0, with lapses up to 0.15, the claim passed in no
+    study at any n.
+  - The secondary claim (SH1 and SH2) passed in every IA study and in no study of any other finished
+    cell.
+- **The rank-one check misses, in the direction predicted before the run.**
+  - G100T15S40 passed in 58 / 66 / 74 / 80% at n = 120 / 160 / 200 / 240. The `n(1 − s)` rule predicts
+    86 / 91 / 96 / 97% from G100T15. The misses are 2.8 to 3.5 standard errors.
+  - G150T15S40 passed in 0 / 4 / 6 / 6 / 8%. Its base cell is the pending one, so its check is not
+    computed yet.
+  - By PILOT.md's rule, `s` becomes a dimension of the table before the seal.
+
 ## Version 4 (complete 2026-11-02): the crossing set
 
 - **Stimuli.** `stimuli.py` version 4 adds the crossing set: 8 crossing correlation pairs and 12

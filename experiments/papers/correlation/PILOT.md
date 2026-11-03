@@ -1,7 +1,10 @@
 # Pilot: measuring what the rehearsal assumed, and nothing the claim uses
 
-**Status: DRAFT, 2026-11-02.** Not sealed and not run. It needs people, ethics approval and money,
-which are the owner's to arrange. The code it names is not written yet (see "To build").
+**Status: DRAFT, 2026-11-03.** Not sealed and not run. It needs people, ethics approval and money,
+which are the owner's to arrange. The analysis code is written and passes its self-test. The power table
+is rehearsal version 5, with 21 of its 22 cells in (see "The power table" and REHEARSAL.md). The table's
+own checks call for two rule changes before the seal. The instrument is not built, because it depends on
+the platform.
 
 ## What it is for
 
@@ -76,6 +79,17 @@ the main study's recruitment.
 - Chose the dominated option in at most 2 of the 8 attention checks. The reference simulation (below)
   reports how often the rehearsal's simulated people would fail this. It should be near zero, so that
   the rule removes inattention, not noise.
+  - **It is not near zero under GEO** (2026-11-03, simulated people only). The rule excludes about 10% of
+    simulated people under GEO1, GEO2 and EARLY, 18% to 20% at the noisiest rows (target 1.0) and 5% to
+    7% at the least noisy. Under RDU, CAG, ADD and IA it excludes 1% to 2% (reference, 400 simulated
+    pilots per truth).
+  - **It also selects on the metric.** Under GEO1 it excludes 26% of people whose metric correlation is
+    below −0.2, 4% of those between −0.2 and 0.2, and under 1% of those above 0.2. A negative
+    correlation makes the dominated option, 10 points worse on both attributes, close in value to the
+    better one. No simulated metric ranks it higher, so these are noisy choices, not reversed
+    preferences.
+  - As written, then, the rule would tilt the sample toward one sign of the metric correlation, which
+    shapes the correlation attitude GEO predicts. This is an open decision (below).
 
 **Comprehension quiz,** before block R. Four questions: what self points become, what charity points
 become, how a lottery is resolved, and how many trials are paid. Someone who fails twice leaves with
@@ -113,7 +127,8 @@ debrief.
   the exclusion rate, to about ±0.1.
 - For the population `κ`, version 3's 95% intervals at 120 people had median width 0.19 under `κ = 1`
   and 0.32 under `κ = 2` (`results/summary_v3.json`). Scaled by √3, 40 people would give about 0.33
-  and 0.55. That is an extrapolation, which the pilot rehearsal checks. The table's `κ` rows are 0.25
+  and 0.55. That is an extrapolation, which the pilot rehearsal checks. One simulated pilot of 40 under
+  GEO1 gave 0.80 to 1.16, a width of 0.35 (the self-test, 2026-11-03). The table's `κ` rows are 0.25
   apart, so 40 people place the study within a row or two.
 - The cost is a third of the main study's at its smallest size, plus about 7 minutes per person.
 
@@ -137,11 +152,26 @@ Rehearsal version 5 runs the main claim (H1, H2 and H3 at margin 0.005) on the v
   changes.
 - **Cost.** 22 one-CPU jobs on NRP. Version 3 took 23 to 214 minutes per truth at 200 people.
 
+**Result (2026-11-03, 21 of 22 cells; G150T15 resubmitted after its job was lost).** The numbers are
+in REHEARSAL.md and `results/power_table_v5.json`.
+- **Power falls fast with `κ` and with noise.** At n = 120 the claim passed in 96% of studies at `κ = 1`
+  and target 1.5, 74% at 1.25, and 30% to 40% at 1.75 and 2. At target 1.0 it passed in under 40% for
+  every `κ` above 1.
+- **It is not monotone in `κ`.** It is lowest around 1.5 to 1.75, and recovers at 2 for less noisy
+  choosers: 66%, 38% and 72% at target 2.0 and n = 120. Rounding `κ` up is therefore not always the
+  cautious choice (open decision, below).
+- **Specificity holds.** The five specificity cells passed in no study at any n.
+- **The rank-one check misses.** With 40% of people of rank one at `κ = 1`, power was 58% at n = 120,
+  against the 86% that `n(1 − s)` predicts. So `s` becomes a dimension of the table before the seal, as
+  the rule above requires. The direction was predicted before the run (REHEARSAL.md): the margin applies
+  to the mean over everyone, which the rank-one people pull toward zero.
+- Cells took 43 to 132 minutes each.
+
 ## Reading the pilot
 
-**Each model-free statistic is read against simulated pilots.** `pilot_analysis.py --reference`
-simulates pilots of 40 from the rehearsal's truths through the same 160 trials and computes each
-statistic the same way. The real value is read against that distribution, never against a number
+**Each model-free statistic is read against simulated pilots.** `pilot_analysis.py reference`
+simulates pilots of 40 included people from the rehearsal's truths through the same 160 trials, recruiting
+until 40 pass the inclusion rule, and computes each statistic the same way. The real value is read against that distribution, never against a number
 chosen by hand, so the reference absorbs the statistic's own bias and spread.
 
 **The row.** Each quantity enters at its pessimistic 80% limit, so that over the pilot's sampling
@@ -152,12 +182,32 @@ sizing from an upper confidence limit of a pilot's variance (Browne 1995; from m
   analysis). Above 2 there is no row, and the study is not powered for this population.
   - Version 3 found these intervals possibly narrow under `κ = 2` (they covered the truth in 7 of 10
     studies). The pilot rehearsal tests the rule itself at 40 people.
+  - The fit leaves out the people flagged as self only (below), as the agreement does. The table's rows
+    contain no such people.
+  - If even the 80th percentile is below 1, the `κ = 1` row is used and the estimates say so. Power below
+    `κ = 1` was not simulated. A population that takes risks over shortfalls, the pattern prospect theory
+    reports for losses, would sit there. Whether to extend the table below 1 is an open decision.
+  - Rounding up is cautious only if power falls as `κ` rises. In version 5 it does not: power is lowest
+    around 1.5 to 1.75 (The power table, result). The rule needs changing before the seal (open
+    decisions).
 - **Noise.** The least noisy row whose simulated median agreement on the repeats, at the chosen `κ`,
   does not exceed the 20th percentile of the pilot's agreement (bootstrap over people). The pilot's
-  agreement leaves out the people counted in `s`, whom the table does not contain. If the pilot is
-  noisier than every row, the table is extended by the same code before n is set.
-- **The rank-one share `s`.** The one-sided 80% upper Wilson limit for the share of included people who
-  chose the self-favouring option in at least 38 of the 40 block R pairs and in all four ratio-6 pairs.
+  agreement leaves out the people flagged as self only, whom the table's rows do not contain. If the
+  pilot is noisier than every row, the table is extended by the same code before n is set.
+- **The rank-one share `s`.** A person is flagged as self only if they chose the self-favouring option in
+  at least 18 of the 24 high-ratio riskless pairs: block R's 20 pairs at ratios 2 and 3, and the four
+  ratio-6 pairs. People who trade the two off mostly give on these pairs. The one-sided 80% upper Wilson
+  limit `q` of the flagged share is converted with the row's simulated flag rates,
+  `s = (q − fpr) / (tpr − fpr)`, clipped to [0, 1].
+  - In the reference (10,000 included simulated people of each kind per row), the rule flags 61% to 97%
+    of rank-one people, fewest at `κ = 2` and the noisiest target. It flags 0.6% to 2.0% of people who
+    trade off.
+  - *Revised 2026-11-03, before any data.* The first rule required at least 38 of the 40 block R pairs and
+    all four ratio-6 pairs. It flagged 1% to 43% of simulated rank-one people, depending on the row.
+    Someone who ignores the charity still chooses noisily between amounts 5 to 15 of their own points
+    apart.
+  - The rates come from the rehearsal's model of a rank-one person (REHEARSAL.md, version 5). If real ones
+    are more consistent, the correction overstates `s`, which errs toward a larger sample.
 
 **The sample size.**
 - For n of 120, 160, 200 and 240, read the row's power at n(1 − s) people, interpolating linearly
@@ -188,8 +238,8 @@ is fixed and the pilot repeated with new people.
 - Every bonus and every donation goes through as described.
 
 **Targeting rules.** These change the stimuli, not the people. Each fires when its share is above the
-97.5th percentile of its reference under the version 4 assumptions and is at least 6 of the 40. The
-first condition says the population differs from what the rehearsal assumed. The second says enough
+97.5th percentile of its reference under every version 4 truth (the largest of the seven) and is at
+least 6 of the 40. The first condition says the population differs from what the rehearsal assumed. The second says enough
 people are affected to matter.
 - **Self side.** People who never trade toward the charity in block R but do in at least 2 of the 4
   ratio-6 pairs. Block R gains a cell of ratio-6 pairs.
@@ -207,7 +257,8 @@ new seal, all before the main study.
 - **The raw export never enters the public repository.** It holds platform identifiers, which the split
   replaces with p001 to p040.
 - **`split_pilot.py` writes the readable and the sealed file,** and records the sha256 of each in the
-  pilot record.
+  pilot record (`split_record.json`). It also writes `id_map.json`, the only output with platform
+  identifiers. It stays private, and it is what bars pilot participants from the main study.
 - **The sealed file is opened only after the main study is graded.** Anything read from it then is
   reported as an unregistered sample of 40.
 - **`pilot_analysis.py` writes `pilot_estimates.json` only when the input declares
@@ -262,15 +313,49 @@ new seal, all before the main study.
 - **The extra trials come last.** Fatigue makes the repeats a little noisier than block R itself, which
   errs toward a larger sample.
 
-## To build
+## Built (2026-11-03)
 
 | File | What it does |
 |---|---|
-| `stimuli.py`, new `pilot_extras` | the 20 pilot-only trials, from their own random stream, numbered after the main set; `build()` unchanged |
-| `split_pilot.py` | the export into the readable and the sealed file, with hashes |
-| `pilot_analysis.py` | the statistics, references, gates, row and sample-size rule, with the guards above and `--self-test` |
-| `rehearsal.py` | version 5 truths with `κ`, noise, rank-one share and lapse as parameters, shared with `--reference` |
-| the instrument | depends on the platform; its export as described above |
+| `stimuli.py`: `pilot_extras`, `presentation`, `digest` | the 20 pilot-only trials (ids 140 to 159, role "pilot", their own random stream; `build()` unchanged, checked against `stimuli_v4.json`); one participant's order from their seed; the hash the export must declare |
+| `split_pilot.py` | the export into `readable.json`, `sealed.json`, `id_map.json` and `split_record.json`. Its docstring defines the export format the instrument must write |
+| `pilot_analysis.py` | `reference`, `analyse`, `size`, `self-test` and `rehearse` (the pilot rehearsal), with the guards above |
+| `rehearsal.py` | version 5 cells with `κ`, noise target, rank-one share and lapse ceiling as parameters (REHEARSAL.md); `simulate` runs the same people through the pilot-only trials |
+| `power_table.py` | the table from the version 5 runs, with the rank-one and specificity checks |
+| `hier.py` | now also reports the posterior's 80th percentile |
+| the instrument | not built: it depends on the platform. It must write the export that `split_pilot.py` documents |
+
+**Self-test** (`pilot_analysis.py self-test`, on Atlas). 17 of 17 checks pass, both with `κ` stubbed and
+with `hier.py`. Each refusal is checked to name its own reason.
+- The size rule refuses:
+  - a missing file;
+  - a simulated file put where it looks, for provenance;
+  - a `κ` not from `hier.py`;
+  - a failed gate;
+  - a fired targeting rule;
+  - another table.
+- The analysis refuses:
+  - a readable file carrying a block S test trial;
+  - an extra field;
+  - an undeclared source;
+  - another stimulus hash;
+  - a reference built on other stimuli.
+- The round trip puts every trial where its role says.
+- A deliberately broken split that also routes the test trials to the readable file fails the round trip:
+  2,208 misplaced trials, the 48 test trials of each of 46 simulated people. The analysis's own guard
+  refuses it too.
+
+**The pilot rehearsal** (sequence step 4) is built and smoke-tested, not run.
+- **Smoke test.** Two simulated pilots under `κ = 1`, noise 1.5 and a planted rank-one share of 0.3
+  took 283 s on one Atlas CPU, with a peak of 0.65 GiB.
+  - Their upper limits for `s` were 0.45 and 0.36, both covering the planted 0.3.
+  - Their `κ` rows were 1.25 and 1.
+  - Both picked the noise row 1.0, one noisier than the truth (see the open decision on the noise rule).
+- **Cost.** At about 2.5 minutes per pilot, 100 pilots per truth take about 4 hours. The run belongs on
+  NRP, about 10 pilots per job.
+
+**The reference** (`results/pilot_reference_v5.json`): 400 simulated pilots per truth, and the self-only
+flag rates from 10,000 included simulated people of each kind per row. It took 423 s on one Atlas CPU.
 
 ## Open decisions (owner)
 
@@ -278,6 +363,25 @@ new seal, all before the main study.
 - The charity list and the point rate. The pilot must use the main study's.
 - The cap on n. The table runs to 240.
 - Whether the crossing set stays (DESIGN.md).
+- The attention-check part of the inclusion rule, which under GEO selects on the metric correlation
+  (Participants). The options:
+  - keep the checks only as an instrument gate, read against the reference;
+  - exclude only near-random responding, say the dominated option in 5 or more of 8;
+  - redesign the pairs so that every rehearsed metric ranks them clearly. This needs a new stimulus
+    version and a rerun.
+- Whether to extend the table below `κ = 1` (Reading the pilot).
+- The `κ` rule, now that power is not monotone in `κ`. One option: use the lowest power among the rows
+  the posterior's central 80% interval spans, instead of the row above its 80th percentile.
+- The rank-one share as a table dimension, which the rank-one check now requires: which shares, and at
+  which rows.
+- The noise rule.
+  - As written, it moves to the next noisier row whenever the pilot's 20th percentile of agreement falls
+    below the true row's median. If the bootstrap spread matches the sampling spread, that happens about
+    80% of the time by construction.
+  - The rows are far apart. In the reference, the median agreement is 0.64, 0.70 and 0.75, and a single
+    pilot's agreement falls within about ±0.02 of it (20th to 80th percentile).
+  - So the rule usually costs a full row of power. Interpolating the table between noise rows at the
+    pilot's 20th percentile would keep the caution without the jump.
 - Sealing.
 
 ## References to check

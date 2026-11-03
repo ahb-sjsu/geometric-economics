@@ -15,8 +15,9 @@ follows the NRP PREFLIGHT (reference_nrp_job_policies) line by line, as
   * Self-terminating, no sleep in the pod, backoff_limit=0; the result is printed gzip+base64 between
     markers and collected from the log.
   * Submitted via nats-bursting, a fresh name per attempt, creationTimestamp checked. Finished Jobs
-    are deleted after their log is saved; an active Job is never deleted. At most --max-tries attempts
-    per truth (2 until version 4, 3 from version 5: a pod can be lost at any time).
+    are deleted after their log is saved; an active Job is never deleted. A kubectl error is retried the
+    next round; a finished Job whose pod is gone counts as lost and is resubmitted. At most --max-tries
+    attempts per truth (2 until version 4, 3 from version 5: a pod can be lost at any time).
 
     python submit_nrp.py --i-have-checked-nrp-policy --src DIR --out DIR [--truths GEO1 ...] [--max-tries 3]
 """
@@ -47,10 +48,6 @@ FILES = ["rehearsal.py", "models.py", "stimuli.py", "hier.py"]
 POLL_S = 60
 
 
-def sh(*cmd):
-    return subprocess.run(cmd, check=True, capture_output=True, text=True).stdout
-
-
 def command(src: Path, truth: str, hier_sims=None) -> str:
     lines = ["set -euo pipefail", "export PYTHONUNBUFFERED=1 PIP_ROOT_USER_ACTION=ignore", "mkdir -p /work"]
     for name in FILES:
@@ -77,8 +74,19 @@ def job_state(name):
     return "active", j["metadata"].get("creationTimestamp", "")
 
 
-def collect(name, out: Path, truth: str) -> bool:
-    log = sh("kubectl", "-n", NS, "logs", f"job/{name}")
+def collect(name, out: Path, truth: str):
+    """True: result saved. False: no result (the Job is deleted and the truth resubmitted). None: kubectl did
+    not answer, or the pod is still there, so the Job is kept and collection tried again next round. Version 5's
+    first driver died here on a failed `kubectl logs` for a Job whose pod was gone (2026-11-03)."""
+    p = subprocess.run(["kubectl", "-n", NS, "logs", f"job/{name}"], capture_output=True, text=True)
+    if p.returncode != 0:
+        pods = subprocess.run(["kubectl", "-n", NS, "get", "pods", "-l", f"job-name={name}", "-o", "name"],
+                              capture_output=True, text=True)
+        if pods.returncode != 0 or pods.stdout.strip():
+            return None
+        log = f"[no pod left for {name}; kubectl logs said: {p.stderr.strip()}]"
+    else:
+        log = p.stdout
     (out / "logs").mkdir(parents=True, exist_ok=True)
     (out / "logs" / f"{name}.log").write_text(log)
     if "----BEGIN result----" not in log:
@@ -116,6 +124,8 @@ def main():
                 continue
             if st in ("complete", "failed"):
                 ok = collect(name, a.out, t)
+                if ok is None:
+                    continue
                 subprocess.run(["kubectl", "-n", NS, "delete", "job", name], capture_output=True)
                 if ok:
                     s["done"] = True

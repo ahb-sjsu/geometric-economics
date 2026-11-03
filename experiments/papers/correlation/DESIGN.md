@@ -157,6 +157,9 @@ The rehearsal may still change the set before it is registered.
 - **Inclusion.** Finished the session, passed the comprehension quiz within two attempts, and chose the
   dominated option in at most 2 of the 8 attention checks (`PILOT.md`). Recruitment continues until n
   people qualify.
+  - *Open, 2026-11-03.* In simulation the attention-check part excludes about 10% of people under GEO
+    and selects on the metric correlation: it excludes 26% of those with a correlation below −0.2 and
+    under 1% of those above 0.2. `PILOT.md` lists the options.
 - **Sample size.** n is 120, 160, 200 or 240, chosen from the pilot by a rule sealed with this design
   (`PILOT.md`).
 
