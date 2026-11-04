@@ -17,7 +17,8 @@ each. The crossing set (XC, SC) crosses on purpose.
      per level) are test. Version 2 had 4 calibration lotteries per attribute (32 S trials).
   X  24 correlation pairs: equal marginals, correlated against anticorrelated, 12 configurations
      in both left-right orders.                                                       role test
-  A  8 dominated riskless pairs, attention checks.                                    role check
+  A  8 dominated riskless pairs, attention checks: 40 points worse on both attributes (version 5; version 4's
+     were 10 worse and selected on the metric under GEO).                            role check
   XC 8 crossing correlation pairs (version 4): the correlated option pays equal splits (a = b in both
      outcomes), the anticorrelated one pays one split favouring self and one favouring the charity;
      4 spreads in both orders.                                                   role secondary
@@ -115,10 +116,14 @@ def build():
             add("X", cell, "test", cor, anti, corr_option=0)
             add("X", cell, "test", anti, cor, corr_option=1)
 
-    # A: dominated pairs
-    for _ in range(8):
-        a1, b1 = int(rng.choice(np.arange(5, 31, 5))), int(rng.choice(np.arange(50, 91, 5)))
-        good, bad = opt((a1, b1)), opt((a1 + 10, b1 + 10))
+    # A: dominated pairs. Version 5 (2026-11-03): the dominated option is 40 points worse on both attributes, at
+    # charity shortfalls 50 to 60. Version 4's was 10 worse at 50 to 90, and under GEO it excluded people by the
+    # sign of the metric correlation, since a negative one makes a step along both attributes nearly free
+    # (PILOT.md, inclusion rule). Version 4's location draws are still made, so the main stream, every later
+    # trial and the order are unchanged.
+    for a1, b1 in ((5, 50), (10, 60), (15, 55), (20, 60), (25, 50), (30, 55), (5, 60), (20, 50)):
+        rng.choice(np.arange(5, 31, 5)), rng.choice(np.arange(50, 91, 5))      # version 4's locations, unused
+        good, bad = opt((a1, b1)), opt((a1 + 40, b1 + 40))
         left = int(rng.random() < 0.5)
         add("A", "A_dominated", "check", *((good, bad) if left else (bad, good)), good_option=0 if left else 1)
 

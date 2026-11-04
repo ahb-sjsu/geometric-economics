@@ -20,6 +20,11 @@ follows the NRP PREFLIGHT (reference_nrp_job_policies) line by line, as
     attempts per truth (2 until version 4, 3 from version 5: a pod can be lost at any time).
 
     python submit_nrp.py --i-have-checked-nrp-policy --src DIR --out DIR [--truths GEO1 ...] [--max-tries 3]
+
+The pilot rehearsal (PILOT.md, sequence step 4) runs the same way with --pilot-ref and --pilot-table: each unit
+is TRUTH:SEED, one Job of --pilots-per-job simulated pilots through `pilot_analysis.py rehearse`, with the
+reference and the table riding in gzipped and checked by sha256 like the code. Results land as
+rehearse_<TRUTH>_s<SEED>.json.
 """
 from __future__ import annotations
 
@@ -45,15 +50,46 @@ PINS = "numpy==2.2.6 scipy==1.17.1"                  # the versions tested on At
 PINS_HIER = "jax==0.12.0.1 numpyro==0.22.0"          # only when the hierarchical fit runs
 TRUTHS = ["GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD", "IA"]
 FILES = ["rehearsal.py", "models.py", "stimuli.py", "hier.py"]
+PILOT_FILES = FILES + ["split_pilot.py", "pilot_analysis.py"]
 POLL_S = 60
+
+
+def embed(src: Path, names, gz=False):
+    lines = []
+    for name in names:
+        raw = (src / name).read_bytes()
+        if gz:
+            lines.append(f"echo '{base64.b64encode(gzip.compress(raw)).decode()}' | base64 -d | gunzip > /work/{name}")
+        else:
+            lines.append(f"echo '{base64.b64encode(raw).decode()}' | base64 -d > /work/{name}")
+        lines.append(f'echo "{hashlib.sha256(raw).hexdigest()}  /work/{name}" | sha256sum -c - || exit 3')
+    return lines
+
+
+# Linux caps one argument at 128 KiB (MAX_ARG_STRLEN), and the command is one argument to bash -lc. The first
+# pilot-rehearsal Jobs embedded their files plain and failed at exec with "argument list too long" (2026-11-03).
+MAX_COMMAND = 120_000
+
+
+def pilot_command(src: Path, unit: str, ref: Path, table: Path, per_job: int) -> str:
+    truth, seed = unit.split(":")
+    lines = ["set -euo pipefail", "export PYTHONUNBUFFERED=1 PIP_ROOT_USER_ACTION=ignore", "mkdir -p /work"]
+    lines += embed(src, PILOT_FILES, gz=True)
+    for path, dest in ((ref, "ref.json"), (table, "table.json")):
+        raw = path.read_bytes()
+        lines.append(f"echo '{base64.b64encode(gzip.compress(raw)).decode()}' | base64 -d | gunzip > /work/{dest}")
+        lines.append(f'echo "{hashlib.sha256(raw).hexdigest()}  /work/{dest}" | sha256sum -c - || exit 3')
+    lines += [f"pip install -q {PINS} {PINS_HIER} 2>&1 | tail -1",
+              f"cd /work && OMP_NUM_THREADS=1 python -u pilot_analysis.py rehearse {truth} {per_job} /work/out.json "
+              f"--reference /work/ref.json --table /work/table.json --seed {int(seed)} > /work/run.log",
+              'echo "----BEGIN result----"', "gzip -c /work/out.json | base64 -w0",
+              'echo; echo "----END result----"']
+    return "\n".join(lines)
 
 
 def command(src: Path, truth: str, hier_sims=None) -> str:
     lines = ["set -euo pipefail", "export PYTHONUNBUFFERED=1 PIP_ROOT_USER_ACTION=ignore", "mkdir -p /work"]
-    for name in FILES:
-        raw = (src / name).read_bytes()
-        lines.append(f"echo '{base64.b64encode(raw).decode()}' | base64 -d > /work/{name}")
-        lines.append(f'echo "{hashlib.sha256(raw).hexdigest()}  /work/{name}" | sha256sum -c - || exit 3')
+    lines += embed(src, FILES)
     env = "" if hier_sims is None else f"REHEARSAL_HIER_SIMS={hier_sims} "
     pins = PINS if hier_sims == 0 else f"{PINS} {PINS_HIER}"
     lines += [f"pip install -q {pins} 2>&1 | tail -1",
@@ -74,7 +110,7 @@ def job_state(name):
     return "active", j["metadata"].get("creationTimestamp", "")
 
 
-def collect(name, out: Path, truth: str):
+def collect(name, out: Path, result: str):
     """True: result saved. False: no result (the Job is deleted and the truth resubmitted). None: kubectl did
     not answer, or the pod is still there, so the Job is kept and collection tried again next round. Version 5's
     first driver died here on a failed `kubectl logs` for a Job whose pod was gone (2026-11-03)."""
@@ -92,7 +128,7 @@ def collect(name, out: Path, truth: str):
     if "----BEGIN result----" not in log:
         return False
     blob = log.split("----BEGIN result----", 1)[1].split("----END result----", 1)[0]
-    (out / f"rehearsal_{truth}.json").write_bytes(gzip.decompress(base64.b64decode(blob.strip())))
+    (out / result).write_bytes(gzip.decompress(base64.b64decode(blob.strip())))
     return True
 
 
@@ -107,9 +143,15 @@ def main():
                     help="studies per truth that get the hierarchical fit (rehearsal default 10); 0 skips it and jax")
     ap.add_argument("--nats-url", default="nats://localhost:4222")
     ap.add_argument("--max-tries", type=int, default=3)
+    ap.add_argument("--pilot-ref", type=Path, help="pilot rehearsal: the reference (pilot_analysis.py reference)")
+    ap.add_argument("--pilot-table", type=Path, help="pilot rehearsal: the power table (power_table.py)")
+    ap.add_argument("--pilots-per-job", type=int, default=10)
     a = ap.parse_args()
     if not a.ack:
         sys.exit("refusing without --i-have-checked-nrp-policy")
+    pilot = a.pilot_ref is not None
+    if pilot != (a.pilot_table is not None) or (pilot and not all(":" in t for t in a.truths)):
+        sys.exit("the pilot rehearsal needs --pilot-ref, --pilot-table and units TRUTH:SEED")
     a.out.mkdir(parents=True, exist_ok=True)
     client = Client(nats_url=a.nats_url)
     state = {t: {"attempt": 0, "done": False} for t in a.truths}
@@ -118,12 +160,13 @@ def main():
         for t, s in state.items():
             if s["done"]:
                 continue
-            name = f"{a.tag}-{t.lower()}-{stamp}-a{s['attempt']}" if s["attempt"] else ""
+            slug = t.lower().replace(":", "-s")
+            name = f"{a.tag}-{slug}-{stamp}-a{s['attempt']}" if s["attempt"] else ""
             st = job_state(name)[0] if name else "missing"
             if st == "active":
                 continue
             if st in ("complete", "failed"):
-                ok = collect(name, a.out, t)
+                ok = collect(name, a.out, f"rehearse_{t.replace(':', '_s')}.json" if pilot else f"rehearsal_{t}.json")
                 if ok is None:
                     continue
                 subprocess.run(["kubectl", "-n", NS, "delete", "job", name], capture_output=True)
@@ -139,10 +182,15 @@ def main():
                 print(f"{t}: PARKED after {a.max_tries} attempts", flush=True)
                 continue
             s["attempt"] += 1
-            d = JobDescriptor(name=f"{a.tag}-{t.lower()}-{stamp}-a{s['attempt']}", image=IMAGE,
-                              command=["/bin/bash", "-lc", command(a.src, t, a.hier_sims)],
+            cmd = (pilot_command(a.src, t, a.pilot_ref, a.pilot_table, a.pilots_per_job) if pilot
+                   else command(a.src, t, a.hier_sims))
+            if len(cmd.encode()) > MAX_COMMAND:
+                sys.exit(f"{t}: the command is {len(cmd.encode())} bytes, over {MAX_COMMAND}; "
+                         f"exec would fail with 'argument list too long'")
+            d = JobDescriptor(name=f"{a.tag}-{slug}-{stamp}-a{s['attempt']}", image=IMAGE,
+                              command=["/bin/bash", "-lc", cmd],
                               resources=Resources(cpu="1", memory="2Gi", gpu=0, ephemeral_storage="2Gi"),
-                              labels={"atlas.io/batch": BATCH, "atlas.io/role": t.lower()}, backoff_limit=0)
+                              labels={"atlas.io/batch": BATCH, "atlas.io/role": slug}, backoff_limit=0)
             t_sub = time.time()
             client.submit_and_wait(d, timeout=120)
             st2, created = job_state(d.name)

@@ -66,9 +66,12 @@ def fit(data, Y, seed=0, warmup=500, samples=500):
     s = mcmc.get_samples()
     mu_lk = np.asarray(s["mu"][:, 3])
     k_med = 0.5 + np.exp(mu_lk)
-    # q80: the pilot's kappa row is the smallest tabulated kappa at or above it (PILOT.md)
+    # q80 was the version 5 rule's kappa (the smallest tabulated kappa at or above it), and the first version 6
+    # pilot rehearsal's rule read the draws. At pilot size both sat 0.1 to 0.2 below a common kappa, so the rule
+    # now reads kappa from the lottery-choice rate against simulated pilots (pilot_analysis.kappa_belt, PILOT.md).
     return {"kappa_median": float(np.median(k_med)), "lo": float(np.quantile(k_med, 0.025)),
             "hi": float(np.quantile(k_med, 0.975)), "q80": float(np.quantile(k_med, 0.8)),
+            "draws": [round(float(x), 5) for x in k_med],
             "sigma_lk": float(np.median(np.asarray(s["sigma"][:, 3]))),
             "divergences": int(np.asarray(mcmc.get_extra_fields()["diverging"]).sum()),
             "ess_mu_lk": float(numpyro.diagnostics.effective_sample_size(mu_lk[None, :]))}

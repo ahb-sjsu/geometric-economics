@@ -1,0 +1,203 @@
+{
+ "table_sha256": "e160b1e154ec53e1cb94476b614e2511451f198402cae44036883fcb7127ca63",
+ "reference_sha256": "2dea2cdc2f5f31a0436b73305e08ec3e6e698050c7613391cd700700edb32c46",
+ "runs": 40,
+ "bars": {
+  "cover_min": 0.7,
+  "power_ok_min": 0.8
+ },
+ "truths": {
+  "G075T15S30": {
+   "pilots": 100,
+   "kappa": 0.75,
+   "target": 1.5,
+   "share": 0.3,
+   "kappa_q80_covers": 0.83,
+   "agreement_q20_at_or_below_truth": 0.85,
+   "s_upper_covers": 0.78,
+   "gates_pass": 1.0,
+   "targeting_fired": 0.0,
+   "all": {
+    "true_power": {
+     "120": 0.9,
+     "160": 0.99,
+     "200": 0.99,
+     "240": 0.99
+    },
+    "true_power_is_upper_bound": false,
+    "n": {
+     "120": 5,
+     "160": 8,
+     "200": 7,
+     "240": 4,
+     "none": 76
+    },
+    "chosen_power_ok": 1.0,
+    "pass": true
+   },
+   "unflagged": {
+    "true_power": {
+     "120": 0.99,
+     "160": 0.99,
+     "200": 0.99,
+     "240": 1.0
+    },
+    "true_power_is_upper_bound": false,
+    "n": {
+     "120": 73,
+     "160": 1,
+     "200": 2,
+     "240": 1,
+     "none": 23
+    },
+    "chosen_power_ok": 1.0,
+    "pass": true
+   },
+   "covers_pass": true
+  },
+  "G100T15S30": {
+   "pilots": 100,
+   "kappa": 1.0,
+   "target": 1.5,
+   "share": 0.3,
+   "kappa_q80_covers": 0.45,
+   "agreement_q20_at_or_below_truth": 0.77,
+   "s_upper_covers": 0.75,
+   "gates_pass": 1.0,
+   "targeting_fired": 0.0,
+   "all": {
+    "true_power": {
+     "120": 0.73,
+     "160": 0.8200000000000001,
+     "200": 0.86,
+     "240": 0.9
+    },
+    "true_power_is_upper_bound": false,
+    "n": {
+     "120": 1,
+     "160": 6,
+     "200": 9,
+     "240": 3,
+     "none": 81
+    },
+    "chosen_power_ok": 0.9473684210526315,
+    "pass": true
+   },
+   "unflagged": {
+    "true_power": {
+     "120": 0.9500000000000001,
+     "160": 0.99,
+     "200": 1.0,
+     "240": 1.0
+    },
+    "true_power_is_upper_bound": false,
+    "n": {
+     "120": 46,
+     "160": 9,
+     "200": 1,
+     "240": 1,
+     "none": 43
+    },
+    "chosen_power_ok": 1.0,
+    "pass": true
+   },
+   "covers_pass": false
+  },
+  "G150T15S30": {
+   "pilots": 100,
+   "kappa": 1.5,
+   "target": 1.5,
+   "share": 0.3,
+   "kappa_q80_covers": 0.38,
+   "agreement_q20_at_or_below_truth": 0.77,
+   "s_upper_covers": 0.71,
+   "gates_pass": 1.0,
+   "targeting_fired": 0.0,
+   "all": {
+    "true_power": {
+     "120": 0.13,
+     "160": 0.15000000000000002,
+     "200": 0.16500000000000004,
+     "240": 0.20000000000000007
+    },
+    "true_power_is_upper_bound": false,
+    "n": {
+     "120": 0,
+     "160": 0,
+     "200": 0,
+     "240": 0,
+     "none": 100
+    },
+    "chosen_power_ok": null,
+    "pass": true
+   },
+   "unflagged": {
+    "true_power": {
+     "120": 0.35000000000000003,
+     "160": 0.445,
+     "200": 0.535,
+     "240": 0.53
+    },
+    "true_power_is_upper_bound": false,
+    "n": {
+     "120": 0,
+     "160": 1,
+     "200": 0,
+     "240": 1,
+     "none": 98
+    },
+    "chosen_power_ok": 0.0,
+    "pass": false
+   },
+   "covers_pass": false
+  },
+  "G200T20S30": {
+   "pilots": 100,
+   "kappa": 2.0,
+   "target": 2.0,
+   "share": 0.3,
+   "kappa_q80_covers": 0.5,
+   "agreement_q20_at_or_below_truth": 0.81,
+   "s_upper_covers": 0.91,
+   "gates_pass": 1.0,
+   "targeting_fired": 0.0,
+   "all": {
+    "true_power": {
+     "120": 0.15000000000000002,
+     "160": 0.22000000000000006,
+     "200": 0.28,
+     "240": 0.38000000000000006
+    },
+    "true_power_is_upper_bound": false,
+    "n": {
+     "120": 0,
+     "160": 0,
+     "200": 0,
+     "240": 0,
+     "none": 100
+    },
+    "chosen_power_ok": null,
+    "pass": true
+   },
+   "unflagged": {
+    "true_power": {
+     "120": 0.55,
+     "160": 0.68,
+     "200": 0.8200000000000001,
+     "240": 0.86
+    },
+    "true_power_is_upper_bound": false,
+    "n": {
+     "120": 0,
+     "160": 0,
+     "200": 0,
+     "240": 0,
+     "none": 100
+    },
+    "chosen_power_ok": null,
+    "pass": true
+   },
+   "covers_pass": false
+  }
+ }
+}

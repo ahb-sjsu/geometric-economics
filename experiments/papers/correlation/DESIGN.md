@@ -108,7 +108,8 @@ The two strongest rivals are RDU on additive value and EU with a concave aggrega
 
 ## Stimuli and procedure
 
-The exact set is `stimuli.py` version 4 (seed 20261102), 140 trials in all.
+The exact set is `stimuli.py` version 5 (seed 20261102), 140 trials in all. Version 5 (2026-11-03) moved
+the eight attention checks and changed nothing else (`PILOT.md`, inclusion rule).
 - **The main set, 120 trials.** 40 riskless pairs, 48 single-attribute lotteries, 24 correlation pairs
   and 8 attention checks. Version 2 had 32 single-attribute lotteries; version 3 added 16 at the
   ideal, because `κ` fitted from 4 per attribute was biased upward (`REHEARSAL.md`).
@@ -133,7 +134,8 @@ The rehearsal may still change the set before it is registered.
   - Off the ideal there are 4 per level.
 - **Block X, correlation pairs, about 24 choices.** Correlated against anticorrelated even-odds
   lotteries with equal marginals, at several base points and spreads. Sides are counterbalanced.
-- **Attention checks.** About 8 dominated pairs.
+- **Attention checks.** 8 dominated pairs. The dominated option is 40 points worse on both attributes,
+  at charity shortfalls of 50 to 60.
 - **Ordering.** Block R comes first. Everything else is interleaved at random, so the correlation
   pairs do not read as a family.
 - **Avoiding equality crossings in the main set.** Every charity shortfall exceeds every self
@@ -154,14 +156,25 @@ The rehearsal may still change the set before it is registered.
 - **Test set.** The other cells of block S, plus block X.
 - **Fitting.** Each model is fit per person on the calibration set, hierarchically, and predicts the
   test set with no refit.
-- **Inclusion.** Finished the session, passed the comprehension quiz within two attempts, and chose the
-  dominated option in at most 2 of the 8 attention checks (`PILOT.md`). Recruitment continues until n
-  people qualify.
-  - *Open, 2026-11-03.* In simulation the attention-check part excludes about 10% of people under GEO
-    and selects on the metric correlation: it excludes 26% of those with a correlation below −0.2 and
-    under 1% of those above 0.2. `PILOT.md` lists the options.
+- **Inclusion.** Finished the session, passed the comprehension quiz within two attempts, chose the
+  dominated option in at most 2 of the 8 attention checks (`PILOT.md`), and is not flagged as self only.
+  Recruitment continues until n people qualify.
+  - *The self-only flag, decided by the owner on 2026-11-04.* A person is flagged who chose the
+    self-favouring option in at least 15 of block R's 20 pairs at ratios 2 and 3. Such a person's `P` is of
+    rank one or close to it, so every model predicts them alike ("Who shows it"). Counted, they only
+    dilute the margin. In rehearsal version 6, at `κ = 1`, noise target 1.5 and n = 120, the claim's power
+    over everyone was 96% with nobody of rank one, 58% with 40% of people self only and 10% with 60%. With
+    flagged people left out it was 90% to 100% at every share. Flagged people
+    are paid, and their choices are reported apart, but they enter no registered test. The pilot keeps
+    them, since it estimates their share (`PILOT.md`).
+  - *Settled 2026-11-03.* With stimulus version 4's checks, 10 points worse on both attributes, the
+    attention-check part excluded about 10% of simulated people under GEO and selected on the metric
+    correlation: 26% of those with a correlation below −0.2 and under 1% of those above 0.2. Version 5's
+    checks, 40 points worse, exclude at most 0.45% of simulated people under any truth and row, and at
+    most 1.3% of those with a correlation below −0.2 (`PILOT.md`, "Decisions taken").
 - **Sample size.** n is 120, 160, 200 or 240, chosen from the pilot by a rule sealed with this design
-  (`PILOT.md`).
+  (`PILOT.md`). It counts people who qualify, so when a share f is flagged as self only, about n/(1 − f)
+  are recruited.
 
 Intervals are clustered by person, the unit `P` lives on.
 
@@ -234,6 +247,11 @@ below −0.005.
   - In rehearsal version 3 (10 studies per truth, n = 120), the interval excluded 2 in every study
     under GEO1 and covered 1 in 9. Under GEO2 it excluded 1 in every study but covered 2 in only 7,
     so the intervals may be somewhat narrow.
+  - At pilot size, 30 to 40 people, the posterior sat 0.1 to 0.2 below the truth at `κ` of 1 to 2, with
+    or without people of rank one (`PILOT.md`, pilot rehearsal). Why is not known. The pilot's
+    sample-size rule therefore reads `κ` from the lottery-choice rate against simulated pilots instead.
+  - At 120 people below 1 (rehearsal version 6), the interval covered `κ = 0.75` in 9 of 10 studies. It
+    cannot cover `κ = 0.5`: the model's population `κ` is 0.5 + exp(·), and 0.5 is its boundary.
   - **It means something only if GEO is the right model.** In rehearsal version 3 the fitted
     population `κ` was 1.64 under RDU and 1.86 under CAG, because the misspecified GEO absorbs
     pessimism or concavity into `κ`. A null on the claim with a high `κ` therefore cannot tell squared
@@ -306,18 +324,75 @@ below −0.005.
   stimuli. Discovery is a separate exploration, done the way the moral-spectrum-analyzer does it, on
   the spent risky corpora.
 
-## Prior art to read before sealing
+## Prior art (read 2026-11-03)
 
-None of these has been read for this design yet. The citations are from memory and must be checked.
+Read before the seal (`PILOT.md`, sequence step 2). Each record was checked against the publisher or a
+repository. "Abstract" marks a source seen only in abstract.
 
-- Richard (1975), multivariate risk aversion. Correlation aversion is the sign of the cross-partial.
-- Epstein and Tanny (1980), increasing generalized correlation.
-- Keeney and Raiffa (1976), utility independence. Background dependence is a structured violation of
-  it.
-- Laboratory measurements of correlation aversion, for example Andersen, Harrison, Lau and Rutström on
-  correlation aversion over time, and measurements in the health domain.
-- Social preferences under risk: Brock, Lange and Ozbay (2013), and Saito (2013), on ex ante against
-  ex post fairness. These matter for the crossing set.
+**Theory.**
+- Richard (1975), "Multivariate risk aversion, utility independence and separable utility functions,"
+  *Management Science* 22(1):12–21. His term is multivariate risk aversion: preferring the even-odds
+  lottery over (x1, y2) and (x2, y1) to the one over (x1, y1) and (x2, y2). Under expected utility it is
+  the sign of the cross-partial. Among separable forms only the negative multiplicative one has it, and
+  the additive form is neutral (abstract; Epstein and Tanny credit the sign result to him).
+- Epstein and Tanny (1980), "Increasing generalized correlation: a definition and some economic
+  consequences," *Canadian Journal of Economics* 13(1):16–34. They named the property correlation
+  aversion. Their Theorem 4(a): `φ(a1·x1 + a2·x2)` is correlation averse exactly when `φ` is concave,
+  the concave aggregator's row in the competitor table.
+- Keeney and Raiffa (1976), *Decisions with Multiple Objectives* (Wiley; Cambridge 1993). Background
+  dependence violates utility independence. Correlation attitude alone does not: the multiplicative form
+  keeps mutual utility independence and has a non-zero cross-partial. So effect (a) can come without (b),
+  and the concave aggregator with exponential `φ` is that case.
+
+**Measurements of correlation attitude.** The sign varies by domain.
+- Over time: Andersen, Harrison, Lau and Rutström (2018), *International Economic Review*
+  59(2):537–555, correlation aversion over intertemporal income in a field experiment with adult Danes
+  (abstract). Rohde and Yu (2024), *Management Science* 70(6):3493–3509, measured without a model:
+  averse on average, many people insensitive (abstract).
+- Health: Attema, L'Haridon and van de Kuilen (2019), *Journal of Health Economics* 64:15–24, averse over
+  longevity and wealth for gains and seeking for losses. Attema, Frasch and L'Haridon (2022), *Health
+  Economics* 31(2):382–398, seeking over quality of life and longevity, and no systematic evidence that
+  risk attitude over one depends on the other (both abstract).
+- Aid: Gangadharan, Harrison and Leroux (2019), *JEBO* 164:166–198, donors correlation averse across two
+  aid outcomes (abstract).
+- A population mean can sit near zero while individuals do not. The claim here is about each person's
+  predictions, scored on held-out choices, so a mixed population does not empty it.
+
+**Self and another person under risk.**
+- Brock, Lange and Ozbay (2013), *AER* 103(1):415–437, and Saito (2013), *AER* 103(7):3084–3101, with
+  the comment by Krawczyk and Le Lec, *AER* 106(3):836–839 (2016), and the reply. People share chances
+  even when only one person can win. No model that applies expected utility to outcome bundles predicts
+  that, GEO included, and an ex-ante component does. Early contraction, the metric on the mean bundle, is
+  ex ante in this sense, so H1 is where such a population would show. These matter for the crossing set
+  too.
+- Exley (2016), *Review of Economic Studies* 83(2):587–628: people use risk as an excuse to keep money
+  from a charity when self and charity trade off. In block S each lottery varies one attribute with the
+  other fixed, so no trial trades self risk against charity risk. The pattern could still colour the
+  off-ideal cells (abstract level).
+- Cettolin, Riedl and Tran (2017), *Journal of Risk and Uncertainty* 55:95–118: risk on the recipient
+  lowers giving; risk on the giver does not (abstract).
+
+**Closest prior art.**
+- Berg and Rietz (2026), "Do unto others: a theory and experimental test of interpersonal preference
+  factors in decision making under uncertainty," *Journal of Risk and Uncertainty*,
+  doi:10.1007/s11166-026-09495-9. Each lottery choice also sets a matched person's payoff. The subject's
+  own risk stays fixed while its link to the other's payoff varies. Choices look risk neutral on average,
+  and individuals split into fairness-seeking, distinction-seeking and neutral types (abstract, and the
+  repository record). The other party is a peer, not a charity, and the other's level is not varied.
+- Koch, Menkhoff and Schmidt (2021), *JEBO* 191:236–256: peers choose to play identical lotteries
+  independently or coupled.
+- Linde and Sonnemans (2012), *Journal of Risk and Uncertainty* 44(1):45–72, and Schwerter (2024),
+  *Management Science* 70(1):616–632: a peer's payoff level shifts one's own risk taking, in opposite
+  directions (abstracts).
+- Rohde and Rohde (2011), *Journal of Risk and Uncertainty* 43(3):205–225: one's own risk attitude is
+  little affected by others' risks.
+
+**What this design adds.** No study found offers lotteries over (self, charity) bundles with the
+correlation flipped at fixed marginals, or measures risk attitude over one's own money as a function of a
+charity's level. The design adds the charity as the second attribute, graded correlation contrasts, a
+predicted shape for background dependence, and one model that ties both to the riskless trade-offs
+through `P` and `κ`, against named competitors. The search was about ten queries; it does not prove that
+no such study exists.
 
 ## Open decisions (owner)
 
@@ -328,4 +403,5 @@ None of these has been read for this design yet. The citations are from memory a
   theorem the ideal is identified up to the metric's kernel.
 - Whether to keep the crossing set. It adds 20 trials, about 5 minutes. In rehearsal version 4 it
   detected inequality aversion in every study and gave no false positive.
+- How cautious the pilot's sample-size rule is (`PILOT.md`, Open decisions).
 - Sealing.

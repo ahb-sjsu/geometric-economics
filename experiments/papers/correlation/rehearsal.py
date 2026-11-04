@@ -9,6 +9,16 @@ runs them through the exact stimulus set (stimuli.py), fits every candidate mode
 calibration trials, and scores held-out log-loss on the test trials with no refit. Needs models.py and
 stimuli.py beside it. REHEARSAL_QUICK=1 for a smoke test.
 
+Version 6 (2026-11-03), the table the pilot's rules now need (PILOT.md, decisions of 2026-11-03). TABLE_V6 adds
+rows at kappa 0.5 and 0.75 (G050, G075) and the rank-one share as a dimension: S20, S40 and S60 at every row
+that reached 0.80 by n = 240 in version 5, and at the new rows. After the first pilot rehearsals it also has a
+noisier row, target 0.7, at every kappa (NOISY_ROWS), with shares at kappa up to 1: 79 cells in all. Every study also scores the main claim over
+the people the main study's self-only flag does not catch (`flagged`: the self-favouring option in at least
+MAIN_FLAG_MIN of block R's 20 pairs at ratios 2 and 3), recruited until there are max(ns) of them. Those extra
+people come from their own stream, so every version 5 number reproduces; the version 5 cells are rerun for this
+alone. The stimulus set is version 5, whose attention checks moved, and no simulated choice the claim reads
+changed with them (stimuli.py).
+
 Version 5 (2026-11-03), the power table the pilot reads (PILOT.md). A cell is named by its base model, then
 T and the centre of the noise target (the median |logit| over block R) times ten, then optionally S and the
 share of rank-one people in percent, and L and the lapse ceiling in percent:
@@ -88,7 +98,18 @@ TRUTHS = ["GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD", "IA", "IA02", "IA05", "I
 # specificity cells (the non-GEO truths, sharp choosers, lapses up to 0.15)
 TABLE_V5 = ([f"G{k}T{t}" for k in (100, 125, 150, 175, 200) for t in (10, 15, 20)] + ["G100T15S40", "G150T15S40"]
             + [f"{b}T20L15" for b in ("EARLY", "RDU", "CAG", "ADD", "IA")])
+# version 6: rows at kappa 0.5 and 0.75, and shares of 20, 40 and 60% of rank-one people at the rows that reached
+# 0.80 by n = 240 in version 5 and at the new rows. The version 5 cells come first and are rerun.
+POWERED_V5 = ["G100T10", "G100T15", "G100T20", "G125T15", "G125T20", "G200T20"]
+LOW_ROWS = [f"G{k:03d}T{t}" for k in (50, 75) for t in (10, 15, 20)]
+# Added after the first two pilot rehearsals (2026-11-03): a noisier row, target 0.7, at every kappa, with shares at
+# kappa <= 1. A pilot's pessimistic agreement fell below every target-1.0 row in up to 17% of simulated pilots, and
+# the rule then had no noise position. These 16 cells ran with this file before the list grew; nothing else differs.
+NOISY_ROWS = [f"G{k:03d}T07" for k in (50, 75, 100, 125, 150, 175, 200)]
+TABLE_V6 = (TABLE_V5 + LOW_ROWS + [f"{r}S{s}" for r in POWERED_V5 + LOW_ROWS for s in (20, 40, 60) if f"{r}S{s}" not in TABLE_V5]
+            + NOISY_ROWS + [f"{r}S{s}" for r in NOISY_ROWS[:3] for s in (20, 40, 60)])
 CELL = re.compile(r"(?:G(\d{3})|(EARLY|RDU|CAG|ADD|IA))T(\d{2})(?:S(\d{2}))?(?:L(\d{2}))?")
+MAIN_FLAG_MIN = 15          # of block R's 20 pairs at ratios 2 and 3 (version 6)
 FIT = ["GEO", "EARLY", "RDU", "CAG", "IA"]
 NS = [60, 120, 200]
 NS5 = [60, 120, 160, 200, 240]
@@ -116,6 +137,8 @@ IDX = {k: np.array([t["id"] for t in TRIALS if cond(t)]) for k, cond in {
     "XC": lambda t: t["block"] == "XC",
 }.items()}
 SUB = {k: tuple(arr[v] for arr in ALL) for k, v in IDX.items()}
+HI_R = np.array([t["id"] for t in TRIALS if t["cell"] in ("R_ratio2", "R_ratio3")])
+SELF_HI_R = np.array([stimuli.self_option(TRIALS[i]) for i in HI_R])
 CORR = np.array([TRIALS[i]["corr_option"] for i in IDX["X"]])
 CORR_XC = np.array([TRIALS[i]["corr_option"] for i in IDX["XC"]])
 S_ALL = [t for t in TRIALS if t["block"] == "S"]
@@ -226,9 +249,16 @@ def simulate(truth, rng, data=None):
     return {"y": (rng.random(len(pl)) < pl).astype(float), "pl": pl, "shape": shape}
 
 
+def flagged(y):
+    """The main study's self-only flag (version 6): the self-favouring option in at least MAIN_FLAG_MIN of block R's
+    20 pairs at ratios 2 and 3. y is 1 where the left option (option 0) was chosen."""
+    return bool(np.sum(1 - y[HI_R] == SELF_HI_R) >= MAIN_FLAG_MIN)
+
+
 def evaluate(sim, fits, fits1):
     y, pl, shape = sim["y"], sim["pl"], sim["shape"]
-    out = {"ll1": {k: M.log_loss(M.MODELS[k], fits1[k], SUB["test"], y[IDX["test"]]) for k in FIT},
+    out = {"rank_one": bool(shape.get("rank_one")),
+           "ll1": {k: M.log_loss(M.MODELS[k], fits1[k], SUB["test"], y[IDX["test"]]) for k in FIT},
            "ll": {k: M.log_loss(M.MODELS[k], fits[k], SUB["test"], y[IDX["test"]]) for k in FIT},
            "ll_S": {k: M.log_loss(M.MODELS[k], fits[k], SUB["S_test"], y[IDX["S_test"]]) for k in FIT},
            "ll_X": {k: M.log_loss(M.MODELS[k], fits[k], SUB["X"], y[IDX["X"]]) for k in FIT},
@@ -340,6 +370,25 @@ def main(truth, out, *_):
               for (d, y), f in zip(calib, f1)]
         ps = [evaluate(p, b, a) for p, a, b in zip(people, f1, f2)]
         record = {**{f"n{n}": tests(ps[:n]) for n in ns}, "recovery": recovery(ps)}
+        # version 6: the claim over the people the self-only flag does not catch, recruited until there are max(ns)
+        # of them. Extra people come from their own stream and use the study's prior, so nothing above changes.
+        flags = [flagged(p["y"]) for p in people]
+        kept = [q for q, f in zip(ps, flags) if not f]
+        xrng, extras = np.random.default_rng([*key, 6]), 0
+        while len(kept) < max(ns):
+            p = simulate(truth, xrng)
+            extras += 1
+            if flagged(p["y"]):
+                continue
+            d, y = SUB["calib"], p["y"][IDX["calib"]]
+            a = {k: M.fit(M.MODELS[k], d, y, xrng) for k in FIT}
+            b = {k: M.fit(M.MODELS[k], d, y, xrng, starts=1, prior=priors[k], x0=a[k]) for k in FIT}
+            kept.append(evaluate(p, b, a))
+        r1 = [q["rank_one"] for q in ps]
+        record["unflagged"] = {**{f"n{n}": tests(kept[:n]) for n in ns}, "extras": extras,
+                               "residual_rank_one": float(np.mean([q["rank_one"] for q in kept[:max(ns)]]))}
+        record["flags"] = {"rank_one": [sum(f for f, r in zip(flags, r1) if r), sum(r1)],
+                           "trader": [sum(f for f, r in zip(flags, r1) if not r), len(r1) - sum(r1)]}
         if sim < HIER_SIMS:
             import hier  # noqa: PLC0415  (jax is needed only here)
             Y = np.stack([p["y"][IDX["calib"]] for p in people[:HIER_N]])
@@ -350,8 +399,8 @@ def main(truth, out, *_):
     # (drawn from U(1, 2)) shapes only riskless choices, its lotteries are risk-neutral, and GEO's fitted
     # kappa has no reason to equal it. Version 3 ran with EARLY set to 1.5, which made a coverage figure
     # for EARLY that means nothing (REHEARSAL.md); aggregate_rehearsal.py reports coverage for GEO only.
-    res = {"truth": truth, "version": 5, "spec": sp, "ns": ns, "sims_n": SIMS, "margins": MARGINS,
-           "lapse": M.LAPSE, "hier_sims": HIER_SIMS, "hier_n": HIER_N,
+    res = {"truth": truth, "version": 6, "spec": sp, "ns": ns, "sims_n": SIMS, "margins": MARGINS,
+           "lapse": M.LAPSE, "hier_sims": HIER_SIMS, "hier_n": HIER_N, "main_flag_min": MAIN_FLAG_MIN,
            "true_kappa": sp["kappa"] if sp["base"] == "GEO" else None, "sims": sims, "seconds": time.time() - t0}
     json.dump(res, open(out, "w"))
     print("RESULT-BEGIN")

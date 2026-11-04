@@ -71,6 +71,96 @@ Atlas smoke test, 2 studies of 30 people:
   −0.11.
 - In both truths the true model wins, and the second pass improves every model.
 
+## Version 6 (2026-11-03): the table the new rules read
+
+Version 5 found that the pilot's rules needed changing (PILOT.md). The five open rule decisions were taken
+on 2026-11-03, before any data ("Decisions taken" there). This version computes what they need.
+
+- **Cells.** 79, listed in `rehearsal.py` as `TABLE_V6`, 50 studies of 240 people each, tests on the first
+  60, 120, 160, 200 and 240. 63 went out first; the last 16 are the target-0.7 rows below.
+  - The 22 version 5 cells, rerun.
+  - Rows at `κ` = 0.5 and 0.75 at noise targets 1.0, 1.5 and 2.0 (`G050`, `G075`), with the hierarchical
+    `κ` on 10 studies each, to see how `hier.py` does near its floor of 0.5.
+  - Rank-one shares of 20%, 40% and 60% (`S20`, `S40`, `S60`) at the six rows that reached 0.80 by
+    n = 240 with nobody of rank one (`G100T10`, `G100T15`, `G100T20`, `G125T15`, `G125T20`, `G200T20`) and
+    at the six new rows.
+  - Added after the second pilot rehearsal (PILOT.md, sequence step 4): a noisier row, target 0.7, at every
+    `κ` (`G050T07` to `G200T07`), with the three shares at `κ` up to 1. In up to 17% of simulated pilots the
+    pilot's agreement fell below every target-1.0 row, and the rule then had no noise position. These 16
+    cells ran with the same code; only `TABLE_V6`'s list grew afterwards.
+- **Two populations per study.** The claim is scored over every simulated person, as DESIGN.md registers
+  it, and over the people the main study's self-only flag does not catch: the self-favouring option in at
+  least 15 of block R's 20 pairs at ratios 2 and 3 (`rehearsal.flagged`). For the second, people are
+  recruited until there are n unflagged. The extra people come from their own random stream and use the
+  study's prior, so nothing in the first population changes.
+- **Stimuli version 5.** Only the eight attention checks moved (PILOT.md, inclusion rule). On Atlas, the
+  140 trials of version 4 and version 5 differ in ids 112 to 119 alone, the order is identical, and so
+  are the pilot-only trials. The digest is now `4abe1d59…` (version 4: `35a806ad…`). The rehearsal never
+  reads the checks, and each simulated person draws one uniform number per trial whatever the trial
+  holds, so no other simulated choice changes.
+- **Checks on Atlas before launch.** `G100T15S40` and `G150T10` with REHEARSAL_QUICK under the version 5
+  code and stimuli and under version 6: every claim and recovery record identical. `G050T15` and
+  `G100T15S60` ran through the new path; a quick cell used 0.10 GiB.
+- **Where it ran.** NRP, 79 one-CPU Jobs, at most 3 attempts each, from five drivers on Atlas (screens
+  `corr-reh6a`, `-b1`, `-b2`, `-c` and `-e`, outputs `nrp_reh_v6`). Only the six rows below 1 ran `hier.py`.
+- **Expected before the run.** Written while the jobs ran, before any result.
+  - The 22 version 5 cells reproduce their version 5 pass counts exactly, over everyone.
+  - With nobody of rank one, the claim over unflagged people passes about as often as over everyone,
+    within a study or two of 50. The pilot's flag catches 0.6% to 2% of people who trade off, and
+    recruitment refills to n.
+  - With rank-one people, power over everyone falls with the share, as in version 5. Over unflagged people
+    it stays near the share-0 row. It is lower where the flag misses more rank-one people (`κ = 2` and the
+    noisy rows), since those it misses still dilute the mean.
+  - The rows below 1 have at least the power of the `κ = 1` row at every target. Concave cost makes both
+    terms of the cross-partial favour the correlated lottery (DESIGN.md), and makes the evaluator risk
+    seeking at the ideal, which neither EARLY nor CAG (`ρ ≥ 1`) can produce. RDU with `η < 1` can, so H2
+    is the comparison most at risk.
+  - Specificity holds in both populations: at most 1 pass in 50 at every n.
+  - The main study's flag catches fewer rank-one people than the pilot's, since it lacks the four ratio-6
+    pairs, the clearest test of ignoring the charity.
+
+### Results (2026-11-04)
+
+The table is `results/power_table_v6.json` (sha256 `e160b1e1…`), built from the 79 cell files in
+`results/rehearsal_v6/`, gzipped. Each file's sha256 before gzip is in the table's `inputs_sha256`. Figures
+are percent of 50 studies passing the main claim at n = 120, at noise target 1.5 unless stated.
+
+| `κ`, target 1.5 | share 0, everyone | share 0, unflagged | 0.2 | 0.4 | 0.6 (everyone / unflagged) |
+|---|---|---|---|---|---|
+| 0.5 | 100 | 100 | 98 / 100 | 98 / 100 | 88 / 98 |
+| 0.75 | 100 | 100 | 94 / 98 | 86 / 100 | 44 / 98 |
+| 1 | 96 | 96 | 88 / 100 | 58 / 90 | 10 / 96 |
+| 1.25 | 72 | 76 | 58 / 84 | 18 / 62 | 2 / 70 |
+| 1.5 | 40 | 38 | | 4 / 34 | |
+
+- **With nobody of rank one, the two populations agree** within a few points (κ 2 at target 2.0: 72 and 72).
+  Prediction held.
+- **The rows below 1 have more power than `κ = 1` at every target.** At target 1.0: 100, 98 and 84 at `κ`
+  of 0.5, 0.75 and 1; at target 0.7: 90, 68 and 20. Prediction held.
+- **Target 0.7** has little power from `κ = 1` up: 20% at 1, 2% at 1.25, none above.
+- **Rank-one people.** Over everyone, power collapses as the share grows. Over unflagged people it stays near
+  the share-0 row, except where the flag misses many: at `κ = 2`, target 2.0, it is 72, 58, 52 and 40 at
+  shares 0 to 0.6. Prediction held. On 2026-11-04 the owner chose the unflagged population for the main
+  tests (PILOT.md), so the rule reads that column.
+- **Specificity holds in both populations.** None of the five non-GEO cells passed in any study at any n.
+  Prediction held.
+- **The version 5 reruns did not reproduce exactly.** 17 of 22 cells did. G100T10, G125T10, G125T15 and
+  G150T10 moved by one study of 50 at one n, and G125T20 by two. Prediction wrong. Every study's H
+  estimates differ, typically in the sixth decimal (median 5×10⁻⁷, largest 7×10⁻³). On Atlas the old and
+  new code gave identical records, so the likeliest cause is floating point differing between NRP nodes,
+  which moves a study near the margin. That is not proven.
+- **The main study's flag caught more rank-one people than the pilot's, not fewer.** In the cells, 70% to
+  99.5% of rank-one people, and 0.7% to 4.2% of GEO people who trade off (0% to 5.6% under the other
+  truths). The four ratio-6 pairs offer only 5 of one's own points, and rank-one people choose noisily
+  there. Prediction wrong.
+- **What restriction costs.** At a share of 0.6 a study needed 180 to 375 extra people to reach 240
+  unflagged. Among unflagged people the rank-one share left was up to 30%, where the flag is weakest.
+- **`hier.py` at 120 people below `κ = 1`.** At `κ = 0.75` its posterior medians were 0.72 to 0.76, and the
+  95% interval covered the truth in 9 of 10 studies. At `κ = 0.5` it never covered: its population `κ` is
+  0.5 + exp(·), so the truth sits on the boundary, and the medians were 0.59 to 0.63.
+- **The rank-one check** (version 5's `n(1 − s)`) missed in most share cells, as in version 5.
+- Cells took 21 to 217 minutes. No Job was lost.
+
 ## Version 5 (2026-11-03): the power table the pilot reads
 
 - **Purpose.** The pilot puts the study in one row of a power table that is computed and sealed before
