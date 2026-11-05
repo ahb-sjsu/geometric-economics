@@ -12,7 +12,8 @@ stimuli.py beside it. REHEARSAL_QUICK=1 for a smoke test.
 Version 6 (2026-11-03), the table the pilot's rules now need (PILOT.md, decisions of 2026-11-03). TABLE_V6 adds
 rows at kappa 0.5 and 0.75 (G050, G075) and the rank-one share as a dimension: S20, S40 and S60 at every row
 that reached 0.80 by n = 240 in version 5, and at the new rows. After the first pilot rehearsals it also has a
-noisier row, target 0.7, at every kappa (NOISY_ROWS), with shares at kappa up to 1: 79 cells in all. Every study also scores the main claim over
+noisier row, target 0.7, at every kappa (NOISY_ROWS), with shares at kappa up to 1: 79 cells. While the pilot's size
+was chosen it gained shares at the four rows where a mix the rule reads could reach 0.80 (GAP_CELLS): 90 cells in all. Every study also scores the main claim over
 the people the main study's self-only flag does not catch (`flagged`: the self-favouring option in at least
 MAIN_FLAG_MIN of block R's 20 pairs at ratios 2 and 3), recruited until there are max(ns) of them. Those extra
 people come from their own stream, so every version 5 number reproduces; the version 5 cells are rerun for this
@@ -106,8 +107,16 @@ LOW_ROWS = [f"G{k:03d}T{t}" for k in (50, 75) for t in (10, 15, 20)]
 # kappa <= 1. A pilot's pessimistic agreement fell below every target-1.0 row in up to 17% of simulated pilots, and
 # the rule then had no noise position. These 16 cells ran with this file before the list grew; nothing else differs.
 NOISY_ROWS = [f"G{k:03d}T07" for k in (50, 75, 100, 125, 150, 175, 200)]
+# Added 2026-11-04, while choosing the pilot's size: shares at every row the rule can read in a mix that reaches 0.80.
+# The rule reads power between two noise rows, and a share above 0 at a row without share cells reads as power 0. That
+# is harmless only where no mix through the row can reach 0.80. Over unflagged people, the population the main tests now
+# count, it fails at G125T10 and G200T15, which border rows that reach 0.80 by n = 240 with nobody of rank one, at
+# G150T20, which reaches it there (0.82 at n = 240), and at G150T15 beside it (PILOT.md, "Pilot size"). The first three
+# cells ran with a list that held only G125T10's; nothing else differs.
+GAP_CELLS = ([f"G125T10S{s}" for s in (20, 40, 60)] + [f"G150T15S{s}" for s in (20, 60)]
+             + [f"G150T20S{s}" for s in (20, 40, 60)] + [f"G200T15S{s}" for s in (20, 40, 60)])
 TABLE_V6 = (TABLE_V5 + LOW_ROWS + [f"{r}S{s}" for r in POWERED_V5 + LOW_ROWS for s in (20, 40, 60) if f"{r}S{s}" not in TABLE_V5]
-            + NOISY_ROWS + [f"{r}S{s}" for r in NOISY_ROWS[:3] for s in (20, 40, 60)])
+            + NOISY_ROWS + [f"{r}S{s}" for r in NOISY_ROWS[:3] for s in (20, 40, 60)] + GAP_CELLS)
 CELL = re.compile(r"(?:G(\d{3})|(EARLY|RDU|CAG|ADD|IA))T(\d{2})(?:S(\d{2}))?(?:L(\d{2}))?")
 MAIN_FLAG_MIN = 15          # of block R's 20 pairs at ratios 2 and 3 (version 6)
 FIT = ["GEO", "EARLY", "RDU", "CAG", "IA"]

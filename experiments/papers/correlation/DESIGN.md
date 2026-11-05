@@ -247,7 +247,7 @@ below −0.005.
   - In rehearsal version 3 (10 studies per truth, n = 120), the interval excluded 2 in every study
     under GEO1 and covered 1 in 9. Under GEO2 it excluded 1 in every study but covered 2 in only 7,
     so the intervals may be somewhat narrow.
-  - At pilot size, 30 to 40 people, the posterior sat 0.1 to 0.2 below the truth at `κ` of 1 to 2, with
+  - At the first pilot size, 30 to 40 people, the posterior sat 0.1 to 0.2 below the truth at `κ` of 1 to 2, with
     or without people of rank one (`PILOT.md`, pilot rehearsal). Why is not known. The pilot's
     sample-size rule therefore reads `κ` from the lottery-choice rate against simulated pilots instead.
   - At 120 people below 1 (rehearsal version 6), the interval covered `κ = 0.75` in 9 of 10 studies. It
@@ -298,7 +298,7 @@ below −0.005.
    `aggregate_rehearsal.py`. The run record is `REHEARSAL.md`.
 2. **Language-model panel, optional.** An instrument check of wording and answer format only. It is
    not evidence about people.
-3. **Pilot, 40 people** (`PILOT.md`). It measures the person-level quantities the rehearsal assumed
+3. **Pilot, 120 people** (`PILOT.md`; 40 until the owner chose a larger pilot on 2026-11-04). It measures the person-level quantities the rehearsal assumed
    and checks the instrument. It reads no test or secondary choice. A power table and a sample-size
    rule are sealed with this design before it runs, and the pilot only says which row of the table
    applies.

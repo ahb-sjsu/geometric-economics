@@ -77,7 +77,8 @@ Version 5 found that the pilot's rules needed changing (PILOT.md). The five open
 on 2026-11-03, before any data ("Decisions taken" there). This version computes what they need.
 
 - **Cells.** 79, listed in `rehearsal.py` as `TABLE_V6`, 50 studies of 240 people each, tests on the first
-  60, 120, 160, 200 and 240. 63 went out first; the last 16 are the target-0.7 rows below.
+  60, 120, 160, 200 and 240. 63 went out first; the last 16 are the target-0.7 rows below. On 2026-11-04 the
+  list gained 11 more ("The gap cells", below).
   - The 22 version 5 cells, rerun.
   - Rows at `κ` = 0.5 and 0.75 at noise targets 1.0, 1.5 and 2.0 (`G050`, `G075`), with the hierarchical
     `κ` on 10 studies each, to see how `hier.py` does near its floor of 0.5.
@@ -160,6 +161,42 @@ are percent of 50 studies passing the main claim at n = 120, at noise target 1.5
   0.5 + exp(·), so the truth sits on the boundary, and the medians were 0.59 to 0.63.
 - **The rank-one check** (version 5's `n(1 − s)`) missed in most share cells, as in version 5.
 - Cells took 21 to 217 minutes. No Job was lost.
+
+### The gap cells (2026-11-04)
+
+While the pilot's size was being chosen (PILOT.md, "Pilot size"), the rule turned out to read four rows without
+share cells in mixes that can reach 0.80. It read those cells as power 0. The 11 missing cells join `TABLE_V6` as
+`GAP_CELLS`: G125T10, G150T20 and G200T15 at shares 0.2, 0.4 and 0.6, and G150T15 at 0.2 and 0.6 (its 0.4 cell is
+version 5's). They run on NRP with the version 6 code, 90 cells in all.
+
+- **Expected before the run.** Written while the cells ran, before any result.
+  - Over unflagged people each cell stays near its row's share-0 power at n = 240: about 0.5 to 0.6 at G125T10,
+    0.7 to 0.8 at G150T20, 0.45 to 0.55 at G150T15 and 0.5 to 0.65 at G200T15. It is lowest at share 0.6 and at
+    `κ = 2`, where the flag misses the most rank-one people.
+  - Over everyone, power falls steeply with the share, as in every other share cell.
+  - No cell exceeds its share-0 row by more than three studies of 50.
+
+**Result.** The table is `results/power_table_v6b.json` (sha256 `1ac20753…`), 90 cells, none missing. The 11 new
+cell files joined `results/rehearsal_v6/`, gzipped, each matching the table's `inputs_sha256`. `results/power_table_v6.json` (79
+cells) stays as the record that the first four pilot rehearsals were scored against. Percent of 50 studies passing
+the main claim over unflagged people at n = 240, and the share of rank-one people the main study's flag caught:
+
+| Row | share 0 | 0.2 | 0.4 | 0.6 | flag catches |
+|---|---|---|---|---|---|
+| G125T10 | 58 | 58 | 36 | 20 | 77% to 78% |
+| G150T15 | 56 | 66 | 52 | 38 | 84% to 85% |
+| G150T20 | 82 | 70 | 74 | 70 | 91% to 92% |
+| G200T15 | 68 | 42 | 40 | 12 | 68% to 69% |
+
+- **The first prediction was partly wrong.** Power held near the share-0 row only at G150T20, where the flag catches
+  over 90% of rank-one people. Where it catches fewer, power fell with the share: to 36 and 20 at G125T10, and to 40
+  and 12 at G200T15. The rank-one people the flag misses dilute the mean, as at `κ = 2` and target 2.0 in version 6
+  (72, 58, 52 and 40).
+- **Over everyone, power fell steeply**, to 12 or less at a share of 0.4. Prediction held.
+- **One cell exceeded its share-0 row by more than three studies:** G150T15 at 0.2, 33 of 50 against 28 at n = 240,
+  though below it at 120 to 200. Prediction wrong once, by about one standard error.
+- The 79 cells are unchanged, specificity still holds (no pass in any non-GEO cell), and the version 5 cells moved
+  as before. Cells took 29 to 142 minutes, and no Job was lost.
 
 ## Version 5 (2026-11-03): the power table the pilot reads
 

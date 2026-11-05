@@ -8,8 +8,9 @@ them at the seal ("Decisions taken, 2026-11-03", below). The table they need is 
 on 2026-11-04 (79 cells, REHEARSAL.md). The pilot rehearsal ran four times. Its first two runs each failed a bar
 and changed the rule, and the fourth passed every bar as restated before it ran (sequence step 4). On
 2026-11-04 the owner accepted the decisions and chose to count only the people the self-only flag does not
-catch in the main tests. How cautious the rule may be is still open. The instrument is not built, because it
-depends on the platform.
+catch in the main tests. The same day the owner chose a larger pilot to make the rule less cautious. By a rule
+written before the runs it is 120 people, and the table gained 11 cells the rule had been reading as zero
+("Pilot size"). The instrument is not built, because it depends on the platform.
 
 ## What it is for
 
@@ -30,7 +31,7 @@ The rehearsal's power rests on person-level ranges that were chosen, not measure
 cost behaves like distance (`κ = 1`), and in 30% to 34% if it behaves like squared distance (`κ = 2`)
 (rehearsal versions 3 and 4). Nothing yet says where people are. If the pilot puts the population `κ`
 near 2, no n in the table reaches adequate power, and a null would not be informative (DESIGN.md, the
-population `κ`). Forty people can show that before 240 are paid.
+population `κ`). The pilot can show that before the main study is paid for.
 
 **It tests no hypothesis.** It never reads a choice that H1 to H4, MF1, MF2 or SH1 to SH3 use. Its
 estimates are design inputs, not findings about preferences.
@@ -77,9 +78,9 @@ looking is not a protocol.
 
 ## Participants and instrument
 
-**Participants.** 40 who meet the inclusion rule, from the population and platform the main study
-will use. Recruitment continues until 40 qualify. The number who did not is recorded, because it sets
-the main study's recruitment.
+**Participants.** 120 who meet the inclusion rule, from the population and platform the main study
+will use (40 until 2026-11-04; "Pilot size"). Recruitment continues until 120 qualify. The number who did not
+is recorded, because it sets the main study's recruitment.
 
 **Inclusion rule, the main study's too.** DESIGN.md had none. The main study also leaves out people flagged
 as self only (DESIGN.md, Inclusion; the owner's decision of 2026-11-04). The pilot keeps them, since it
@@ -141,14 +142,16 @@ they carry the same incentive.
 **Length.** About 42 minutes: DESIGN.md's 35 for the main trials, plus the extra trials and the
 debrief.
 
-**Why 40.**
-- From 40 people a share near 0.3 is known to about ±0.14 (95%), and a rate near 0.1 to 0.15, such as
-  the exclusion rate, to about ±0.1.
-- For `κ`, the lottery-choice rate of about 30 unflagged people varies between simulated pilots by about
-  ±0.012 (20th to 80th percentile), against steps of 0.015 to 0.02 between rows 0.25 apart (Reading the
-  pilot). So 40 people place the study within a row or two, and the pilot rehearsal checks that the 80%
-  limit covers as it should (sequence step 4).
-- The cost is a third of the main study's at its smallest size, plus about 7 minutes per person.
+**Why 120.** The pilot had 40 people until 2026-11-04, when the owner chose a larger one ("Pilot size").
+- Of 80, 120 and 160, 120 is what the rule written before the runs chose. With 80 the sample-size rule stopped
+  13 points more often at `κ = 1`, and 160 bought almost nothing more.
+- From 120 people a share near 0.3 is known to about ±0.08 (95%), and a rate near 0.1 to 0.15, such as the
+  exclusion rate, to about ±0.06. From 40 it was ±0.14 and ±0.1.
+- For `κ`, a simulated pilot's lottery-choice rate varies by about ±0.006 between pilots of 120 (20th to 80th
+  percentile; ±0.012 at 40), against steps of 0.015 to 0.02 between rows 0.25 apart (Reading the pilot). The
+  pilot rehearsal checks that the 80% limit covers as it should (sequence step 4).
+- It pays about as many people as the main study at its smallest size, each for about 7 minutes longer:
+  about 84 hours of participants' time, against 28 for 40.
 
 ## The power table, computed before the pilot
 
@@ -194,7 +197,9 @@ cell at n = 60, 120, 160, 200 and 240 (REHEARSAL.md, `results/power_table_v6.jso
 - Every study scores the main claim twice: over every simulated person, as DESIGN.md registers it, and
   over the people the main study's self-only flag does not catch, recruited until there are n of them.
 - A noisier row, target 0.7, at every `κ`, with shares at `κ` up to 1: 16 cells, added after the second
-  pilot rehearsal found pilots noisier than every row (sequence step 4). 79 cells in all.
+  pilot rehearsal found pilots noisier than every row (sequence step 4). 79 cells.
+- Shares at the four rows the rule reads in mixes that can reach 0.80 (G125T10, G150T15, G150T20 and G200T15):
+  11 cells, added while the pilot's size was chosen ("Pilot size"). 90 cells in all (`results/power_table_v6b.json`).
 
 **Result.**
 - **The rows below 1 have more power than `κ = 1`:** at target 1.0 and n = 120, 100%, 98% and 84% at `κ` of
@@ -208,8 +213,8 @@ cell at n = 60, 120, 160, 200 and 240 (REHEARSAL.md, `results/power_table_v6.jso
 ## Reading the pilot
 
 **Each model-free statistic is read against simulated pilots.** `pilot_analysis.py reference`
-simulates pilots of 40 included people from the rehearsal's truths through the same 160 trials, recruiting
-until 40 pass the inclusion rule, and computes each statistic the same way. The real value is read against that distribution, never against a number
+simulates pilots of 120 included people from the rehearsal's truths through the same 160 trials, recruiting
+until 120 pass the inclusion rule, and computes each statistic the same way. The real value is read against that distribution, never against a number
 chosen by hand, so the reference absorbs the statistic's own bias and spread.
 
 **The rule.** Each quantity enters at its pessimistic 80% limit, so that over the pilot's sampling
@@ -229,8 +234,8 @@ limit, the probability is not simply 0.8, and Browne does not cover it. The pilo
     levels (`kappa_belt`). The draw at level 0.8 is an 80% upper limit for `κ` by construction, with the
     statistic's own bias and spread in it, as for every other statistic here.
   - The rate falls steadily with `κ`: 0.54, 0.52, 0.50, 0.48, 0.46, 0.45 and 0.43 from 0.5 to 2 at target
-    1.5. It hardly moves with noise, and a single pilot's spread (about ±0.012 between the 20th and 80th
-    percentiles) is smaller than the step between rows, so it places `κ` to about a row.
+    1.5. It hardly moves with noise, and a single pilot's spread (about ±0.006 between the 20th and 80th
+    percentiles at 120 people, ±0.012 at 40) is a third of the step between rows or less.
   - Each draw takes the lower power of the two tabulated rows around it. A draw above 2 takes power 0,
     since nothing above 2 was simulated; one below 0.5 takes the lowest row.
   - n is chosen so that the 20th percentile of power over the draws reaches 0.80 (The sample size). When
@@ -275,9 +280,10 @@ limit, the probability is not simply 0.8, and Browne does not cover it. The pilo
 **The sample size.**
 - For each n of 120, 160, 200 and 240, power at each `κ` row is read at the pilot's noise (above) and at
   that row's upper limit for `s`, linearly between the tabulated shares of 0, 0.2, 0.4 and 0.6.
-  - The table has shares only at rows that reached 0.80 by n = 240 with nobody of rank one, and at the
-    rows below 1. Elsewhere a share above 0 counts as power 0, and so does a share above 0.6. Both err
-    toward stopping.
+  - The table has shares at the rows that reached 0.80 by n = 240 with nobody of rank one, at the rows
+    below 1, and, since 2026-11-04, at every row the rule can read in a mix that reaches 0.80 ("Pilot size").
+    Elsewhere a share above 0 counts as power 0, which changes no decision. A share above 0.6 also counts as
+    power 0, which errs toward stopping.
   - Version 5 read the row's power at n(1 − s) people instead. Its rank-one check showed that this
     overstates power badly (The power table, result).
 - Over the draws of `κ`, as above, the 20th percentile of that power.
@@ -312,8 +318,8 @@ is fixed and the pilot repeated with new people.
 
 **Targeting rules.** These change the stimuli, not the people. Each fires when its share is above the
 97.5th percentile of its reference under every version 4 truth (the largest of the seven) and is at
-least 6 of the 40. The first condition says the population differs from what the rehearsal assumed. The second says enough
-people are affected to matter.
+least 15% of the pilot: 18 of the 120 (6 of 40 before 2026-11-04). The first condition says the population differs
+from what the rehearsal assumed. The second says enough people are affected to matter.
 - **Self side.** People who never trade toward the charity in block R but do in at least 2 of the 4
   ratio-6 pairs. Block R gains a cell of ratio-6 pairs.
 - **Charity side.** People who always trade toward the charity in block R but keep their own points in
@@ -328,12 +334,12 @@ new seal, all before the main study.
 ## Data and provenance
 
 - **The raw export never enters the public repository.** It holds platform identifiers, which the split
-  replaces with p001 to p040.
+  replaces with p001 to p120.
 - **`split_pilot.py` writes the readable and the sealed file,** and records the sha256 of each in the
   pilot record (`split_record.json`). It also writes `id_map.json`, the only output with platform
   identifiers. It stays private, and it is what bars pilot participants from the main study.
 - **The sealed file is opened only after the main study is graded.** Anything read from it then is
-  reported as an unregistered sample of 40.
+  reported as an unregistered sample of 120.
 - **`pilot_analysis.py` writes `pilot_estimates.json` only when the input declares
   `"source": "human"`,** and `rehearsal_pilot_estimates.json` otherwise. It refuses an undeclared source
   and a stimulus hash that does not match `stimuli.py`.
@@ -357,7 +363,8 @@ new seal, all before the main study.
    analysis, and checks that every cell lands where it should and nowhere else. An optional
    language-model pass over the wording (DESIGN.md, stage 2) fits here. It is not evidence about
    people.
-4. **Pilot rehearsal:** simulated pilots of 40 through the whole chain, 100 per truth. The truths are
+4. **Pilot rehearsal:** simulated pilots through the whole chain: 100 per truth of 40 people in runs 1 to 4, and
+   200 per truth of 80, 120 and 160 in the fifth, which compared sizes ("Pilot size"). The truths are
    `κ` of 0.75, 1 and 1.5 at noise target 1.5 and `κ = 2` at 2.0, each with a planted rank-one share of
    0.3. The bars below were set on 2026-11-03, before it ran (`pilot_analysis.py summarise`). It must
    show that
@@ -424,8 +431,14 @@ new seal, all before the main study.
    - Each run is scored with its own code and reference against the final table in
      `results/pilot_rehearsal_v6_run1.json` to `_run4.json`. The simulated pilots themselves stay on Atlas
      (`/archive/experiments/correlation/pilot_reh_v6*`). Each quantity enters at its
-     own 80% limit, so together they ask for more than 80% assurance. Ways to lower it are the owner's to
-     weigh (Open decisions).
+     own 80% limit, so together they ask for more than 80% assurance. Ways to lower it were the owner's to
+     weigh, and the owner chose a larger pilot.
+
+   **Fifth run, 2026-11-04: pilots of 80, 120 and 160** (seeds 40 to 43, 50 to 53 and 60 to 63; 200 pilots per
+   truth and size, on NRP), against the table with the gap cells and the bars as restated. Every bar passed at
+   every size. The rule chose 120 ("Pilot size"). The simulated pilots stay on Atlas
+   (`/archive/experiments/correlation/pilot_reh_v7_n*`), and `results/pilot_size_n*.json` score them. They ran with
+   this code while `PILOT_N` was still 40, each size given by `--pilot-n`; nothing else in the code differs.
 5. **Power table:** rehearsal version 6 on NRP (version 5 before the decisions of 2026-11-03).
 6. **Seal** DESIGN.md (with the inclusion and sample-size rules), this protocol, the code and the table
    under a signed tag. Owner's OK.
@@ -458,15 +471,17 @@ new seal, all before the main study.
 |---|---|
 | `stimuli.py`: `pilot_extras`, `presentation`, `digest` | the 20 pilot-only trials (ids 140 to 159, role "pilot", their own random stream); one participant's order from their seed; the hash the export must declare. Version 5 (2026-11-03) moves the attention checks and nothing else: every other trial, and the order, is version 4's |
 | `split_pilot.py` | the export into `readable.json`, `sealed.json`, `id_map.json` and `split_record.json`. Its docstring defines the export format the instrument must write |
-| `pilot_analysis.py` | `reference`, `analyse`, `size`, `self-test`, `rehearse` (the pilot rehearsal) and `summarise` (its bars), with the guards above. `kappa_belt` turns the lottery rate into draws of `κ`; the rule itself is `choose_n`, which `summarise` applies to simulated pilots because `size` refuses simulated estimates |
+| `pilot_analysis.py` | `reference`, `analyse`, `size`, `self-test`, `rehearse` (the pilot rehearsal) and `summarise` (its bars), with the guards above. `kappa_belt` turns the lottery rate into draws of `κ`; the rule itself is `choose_n`, which `summarise` applies to simulated pilots because `size` refuses simulated estimates. `--pilot-n` runs `reference`, `self-test`, `rehearse` and `summarise` at another pilot size; `analyse` and `size` take only the sealed size |
 | `rehearsal.py` | version 5 and 6 cells with `κ`, noise target, rank-one share and lapse ceiling as parameters (REHEARSAL.md); version 6 adds the main study's self-only flag and scores the claim over unflagged people too; `simulate` runs the same people through the pilot-only trials |
 | `power_table.py` | the table from the version 6 runs, both populations, with the rank-one, specificity and version 5 reproduction checks |
 | `hier.py` | also reports the posterior's draws of the population median `κ`, which the first pilot rehearsal's rule read. The rule now reads `kappa_belt`, and `hier.py`'s `κ` is reported |
-| `submit_nrp.py` | the NRP driver, for rehearsal cells and for the pilot rehearsal (`--pilot-ref`, `--pilot-table`) |
+| `submit_nrp.py` | the NRP driver, for rehearsal cells and for the pilot rehearsal (`--pilot-ref`, `--pilot-table`); since 2026-11-04 also at other pilot sizes (`--pilot-n`, `--no-hier`) and for references (`--pilot-reference`) |
+| `pilot_decompose.py` | applies the rule again to the pilot rehearsal's simulated pilots with some of its inputs set to the truth's own values, to show which limit makes it stop ("Pilot size") |
 | the instrument | not built: it depends on the platform. It must write the export that `split_pilot.py` documents |
 
 **Self-test** (`pilot_analysis.py self-test`, on Atlas). 21 of 21 checks pass (2026-11-03, with the revised
-`κ` rule; the 20 before it also passed with `hier.py` fitting `κ`). Each refusal is checked to name its own
+`κ` rule; the 20 before it also passed with `hier.py` fitting `κ`). On 2026-11-04 they passed again at the new
+size of 120, and at 40 and 80 through `--pilot-n`. Each refusal is checked to name its own
 reason. The four new checks:
 - the `κ` rule gives version 5's n when power falls with `κ` (160 against 160, a made-up table);
 - where power rises again at `κ = 2`, it stops, where rounding up would have chosen 160;
@@ -489,7 +504,7 @@ reason. The four new checks:
 - The round trip puts every trial where its role says.
 - A deliberately broken split that also routes the test trials to the readable file fails the round trip:
   1,920 misplaced trials, the 48 test trials of each of 40 simulated people (46 with version 4's attention
-  checks, which excluded 6). The analysis's own guard refuses it too.
+  checks, which excluded 6), and 5,760 at 120. The analysis's own guard refuses it too.
 
 **The pilot rehearsal** (sequence step 4) ran three times. The first run fitted `hier.py` in every pilot
 and ran on NRP, about 2.2 minutes per pilot. The later runs skip it, since the rule no longer reads it, and
@@ -517,6 +532,11 @@ per row. It took about 10 minutes on one Atlas CPU, with a peak of 0.10 GiB. Eac
 one before it exactly and added to it: the first pilot-rehearsal run read `pilot_reference_v6_run1.json`
 (21 rows) and the second `pilot_reference_v6_run2.json` (with the lottery rates). Version 5's reference
 (`results/pilot_reference_v5.json`, 423 s) is kept as the record of the old attention checks.
+- **The pilot of 120 reads `results/pilot_reference_n120.json`** (2026-11-04), built the same way for pilots of 120
+  in 17 minutes on one NRP CPU. The references for 80 and 160, built to choose the size, are kept beside it
+  (`_n80`, `_n160`). All four sizes give identical flag rates in all 28 rows, since those come from their own
+  random stream. Between pilots of 40 and 120 the lottery rate's 20th to 80th percentile spread shrank by a
+  factor of 0.56, close to the expected 1/√3.
 
 ## Decisions taken, 2026-11-03
 
@@ -547,6 +567,8 @@ the target-0.7 row, the restated power bar): "go with your recommendations".
    people added, so they need no share cells, and the rule reads them as power 0. The share of 0.6 is
    a margin. Engel's meta-study suggests that just under a fifth give a charity nothing at one point for
    one (above), but a pilot of 40 is noisy, and its upper limit enters converted by the flag's rates.
+   *Revised 2026-11-04:* the reasoning holds for a row read alone, not for one read in a mix with a row that
+   reaches 0.80. Eleven cells fill such rows ("Pilot size").
 5. **The noise rule interpolates** between rows (Reading the pilot). It keeps the 20th percentile's
    caution without version 5's jump of a full row, which happened about 80% of the time.
 
@@ -565,16 +587,100 @@ everyone included.
   powered truth had the power under this population; under the registered one, 5 of the 11 chosen in
   the fourth run did not, at `κ = 1` (sequence step 4).
 
+## Pilot size: larger, the owner's decision of 2026-11-04
+
+The fourth pilot rehearsal found the rule stopping in a third to all of the simulated pilots whose truth some n up
+to 240 could power. Three remedies were offered: a larger pilot, a cap above 240, or a lower assurance. The owner
+chose the first: "go with a larger pilot". The size itself is Claude's choice, by the rule below, and the owner may
+change it before the seal.
+
+**What made the rule stop at 40.** Runs 3 and 4 (200 simulated pilots per truth) were scored again, against the
+table as it then stood (79 cells), with one or more of the rule's three inputs replaced by the truth's own value
+(`pilot_decompose.py`; `results/pilot_decompose_n40_table79.json`). Over unflagged people:
+
+| Truth | n it needs | Stops, as run | Noise and share exact | All three exact |
+|---|---|---|---|---|
+| `κ = 0.75`, target 1.5, share 0.3 | 120 | 29% | 6% | 0%, and n = 120 every time |
+| `κ = 1`, target 1.5, share 0.3 | 120 | 66% | 28% | 0%, and n = 200 every time |
+| `κ = 2`, target 2.0, share 0.3 | 200 | 100% | 100% | 100% |
+
+- **At `κ = 1`, exact inputs still choose 200.** Half of a confidence distribution centred on 1 lies above 1. Each
+  such draw takes the lower power of the 1 and 1.25 rows, and the 1.25 row needs 200. A pilot of any size pays
+  that step when the truth sits exactly on a row.
+- **At `κ = 2` the rule stops even with exact inputs.** A draw just under 2 takes the lower power of the 1.75 and 2
+  rows, and the 1.75 row reaches 0.80 at no n. A draw above 2 takes 0. This is decision 3 working as intended,
+  since power is not monotone in `κ`, and no pilot size changes it.
+- **So a larger pilot buys the distance between the first and last columns.** At `κ = 0.75` that is all of the
+  stopping. At `κ = 1` it turns stops into n = 200.
+
+**A gap in the table, filled.** The rule reads power between two noise rows. A share above 0 at a row without share
+cells reads as power 0 there (decision 4). That is harmless only where no mix through the row can reach 0.80.
+Decision 4 overlooked the mix, and it fails at four rows.
+- G125T10 and G200T15 border rows that reach 0.80 by n = 240 with nobody of rank one. Over unflagged people
+  G125T10's own power is 0.32 to 0.58 at n = 120 to 240.
+- Over unflagged people, the population the owner chose, G150T20 reaches 0.80 itself (0.82 at n = 240, against
+  0.72 over everyone), and G150T15 borders it.
+- A pilot near `κ = 1` reads G125T10 whenever its agreement percentile sits below the target-1.5 median, which the
+  20th percentile usually does.
+- The 11 missing cells (G125T10, G150T20 and G200T15 at shares 0.2, 0.4 and 0.6; G150T15 at 0.2 and 0.6) ran on
+  NRP with the version 6 code, which they join as `GAP_CELLS` (`rehearsal.py`): 90 cells in all (REHEARSAL.md,
+  "The gap cells"). Against them, the pilots of 40 at `κ = 1` stopped in 62% instead of 66%.
+
+**How the size is chosen.** Written on 2026-11-04, before any pilot of a new size ran.
+- The candidates are 80 and 120 included people. 120 is the cap: a pilot larger than the smallest main study it
+  sizes would cost more than that study. A size of 160 also runs, to show what more would buy.
+- Each size runs the pilot rehearsal of sequence step 4 on NRP: the same four truths, 200 simulated pilots each on
+  fresh seeds, read against references simulated at that size, and scored against the table with the gap cells
+  under the bars as they stand.
+- The size is 80 if, over unflagged people, its stop rates at `κ = 0.75` and at `κ = 1` are each within 10 points
+  of 120's. Otherwise it is 120. These are the truths inside the table that some n powers; `κ = 2` is left out,
+  since no size changes it.
+- If a bar fails at the chosen size, the rule is revised and rerun, as after runs 1 and 2. The size does not change
+  to rescue a bar.
+
+**Result (NRP, 2026-11-04).** Stops where some n up to 240 has the power, over unflagged people, against the table
+with the gap cells, in 200 simulated pilots per truth and size (`results/pilot_size_n*.json`). The last column is
+the truth no n reaches, where any n chosen is a bad choice.
+
+| Pilot size | `κ = 0.75` stops | `κ = 1` stops | `κ = 2`, target 2.0, stops | `κ = 1.5`: an n chosen |
+|---|---|---|---|---|
+| 40 (runs 3 and 4) | 29% | 62% | 100% | 2.5% |
+| 80 | 6.5% | 58% | 100% | 1% |
+| 120 | 3% | 45% | 100% | 0% |
+| 160 | 2.5% | 43.5% | 100% | 0% |
+
+- **The size is 120.** At `κ = 0.75`, 80 comes within 10 points of 120 (6.5% against 3%). At `κ = 1` it is 13
+  points behind (58% against 45%).
+- **Every bar of step 4 passes at every size.** At 80 to 160 people the `κ` limit covers the truth in 72% to
+  85.5% of pilots, the agreement percentile in 71% to 95%, and the share limit in 81% to 92.5%. At most 1% of
+  pilots choose an n without the power.
+- **What 120 buys.** At `κ = 0.75` the rule now goes in 97% of pilots, at n = 120 in 189 of 200. At `κ = 1` it
+  goes in 55%, at n = 120, 160, 200 and 240 in 51, 34, 6 and 19 of 200 pilots, every one of them with the power.
+- **What it does not buy.** At `κ = 1` the rule still stops in 45% of pilots, and 160 people do no better.
+  - Scored again with the agreement percentile at its true value (`pilot_decompose.py`), the pilots of 120 stop
+    in 7%. With the share or `κ` exact instead, they stop in 40% and 58%. So what is left is the noise limit.
+  - About half of `κ`'s draws read the 1.25 row. At the shares the rule reads, that row's power over unflagged
+    people falls from about 0.93 at target 1.5 to about 0.4 at target 1.0, at n = 240.
+  - The 20th percentile of agreement puts about 0.3 of the weight on the weaker row, and more people hardly move
+    it: the median weight was 0.30 at 40 people, 0.29 at 120 and 0.26 at 160. That weight is what pulls the
+    reading under 0.80 in most of the pilots that stop. Lowering the noise assurance, one of the remedies offered,
+    would act on it directly.
+- **`κ = 2` stops at every size,** as the decomposition said it would.
+- **The gap cells** lowered the stops at `κ = 1` from 52.5% to 45% at 120 (against the 79-cell table, then the
+  90-cell one). Over unflagged people, power at G125T10 falls with the share, so they lift the 1.25 row's reading
+  less than its share-0 power would have (REHEARSAL.md, "The gap cells").
+- **With exact inputs, a pilot at `κ = 1` now chooses n = 160,** not 200: the gap cells raised the 1.25 row's
+  reading.
+
 ## Open decisions (owner)
 
 - Population, platform, who runs it, and the ethics route.
 - The charity list and the point rate. The pilot must use the main study's.
 - The cap on n. The table runs to 240.
 - Whether the crossing set stays (DESIGN.md).
-- How cautious the sample-size rule is. With 40 people and each of three quantities at its own 80% limit,
-  it stopped in a third to all of the simulated pilots whose truth some n up to 240 could power (sequence
-  step 4). A larger pilot narrows the limits, a cap above 240 needs new table columns, and a lower
-  assurance accepts more underpowered studies. Each costs money or certainty.
+- The caution left at 120 people ("Pilot size"). The owner chose a larger pilot on 2026-11-04. At `κ = 1` the
+  rule still stops in 45% of simulated pilots, mostly because of the noise limit. A lower noise assurance would
+  act on that; more people would hardly help. At `κ = 2` it stops in all of them by design (decision 3).
 - Sealing.
 
 ## References (read 2026-11-03)

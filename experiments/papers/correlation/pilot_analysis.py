@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """The pilot's analysis (PILOT.md): statistics, references, gates, the row and the sample-size rule.
 
-    python pilot_analysis.py reference OUT.json [--pilots 400] [--people 10000]
+    python pilot_analysis.py reference OUT.json [--pilots 400] [--people 10000] [--pilot-n N]
     python pilot_analysis.py analyse READABLE.json --reference REF.json --table TABLE.json --out DIR
     python pilot_analysis.py size DIR --table TABLE.json
-    python pilot_analysis.py self-test DIR [--hier]
-    python pilot_analysis.py rehearse TRUTH PILOTS OUT.json --reference REF.json --table TABLE.json [--seed K]
-    python pilot_analysis.py summarise OUT.json REHEARSE.json... --reference REF.json --table TABLE.json
+    python pilot_analysis.py self-test DIR [--hier] [--pilot-n N]
+    python pilot_analysis.py rehearse TRUTH PILOTS OUT.json --reference REF.json --table TABLE.json [--seed K] [--pilot-n N]
+    python pilot_analysis.py summarise OUT.json REHEARSE.json... --reference REF.json --table TABLE.json [--pilot-n N]
 
-reference  Simulated pilots of 40 included people from the rehearsal's truths (the version 4 truths and the
+--pilot-n runs the rehearsal's tools at another pilot size than PILOT_N, to choose the size (PILOT.md, "Pilot size").
+analyse and size take no such option: the real pilot is read at the sealed size only.
+
+reference  Simulated pilots of PILOT_N included people from the rehearsal's truths (the version 4 truths and the
            table's GEO rows) through the same 160 trials, every statistic computed as for the real pilot. Also,
            per row, how often the self-only rules flag simulated rank-one people (tpr) and people who trade
            the two off (fpr): the pilot's rule and the main study's.
@@ -85,17 +88,24 @@ TOP_KEYS = {"format", "source", "stimuli_sha256", "split", "participants"}
 PERSON_KEYS = {"pid", "order_seed", "charity", "quiz", "finished", "t_start", "t_main_end", "t_end", "debrief",
                "payment_ok", "trials"}
 TRIAL_KEYS = {"id", "pos", "choice", "rt_ms"}
-PILOT_N = 40
+PILOT_N = 120                        # 40 until 2026-11-04, when the owner chose a larger pilot (PILOT.md, "Pilot size")
+# The pilot rehearsal may run other sizes (`--pilot-n` on reference, rehearse, summarise and self-test, never on
+# analyse or size), so everything below reads PILOT_N when it runs, not when the module loads.
 MAIN_NS = (120, 160, 200, 240)       # never below 120 (PILOT.md)
 TARGET_POWER = 0.80
 FLAG_MIN = 18                        # of the 24 high-ratio riskless pairs
 ATT_MAX = 2                          # attention-check failures allowed by the inclusion rule
-TARGET_MIN = 6                       # a targeting rule also needs at least this many of the 40
+TARGET_SHARE = 0.15                  # a targeting rule also needs at least this share of the pilot (18 of 120; 6 of 40)
 Z80 = 0.8416212335729143             # one-sided 80%
 BOOT = 2000
 V4_TRUTHS = ("GEO1", "GEO2", "EARLY", "RDU", "CAG", "ADD", "IA")
 GATES = {"quiz": ">= 0.80", "finish": ">= 0.85", "inclusion_failures": "<= 0.15", "belief": ">= 0.75",
-         "fast_choices": "<= 0.10", "main_minutes": "<= 45", "payments": "all", "included": f">= {PILOT_N}"}
+         "fast_choices": "<= 0.10", "main_minutes": "<= 45", "payments": "all", "included": ">= PILOT_N"}
+
+
+def target_min():
+    return int(np.ceil(TARGET_SHARE * PILOT_N - 1e-9))
+
 
 TRIALS = stimuli.build()
 EXTRAS = stimuli.pilot_extras(TRIALS)
@@ -247,8 +257,10 @@ def sim_choices(truth, rng):
     return (1 - p["y"]).astype(int), p["shape"]
 
 
-def recruit(truth, rng, n=PILOT_N):
-    """Simulated people until n pass the attention rule, as recruitment does. Returns (included, excluded)."""
+def recruit(truth, rng, n=None):
+    """Simulated people until n (by default PILOT_N) pass the attention rule, as recruitment does. Returns
+    (included, excluded)."""
+    n = n or PILOT_N
     inc, exc = [], []
     while len(inc) < n:
         ch, shape = sim_choices(truth, rng)
@@ -256,7 +268,7 @@ def recruit(truth, rng, n=PILOT_N):
     return inc, exc
 
 
-def simulated_export(truth, rng, n=PILOT_N):
+def simulated_export(truth, rng, n=None):
     """An instrument export of a simulated pilot, in the format split_pilot.py reads, with plausible session
     records (one quiz attempt, finished, belief 5, log-normal response times around 3.5 s)."""
     inc, exc = recruit(truth, rng, n)
@@ -468,7 +480,8 @@ def analyse(path, ref_path, table_path, out_dir, kappa_fit=hier_kappa, seed=0):
     ok = {"quiz": value["quiz"] >= 0.80, "finish": value["finish"] >= 0.85, "inclusion_failures": value["inclusion_failures"] <= 0.15,
           "belief": value["belief"] >= 0.75, "fast_choices": value["fast_choices"] <= 0.10,
           "main_minutes": value["main_minutes"] <= 45, "payments": bool(value["payments"]), "included": n >= PILOT_N}
-    gates = {g: {"value": value[g], "bar": GATES[g], "pass": bool(ok[g])} for g in GATES}
+    bars = {**GATES, "included": f">= {PILOT_N}"}
+    gates = {g: {"value": value[g], "bar": bars[g], "pass": bool(ok[g])} for g in GATES}
 
     st = pilot_stats(pp)
     flag = np.array([s["self_hi"] >= FLAG_MIN for s in pp])
@@ -520,7 +533,7 @@ def analyse(path, ref_path, table_path, out_dir, kappa_fit=hier_kappa, seed=0):
         bar = max(ref["truths"][t][name]["q975"] for t in V4_TRUTHS)
         count = int(round(st[name] * n))
         targeting[name] = {"share": st[name], "count": count, "reference_q975_max": bar,
-                           "fired": bool(st[name] > bar and count >= TARGET_MIN)}
+                           "fired": bool(st[name] > bar and count >= target_min())}
 
     # reported, not used by the rule: the lottery-choice rate at the ideal against the rows, at the noise row
     # nearest the pilot's and compared with the row nearest hier.py's posterior median
@@ -801,7 +814,7 @@ def self_test(d, use_hier=False):
     check("a simulated input writes rehearsal_pilot_estimates.json only",
           os.path.basename(written) == "rehearsal_pilot_estimates.json"
           and not os.path.exists(os.path.join(est_dir, "pilot_estimates.json")))
-    check("simulated pilot: 40 included, recruited until they qualify", est["counts"]["included"] == PILOT_N,
+    check(f"simulated pilot: {PILOT_N} included, recruited until they qualify", est["counts"]["included"] == PILOT_N,
           f"counts {est['counts']}, gates failed {[g for g, v in est['gates'].items() if not v['pass']]}, "
           f"agreement q20 {est['rule']['a20']:.3f}, s {est['s']}")
 
@@ -1050,6 +1063,7 @@ def summarise(out, paths, ref_path, table_path):
 
 
 def main():
+    global PILOT_N
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
     a = sub.add_parser("reference")
@@ -1081,7 +1095,12 @@ def main():
     a.add_argument("runs", nargs="+")
     a.add_argument("--reference", required=True)
     a.add_argument("--table", required=True)
+    for name in ("reference", "self-test", "rehearse", "summarise"):
+        sub.choices[name].add_argument("--pilot-n", type=int, default=None,
+                                       help=f"simulated pilots of this many included people instead of {PILOT_N}")
     args = ap.parse_args()
+    if getattr(args, "pilot_n", None):
+        PILOT_N = args.pilot_n
     np.seterr(all="ignore")
     try:
         if args.cmd == "reference":
