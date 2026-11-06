@@ -1,0 +1,23 @@
+6000 people per row, 40 s; pilot of 120 included people
+
+== noise target 1.5
+kappa 0.75 flagged 0.011 | current mean 0.5182 sd 0.0071 slope/0.25 -0.0191 res 0.092 | self_all mean 0.5267 sd 0.0090 slope/0.25 -0.0257 res 0.087 | self_unf mean 0.5266 sd 0.0090 slope/0.25 -0.0255 res 0.089 |
+kappa 1.00 flagged 0.009 | current mean 0.4991 sd 0.0073 slope/0.25 -0.0193 res 0.094 | self_all mean 0.5009 sd 0.0096 slope/0.25 -0.0276 res 0.087 | self_unf mean 0.5011 sd 0.0096 slope/0.25 -0.0275 res 0.088 |
+kappa 1.25 flagged 0.009 | current mean 0.4797 sd 0.0078 slope/0.25 -0.0188 res 0.103 | self_all mean 0.4715 sd 0.0104 slope/0.25 -0.0281 res 0.093 | self_unf mean 0.4716 sd 0.0105 slope/0.25 -0.0283 res 0.093 |
+kappa 1.50 flagged 0.010 | current mean 0.4615 sd 0.0078 slope/0.25 -0.0158 res 0.124 | self_all mean 0.4448 sd 0.0110 slope/0.25 -0.0222 res 0.124 | self_unf mean 0.4446 sd 0.0111 slope/0.25 -0.0222 res 0.125 |
+kappa 1.75 flagged 0.010 | current mean 0.4481 sd 0.0081 slope/0.25 -0.0130 res 0.156 | self_all mean 0.4271 sd 0.0116 slope/0.25 -0.0162 res 0.179 | self_unf mean 0.4272 sd 0.0117 slope/0.25 -0.0160 res 0.182 |
+kappa 2.00 flagged 0.011 | current mean 0.4355 sd 0.0084 slope/0.25 -0.0126 res 0.167 | self_all mean 0.4124 sd 0.0123 slope/0.25 -0.0147 res 0.209 | self_unf mean 0.4126 sd 0.0123 slope/0.25 -0.0146 res 0.212 |
+S30 kappa 1.00 flagged 0.285 rank-one among unflagged 0.029 | current shift +0.04 sd -> own-row cover 0.788 | self_all shift -0.04 sd -> own-row cover 0.811 | self_unf shift +0.05 sd -> own-row cover 0.786 |
+S30 kappa 1.50 flagged 0.257 rank-one among unflagged 0.075 | current shift +0.20 sd -> own-row cover 0.740 | self_all shift -0.11 sd -> own-row cover 0.830 | self_unf shift +0.07 sd -> own-row cover 0.781 |
+S30 kappa 2.00 flagged 0.203 rank-one among unflagged 0.137 | current shift +0.65 sd -> own-row cover 0.577 | self_all shift +0.12 sd -> own-row cover 0.765 | self_unf shift +0.43 sd -> own-row cover 0.661 |
+
+== noise target 2.0
+kappa 0.75 flagged 0.010 | current mean 0.5167 sd 0.0063 slope/0.25 -0.0158 res 0.099 | self_all mean 0.5240 sd 0.0077 slope/0.25 -0.0227 res 0.085 | self_unf mean 0.5239 sd 0.0078 slope/0.25 -0.0229 res 0.085 |
+kappa 1.00 flagged 0.013 | current mean 0.5008 sd 0.0065 slope/0.25 -0.0177 res 0.091 | self_all mean 0.5012 sd 0.0083 slope/0.25 -0.0256 res 0.081 | self_unf mean 0.5010 sd 0.0083 slope/0.25 -0.0257 res 0.081 |
+kappa 1.25 flagged 0.015 | current mean 0.4813 sd 0.0070 slope/0.25 -0.0196 res 0.090 | self_all mean 0.4727 sd 0.0094 slope/0.25 -0.0279 res 0.084 | self_unf mean 0.4725 sd 0.0095 slope/0.25 -0.0279 res 0.085 |
+kappa 1.50 flagged 0.013 | current mean 0.4616 sd 0.0072 slope/0.25 -0.0189 res 0.095 | self_all mean 0.4454 sd 0.0102 slope/0.25 -0.0263 res 0.097 | self_unf mean 0.4451 sd 0.0103 slope/0.25 -0.0261 res 0.099 |
+kappa 1.75 flagged 0.015 | current mean 0.4434 sd 0.0076 slope/0.25 -0.0158 res 0.120 | self_all mean 0.4201 sd 0.0109 slope/0.25 -0.0221 res 0.123 | self_unf mean 0.4202 sd 0.0110 slope/0.25 -0.0218 res 0.126 |
+kappa 2.00 flagged 0.017 | current mean 0.4300 sd 0.0078 slope/0.25 -0.0134 res 0.146 | self_all mean 0.4013 sd 0.0114 slope/0.25 -0.0188 res 0.152 | self_unf mean 0.4016 sd 0.0116 slope/0.25 -0.0186 res 0.156 |
+S30 kappa 1.00 flagged 0.295 rank-one among unflagged 0.014 | current shift -0.02 sd -> own-row cover 0.804 | self_all shift -0.05 sd -> own-row cover 0.815 | self_unf shift -0.00 sd -> own-row cover 0.801 |
+S30 kappa 1.50 flagged 0.280 rank-one among unflagged 0.044 | current shift +0.09 sd -> own-row cover 0.774 | self_all shift -0.09 sd -> own-row cover 0.823 | self_unf shift +0.07 sd -> own-row cover 0.779 |
+S30 kappa 2.00 flagged 0.239 rank-one among unflagged 0.093 | current shift +0.48 sd -> own-row cover 0.643 | self_all shift -0.02 sd -> own-row cover 0.806 | self_unf shift +0.25 sd -> own-row cover 0.721 |

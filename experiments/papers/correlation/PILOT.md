@@ -10,7 +10,12 @@ and changed the rule, and the fourth passed every bar as restated before it ran 
 2026-11-04 the owner accepted the decisions and chose to count only the people the self-only flag does not
 catch in the main tests. The same day the owner chose a larger pilot to make the rule less cautious. By a rule
 written before the runs it is 120 people, and the table gained 11 cells the rule had been reading as zero
-("Pilot size"). The instrument is not built, because it depends on the platform.
+("Pilot size"). The owner then chose a lower noise assurance. Its first run found that the limit for `κ` covered
+the truth `κ = 2` too rarely at every level, the current one included ("Noise assurance"). On 2026-11-05 the owner
+took Claude's recommendation to find out why. Rank-one people the flag missed raised the lottery rate the limit
+read. `κ`'s statistic was revised, and on a new run, by the rule written before it, the noise is now read at the
+40th percentile, an assurance of 60% ("The limit for `κ`"). The level is Claude's choice by that rule, and the
+owner may change it before the seal. The instrument is not built, because it depends on the platform.
 
 ## What it is for
 
@@ -40,7 +45,7 @@ estimates are design inputs, not findings about preferences.
 
 | Quantity | Rehearsal (`rehearsal.py`) | Pilot statistic | Trials |
 |---|---|---|---|
-| Risk attitude at the ideal | `κ` exactly 1 (GEO1) or exactly 2 (GEO2); version 6, 0.5 to 2 | the lottery-choice rate at the ideal, read against simulated pilots (the rule); the population median `κ` from `hier.py`, reported | R, S calibration |
+| Risk attitude at the ideal | `κ` exactly 1 (GEO1) or exactly 2 (GEO2); version 6, 0.5 to 2 | the lottery-choice rate at the ideal on the self lotteries, over everyone included, read against simulated pilots (the rule); the population median `κ` from `hier.py`, reported | R, S calibration |
 | Choice noise | median abs logit over block R, per person, log-normal around 1.5 (sd 0.35 on the log scale) | agreement between a block R choice and its repeat | R, PR |
 | Weight on the charity | `sqrt(P22/P11)` from U(0.25, 1), so everyone trades the two off | the share who never trade toward the charity (`P` of rank one); the share who always do | R, PW |
 | Metric correlation | `P12/sqrt(P11 P22)` from U(−0.6, 0.6) | GEO fitted per person; reported only | R, S calibration |
@@ -147,9 +152,9 @@ debrief.
   13 points more often at `κ = 1`, and 160 bought almost nothing more.
 - From 120 people a share near 0.3 is known to about ±0.08 (95%), and a rate near 0.1 to 0.15, such as the
   exclusion rate, to about ±0.06. From 40 it was ±0.14 and ±0.1.
-- For `κ`, a simulated pilot's lottery-choice rate varies by about ±0.006 between pilots of 120 (20th to 80th
-  percentile; ±0.012 at 40), against steps of 0.015 to 0.02 between rows 0.25 apart (Reading the pilot). The
-  pilot rehearsal checks that the 80% limit covers as it should (sequence step 4).
+- For `κ`, a simulated pilot's self-lottery rate varies by about ±0.008 to ±0.010 between pilots of 120 (20th to
+  80th percentile), against steps of 0.015 to 0.03 between rows 0.25 apart (Reading the pilot). The pilot
+  rehearsal checks that the 80% limit covers as it should (sequence step 4).
 - It pays about as many people as the main study at its smallest size, each for about 7 minutes longer:
   about 84 hours of participants' time, against 28 for 40.
 
@@ -224,18 +229,28 @@ deviation reached the planned power in at least 100(1 − γ)% of simulated tria
 attribute the 80% level to him; the full text was not seen. With several quantities, each at its own
 limit, the probability is not simply 0.8, and Browne does not cover it. The pilot rehearsal measures it
 (sequence step 4). Perugini, Gallucci and Costantini (2014) apply the same idea to an effect size
-("safeguard power"). The form below is version 6's, decided on 2026-11-03 ("Decisions taken").
+("safeguard power"). The form below is version 6's, decided on 2026-11-03 ("Decisions taken"). Since
+2026-11-05 the noise enters at a 60% limit, the 40th percentile of the pilot's agreement, while `κ` and the share
+keep 80%. With all three at 80%, the rule stopped in about half the simulated pilots at `κ = 1`, where n = 120
+has the power ("Noise assurance").
 - **`κ`.** `κ` enters as draws from its confidence distribution, not as one row.
-  - The statistic is the lottery-choice rate at the ideal (the 24 calibration lotteries), over the
-    pilot's people not flagged as self only, whom the table's rows do not contain. The reference has the
-    same rate from 400 simulated pilots at each row. At each `κ` row, G is the share of those simulated
-    pilots whose rate is at or below the pilot's, mixed between the two noise rows as power is. Higher `κ`
-    means fewer lotteries taken, so G rises with `κ`, and the draws are its inverse at 500 evenly spaced
-    levels (`kappa_belt`). The draw at level 0.8 is an 80% upper limit for `κ` by construction, with the
-    statistic's own bias and spread in it, as for every other statistic here.
-  - The rate falls steadily with `κ`: 0.54, 0.52, 0.50, 0.48, 0.46, 0.45 and 0.43 from 0.5 to 2 at target
-    1.5. It hardly moves with noise, and a single pilot's spread (about ±0.006 between the 20th and 80th
-    percentiles at 120 people, ±0.012 at 40) is a third of the step between rows or less.
+  - The statistic is the lottery-choice rate at the ideal over the 12 self lotteries, over everyone
+    included. The reference has the same rate from 1,000 simulated pilots at each row. At each `κ` row, G
+    is the share of those simulated pilots whose rate is at or below the pilot's, mixed between the two
+    noise rows as power is. Higher `κ` means fewer lotteries taken, so G rises with `κ`, and the draws are
+    its inverse at 500 evenly spaced levels (`kappa_belt`). The draw at level 0.8 is an 80% upper limit for
+    `κ` by construction, with the statistic's own bias and spread in it, as for every other statistic here.
+  - *Revised 2026-11-05* ("The limit for `κ`"). Until then the statistic was the rate over all 24
+    calibration lotteries and over the people not flagged as self only, read against 400 simulated pilots
+    per row. The rank-one people the flag missed raised that rate at `κ = 2`, where the rows have none, and
+    the limit covered the truth too rarely there.
+  - The rate falls steadily with `κ`: 0.56, 0.53, 0.50, 0.47, 0.45, 0.43 and 0.41 from 0.5 to 2 at target
+    1.5 (the reference's medians). At `κ = 1` it does not move with noise. Away from 1, noisier rows take
+    more lotteries: at `κ = 2` the median is 0.40 at target 2.0 and 0.44 at 0.7, and at `κ = 0.5` it is 0.55
+    and 0.57.
+  - A single pilot's spread at 120 people is about ±0.008 to ±0.010 between the 20th and 80th percentiles.
+    That is under 0.4 of the step between rows up to `κ = 1.5`, and two thirds of it between 1.75 and 2,
+    where the rate flattens. The old statistic's spread was about ±0.006, against steps of 0.013 to 0.02.
   - Each draw takes the lower power of the two tabulated rows around it. A draw above 2 takes power 0,
     since nothing above 2 was simulated; one below 0.5 takes the lowest row.
   - n is chosen so that the 20th percentile of power over the draws reaches 0.80 (The sample size). When
@@ -249,8 +264,9 @@ limit, the probability is not simply 0.8, and Browne does not cover it. The pilo
     0.75). The posterior sat 0.1 to 0.2 below the truth, also in 25 pilots with nobody of rank one, and
     the posterior of the population mean did no better. Why is not known. `hier.py`'s `κ` is still
     reported, as DESIGN.md's secondary analysis, but the rule no longer reads it.
-- **Noise.** At each `κ` row, the 20th percentile of the pilot's agreement on the repeats (bootstrap over
-  people) is placed between the two noise rows whose simulated median agreement brackets it, and power
+- **Noise.** At each `κ` row, the 40th percentile of the pilot's agreement on the repeats (bootstrap over
+  people; the 20th until 2026-11-05, "Noise assurance") is placed between the two noise rows whose simulated
+  median agreement brackets it, and power
   is read linearly between them. At or above the least noisy row, that row is used, with no
   extrapolation. The pilot's agreement leaves out the people flagged as self only, whom the table's rows
   do not contain. If the pilot is noisier than every row, the table is extended by the same code before n
@@ -300,7 +316,7 @@ limit, the probability is not simply 0.8, and Browne does not cover it. The pilo
 share who always trade toward the charity, the lottery-choice rate over everyone included, and `hier.py`'s
 population median `κ`, each against its reference under the version 4 assumptions. If the row nearest
 `hier.py`'s posterior median is two or more steps from the row the lottery rate points to, the report says
-so before n is fixed. The rule still uses the lottery rate.
+so before n is fixed. The rule still uses its own statistic, the self-lottery rate.
 
 ## When the pilot fails, and when the stimuli change
 
@@ -364,14 +380,16 @@ new seal, all before the main study.
    language-model pass over the wording (DESIGN.md, stage 2) fits here. It is not evidence about
    people.
 4. **Pilot rehearsal:** simulated pilots through the whole chain: 100 per truth of 40 people in runs 1 to 4, and
-   200 per truth of 80, 120 and 160 in the fifth, which compared sizes ("Pilot size"). The truths are
+   200 per truth of 80, 120 and 160 in the fifth, which compared sizes ("Pilot size"), and 200 per truth of 120
+   in the sixth and seventh, which compared noise levels ("Noise assurance", "The limit for `κ`"). The truths are
    `κ` of 0.75, 1 and 1.5 at noise target 1.5 and `κ = 2` at 2.0, each with a planted rank-one share of
    0.3. The bars below were set on 2026-11-03, before it ran (`pilot_analysis.py summarise`). It must
    show that
    - the 80% upper limit the rule reads for `κ` is at or above the true `κ`, the pilot's 20th percentile
      of agreement is at or below the truth's simulated median, and the upper limit for `s` is at or above
      the planted share, each in at least 70% of pilots. Each is nominally 80%; 70 allows for sampling
-     error over 100 pilots;
+     error over 100 pilots. *Restated 2026-11-04, with the lower noise assurance ("Noise assurance"):* the
+     agreement's limit is nominally 100% less the percentile the rule reads, and its bar is that less 10 points;
    - of the pilots whose rule chooses an n, at least 80% choose one at which the truth's power is at
      least 0.80. Under a truth no n reaches, that means the rule must stop;
    - the analysis refuses a file carrying a sealed trial, by its own guard;
@@ -439,6 +457,21 @@ new seal, all before the main study.
    every size. The rule chose 120 ("Pilot size"). The simulated pilots stay on Atlas
    (`/archive/experiments/correlation/pilot_reh_v7_n*`), and `results/pilot_size_n*.json` score them. They ran with
    this code while `PILOT_N` was still 40, each size given by `--pilot-n`; nothing else in the code differs.
+
+   **Sixth run, 2026-11-04: the noise level** (seeds 70 to 73; 200 pilots of 120 per truth, on NRP), read at the
+   20th to 50th percentiles of agreement on the same pilots and scored against the bars, the agreement's
+   restated ("Noise assurance"). The bar for `κ`'s limit failed at `κ = 2` at every level, the 20th included (69%,
+   68%, 65.5% and 63%). Every other bar passed, and no pilot chose an n without the power. The noise assurance
+   stayed at 80% until the seventh run. The simulated pilots stay on Atlas (`/archive/experiments/correlation/pilot_reh_v8`), and
+   `results/pilot_noise_q*.json` score them. They ran with the code in `src_v8` there: this code before the
+   revision of the limit for `κ`, less one space in the self-test.
+
+   **Seventh run, 2026-11-05: the revised limit for `κ`** (seeds 80 to 83; 200 pilots of 120 per truth, on NRP,
+   against the new reference). Every bar passed at every level, and the rule chose the 40th percentile ("The
+   limit for `κ`"). One Job lost its pod and was run again with the same seed. The simulated pilots stay on Atlas
+   (`/archive/experiments/correlation/pilot_reh_v9`), and `results/pilot_noise_run7_q*.json` score them. They ran
+   with the code in `src_v9` there, which differs from this code only in `NOISE_Q`: 0.2 then, 0.4 now. Re-scored
+   at the 40th percentile with this code, the run gives the same numbers.
 5. **Power table:** rehearsal version 6 on NRP (version 5 before the decisions of 2026-11-03).
 6. **Seal** DESIGN.md (with the inclusion and sample-size rules), this protocol, the code and the table
    under a signed tag. Owner's OK.
@@ -471,27 +504,34 @@ new seal, all before the main study.
 |---|---|
 | `stimuli.py`: `pilot_extras`, `presentation`, `digest` | the 20 pilot-only trials (ids 140 to 159, role "pilot", their own random stream); one participant's order from their seed; the hash the export must declare. Version 5 (2026-11-03) moves the attention checks and nothing else: every other trial, and the order, is version 4's |
 | `split_pilot.py` | the export into `readable.json`, `sealed.json`, `id_map.json` and `split_record.json`. Its docstring defines the export format the instrument must write |
-| `pilot_analysis.py` | `reference`, `analyse`, `size`, `self-test`, `rehearse` (the pilot rehearsal) and `summarise` (its bars), with the guards above. `kappa_belt` turns the lottery rate into draws of `κ`; the rule itself is `choose_n`, which `summarise` applies to simulated pilots because `size` refuses simulated estimates. `--pilot-n` runs `reference`, `self-test`, `rehearse` and `summarise` at another pilot size; `analyse` and `size` take only the sealed size |
+| `pilot_analysis.py` | `reference`, `analyse`, `size`, `self-test`, `rehearse` (the pilot rehearsal) and `summarise` (its bars), with the guards above. `kappa_belt` turns the lottery rate into draws of `κ`; the rule itself is `choose_n`, which `summarise` applies to simulated pilots because `size` refuses simulated estimates. `--pilot-n` runs `reference`, `self-test`, `rehearse` and `summarise` at another pilot size. `analyse` stores the agreement at the 20th to 50th percentiles, and `summarise --noise-q` reads the same pilots again at any of them (`read_at`). `analyse` and `size` take only the sealed size and percentile, and `size` refuses estimates read at another percentile. Since 2026-11-05 `κ`'s statistic is the self-lottery rate over everyone included, and the reference keeps its simulated values as histograms of counts (`simulated_rates`) |
 | `rehearsal.py` | version 5 and 6 cells with `κ`, noise target, rank-one share and lapse ceiling as parameters (REHEARSAL.md); version 6 adds the main study's self-only flag and scores the claim over unflagged people too; `simulate` runs the same people through the pilot-only trials |
 | `power_table.py` | the table from the version 6 runs, both populations, with the rank-one, specificity and version 5 reproduction checks |
 | `hier.py` | also reports the posterior's draws of the population median `κ`, which the first pilot rehearsal's rule read. The rule now reads `kappa_belt`, and `hier.py`'s `κ` is reported |
 | `submit_nrp.py` | the NRP driver, for rehearsal cells and for the pilot rehearsal (`--pilot-ref`, `--pilot-table`); since 2026-11-04 also at other pilot sizes (`--pilot-n`, `--no-hier`) and for references (`--pilot-reference`) |
-| `pilot_decompose.py` | applies the rule again to the pilot rehearsal's simulated pilots with some of its inputs set to the truth's own values, to show which limit makes it stop ("Pilot size") |
+| `pilot_decompose.py` | applies the rule again to the pilot rehearsal's simulated pilots with some of its inputs set to the truth's own values, to show which limit makes it stop ("Pilot size"); with `--noise-q`, at another percentile of agreement ("Noise assurance") |
+| `kappa_firstlook.py`, `kappa_probe.py` | the diagnosis of 2026-11-05 ("The limit for `κ`"). The first reads the old statistic of the fifth and sixth runs' pilots against the reference at each truth's own row. The second simulates people to measure each candidate statistic's precision and its shift with rank-one people |
+| `kappa_compare.py` | scores the old statistic on the seventh run's pilots against the old reference, for comparison |
 | the instrument | not built: it depends on the platform. It must write the export that `split_pilot.py` documents |
 
 **Self-test** (`pilot_analysis.py self-test`, on Atlas). 21 of 21 checks pass (2026-11-03, with the revised
 `κ` rule; the 20 before it also passed with `hier.py` fitting `κ`). On 2026-11-04 they passed again at the new
-size of 120, and at 40 and 80 through `--pilot-n`. Each refusal is checked to name its own
-reason. The four new checks:
+size of 120, and at 40 and 80 through `--pilot-n`. The same day two checks came with the noise level, and 23 of 23
+pass: a pilot read again at the rule's own percentile gives its analysis's rows and `κ` draws exactly, and the size
+rule refuses agreement read at another percentile. On 2026-11-05 one more came with the revised `κ` statistic, and
+24 of 24 pass on Atlas. In a simulated pilot, every charity calibration choice was turned the other way and half the
+people were flagged, from 2.5% to 52.5% of the pilot. `κ`'s statistic stayed exactly as it was, and the old one
+moved. Each refusal is checked to name its own reason. The four checks added on 2026-11-03:
 - the `κ` rule gives version 5's n when power falls with `κ` (160 against 160, a made-up table);
 - where power rises again at `κ = 2`, it stops, where rounding up would have chosen 160;
 - power at a share of 0.3 lies between the 0.2 and 0.4 cells;
 - at the `κ = 1` row's median lottery rate, `κ`'s confidence distribution has median 1.000 (80th
-  percentile 1.187).
+  percentile 1.187 with the old statistic, 1.150 with the self-lottery rate).
 - The size rule refuses:
   - a missing file;
   - a simulated file put where it looks, for provenance;
   - `κ` draws not from the sealed belt;
+  - agreement read at another percentile than the sealed one;
   - a failed gate;
   - a fired targeting rule;
   - another table.
@@ -505,6 +545,12 @@ reason. The four new checks:
 - A deliberately broken split that also routes the test trials to the readable file fails the round trip:
   1,920 misplaced trials, the 48 test trials of each of 40 simulated people (46 with version 4's attention
   checks, which excluded 6), and 5,760 at 120. The analysis's own guard refuses it too.
+
+**A fault found on 2026-11-04.** The `analyse` command printed a field that version 6 had removed (`row`), so on the
+real pilot it would have failed just after writing the estimates. The self-test calls the function, not the
+command, and missed it. The command now prints the agreement. It was run end to end on Atlas, with `hier.py`'s
+environment, on the self-test's simulated pilot: `analyse` wrote `rehearsal_pilot_estimates.json` and exited 0, and
+`size` on that folder refused, since no `pilot_estimates.json` was there.
 
 **The pilot rehearsal** (sequence step 4) ran three times. The first run fitted `hier.py` in every pilot
 and ran on NRP, about 2.2 minutes per pilot. The later runs skip it, since the rule no longer reads it, and
@@ -537,6 +583,15 @@ one before it exactly and added to it: the first pilot-rehearsal run read `pilot
   (`_n80`, `_n160`). All four sizes give identical flag rates in all 28 rows, since those come from their own
   random stream. Between pilots of 40 and 120 the lottery rate's 20th to 80th percentile spread shrank by a
   factor of 0.56, close to the expected 1/√3.
+- **Since 2026-11-05 the pilot reads `results/pilot_reference_n120_self.json`** ("The limit for `κ`"). It is built
+  the same way, with the self-lottery rate and 1,000 simulated pilots per row. Each row's rates are kept as a
+  histogram of counts out of 1,440.
+  - It took 39 minutes on one NRP CPU, and the file is 147 KB.
+  - Its version 4 truths and its flag rates reproduce the old reference's exactly.
+  - The GEO fits reported beside the version 4 truths moved by 1e-5 to 0.004 in most cases, and by up to 0.06
+    in one tail percentile under IA. They come out of an optimiser, and NRP nodes differ in the last bits.
+    The rule does not read them.
+  - The old reference stays as `results/pilot_reference_n120.json`, which the fifth and sixth runs read.
 
 ## Decisions taken, 2026-11-03
 
@@ -570,7 +625,8 @@ the target-0.7 row, the restated power bar): "go with your recommendations".
    *Revised 2026-11-04:* the reasoning holds for a row read alone, not for one read in a mix with a row that
    reaches 0.80. Eleven cells fill such rows ("Pilot size").
 5. **The noise rule interpolates** between rows (Reading the pilot). It keeps the 20th percentile's
-   caution without version 5's jump of a full row, which happened about 80% of the time.
+   caution without version 5's jump of a full row, which happened about 80% of the time. *The percentile
+   became the 40th on 2026-11-05 ("Noise assurance").*
 
 **Which people H1 to H3 count: decided by the owner on 2026-11-04.** DESIGN.md had registered them over
 everyone included.
@@ -672,15 +728,209 @@ the truth no n reaches, where any n chosen is a bad choice.
 - **With exact inputs, a pilot at `κ = 1` now chooses n = 160,** not 200: the gap cells raised the 1.25 row's
   reading.
 
+## Noise assurance: lower, the owner's decision of 2026-11-04
+
+At 120 people the rule still stopped in 45% of the simulated pilots at `κ = 1`, where n = 120 has the power. With
+the agreement percentile at its true value, it stopped in 7% ("Pilot size"). Of the remedies offered, the owner
+chose the one that acts on that: "go with a lower noise assurance". The level itself is Claude's choice, by the
+rule below, and the owner may change it before the seal. **By that rule it stayed at 80% after the sixth run,** in
+which no lower level passed every bar (Result, below). The limit for `κ` was then revised, and the seventh run chose
+the 40th percentile, an assurance of 60% ("The limit for `κ`").
+
+**What a lower level means.** The rule reads the pilot's agreement at a higher percentile of its bootstrap
+distribution than the 20th, so the noise enters at a one-sided limit below 80%. `κ` and the share keep their 80%
+limits. Each analysis stores its agreement at the 20th, 30th, 40th and 50th percentiles (`NOISE_LEVELS`), and
+`summarise --noise-q` reads the same simulated pilots again at any of them, with the noise rows, the share's
+limits and `κ`'s belt recomputed (`read_at`). The sample-size rule refuses estimates read at another percentile
+than the sealed one. Before the run, on Atlas, the self-test passed 23 of 23, and three simulated pilots read
+again at the 20th percentile gave exactly the scores of the run as made.
+
+**How the level is chosen.** Written on 2026-11-04, before any pilot was read at a new level.
+- The candidates are the 30th, 40th and 50th percentiles: assurances of 70%, 60% and 50%. The 50th is the
+  floor. Above it the rule would assume less noise than the pilot's own central estimate. The 20th is scored on
+  the same pilots, for comparison only.
+- One pilot rehearsal of 120 people runs on NRP: the four truths of sequence step 4, 200 simulated pilots each on
+  fresh seeds (70 to 73), read against the reference at 120 (`results/pilot_reference_n120.json`). Every level is
+  scored on those pilots against the table with the gap cells.
+- The bars stand, with one restated. The agreement the rule reads must be at or below the truth's simulated
+  median in at least its nominal share of pilots less 10 points, as at the 20th (80% less 10). That is 60%, 50%
+  and 40% at the 30th, 40th and 50th percentiles. The limits for `κ` and the share keep their bar of 70%. At
+  most 20% of all pilots may choose an n without the power, under each truth, over unflagged people, whom the
+  main tests count. The same over everyone is reported.
+- A level that fails a bar is not chosen.
+- Of the levels that pass, the choice is the highest assurance whose stop rates over unflagged people at
+  `κ = 0.75` and at `κ = 1` are each no more than 10 points above those of the lowest-assurance level that
+  passes. As with the size, caution is kept where it costs little.
+- If no candidate passes, the assurance stays at 80% and the owner is told.
+
+**Result (NRP, 2026-11-04).** 200 simulated pilots of 120 per truth, each read at all four levels, scored against
+the table with the gap cells (`results/pilot_noise_q20.json` to `_q50.json`). The rule as it stands stopped in
+49.5% of these pilots at `κ = 1`, against 45% in the fifth run on other seeds. Over unflagged people:
+
+| Percentile (assurance) | `κ = 0.75` stops | `κ = 1` stops | `κ`'s limit covers `κ = 2` (bar 70%) | n chosen without the power |
+|---|---|---|---|---|
+| 20th (80%), the rule as it stands | 3.5% | 49.5% | 69% | none |
+| 30th (70%) | 3% | 39.5% | 68% | none |
+| 40th (60%) | 2.5% | 33% | 65.5% | none |
+| 50th (50%) | 1.5% | 27.5% | 63% | none |
+
+- **No level passed every bar, so the assurance stayed at 80% after this run.** At every level, the 20th included, the 80%
+  upper limit for `κ` is at or above the truth `κ = 2` in fewer than 70% of pilots. Every other bar passes at
+  every level. The agreement's limit covers in 49% to 92.5% of pilots against its restated bars, the share's in
+  79% to 89%, and `κ`'s at the other three truths in 71.5% to 80%.
+  - Before the run, Claude expected the lower levels to move only the agreement's coverage. They also move
+    `κ`'s, since `κ`'s belt is mixed between the same noise rows.
+- **The limit for `κ` under-covers at `κ = 2`, more as the pilot grows.** Under the rule as it stands, it covered
+  in 80.5% of pilots at 40 people, 76.5% at 80, 76.5% at 120 in the fifth run, and 72% at 160. Here, at 120, it
+  covered in 69%, 2 pilots short of the bar. The two runs at 120 together cover in 72.75% of 400 pilots, against
+  a nominal 80%. Why is not known. One possibility, not checked: the flag misses the most rank-one people at
+  `κ = 2`, those it misses enter the lottery rate the limit reads, and the reference's pilots at each row are
+  simulated without rank-one people.
+- **No pilot chose an n without the power,** at any level, under any truth, in either population. Under
+  `κ = 1.5`, which no n reaches, every pilot stopped. Under `κ = 2` every pilot stopped too (decision 3).
+- **What a lower level would have bought.** Had the `κ` bar passed, the rule would have chosen the 40th
+  percentile. At `κ = 1` its 33% is 5.5 points above the 50th's 27.5%, and the 30th's 39.5% is 12 above. There
+  the rule goes in 67% of pilots at `κ = 1`: at n = 120, 160, 200 and 240 in 58, 46, 5 and 25 of 200.
+- **Even the 50th percentile leaves most of the noise limit.** With the agreement at its true value, the
+  pilots stop in 6.5% to 7% at `κ = 1` at every level (`pilot_decompose.py --noise-q`,
+  `results/pilot_decompose_q*.json`). A reading without bias still falls on the noisier side of the truth in
+  about half the pilots, and power falls steeply toward the noisier row.
+- **The bar also failed under the rule as it stands.** Sequence step 4 says a failed bar sends the rule back for
+  revision and a new rehearsal before the seal. The fifth run passed the same bar at the same size, so whether
+  this run counted was the owner's decision. On 2026-11-05 the owner chose to revise the limit, which is what
+  step 4 prescribes ("The limit for `κ`").
+
+## The limit for `κ`: revised, 2026-11-05
+
+After the sixth run the owner took the way Claude recommended: "go with your recommendation". That was to find why
+the limit for `κ` covered `κ = 2` too rarely, revise it, and choose the noise level again on new simulated pilots.
+This section, down to its result, was written before the seventh run.
+
+**The cause, found on pilots already simulated.**
+- **First look** (`kappa_firstlook.py`, `results/kappa_firstlook.txt`). The 400 simulated pilots of 120 from the fifth
+  and sixth runs were read against the reference at each truth's own row: its `κ` and noise target, with no noise
+  mixing. Pilots that differed from the reference's only by chance would sit at or below its 80th percentile in
+  about 80% of cases.
+  - At `κ = 2` that held in 59.5%. The pilots' lottery rate sat 0.48 of the reference's spread above the
+    reference's median.
+  - At `κ` of 0.75, 1 and 1.5 it held in 81.5%, 72.5% and 73.5%.
+  - As run, the limit at `κ = 2` held in 72.75%. The rule reads the noise pessimistically and so mixes in noisier
+    rows, where more lotteries are taken, and that hid part of the shift.
+- **Probe** (`kappa_probe.py`, `results/kappa_probe.txt`; 40 seconds on one Atlas CPU). It simulated 6,000 people
+  per row, and the same for truths with a rank-one share of 0.3 at `κ` of 1, 1.5 and 2.
+  - The flag (18 of 24) misses the rank-one people who choose least consistently. At `κ = 2` they were 14% of the
+    unflagged at target 1.5, and 9% at target 2.0.
+  - They give the charity no weight, so they take its lotteries at random. They also take their own lotteries more
+    noisily than others do.
+  - At `κ = 2`, where people take the fewest lotteries, both raise the rate. The rows the rate is read against
+    have nobody of rank one.
+  - The shift is 0.65 and 0.48 of a pilot's spread at `κ = 2` (targets 1.5 and 2.0), 0.20 and 0.09 at 1.5, and
+    none at 1. That accounts for the first look at `κ` of 1.5 and 2.
+  - Nothing of this kind explains the 72.5% at `κ = 1`. The reference's own sampling error is the likely cause
+    (below).
+
+**The revision.**
+- **`κ`'s statistic is the share of the 12 self lotteries at the ideal that are taken, over everyone included.**
+  - In those lotteries the charity sits at its ideal, so the metric's charity terms vanish. A person who ignores
+    the charity chooses them exactly as the same person would if they did not.
+  - The statistic therefore depends on neither the rank-one share nor the flag. In the probe its shift with a
+    share of 0.3 was −0.11 to +0.12 of a pilot's spread.
+  - The same self lotteries counted over the unflagged people alone still shifted by 0.43 and 0.25 at `κ = 2`.
+    The flag keeps exactly the rank-one people who choose least consistently.
+- **It is about as sharp as the old statistic.** The charity lotteries carry little about `κ`. Take the change in
+  `κ` that moves the statistic by one pilot's spread:
+  - for the self rate it was 0.08 to 0.09 at `κ` of 0.75 to 1.25, against 0.09 to 0.10 for the old statistic;
+  - the two were equal at 1.5;
+  - at 1.75 and 2 it was 0.12 to 0.21, against 0.12 to 0.17.
+- **The reference has 1,000 simulated pilots per row, not 400.** Every pilot is read against the same reference,
+  so the reference's own sampling error moves every limit the same way.
+  - With 400, the coverage of an 80% limit is itself uncertain by about 2 points (one standard deviation), the
+    same for every pilot under a truth. With 1,000 it is about 1.3 points.
+  - The statistic is a count of self lotteries taken out of 12 × 120, so the reference keeps each row's 1,000
+    values as a histogram of counts. That is exact, and small enough to ride in an NRP Job's command with the
+    code.
+  - The version 4 truths and the flag rates come from the same random streams as before, and are compared with
+    the old reference's.
+- **The rule is otherwise unchanged.**
+  - The size rule refuses estimates whose `κ` came from the old statistic: `KAPPA_SOURCE` is now "self-lottery
+    belt/2".
+  - The analysis refuses the old reference (format 4).
+  - A new self-test check turns every charity calibration choice the other way and flags half the people. It
+    requires that `κ`'s statistic does not move, and that the old statistic does.
+
+**How the level is chosen again.** The rule written in "Noise assurance" stands: the same candidates, bars and
+choice.
+- The seventh run takes the same four truths, with 200 simulated pilots of 120 each on fresh seeds (80 to 83), on
+  NRP and against the new reference.
+- Each pilot is read at the 20th, 30th, 40th and 50th percentiles and scored against the table with the gap cells.
+- A level that fails the bar for `κ`, or any other bar, is not chosen. If none passes, the assurance stays at 80%
+  and the owner is told.
+- The old statistic is scored on the same pilots against the old reference, for comparison only
+  (`kappa_compare.py`).
+
+**Prediction, before the run.**
+- The limit for `κ` covers `κ = 2` in about 80% of pilots at the 50th percentile and in more at the 20th. Every
+  truth clears 70% at every level.
+- The old statistic, on the same pilots, under-covers `κ = 2` as before.
+- Stops at `κ = 1` stay within a few points of the sixth run's (49.5% down to 27.5%), since the noise limit, not
+  `κ`'s, drives them.
+- The rule then chooses the 40th percentile, as it would have on the sixth run.
+
+**Result (NRP, 2026-11-05): the 40th percentile, an assurance of 60%.** The run had 200 simulated pilots of 120 per
+truth, scored against the table with the gap cells (`results/pilot_noise_run7_q20.json` to `_q50.json`;
+`results/kappa_compare_run7.json` for the old statistic). Over unflagged people:
+
+| Percentile (assurance) | `κ = 0.75` stops | `κ = 1` stops | `κ`'s limit covers `κ = 2` (bar 70%) | the old statistic's, same pilots | n chosen without the power |
+|---|---|---|---|---|---|
+| 20th (80%) | 1.5% | 44% | 91% | 72% | none |
+| 30th (70%) | 1% | 37.5% | 89% | 68.5% | none |
+| **40th (60%), chosen** | 0.5% | 29.5% | 86.5% | 67% | none |
+| 50th (50%) | 0.5% | 24.5% | 86.5% | 65.5% | none |
+
+- **Every bar passes at every level.**
+  - `κ`'s limit covers the truth in 78.5% to 91% of pilots, at every truth and level.
+  - The agreement's limit covers in 52% to 92% against its restated bars (40% to 70%).
+  - The share's limit covers in 79.5% to 90.5%.
+  - Over unflagged people no pilot chose an n without the power, at any level or truth. Over everyone, at
+    most 1% did.
+- **The choice, by the rule.** All three candidates pass, and the 50th stops least at `κ = 1`, in 24.5% of
+  pilots.
+  - The 40th's 29.5% is 5 points above that and the 30th's 37.5% is 13 points above, so the rule takes the 40th.
+  - At `κ = 0.75` the three differ by half a point.
+- **What the 40th buys.** On the same pilots, the rule at 80% stopped in 44% at `κ = 1`; at the 40th it stops in
+  29.5%.
+  - The rule chooses n = 120, 160, 200 and 240 in 37, 76, 6 and 22 of 200 pilots there.
+  - The truth needs 120, so where it goes the rule is often more cautious than it needs to be. It never chose
+    too few.
+- **What is left is still mostly the noise limit.** At the 40th percentile, with the agreement set to the truth's
+  median, the pilots stop in 4.5% at `κ = 1` (`results/pilot_decompose_run7_q40.json`). With the share at its
+  planted value they stop in 24.5%, and with `κ` known exactly in 34%. Knowing `κ` exactly reads the row above
+  it, as in the fifth run.
+- **The predictions.**
+  - Right: every truth clears the bar; the old statistic under-covers `κ = 2` again (65.5% to 72%); stops at
+    `κ = 1` are 2 to 5.5 points below the sixth run's; and the rule chooses the 40th percentile.
+  - Wrong in size: at the 50th percentile the limit covers `κ = 2` in 86.5%, not about 80%. Claude's reading,
+    not checked: the rank-one people the flag misses also lower the unflagged agreement. At `κ = 2` the
+    agreement at the 50th percentile was at or below the truth's median in 69.5% of pilots, against a nominal
+    50%. So the belt mixes in noisier rows, where more lotteries are taken, and that raises the limit. The
+    excess follows how many rank-one people the flag misses: 52% and 54% at `κ` of 1 and 0.75, 58% at 1.5.
+
 ## Open decisions (owner)
 
 - Population, platform, who runs it, and the ethics route.
 - The charity list and the point rate. The pilot must use the main study's.
 - The cap on n. The table runs to 240.
 - Whether the crossing set stays (DESIGN.md).
-- The caution left at 120 people ("Pilot size"). The owner chose a larger pilot on 2026-11-04. At `κ = 1` the
-  rule still stops in 45% of simulated pilots, mostly because of the noise limit. A lower noise assurance would
-  act on that; more people would hardly help. At `κ = 2` it stops in all of them by design (decision 3).
+- The caution left at 120 people ("Pilot size", "Noise assurance", "The limit for `κ`"). The owner chose a
+  larger pilot and then a lower noise assurance on 2026-11-04, and on 2026-11-05 Claude's recommendation to
+  revise the limit for `κ` first.
+  - By the rules written before the runs, the pilot has 120 people and the noise is read at the 40th
+    percentile, an assurance of 60%. Both levels are Claude's choices by those rules, and the owner may change
+    either before the seal.
+  - At `κ = 1` the rule now stops in 29.5% of simulated pilots, where n = 120 has the power. With all three
+    limits at 80% it stopped in 44% of the same pilots.
+  - Most of what is left comes from the noise limit, which no level at or below the 50th percentile removes.
+  - At `κ = 2` the rule stops in every pilot by design (decision 3).
 - Sealing.
 
 ## References (read 2026-11-03)

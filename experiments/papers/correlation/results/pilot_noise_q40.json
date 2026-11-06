@@ -1,0 +1,422 @@
+{
+ "table_sha256": "1ac20753710f492351f941bbc68f19a4870de13c107ada2b5c3f8130a1dc9c48",
+ "reference_sha256": "77d0d1b4073c59b90bdce3d2bbec9df73fb317fe009c813ad0eec4b8056d4e18",
+ "runs": 16,
+ "noise_q": 0.4,
+ "bars": {
+  "cover_min": 0.7,
+  "agreement_cover_min": 0.5,
+  "power_ok_min": 0.8,
+  "bad_choice_max": 0.2
+ },
+ "truths": {
+  "G075T15S30": {
+   "pilots": 200,
+   "kappa": 0.75,
+   "target": 1.5,
+   "share": 0.3,
+   "kappa_limit_covers": 0.79,
+   "kappa_limit_median": 0.9069900000000001,
+   "hier_q80_covers": null,
+   "agreement_at_or_below_truth": 0.605,
+   "s_upper_covers": 0.795,
+   "gates_pass": 1.0,
+   "targeting_fired": 0.0,
+   "all": {
+    "true_power": {
+     "120": 0.9,
+     "160": 0.99,
+     "200": 0.99,
+     "240": 0.99
+    },
+    "true_power_is_upper_bound": false,
+    "truth_needs": 120,
+    "n": {
+     "120": 39,
+     "160": 18,
+     "200": 34,
+     "240": 31,
+     "none": 78
+    },
+    "chosen_power_ok": 1.0,
+    "stops_when_powered": 0.39,
+    "bad_choice_rate": 0.0,
+    "pass_conditional": true,
+    "pass": true
+   },
+   "all_joint": {
+    "true_power": {
+     "120": 0.9,
+     "160": 0.99,
+     "200": 0.99,
+     "240": 0.99
+    },
+    "true_power_is_upper_bound": false,
+    "truth_needs": 120,
+    "n": {
+     "120": 42,
+     "160": 31,
+     "200": 31,
+     "240": 20,
+     "none": 76
+    },
+    "chosen_power_ok": 1.0,
+    "stops_when_powered": 0.38,
+    "bad_choice_rate": 0.0,
+    "pass_conditional": true,
+    "pass": true
+   },
+   "unflagged": {
+    "true_power": {
+     "120": 0.99,
+     "160": 0.99,
+     "200": 0.99,
+     "240": 1.0
+    },
+    "true_power_is_upper_bound": false,
+    "truth_needs": 120,
+    "n": {
+     "120": 191,
+     "160": 2,
+     "200": 1,
+     "240": 1,
+     "none": 5
+    },
+    "chosen_power_ok": 1.0,
+    "stops_when_powered": 0.025,
+    "bad_choice_rate": 0.0,
+    "pass_conditional": true,
+    "pass": true
+   },
+   "unflagged_joint": {
+    "true_power": {
+     "120": 0.99,
+     "160": 0.99,
+     "200": 0.99,
+     "240": 1.0
+    },
+    "true_power_is_upper_bound": false,
+    "truth_needs": 120,
+    "n": {
+     "120": 190,
+     "160": 5,
+     "200": 1,
+     "240": 1,
+     "none": 3
+    },
+    "chosen_power_ok": 1.0,
+    "stops_when_powered": 0.015,
+    "bad_choice_rate": 0.0,
+    "pass_conditional": true,
+    "pass": true
+   },
+   "covers_pass": true
+  },
+  "G100T15S30": {
+   "pilots": 200,
+   "kappa": 1.0,
+   "target": 1.5,
+   "share": 0.3,
+   "kappa_limit_covers": 0.725,
+   "kappa_limit_median": 1.13564,
+   "hier_q80_covers": null,
+   "agreement_at_or_below_truth": 0.695,
+   "s_upper_covers": 0.855,
+   "gates_pass": 1.0,
+   "targeting_fired": 0.0,
+   "all": {
+    "true_power": {
+     "120": 0.73,
+     "160": 0.8200000000000001,
+     "200": 0.86,
+     "240": 0.9
+    },
+    "true_power_is_upper_bound": false,
+    "truth_needs": 160,
+    "n": {
+     "120": 0,
+     "160": 8,
+     "200": 10,
+     "240": 9,
+     "none": 173
+    },
+    "chosen_power_ok": 1.0,
+    "stops_when_powered": 0.865,
+    "bad_choice_rate": 0.0,
+    "pass_conditional": true,
+    "pass": true
+   },
+   "all_joint": {
+    "true_power": {
+     "120": 0.73,
+     "160": 0.8200000000000001,
+     "200": 0.86,
+     "240": 0.9
+    },
+    "true_power_is_upper_bound": false,
+    "truth_needs": 160,
+    "n": {
+     "120": 1,
+     "160": 5,
+     "200": 5,
+     "240": 3,
+     "none": 186
+    },
+    "chosen_power_ok": 0.9285714285714286,
+    "stops_when_powered": 0.93,
+    "bad_choice_rate": 0.005,
+    "pass_conditional": true,
+    "pass": true
+   },
+   "unflagged": {
+    "true_power": {
+     "120": 0.9500000000000001,
+     "160": 0.99,
+     "200": 1.0,
+     "240": 1.0
+    },
+    "true_power_is_upper_bound": false,
+    "truth_needs": 120,
+    "n": {
+     "120": 58,
+     "160": 46,
+     "200": 5,
+     "240": 25,
+     "none": 66
+    },
+    "chosen_power_ok": 1.0,
+    "stops_when_powered": 0.33,
+    "bad_choice_rate": 0.0,
+    "pass_conditional": true,
+    "pass": true
+   },
+   "unflagged_joint": {
+    "true_power": {
+     "120": 0.9500000000000001,
+     "160": 0.99,
+     "200": 1.0,
+     "240": 1.0
+    },
+    "true_power_is_upper_bound": false,
+    "truth_needs": 120,
+    "n": {
+     "120": 59,
+     "160": 50,
+     "200": 6,
+     "240": 18,
+     "none": 67
+    },
+    "chosen_power_ok": 1.0,
+    "stops_when_powered": 0.335,
+    "bad_choice_rate": 0.0,
+    "pass_conditional": true,
+    "pass": true
+   },
+   "covers_pass": true
+  },
+  "G150T15S30": {
+   "pilots": 200,
+   "kappa": 1.5,
+   "target": 1.5,
+   "share": 0.3,
+   "kappa_limit_covers": 0.725,
+   "kappa_limit_median": 1.65834,
+   "hier_q80_covers": null,
+   "agreement_at_or_below_truth": 0.67,
+   "s_upper_covers": 0.82,
+   "gates_pass": 1.0,
+   "targeting_fired": 0.0,
+   "all": {
+    "true_power": {
+     "120": 0.08000000000000002,
+     "160": 0.09,
+     "200": 0.14,
+     "240": 0.15000000000000002
+    },
+    "true_power_is_upper_bound": false,
+    "truth_needs": null,
+    "n": {
+     "120": 0,
+     "160": 0,
+     "200": 0,
+     "240": 0,
+     "none": 200
+    },
+    "chosen_power_ok": null,
+    "stops_when_powered": null,
+    "bad_choice_rate": 0.0,
+    "pass_conditional": true,
+    "pass": true
+   },
+   "all_joint": {
+    "true_power": {
+     "120": 0.08000000000000002,
+     "160": 0.09,
+     "200": 0.14,
+     "240": 0.15000000000000002
+    },
+    "true_power_is_upper_bound": false,
+    "truth_needs": null,
+    "n": {
+     "120": 0,
+     "160": 0,
+     "200": 0,
+     "240": 0,
+     "none": 200
+    },
+    "chosen_power_ok": null,
+    "stops_when_powered": null,
+    "bad_choice_rate": 0.0,
+    "pass_conditional": true,
+    "pass": true
+   },
+   "unflagged": {
+    "true_power": {
+     "120": 0.32,
+     "160": 0.39999999999999997,
+     "200": 0.51,
+     "240": 0.5900000000000001
+    },
+    "true_power_is_upper_bound": false,
+    "truth_needs": null,
+    "n": {
+     "120": 0,
+     "160": 0,
+     "200": 0,
+     "240": 0,
+     "none": 200
+    },
+    "chosen_power_ok": null,
+    "stops_when_powered": null,
+    "bad_choice_rate": 0.0,
+    "pass_conditional": true,
+    "pass": true
+   },
+   "unflagged_joint": {
+    "true_power": {
+     "120": 0.32,
+     "160": 0.39999999999999997,
+     "200": 0.51,
+     "240": 0.5900000000000001
+    },
+    "true_power_is_upper_bound": false,
+    "truth_needs": null,
+    "n": {
+     "120": 0,
+     "160": 0,
+     "200": 0,
+     "240": 0,
+     "none": 200
+    },
+    "chosen_power_ok": null,
+    "stops_when_powered": null,
+    "bad_choice_rate": 0.0,
+    "pass_conditional": true,
+    "pass": true
+   },
+   "covers_pass": true
+  },
+  "G200T20S30": {
+   "pilots": 200,
+   "kappa": 2.0,
+   "target": 2.0,
+   "share": 0.3,
+   "kappa_limit_covers": 0.655,
+   "kappa_limit_median": 2.01,
+   "hier_q80_covers": null,
+   "agreement_at_or_below_truth": 0.85,
+   "s_upper_covers": 0.86,
+   "gates_pass": 1.0,
+   "targeting_fired": 0.0,
+   "all": {
+    "true_power": {
+     "120": 0.15000000000000002,
+     "160": 0.22000000000000006,
+     "200": 0.28,
+     "240": 0.38000000000000006
+    },
+    "true_power_is_upper_bound": false,
+    "truth_needs": null,
+    "n": {
+     "120": 0,
+     "160": 0,
+     "200": 0,
+     "240": 0,
+     "none": 200
+    },
+    "chosen_power_ok": null,
+    "stops_when_powered": null,
+    "bad_choice_rate": 0.0,
+    "pass_conditional": true,
+    "pass": true
+   },
+   "all_joint": {
+    "true_power": {
+     "120": 0.15000000000000002,
+     "160": 0.22000000000000006,
+     "200": 0.28,
+     "240": 0.38000000000000006
+    },
+    "true_power_is_upper_bound": false,
+    "truth_needs": null,
+    "n": {
+     "120": 0,
+     "160": 0,
+     "200": 0,
+     "240": 0,
+     "none": 200
+    },
+    "chosen_power_ok": null,
+    "stops_when_powered": null,
+    "bad_choice_rate": 0.0,
+    "pass_conditional": true,
+    "pass": true
+   },
+   "unflagged": {
+    "true_power": {
+     "120": 0.55,
+     "160": 0.68,
+     "200": 0.8200000000000001,
+     "240": 0.86
+    },
+    "true_power_is_upper_bound": false,
+    "truth_needs": 200,
+    "n": {
+     "120": 0,
+     "160": 0,
+     "200": 0,
+     "240": 0,
+     "none": 200
+    },
+    "chosen_power_ok": null,
+    "stops_when_powered": 1.0,
+    "bad_choice_rate": 0.0,
+    "pass_conditional": true,
+    "pass": true
+   },
+   "unflagged_joint": {
+    "true_power": {
+     "120": 0.55,
+     "160": 0.68,
+     "200": 0.8200000000000001,
+     "240": 0.86
+    },
+    "true_power_is_upper_bound": false,
+    "truth_needs": 200,
+    "n": {
+     "120": 0,
+     "160": 0,
+     "200": 0,
+     "240": 0,
+     "none": 200
+    },
+    "chosen_power_ok": null,
+    "stops_when_powered": 1.0,
+    "bad_choice_rate": 0.0,
+    "pass_conditional": true,
+    "pass": true
+   },
+   "covers_pass": false
+  }
+ }
+}

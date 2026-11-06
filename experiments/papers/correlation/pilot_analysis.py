@@ -1,23 +1,26 @@
 #!/usr/bin/env python3
 """The pilot's analysis (PILOT.md): statistics, references, gates, the row and the sample-size rule.
 
-    python pilot_analysis.py reference OUT.json [--pilots 400] [--people 10000] [--pilot-n N]
+    python pilot_analysis.py reference OUT.json [--pilots 400] [--row-pilots 1000] [--people 10000] [--pilot-n N]
     python pilot_analysis.py analyse READABLE.json --reference REF.json --table TABLE.json --out DIR
     python pilot_analysis.py size DIR --table TABLE.json
     python pilot_analysis.py self-test DIR [--hier] [--pilot-n N]
     python pilot_analysis.py rehearse TRUTH PILOTS OUT.json --reference REF.json --table TABLE.json [--seed K] [--pilot-n N]
     python pilot_analysis.py summarise OUT.json REHEARSE.json... --reference REF.json --table TABLE.json [--pilot-n N]
+                                       [--noise-q Q]
 
 --pilot-n runs the rehearsal's tools at another pilot size than PILOT_N, to choose the size (PILOT.md, "Pilot size").
-analyse and size take no such option: the real pilot is read at the sealed size only.
+--noise-q scores the rehearsal's pilots at another percentile of agreement than NOISE_Q, from the percentiles every
+analysis stores, to choose the noise assurance (PILOT.md, "Noise assurance"). analyse and size take neither option:
+the real pilot is read at the sealed size and percentile only.
 
-reference  Simulated pilots of PILOT_N included people from the rehearsal's truths (the version 4 truths and the
-           table's GEO rows) through the same 160 trials, every statistic computed as for the real pilot. Also,
+reference  Simulated pilots of PILOT_N included people from the rehearsal's truths (400 per version 4 truth, 1000 per
+           GEO row of the table) through the same 160 trials, every statistic computed as for the real pilot. Also,
            per row, how often the self-only rules flag simulated rank-one people (tpr) and people who trade
            the two off (fpr): the pilot's rule and the main study's.
 analyse    A readable file from split_pilot.py: inclusion, gates, statistics, targeting rules, and what the
-           sample-size rule reads: the posterior draws of the population kappa, the pilot's agreement and the
-           upper limit of the self-only share. Writes DIR/pilot_estimates.json when the file declares
+           sample-size rule reads: the draws of kappa from its confidence distribution, the pilot's agreement
+           and the upper limit of the self-only share. Writes DIR/pilot_estimates.json when the file declares
            "source": "human", and DIR/rehearsal_pilot_estimates.json otherwise. Aggregates only.
 size       The sample-size rule, on DIR/pilot_estimates.json and the sealed power table (power_table.py).
 self-test  Every guard driven to refuse, each checked to refuse for its own reason, a round trip through
@@ -28,20 +31,23 @@ summarise  The pilot rehearsal's checks, from its outputs.
 
 The rule (version 6, decided 2026-11-03 before any data; PILOT.md, "Reading the pilot"). For each kappa row of the
 table, power is read at the pilot's noise and self-only share: linearly between the two noise rows whose
-simulated median agreement brackets the pilot's 20th percentile, and linearly between the tabulated shares at
-that row's upper limit for the share. Each draw of kappa takes the lower power of the two rows around it, a
-draw above the table takes 0, and n is the smallest of 120 to 240 whose 20th percentile of power over the draws
-reaches 0.80. When power falls as kappa rises this reads power at kappa's 80% upper limit, as version 5's rule
-did. Version 6 found that power does not always fall. The draws come from kappa's confidence distribution:
-the lottery-choice rate at the ideal, read against the reference's simulated pilots (`kappa_belt`). The first
-pilot rehearsal took them from hier.py's posterior, which at pilot size sat 0.1 to 0.2 below the truth
-(revised 2026-11-03; hier.py's kappa is still reported, as DESIGN.md's secondary analysis).
+simulated median agreement brackets the NOISE_Q percentile of the pilot's agreement, and linearly between the
+tabulated shares at that row's upper limit for the share. Each draw of kappa takes the lower power of the two rows
+around it, a draw above the table takes 0, and n is the smallest of 120 to 240 whose 20th percentile of power over
+the draws reaches 0.80. When power falls as kappa rises this reads power at kappa's 80% upper limit, as version
+5's rule did. Version 6 found that power does not always fall. The draws come from kappa's confidence
+distribution: the lottery-choice rate at the ideal, read against the reference's simulated pilots (`kappa_belt`).
+The first pilot rehearsal took them from hier.py's posterior, which at pilot size sat 0.1 to 0.2 below the truth
+(revised 2026-11-03; hier.py's kappa is still reported, as DESIGN.md's secondary analysis). The rate is the self
+lotteries' over everyone included (revised 2026-11-05). The rate over both attributes and unflagged people, read
+until then, covered kappa = 2 in too few pilots with rank-one people present (PILOT.md, "The limit for kappa").
 
 Guards. The analysis refuses (exit 2, naming the reason) a file that carries a trial of the test or secondary
 set, or a field the readable file does not have; an undeclared source; a stimulus hash that is not
 stimuli.py's; a reference computed on other stimuli or other rules. The sample-size rule reads
 DIR/pilot_estimates.json and nothing else. It refuses estimates not marked human, kappa draws that did not come
-from the sealed belt, a failed gate, a fired targeting rule, and estimates read against another table.
+from the sealed belt, agreement read at another percentile than NOISE_Q, a failed gate, a fired targeting rule,
+and estimates read against another table.
 
 The self-only flag (revised 2026-11-03, before any data): a person is flagged who chose the self-favouring
 option in at least FLAG_MIN of the 24 high-ratio riskless pairs (block R's ratio-2 and ratio-3 pairs and
@@ -71,16 +77,25 @@ import split_pilot  # noqa: E402
 import stimuli  # noqa: E402
 
 READABLE_FORMAT = "correlation-pilot-readable/1"
-REF_FORMAT = "correlation-pilot-reference/3"
-EST_FORMAT = "correlation-pilot-estimates/3"
-KAPPA_SOURCE = "lottery-rate belt/1"     # what the rule's kappa draws must come from (kappa_belt)
+REF_FORMAT = "correlation-pilot-reference/4"
+EST_FORMAT = "correlation-pilot-estimates/4"
+# What the rule's kappa draws must come from (kappa_belt). "lottery-rate belt/1", the rate over both attributes and
+# unflagged people, until 2026-11-05 (PILOT.md, "The limit for kappa").
+KAPPA_SOURCE = "self-lottery belt/2"
 BELT_GRID = 500
+ROW_PILOTS = 1000                    # the reference's simulated pilots per table row (400 until 2026-11-05)
 TABLE_FORMAT = "correlation-power-table/2"
 # Which people the main tests count. "unflagged": the people the main study's self-only flag does not catch, the
 # owner's decision of 2026-11-04 (DESIGN.md, Inclusion; PILOT.md). "all", every included person, was the registered
 # form before it. The table carries both.
 MAIN_POPULATION = "unflagged"
 KAPPA_Q = 0.2                        # the 20th percentile of power over the kappa posterior
+# The percentile of the pilot's agreement the rule reads: the 40th since 2026-11-05, chosen by the rule written before
+# the seventh pilot rehearsal (PILOT.md, "Noise assurance" and "The limit for kappa"); the 20th until then.
+NOISE_Q = 0.4
+# Every analysis also stores the agreement at these percentiles, so that the pilot rehearsal can score each level on
+# the same simulated pilots (`summarise --noise-q`).
+NOISE_LEVELS = (0.2, 0.3, 0.4, 0.5)
 # the analysis's own list of readable roles, kept apart from split_pilot.py's so that a broken split
 # cannot pass through both
 READABLE_ROLES = frozenset({"calib", "check", "pilot"})
@@ -230,10 +245,16 @@ def pilot_stats(pp):
             "target_risk_self": float(np.mean((g("lot_cal_self") == 0) & (g("lot_ps_self") >= 1))),
             "target_risk_charity": float(np.mean((g("lot_cal_charity") == 0) & (g("lot_ps_charity") >= 1))),
             "lottery_rate": float(np.mean((g("lot_cal_self") + g("lot_cal_charity")) / n_cal)),
-            # the rule's kappa statistic (revised 2026-11-03): the same rate over the people not flagged as self only,
-            # whom the table's rows do not contain
+            # the rule's kappa statistic from 2026-11-03 to 2026-11-05: the same rate over the people not flagged as
+            # self only, whom the table's rows do not contain. Kept for comparison.
             "lottery_rate_unflagged": float(np.mean(((g("lot_cal_self") + g("lot_cal_charity")) / n_cal)[~flag]))
             if (~flag).any() else float("nan"),
+            # the rule's kappa statistic (revised 2026-11-05): the self lotteries only, over everyone included. The
+            # charity sits at its ideal in them, so someone who ignores the charity chooses them as anyone else does,
+            # and the statistic depends neither on the rank-one share, which the table's rows lack, nor on the flag,
+            # which keeps the rank-one people who choose least consistently (PILOT.md, "The limit for kappa"). It is
+            # a count over 12 x the people, computed as one, so the reference's stored counts give the same numbers
+            "lottery_rate_self": float(g("lot_cal_self").sum() / (len(CAL["self"]) * len(pp))),
             "left_mean": float(g("left").mean()), "left_sd": float(g("left").std(ddof=1)) if len(pp) > 1 else 0.0}
 
 
@@ -294,17 +315,18 @@ def simulated_export(truth, rng, n=None):
                     "rank_one_included": sum(bool(s.get("rank_one")) for _, s in inc)}
 
 
-def reference(out, pilots=400, people=10000, fit_pilots=5):
+def reference(out, pilots=400, people=10000, fit_pilots=5, row_pilots=ROW_PILOTS):
     rows = table_rows()
     ref = {"format": REF_FORMAT, "source": "simulated", "stimuli_sha256": DIGEST, "code_sha256": code_hashes(),
-           "pilots": pilots, "people": people, "pilot_n": PILOT_N, "flag_min": FLAG_MIN, "att_max": ATT_MAX,
-           "main_flag_min": R.MAIN_FLAG_MIN, "truths": {}, "rows": {}, "fits": {}}
+           "pilots": pilots, "row_pilots": row_pilots, "people": people, "pilot_n": PILOT_N, "flag_min": FLAG_MIN,
+           "att_max": ATT_MAX, "main_flag_min": R.MAIN_FLAG_MIN, "truths": {}, "rows": {}, "fits": {}}
     t0 = time.time()
     bins = (("r below -0.2", -9, -0.2), ("r -0.2 to 0.2", -0.2, 0.2), ("r above 0.2", 0.2, 9))
     for truth in V4_TRUTHS + tuple(rows):
         rng = np.random.default_rng([R.SEED, 8, zlib.crc32(truth.encode())])
         sims, excl, by_r = [], [], {b: [0, 0] for b, _, _ in bins}
-        for _ in range(pilots):
+        # a row's first `pilots` pilots are the ones a reference of that many pilots per row holds: the same stream
+        for _ in range(row_pilots if truth in rows else pilots):
             inc, exc = recruit(truth, rng)
             sims.append(pilot_stats([person(ch) for ch, _ in inc]))
             excl.append(len(exc) / (len(exc) + len(inc)))
@@ -316,8 +338,16 @@ def reference(out, pilots=400, people=10000, fit_pilots=5):
                             by_r[b][1] += 1
         ref["truths"][truth] = {**{k: quantiles([s[k] for s in sims]) for k in sims[0]}, "excluded": quantiles(excl)}
         if truth in rows:
-            # every simulated pilot's rate, which the kappa rule reads its pilot against (kappa_belt)
-            ref["truths"][truth]["lottery_rate_unflagged_draws"] = sorted(round(s["lottery_rate_unflagged"], 6) for s in sims)
+            # every simulated pilot's kappa statistic, which the rule reads its pilot against (kappa_belt): a count of
+            # self lotteries taken out of 12 x PILOT_N, kept as a histogram of counts (`simulated_rates`)
+            of = len(CAL["self"]) * PILOT_N
+            hist = {}
+            for s in sims:
+                c = int(round(s["lottery_rate_self"] * of))
+                if abs(s["lottery_rate_self"] * of - c) > 1e-6:
+                    raise Refusal("rules", f"{truth}: a simulated pilot's self-lottery rate is not a count out of {of}")
+                hist[c] = hist.get(c, 0) + 1
+            ref["truths"][truth]["lottery_self_counts"] = {"of": of, "hist": {str(c): hist[c] for c in sorted(hist)}}
         if any(n for _, n in by_r.values()):
             # the attention checks must not select on the metric (PILOT.md, inclusion rule)
             ref["truths"][truth]["excluded_by_r"] = {b: k / n if n else None for b, (k, n) in by_r.items()}
@@ -415,9 +445,45 @@ def hier_kappa(Y, seed):
 
 # ---- the analysis ---------------------------------------------------------------------------------------------
 
-def kappa_belt(rate, rows, ref, kappas, targets, grid=BELT_GRID):
-    """The kappa the rule reads (revised 2026-11-03, PILOT.md): a confidence distribution from the lottery-choice
-    rate at the ideal, over the pilot's unflagged people, read against the reference's simulated pilots.
+def noise_rows(a, q_upper, ref, kappas, targets):
+    """What the sample-size rule reads at each kappa row (PILOT.md, "Reading the pilot"): where the pilot's agreement
+    `a`, at the rule's percentile, falls between the noise rows' simulated medians, and the upper limit `q_upper` of
+    the self-only share, converted with that row's flag rates at the same point."""
+    rows = {}
+    for k in kappas:
+        med = [ref["truths"][cell(k, t)]["agreement"]["q50"] for t in targets]
+        if any(m1 >= m2 for m1, m2 in zip(med, med[1:])):
+            raise Refusal("rules", f"the reference's agreement at kappa {k} does not rise as the rows get less noisy: {med}")
+        rr = [ref["rows"][cell(k, t)] for t in targets]
+        row = {"sim_agreement_median": dict(zip(map(str, targets), med)), "targets": None,
+               "flag_rates": {str(t): [r["tpr"], r["fpr"]] for t, r in zip(targets, rr)}}
+        if np.isfinite(a) and a >= med[0]:
+            i = max(j for j in range(len(targets) - 1) if med[j] <= a)
+            w = min(1.0, (a - med[i]) / (med[i + 1] - med[i]))      # at or above the least noisy row: that row
+            tpr, fpr = ((1 - w) * rr[i][x] + w * rr[i + 1][x] for x in ("tpr", "fpr"))
+            row.update(targets=[targets[i], targets[i + 1]], weight=float(w), tpr=float(tpr), fpr=float(fpr),
+                       s_upper=float(np.clip((q_upper - fpr) / (tpr - fpr), 0, 1)))
+        rows[str(k)] = row
+    return rows
+
+
+def simulated_rates(ref, row):
+    """The rule's kappa statistic in each of the reference's simulated pilots at a row. It is a count of self lotteries
+    taken out of 12 x PILOT_N, so the reference keeps a histogram of counts: exact, and small enough to ride in an NRP
+    Job's command with the code (submit_nrp.py, MAX_COMMAND), which 1,000 pilots per row written out would not be."""
+    h = ref["truths"][row].get("lottery_self_counts")
+    if not h:
+        raise Refusal("rules", f"the reference has no simulated self-lottery counts for row {row}")
+    counts = list(h["hist"])
+    return np.repeat(np.array([int(c) for c in counts]), [h["hist"][c] for c in counts]) / h["of"]
+
+
+def kappa_belt(rate, rows, ref, kappas, targets, grid=BELT_GRID, simulated=simulated_rates):
+    """The kappa the rule reads (PILOT.md, "Reading the pilot"): a confidence distribution from the lottery-choice
+    rate at the ideal, read against the reference's simulated pilots. The rate is the self lotteries' over everyone
+    included (revised 2026-11-05). Until then it was both attributes' over the unflagged people, and the rank-one
+    people the flag missed raised it at kappa = 2, where the rows have none (PILOT.md, "The limit for kappa");
+    `simulated` reads another statistic's simulated values, for comparison (kappa_compare.py).
 
     For each kappa row, G is the share of the row's simulated pilots whose rate is at or below the pilot's (ties
     count half), mixed between the two noise rows the pilot's agreement falls between, as power is. Higher kappa
@@ -430,10 +496,7 @@ def kappa_belt(rate, rows, ref, kappas, targets, grid=BELT_GRID):
         row = rows[str(k)]
 
         def F(t):
-            d = ref["truths"][cell(k, t)].get("lottery_rate_unflagged_draws")
-            if not d:
-                raise Refusal("rules", f"the reference has no simulated lottery rates for row {cell(k, t)}")
-            d = np.asarray(d)
+            d = np.asarray(simulated(ref, cell(k, t)), float)
             return float((np.sum(d < rate) + 0.5 * np.sum(d == rate)) / len(d))
 
         if row.get("targets"):
@@ -489,7 +552,9 @@ def analyse(path, ref_path, table_path, out_dir, kappa_fit=hier_kappa, seed=0):
     ag = np.array([s["agree"] for s, f in zip(pp, flag) if not f])
     brng = np.random.default_rng([R.SEED, 6, seed])
     boot = np.array([ag[brng.integers(0, len(ag), len(ag))].mean() for _ in range(BOOT)]) if len(ag) else np.array([np.nan])
-    a20 = float(np.quantile(boot, 0.2))
+    # the agreement at the rule's percentile, and at each level the pilot rehearsal compares
+    a_levels = {f"{q:g}": float(np.quantile(boot, q)) for q in sorted({*NOISE_LEVELS, NOISE_Q})}
+    a_noise = a_levels[f"{NOISE_Q:g}"]
     if len(keep) >= 2:
         kf = kappa_fit(np.stack([1 - choices(p)[CALIB_IDS] for p in keep]).astype(float), seed)
     else:
@@ -498,33 +563,21 @@ def analyse(path, ref_path, table_path, out_dir, kappa_fit=hier_kappa, seed=0):
     kf.pop("draws", None)
     kf.pop("draws_mean", None)
 
-    # What the sample-size rule reads (PILOT.md, "Reading the pilot"). Per kappa row: where the pilot's 20th
-    # percentile of agreement falls between the noise rows' simulated medians, and the upper limit of the self-only
-    # share, converted with that row's flag rates at the same point.
+    # What the sample-size rule reads (PILOT.md, "Reading the pilot"): the noise rows and the share's limits at each
+    # kappa row (`noise_rows`), and kappa's belt, mixed between the same rows.
     s = {"flagged": int(flag.sum()), "n": n, "share": frac(int(flag.sum()), n),
          "q_upper": wilson_upper(int(flag.sum()), n) if n else float("nan")}
-    rows = {}
-    for k in kappas:
-        med = [ref["truths"][cell(k, t)]["agreement"]["q50"] for t in targets]
-        if any(m1 >= m2 for m1, m2 in zip(med, med[1:])):
-            raise Refusal("rules", f"the reference's agreement at kappa {k} does not rise as the rows get less noisy: {med}")
-        rr = [ref["rows"][cell(k, t)] for t in targets]
-        row = {"sim_agreement_median": dict(zip(map(str, targets), med)), "targets": None,
-               "flag_rates": {str(t): [r["tpr"], r["fpr"]] for t, r in zip(targets, rr)}}
-        if np.isfinite(a20) and a20 >= med[0]:
-            i = max(j for j in range(len(targets) - 1) if med[j] <= a20)
-            w = min(1.0, (a20 - med[i]) / (med[i + 1] - med[i]))      # at or above the least noisy row: that row
-            tpr, fpr = ((1 - w) * rr[i][x] + w * rr[i + 1][x] for x in ("tpr", "fpr"))
-            row.update(targets=[targets[i], targets[i + 1]], weight=float(w), tpr=float(tpr), fpr=float(fpr),
-                       s_upper=float(np.clip((s["q_upper"] - fpr) / (tpr - fpr), 0, 1)))
-        rows[str(k)] = row
-    rate = st["lottery_rate_unflagged"]
+    rows = noise_rows(a_noise, s["q_upper"], ref, kappas, targets)
+    rate = st["lottery_rate_self"]
     if np.isfinite(rate):
         draws, G = kappa_belt(rate, rows, ref, kappas, targets)
     else:
         draws, G = [], []
     rule = {"kappa_source": KAPPA_SOURCE, "kappa_draws": draws, "lottery_rate": rate,
-            "belt": dict(zip(map(str, kappas), G)), "a20": a20, "q_upper": s["q_upper"], "rows": rows,
+            # the rate the rule read until 2026-11-05, which the pilot rehearsal scores beside it (`summarise`)
+            "lottery_rate_unflagged": st["lottery_rate_unflagged"],
+            "belt": dict(zip(map(str, kappas), G)), "noise_q": NOISE_Q, "a_noise": a_noise, "a_levels": a_levels,
+            "q_upper": s["q_upper"], "rows": rows,
             # for the joint form (choose_n_joint): the agreement's bootstrap mean and spread, and the flagged count
             "a_mean": float(np.mean(boot)), "a_sd": float(np.std(boot)), "flagged": [s["flagged"], n]}
 
@@ -558,7 +611,8 @@ def analyse(path, ref_path, table_path, out_dir, kappa_fit=hier_kappa, seed=0):
            "counts": {"participants": len(everyone), "quiz_passed": len(quiz_ok), "finished": len(finished),
                       "included": n, "flagged": int(flag.sum())},
            "gates": gates, "gates_pass": all(g["pass"] for g in gates.values()), "statistics": st,
-           "agreement": {"mean": float(ag.mean()) if len(ag) else float("nan"), "q20": a20, "people": int(len(ag))},
+           "agreement": {"mean": float(ag.mean()) if len(ag) else float("nan"), "percentiles": a_levels,
+                         "people": int(len(ag))},
            "kappa": kf, "rule": rule, "s": s, "targeting": targeting, "reported": reported,
            "written_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
     os.makedirs(out_dir, exist_ok=True)
@@ -580,6 +634,9 @@ def size(est_dir, table_path):
     if (est.get("rule") or {}).get("kappa_source") != KAPPA_SOURCE:
         raise Refusal("kappa", f"{path}: the rule's kappa draws came from {(est.get('rule') or {}).get('kappa_source')!r}, "
                                f"not {KAPPA_SOURCE!r}")
+    if (est.get("rule") or {}).get("noise_q") != NOISE_Q:
+        raise Refusal("noise", f"{path}: the rule read the agreement at percentile "
+                               f"{(est.get('rule') or {}).get('noise_q')!r}, not {NOISE_Q}")
     failed = [g for g, v in est["gates"].items() if not v["pass"]]
     if failed:
         raise Refusal("gate", f"{path} reports failed gate(s) {failed}; the instrument is fixed and the pilot repeated")
@@ -799,7 +856,7 @@ def self_test(d, use_hier=False):
 
     rng = np.random.default_rng([R.SEED, 11])
     ref, tab = os.path.join(d, "reference.json"), os.path.join(d, "table.json")
-    reference(ref, pilots=10, people=300, fit_pilots=1)
+    reference(ref, pilots=10, people=300, fit_pilots=1, row_pilots=10)
     synthetic_table(tab)
     export, info = simulated_export("GEO1", rng)
     exp_path, split_dir = os.path.join(d, "export.json"), os.path.join(d, "split")
@@ -816,10 +873,10 @@ def self_test(d, use_hier=False):
           and not os.path.exists(os.path.join(est_dir, "pilot_estimates.json")))
     check(f"simulated pilot: {PILOT_N} included, recruited until they qualify", est["counts"]["included"] == PILOT_N,
           f"counts {est['counts']}, gates failed {[g for g, v in est['gates'].items() if not v['pass']]}, "
-          f"agreement q20 {est['rule']['a20']:.3f}, s {est['s']}")
+          f"agreement at percentile {NOISE_Q:g} {est['rule']['a_noise']:.3f}, s {est['s']}")
 
     # the kappa rule on made-up rows: the pilot at the target-1.5 rows, nobody of rank one
-    flat = {"kappa_draws": [float(x) for x in np.linspace(0.9, 1.3, 500)], "a20": 0.7, "q_upper": 0.0,
+    flat = {"kappa_draws": [float(x) for x in np.linspace(0.9, 1.3, 500)], "a_noise": 0.7, "q_upper": 0.0,
             "rows": {str(k): {"targets": [1.0, 1.5], "weight": 1.0, "s_upper": 0.0} for k in load(tab)["kappas"]}}
     t_syn = load(tab)
 
@@ -842,13 +899,37 @@ def self_test(d, use_hier=False):
     p3 = row_power(t_syn, 1.0, mid["rows"]["1.0"], 120, "all")
     p2, p4 = (t_syn["cells"][cell(1.0, 1.5, sh)]["power"]["120"] for sh in (0.2, 0.4))
     check("share: power at a share of 0.3 lies between the 0.2 and 0.4 cells", p4 < p3 < p2, f"{p4:.3f} < {p3:.3f} < {p2:.3f}")
+    # the kappa statistic (revised 2026-11-05): the self lotteries of every included person and nothing else. Every
+    # charity calibration choice turned the other way, and the high-ratio pairs made self-favouring for half the
+    # people so that the flag catches them, must leave it as it was, while the rate the rule read before moves.
+    doc = load(readable)
+    chs = [choices(p) for p in doc["participants"]]
+    alt = []
+    for j, ch in enumerate(chs):
+        c = ch.copy()
+        c[CAL["charity"]] = 1 - c[CAL["charity"]]
+        if j % 2:
+            c[HI_IDS] = SELFOPT[HI_IDS]
+        alt.append(c)
+    st0, st1 = (pilot_stats([s for s in map(person, x) if s["att_fail"] <= ATT_MAX]) for x in (chs, alt))
+    check("kappa statistic: the self lotteries of everyone included, unmoved by the charity lotteries and the flag",
+          st0["lottery_rate_self"] == st1["lottery_rate_self"] == est["rule"]["lottery_rate"]
+          and st1["flag_share"] > st0["flag_share"] and st1["lottery_rate_unflagged"] != st0["lottery_rate_unflagged"],
+          f"rate {st0['lottery_rate_self']:.4f} and {st1['lottery_rate_self']:.4f} (rule {est['rule']['lottery_rate']:.4f}); "
+          f"flagged {st0['flag_share']:.3f} -> {st1['flag_share']:.3f}; earlier rate {st0['lottery_rate_unflagged']:.4f} -> "
+          f"{st1['lottery_rate_unflagged']:.4f}")
     # the belt: a pilot whose rate is the kappa = 1 row's median, read at the target-1.5 rows
     rref = load(ref)
-    med1 = float(np.median(rref["truths"][cell(1.0, 1.5)]["lottery_rate_unflagged_draws"]))
+    med1 = float(np.median(simulated_rates(rref, cell(1.0, 1.5))))
     at15 = {str(k): {"targets": [1.0, 1.5], "weight": 1.0} for k in t_syn["kappas"]}
     bd, _ = kappa_belt(med1, at15, rref, sorted(t_syn["kappas"]), sorted(t_syn["targets"]))
     check("belt: at the kappa = 1 row's median rate, kappa's confidence distribution is centred near 1",
           abs(float(np.median(bd)) - 1.0) <= 0.15, f"median {np.median(bd):.3f}, 80th percentile {np.quantile(bd, 0.8):.3f}")
+    # the rehearsal's comparison of noise levels reads each pilot again from its stored percentiles (`read_at`)
+    again = read_at(est["rule"], NOISE_Q, rref, sorted(t_syn["kappas"]), sorted(t_syn["targets"]))
+    check("rehearsal: a pilot read again at the rule's own percentile gives its analysis's rows and kappa draws",
+          again["rows"] == est["rule"]["rows"] and again["kappa_draws"] == est["rule"]["kappa_draws"],
+          f"agreement {again['a_noise']:.4f} against {est['rule']['a_noise']:.4f}")
     refused("size: no estimates at all", "missing", lambda: size(est_dir, tab))
     shutil.copy(written, os.path.join(est_dir, "pilot_estimates.json"))
     refused("size: a simulated file exactly where the rule looks is refused for provenance", "provenance",
@@ -866,6 +947,8 @@ def self_test(d, use_hier=False):
 
     forged(rule=lambda e: {**e["rule"], "kappa_source": "hier.py posterior"})
     refused("size: kappa draws not from the sealed belt are refused", "kappa", lambda: size(est_dir, tab))
+    forged(rule=lambda e: {**e["rule"], "noise_q": round(NOISE_Q + 0.1, 2)})
+    refused("size: agreement read at another percentile is refused", "noise", lambda: size(est_dir, tab))
     forged(gates=lambda e: {**e["gates"], "belief": {**e["gates"]["belief"], "pass": False}})
     refused("size: a failed gate is refused", "gate", lambda: size(est_dir, tab))
     forged(targeting=lambda e: {**e["targeting"], "target_self": {**e["targeting"]["target_self"], "fired": True}})
@@ -954,13 +1037,15 @@ def rehearse(truth, pilots, ref_path, table_path, out, seed=0, kappa_fit=hier_ka
                      "rule": {**rule, "kappa_draws": [round(x, 4) for x in rule["kappa_draws"]]},
                      "gates_pass": est["gates_pass"], "targeting": {n: v["fired"] for n, v in est["targeting"].items()}})
         limit = float(np.quantile(rule["kappa_draws"], 0.8)) if rule["kappa_draws"] else float("nan")
-        print(k, round(limit, 3), round(rule["a20"], 3), round(rule["q_upper"], 3), f"{time.time() - t0:.0f}s", flush=True)
+        print(k, round(limit, 3), round(rule["a_noise"], 3), round(rule["q_upper"], 3), f"{time.time() - t0:.0f}s", flush=True)
     dump({"truth": truth, "spec": R.spec(truth), "seed": seed, "pilots": rows, "code_sha256": code_hashes(),
           "reference_sha256": sha256(ref_path), "shape_table_sha256": sha256(table_path), "seconds": time.time() - t0}, out)
 
 
 # Bars for the pilot rehearsal (PILOT.md, sequence step 4), set 2026-11-03 before it ran. Each quantity enters the rule
 # at a one-sided 80% limit, so each limit should hold in about 80% of pilots; the bar allows sampling error over 100.
+# Restated 2026-11-04, with the lower noise assurance (PILOT.md, "Noise assurance"): the agreement's limit holds in
+# about 1 - NOISE_Q of pilots, and its bar is that less the same 10 points.
 COVER_MIN = 0.70
 POWER_OK_MIN = 0.80          # of the pilots that choose an n, the share whose n has true power of at least 0.80
 # Restated 2026-11-04, before the fourth run: of ALL pilots, at most this share may choose an n at which the truth's
@@ -982,7 +1067,22 @@ def true_power(tab, truth, n, population):
     return float(np.interp(s, have, [pw(sh) for sh in have])), False
 
 
-def summarise(out, paths, ref_path, table_path):
+def read_at(rule, level, ref, kappas, targets):
+    """A simulated pilot's rule read again at another percentile of its agreement, from the percentiles `analyse`
+    stored: the noise rows, the share's limits, and kappa's belt, which is mixed between the same rows. The pilot
+    rehearsal compares levels this way, on the same pilots (PILOT.md, "Noise assurance"). `size` reads only what
+    `analyse` wrote."""
+    a = (rule.get("a_levels") or {}).get(f"{level:g}")
+    if a is None:
+        raise Refusal("rules", f"the pilot stored no agreement at percentile {level:g}")
+    rows = noise_rows(a, rule["q_upper"], ref, kappas, targets)
+    rate = rule["lottery_rate"]
+    draws, G = kappa_belt(rate, rows, ref, kappas, targets) if np.isfinite(rate) else ([], [])
+    return {**rule, "noise_q": level, "a_noise": a, "rows": rows, "kappa_draws": draws,
+            "belt": dict(zip(map(str, kappas), G))}
+
+
+def summarise(out, paths, ref_path, table_path, noise_q=None):
     ref, tab = load_reference(ref_path), load_table(table_path)
     by, seen = {}, set()
     for p in paths:
@@ -994,6 +1094,16 @@ def summarise(out, paths, ref_path, table_path):
         seen.add((r["truth"], r["seed"]))
         by.setdefault(r["truth"], []).extend(r["pilots"])
     kappas, targets = sorted(tab["kappas"]), sorted(tab["targets"])
+    if noise_q is not None:         # every pilot read again at another percentile of its agreement
+        for pp in by.values():
+            for q in pp:
+                q["rule"] = read_at(q["rule"], noise_q, ref, kappas, targets)
+    # the percentile the pilots were read at: the 20th in runs made before the level became a constant
+    levels = {q["rule"].get("noise_q", 0.2) for pp in by.values() for q in pp}
+    if len(levels) != 1:
+        raise Refusal("rules", f"the runs read the agreement at different percentiles: {sorted(levels)}")
+    level = levels.pop()
+    a_cover_min = round(COVER_MIN - (level - 0.2), 6)
 
     def joint_inputs(q):
         """The joint form's inputs, for a pilot analysed before `analyse` stored them: the agreement's spread from
@@ -1014,8 +1124,9 @@ def summarise(out, paths, ref_path, table_path):
             q["choice"] = {pop: choose_n(q["rule"], tab, pop) for pop in ("all", "unflagged")}
             jr = joint_inputs(q)
             q["choice_joint"] = {pop: choose_n_joint(jr, tab, pop, seed=j) for pop in ("all", "unflagged")}
-    res = {"table_sha256": sha256(table_path), "reference_sha256": sha256(ref_path), "runs": len(paths), "bars": {
-        "cover_min": COVER_MIN, "power_ok_min": POWER_OK_MIN}, "truths": {}}
+    res = {"table_sha256": sha256(table_path), "reference_sha256": sha256(ref_path), "runs": len(paths),
+           "noise_q": level, "bars": {"cover_min": COVER_MIN, "agreement_cover_min": a_cover_min,
+                                      "power_ok_min": POWER_OK_MIN, "bad_choice_max": BAD_CHOICE_MAX}, "truths": {}}
     for truth, pp in sorted(by.items()):
         sp = R.spec(truth)
         k, t, s = sp["kappa"], sp["target"], sp["share"]
@@ -1027,7 +1138,9 @@ def summarise(out, paths, ref_path, table_path):
              "kappa_limit_covers": float(np.mean([x >= k for x in limit])),
              "kappa_limit_median": float(np.nanmedian(limit)),
              "hier_q80_covers": float(np.mean([x >= k for x in hq])) if np.isfinite(hq).any() else None,
-             "agreement_q20_at_or_below_truth": float(np.mean([q["rule"]["a20"] <= med for q in pp])),
+             # the agreement the rule read, at its percentile ("a20" in runs before the level became a constant)
+             "agreement_at_or_below_truth": float(np.mean([q["rule"].get("a_noise", q["rule"].get("a20")) <= med
+                                                           for q in pp])),
              "s_upper_covers": float(np.mean([(q["rule"]["rows"][str(k)].get("s_upper") or 0) >= s for q in pp])),
              "gates_pass": float(np.mean([q["gates_pass"] for q in pp])),
              "targeting_fired": float(np.mean([any(q["targeting"].values()) for q in pp]))}
@@ -1047,11 +1160,11 @@ def summarise(out, paths, ref_path, table_path):
                 x["pass_conditional"] = x["chosen_power_ok"] is None or x["chosen_power_ok"] >= POWER_OK_MIN
                 x["pass"] = x["bad_choice_rate"] <= BAD_CHOICE_MAX
                 r[pop + form] = x
-        r["covers_pass"] = all(r[x] >= COVER_MIN for x in ("kappa_limit_covers", "agreement_q20_at_or_below_truth"))
+        r["covers_pass"] = r["kappa_limit_covers"] >= COVER_MIN and r["agreement_at_or_below_truth"] >= a_cover_min
         if s:
             r["covers_pass"] = r["covers_pass"] and r["s_upper_covers"] >= COVER_MIN
         res["truths"][truth] = r
-        print(truth, json.dumps({x: r[x] for x in ("kappa_limit_covers", "agreement_q20_at_or_below_truth",
+        print(truth, json.dumps({x: r[x] for x in ("kappa_limit_covers", "agreement_at_or_below_truth",
                                                    "s_upper_covers", "covers_pass")}), flush=True)
         for key in ("all", "unflagged", "all_joint", "unflagged_joint"):
             x = r[key]
@@ -1069,6 +1182,7 @@ def main():
     a = sub.add_parser("reference")
     a.add_argument("out")
     a.add_argument("--pilots", type=int, default=400)
+    a.add_argument("--row-pilots", type=int, default=ROW_PILOTS)
     a.add_argument("--people", type=int, default=10000)
     a.add_argument("--fit-pilots", type=int, default=5)
     a = sub.add_parser("analyse")
@@ -1095,6 +1209,8 @@ def main():
     a.add_argument("runs", nargs="+")
     a.add_argument("--reference", required=True)
     a.add_argument("--table", required=True)
+    a.add_argument("--noise-q", type=float, default=None,
+                   help=f"read the pilots at this percentile of agreement instead of the one they ran with ({NOISE_Q:g})")
     for name in ("reference", "self-test", "rehearse", "summarise"):
         sub.choices[name].add_argument("--pilot-n", type=int, default=None,
                                        help=f"simulated pilots of this many included people instead of {PILOT_N}")
@@ -1104,16 +1220,16 @@ def main():
     np.seterr(all="ignore")
     try:
         if args.cmd == "reference":
-            reference(args.out, args.pilots, args.people, args.fit_pilots)
+            reference(args.out, args.pilots, args.people, args.fit_pilots, args.row_pilots)
         elif args.cmd == "analyse":
             est, path = analyse(args.readable, args.reference, args.table, args.out)
-            print(path, json.dumps({k: est[k] for k in ("counts", "gates_pass", "row", "s")}, indent=1))
+            print(path, json.dumps({k: est[k] for k in ("counts", "gates_pass", "agreement", "s")}, indent=1))
         elif args.cmd == "size":
             print(json.dumps(size(args.dir, args.table), indent=1))
         elif args.cmd == "self-test":
             sys.exit(0 if self_test(args.dir, args.hier) else 1)
         elif args.cmd == "summarise":
-            summarise(args.out, args.runs, args.reference, args.table)
+            summarise(args.out, args.runs, args.reference, args.table, args.noise_q)
         else:
             rehearse(args.truth, args.pilots, args.reference, args.table, args.out, args.seed,
                      kappa_fit=no_hier if args.no_hier else hier_kappa)

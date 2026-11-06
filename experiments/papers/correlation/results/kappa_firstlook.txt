@@ -1,0 +1,16 @@
+G075T15S30 pilots 400 own row G075T15: ref median 0.5205 sd 0.0072
+   own-row coverage 0.815  (run 5 0.810, run 6 0.820);  as run, limit >= kappa 0.810
+   rate minus ref median: mean -0.0010 = -0.14 ref sd;  PIT mean 0.447 (0.5 if no shift)
+   rank-one included 36.2, flagged 35.5, unflagged 84.5; proxy share left +0.009; corr(rate shift, proxy) +0.022, slope +0.0107 per unit share left, intercept -0.0011
+G100T15S30 pilots 400 own row G100T15: ref median 0.4997 sd 0.0072
+   own-row coverage 0.725  (run 5 0.730, run 6 0.720);  as run, limit >= kappa 0.733
+   rate minus ref median: mean +0.0009 = +0.13 ref sd;  PIT mean 0.529 (0.5 if no shift)
+   rank-one included 36.2, flagged 34.5, unflagged 85.5; proxy share left +0.020; corr(rate shift, proxy) -0.080, slope -0.0321 per unit share left, intercept +0.0015
+G150T15S30 pilots 400 own row G150T15: ref median 0.4620 sd 0.0082
+   own-row coverage 0.735  (run 5 0.805, run 6 0.665);  as run, limit >= kappa 0.807
+   rate minus ref median: mean +0.0009 = +0.11 ref sd;  PIT mean 0.533 (0.5 if no shift)
+   rank-one included 36.3, flagged 30.5, unflagged 89.5; proxy share left +0.064; corr(rate shift, proxy) +0.065, slope +0.0184 per unit share left, intercept -0.0003
+G200T20S30 pilots 400 own row G200T20: ref median 0.4292 sd 0.0082
+   own-row coverage 0.595  (run 5 0.605, run 6 0.585);  as run, limit >= kappa 0.728
+   rate minus ref median: mean +0.0039 = +0.48 ref sd;  PIT mean 0.628 (0.5 if no shift)
+   rank-one included 36.3, flagged 28.8, unflagged 91.2; proxy share left +0.082; corr(rate shift, proxy) +0.115, slope +0.0328 per unit share left, intercept +0.0012

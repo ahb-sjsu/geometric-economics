@@ -249,7 +249,9 @@ below −0.005.
     so the intervals may be somewhat narrow.
   - At the first pilot size, 30 to 40 people, the posterior sat 0.1 to 0.2 below the truth at `κ` of 1 to 2, with
     or without people of rank one (`PILOT.md`, pilot rehearsal). Why is not known. The pilot's
-    sample-size rule therefore reads `κ` from the lottery-choice rate against simulated pilots instead.
+    sample-size rule therefore reads `κ` from the lottery-choice rate against simulated pilots instead: since
+    2026-11-05, the rate on the self lotteries over everyone included, which people of rank one do not bias
+    (`PILOT.md`, "The limit for `κ`").
   - At 120 people below 1 (rehearsal version 6), the interval covered `κ = 0.75` in 9 of 10 studies. It
     cannot cover `κ = 0.5`: the model's population `κ` is 0.5 + exp(·), and 0.5 is its boundary.
   - **It means something only if GEO is the right model.** In rehearsal version 3 the fitted
@@ -403,5 +405,8 @@ no such study exists.
   theorem the ideal is identified up to the metric's kernel.
 - Whether to keep the crossing set. It adds 20 trials, about 5 minutes. In rehearsal version 4 it
   detected inequality aversion in every study and gave no false positive.
-- How cautious the pilot's sample-size rule is (`PILOT.md`, Open decisions).
+- How cautious the pilot's sample-size rule is. The owner chose a larger pilot and a lower noise assurance on
+  2026-11-04. After the limit for `κ` was revised on 2026-11-05, the rule written before the run set the noise
+  assurance at 60%, the 40th percentile. The owner may change it before the seal (`PILOT.md`, "The limit for
+  `κ`" and Open decisions).
 - Sealing.
