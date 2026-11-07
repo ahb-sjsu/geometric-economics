@@ -1,6 +1,7 @@
 # Pilot: measuring what the rehearsal assumed, and nothing the claim uses
 
-**Status: DRAFT, 2026-11-03.** Not sealed and not run. It needs people, ethics approval and money,
+**Status: SEALED 2026-11-07** (`prereg-correlation-v1.sha256`, signed tag `prereg-correlation-v1`), drafted
+2026-11-03. Not run. It needs people, ethics approval and money,
 which are the owner's to arrange. The analysis code is written and passes its self-test. Rehearsal version 5
 (22 cells) found that the rules needed changing. The five rule decisions it left open were taken on
 2026-11-03, before any data, by Claude at the owner's instruction to proceed; the owner may overrule any of
@@ -18,8 +19,8 @@ read. `κ`'s statistic was revised, and on a new run, by the rule written before
 owner may change it before the seal. On 2026-11-06 the owner adopted Claude's recommendations on the open items:
 Prolific, with adults in the United States; SJSU's review board, asked for an exempt determination; five charities
 at 5 cents a point; a cap of 240; and the seal once the instrument passes its round trip ("The open items"). The
-instrument was built the same day and passes its round trip ("The instrument"). The seal is next, with the owner's
-OK.
+instrument was built the same day and passes its round trip ("The instrument"). Claude listed what the seal would
+cover, and on 2026-11-07 the owner asked for it ("commit and push, then seal"; sequence step 6).
 
 ## What it is for
 
@@ -478,7 +479,8 @@ new seal, all before the main study.
    at the 40th percentile with this code, the run gives the same numbers.
 5. **Power table:** rehearsal version 6 on NRP (version 5 before the decisions of 2026-11-03).
 6. **Seal** DESIGN.md (with the inclusion and sample-size rules), this protocol, the code, the table and the
-   instrument under a signed tag. Owner's OK.
+   instrument under a signed tag. Owner's OK. *Done 2026-11-07:* the signed tag `prereg-correlation-v1`. The files
+   and their hashes are in `prereg-correlation-v1.sha256`, which `seal_correlation.py` writes and checks.
 7. **Ethics approval.**
 8. **Collect** the pilot.
 9. **Split, then analyse.** A failed gate sends the study back to step 8 with new people after the fix.
@@ -521,6 +523,7 @@ new seal, all before the main study.
 | `build_instrument.py` | writes `stimuli.js` (each trial's options, never its role) and `MANIFEST.json` (every file's hash) from `stimuli.py`; `--check` fails if either is stale |
 | `export_pilot.py` | `review`: the saved files into a list for approving submissions, the bonus list and the donations owed. `export`: the export that `split_pilot.py` reads, after checking every session against `stimuli.py`, its order, its quiz and its payment |
 | `instrument_roundtrip.py`, `instrument_screens.py` | the round trip of sequence step 3, through the real page in a headless browser; and a picture of every screen, for the ethics application. Both need Playwright, so they run on Atlas |
+| `seal_correlation.py` | the seal of sequence step 6: writes `prereg-correlation-v1.sha256`, the sealed files with their hashes, and checks them. It also checks that the round trip ran this code and this build of the page |
 
 **Self-test** (`pilot_analysis.py self-test`, on Atlas). 21 of 21 checks pass (2026-11-03, with the revised
 `κ` rule; the 20 before it also passed with `hier.py` fitting `κ`). On 2026-11-04 they passed again at the new
@@ -1013,6 +1016,7 @@ its reason before any data. The owner may change any of them before the seal.
 10. **The seal: at step 6, once the instrument is built and its round trip passes (step 3).** The seal fixes what
     runs: DESIGN.md with the choices above, this protocol, the code, the table, and the instrument with its
     stimulus hash. Claude will then ask the owner to OK the exact contents of the signed tag, as step 6 requires.
+    Claude listed them, and on 2026-11-07 the owner asked for the seal ("commit and push, then seal").
 
 ## The instrument: built 2026-11-06
 
@@ -1043,8 +1047,8 @@ the files into the export that `split_pilot.py` reads. It counts a participant's
 one in another browser has seen the trials, and it leaves out files from anyone not on Prolific's list of the
 study's participants.
 
-**Hosting: Claude's choice.** The owner named no host, so the choice is Claude's, and the owner may change it before
-the seal (`instrument/README.md`, "Hosting").
+**Hosting: Claude's choice.** The owner named no host, so the choice is Claude's, and the owner may change it
+(`instrument/README.md`, "Hosting").
 - The page goes on GitHub Pages, from a public repository holding only the instrument, so that a participant who
   follows its address does not find the hypotheses.
 - The data go through DataPipe, a free service run by jsPsych's developers, straight into the owner's Google Drive.
@@ -1081,15 +1085,15 @@ is on the automatic revocation list (`instrument/README.md`, with names and EINs
 
 ## Open decisions (owner)
 
-- None of the design's. The owner's items were settled on 2026-11-06 ("The open items"), and the owner may change
-  any of them before the seal.
+- None of the design's. The owner's items were settled on 2026-11-06 ("The open items") and sealed on 2026-11-07.
 - The instrument's host is Claude's choice, since the owner asked for the instrument without naming one: the page on
   GitHub Pages, the data through DataPipe into the owner's Google Drive ("The instrument"). The owner may change it.
 - To arrange: the Prolific account and the funds (about $7,700 at the cap with a flagged share of 0.3); the ethics
   application, which the owner submits, with the approved consent text; and, before launch, a DataPipe account
   connected to the storage, a public repository for the page, and the Prolific study with its two completion codes
   (`instrument/README.md`, "Deploying").
-- Sealing: the owner's OK. The instrument is built and passes its round trip.
+- Sealed 2026-11-07 (sequence step 6). A change to anything sealed, such as the consent text after the ethics review,
+  needs a new seal.
 
 ## References (read 2026-11-03; the two platform comparisons 2026-11-06)
 

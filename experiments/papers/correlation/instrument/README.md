@@ -2,7 +2,8 @@
 
 The web page that runs one participant through the correlation-attitude study (`../DESIGN.md`, `../PILOT.md`). Built
 2026-11-06. It is a static page with no server of its own: plain HTML, CSS and JavaScript, no libraries, nothing
-loaded from elsewhere. It saves through DataPipe's API into storage the owner controls.
+loaded from elsewhere. It saves through DataPipe's API into storage the owner controls. Sealed on 2026-11-07 under
+the signed tag `prereg-correlation-v1` (`../prereg-correlation-v1.sha256`), all but `config.js` and this README.
 
 ## Files
 
@@ -73,7 +74,7 @@ tried again after 1, 2, 4, 8 and 16 seconds.
 ## Hosting: Claude's choice, 2026-11-06
 
 On 2026-11-06 the owner asked for the instrument to be built without naming a host. This is Claude's choice, and the
-owner may change it before the seal. The page itself does not depend on it: only `config.js` names the storage, and
+owner may change it. The page itself does not depend on it: only `config.js` names the storage, and
 any service that takes DataPipe's request would do.
 
 - **The page: GitHub Pages, from a public repository that holds only this folder's files,** copied from the sealed

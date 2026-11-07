@@ -1,8 +1,9 @@
 # Cross-attribute risk attitudes: a test of a full Mahalanobis metric with late contraction
 
-**Status: DRAFT, 2026-11-02.** Not registered, not sealed, nothing run. Sealing needs the owner's OK. The owner's
-open items were settled on 2026-11-06 by Claude's recommendations, which the owner adopted (Open decisions;
-`PILOT.md`, "The open items"). The instrument was built the same day (`PILOT.md`, "The instrument").
+**Status: SEALED 2026-11-07** (`prereg-correlation-v1.sha256`, signed tag `prereg-correlation-v1`), drafted
+2026-11-02. Nothing run: neither the pilot nor the main study. The owner's open items were settled on 2026-11-06 by
+Claude's recommendations, which the owner adopted (Open decisions; `PILOT.md`, "The open items"). The instrument was
+built the same day (`PILOT.md`, "The instrument"), and on 2026-11-07 the owner asked for the seal.
 
 ## Why this design
 
@@ -158,7 +159,7 @@ The rehearsal may still change the set before it is registered.
 - **Length.** About 35 minutes for 140 trials, online on Prolific: adults living in the United States, fluent
   in English, on a desktop or laptop (2026-11-06).
 
-## Analysis (to be registered)
+## Analysis
 
 - **Calibration set.** Block R plus the `b = 0` and `a = 0` cells of block S.
 - **Test set.** The other cells of block S, plus block X.
@@ -407,8 +408,8 @@ no such study exists.
 ## Open decisions (owner)
 
 The items listed here until 2026-11-06 were settled that day by Claude's recommendations, which the owner
-adopted ("go with your recommendation on the open items"; the reasons are in `PILOT.md`, "The open items"). The
-owner may change any of them before the seal.
+adopted ("go with your recommendation on the open items"; the reasons are in `PILOT.md`, "The open items"). They
+were sealed with this design on 2026-11-07, all but the instrument's host.
 - Population and platform: Prolific, adults living in the United States, fluent in English, on a desktop or
   laptop. The owner runs it as principal investigator, and SJSU's review board is asked for an exempt
   determination.
@@ -423,4 +424,5 @@ owner may change any of them before the seal.
 - The instrument's host, Claude's choice on 2026-11-06 when the owner asked for the instrument without naming one:
   the page on GitHub Pages, the data through DataPipe into the owner's Google Drive (`instrument/README.md`). The
   owner may change it.
-- Sealing: the owner's OK. The instrument is built and passes its round trip (`PILOT.md`, "The instrument").
+- Sealed 2026-11-07, once the instrument was built and passed its round trip (`PILOT.md`, "The instrument"). A
+  change to anything sealed needs a new seal.
