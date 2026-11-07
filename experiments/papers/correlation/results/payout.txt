@@ -1,0 +1,2 @@
+main study, 140 trials: random choice self 74.4 charity 35.7 | self-maximiser self 77.6 charity 34.3 | charity-maximiser self 73.9 charity 40.0 | highest outcome self 100 charity 100
+pilot, 160 trials: random choice self 74.6 charity 35.7 | self-maximiser self 78.0 charity 33.6 | charity-maximiser self 73.5 charity 40.4 | highest outcome self 100 charity 100

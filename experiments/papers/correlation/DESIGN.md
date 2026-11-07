@@ -1,6 +1,8 @@
 # Cross-attribute risk attitudes: a test of a full Mahalanobis metric with late contraction
 
-**Status: DRAFT, 2026-11-02.** Not registered, not sealed, nothing run. Sealing needs the owner's OK.
+**Status: DRAFT, 2026-11-02.** Not registered, not sealed, nothing run. Sealing needs the owner's OK. The owner's
+open items were settled on 2026-11-06 by Claude's recommendations, which the owner adopted (Open decisions;
+`PILOT.md`, "The open items").
 
 ## Why this design
 
@@ -118,9 +120,11 @@ the eight attention checks and changed nothing else (`PILOT.md`, inclusion rule)
 The rehearsal may still change the set before it is registered.
 
 - **Charity.** Each participant first picks one charity from a short list, so that charity points
-  carry value.
+  carry value: American Red Cross, Doctors Without Borders USA, Feeding America, St. Jude Children's
+  Research Hospital or World Wildlife Fund (2026-11-06; `PILOT.md`, "The open items").
 - **Payment.** One trial is drawn and paid for real. Self points go to the participant and charity
-  points are donated, at the same rate per point. Receipts for the donations are published. A coin
+  points are donated, at the same rate: 5 cents a point, so a trial is worth at most $5 to each. The base
+  payment is $12 an hour, Prolific's recommended minimum. Receipts for the donations are published. A coin
   flip resolves any lottery. There is no deception.
 - **Comprehension quiz,** before block R. Four questions: what self and charity points become, how a
   lottery is resolved, and how many trials are paid. Two attempts (`PILOT.md`).
@@ -148,7 +152,8 @@ The rehearsal may still change the set before it is registered.
   - **12 straddle lotteries.** An even-odds lottery against its expected value on one attribute,
     with the other attribute held at 50. Sure shortfalls are 25, 50 and 75, with spreads 10 and 20.
     At 50 the outcomes straddle `m = c`. The 25 and 75 cells are controls with the same spread.
-- **Length.** About 35 minutes for 140 trials, online or in the lab.
+- **Length.** About 35 minutes for 140 trials, online on Prolific: adults living in the United States, fluent
+  in English, on a desktop or laptop (2026-11-06).
 
 ## Analysis (to be registered)
 
@@ -398,15 +403,18 @@ no such study exists.
 
 ## Open decisions (owner)
 
-- Population and platform, and who runs it.
-- The charity list and the point-to-dollar rate.
-- The cap on the sample size. The pilot's power table runs to 240 (`PILOT.md`).
-- The ideal point: fixed at the top of the scales (this draft) or estimated. Under GET's uniqueness
-  theorem the ideal is identified up to the metric's kernel.
-- Whether to keep the crossing set. It adds 20 trials, about 5 minutes. In rehearsal version 4 it
-  detected inequality aversion in every study and gave no false positive.
-- How cautious the pilot's sample-size rule is. The owner chose a larger pilot and a lower noise assurance on
-  2026-11-04. After the limit for `κ` was revised on 2026-11-05, the rule written before the run set the noise
-  assurance at 60%, the 40th percentile. The owner may change it before the seal (`PILOT.md`, "The limit for
-  `κ`" and Open decisions).
-- Sealing.
+The items listed here until 2026-11-06 were settled that day by Claude's recommendations, which the owner
+adopted ("go with your recommendation on the open items"; the reasons are in `PILOT.md`, "The open items"). The
+owner may change any of them before the seal.
+- Population and platform: Prolific, adults living in the United States, fluent in English, on a desktop or
+  laptop. The owner runs it as principal investigator, and SJSU's review board is asked for an exempt
+  determination.
+- The charity list and the rate: the five charities above, at 5 cents a point.
+- The cap on the sample size: 240, the largest size in the pilot's power table (`PILOT.md`).
+- The ideal point: fixed at the top of the scales, as drafted. Under GET's uniqueness theorem the ideal is
+  identified only up to the metric's kernel, and the limit for `κ` reads the trials at the ideal.
+- The crossing set: kept. It adds 20 trials, about 5 minutes. In rehearsal version 4 it detected inequality
+  aversion in every study and gave no false positive.
+- How cautious the pilot's sample-size rule is: as the rules written before the runs chose it, 120 people and the
+  noise assurance at 60%, the 40th percentile (`PILOT.md`, "The limit for `κ`").
+- Sealing: still the owner's OK, once the instrument is built and passes its round trip.

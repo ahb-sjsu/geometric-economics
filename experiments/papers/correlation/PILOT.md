@@ -15,7 +15,10 @@ the truth `κ = 2` too rarely at every level, the current one included ("Noise a
 took Claude's recommendation to find out why. Rank-one people the flag missed raised the lottery rate the limit
 read. `κ`'s statistic was revised, and on a new run, by the rule written before it, the noise is now read at the
 40th percentile, an assurance of 60% ("The limit for `κ`"). The level is Claude's choice by that rule, and the
-owner may change it before the seal. The instrument is not built, because it depends on the platform.
+owner may change it before the seal. On 2026-11-06 the owner adopted Claude's recommendations on the open items:
+Prolific, with adults in the United States; SJSU's review board, asked for an exempt determination; five charities
+at 5 cents a point; a cap of 240; and the seal once the instrument passes its round trip ("The open items"). The
+instrument is next.
 
 ## What it is for
 
@@ -83,8 +86,8 @@ looking is not a protocol.
 
 ## Participants and instrument
 
-**Participants.** 120 who meet the inclusion rule, from the population and platform the main study
-will use (40 until 2026-11-04; "Pilot size"). Recruitment continues until 120 qualify. The number who did not
+**Participants.** 120 who meet the inclusion rule (40 until 2026-11-04; "Pilot size"), from the population and
+platform the main study will use: adults living in the United States, on Prolific ("The open items"). Recruitment continues until 120 qualify. The number who did not
 is recorded, because it sets the main study's recruitment.
 
 **Inclusion rule, the main study's too.** DESIGN.md had none. The main study also leaves out people flagged
@@ -370,7 +373,7 @@ new seal, all before the main study.
 
 1. **Owner decisions** (below). The five rule decisions version 5 left open were taken on 2026-11-03 and
    accepted by the owner on 2026-11-04, with the population for H1 to H3 ("Decisions taken"). The owner's
-   remaining decisions are under "Open decisions".
+   open items were settled on 2026-11-06 by Claude's recommendations, which the owner adopted ("The open items").
 2. **Prior art.** DESIGN.md's list and the two references below are read before anything is sealed.
    Done 2026-11-03. The nearest study found, Berg and Rietz (2026), varies the link between one's own
    payoff and a peer's; none found pairs one's own payoff with a charity's, or varies the other's level
@@ -473,8 +476,8 @@ new seal, all before the main study.
    with the code in `src_v9` there, which differs from this code only in `NOISE_Q`: 0.2 then, 0.4 now. Re-scored
    at the 40th percentile with this code, the run gives the same numbers.
 5. **Power table:** rehearsal version 6 on NRP (version 5 before the decisions of 2026-11-03).
-6. **Seal** DESIGN.md (with the inclusion and sample-size rules), this protocol, the code and the table
-   under a signed tag. Owner's OK.
+6. **Seal** DESIGN.md (with the inclusion and sample-size rules), this protocol, the code, the table and the
+   instrument under a signed tag. Owner's OK.
 7. **Ethics approval.**
 8. **Collect** the pilot.
 9. **Split, then analyse.** A failed gate sends the study back to step 8 with new people after the fix.
@@ -512,7 +515,8 @@ new seal, all before the main study.
 | `pilot_decompose.py` | applies the rule again to the pilot rehearsal's simulated pilots with some of its inputs set to the truth's own values, to show which limit makes it stop ("Pilot size"); with `--noise-q`, at another percentile of agreement ("Noise assurance") |
 | `kappa_firstlook.py`, `kappa_probe.py` | the diagnosis of 2026-11-05 ("The limit for `κ`"). The first reads the old statistic of the fifth and sixth runs' pilots against the reference at each truth's own row. The second simulates people to measure each candidate statistic's precision and its shift with rank-one people |
 | `kappa_compare.py` | scores the old statistic on the seventh run's pilots against the old reference, for comparison |
-| the instrument | not built: it depends on the platform. It must write the export that `split_pilot.py` documents |
+| `payout.py` | what one paid trial pays in points, under three ways of choosing, for the point rate ("The open items"); its output is `results/payout.txt` |
+| the instrument | not built. Since 2026-11-06 the platform is Prolific ("The open items"). It must write the export that `split_pilot.py` documents |
 
 **Self-test** (`pilot_analysis.py self-test`, on Atlas). 21 of 21 checks pass (2026-11-03, with the revised
 `κ` rule; the 20 before it also passed with `hier.py` fitting `κ`). On 2026-11-04 they passed again at the new
@@ -915,25 +919,104 @@ truth, scored against the table with the gap cells (`results/pilot_noise_run7_q2
     50%. So the belt mixes in noisier rows, where more lotteries are taken, and that raises the limit. The
     excess follows how many rank-one people the flag misses: 52% and 54% at `κ` of 1 and 0.75, 58% at 1.5.
 
+## The open items: Claude's recommendations, adopted 2026-11-06
+
+Until 2026-11-06 the items below were the owner's to decide. That day the owner said: "go with your recommendation
+on the open items". Claude had made no recommendation on them before, so each choice below is Claude's, made with
+its reason before any data. The owner may change any of them before the seal.
+
+1. **Platform: Prolific. Population: adults living in the United States, fluent in English, on a desktop or laptop
+   computer.** The pilot and the main study both draw from it.
+   - Two comparisons of online platforms put Prolific among the best for attention and for following
+     instructions. Douglas, Ewell and Brauer (2023) found Prolific's and CloudResearch's participants more likely
+     than MTurk's, Qualtrics' and SONA's to pass attention checks. Peer and colleagues (2022) found that without
+     filters only Prolific gave high data quality on every measure; three of their five authors were at
+     Prolific. The inclusion rule and the noise rows both reward attentive people.
+   - Prolific pays bonuses through the platform, which the paid trial needs, and its filters set country,
+     language and device.
+   - The United States goes with the owner's institution and its ethics review, a point rate in dollars, and
+     charities whose receipts can be published.
+   - The device filter gives everyone the same kind of screen and input, since response times are recorded.
+   - Pilot participants are kept out of the main study by the private id map ("Data and provenance").
+2. **Who runs it: the owner, as principal investigator, at San José State University.** Claude built the split
+   and the analysis, builds the instrument and runs the rehearsals. The owner holds the Prolific account and the
+   funds, launches each study, approves submissions, pays the bonuses, makes the donations and publishes the
+   receipts, and answers participants. Everyone who finishes is paid in full; the inclusion rule decides only who
+   is counted.
+3. **Ethics route: SJSU's institutional review board, asked for an exempt determination.** The study takes
+   adults only, deceives no one, asks nothing sensitive, and pays for choices between options shown in full. The
+   nearest exemption is category 3 of 45 CFR 46.104(d), benign behavioral interventions with adults who agree in
+   advance. The rule's own examples include deciding how to allocate a nominal amount of cash between oneself and
+   someone else. The board decides whether it applies, and whether a session of about 42 minutes is brief, as the
+   category requires. The application carries this protocol, DESIGN.md, the consent and recruitment texts, the
+   instrument, and the data plan: Prolific IDs leave the data at the split and stay private ("Data and
+   provenance"). It states what someone who fails the quiz twice is paid: the base payment ("Comprehension
+   quiz"). The owner submits it. By the sequence it comes after the seal (steps 6 and 7). If the board changes
+   anything sealed, a new seal records the change and why.
+4. **The charity list: five, one per cause.** American Red Cross (disaster relief), Doctors Without Borders USA
+   (emergency medical care abroad), Feeding America (hunger in the United States), St. Jude Children's Research
+   Hospital (children's medical care and research) and World Wildlife Fund (conservation).
+   - Charity points carry value only if the person cares about the charity. Someone who gives it no weight has a
+     metric of rank one and carries no evidence ("Decisions taken", "Which people H1 to H3 count"), and the main
+     study pays the ones the flag catches without counting them. Five causes make it likelier that each person
+     finds one they care about.
+   - All five are large, widely known US charities that take donations online and issue receipts, and none is a
+     political or religious organization. Each one's tax-exempt status is checked on the IRS's Tax Exempt
+     Organization Search when the instrument is built.
+   - The donations are made after each study, one payment per charity, and their receipts are published
+     (DESIGN.md, "Payment").
+5. **The point rate: 5 cents a point, for self and charity points alike.** A paid trial is then worth at most $5
+   to the participant and $5 to the charity.
+   - Over the pilot's 160 trials, a trial drawn at random pays on average 74 to 78 self points and 34 to 40
+     charity points, depending on how the person chooses (`payout.py`, `results/payout.txt`). At 5 cents that is
+     a bonus of about $3.70 to $3.90 and a donation of about $1.70 to $2.00.
+   - The base payment is $12 an hour, Prolific's recommended minimum, which bonuses do not count toward: $8.40
+     for the pilot's 42 minutes and $7.00 for the main study's 35. If the median time runs longer, the base rises
+     to keep $12 an hour. Prolific's floor is $8 an hour.
+   - The bonus is then about 45% of the pilot's base payment. Whatever the rate does to noise, risk attitude or
+     the weight on the charity, the pilot measures it at the rate the main study uses. A higher rate costs more
+     for a gain in care that nothing here measures.
+   - The cost at this rate, with Prolific's academic fee of a third of rewards and bonuses (its pricing page, read
+     2026-11-06), donations paid to the charities directly, and VAT on the fee where it applies:
+     - the pilot, 120 people at about $18 each: about $2,200;
+     - the main study, about $16 a person. It recruits until n unflagged people qualify, so about n/(1 − f) take
+       part when a share f is flagged: about $5,500 at the cap of 240 with f = 0.3, $4,800 with f = 0.2, and
+       $2,800 at n = 120 with f = 0.3;
+     - about $7,700 for both at the cap with f = 0.3, plus whoever takes part and is not included.
+6. **The cap on n: 240, the table's largest size.** A larger cap needs new cells in the power table, and each 40
+   more unflagged people cost about $920 at f = 0.3. On 2026-11-04 the owner chose a larger pilot over a cap
+   above 240 ("Pilot size").
+7. **The ideal point: fixed at the top of the scales, as drafted** (DESIGN.md).
+   - The design leans on it. The 12 lotteries per attribute at the other attribute's ideal measure `κ` alone
+     because the metric adds nothing there, and the limit for `κ` now reads the rate on exactly those trials
+     ("The limit for `κ`"). With the ideal estimated, "at the ideal" would be an estimate too.
+   - Under GET's uniqueness theorem the ideal is identified only up to the metric's kernel (DESIGN.md). For a
+     person of rank one that leaves a direction the data cannot fix, and those are the people the flag is there
+     to catch.
+   - Every rehearsal and the power table assumed it, and estimating it would need them run again.
+8. **The crossing set stays** (DESIGN.md). It is the study's only test of inequality aversion's signature, and
+   the registered secondary claim needs it (SH1 and SH2 together). In rehearsal version 4 it detected inequality
+   aversion in every study and gave no false positive. It costs 20 trials, about 5 minutes, and enters none of H1
+   to H4. The pilot rehearsal simulated it, so dropping it would change the instrument the rehearsal tested.
+9. **The caution left at 120 people stays as the rules chose it:** 120 people, and the noise read at the 40th
+   percentile. Both came from rules written before the runs ("Pilot size", "The limit for `κ`"), and changing
+   either now would be choosing with the runs' results in view. At `κ = 1` the rule stops in 29.5% of simulated
+   pilots where n = 120 has the power, against 44% with all three limits at 80%. Most of what is left comes from
+   the noise limit, which no level at or below the 50th percentile removes. At `κ = 2` the rule stops in every
+   pilot by design (decision 3).
+10. **The seal: at step 6, once the instrument is built and its round trip passes (step 3).** The seal fixes what
+    runs: DESIGN.md with the choices above, this protocol, the code, the table, and the instrument with its
+    stimulus hash. Claude will then ask the owner to OK the exact contents of the signed tag, as step 6 requires.
+
 ## Open decisions (owner)
 
-- Population, platform, who runs it, and the ethics route.
-- The charity list and the point rate. The pilot must use the main study's.
-- The cap on n. The table runs to 240.
-- Whether the crossing set stays (DESIGN.md).
-- The caution left at 120 people ("Pilot size", "Noise assurance", "The limit for `κ`"). The owner chose a
-  larger pilot and then a lower noise assurance on 2026-11-04, and on 2026-11-05 Claude's recommendation to
-  revise the limit for `κ` first.
-  - By the rules written before the runs, the pilot has 120 people and the noise is read at the 40th
-    percentile, an assurance of 60%. Both levels are Claude's choices by those rules, and the owner may change
-    either before the seal.
-  - At `κ = 1` the rule now stops in 29.5% of simulated pilots, where n = 120 has the power. With all three
-    limits at 80% it stopped in 44% of the same pilots.
-  - Most of what is left comes from the noise limit, which no level at or below the 50th percentile removes.
-  - At `κ = 2` the rule stops in every pilot by design (decision 3).
-- Sealing.
+- None of the design's. The owner's items were settled on 2026-11-06 ("The open items"), and the owner may change
+  any of them before the seal.
+- To arrange: the Prolific account and the funds (about $7,700 at the cap with a flagged share of 0.3), and the
+  ethics application, which the owner submits.
+- Sealing: the owner's OK, once the instrument passes its round trip.
 
-## References (read 2026-11-03)
+## References (read 2026-11-03; the two platform comparisons 2026-11-06)
 
 - Engel, C. (2011). Dictator games: a meta study. *Experimental Economics* 14(4):583–610,
   doi:10.1007/s10683-011-9283-7. Read in full: 36.11% of 20,813 reconstructed dictators give nothing
@@ -944,4 +1027,10 @@ truth, scored against the table with the gap cells (`results/pilot_noise_run7_q2
   *Biometrical Journal* 38:941–949, analyse it.
 - Perugini, M., Gallucci, M. and Costantini, G. (2014). Safeguard power as a protection against imprecise
   power estimates. *Perspectives on Psychological Science* 9(3):319–332, doi:10.1177/1745691614528519.
-- DESIGN.md's prior-art list, read the same day, is in DESIGN.md.
+- Peer, E., Rothschild, D., Gordon, A., Evernden, Z. and Damer, E. (2022). Data quality of platforms and panels for
+  online behavioral research. *Behavior Research Methods* 54:1643–1662, doi:10.3758/s13428-021-01694-3. Abstract
+  only. Three of its five authors were at Prolific.
+- Douglas, B. D., Ewell, P. J. and Brauer, M. (2023). Data quality in online human-subjects research: comparisons
+  between MTurk, Prolific, CloudResearch, Qualtrics, and SONA. *PLOS ONE* 18(3):e0279720,
+  doi:10.1371/journal.pone.0279720. Abstract only.
+- DESIGN.md's prior-art list, read on 2026-11-03, is in DESIGN.md.
