@@ -18,7 +18,8 @@ read. `κ`'s statistic was revised, and on a new run, by the rule written before
 owner may change it before the seal. On 2026-11-06 the owner adopted Claude's recommendations on the open items:
 Prolific, with adults in the United States; SJSU's review board, asked for an exempt determination; five charities
 at 5 cents a point; a cap of 240; and the seal once the instrument passes its round trip ("The open items"). The
-instrument is next.
+instrument was built the same day and passes its round trip ("The instrument"). The seal is next, with the owner's
+OK.
 
 ## What it is for
 
@@ -381,7 +382,7 @@ new seal, all before the main study.
 3. **Build** (next section). A round trip sends the instrument's output through the split and the
    analysis, and checks that every cell lands where it should and nowhere else. An optional
    language-model pass over the wording (DESIGN.md, stage 2) fits here. It is not evidence about
-   people.
+   people. *Done 2026-11-06* ("The instrument"); the optional pass was not run.
 4. **Pilot rehearsal:** simulated pilots through the whole chain: 100 per truth of 40 people in runs 1 to 4, and
    200 per truth of 80, 120 and 160 in the fifth, which compared sizes ("Pilot size"), and 200 per truth of 120
    in the sixth and seventh, which compared noise levels ("Noise assurance", "The limit for `κ`"). The truths are
@@ -516,7 +517,10 @@ new seal, all before the main study.
 | `kappa_firstlook.py`, `kappa_probe.py` | the diagnosis of 2026-11-05 ("The limit for `κ`"). The first reads the old statistic of the fifth and sixth runs' pilots against the reference at each truth's own row. The second simulates people to measure each candidate statistic's precision and its shift with rank-one people |
 | `kappa_compare.py` | scores the old statistic on the seventh run's pilots against the old reference, for comparison |
 | `payout.py` | what one paid trial pays in points, under three ways of choosing, for the point rate ("The open items"); its output is `results/payout.txt` |
-| the instrument | not built. Since 2026-11-06 the platform is Prolific ("The open items"). It must write the export that `split_pilot.py` documents |
+| `instrument/` | the page, built 2026-11-06 ("The instrument"): `index.html`, `style.css`, `order.js`, `text.js` and `task.js` by hand; `stimuli.js` and `MANIFEST.json` written by `build_instrument.py`; `config.js`, the deployment's settings, not sealed. `instrument/README.md` says how to deploy it and what to do after the study |
+| `build_instrument.py` | writes `stimuli.js` (each trial's options, never its role) and `MANIFEST.json` (every file's hash) from `stimuli.py`; `--check` fails if either is stale |
+| `export_pilot.py` | `review`: the saved files into a list for approving submissions, the bonus list and the donations owed. `export`: the export that `split_pilot.py` reads, after checking every session against `stimuli.py`, its order, its quiz and its payment |
+| `instrument_roundtrip.py`, `instrument_screens.py` | the round trip of sequence step 3, through the real page in a headless browser; and a picture of every screen, for the ethics application. Both need Playwright, so they run on Atlas |
 
 **Self-test** (`pilot_analysis.py self-test`, on Atlas). 21 of 21 checks pass (2026-11-03, with the revised
 `κ` rule; the 20 before it also passed with `hier.py` fitting `κ`). On 2026-11-04 they passed again at the new
@@ -962,7 +966,9 @@ its reason before any data. The owner may change any of them before the seal.
      finds one they care about.
    - All five are large, widely known US charities that take donations online and issue receipts, and none is a
      political or religious organization. Each one's tax-exempt status is checked on the IRS's Tax Exempt
-     Organization Search when the instrument is built.
+     Organization Search when the instrument is built. *Done 2026-11-06,* against the IRS's own files behind that
+     search, since the search refused automated access: all five are public charities on the Publication 78 list,
+     and none is on the automatic revocation list ("The instrument").
    - The donations are made after each study, one payment per charity, and their receipts are published
      (DESIGN.md, "Payment").
 5. **The point rate: 5 cents a point, for self and charity points alike.** A paid trial is then worth at most $5
@@ -1008,13 +1014,82 @@ its reason before any data. The owner may change any of them before the seal.
     runs: DESIGN.md with the choices above, this protocol, the code, the table, and the instrument with its
     stimulus hash. Claude will then ask the owner to OK the exact contents of the signed tag, as step 6 requires.
 
+## The instrument: built 2026-11-06
+
+On 2026-11-06 the owner asked for the instrument to be built ("commit and push, then build the instrument"). It is in
+`instrument/`, whose README says how to deploy it and what to do after the study.
+
+**What it is.** A static web page, plain HTML, CSS and JavaScript with no libraries, that runs one participant:
+consent, the charity, the rules, the quiz with two tries, the trials in the participant's order, the debrief, the
+paid choice, and the return to Prolific.
+- **The order** is `stimuli.presentation(seed)`'s, computed in the page from a seed drawn at consent. `order.js`
+  reproduces numpy's generator and shuffle exactly, and the round trip compares the two.
+- **The page carries only what it shows:** each trial's options, never its role, block or cell
+  (`build_instrument.py`).
+- **Each option is a card** with bars for "You" and the charity on 0 to 100 scales of fixed width, so the ideal sits
+  in the same place on every screen (DESIGN.md, "Model"). A lottery is a coin flip, its outcomes labelled Heads and
+  Tails, 1 in 2 each.
+- **The response time** runs from when the choose buttons come on, two frames after the cards are drawn, to the
+  click.
+- **The paid choice** is drawn in the browser and stored before it is shown. `export_pilot.py` recomputes the amounts
+  from the recorded choice and coin, and refuses a record that does not match.
+- **`t_start` is the moment of consent,** so the gate on session length includes the rules and the quiz, as the
+  rehearsal's simulated export assumed.
+
+**Saving.** The whole record is saved as a new file at each checkpoint: consent, the charity, each quiz try, every 20
+trials, the 140th, and the end. A session that stops early leaves its last checkpoint, which the gates on the quiz
+and on finishing need. A reload resumes the same session, and nothing is saved before consent. `export_pilot.py` turns
+the files into the export that `split_pilot.py` reads. It counts a participant's first session only, since a second
+one in another browser has seen the trials, and it leaves out files from anyone not on Prolific's list of the
+study's participants.
+
+**Hosting: Claude's choice.** The owner named no host, so the choice is Claude's, and the owner may change it before
+the seal (`instrument/README.md`, "Hosting").
+- The page goes on GitHub Pages, from a public repository holding only the instrument, so that a participant who
+  follows its address does not find the hypotheses.
+- The data go through DataPipe, a free service run by jsPsych's developers, straight into the owner's Google Drive.
+  It keeps no copy in normal operation, by its privacy page. It stops writing to OSF after 2026-11-16, so OSF is out.
+- The page depends on neither choice: only `config.js` names them.
+
+**The round trip (Atlas, 2026-11-06; `results/instrument_roundtrip.json`): 17 of 17 checks pass, in 659 seconds.**
+- 27 simulated participants clicked through the real page in a headless browser, each choosing as a person simulated
+  from one of the rehearsal's truths (GEO1, GEO2, RDU, IA) would. A local server stood in for DataPipe.
+- All 2,960 trials of the counted sessions are the clicks that made them: id, position and side, with a response
+  time at least as long as the driver waited before clicking. The page's order is `stimuli.presentation(seed)` on
+  2,006 seeds in both modes.
+- The planted cases behave as designed. A participant who declines leaves no file. One who stops after 70 choices
+  leaves the checkpoint at 60. A reload during the trials and at the debrief resumes the same session. Saves refused
+  twice arrive on the third try. A second session in another browser is not counted, and the bonus follows the
+  session that finished. A stray file and a participant not on Prolific's list are left out.
+- The export passes `split_pilot.py`, and `pilot_analysis.roundtrip` finds 1,724 readable and 1,236 sealed trials,
+  each where its role says, and no Prolific ID outside `id_map.json`. The analysis counts 21 participants, 20 who
+  passed the quiz, 18 who finished and 18 included, as planted.
+- Two participants in the main study's mode got its 140 trials in its own order, no debrief, and a paid choice.
+- **Four controls, each caught:** a page that records the other side (by the click check), a shuffle one step short
+  (by the order check and `export_pilot.py`), a payment at 6 cents a point (by `export_pilot.py`), and one bonus left
+  unpaid (by the analysis's payments gate).
+- The robot clicks faster than a second, so the gate on fast choices fails on it, as it should.
+- A smaller run with 13 participants, before two fixes to the display (where "For sure" sits on a card, and three
+  British spellings), passed the same 17 checks.
+
+**The charities, checked.** The IRS's Tax Exempt Organization Search refused automated access, so the check used the
+IRS's own files behind it, downloaded on 2026-11-06. All five are public charities on the Publication 78 list, and none
+is on the automatic revocation list (`instrument/README.md`, with names and EINs).
+
+**The screens.** `instrument_screens.py` draws every screen, for the ethics application. The consent text in
+`text.js` is a draft. The board's approved text replaces it, with a new seal if anything sealed changes.
+
 ## Open decisions (owner)
 
 - None of the design's. The owner's items were settled on 2026-11-06 ("The open items"), and the owner may change
   any of them before the seal.
-- To arrange: the Prolific account and the funds (about $7,700 at the cap with a flagged share of 0.3), and the
-  ethics application, which the owner submits.
-- Sealing: the owner's OK, once the instrument passes its round trip.
+- The instrument's host is Claude's choice, since the owner asked for the instrument without naming one: the page on
+  GitHub Pages, the data through DataPipe into the owner's Google Drive ("The instrument"). The owner may change it.
+- To arrange: the Prolific account and the funds (about $7,700 at the cap with a flagged share of 0.3); the ethics
+  application, which the owner submits, with the approved consent text; and, before launch, a DataPipe account
+  connected to the storage, a public repository for the page, and the Prolific study with its two completion codes
+  (`instrument/README.md`, "Deploying").
+- Sealing: the owner's OK. The instrument is built and passes its round trip.
 
 ## References (read 2026-11-03; the two platform comparisons 2026-11-06)
 

@@ -1,0 +1,89 @@
+/* The instrument's look. Every bar spans 0 to 100 at the same width on every trial, so the top of each scale, the
+   ideal, is the same on every screen (DESIGN.md, "Model"). Blue for the participant, orange for the charity: the two
+   stay distinct under the common forms of colour blindness, and every bar is also labelled. */
+:root {
+  --ink: #1a1a1a;
+  --muted: #5b6168;
+  --line: #cfd4da;
+  --panel: #f5f6f8;
+  --self: #2563eb;
+  --charity: #d97706;
+  --accent: #111827;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  font: 17px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+main { max-width: 1000px; margin: 0 auto; padding: 28px 24px 64px; }
+h1 { font-size: 26px; margin: 0 0 14px; }
+p, li { max-width: 74ch; }
+.draft { color: #b91c1c; font-weight: 600; }
+
+button {
+  font: inherit;
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+button.secondary { background: #fff; color: var(--accent); }
+button:disabled { opacity: 0.35; cursor: default; }
+.hidden { display: none; }
+.actions { margin-top: 24px; display: flex; gap: 12px; }
+
+.progress { display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: 15px; }
+.meter { flex: 1; height: 6px; background: var(--panel); border-radius: 3px; overflow: hidden; }
+.meter span { display: block; height: 100%; background: #9aa1a9; }
+
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 14px;
+  min-width: 900px;
+  user-select: none;
+}
+.option {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  padding: 16px 18px;
+  background: #fff;
+}
+.option.chosen { border-color: var(--accent); }
+.letter { font-weight: 700; font-size: 19px; margin-bottom: 4px; }
+.kind { color: var(--muted); font-size: 15px; margin-bottom: 8px; }
+.body { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.outcome { padding: 8px 10px; border-radius: 8px; background: var(--panel); margin-bottom: 8px; }
+.outcome.realized { outline: 3px solid var(--accent); }
+.face { font-weight: 600; font-size: 15px; margin-bottom: 2px; }
+.chance { color: var(--muted); font-weight: 400; }
+.row { display: grid; grid-template-columns: 175px 1fr 40px; align-items: center; gap: 10px; margin: 4px 0; }
+.who { font-size: 15px; }
+.track { height: 16px; border: 1px solid #8f969e; border-radius: 4px; background: #fff; overflow: hidden; }
+.fill { display: block; height: 100%; }
+.fill.self { background: var(--self); }
+.fill.charity { background: var(--charity); }
+.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+button.choose { margin-top: 12px; width: 100%; }
+.reminder { color: var(--muted); font-size: 15px; margin: 18px auto 0; text-align: center; }
+.example { max-width: 470px; margin: 8px 0 18px; }
+
+.q { margin: 18px 0; }
+.q p { margin-bottom: 6px; }
+.q label { display: block; padding: 3px 0; cursor: pointer; }
+.scale { display: flex; align-items: center; gap: 16px; color: var(--muted); }
+.scale label { display: inline-block; color: var(--ink); }
+textarea { width: 100%; max-width: 74ch; font: inherit; padding: 8px; }
+.charity-list label { display: block; border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0;
+  cursor: pointer; max-width: 74ch; }
+.status { color: var(--muted); }

@@ -1,0 +1,103 @@
+{
+ "build": "afdde6152374444025404806034c68584eeeca6840af9a9c86d2290e0b990bd6",
+ "checks": {
+  "analysis: reads the readable file and counts what was planted": {
+   "detail": "counts {'participants': 21, 'quiz_passed': 20, 'finished': 18, 'included': 18}, planted {'participants': 21, 'quiz_passed': 20, 'finished': 18, 'included': 18}; payments gate True; the robot's sub-second clicks fail the fast-choice gate, as they should: True",
+   "pass": true
+  },
+  "build": {
+   "detail": "stale []",
+   "pass": true
+  },
+  "clicks: every counted trial is the click that made it, timed at least as long as the wait": {
+   "detail": "2960 trials; []",
+   "pass": true
+  },
+  "control order: the order check and export_pilot.py catch a short shuffle": {
+   "detail": "{'clicks': False, 'problems': True, 'order': True}",
+   "pass": true
+  },
+  "control pay: export_pilot.py catches a payment the paid trial does not give": {
+   "detail": "{'clicks': False, 'problems': True}",
+   "pass": true
+  },
+  "control swap: the click check catches a page that records the other side": {
+   "detail": "{'clicks': True, 'problems': False}",
+   "pass": true
+  },
+  "control unpaid: one bonus left unpaid fails the payments gate": {
+   "detail": "",
+   "pass": true
+  },
+  "main: 140 trials in its own order, no debrief, paid, every click recorded": {
+   "detail": "{'participants': 2, 'sessions': 2, 'finished': 2, 'bonuses': 2, 'bonus_dollars': '7.50', 'donation_dollars': {'Feeding America': '2.50', \"St. Jude Children's Research Hospital\": '2.50'}, 'sessions_with_problems': 0, 'files_not_records': 0, 'participants_not_on_list': 0, 'prolific_ids_without_data': 0}; []",
+   "pass": true
+  },
+  "order: the page's order is stimuli.presentation(seed), both modes": {
+   "detail": "2006 seeds, 0 mismatches",
+   "pass": true
+  },
+  "page: hashes": {
+   "detail": "4abe1d591f89 display 47e32bfecd4e",
+   "pass": true
+  },
+  "page: quiz key, charities, rate, trial count": {
+   "detail": "quiz [0, 1, 2, 3], rule key 1, 5 cents, 140 main trials",
+   "pass": true
+  },
+  "page: trials": {
+   "detail": "160 trials",
+   "pass": true
+  },
+  "page: without a Prolific ID it records nothing": {
+   "detail": "",
+   "pass": true
+  },
+  "records: quiz, charity, debrief, finished and payment as the page showed them": {
+   "detail": "wrong []",
+   "pass": true
+  },
+  "sessions": {
+   "detail": "decliner left no file: True; stopper's last checkpoint (60 of 70): True; reloaded participant finished: True; refused saves arrived: True; second session not counted: True; first session counts, payment follows the finished one: True; stray file and outsider left out: True; decliner is on Prolific's list without data: True; nothing failed a check: True",
+   "pass": true
+  },
+  "sessions: the reload resumed the same session": {
+   "detail": "reloads [2]",
+   "pass": true
+  },
+  "split: every trial where its role says, no Prolific ID outside id_map.json": {
+   "detail": "1724 readable, 1236 sealed; []",
+   "pass": true
+  }
+ },
+ "code_sha256": {
+  "build_instrument.py": "dc52b3d333cab0dadd924c1902afe87ba99e22897fc991b818e0f0bcbcf26b16",
+  "export_pilot.py": "dcb168b7a2253f1240378b39b9cfcfd3e519f68d5d7d81b382b20e887b9d0b40",
+  "instrument_roundtrip.py": "b2820421446e0ba4ed156f643ef1b0b5670d7072f4d22884438afa568ecabf21",
+  "pilot_analysis.py": "7ac235853da3b817dcbf95b183db75985c04e49a7887352b516b4225b77dd75c",
+  "split_pilot.py": "6c824873147820a69feb6256ad8afaf9a7f6b809db6ed65564581ff4c8a66af1",
+  "stimuli.py": "988961c377fc3f70be717f6fc726de8157bd4427f7892d4cf7e9bd36e6fe2f65"
+ },
+ "controls": {
+  "order": {
+   "clicks": false,
+   "order": true,
+   "problems": true
+  },
+  "pay": {
+   "clicks": false,
+   "problems": true
+  },
+  "swap": {
+   "clicks": true,
+   "problems": false
+  }
+ },
+ "format": "correlation-instrument-roundtrip/1",
+ "pass": true,
+ "people": 27,
+ "seconds": 659,
+ "seeds": 2006,
+ "stimuli_sha256": "4abe1d591f899cc4756f3da76c1d4ac366f323645ecfa2414fa65a425058c96d",
+ "written_utc": "2026-11-07T06:26:08Z"
+}

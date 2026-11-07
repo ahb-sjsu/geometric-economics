@@ -1,0 +1,13 @@
+{
+ "build": "afdde6152374444025404806034c68584eeeca6840af9a9c86d2290e0b990bd6",
+ "files": {
+  "index.html": "52a5b86363e6ba79ceb7b90416a85f31f5a2660f33d751316d00eff50f4b8bb5",
+  "order.js": "9515c08de616928f3cc3349a58be7dd6e4e2f1b4eb45da765cfde83787aded4d",
+  "stimuli.js": "33c39e363d773fb6742fdfb9068f68645417576c5654a73f2147c96bae6f9fac",
+  "style.css": "d300965995e8bb9c025a53162983079d45bb2a7b03378711a7ed6519319981bd",
+  "task.js": "49bc4fd914bfd7fd1df16a70cc7fdede053eb162967d4382fab19aa5e4088618",
+  "text.js": "c69ccf729f553ac71a293dbac04bbde51807b17ba48f3cd79446bf6552a04c35"
+ },
+ "format": "correlation-instrument-manifest/1",
+ "stimuli_sha256": "4abe1d591f899cc4756f3da76c1d4ac366f323645ecfa2414fa65a425058c96d"
+}

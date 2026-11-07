@@ -2,7 +2,7 @@
 
 **Status: DRAFT, 2026-11-02.** Not registered, not sealed, nothing run. Sealing needs the owner's OK. The owner's
 open items were settled on 2026-11-06 by Claude's recommendations, which the owner adopted (Open decisions;
-`PILOT.md`, "The open items").
+`PILOT.md`, "The open items"). The instrument was built the same day (`PILOT.md`, "The instrument").
 
 ## Why this design
 
@@ -142,6 +142,9 @@ The rehearsal may still change the set before it is registered.
   at charity shortfalls of 50 to 60.
 - **Ordering.** Block R comes first. Everything else is interleaved at random, so the correlation
   pairs do not read as a family.
+- **The screen** (`instrument/`, built 2026-11-06). Each option is a card with bars for "You" and the charity on
+  0 to 100 scales of fixed width, so the top of each scale is in the same place on every trial. A lottery is a
+  coin flip, its two outcomes labelled Heads and Tails, 1 in 2 each. The left option is option 0.
 - **Avoiding equality crossings in the main set.** Every charity shortfall exceeds every self
   shortfall, so no outcome crosses `m = c` and inequality aversion predicts nothing there.
 - **The crossing set crosses on purpose,** to show inequality aversion's signature if it is there. It
@@ -417,4 +420,7 @@ owner may change any of them before the seal.
   aversion in every study and gave no false positive.
 - How cautious the pilot's sample-size rule is: as the rules written before the runs chose it, 120 people and the
   noise assurance at 60%, the 40th percentile (`PILOT.md`, "The limit for `κ`").
-- Sealing: still the owner's OK, once the instrument is built and passes its round trip.
+- The instrument's host, Claude's choice on 2026-11-06 when the owner asked for the instrument without naming one:
+  the page on GitHub Pages, the data through DataPipe into the owner's Google Drive (`instrument/README.md`). The
+  owner may change it.
+- Sealing: the owner's OK. The instrument is built and passes its round trip (`PILOT.md`, "The instrument").
