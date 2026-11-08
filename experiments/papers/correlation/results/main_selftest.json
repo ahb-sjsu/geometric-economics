@@ -1,0 +1,296 @@
+{
+ "format": "correlation-main-self-test/1",
+ "pass": true,
+ "passed": 26,
+ "checks": [
+  {
+   "check": "export: everyone on the list is exported once, in order of start, and every choice is the simulated one",
+   "pass": true,
+   "detail": "184 exported of 184 expected, 0 with a wrong choice"
+  },
+  {
+   "check": "export: left out as planted: the pilot participant, the one not on the list, the stray file, the later session",
+   "pass": true,
+   "detail": "{\"files_not_records\": 1, \"participants_not_on_list\": 1, \"prolific_ids_without_data\": 1, \"pilot_participants\": 1, \"later_sessions_not_counted\": 1, \"excluded_with_problems\": 0}"
+  },
+  {
+   "check": "export: no Prolific ID outside main_id_map.json and main_problems.json",
+   "pass": true,
+   "detail": "0 found"
+  },
+  {
+   "check": "grade: the people counted are the first 120 who qualify, in order of start, and the prior's are the first 60 included, flagged or not",
+   "pass": true,
+   "detail": "included 179 (expected 179), flagged 56, counted 120, prior 60 with 16 flagged"
+  },
+  {
+   "check": "grade: the planted people who do not qualify are neither counted nor in the prior; the second-try quiz counts",
+   "pass": true,
+   "detail": "['m0002', 'm0004', 'm0005', 'm0006'] left out; m0003 included"
+  },
+  {
+   "check": "grade: a simulated input writes rehearsal_main_results.json only",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "grade: every registered number equals rehearsal.tests on the simulated choices of the expected people",
+   "pass": true,
+   "detail": "differ: []; claim True, H1 -0.0352, H2 -0.0257, H3 -0.0391, H4 False, secondary False"
+  },
+  {
+   "check": "grade: the population kappa from hier.py on the 120 people counted",
+   "pass": true,
+   "detail": "median 0.9522016644477844, interval [0.8501803278923035, 1.054644227027893], divergences 0"
+  },
+  {
+   "check": "control: a runner that reads the choices the other way round fails the comparison",
+   "pass": true,
+   "detail": "at n = 93, differ: ['H1', 'H2', 'H3', 'H4', 'MF1', 'MF2', 'SH1_IA_beats_GEO', 'SH2_straddle_beyond_GEO', 'mean_ll']"
+  },
+  {
+   "check": "control: a runner that ignores the self-only flag counts other people",
+   "pass": true,
+   "detail": "40 of the 120 counted are flagged people"
+  },
+  {
+   "check": "grade: human data without the seal of step 10 are refused",
+   "pass": true,
+   "detail": "refused (missing): no seal of sequence step 10 at /archive/experiments/correlation/runner_v1/selftest_hier/records/absent.sha256: human data are graded only after that seal records n and this script (PILOT.md, step 10; MAIN.md)"
+  },
+  {
+   "check": "grade: human data at an n given by hand are refused",
+   "pass": true,
+   "detail": "refused (n): human data are graded at the n the seal of step 10 records, never at one given by hand"
+  },
+  {
+   "check": "grade: a seal that names another main_analysis.py is refused",
+   "pass": true,
+   "detail": "refused (runner): the seal runner.sha256 does not name this main_analysis.py (cec3c5af29b3c031)"
+  },
+  {
+   "check": "grade: a seal that names another design seal is refused",
+   "pass": true,
+   "detail": "refused (seal): the seal base.sha256 or the design's is broken: ['the design seal it names']"
+  },
+  {
+   "check": "grade: a seal recording an n outside 120 to 240 is refused",
+   "pass": true,
+   "detail": "refused (n): the seal n100.sha256 records n = 100, not one of (120, 160, 200, 240)"
+  },
+  {
+   "check": "grade: human data exported without the pilot's id map are refused",
+   "pass": true,
+   "detail": "refused (pilot): /archive/experiments/correlation/runner_v1/selftest_hier/main_data_nopilot.json was exported without the pilot's id_map.json, so pilot participants were not left out"
+  },
+  {
+   "check": "grade: another stimulus hash is refused",
+   "pass": true,
+   "detail": "refused (hash): /archive/experiments/correlation/runner_v1/selftest_hier/main_data_hash.json names stimulus hash 0000000000000000000000000000000000000000000000000000000000000000, not stimuli.py's 4abe1d591f899cc4756f3da76c1d4ac366f323645ecfa2414fa65a425058c96d"
+  },
+  {
+   "check": "grade: an undeclared source is refused",
+   "pass": true,
+   "detail": "refused (provenance): /archive/experiments/correlation/runner_v1/selftest_hier/main_data_source.json does not declare its source as human or simulated ('unknown')"
+  },
+  {
+   "check": "grade: a participant field the export does not write (a Prolific ID) is refused",
+   "pass": true,
+   "detail": "refused (field): participant m0001 has fields ['platform_id'] beyond or short of the main study's"
+  },
+  {
+   "check": "grade: a pilot-only trial is refused",
+   "pass": true,
+   "detail": "refused (format): participant m0001: trial 140 is repeated, has an invalid choice, or is not one of the main set's 140 (the main study shows no pilot-only trial)"
+  },
+  {
+   "check": "grade: fewer people qualifying than n is refused",
+   "pass": true,
+   "detail": "refused (short): 123 people qualify, fewer than n = 124: recruitment continues until n qualify (DESIGN.md, Inclusion)"
+  },
+  {
+   "check": "grade: human data under an intact seal of step 10 are graded at its n into main_results.json",
+   "pass": true,
+   "detail": "n 120, claim True"
+  },
+  {
+   "check": "export: a human export without the pilot's id map is refused",
+   "pass": true,
+   "detail": "refused (pilot): a human export needs the pilot's id_map.json (--pilot-ids): pilot participants are barred from the main study (PILOT.md, \"What it must not do\")"
+  },
+  {
+   "check": "export: a session whose payment does not follow from its choice is refused",
+   "pass": true,
+   "detail": "refused (problems): 1 session(s) fail a check (export_pilot.problems); see `export_pilot.py review --mode main`, and pass --exclude-problems to leave them out"
+  },
+  {
+   "check": "export: with --exclude-problems that session is left out and counted",
+   "pass": true,
+   "detail": "{\"files_not_records\": 1, \"participants_not_on_list\": 1, \"prolific_ids_without_data\": 1, \"pilot_participants\": 1, \"later_sessions_not_counted\": 1, \"excluded_with_problems\": 1}"
+  },
+  {
+   "check": "export: a session saved in the pilot's mode is refused",
+   "pass": true,
+   "detail": "refused (problems): 1 session(s) fail a check (export_pilot.problems); see `export_pilot.py review --mode main`, and pass --exclude-problems to leave them out"
+  }
+ ],
+ "truth": "G100T15S30",
+ "n": 120,
+ "hier": true,
+ "code_sha256": {
+  "main_analysis.py": "cec3c5af29b3c031a6852c2504ff7bf484f6bf291e2bc37032310d426c507a4e",
+  "rehearsal.py": "7d1f8564a488d09e64ae3ab68ba7a40ce39c0cdc5e96261c85fa6faa90ec618c",
+  "models.py": "f59a1879515bb3728cb919aee347850b4780ed771fd7c71ca6f96b398f29f13e",
+  "stimuli.py": "988961c377fc3f70be717f6fc726de8157bd4427f7892d4cf7e9bd36e6fe2f65",
+  "hier.py": "213f9595fd6b90b3c0272645e4687c237e2682102c4d2dc652a8c83038115d95",
+  "pilot_analysis.py": "7ac235853da3b817dcbf95b183db75985c04e49a7887352b516b4225b77dd75c",
+  "export_pilot.py": "dcb168b7a2253f1240378b39b9cfcfd3e519f68d5d7d81b382b20e887b9d0b40",
+  "split_pilot.py": "6c824873147820a69feb6256ad8afaf9a7f6b809db6ed65564581ff4c8a66af1",
+  "build_instrument.py": "dc52b3d333cab0dadd924c1902afe87ba99e22897fc991b818e0f0bcbcf26b16",
+  "seal_main.py": "ea67d6acf11b63505b8420b6c13fe333f4b16f754a6efe2571e96962fba7642a",
+  "seal_correlation.py": "fbcd6ba829479003ec15c7c9bcefdbf1f548b0f684c8ddc5b4a11d771faccb3e"
+ },
+ "stimuli_sha256": "4abe1d591f899cc4756f3da76c1d4ac366f323645ecfa2414fa65a425058c96d",
+ "simulated_study": {
+  "n": 120,
+  "counts": {
+   "participants": 184,
+   "quiz_passed": 183,
+   "finished": 181,
+   "included": 179,
+   "flagged": 56,
+   "unflagged": 123,
+   "qualify": 123,
+   "counted": 120,
+   "unflagged_beyond_n": 3,
+   "prior_people": 60,
+   "prior_flagged": 16
+  },
+  "claim": {
+   "pass": true,
+   "H1": {
+    "against": "EARLY",
+    "est": -0.04965295036665425,
+    "lo": -0.0641477929732573,
+    "hi": -0.03515810776005119,
+    "pass": true,
+    "pass_by_margin": {
+     "0.0": true,
+     "0.002": true,
+     "0.005": true,
+     "0.01": true
+    },
+    "est_S": -0.027485326475223414,
+    "est_X": -0.07182057425808507
+   },
+   "H2": {
+    "against": "RDU",
+    "est": -0.03726990390389633,
+    "lo": -0.048862941415704866,
+    "hi": -0.025676866392087796,
+    "pass": true,
+    "pass_by_margin": {
+     "0.0": true,
+     "0.002": true,
+     "0.005": true,
+     "0.01": true
+    },
+    "est_S": -0.034110994438651204,
+    "est_X": -0.04042881336914146
+   },
+   "H3": {
+    "against": "CAG",
+    "est": -0.0529731975725444,
+    "lo": -0.06685619533303486,
+    "hi": -0.039090199812053944,
+    "pass": true,
+    "pass_by_margin": {
+     "0.0": true,
+     "0.002": true,
+     "0.005": true,
+     "0.01": true
+    },
+    "est_S": -0.026202736977646073,
+    "est_X": -0.07974365816744272
+   }
+  },
+  "H4": {
+   "rho": 0.4094312984293904,
+   "rho_RDU": 0.28200582408017655,
+   "rho_CAG": 0.013928539547774042,
+   "gap": 0.12742547434921386,
+   "lo": -0.046486506347301206,
+   "pass": false
+  },
+  "model_free": {
+   "MF1": {
+    "est": 0.16770833333333332,
+    "lo": 0.1447055014116737,
+    "hi": 0.19071116525499293,
+    "pass": true
+   },
+   "MF2": {
+    "est": -0.031944444444444435,
+    "lo": -0.06253390276031033,
+    "hi": -0.0013549861285785357,
+    "pass": true
+   },
+   "both_null": false
+  },
+  "population_kappa": {
+   "kappa_median": 0.9522016644477844,
+   "lo": 0.8501803278923035,
+   "hi": 1.054644227027893,
+   "q80": 0.9941061735153198,
+   "sigma_lk": 0.2046775072813034,
+   "divergences": 0,
+   "ess_mu_lk": 189.08328236897017,
+   "fit": "hier.py",
+   "people": 120,
+   "interval_excludes_1": false,
+   "interval_excludes_2": true,
+   "note": "DESIGN.md: it means something only if GEO is the right model"
+  },
+  "secondary": {
+   "pass": false,
+   "SH1": {
+    "est": 0.09905497947865434,
+    "hi": 0.12112624332073846,
+    "pass": false
+   },
+   "SH2": {
+    "est": 0.016618346623362864,
+    "lo": -0.04592518471942629,
+    "hi": 0.07916187796615202,
+    "pass": false
+   },
+   "reported": {
+    "SH1r_GEO_beats_IA": {
+     "est": -0.09905497947865434,
+     "hi": -0.07698371563657022,
+     "pass": true
+    },
+    "SH3_equal_splits_beyond_GEO": {
+     "est": -0.018654116941555544,
+     "lo": -0.046952984493532884,
+     "hi": 0.009644750610421794,
+     "pass": false
+    },
+    "SH3_did": {
+     "est": -0.009577114975795385,
+     "lo": -0.04010671219698347,
+     "hi": 0.0209524822453927,
+     "pass": false
+    },
+    "straddle_raw": {
+     "est": 0.025,
+     "lo": -0.038298584378433954,
+     "hi": 0.08829858437843396,
+     "pass": false
+    }
+   }
+  }
+ },
+ "seconds": 514.8453283309937,
+ "written_utc": "2026-11-08T01:49:17Z"
+}

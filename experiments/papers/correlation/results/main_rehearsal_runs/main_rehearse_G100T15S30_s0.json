@@ -1,0 +1,423 @@
+{
+ "format": "correlation-main-rehearsal/1",
+ "truth": "G100T15S30",
+ "n": 120,
+ "seed": 0,
+ "studies": [
+  {
+   "study": 0,
+   "claim": true,
+   "H1": {
+    "est": -0.04648147455919729,
+    "hi": -0.0228828948533966,
+    "pass": true
+   },
+   "H2": {
+    "est": -0.055099079787024954,
+    "hi": -0.03856796408831553,
+    "pass": true
+   },
+   "H3": {
+    "est": -0.04896222358848579,
+    "hi": -0.027341933958615727,
+    "pass": true
+   },
+   "H4": true,
+   "MF1": true,
+   "MF2": true,
+   "secondary": false,
+   "SH1": false,
+   "SH2": false,
+   "counts": {
+    "participants": 169,
+    "quiz_passed": 169,
+    "finished": 169,
+    "included": 169,
+    "flagged": 47,
+    "unflagged": 122,
+    "qualify": 122,
+    "counted": 120,
+    "unflagged_beyond_n": 2,
+    "prior_people": 60,
+    "prior_flagged": 14
+   },
+   "rank_one_recruited": 48,
+   "recruited": 169
+  },
+  {
+   "study": 1,
+   "claim": true,
+   "H1": {
+    "est": -0.0527103125735485,
+    "hi": -0.03298521448386352,
+    "pass": true
+   },
+   "H2": {
+    "est": -0.05132864846762844,
+    "hi": -0.028355500499452253,
+    "pass": true
+   },
+   "H3": {
+    "est": -0.04717116566148886,
+    "hi": -0.027954328647157328,
+    "pass": true
+   },
+   "H4": false,
+   "MF1": true,
+   "MF2": true,
+   "secondary": false,
+   "SH1": false,
+   "SH2": false,
+   "counts": {
+    "participants": 171,
+    "quiz_passed": 171,
+    "finished": 171,
+    "included": 171,
+    "flagged": 49,
+    "unflagged": 122,
+    "qualify": 122,
+    "counted": 120,
+    "unflagged_beyond_n": 2,
+    "prior_people": 60,
+    "prior_flagged": 14
+   },
+   "rank_one_recruited": 49,
+   "recruited": 171
+  },
+  {
+   "study": 2,
+   "claim": true,
+   "H1": {
+    "est": -0.043144879789060606,
+    "hi": -0.02873316665980359,
+    "pass": true
+   },
+   "H2": {
+    "est": -0.040645885955940195,
+    "hi": -0.02900455665052539,
+    "pass": true
+   },
+   "H3": {
+    "est": -0.04779731545556285,
+    "hi": -0.03273457045670494,
+    "pass": true
+   },
+   "H4": true,
+   "MF1": true,
+   "MF2": true,
+   "secondary": false,
+   "SH1": false,
+   "SH2": false,
+   "counts": {
+    "participants": 178,
+    "quiz_passed": 178,
+    "finished": 178,
+    "included": 178,
+    "flagged": 56,
+    "unflagged": 122,
+    "qualify": 122,
+    "counted": 120,
+    "unflagged_beyond_n": 2,
+    "prior_people": 60,
+    "prior_flagged": 17
+   },
+   "rank_one_recruited": 58,
+   "recruited": 178
+  },
+  {
+   "study": 3,
+   "claim": true,
+   "H1": {
+    "est": -0.041697825007735244,
+    "hi": -0.019332165314175923,
+    "pass": true
+   },
+   "H2": {
+    "est": -0.040196671593100065,
+    "hi": -0.015811206034144595,
+    "pass": true
+   },
+   "H3": {
+    "est": -0.04713801095512871,
+    "hi": -0.027912160215774348,
+    "pass": true
+   },
+   "H4": true,
+   "MF1": true,
+   "MF2": true,
+   "secondary": false,
+   "SH1": false,
+   "SH2": false,
+   "counts": {
+    "participants": 171,
+    "quiz_passed": 171,
+    "finished": 171,
+    "included": 171,
+    "flagged": 49,
+    "unflagged": 122,
+    "qualify": 122,
+    "counted": 120,
+    "unflagged_beyond_n": 2,
+    "prior_people": 60,
+    "prior_flagged": 14
+   },
+   "rank_one_recruited": 48,
+   "recruited": 171
+  },
+  {
+   "study": 4,
+   "claim": true,
+   "H1": {
+    "est": -0.028181774838107822,
+    "hi": -0.016925553440223402,
+    "pass": true
+   },
+   "H2": {
+    "est": -0.051184345305036995,
+    "hi": -0.030761911496081845,
+    "pass": true
+   },
+   "H3": {
+    "est": -0.0299655467717242,
+    "hi": -0.018556885037354885,
+    "pass": true
+   },
+   "H4": false,
+   "MF1": true,
+   "MF2": true,
+   "secondary": false,
+   "SH1": false,
+   "SH2": false,
+   "counts": {
+    "participants": 175,
+    "quiz_passed": 175,
+    "finished": 175,
+    "included": 175,
+    "flagged": 53,
+    "unflagged": 122,
+    "qualify": 122,
+    "counted": 120,
+    "unflagged_beyond_n": 2,
+    "prior_people": 60,
+    "prior_flagged": 18
+   },
+   "rank_one_recruited": 51,
+   "recruited": 175
+  },
+  {
+   "study": 5,
+   "claim": true,
+   "H1": {
+    "est": -0.036503195215948483,
+    "hi": -0.021000903954293493,
+    "pass": true
+   },
+   "H2": {
+    "est": -0.035344373502196894,
+    "hi": -0.018978939770827433,
+    "pass": true
+   },
+   "H3": {
+    "est": -0.04846168405431541,
+    "hi": -0.03009036110287236,
+    "pass": true
+   },
+   "H4": false,
+   "MF1": true,
+   "MF2": true,
+   "secondary": false,
+   "SH1": false,
+   "SH2": false,
+   "counts": {
+    "participants": 174,
+    "quiz_passed": 174,
+    "finished": 174,
+    "included": 174,
+    "flagged": 52,
+    "unflagged": 122,
+    "qualify": 122,
+    "counted": 120,
+    "unflagged_beyond_n": 2,
+    "prior_people": 60,
+    "prior_flagged": 20
+   },
+   "rank_one_recruited": 53,
+   "recruited": 174
+  },
+  {
+   "study": 6,
+   "claim": true,
+   "H1": {
+    "est": -0.0283934200792513,
+    "hi": -0.013493911859399289,
+    "pass": true
+   },
+   "H2": {
+    "est": -0.04251183289496261,
+    "hi": -0.022313310002872445,
+    "pass": true
+   },
+   "H3": {
+    "est": -0.03136464862294413,
+    "hi": -0.017194281872618764,
+    "pass": true
+   },
+   "H4": true,
+   "MF1": true,
+   "MF2": false,
+   "secondary": false,
+   "SH1": false,
+   "SH2": false,
+   "counts": {
+    "participants": 170,
+    "quiz_passed": 170,
+    "finished": 170,
+    "included": 170,
+    "flagged": 48,
+    "unflagged": 122,
+    "qualify": 122,
+    "counted": 120,
+    "unflagged_beyond_n": 2,
+    "prior_people": 60,
+    "prior_flagged": 20
+   },
+   "rank_one_recruited": 47,
+   "recruited": 170
+  },
+  {
+   "study": 7,
+   "claim": true,
+   "H1": {
+    "est": -0.040414634502293545,
+    "hi": -0.024350987403166036,
+    "pass": true
+   },
+   "H2": {
+    "est": -0.05432557678401752,
+    "hi": -0.037329562387794474,
+    "pass": true
+   },
+   "H3": {
+    "est": -0.043963414109080466,
+    "hi": -0.02887253870805486,
+    "pass": true
+   },
+   "H4": true,
+   "MF1": true,
+   "MF2": true,
+   "secondary": false,
+   "SH1": false,
+   "SH2": false,
+   "counts": {
+    "participants": 178,
+    "quiz_passed": 178,
+    "finished": 178,
+    "included": 178,
+    "flagged": 56,
+    "unflagged": 122,
+    "qualify": 122,
+    "counted": 120,
+    "unflagged_beyond_n": 2,
+    "prior_people": 60,
+    "prior_flagged": 12
+   },
+   "rank_one_recruited": 55,
+   "recruited": 178
+  },
+  {
+   "study": 8,
+   "claim": true,
+   "H1": {
+    "est": -0.0279861766636114,
+    "hi": -0.009777694396206408,
+    "pass": true
+   },
+   "H2": {
+    "est": -0.06316445555175862,
+    "hi": -0.03720880759188175,
+    "pass": true
+   },
+   "H3": {
+    "est": -0.04186767523666526,
+    "hi": -0.02658800049639107,
+    "pass": true
+   },
+   "H4": true,
+   "MF1": true,
+   "MF2": true,
+   "secondary": false,
+   "SH1": false,
+   "SH2": false,
+   "counts": {
+    "participants": 185,
+    "quiz_passed": 185,
+    "finished": 185,
+    "included": 185,
+    "flagged": 63,
+    "unflagged": 122,
+    "qualify": 122,
+    "counted": 120,
+    "unflagged_beyond_n": 2,
+    "prior_people": 60,
+    "prior_flagged": 20
+   },
+   "rank_one_recruited": 64,
+   "recruited": 185
+  },
+  {
+   "study": 9,
+   "claim": true,
+   "H1": {
+    "est": -0.03753204945673697,
+    "hi": -0.02194194928621186,
+    "pass": true
+   },
+   "H2": {
+    "est": -0.036015887033681984,
+    "hi": -0.02099363129194951,
+    "pass": true
+   },
+   "H3": {
+    "est": -0.04293328554149452,
+    "hi": -0.028252413023440854,
+    "pass": true
+   },
+   "H4": false,
+   "MF1": true,
+   "MF2": true,
+   "secondary": false,
+   "SH1": false,
+   "SH2": false,
+   "counts": {
+    "participants": 164,
+    "quiz_passed": 164,
+    "finished": 164,
+    "included": 164,
+    "flagged": 42,
+    "unflagged": 122,
+    "qualify": 122,
+    "counted": 120,
+    "unflagged_beyond_n": 2,
+    "prior_people": 60,
+    "prior_flagged": 14
+   },
+   "rank_one_recruited": 37,
+   "recruited": 164
+  }
+ ],
+ "code_sha256": {
+  "main_analysis.py": "cec3c5af29b3c031a6852c2504ff7bf484f6bf291e2bc37032310d426c507a4e",
+  "rehearsal.py": "7d1f8564a488d09e64ae3ab68ba7a40ce39c0cdc5e96261c85fa6faa90ec618c",
+  "models.py": "f59a1879515bb3728cb919aee347850b4780ed771fd7c71ca6f96b398f29f13e",
+  "stimuli.py": "988961c377fc3f70be717f6fc726de8157bd4427f7892d4cf7e9bd36e6fe2f65",
+  "hier.py": "213f9595fd6b90b3c0272645e4687c237e2682102c4d2dc652a8c83038115d95",
+  "pilot_analysis.py": "7ac235853da3b817dcbf95b183db75985c04e49a7887352b516b4225b77dd75c",
+  "export_pilot.py": "dcb168b7a2253f1240378b39b9cfcfd3e519f68d5d7d81b382b20e887b9d0b40",
+  "split_pilot.py": "6c824873147820a69feb6256ad8afaf9a7f6b809db6ed65564581ff4c8a66af1",
+  "build_instrument.py": "dc52b3d333cab0dadd924c1902afe87ba99e22897fc991b818e0f0bcbcf26b16",
+  "seal_main.py": "ea67d6acf11b63505b8420b6c13fe333f4b16f754a6efe2571e96962fba7642a",
+  "seal_correlation.py": "fbcd6ba829479003ec15c7c9bcefdbf1f548b0f684c8ddc5b4a11d771faccb3e"
+ },
+ "stimuli_sha256": "4abe1d591f899cc4756f3da76c1d4ac366f323645ecfa2414fa65a425058c96d",
+ "seconds": 485.47319173812866
+}

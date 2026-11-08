@@ -23,6 +23,7 @@ The scripts beside the analysis code:
 |---|---|
 | `../build_instrument.py` | writes `stimuli.js` and `MANIFEST.json`; `--check` fails if either is stale |
 | `../export_pilot.py` | `review`: the saved files into a list for approving submissions, the bonus list for Prolific and the totals owed to each charity. `export`: the export that `split_pilot.py` reads |
+| `../main_analysis.py` | the main study's export and its analysis (`../MAIN.md`) |
 | `../instrument_roundtrip.py` | the round trip of PILOT.md, sequence step 3 (below) |
 | `../instrument_screens.py` | a picture of every screen, for the ethics application |
 
@@ -130,6 +131,12 @@ any service that takes DataPipe's request would do.
 A participant's first session counts, whatever its status. A second session in another browser has seen the trials,
 so its choices are not counted. If only the second one finished, the bonus is paid from it, and the export lists the
 participant as not finished.
+
+**In the main study** (`mode: "main"` in `config.js`, after the seal of PILOT.md's step 10), steps 1 to 4 are the same,
+with `--mode main` on `review`. `PAID.json` is not needed, since only the pilot's export reads it. In place of step 6,
+run `python main_analysis.py export RAW --prolific IDS.txt --pilot-ids PILOT_SPLIT/id_map.json --out MAIN --source
+human`, then `main_analysis.py grade` (`../MAIN.md`). The main study has no split and no sealed file. Its export's
+record says how many people qualify so far, which is when recruitment can stop.
 
 ## Known limits
 

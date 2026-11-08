@@ -1,0 +1,220 @@
+{
+ "format": "correlation-main-rehearsal/1/summary",
+ "table": {
+  "ADD": {
+   "studies": 20,
+   "n": [
+    120
+   ],
+   "seeds": [
+    0,
+    1
+   ],
+   "claim": 0,
+   "secondary": 0,
+   "H4": 0,
+   "MF1": 0,
+   "MF2": 1,
+   "SH1": 0,
+   "SH2": 0,
+   "H1": 0,
+   "H2": 7,
+   "H3": 0,
+   "flagged_share": 0.031857238633597414,
+   "rank_one_share": 0.0
+  },
+  "CAG": {
+   "studies": 20,
+   "n": [
+    120
+   ],
+   "seeds": [
+    0,
+    1
+   ],
+   "claim": 0,
+   "secondary": 0,
+   "H4": 0,
+   "MF1": 20,
+   "MF2": 1,
+   "SH1": 0,
+   "SH2": 2,
+   "H1": 20,
+   "H2": 20,
+   "H3": 0,
+   "flagged_share": 0.04709948290484322,
+   "rank_one_share": 0.0
+  },
+  "EARLY": {
+   "studies": 20,
+   "n": [
+    120
+   ],
+   "seeds": [
+    0,
+    1
+   ],
+   "claim": 0,
+   "secondary": 0,
+   "H4": 0,
+   "MF1": 0,
+   "MF2": 2,
+   "SH1": 0,
+   "SH2": 1,
+   "H1": 0,
+   "H2": 5,
+   "H3": 0,
+   "flagged_share": 0.028761112116387766,
+   "rank_one_share": 0.0
+  },
+  "G100T15S30": {
+   "studies": 20,
+   "n": [
+    120
+   ],
+   "seeds": [
+    0,
+    1
+   ],
+   "claim": 19,
+   "secondary": 0,
+   "H4": 12,
+   "MF1": 20,
+   "MF2": 19,
+   "SH1": 0,
+   "SH2": 0,
+   "H1": 19,
+   "H2": 20,
+   "H3": 19,
+   "flagged_share": 0.2829070063831282,
+   "rank_one_share": 0.2843614898135841
+  },
+  "IA": {
+   "studies": 20,
+   "n": [
+    120
+   ],
+   "seeds": [
+    0,
+    1
+   ],
+   "claim": 0,
+   "secondary": 20,
+   "H4": 0,
+   "MF1": 1,
+   "MF2": 0,
+   "SH1": 20,
+   "SH2": 20,
+   "H1": 0,
+   "H2": 16,
+   "H3": 0,
+   "flagged_share": 0.0,
+   "rank_one_share": 0.0
+  },
+  "RDU": {
+   "studies": 20,
+   "n": [
+    120
+   ],
+   "seeds": [
+    0,
+    1
+   ],
+   "claim": 0,
+   "secondary": 0,
+   "H4": 0,
+   "MF1": 20,
+   "MF2": 1,
+   "SH1": 0,
+   "SH2": 0,
+   "H1": 20,
+   "H2": 0,
+   "H3": 1,
+   "flagged_share": 0.02263870242567901,
+   "rank_one_share": 0.0
+  }
+ },
+ "bars": [
+  {
+   "bar": "ADD: the claim passes in at most 1 of 20",
+   "pass": true
+  },
+  {
+   "bar": "ADD: the secondary claim passes in at most 1 of 20",
+   "pass": true
+  },
+  {
+   "bar": "CAG: the claim passes in at most 1 of 20",
+   "pass": true
+  },
+  {
+   "bar": "CAG: the secondary claim passes in at most 1 of 20",
+   "pass": true
+  },
+  {
+   "bar": "EARLY: the claim passes in at most 1 of 20",
+   "pass": true
+  },
+  {
+   "bar": "EARLY: the secondary claim passes in at most 1 of 20",
+   "pass": true
+  },
+  {
+   "bar": "G100T15S30: the claim passes in at least 16 of 20",
+   "pass": true
+  },
+  {
+   "bar": "G100T15S30: the secondary claim passes in at most 1 of 20",
+   "pass": true
+  },
+  {
+   "bar": "IA: the claim passes in at most 1 of 20",
+   "pass": true
+  },
+  {
+   "bar": "IA: the secondary claim passes in at least 18 of 20",
+   "pass": true
+  },
+  {
+   "bar": "RDU: the claim passes in at most 1 of 20",
+   "pass": true
+  },
+  {
+   "bar": "RDU: the secondary claim passes in at most 1 of 20",
+   "pass": true
+  },
+  {
+   "bar": "every run used the same code",
+   "pass": true
+  }
+ ],
+ "pass": true,
+ "code_sha256": {
+  "build_instrument.py": "dc52b3d333cab0dadd924c1902afe87ba99e22897fc991b818e0f0bcbcf26b16",
+  "export_pilot.py": "dcb168b7a2253f1240378b39b9cfcfd3e519f68d5d7d81b382b20e887b9d0b40",
+  "hier.py": "213f9595fd6b90b3c0272645e4687c237e2682102c4d2dc652a8c83038115d95",
+  "main_analysis.py": "cec3c5af29b3c031a6852c2504ff7bf484f6bf291e2bc37032310d426c507a4e",
+  "models.py": "f59a1879515bb3728cb919aee347850b4780ed771fd7c71ca6f96b398f29f13e",
+  "pilot_analysis.py": "7ac235853da3b817dcbf95b183db75985c04e49a7887352b516b4225b77dd75c",
+  "rehearsal.py": "7d1f8564a488d09e64ae3ab68ba7a40ce39c0cdc5e96261c85fa6faa90ec618c",
+  "seal_correlation.py": "fbcd6ba829479003ec15c7c9bcefdbf1f548b0f684c8ddc5b4a11d771faccb3e",
+  "seal_main.py": "ea67d6acf11b63505b8420b6c13fe333f4b16f754a6efe2571e96962fba7642a",
+  "split_pilot.py": "6c824873147820a69feb6256ad8afaf9a7f6b809db6ed65564581ff4c8a66af1",
+  "stimuli.py": "988961c377fc3f70be717f6fc726de8157bd4427f7892d4cf7e9bd36e6fe2f65"
+ },
+ "runs": [
+  "main_rehearse_ADD_s0.json",
+  "main_rehearse_ADD_s1.json",
+  "main_rehearse_CAG_s0.json",
+  "main_rehearse_CAG_s1.json",
+  "main_rehearse_EARLY_s0.json",
+  "main_rehearse_EARLY_s1.json",
+  "main_rehearse_G100T15S30_s0.json",
+  "main_rehearse_G100T15S30_s1.json",
+  "main_rehearse_IA_s0.json",
+  "main_rehearse_IA_s1.json",
+  "main_rehearse_RDU_s0.json",
+  "main_rehearse_RDU_s1.json"
+ ],
+ "written_utc": "2026-11-08T01:48:50Z"
+}
