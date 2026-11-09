@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Instrument screens</title>
+<style>
+  @page { size: Letter; margin: 0.75in; }
+  body { font-family: "DejaVu Sans", Arial, sans-serif; font-size: 11pt; line-height: 1.4; color: #111; }
+  h1 { font-size: 18pt; margin: 0 0 0.2in 0; }
+  h2 { font-size: 13pt; margin: 0 0 0.08in 0; }
+  p { margin: 0 0 0.12in 0; }
+  section.screen { page-break-before: always; }
+  section.screen img { display: block; max-width: 100%; max-height: 7.9in; border: 1px solid #bbb; margin-top: 0.1in; }
+  .small { font-size: 9.5pt; color: #444; }
+  blockquote { margin: 0.05in 0 0.12in 0.2in; color: #333; }
+</style>
+</head>
+<body>
+<h1>Instrument screens</h1>
+<p><b>Study:</b> Choices about points for you and for a charity.<br>
+<b>Principal investigator:</b> Andrew H. Bond, San José State University.</p>
+<p>These are pictures of every screen of the study's web page, in the pilot's mode. A headless browser took them on
+2026-11-07, from the version of the page registered with the study's design. The page ran with test settings, so the
+contact details read "Round-trip test", "test@example.org", "test board" and "Protocol TEST", and the receipts address
+reads "https://example.org/receipts". The deployed page shows the real ones.</p>
+<p>The consent screen (screen 3) shows the draft text registered with the design. The page will show the approved
+consent notice, attached separately, word for word, with a link to the stamped copy.</p>
+<p>The main study's screens are the same, except that it has 140 choices instead of 160 and no closing questions
+(screen 13).</p>
+<p>Three screens are not pictured. Their full text is:</p>
+<p class="small"><b>After declining consent:</b></p>
+<blockquote class="small">Thank you. You chose not to take part, and nothing has been recorded. Please return the study
+on Prolific.</blockquote>
+<p class="small"><b>If the page is opened before the study is set up:</b></p>
+<blockquote class="small">This study is not open yet. Please return the study on Prolific. Nothing has been
+recorded.</blockquote>
+<p class="small"><b>If the participant comes back to the page after finishing:</b></p>
+<blockquote class="small">You have finished. Thank you for taking part. If Prolific did not open, please use the button
+below. [Finish and return to Prolific]</blockquote>
+
+<section class="screen"><h2>Screen 1. A link without a Prolific ID</h2>
+<p>The page stops here and records nothing.</p><img src="screens/00_no_prolific_id.png"></section>
+
+<section class="screen"><h2>Screen 2. A window that is too small</h2>
+<p>The page asks for a window at least 1000 by 620 pixels and continues by itself once the window is large enough.
+Nothing is recorded.</p><img src="screens/01_window_too_small.png"></section>
+
+<section class="screen"><h2>Screen 3. Consent (the registered draft, with test contact details)</h2>
+<p>The page will show the approved consent notice here instead, word for word, with a link to the stamped copy.
+Declining ends the study, and nothing is recorded.</p><img src="screens/02_consent.png"></section>
+
+<section class="screen"><h2>Screen 4. How the study works</h2><img src="screens/03_how_it_works.png"></section>
+
+<section class="screen"><h2>Screen 5. Choosing the charity</h2>
+<p>Five charities in alphabetical order, each with one line on what it does.</p><img src="screens/04_charity.png">
+</section>
+
+<section class="screen"><h2>Screen 6. The rules</h2>
+<p>One sure example and one coin-flip example. The receipts address shows a test value.</p>
+<img src="screens/05_rules.png"></section>
+
+<section class="screen"><h2>Screen 7. Four questions on the rules, first try</h2><img src="screens/06_quiz.png"></section>
+
+<section class="screen"><h2>Screen 8. After a wrong answer</h2>
+<p>The rules again, before the second and last try.</p><img src="screens/07_quiz_second_try.png"></section>
+
+<section class="screen"><h2>Screen 9. The start of the choices</h2><img src="screens/08_ready.png"></section>
+
+<section class="screen"><h2>Screen 10. A choice between two sure options</h2>
+<p>One of the 160 choices (140 in the main study).</p><img src="screens/09_trial_sure_sure.png"></section>
+
+<section class="screen"><h2>Screen 11. A choice between a sure option and a coin flip</h2>
+<img src="screens/09_trial_coin_sure.png"></section>
+
+<section class="screen"><h2>Screen 12. A choice between two coin flips</h2>
+<img src="screens/09_trial_coin_coin.png"></section>
+
+<section class="screen"><h2>Screen 13. Pilot only: four closing questions</h2>
+<p>The first three need an answer. The written question is optional. The main study has no closing questions.</p>
+<img src="screens/10_debrief.png"></section>
+
+<section class="screen"><h2>Screen 14. The paid choice</h2>
+<p>The choice the computer drew, the coin if the option is a coin flip, the bonus and the donation. The participant
+returns to Prolific from here.</p><img src="screens/11_paid_choice.png"></section>
+
+<section class="screen"><h2>Screen 15. After two wrong tries on the quiz</h2>
+<p>The study ends here, with the base payment.</p><img src="screens/12_quiz_failed.png"></section>
+</body>
+</html>
