@@ -343,6 +343,27 @@ loses, since no one has scored the published models out of sample. Item 6 does t
 intertemporal database. Items 1 and 3 narrow what may be called new: the form is known, and the claim
 is the discovery of the space from choices and the single treatment of boundaries.
 
+## 11. Bridge, parked 2026-11-10
+
+Proposed by the owner from a pasted list of sources. One item was checked and the rest are unverified.
+
+- **Richard Pavlicek's database** is 10,485,760 random deals, each solved double-dummy by computer
+  (`rpbridge.net/8j29.htm`). It holds no human bidding or play and cannot be used.
+- **Complete Bridge Database** (Axinte, about 384,000 boards from championships since 1953, with
+  bidding and play), **Bridgetoernooi** (over 200,000 deals on request) and the **`pbn-files`**
+  repository are described as records of human play. Their licences, formats and contents are not
+  checked.
+
+**What bridge offers that the other arenas do not.** In duplicate play the same deal is bid and
+played at many tables, so one state is decided by many players without any matching. All four hands
+are on record, unlike poker. The bidding can only go up, and the scoring has known jumps at game and
+slam.
+
+**Why it waits.** Bids are signals under partnership agreements, so a bid is not one person's choice
+among options in the sense the other arenas allow. The stake is ranking, not money. A double-dummy
+solver sees all four hands, so it is not the benchmark for a player who sees two. And the usable
+sources are small and of uncertain licence beside a chess month of ninety million games.
+
 ## 10. Poker, looked at 2026-11-09
 
 The Kaggle set `hosseinah1/poker-game-dataset` holds two files, `poker-hand-training.csv` and
@@ -355,3 +376,65 @@ A usable poker source turned up in the same search and is not yet examined: the 
 no-limit hold'em hands from six online sites in July 2009 at stakes from 25NL to 1000NL, and the
 10,000 hands played by the Pluribus program against professionals. Whether opponents' cards are shown
 only at showdown, and whether the stakes were real money, are not stated on its front page.
+
+**Looked at again 2026-11-10, at the owner's request** (repository front page, the Zenodo record and
+the paper's abstract page, no data file opened). The archive is one 20.3 GB zip under CC BY 4.0
+(Zenodo v3, doi:10.5281/zenodo.17136841; Kim, "Recording and Describing Poker Hands", IEEE Conference
+on Games 2024).
+
+| Part | Size | Human decisions | Use here |
+|---|---|---|---|
+| HandHQ logs | 21,605,687 no-limit hold'em hands, 1 to 23 July 2009, six sites, 25NL to 1000NL | yes | the main candidate |
+| Pluribus | 10,000 hands, the program against professionals | yes, few players | all cards may be on record, to verify |
+| Computer Poker Competition 2009–2017 | about 620 million hands | no, programs only | none |
+| 2023 WSOP final table | 83 hands | yes | too few |
+
+**Why poker fits.** A hand is a path through four betting rounds that the rules separate, with
+irreversible edges (a fold, an all-in), and the stake is money. Of the arenas here it is the only
+one that is sequential, monetary and large at once.
+
+**To verify from the documentation before any use, in this order.**
+
+1. Whether HandHQ player identities are consistent across hands. The record calls the logs
+   anonymised. If each hand has fresh labels, nothing within a player or across a session can be
+   tested.
+2. Whether a player's cards are recorded only when shown. If so, the state is known only for hands
+   that reached showdown, which selects on the outcome of the very decisions under study. Tests would
+   then have to condition on public information alone.
+3. Whether the HandHQ tables were real-money tables. The stake labels suggest so. The record does not
+   say it.
+4. What is already published on these or similar logs, for instance on play after large wins and
+   losses.
+
+**Format read 2026-11-10** from the first four hands of one sample file in the repository
+(`data/handhq/PS-…_25NLH_OBFU/0.25/`), for the schema only. The owner also sent Zenodo record
+13997158, which is version 2 of the same collection: 1.9 GB, CC BY 4.0, the human-play parts without
+the 620 million program hands that version 3 added. Version 2 is the one to download.
+
+- Each hand records blinds, every player's starting stack, every action with its amount, the board
+  cards, the site, the date, a hand number, a table label and one label per player.
+- **Cards are hidden unless shown.** Every deal is written `????`. A hand appears only where a player
+  showed it at showdown, and a player who mucked stays `????`. Question 2 is answered: the full
+  state is known only for shown hands, so any test must condition on public information, or treat
+  the showdown subset as selected.
+- **Player and table labels are 22-character strings** of the kind a hash gives. Whether one player
+  keeps one label across hands could not be told from four hands. Question 1 is still open, and it
+  is checkable by counting repeated labels without reading any action.
+- **Amounts are in dollars** (blinds $0.10 and $0.25 at the 25NL table). Real money is likely and is
+  still not stated anywhere read.
+- **Time of day is blank** (`00:00:00`). Order within a day would have to come from the hand number.
+
+**The IRC Poker Database, sent by the owner 2026-11-10** (`poker.cs.ualberta.ca/irc_poker_database.html`,
+page read, archive not downloaded). More than 10 million hands logged by Michael Maurer's observer
+program on IRC poker channels from 1995 to 2001, hosted by the University of Alberta's Computer Poker
+Research Group as one archive, `IRCdata.tgz`. The page calls the games "free-money games" that
+predate real-money sites, with higher channels that required a qualifying bankroll. The page does
+not describe the file format, the variants and limits, how players are identified, whether cards
+are shown only at showdown, or any licence beyond a copyright notice. All of those are to be read
+from the archive's own documentation.
+
+**How the two poker sources could fit together, if the checks pass.** IRC is play money over six
+years. HandHQ is dollars over 23 days. Developing on the first and sealing a test on the second would
+ask whether a model built where nothing was at stake predicts play for money, which is a harder and
+more useful test than a split of one source. It depends on question 1 for both: without stable player
+labels neither supports anything across hands.
