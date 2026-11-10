@@ -345,6 +345,44 @@ with themselves within a speed, so the difference between speeds could still be 
 populations. The check is the players who appear at two speeds, compared with themselves across
 them. It has not been run. Openings only, development only.
 
+## Pass 5, planned: the same player at two speeds
+
+Written 2026-11-10 before it was run. Pass 4 compared speeds across different sets of players. Here
+each player's own D(0) is computed separately at each speed they played, with pairs a day apart and
+their own moves in the same order, and the two values are differenced within the player.
+
+**Prediction of the budget reading.** For players with a value at both speeds, D(0) at the faster
+speed minus D(0) at the slower speed is above zero, for bullet against blitz, blitz against rapid and
+bullet against rapid. Classical is left out for lack of players.
+
+**What each outcome means.** Differences above zero with intervals clear of it: the dependence on
+speed is within the person, and the population explanation of pass 4 fails. Differences at zero: the
+ordering in pass 4 came from who plays each speed, and the budget reading loses its support.
+
+## Result of pass 5 (development, July and August 2026)
+
+`analyze_cross_speed.py`, run 2026-11-10. Files `results/cross_speed_2026-0{7,8}.json`.
+
+| Faster minus slower, same player | Players (July) | July | 95% interval | August | 95% interval |
+|---|---|---|---|---|---|
+| Bullet minus blitz | 18,077 | +0.0136 | +0.0082 to +0.0189 | +0.0125 | +0.0075 to +0.0177 |
+| Blitz minus rapid | 8,112 | +0.0096 | +0.0010 to +0.0183 | +0.0106 | +0.0016 to +0.0187 |
+| Bullet minus rapid | 3,328 | +0.0156 | +0.0019 to +0.0294 | +0.0233 | +0.0097 to +0.0358 |
+
+**All six differences are above zero and all six intervals exclude it.** The same player shows a
+larger effect of the opponent's last move at the faster of two speeds. The ordering in pass 4 is
+therefore not only a matter of who plays each speed.
+
+**Limits.** The positions a player met at one speed are not matched to the positions the same player
+met at the other, so the comparison is of the player's average over whatever positions arose. A
+player's two speeds may also be played at different hours or in different moods. Openings only,
+development only.
+
+**What passes 4 and 5 establish together, on development data.** In opening positions the opponent's
+last move changes a player's choice beyond the position it produces, more so the less time the
+player has, and this holds within the person. That is a statement about the evaluator's budget and
+not about the position, the metric or the ideal.
+
 ## Whose move differed: the curve over all pairs
 
 The last half-move before a decision is the opponent's, so in the curve over all pairs an even k
