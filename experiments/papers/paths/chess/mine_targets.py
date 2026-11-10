@@ -5,8 +5,12 @@
 No sampling and no chess library. A game is matched by the text of its first
 half-moves against the orders written by make_targets.py. Output columns are
 those of mine_paths.py, with the position key taken from the target list, plus
-a final column: the game's UTC date and time, so that one player's games can be
-put in order.
+two final columns: the game's UTC date and time, so that one player's games can
+be put in order, and Lichess's engine evaluation after the chosen move where the
+game carries one (empty otherwise). The evaluation column was added on
+2026-11-10 after the July pass had started, so July's rows lack it. A last
+column, the keyed digest of the opponent's account, was added later the same
+day and is in neither development month's rows.
 """
 import argparse
 import gzip
@@ -41,7 +45,7 @@ def main():
             seq = plies(movetext[:900], top + 1)
             if len(seq) <= wanted[0]:
                 continue
-            sans = [s for s, _ in seq]
+            sans = [s for s, _, _ in seq]
             for ply in wanted:
                 if len(seq) <= ply:
                     break
@@ -62,7 +66,9 @@ def main():
                     digest(tags.get("White" if side == 0 else "Black", ""), key),
                     str(elo[side]), str(elo[1 - side]), tags.get("TimeControl", ""),
                     str(-1 if clk is None else clk),
-                    tags.get("UTCDate", "") + " " + tags.get("UTCTime", ""))) + "\n")
+                    tags.get("UTCDate", "") + " " + tags.get("UTCTime", ""),
+                    seq[ply][2] or "",
+                    digest(tags.get("Black" if side == 0 else "White", ""), key))) + "\n")
                 counts["rows"] += 1
             if counts["read"] % 5000000 == 0:
                 print(counts, flush=True)

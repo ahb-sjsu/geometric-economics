@@ -40,6 +40,7 @@ PLY_MIN, PLY_MAX = 6, 16          # decisions after 6 to 16 half-moves
 TAG = re.compile(r'^\[(\w+) "(.*)"\]')
 TOKEN = re.compile(r"\{([^}]*)\}|(\d+\.+)|(\S+)")
 CLK = re.compile(r"\[%clk (\d+):(\d+):(\d+)\]")
+EVAL = re.compile(r"\[%eval ([^\]\s]+)\]")
 RESULTS = {"1-0", "0-1", "1/2-1/2", "*"}
 
 
@@ -66,20 +67,26 @@ def games(stream):
 
 
 def plies(movetext, limit):
-    """The first `limit` half-moves as (san, clock_after_move_or_None)."""
+    """The first `limit` half-moves as (san, clock_after_move_or_None, eval_after_move_or_None).
+
+    The evaluation is Lichess's own engine annotation, present in a minority of games,
+    kept as written: pawns from White's side, or '#n' for a forced mate.
+    """
     out = []
     for comment, number, word in TOKEN.findall(movetext):
         if comment:
-            if out and out[-1][1] is None:
+            if out and out[-1][1] is None and out[-1][2] is None:
                 m = CLK.search(comment)
-                if m:
-                    out[-1] = (out[-1][0], int(m.group(1)) * 3600 + int(m.group(2)) * 60 + int(m.group(3)))
+                e = EVAL.search(comment)
+                out[-1] = (out[-1][0],
+                           None if not m else int(m.group(1)) * 3600 + int(m.group(2)) * 60 + int(m.group(3)),
+                           None if not e else e.group(1))
         elif word:
             if word in RESULTS:
                 break
             if len(out) >= limit:
                 break
-            out.append((word.rstrip("+#!?"), None))
+            out.append((word.rstrip("+#!?"), None, None))
     return out
 
 
@@ -100,13 +107,13 @@ def rows_for(tags, movetext, key):
     who = (digest(tags.get("White", ""), key), digest(tags.get("Black", ""), key))
     board = chess.Board()
     out = []
-    for ply, (san, _) in enumerate(seq):
+    for ply, (san, _, _) in enumerate(seq):
         if ply >= PLY_MIN:
             side = ply % 2
             clk = seq[ply - 2][1] if ply >= 2 else None
             out.append("\t".join((
                 gid, str(ply), "%016x" % chess.polyglot.zobrist_hash(board),
-                " ".join(s for s, _ in seq[:ply]), san, who[side],
+                " ".join(s for s, _, _ in seq[:ply]), san, who[side],
                 str(elo[side]), str(elo[1 - side]), tc, str(-1 if clk is None else clk))))
         try:
             board.push_san(san)

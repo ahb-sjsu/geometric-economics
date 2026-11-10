@@ -79,6 +79,23 @@ move costs its penalty more than a move at equal distance that crosses none
 (`boundary_edge_costs_its_penalty`). These are consequences of the definitions and say nothing about
 behaviour. `lean/README.md` lists what was not formalised.
 
+**The first quantity to carry across domains: the depth of memory.** Added 2026-11-10. The Lean
+check was extended the same day. With a reference that moves with the past, history matters only
+through the reference (`ranking_depends_on_state_and_reference`), and a reference that reads back m
+steps cannot tell apart two histories that share their last m steps. The depth m is then one number
+that each arena can measure in its own data, with the state held fixed:
+
+| Arena | Two histories that share their last k steps | What is compared |
+|---|---|---|
+| Chess | the same position reached by move orders with the same last k half-moves | the next move |
+| Deal or No Deal | the same remaining prizes and current offer, with the same last k earlier offers | deal or no deal |
+| Poker | the same public state of the hand, with the same last k hands' results for the player | fold, call or raise |
+
+Definition 6.2 as written says m = 0 everywhere. The claim to register, once chess has given a
+value, is that m is the same small number in the other arenas. A different m in each arena, or no
+finite m, is a failure of the common account and is reported as one. This is narrower than P-path
+as first drafted and it can fail.
+
 ## 4. Rules for this line, each from a failure in the last one
 
 1. **The strongest incumbent at equal capacity is in the comparison from the first fit.** Last time
@@ -432,6 +449,23 @@ the 620 million program hands that version 3 added. Version 2 is the one to down
 - **Amounts are in dollars** (blinds $0.10 and $0.25 at the 25NL table). Real money is likely and is
   still not stated anywhere read.
 - **Time of day is blank** (`00:00:00`). Order within a day would have to come from the hand number.
+
+**Question 1 answered 2026-11-10: the player labels are stable.** `poker/count_labels.py` read the
+`players`, `table`, `day` and `venue` lines of every HandHQ hand in the version 2 archive
+(md5 `0918a30f…`, as the Zenodo record lists) and nothing else. Result in
+`poker/results/labels.json`.
+
+- 21,349,121 hands with all three header lines, in 27 site-and-stake folders. The record states
+  21,605,687. The difference of about 1% is hands lacking one of the three lines and is not examined.
+- 276,628 distinct labels. Hands per label: 7 at the 10th percentile, 60 at the median, 640 at the
+  90th, 7,407 at the 99th. Only 4,891 labels appear in a single hand.
+- 136,609 labels appear on two or more days and 9,628 on ten or more. 146,066 appear at two or more
+  tables, and 56,635 in two or more site-and-stake folders.
+- 95% of all seats played belong to labels with at least 100 hands.
+
+A label is therefore a player followed across tables, days and stake levels. Comparisons within a
+player, and of a player's play after earlier hands, are possible. Questions 2 to 4 stand as before:
+cards are hidden unless shown, real money is likely and unstated, and prior work is unchecked.
 
 **The IRC Poker Database, sent by the owner 2026-11-10** (`poker.cs.ualberta.ca/irc_poker_database.html`,
 page read, archive not downloaded). More than 10 million hands logged by Michael Maurer's observer

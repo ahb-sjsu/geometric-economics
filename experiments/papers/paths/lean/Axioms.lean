@@ -4,6 +4,9 @@ import DecisionPaths
 #print axioms DecisionPaths.ranking_history_free
 #print axioms DecisionPaths.best_continuation_history_free
 #print axioms DecisionPaths.history_can_matter_if_weight_reads_the_past
+#print axioms DecisionPaths.ranking_depends_on_state_and_reference
+#print axioms DecisionPaths.costRef_const
+#print axioms DecisionPaths.last_step_suffices_when_reference_is_previous_state
 #print axioms DecisionPaths.direction_difference
 #print axioms DecisionPaths.boundary_edge_costs_its_penalty
 #print axioms DecisionPaths.weight_top_of_sacred

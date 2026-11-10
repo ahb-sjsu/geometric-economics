@@ -1,0 +1,3188 @@
+{
+ "summary": {
+  "rows": 40938630,
+  "player_positions_with_2plus_games": 6069628,
+  "opp3": {
+   "players": 302592,
+   "player_positions": 821216,
+   "pairs_in_class": 11411074,
+   "positions": 224,
+   "change_rate_same_order": 0.22980436853734992,
+   "change_rate_this_class": 0.24273009029549308,
+   "difference": 0.012815010132304778,
+   "ci95": [
+    0.01183142065967776,
+    0.01375524945287853
+   ]
+  },
+  "opp": {
+   "players": 447246,
+   "player_positions": 1338354,
+   "pairs_in_class": 29165499,
+   "positions": 210,
+   "change_rate_same_order": 0.27793583057849697,
+   "change_rate_this_class": 0.3186235388633256,
+   "difference": 0.03734611852482043,
+   "ci95": [
+    0.03653187159010173,
+    0.038202434097203856
+   ]
+  },
+  "own": {
+   "players": 242833,
+   "player_positions": 546189,
+   "pairs_in_class": 7059458,
+   "positions": 216,
+   "change_rate_same_order": 0.3125481048257072,
+   "change_rate_this_class": 0.3657737413154508,
+   "difference": 0.05492258583371973,
+   "ci95": [
+    0.053570750381177444,
+    0.056195434744420965
+   ]
+  }
+ },
+ "by_position": {
+  "opp3": [
+   {
+    "zkey": "dfd2f84af429dfdc",
+    "player_positions": 62,
+    "difference": 0.23127510444789195
+   },
+   {
+    "zkey": "3ec8e1141e5828b6",
+    "player_positions": 697,
+    "difference": 0.0934889794188182
+   },
+   {
+    "zkey": "3c3f1caf0e25a459",
+    "player_positions": 94,
+    "difference": 0.08538446599042725
+   },
+   {
+    "zkey": "26ea1c3ed7d0a1f4",
+    "player_positions": 186,
+    "difference": 0.0794566806240404
+   },
+   {
+    "zkey": "f2b09157f03b82db",
+    "player_positions": 63,
+    "difference": 0.07899376922486165
+   },
+   {
+    "zkey": "04b6de057dc9bef5",
+    "player_positions": 789,
+    "difference": 0.07735866436418778
+   },
+   {
+    "zkey": "4ecd5ca3811a111e",
+    "player_positions": 223,
+    "difference": 0.07086519345036064
+   },
+   {
+    "zkey": "96c1e49211a66996",
+    "player_positions": 42,
+    "difference": 0.06964122813876508
+   },
+   {
+    "zkey": "bc614c62dc6a097a",
+    "player_positions": 1314,
+    "difference": 0.06360789048201586
+   },
+   {
+    "zkey": "de4417e0a338f151",
+    "player_positions": 332,
+    "difference": 0.05541906994479092
+   },
+   {
+    "zkey": "843c0606b8d59e5e",
+    "player_positions": 491,
+    "difference": 0.055254638857047754
+   },
+   {
+    "zkey": "d0c12049d4551112",
+    "player_positions": 219,
+    "difference": 0.054983173197727594
+   },
+   {
+    "zkey": "2a292f0824629d2f",
+    "player_positions": 230,
+    "difference": 0.04910058760242535
+   },
+   {
+    "zkey": "2c556f556df810c6",
+    "player_positions": 578,
+    "difference": 0.04815003675012278
+   },
+   {
+    "zkey": "010038f34b40c821",
+    "player_positions": 1822,
+    "difference": 0.047374818187029516
+   },
+   {
+    "zkey": "d0689586b0c8fa31",
+    "player_positions": 557,
+    "difference": 0.04655714530083549
+   },
+   {
+    "zkey": "083bfdf059cefdc6",
+    "player_positions": 898,
+    "difference": 0.04632961744768149
+   },
+   {
+    "zkey": "acdfb756a8e4306d",
+    "player_positions": 953,
+    "difference": 0.04281125681664072
+   },
+   {
+    "zkey": "c27d978805a5b2fe",
+    "player_positions": 599,
+    "difference": 0.04217601906218817
+   },
+   {
+    "zkey": "d6e9f0296bbb4561",
+    "player_positions": 581,
+    "difference": 0.04206954403584834
+   },
+   {
+    "zkey": "30b4c5e70209ca6a",
+    "player_positions": 363,
+    "difference": 0.04158512184207287
+   },
+   {
+    "zkey": "d8b48b59789bbed1",
+    "player_positions": 8020,
+    "difference": 0.041110467322105326
+   },
+   {
+    "zkey": "6c51e09d3fdd47c3",
+    "player_positions": 1671,
+    "difference": 0.04041407001211648
+   },
+   {
+    "zkey": "1bde16c36bfd0e43",
+    "player_positions": 780,
+    "difference": 0.04034741135834117
+   },
+   {
+    "zkey": "b312c4d01cd4c45a",
+    "player_positions": 108,
+    "difference": 0.039410637330348795
+   },
+   {
+    "zkey": "dd01f8c152aad122",
+    "player_positions": 58,
+    "difference": 0.03925069183689874
+   },
+   {
+    "zkey": "f83811e7e5a51953",
+    "player_positions": 4776,
+    "difference": 0.03636237075201547
+   },
+   {
+    "zkey": "21d6b016d6a1dd28",
+    "player_positions": 1624,
+    "difference": 0.03573303707822663
+   },
+   {
+    "zkey": "8d87502efee987dc",
+    "player_positions": 1089,
+    "difference": 0.03492176438401816
+   },
+   {
+    "zkey": "4d4c9e698de5041a",
+    "player_positions": 1311,
+    "difference": 0.03439526407558144
+   },
+   {
+    "zkey": "e4fa4a47daef0ee9",
+    "player_positions": 641,
+    "difference": 0.033857915891395446
+   },
+   {
+    "zkey": "872d3612c75f06df",
+    "player_positions": 10244,
+    "difference": 0.033574493175837085
+   },
+   {
+    "zkey": "fcdfa080d68e1d65",
+    "player_positions": 1673,
+    "difference": 0.03354105354476699
+   },
+   {
+    "zkey": "9408c6b8d405e88c",
+    "player_positions": 1279,
+    "difference": 0.03328778092549551
+   },
+   {
+    "zkey": "743fea1104be7acb",
+    "player_positions": 588,
+    "difference": 0.033114268254927255
+   },
+   {
+    "zkey": "fad83eedd09a5d03",
+    "player_positions": 249,
+    "difference": 0.03302714636846571
+   },
+   {
+    "zkey": "21f3cca7e1442bc5",
+    "player_positions": 687,
+    "difference": 0.03253197999350974
+   },
+   {
+    "zkey": "4ae3c5dabb7252bf",
+    "player_positions": 1496,
+    "difference": 0.03169328504581273
+   },
+   {
+    "zkey": "a4cff25212d17dba",
+    "player_positions": 635,
+    "difference": 0.031189858112381678
+   },
+   {
+    "zkey": "b3db21ae988b2c97",
+    "player_positions": 105,
+    "difference": 0.030669174949558745
+   },
+   {
+    "zkey": "dfd232f3152fdfc8",
+    "player_positions": 7315,
+    "difference": 0.03066657390242364
+   },
+   {
+    "zkey": "bae029cd0719b62a",
+    "player_positions": 3023,
+    "difference": 0.029178036653146226
+   },
+   {
+    "zkey": "4329a05d1c98bbf9",
+    "player_positions": 6529,
+    "difference": 0.028923671724973427
+   },
+   {
+    "zkey": "6304fcaa0cd7c3c0",
+    "player_positions": 2666,
+    "difference": 0.028357929173875706
+   },
+   {
+    "zkey": "dc2c54d47c8afe81",
+    "player_positions": 1437,
+    "difference": 0.02835689338508337
+   },
+   {
+    "zkey": "9fa5f1d67a92230e",
+    "player_positions": 1717,
+    "difference": 0.027469723888980394
+   },
+   {
+    "zkey": "ab2dcfdba75868fc",
+    "player_positions": 681,
+    "difference": 0.02721523426181331
+   },
+   {
+    "zkey": "7cc3af60417e186f",
+    "player_positions": 1042,
+    "difference": 0.02713358989690396
+   },
+   {
+    "zkey": "649b5cbbdced4af4",
+    "player_positions": 4890,
+    "difference": 0.027131645205075616
+   },
+   {
+    "zkey": "89895840a814e22d",
+    "player_positions": 3259,
+    "difference": 0.02703206356978185
+   },
+   {
+    "zkey": "99249479a1e19c5e",
+    "player_positions": 3396,
+    "difference": 0.026445182229186282
+   },
+   {
+    "zkey": "22c48547edb8e255",
+    "player_positions": 3291,
+    "difference": 0.026291185202063763
+   },
+   {
+    "zkey": "fe06ae1efc34abad",
+    "player_positions": 736,
+    "difference": 0.02624071467367013
+   },
+   {
+    "zkey": "58e98ef980c751b1",
+    "player_positions": 1108,
+    "difference": 0.02593651778222056
+   },
+   {
+    "zkey": "b2790472b437dea0",
+    "player_positions": 839,
+    "difference": 0.0256088163178734
+   },
+   {
+    "zkey": "34e19cfb0f9e6d2e",
+    "player_positions": 5617,
+    "difference": 0.025507645317926042
+   },
+   {
+    "zkey": "d9539de52f5a608c",
+    "player_positions": 2954,
+    "difference": 0.024617523470866574
+   },
+   {
+    "zkey": "4eb9ef081d6594f2",
+    "player_positions": 3165,
+    "difference": 0.024519673021686412
+   },
+   {
+    "zkey": "505c95f1e56a5c3e",
+    "player_positions": 1811,
+    "difference": 0.024209362556040875
+   },
+   {
+    "zkey": "67f0ce40b55a5557",
+    "player_positions": 218,
+    "difference": 0.024034376074768292
+   },
+   {
+    "zkey": "409027d3923aeaae",
+    "player_positions": 8847,
+    "difference": 0.023088279222551997
+   },
+   {
+    "zkey": "2e47fbf71f5315c4",
+    "player_positions": 2968,
+    "difference": 0.023061681074842275
+   },
+   {
+    "zkey": "d87c0f50bd0c2cad",
+    "player_positions": 3961,
+    "difference": 0.022514477013258268
+   },
+   {
+    "zkey": "ff21c6a7bf2b3c2c",
+    "player_positions": 3603,
+    "difference": 0.022342821252850385
+   },
+   {
+    "zkey": "5ca68cd7b996de2a",
+    "player_positions": 4221,
+    "difference": 0.022304453077569186
+   },
+   {
+    "zkey": "11105ffdbac9665f",
+    "player_positions": 302,
+    "difference": 0.022206807978317006
+   },
+   {
+    "zkey": "7fab1ea47a371c87",
+    "player_positions": 5791,
+    "difference": 0.021260558282764318
+   },
+   {
+    "zkey": "e8c63f7269627bab",
+    "player_positions": 1844,
+    "difference": 0.02055152047143958
+   },
+   {
+    "zkey": "8db0f3d8cfff6bc1",
+    "player_positions": 54,
+    "difference": 0.02034966928350015
+   },
+   {
+    "zkey": "00cfe5737da2ca34",
+    "player_positions": 144,
+    "difference": 0.020156921029496063
+   },
+   {
+    "zkey": "b3280b87c4983a3d",
+    "player_positions": 102,
+    "difference": 0.019721868832780088
+   },
+   {
+    "zkey": "9690a3295ff6a25f",
+    "player_positions": 1088,
+    "difference": 0.0195899142211864
+   },
+   {
+    "zkey": "5e1748dce19205dd",
+    "player_positions": 3428,
+    "difference": 0.019554581659963582
+   },
+   {
+    "zkey": "8fa8f2b3c65cf812",
+    "player_positions": 6183,
+    "difference": 0.01954935735570456
+   },
+   {
+    "zkey": "9ef0c54b6f057c3a",
+    "player_positions": 1289,
+    "difference": 0.019470889225468403
+   },
+   {
+    "zkey": "b844c53ac05b240b",
+    "player_positions": 18743,
+    "difference": 0.01923505634200523
+   },
+   {
+    "zkey": "6d3950c071bc809c",
+    "player_positions": 961,
+    "difference": 0.019223665338864347
+   },
+   {
+    "zkey": "b989e68ffc896f12",
+    "player_positions": 5326,
+    "difference": 0.019083521061758018
+   },
+   {
+    "zkey": "632029cca8bd4536",
+    "player_positions": 6824,
+    "difference": 0.018768498680018276
+   },
+   {
+    "zkey": "5ba410137929c83e",
+    "player_positions": 138,
+    "difference": 0.018515956552255634
+   },
+   {
+    "zkey": "d7c277f7af1a921f",
+    "player_positions": 8709,
+    "difference": 0.018444136502128578
+   },
+   {
+    "zkey": "617ebbf4e6962709",
+    "player_positions": 4233,
+    "difference": 0.01841290216883482
+   },
+   {
+    "zkey": "8edffe3dd59810bb",
+    "player_positions": 7648,
+    "difference": 0.017995141359173853
+   },
+   {
+    "zkey": "4a1bd6aa9e963765",
+    "player_positions": 1023,
+    "difference": 0.017728919010134497
+   },
+   {
+    "zkey": "70b80c1ebb4dd25d",
+    "player_positions": 1161,
+    "difference": 0.0176108372668007
+   },
+   {
+    "zkey": "e03ebd685750c181",
+    "player_positions": 1465,
+    "difference": 0.016920039513474195
+   },
+   {
+    "zkey": "7f5acffb82b862b0",
+    "player_positions": 7730,
+    "difference": 0.01688330079839098
+   },
+   {
+    "zkey": "ee34e406d6aa517a",
+    "player_positions": 10428,
+    "difference": 0.01656531131561795
+   },
+   {
+    "zkey": "5375c1a61eafff00",
+    "player_positions": 9303,
+    "difference": 0.016394168914779256
+   },
+   {
+    "zkey": "84421ec5d43219b1",
+    "player_positions": 2522,
+    "difference": 0.016378313230449526
+   },
+   {
+    "zkey": "77bb5ba0c0025150",
+    "player_positions": 7716,
+    "difference": 0.01602164172062426
+   },
+   {
+    "zkey": "47e13bbe612ae948",
+    "player_positions": 4122,
+    "difference": 0.01564638689285787
+   },
+   {
+    "zkey": "5b7a3f74f23e7897",
+    "player_positions": 5058,
+    "difference": 0.015597709959642969
+   },
+   {
+    "zkey": "d5a1d723507dc897",
+    "player_positions": 6035,
+    "difference": 0.015418812231005358
+   },
+   {
+    "zkey": "6d7798ed17d2b334",
+    "player_positions": 8479,
+    "difference": 0.015161080203641037
+   },
+   {
+    "zkey": "0be1ff05927f1410",
+    "player_positions": 10161,
+    "difference": 0.014736710370643577
+   },
+   {
+    "zkey": "43959798ea005b87",
+    "player_positions": 308,
+    "difference": 0.014631054521683624
+   },
+   {
+    "zkey": "8709e37463358029",
+    "player_positions": 1834,
+    "difference": 0.014603539888792129
+   },
+   {
+    "zkey": "86e015a7fb8d4dc6",
+    "player_positions": 12573,
+    "difference": 0.014562073675445323
+   },
+   {
+    "zkey": "5273d57c143e2476",
+    "player_positions": 1344,
+    "difference": 0.014467280073367344
+   },
+   {
+    "zkey": "b663577df5f241bb",
+    "player_positions": 6719,
+    "difference": 0.01446646760243477
+   },
+   {
+    "zkey": "5c49dae4afb967e2",
+    "player_positions": 26885,
+    "difference": 0.014247890932170812
+   },
+   {
+    "zkey": "cee6871749b4ee56",
+    "player_positions": 3048,
+    "difference": 0.014238922327175132
+   },
+   {
+    "zkey": "81d8e9dddbec42f7",
+    "player_positions": 592,
+    "difference": 0.014063128414624372
+   },
+   {
+    "zkey": "26868226c23144c9",
+    "player_positions": 11772,
+    "difference": 0.013920172472876587
+   },
+   {
+    "zkey": "4df44fdf3710c362",
+    "player_positions": 7167,
+    "difference": 0.013905158063609837
+   },
+   {
+    "zkey": "cec710527caeb29e",
+    "player_positions": 5276,
+    "difference": 0.0136226324082076
+   },
+   {
+    "zkey": "406dd1f768527c28",
+    "player_positions": 5555,
+    "difference": 0.013270585026832472
+   },
+   {
+    "zkey": "781a11e2bdf195fe",
+    "player_positions": 866,
+    "difference": 0.013176367926292419
+   },
+   {
+    "zkey": "a12b1d8971e8a113",
+    "player_positions": 477,
+    "difference": 0.013056527615173919
+   },
+   {
+    "zkey": "0e182011ecb08a93",
+    "player_positions": 2758,
+    "difference": 0.013027729658188365
+   },
+   {
+    "zkey": "60b39841da446c10",
+    "player_positions": 4311,
+    "difference": 0.012961330912374067
+   },
+   {
+    "zkey": "2b5638eb16b793cb",
+    "player_positions": 2543,
+    "difference": 0.012916010505370603
+   },
+   {
+    "zkey": "bb073f7150d86877",
+    "player_positions": 16240,
+    "difference": 0.012875973433067706
+   },
+   {
+    "zkey": "9a138dd21f33bc2a",
+    "player_positions": 696,
+    "difference": 0.012742001447112369
+   },
+   {
+    "zkey": "6567dde9ade7fee3",
+    "player_positions": 6619,
+    "difference": 0.012344768839091826
+   },
+   {
+    "zkey": "161a7b2a9aea82f4",
+    "player_positions": 9185,
+    "difference": 0.011926582579822445
+   },
+   {
+    "zkey": "b8beb8ffde7a3920",
+    "player_positions": 8615,
+    "difference": 0.011866156569127184
+   },
+   {
+    "zkey": "98b7316e6a5fc7ef",
+    "player_positions": 9172,
+    "difference": 0.011534049304349687
+   },
+   {
+    "zkey": "95dd03fe7583f5cf",
+    "player_positions": 9592,
+    "difference": 0.011326788446438084
+   },
+   {
+    "zkey": "2d3888dac361814a",
+    "player_positions": 7589,
+    "difference": 0.011309198331357706
+   },
+   {
+    "zkey": "c55ff9b6dcbaaa6f",
+    "player_positions": 3387,
+    "difference": 0.011237975296398204
+   },
+   {
+    "zkey": "d15c5be9a2ba3c43",
+    "player_positions": 1711,
+    "difference": 0.011208581305044287
+   },
+   {
+    "zkey": "331ca38c93779fb9",
+    "player_positions": 2712,
+    "difference": 0.010901623367568376
+   },
+   {
+    "zkey": "1d81a4f369529393",
+    "player_positions": 8841,
+    "difference": 0.010878057346135046
+   },
+   {
+    "zkey": "f65c642cab87e077",
+    "player_positions": 2377,
+    "difference": 0.01052066654640471
+   },
+   {
+    "zkey": "cd0eb4ba78ca707b",
+    "player_positions": 4964,
+    "difference": 0.010449371327420404
+   },
+   {
+    "zkey": "0333ac473b7f90a9",
+    "player_positions": 2539,
+    "difference": 0.010386097761511351
+   },
+   {
+    "zkey": "54cc1e45aeba992f",
+    "player_positions": 408,
+    "difference": 0.01034583750403969
+   },
+   {
+    "zkey": "d6af907801830393",
+    "player_positions": 753,
+    "difference": 0.010296748983969985
+   },
+   {
+    "zkey": "ca74b30bd22f0762",
+    "player_positions": 7343,
+    "difference": 0.01009896656423091
+   },
+   {
+    "zkey": "e8784f7afb91fe84",
+    "player_positions": 6627,
+    "difference": 0.009941194422361969
+   },
+   {
+    "zkey": "893ef862628d25a9",
+    "player_positions": 1535,
+    "difference": 0.009939539930078721
+   },
+   {
+    "zkey": "2ea020bdcc7eb828",
+    "player_positions": 988,
+    "difference": 0.009857657511468085
+   },
+   {
+    "zkey": "08b952845b6d65d6",
+    "player_positions": 3876,
+    "difference": 0.009642616636551771
+   },
+   {
+    "zkey": "78a8491a01789f8a",
+    "player_positions": 228,
+    "difference": 0.009297340450163295
+   },
+   {
+    "zkey": "1642c6063bf6120a",
+    "player_positions": 10162,
+    "difference": 0.009007281120054465
+   },
+   {
+    "zkey": "744ed9bee5688a0f",
+    "player_positions": 1236,
+    "difference": 0.008996220032164525
+   },
+   {
+    "zkey": "e16bf32cbc1815a8",
+    "player_positions": 6494,
+    "difference": 0.00898798924294483
+   },
+   {
+    "zkey": "0748b822146c9fbc",
+    "player_positions": 8453,
+    "difference": 0.008924754253092727
+   },
+   {
+    "zkey": "802ed9f56b5e92f4",
+    "player_positions": 3780,
+    "difference": 0.00884958457461906
+   },
+   {
+    "zkey": "686f001ee61959e4",
+    "player_positions": 3412,
+    "difference": 0.008769427127734392
+   },
+   {
+    "zkey": "738e8e18544ad419",
+    "player_positions": 3572,
+    "difference": 0.008307286815062865
+   },
+   {
+    "zkey": "7d553ff675f88fbf",
+    "player_positions": 235,
+    "difference": 0.008276023602369781
+   },
+   {
+    "zkey": "a232a026e18bbc49",
+    "player_positions": 8384,
+    "difference": 0.00818453999827636
+   },
+   {
+    "zkey": "838d620fe821308c",
+    "player_positions": 2547,
+    "difference": 0.008041751012453836
+   },
+   {
+    "zkey": "66934f3ee39d46ca",
+    "player_positions": 346,
+    "difference": 0.007829538061905988
+   },
+   {
+    "zkey": "5748aff46a06b2b4",
+    "player_positions": 3616,
+    "difference": 0.00765995929781385
+   },
+   {
+    "zkey": "1557dbfdb09fd564",
+    "player_positions": 8339,
+    "difference": 0.007640952561689119
+   },
+   {
+    "zkey": "3f75684e71170b62",
+    "player_positions": 1683,
+    "difference": 0.007633524023684115
+   },
+   {
+    "zkey": "5934cd9112467052",
+    "player_positions": 298,
+    "difference": 0.007619848287010906
+   },
+   {
+    "zkey": "7cba2eb005bd8406",
+    "player_positions": 12334,
+    "difference": 0.007589741073761825
+   },
+   {
+    "zkey": "9f0c44191e0fc82d",
+    "player_positions": 2884,
+    "difference": 0.006970173469079473
+   },
+   {
+    "zkey": "354f6f003a705401",
+    "player_positions": 8061,
+    "difference": 0.006917011423802137
+   },
+   {
+    "zkey": "5d84f951936b2cfb",
+    "player_positions": 12002,
+    "difference": 0.006743477424140372
+   },
+   {
+    "zkey": "2dcbdd8723c311be",
+    "player_positions": 10250,
+    "difference": 0.006621408160644722
+   },
+   {
+    "zkey": "31acc8fd3f9f8b7e",
+    "player_positions": 3008,
+    "difference": 0.006544823076886119
+   },
+   {
+    "zkey": "7b74208099212cc9",
+    "player_positions": 604,
+    "difference": 0.006346172874841299
+   },
+   {
+    "zkey": "570c488e06d1d2ae",
+    "player_positions": 1110,
+    "difference": 0.006276756772975241
+   },
+   {
+    "zkey": "6063d387383e094a",
+    "player_positions": 2266,
+    "difference": 0.00618001218811315
+   },
+   {
+    "zkey": "325b696440075d7d",
+    "player_positions": 5551,
+    "difference": 0.006161846963261463
+   },
+   {
+    "zkey": "691de884dcd1bf9d",
+    "player_positions": 4826,
+    "difference": 0.0058999199285661
+   },
+   {
+    "zkey": "c9c6c2594c215257",
+    "player_positions": 30336,
+    "difference": 0.005732023750440652
+   },
+   {
+    "zkey": "e27c67b8dd621246",
+    "player_positions": 1525,
+    "difference": 0.005458809746955422
+   },
+   {
+    "zkey": "355008f0be4c3047",
+    "player_positions": 909,
+    "difference": 0.005368667842406564
+   },
+   {
+    "zkey": "93f818bc24fbdb3d",
+    "player_positions": 3193,
+    "difference": 0.0053586298639775294
+   },
+   {
+    "zkey": "4adfabd7fbc45bda",
+    "player_positions": 390,
+    "difference": 0.004988799289728447
+   },
+   {
+    "zkey": "aa9025b0d6ed51ed",
+    "player_positions": 1415,
+    "difference": 0.004552483332070319
+   },
+   {
+    "zkey": "2bcd5715dfd2c562",
+    "player_positions": 9470,
+    "difference": 0.004550363610448012
+   },
+   {
+    "zkey": "b52ef7aadf87162b",
+    "player_positions": 3570,
+    "difference": 0.004432031173069426
+   },
+   {
+    "zkey": "4660bb6a4999a52e",
+    "player_positions": 65,
+    "difference": 0.004399089716037322
+   },
+   {
+    "zkey": "0b3ea34175d62686",
+    "player_positions": 6124,
+    "difference": 0.004357557397137305
+   },
+   {
+    "zkey": "6b5af112aff38bfc",
+    "player_positions": 5129,
+    "difference": 0.004059143223783931
+   },
+   {
+    "zkey": "45c65b144307903f",
+    "player_positions": 15545,
+    "difference": 0.0039145175479543114
+   },
+   {
+    "zkey": "21324bb33d3eb8b8",
+    "player_positions": 3582,
+    "difference": 0.003757961355689647
+   },
+   {
+    "zkey": "801ed3829ad819aa",
+    "player_positions": 5347,
+    "difference": 0.003727072930634692
+   },
+   {
+    "zkey": "13f029e6af6081ac",
+    "player_positions": 2279,
+    "difference": 0.003718107276650869
+   },
+   {
+    "zkey": "7958cef75478d2b5",
+    "player_positions": 9430,
+    "difference": 0.0035970801093215456
+   },
+   {
+    "zkey": "3e4a5d964d148fec",
+    "player_positions": 515,
+    "difference": 0.0034426379945455845
+   },
+   {
+    "zkey": "14697443b3731101",
+    "player_positions": 1216,
+    "difference": 0.0033815167398027167
+   },
+   {
+    "zkey": "a8ea62ee3cacb524",
+    "player_positions": 6164,
+    "difference": 0.0033402300757332127
+   },
+   {
+    "zkey": "b720dc4e807cdc3b",
+    "player_positions": 1067,
+    "difference": 0.00268561127217471
+   },
+   {
+    "zkey": "e1400f8648e391bd",
+    "player_positions": 2044,
+    "difference": 0.002685237582716067
+   },
+   {
+    "zkey": "2cf5ab6fffb3ca53",
+    "player_positions": 3734,
+    "difference": 0.002226116166962367
+   },
+   {
+    "zkey": "dd00a3758b620391",
+    "player_positions": 111,
+    "difference": 0.0020437673946445876
+   },
+   {
+    "zkey": "ec1ab16142d11580",
+    "player_positions": 5825,
+    "difference": 0.0018914067822250284
+   },
+   {
+    "zkey": "d6cb7b0239813170",
+    "player_positions": 8673,
+    "difference": 0.00143593528840142
+   },
+   {
+    "zkey": "0ca69b01c7fcf322",
+    "player_positions": 675,
+    "difference": 0.0013198550213224206
+   },
+   {
+    "zkey": "c18f858c15148cba",
+    "player_positions": 2610,
+    "difference": 0.0011661988317701653
+   },
+   {
+    "zkey": "d7970105350e1e28",
+    "player_positions": 12195,
+    "difference": 0.0010062252955110754
+   },
+   {
+    "zkey": "5db4f32662eda7a5",
+    "player_positions": 9498,
+    "difference": 0.0005378292657288999
+   },
+   {
+    "zkey": "cd82dace740eb7d4",
+    "player_positions": 4545,
+    "difference": 0.00043173338044261915
+   },
+   {
+    "zkey": "eb6a5af61d0f2d52",
+    "player_positions": 6918,
+    "difference": 0.00028527633408337956
+   },
+   {
+    "zkey": "a375d841f791d881",
+    "player_positions": 3383,
+    "difference": -0.0004961963727959482
+   },
+   {
+    "zkey": "86ffae71ad298786",
+    "player_positions": 7660,
+    "difference": -0.0005771811043832966
+   },
+   {
+    "zkey": "f6577dc6d661f033",
+    "player_positions": 4137,
+    "difference": -0.001022289258844199
+   },
+   {
+    "zkey": "339a1edb5aec5dc1",
+    "player_positions": 2889,
+    "difference": -0.0010692122147358523
+   },
+   {
+    "zkey": "bb5dc2b36938dfba",
+    "player_positions": 1914,
+    "difference": -0.001496623834696456
+   },
+   {
+    "zkey": "dea3ccaa70155cbd",
+    "player_positions": 4003,
+    "difference": -0.0015303703547232884
+   },
+   {
+    "zkey": "e01b1c0ac1d66610",
+    "player_positions": 5922,
+    "difference": -0.0018993363330455438
+   },
+   {
+    "zkey": "9e913fb968e0e57c",
+    "player_positions": 990,
+    "difference": -0.00247981218219735
+   },
+   {
+    "zkey": "2e6d113eb304f07f",
+    "player_positions": 1717,
+    "difference": -0.002961065469111938
+   },
+   {
+    "zkey": "d38ef846691bc118",
+    "player_positions": 839,
+    "difference": -0.002993271615675669
+   },
+   {
+    "zkey": "3699ac18ba28f2a2",
+    "player_positions": 755,
+    "difference": -0.0030687628297811948
+   },
+   {
+    "zkey": "0335da0d99d8cf40",
+    "player_positions": 1304,
+    "difference": -0.0036493854477412935
+   },
+   {
+    "zkey": "dcd8eccf378713cb",
+    "player_positions": 210,
+    "difference": -0.0036539816237542546
+   },
+   {
+    "zkey": "c421c3817627be9c",
+    "player_positions": 1429,
+    "difference": -0.004520276942616145
+   },
+   {
+    "zkey": "8a30dfce26b6b37a",
+    "player_positions": 473,
+    "difference": -0.005233921933259553
+   },
+   {
+    "zkey": "4a67bb17fd73edbc",
+    "player_positions": 3547,
+    "difference": -0.00566327172903521
+   },
+   {
+    "zkey": "89a34fad00c47ed2",
+    "player_positions": 565,
+    "difference": -0.006118128063063862
+   },
+   {
+    "zkey": "526341290d7773ff",
+    "player_positions": 1404,
+    "difference": -0.008374512138921774
+   },
+   {
+    "zkey": "4f6f797fada6e329",
+    "player_positions": 1483,
+    "difference": -0.009654042060272513
+   },
+   {
+    "zkey": "9228f6ace1db13c1",
+    "player_positions": 611,
+    "difference": -0.009689578543309882
+   },
+   {
+    "zkey": "8c7935f098f45fbe",
+    "player_positions": 131,
+    "difference": -0.011779798343770248
+   },
+   {
+    "zkey": "31e3aba910cd85bb",
+    "player_positions": 229,
+    "difference": -0.015349135839649317
+   },
+   {
+    "zkey": "c3957d3b692c9e18",
+    "player_positions": 170,
+    "difference": -0.019715738954995864
+   },
+   {
+    "zkey": "39188b4eb584737b",
+    "player_positions": 130,
+    "difference": -0.019819440103375757
+   },
+   {
+    "zkey": "1f6a1ab5c4f32fcf",
+    "player_positions": 149,
+    "difference": -0.025903829500079398
+   },
+   {
+    "zkey": "0fe254b5179e9165",
+    "player_positions": 41,
+    "difference": -0.05867773936825633
+   },
+   {
+    "zkey": "56cab168857ce8be",
+    "player_positions": 48,
+    "difference": -0.08105959135053963
+   }
+  ],
+  "opp": [
+   {
+    "zkey": "dd01f8c152aad122",
+    "player_positions": 222,
+    "difference": 0.2870633989223224
+   },
+   {
+    "zkey": "6304fcaa0cd7c3c0",
+    "player_positions": 557,
+    "difference": 0.2386730064124791
+   },
+   {
+    "zkey": "ab2dcfdba75868fc",
+    "player_positions": 51,
+    "difference": 0.2026985541691424
+   },
+   {
+    "zkey": "19841f9bc4ec67ef",
+    "player_positions": 589,
+    "difference": 0.1610698867971487
+   },
+   {
+    "zkey": "34e19cfb0f9e6d2e",
+    "player_positions": 69,
+    "difference": 0.16004562464171837
+   },
+   {
+    "zkey": "8edffe3dd59810bb",
+    "player_positions": 126,
+    "difference": 0.15537565238410989
+   },
+   {
+    "zkey": "8709e37463358029",
+    "player_positions": 1321,
+    "difference": 0.15019701327993143
+   },
+   {
+    "zkey": "cee6871749b4ee56",
+    "player_positions": 107,
+    "difference": 0.13449637292882533
+   },
+   {
+    "zkey": "a964cf372e146a81",
+    "player_positions": 76,
+    "difference": 0.12679863365347235
+   },
+   {
+    "zkey": "4a1bd6aa9e963765",
+    "player_positions": 756,
+    "difference": 0.12601717627021222
+   },
+   {
+    "zkey": "dfd2f84af429dfdc",
+    "player_positions": 1335,
+    "difference": 0.12197743678700629
+   },
+   {
+    "zkey": "331ca38c93779fb9",
+    "player_positions": 892,
+    "difference": 0.12046253358100714
+   },
+   {
+    "zkey": "47e13bbe612ae948",
+    "player_positions": 1339,
+    "difference": 0.11642636876893629
+   },
+   {
+    "zkey": "21324bb33d3eb8b8",
+    "player_positions": 2513,
+    "difference": 0.11123250105314962
+   },
+   {
+    "zkey": "30b4c5e70209ca6a",
+    "player_positions": 93,
+    "difference": 0.11072860503585014
+   },
+   {
+    "zkey": "3ec8e1141e5828b6",
+    "player_positions": 153,
+    "difference": 0.11055353401754521
+   },
+   {
+    "zkey": "649b5cbbdced4af4",
+    "player_positions": 37,
+    "difference": 0.10882727849514946
+   },
+   {
+    "zkey": "00cfe5737da2ca34",
+    "player_positions": 5723,
+    "difference": 0.10590935695211008
+   },
+   {
+    "zkey": "893ef862628d25a9",
+    "player_positions": 1299,
+    "difference": 0.10232263271158255
+   },
+   {
+    "zkey": "e01b1c0ac1d66610",
+    "player_positions": 2504,
+    "difference": 0.10003386036780768
+   },
+   {
+    "zkey": "31e3aba910cd85bb",
+    "player_positions": 999,
+    "difference": 0.09767331190205213
+   },
+   {
+    "zkey": "45c65b144307903f",
+    "player_positions": 2037,
+    "difference": 0.09670202085596542
+   },
+   {
+    "zkey": "26ea1c3ed7d0a1f4",
+    "player_positions": 1092,
+    "difference": 0.09613692438419418
+   },
+   {
+    "zkey": "1d81a4f369529393",
+    "player_positions": 2181,
+    "difference": 0.09396226224210343
+   },
+   {
+    "zkey": "0fe254b5179e9165",
+    "player_positions": 994,
+    "difference": 0.09322772845391457
+   },
+   {
+    "zkey": "d15c5be9a2ba3c43",
+    "player_positions": 1456,
+    "difference": 0.09068050881006998
+   },
+   {
+    "zkey": "5375c1a61eafff00",
+    "player_positions": 783,
+    "difference": 0.08471306047413349
+   },
+   {
+    "zkey": "26868226c23144c9",
+    "player_positions": 4754,
+    "difference": 0.08400491962985951
+   },
+   {
+    "zkey": "6d7798ed17d2b334",
+    "player_positions": 1243,
+    "difference": 0.08226894482466787
+   },
+   {
+    "zkey": "2e47fbf71f5315c4",
+    "player_positions": 6605,
+    "difference": 0.08179121366787313
+   },
+   {
+    "zkey": "1642c6063bf6120a",
+    "player_positions": 136,
+    "difference": 0.08130096947295647
+   },
+   {
+    "zkey": "cd82dace740eb7d4",
+    "player_positions": 2281,
+    "difference": 0.0809827715855396
+   },
+   {
+    "zkey": "0ca69b01c7fcf322",
+    "player_positions": 394,
+    "difference": 0.08013554821889554
+   },
+   {
+    "zkey": "ee34e406d6aa517a",
+    "player_positions": 6974,
+    "difference": 0.07922478769893707
+   },
+   {
+    "zkey": "9e913fb968e0e57c",
+    "player_positions": 368,
+    "difference": 0.07623332690152518
+   },
+   {
+    "zkey": "d9539de52f5a608c",
+    "player_positions": 5927,
+    "difference": 0.07577782101801431
+   },
+   {
+    "zkey": "9a138dd21f33bc2a",
+    "player_positions": 519,
+    "difference": 0.0747433556313549
+   },
+   {
+    "zkey": "325b696440075d7d",
+    "player_positions": 1545,
+    "difference": 0.074365562515694
+   },
+   {
+    "zkey": "b312c4d01cd4c45a",
+    "player_positions": 2441,
+    "difference": 0.07416862077966221
+   },
+   {
+    "zkey": "d5a1d723507dc897",
+    "player_positions": 7335,
+    "difference": 0.07292419967922875
+   },
+   {
+    "zkey": "f83811e7e5a51953",
+    "player_positions": 9522,
+    "difference": 0.07226699686569339
+   },
+   {
+    "zkey": "31acc8fd3f9f8b7e",
+    "player_positions": 3728,
+    "difference": 0.07205179669437395
+   },
+   {
+    "zkey": "78a8491a01789f8a",
+    "player_positions": 2468,
+    "difference": 0.07188789531469232
+   },
+   {
+    "zkey": "3a7e797cde0b5ca8",
+    "player_positions": 1388,
+    "difference": 0.07167878093153156
+   },
+   {
+    "zkey": "60b39841da446c10",
+    "player_positions": 1444,
+    "difference": 0.07012410008084767
+   },
+   {
+    "zkey": "b2790472b437dea0",
+    "player_positions": 50,
+    "difference": 0.06918261268793355
+   },
+   {
+    "zkey": "781a11e2bdf195fe",
+    "player_positions": 1469,
+    "difference": 0.06915750427842465
+   },
+   {
+    "zkey": "eb6a5af61d0f2d52",
+    "player_positions": 6621,
+    "difference": 0.06814131927403297
+   },
+   {
+    "zkey": "0335da0d99d8cf40",
+    "player_positions": 34,
+    "difference": 0.06605020796197265
+   },
+   {
+    "zkey": "409027d3923aeaae",
+    "player_positions": 36983,
+    "difference": 0.06558253800671275
+   },
+   {
+    "zkey": "de4417e0a338f151",
+    "player_positions": 3868,
+    "difference": 0.06525115010116557
+   },
+   {
+    "zkey": "5c49dae4afb967e2",
+    "player_positions": 38588,
+    "difference": 0.06416929371793106
+   },
+   {
+    "zkey": "5ca68cd7b996de2a",
+    "player_positions": 7107,
+    "difference": 0.06376710307258578
+   },
+   {
+    "zkey": "bae029cd0719b62a",
+    "player_positions": 10925,
+    "difference": 0.06344000518845982
+   },
+   {
+    "zkey": "843c0606b8d59e5e",
+    "player_positions": 944,
+    "difference": 0.0633452223799691
+   },
+   {
+    "zkey": "526341290d7773ff",
+    "player_positions": 1069,
+    "difference": 0.0629314879254683
+   },
+   {
+    "zkey": "083bfdf059cefdc6",
+    "player_positions": 4041,
+    "difference": 0.0628149094500482
+   },
+   {
+    "zkey": "84421ec5d43219b1",
+    "player_positions": 10732,
+    "difference": 0.05996621506353256
+   },
+   {
+    "zkey": "cec710527caeb29e",
+    "player_positions": 2927,
+    "difference": 0.05899726246499602
+   },
+   {
+    "zkey": "b844c53ac05b240b",
+    "player_positions": 19518,
+    "difference": 0.058586896377291385
+   },
+   {
+    "zkey": "570c488e06d1d2ae",
+    "player_positions": 308,
+    "difference": 0.05858282109379258
+   },
+   {
+    "zkey": "4660bb6a4999a52e",
+    "player_positions": 6233,
+    "difference": 0.05854961602442562
+   },
+   {
+    "zkey": "a4cff25212d17dba",
+    "player_positions": 336,
+    "difference": 0.05854953312915675
+   },
+   {
+    "zkey": "7b74208099212cc9",
+    "player_positions": 1539,
+    "difference": 0.05806728668443931
+   },
+   {
+    "zkey": "354f6f003a705401",
+    "player_positions": 14148,
+    "difference": 0.05720515458395528
+   },
+   {
+    "zkey": "89895840a814e22d",
+    "player_positions": 1020,
+    "difference": 0.05631553950253909
+   },
+   {
+    "zkey": "6d3950c071bc809c",
+    "player_positions": 212,
+    "difference": 0.05609796011133375
+   },
+   {
+    "zkey": "dcd8eccf378713cb",
+    "player_positions": 4151,
+    "difference": 0.05473496144277245
+   },
+   {
+    "zkey": "4329a05d1c98bbf9",
+    "player_positions": 19320,
+    "difference": 0.054688835824479934
+   },
+   {
+    "zkey": "58e98ef980c751b1",
+    "player_positions": 7738,
+    "difference": 0.05400854371438053
+   },
+   {
+    "zkey": "b663577df5f241bb",
+    "player_positions": 16086,
+    "difference": 0.053624515319357344
+   },
+   {
+    "zkey": "21f3cca7e1442bc5",
+    "player_positions": 4004,
+    "difference": 0.05286749468698277
+   },
+   {
+    "zkey": "bb073f7150d86877",
+    "player_positions": 35387,
+    "difference": 0.052758686235347546
+   },
+   {
+    "zkey": "010038f34b40c821",
+    "player_positions": 13583,
+    "difference": 0.052582635895540436
+   },
+   {
+    "zkey": "2a292f0824629d2f",
+    "player_positions": 1181,
+    "difference": 0.05256216185229278
+   },
+   {
+    "zkey": "617ebbf4e6962709",
+    "player_positions": 1963,
+    "difference": 0.052364869226088157
+   },
+   {
+    "zkey": "e8784f7afb91fe84",
+    "player_positions": 14121,
+    "difference": 0.05181772825193675
+   },
+   {
+    "zkey": "d0c12049d4551112",
+    "player_positions": 6997,
+    "difference": 0.05173363617472096
+   },
+   {
+    "zkey": "d7c277f7af1a921f",
+    "player_positions": 12405,
+    "difference": 0.05036347523826179
+   },
+   {
+    "zkey": "95dd03fe7583f5cf",
+    "player_positions": 15180,
+    "difference": 0.05033073137578324
+   },
+   {
+    "zkey": "505c95f1e56a5c3e",
+    "player_positions": 1100,
+    "difference": 0.04954897829611484
+   },
+   {
+    "zkey": "93f818bc24fbdb3d",
+    "player_positions": 8937,
+    "difference": 0.04897936196061505
+   },
+   {
+    "zkey": "9f0c44191e0fc82d",
+    "player_positions": 13454,
+    "difference": 0.048036451719429114
+   },
+   {
+    "zkey": "fad83eedd09a5d03",
+    "player_positions": 4301,
+    "difference": 0.04800270453158453
+   },
+   {
+    "zkey": "70b80c1ebb4dd25d",
+    "player_positions": 3919,
+    "difference": 0.047793942623198735
+   },
+   {
+    "zkey": "fcdfa080d68e1d65",
+    "player_positions": 12779,
+    "difference": 0.047343410727859914
+   },
+   {
+    "zkey": "3f75684e71170b62",
+    "player_positions": 4037,
+    "difference": 0.047064026376966966
+   },
+   {
+    "zkey": "8fa8f2b3c65cf812",
+    "player_positions": 9423,
+    "difference": 0.046664497458049375
+   },
+   {
+    "zkey": "11105ffdbac9665f",
+    "player_positions": 5511,
+    "difference": 0.04636121472774682
+   },
+   {
+    "zkey": "dfd232f3152fdfc8",
+    "player_positions": 47347,
+    "difference": 0.04617171046394754
+   },
+   {
+    "zkey": "744ed9bee5688a0f",
+    "player_positions": 755,
+    "difference": 0.04563304083851371
+   },
+   {
+    "zkey": "a8ea62ee3cacb524",
+    "player_positions": 8335,
+    "difference": 0.04539722372304976
+   },
+   {
+    "zkey": "355008f0be4c3047",
+    "player_positions": 7337,
+    "difference": 0.04533280169892435
+   },
+   {
+    "zkey": "743fea1104be7acb",
+    "player_positions": 855,
+    "difference": 0.04528772436502816
+   },
+   {
+    "zkey": "22c48547edb8e255",
+    "player_positions": 19714,
+    "difference": 0.04518876271780891
+   },
+   {
+    "zkey": "99249479a1e19c5e",
+    "player_positions": 9574,
+    "difference": 0.04400214749015376
+   },
+   {
+    "zkey": "06e73513c24c9e47",
+    "player_positions": 1070,
+    "difference": 0.043908492977493316
+   },
+   {
+    "zkey": "4a67bb17fd73edbc",
+    "player_positions": 163,
+    "difference": 0.04346539239736089
+   },
+   {
+    "zkey": "4ae3c5dabb7252bf",
+    "player_positions": 5408,
+    "difference": 0.0427014081889031
+   },
+   {
+    "zkey": "ff21c6a7bf2b3c2c",
+    "player_positions": 22180,
+    "difference": 0.042439198010293916
+   },
+   {
+    "zkey": "b3280b87c4983a3d",
+    "player_positions": 3796,
+    "difference": 0.04218599354657227
+   },
+   {
+    "zkey": "9ef0c54b6f057c3a",
+    "player_positions": 5654,
+    "difference": 0.041883261343219305
+   },
+   {
+    "zkey": "8d87502efee987dc",
+    "player_positions": 5992,
+    "difference": 0.041873463334709336
+   },
+   {
+    "zkey": "9fa5f1d67a92230e",
+    "player_positions": 5679,
+    "difference": 0.041256518656306966
+   },
+   {
+    "zkey": "b52ef7aadf87162b",
+    "player_positions": 5295,
+    "difference": 0.04122130190821489
+   },
+   {
+    "zkey": "9690a3295ff6a25f",
+    "player_positions": 2792,
+    "difference": 0.04046045695247534
+   },
+   {
+    "zkey": "e4fa4a47daef0ee9",
+    "player_positions": 3522,
+    "difference": 0.0403293122997552
+   },
+   {
+    "zkey": "c3957d3b692c9e18",
+    "player_positions": 2627,
+    "difference": 0.040283835700409616
+   },
+   {
+    "zkey": "0333ac473b7f90a9",
+    "player_positions": 5240,
+    "difference": 0.03980420254207214
+   },
+   {
+    "zkey": "7cba2eb005bd8406",
+    "player_positions": 17675,
+    "difference": 0.03961062002341732
+   },
+   {
+    "zkey": "2c556f556df810c6",
+    "player_positions": 1424,
+    "difference": 0.03914162711352726
+   },
+   {
+    "zkey": "21d6b016d6a1dd28",
+    "player_positions": 7527,
+    "difference": 0.038271898235903094
+   },
+   {
+    "zkey": "fe06ae1efc34abad",
+    "player_positions": 7018,
+    "difference": 0.03753829323944067
+   },
+   {
+    "zkey": "0be1ff05927f1410",
+    "player_positions": 16324,
+    "difference": 0.03659907412293507
+   },
+   {
+    "zkey": "f65c642cab87e077",
+    "player_positions": 15365,
+    "difference": 0.0364986033885354
+   },
+   {
+    "zkey": "4f6f797fada6e329",
+    "player_positions": 3547,
+    "difference": 0.0359905508841737
+   },
+   {
+    "zkey": "b3db21ae988b2c97",
+    "player_positions": 360,
+    "difference": 0.035854088176560474
+   },
+   {
+    "zkey": "4df44fdf3710c362",
+    "player_positions": 18050,
+    "difference": 0.03554817857249309
+   },
+   {
+    "zkey": "b989e68ffc896f12",
+    "player_positions": 5315,
+    "difference": 0.035540453087744645
+   },
+   {
+    "zkey": "e03ebd685750c181",
+    "player_positions": 1650,
+    "difference": 0.035496751370540036
+   },
+   {
+    "zkey": "2ea020bdcc7eb828",
+    "player_positions": 5230,
+    "difference": 0.03518867010608679
+   },
+   {
+    "zkey": "3699ac18ba28f2a2",
+    "player_positions": 4013,
+    "difference": 0.03494908298604444
+   },
+   {
+    "zkey": "c55ff9b6dcbaaa6f",
+    "player_positions": 8062,
+    "difference": 0.034229995796516144
+   },
+   {
+    "zkey": "6063d387383e094a",
+    "player_positions": 8638,
+    "difference": 0.03408301889313195
+   },
+   {
+    "zkey": "7e9da5de24c3f4cc",
+    "player_positions": 6619,
+    "difference": 0.03389584933337264
+   },
+   {
+    "zkey": "8a30dfce26b6b37a",
+    "player_positions": 3070,
+    "difference": 0.03374687664063367
+   },
+   {
+    "zkey": "b8beb8ffde7a3920",
+    "player_positions": 7572,
+    "difference": 0.0337073026096034
+   },
+   {
+    "zkey": "66934f3ee39d46ca",
+    "player_positions": 3351,
+    "difference": 0.03352796832298907
+   },
+   {
+    "zkey": "802ed9f56b5e92f4",
+    "player_positions": 8571,
+    "difference": 0.03351564519964134
+   },
+   {
+    "zkey": "4d4c9e698de5041a",
+    "player_positions": 4850,
+    "difference": 0.03329146463241611
+   },
+   {
+    "zkey": "7cc3af60417e186f",
+    "player_positions": 5555,
+    "difference": 0.03291050036283738
+   },
+   {
+    "zkey": "5748aff46a06b2b4",
+    "player_positions": 17575,
+    "difference": 0.03268385477257639
+   },
+   {
+    "zkey": "dc2c54d47c8afe81",
+    "player_positions": 9074,
+    "difference": 0.032579917110629
+   },
+   {
+    "zkey": "1bde16c36bfd0e43",
+    "player_positions": 515,
+    "difference": 0.03237470364832674
+   },
+   {
+    "zkey": "d6e9f0296bbb4561",
+    "player_positions": 6838,
+    "difference": 0.0323049005124345
+   },
+   {
+    "zkey": "6c51e09d3fdd47c3",
+    "player_positions": 12707,
+    "difference": 0.0316473812015481
+   },
+   {
+    "zkey": "872d3612c75f06df",
+    "player_positions": 21095,
+    "difference": 0.030889847060368687
+   },
+   {
+    "zkey": "2d3888dac361814a",
+    "player_positions": 9806,
+    "difference": 0.030766505035389104
+   },
+   {
+    "zkey": "d8b48b59789bbed1",
+    "player_positions": 45693,
+    "difference": 0.030617393361343018
+   },
+   {
+    "zkey": "3c3f1caf0e25a459",
+    "player_positions": 1553,
+    "difference": 0.03058938813013764
+   },
+   {
+    "zkey": "c421c3817627be9c",
+    "player_positions": 1326,
+    "difference": 0.030166516340212408
+   },
+   {
+    "zkey": "98b7316e6a5fc7ef",
+    "player_positions": 8688,
+    "difference": 0.029326268022617095
+   },
+   {
+    "zkey": "161a7b2a9aea82f4",
+    "player_positions": 21796,
+    "difference": 0.029275566517516987
+   },
+   {
+    "zkey": "aa9025b0d6ed51ed",
+    "player_positions": 2193,
+    "difference": 0.028567215075183307
+   },
+   {
+    "zkey": "1557dbfdb09fd564",
+    "player_positions": 9563,
+    "difference": 0.027211711150717965
+   },
+   {
+    "zkey": "4ecd5ca3811a111e",
+    "player_positions": 6141,
+    "difference": 0.026593259495412087
+   },
+   {
+    "zkey": "5b84e2e96089c6bb",
+    "player_positions": 9470,
+    "difference": 0.02643142642681439
+   },
+   {
+    "zkey": "5ba410137929c83e",
+    "player_positions": 4187,
+    "difference": 0.02620623789286052
+   },
+   {
+    "zkey": "7fab1ea47a371c87",
+    "player_positions": 8738,
+    "difference": 0.025536779163033457
+   },
+   {
+    "zkey": "5b7a3f74f23e7897",
+    "player_positions": 8737,
+    "difference": 0.025300902576331483
+   },
+   {
+    "zkey": "7f5acffb82b862b0",
+    "player_positions": 5928,
+    "difference": 0.02529928026928691
+   },
+   {
+    "zkey": "a12b1d8971e8a113",
+    "player_positions": 3129,
+    "difference": 0.02505318640747075
+   },
+   {
+    "zkey": "801ed3829ad819aa",
+    "player_positions": 14788,
+    "difference": 0.025036426655780035
+   },
+   {
+    "zkey": "5d84f951936b2cfb",
+    "player_positions": 17935,
+    "difference": 0.02459588387180411
+   },
+   {
+    "zkey": "67f0ce40b55a5557",
+    "player_positions": 2257,
+    "difference": 0.024546613767464726
+   },
+   {
+    "zkey": "5934cd9112467052",
+    "player_positions": 5022,
+    "difference": 0.024250980694773473
+   },
+   {
+    "zkey": "e27c67b8dd621246",
+    "player_positions": 2185,
+    "difference": 0.023866075172824436
+   },
+   {
+    "zkey": "bc614c62dc6a097a",
+    "player_positions": 13227,
+    "difference": 0.02386522570211955
+   },
+   {
+    "zkey": "0748b822146c9fbc",
+    "player_positions": 9563,
+    "difference": 0.023536290696651124
+   },
+   {
+    "zkey": "5e1748dce19205dd",
+    "player_positions": 5594,
+    "difference": 0.023007656829465914
+   },
+   {
+    "zkey": "c27d978805a5b2fe",
+    "player_positions": 3739,
+    "difference": 0.022751661160400203
+   },
+   {
+    "zkey": "ca74b30bd22f0762",
+    "player_positions": 9389,
+    "difference": 0.022736747597383485
+   },
+   {
+    "zkey": "08b952845b6d65d6",
+    "player_positions": 1792,
+    "difference": 0.02248201487299964
+   },
+   {
+    "zkey": "81d8e9dddbec42f7",
+    "player_positions": 4240,
+    "difference": 0.022325755380389493
+   },
+   {
+    "zkey": "838d620fe821308c",
+    "player_positions": 4178,
+    "difference": 0.022075541321673525
+   },
+   {
+    "zkey": "6526d5e1b3a26920",
+    "player_positions": 5491,
+    "difference": 0.02184623556910813
+   },
+   {
+    "zkey": "9408c6b8d405e88c",
+    "player_positions": 8131,
+    "difference": 0.021674125114752047
+   },
+   {
+    "zkey": "dd00a3758b620391",
+    "player_positions": 1765,
+    "difference": 0.021625476342847984
+   },
+   {
+    "zkey": "738e8e18544ad419",
+    "player_positions": 5612,
+    "difference": 0.021199264026630946
+   },
+   {
+    "zkey": "8db0f3d8cfff6bc1",
+    "player_positions": 963,
+    "difference": 0.021102047897056497
+   },
+   {
+    "zkey": "d0689586b0c8fa31",
+    "player_positions": 5867,
+    "difference": 0.02110193159517412
+   },
+   {
+    "zkey": "0b3ea34175d62686",
+    "player_positions": 8233,
+    "difference": 0.02047651280980997
+   },
+   {
+    "zkey": "7958cef75478d2b5",
+    "player_positions": 5889,
+    "difference": 0.02020916644259397
+   },
+   {
+    "zkey": "d6af907801830393",
+    "player_positions": 5014,
+    "difference": 0.020121667603847218
+   },
+   {
+    "zkey": "4eb9ef081d6594f2",
+    "player_positions": 7499,
+    "difference": 0.01955144220082894
+   },
+   {
+    "zkey": "e8c63f7269627bab",
+    "player_positions": 4360,
+    "difference": 0.01906317840750789
+   },
+   {
+    "zkey": "dea3ccaa70155cbd",
+    "player_positions": 5513,
+    "difference": 0.019029781645782486
+   },
+   {
+    "zkey": "632029cca8bd4536",
+    "player_positions": 15442,
+    "difference": 0.0185210337530703
+   },
+   {
+    "zkey": "77bb5ba0c0025150",
+    "player_positions": 40716,
+    "difference": 0.01796571946835135
+   },
+   {
+    "zkey": "96c1e49211a66996",
+    "player_positions": 738,
+    "difference": 0.016063993006431045
+   },
+   {
+    "zkey": "45d521b519a68ac4",
+    "player_positions": 7066,
+    "difference": 0.015475550021891486
+   },
+   {
+    "zkey": "2bcd5715dfd2c562",
+    "player_positions": 14138,
+    "difference": 0.014698521832191497
+   },
+   {
+    "zkey": "f2b09157f03b82db",
+    "player_positions": 6045,
+    "difference": 0.014672549708045254
+   },
+   {
+    "zkey": "686f001ee61959e4",
+    "player_positions": 2371,
+    "difference": 0.014440200297076674
+   },
+   {
+    "zkey": "bb5dc2b36938dfba",
+    "player_positions": 1524,
+    "difference": 0.013788142517047464
+   },
+   {
+    "zkey": "5db4f32662eda7a5",
+    "player_positions": 13028,
+    "difference": 0.013764548089222896
+   },
+   {
+    "zkey": "14697443b3731101",
+    "player_positions": 5210,
+    "difference": 0.011555878848677825
+   },
+   {
+    "zkey": "f6577dc6d661f033",
+    "player_positions": 10659,
+    "difference": 0.011531377178498234
+   },
+   {
+    "zkey": "86e015a7fb8d4dc6",
+    "player_positions": 20900,
+    "difference": 0.009983511119630873
+   },
+   {
+    "zkey": "2cf5ab6fffb3ca53",
+    "player_positions": 6604,
+    "difference": 0.00900193213877712
+   },
+   {
+    "zkey": "ec1ab16142d11580",
+    "player_positions": 10828,
+    "difference": 0.007009919670960427
+   },
+   {
+    "zkey": "3261a633984ba31a",
+    "player_positions": 2504,
+    "difference": 0.00652378205973486
+   },
+   {
+    "zkey": "691de884dcd1bf9d",
+    "player_positions": 11387,
+    "difference": 0.004112463497672399
+   },
+   {
+    "zkey": "54cc1e45aeba992f",
+    "player_positions": 35,
+    "difference": -0.009632707362646485
+   },
+   {
+    "zkey": "c18f858c15148cba",
+    "player_positions": 108,
+    "difference": -0.014231865099920657
+   },
+   {
+    "zkey": "2dcbdd8723c311be",
+    "player_positions": 71,
+    "difference": -0.014617854619707845
+   },
+   {
+    "zkey": "43959798ea005b87",
+    "player_positions": 83,
+    "difference": -0.02795413401977713
+   }
+  ],
+  "own": [
+   {
+    "zkey": "04b6de057dc9bef5",
+    "player_positions": 6011,
+    "difference": 0.18049860273241616
+   },
+   {
+    "zkey": "6567dde9ade7fee3",
+    "player_positions": 1305,
+    "difference": 0.15923836295911253
+   },
+   {
+    "zkey": "fe06ae1efc34abad",
+    "player_positions": 36,
+    "difference": 0.1489605619889799
+   },
+   {
+    "zkey": "f83811e7e5a51953",
+    "player_positions": 119,
+    "difference": 0.14612914649315698
+   },
+   {
+    "zkey": "bc614c62dc6a097a",
+    "player_positions": 86,
+    "difference": 0.13613377290394135
+   },
+   {
+    "zkey": "26868226c23144c9",
+    "player_positions": 10035,
+    "difference": 0.13543405672941772
+   },
+   {
+    "zkey": "acdfb756a8e4306d",
+    "player_positions": 5718,
+    "difference": 0.13349045941070004
+   },
+   {
+    "zkey": "dfd232f3152fdfc8",
+    "player_positions": 3397,
+    "difference": 0.12594919876712718
+   },
+   {
+    "zkey": "8fa8f2b3c65cf812",
+    "player_positions": 280,
+    "difference": 0.12391874144225083
+   },
+   {
+    "zkey": "84421ec5d43219b1",
+    "player_positions": 968,
+    "difference": 0.11827554131003559
+   },
+   {
+    "zkey": "95dd03fe7583f5cf",
+    "player_positions": 404,
+    "difference": 0.11678769044071866
+   },
+   {
+    "zkey": "cd0eb4ba78ca707b",
+    "player_positions": 719,
+    "difference": 0.11313324645139972
+   },
+   {
+    "zkey": "843c0606b8d59e5e",
+    "player_positions": 5292,
+    "difference": 0.10951419664728256
+   },
+   {
+    "zkey": "77bb5ba0c0025150",
+    "player_positions": 1790,
+    "difference": 0.10712402963378485
+   },
+   {
+    "zkey": "7fab1ea47a371c87",
+    "player_positions": 1195,
+    "difference": 0.10671218572550761
+   },
+   {
+    "zkey": "8edffe3dd59810bb",
+    "player_positions": 728,
+    "difference": 0.10600957997633059
+   },
+   {
+    "zkey": "ff21c6a7bf2b3c2c",
+    "player_positions": 1003,
+    "difference": 0.10588687017691935
+   },
+   {
+    "zkey": "dcd8eccf378713cb",
+    "player_positions": 1280,
+    "difference": 0.10320619677932959
+   },
+   {
+    "zkey": "3ec8e1141e5828b6",
+    "player_positions": 709,
+    "difference": 0.09940908782272304
+   },
+   {
+    "zkey": "d7c277f7af1a921f",
+    "player_positions": 2850,
+    "difference": 0.09766308833426865
+   },
+   {
+    "zkey": "743fea1104be7acb",
+    "player_positions": 7745,
+    "difference": 0.09283800177066553
+   },
+   {
+    "zkey": "6d7798ed17d2b334",
+    "player_positions": 5569,
+    "difference": 0.09141230647962537
+   },
+   {
+    "zkey": "2c556f556df810c6",
+    "player_positions": 9767,
+    "difference": 0.09080955779238054
+   },
+   {
+    "zkey": "e8c63f7269627bab",
+    "player_positions": 731,
+    "difference": 0.08769809040326945
+   },
+   {
+    "zkey": "5c49dae4afb967e2",
+    "player_positions": 1861,
+    "difference": 0.08598024085142421
+   },
+   {
+    "zkey": "b844c53ac05b240b",
+    "player_positions": 1115,
+    "difference": 0.08526100344507388
+   },
+   {
+    "zkey": "4d4c9e698de5041a",
+    "player_positions": 181,
+    "difference": 0.08258373070286916
+   },
+   {
+    "zkey": "649b5cbbdced4af4",
+    "player_positions": 7826,
+    "difference": 0.08190467059733984
+   },
+   {
+    "zkey": "b312c4d01cd4c45a",
+    "player_positions": 2401,
+    "difference": 0.07990166483500441
+   },
+   {
+    "zkey": "e27c67b8dd621246",
+    "player_positions": 38,
+    "difference": 0.07973460314180536
+   },
+   {
+    "zkey": "406dd1f768527c28",
+    "player_positions": 76,
+    "difference": 0.0783436957779063
+   },
+   {
+    "zkey": "7f5acffb82b862b0",
+    "player_positions": 465,
+    "difference": 0.07759133469847047
+   },
+   {
+    "zkey": "d9539de52f5a608c",
+    "player_positions": 1515,
+    "difference": 0.07733227626968973
+   },
+   {
+    "zkey": "6b5af112aff38bfc",
+    "player_positions": 85,
+    "difference": 0.07718180320256444
+   },
+   {
+    "zkey": "7cba2eb005bd8406",
+    "player_positions": 6164,
+    "difference": 0.07713804949660855
+   },
+   {
+    "zkey": "0e182011ecb08a93",
+    "player_positions": 238,
+    "difference": 0.07692492571538012
+   },
+   {
+    "zkey": "b3280b87c4983a3d",
+    "player_positions": 2022,
+    "difference": 0.07664927663441107
+   },
+   {
+    "zkey": "c55ff9b6dcbaaa6f",
+    "player_positions": 1259,
+    "difference": 0.07598180409318443
+   },
+   {
+    "zkey": "2dcbdd8723c311be",
+    "player_positions": 549,
+    "difference": 0.07559131019122937
+   },
+   {
+    "zkey": "ca74b30bd22f0762",
+    "player_positions": 1456,
+    "difference": 0.07511215319250883
+   },
+   {
+    "zkey": "2b5638eb16b793cb",
+    "player_positions": 4463,
+    "difference": 0.07279713521842468
+   },
+   {
+    "zkey": "5748aff46a06b2b4",
+    "player_positions": 673,
+    "difference": 0.07248973311313749
+   },
+   {
+    "zkey": "8d87502efee987dc",
+    "player_positions": 2856,
+    "difference": 0.07231150032493827
+   },
+   {
+    "zkey": "802ed9f56b5e92f4",
+    "player_positions": 1743,
+    "difference": 0.07024132739424924
+   },
+   {
+    "zkey": "b52ef7aadf87162b",
+    "player_positions": 1081,
+    "difference": 0.06894035937246823
+   },
+   {
+    "zkey": "d6e9f0296bbb4561",
+    "player_positions": 1885,
+    "difference": 0.06882329683034702
+   },
+   {
+    "zkey": "5ca68cd7b996de2a",
+    "player_positions": 9926,
+    "difference": 0.06846166031016666
+   },
+   {
+    "zkey": "0748b822146c9fbc",
+    "player_positions": 1819,
+    "difference": 0.06817998849236959
+   },
+   {
+    "zkey": "d87c0f50bd0c2cad",
+    "player_positions": 88,
+    "difference": 0.06732559731035616
+   },
+   {
+    "zkey": "b720dc4e807cdc3b",
+    "player_positions": 152,
+    "difference": 0.06718343501693842
+   },
+   {
+    "zkey": "893ef862628d25a9",
+    "player_positions": 479,
+    "difference": 0.0671585824945176
+   },
+   {
+    "zkey": "98b7316e6a5fc7ef",
+    "player_positions": 3708,
+    "difference": 0.06682120330675817
+   },
+   {
+    "zkey": "2d3888dac361814a",
+    "player_positions": 1176,
+    "difference": 0.06669440718391895
+   },
+   {
+    "zkey": "7e9da5de24c3f4cc",
+    "player_positions": 544,
+    "difference": 0.06589509488239571
+   },
+   {
+    "zkey": "0fe254b5179e9165",
+    "player_positions": 1850,
+    "difference": 0.0653037574964352
+   },
+   {
+    "zkey": "0ca69b01c7fcf322",
+    "player_positions": 3063,
+    "difference": 0.0648813862029043
+   },
+   {
+    "zkey": "21324bb33d3eb8b8",
+    "player_positions": 284,
+    "difference": 0.06470039938487392
+   },
+   {
+    "zkey": "fcdfa080d68e1d65",
+    "player_positions": 7588,
+    "difference": 0.06406619940878458
+   },
+   {
+    "zkey": "7958cef75478d2b5",
+    "player_positions": 443,
+    "difference": 0.06384823805337726
+   },
+   {
+    "zkey": "9408c6b8d405e88c",
+    "player_positions": 479,
+    "difference": 0.06352577331816367
+   },
+   {
+    "zkey": "a4cff25212d17dba",
+    "player_positions": 2016,
+    "difference": 0.06312420908224546
+   },
+   {
+    "zkey": "22c48547edb8e255",
+    "player_positions": 2217,
+    "difference": 0.06307183720300827
+   },
+   {
+    "zkey": "354f6f003a705401",
+    "player_positions": 1431,
+    "difference": 0.06284535023080697
+   },
+   {
+    "zkey": "4ae3c5dabb7252bf",
+    "player_positions": 1970,
+    "difference": 0.06212655356268959
+   },
+   {
+    "zkey": "d3e336221f188074",
+    "player_positions": 1141,
+    "difference": 0.06196941482882118
+   },
+   {
+    "zkey": "67f0ce40b55a5557",
+    "player_positions": 722,
+    "difference": 0.06168701162880447
+   },
+   {
+    "zkey": "5db4f32662eda7a5",
+    "player_positions": 2893,
+    "difference": 0.061522826663514295
+   },
+   {
+    "zkey": "9f0c44191e0fc82d",
+    "player_positions": 1976,
+    "difference": 0.06071091475136748
+   },
+   {
+    "zkey": "0be1ff05927f1410",
+    "player_positions": 3806,
+    "difference": 0.060592201138453095
+   },
+   {
+    "zkey": "dc2c54d47c8afe81",
+    "player_positions": 2332,
+    "difference": 0.06056836887813961
+   },
+   {
+    "zkey": "7b74208099212cc9",
+    "player_positions": 1121,
+    "difference": 0.060457670128930954
+   },
+   {
+    "zkey": "d6af907801830393",
+    "player_positions": 2781,
+    "difference": 0.060249279585756224
+   },
+   {
+    "zkey": "26ea1c3ed7d0a1f4",
+    "player_positions": 1182,
+    "difference": 0.06023579771540528
+   },
+   {
+    "zkey": "dfd2f84af429dfdc",
+    "player_positions": 2062,
+    "difference": 0.06016469195602195
+   },
+   {
+    "zkey": "08b952845b6d65d6",
+    "player_positions": 1848,
+    "difference": 0.058819502941907895
+   },
+   {
+    "zkey": "e8784f7afb91fe84",
+    "player_positions": 784,
+    "difference": 0.05868760223397323
+   },
+   {
+    "zkey": "bae029cd0719b62a",
+    "player_positions": 3070,
+    "difference": 0.05841135719307791
+   },
+   {
+    "zkey": "de4417e0a338f151",
+    "player_positions": 1536,
+    "difference": 0.05836304806039958
+   },
+   {
+    "zkey": "ee34e406d6aa517a",
+    "player_positions": 8137,
+    "difference": 0.05680671115118176
+   },
+   {
+    "zkey": "70b80c1ebb4dd25d",
+    "player_positions": 889,
+    "difference": 0.05658360348701034
+   },
+   {
+    "zkey": "339a1edb5aec5dc1",
+    "player_positions": 57,
+    "difference": 0.05657212047951556
+   },
+   {
+    "zkey": "0b3ea34175d62686",
+    "player_positions": 1251,
+    "difference": 0.05644538740245768
+   },
+   {
+    "zkey": "3699ac18ba28f2a2",
+    "player_positions": 2068,
+    "difference": 0.05622512196634216
+   },
+   {
+    "zkey": "5273d57c143e2476",
+    "player_positions": 123,
+    "difference": 0.055355529745773645
+   },
+   {
+    "zkey": "3f75684e71170b62",
+    "player_positions": 1013,
+    "difference": 0.05468747873051386
+   },
+   {
+    "zkey": "409027d3923aeaae",
+    "player_positions": 15711,
+    "difference": 0.054463013422373016
+   },
+   {
+    "zkey": "1bde16c36bfd0e43",
+    "player_positions": 960,
+    "difference": 0.05439487208358059
+   },
+   {
+    "zkey": "4a1bd6aa9e963765",
+    "player_positions": 1371,
+    "difference": 0.05397412213581922
+   },
+   {
+    "zkey": "cec710527caeb29e",
+    "player_positions": 1919,
+    "difference": 0.05367359270512878
+   },
+   {
+    "zkey": "dd01f8c152aad122",
+    "player_positions": 2194,
+    "difference": 0.05347672026966712
+   },
+   {
+    "zkey": "4660bb6a4999a52e",
+    "player_positions": 1265,
+    "difference": 0.053404637638399644
+   },
+   {
+    "zkey": "a12b1d8971e8a113",
+    "player_positions": 558,
+    "difference": 0.05292921856313651
+   },
+   {
+    "zkey": "11105ffdbac9665f",
+    "player_positions": 1858,
+    "difference": 0.05278274903184643
+   },
+   {
+    "zkey": "f65c642cab87e077",
+    "player_positions": 1840,
+    "difference": 0.05271217333625246
+   },
+   {
+    "zkey": "00cfe5737da2ca34",
+    "player_positions": 620,
+    "difference": 0.05233856431862724
+   },
+   {
+    "zkey": "b663577df5f241bb",
+    "player_positions": 10064,
+    "difference": 0.051951704410962654
+   },
+   {
+    "zkey": "45c65b144307903f",
+    "player_positions": 1997,
+    "difference": 0.051695082227761674
+   },
+   {
+    "zkey": "34e19cfb0f9e6d2e",
+    "player_positions": 3785,
+    "difference": 0.051691332266697414
+   },
+   {
+    "zkey": "e16bf32cbc1815a8",
+    "player_positions": 6934,
+    "difference": 0.051518922213970635
+   },
+   {
+    "zkey": "010038f34b40c821",
+    "player_positions": 5421,
+    "difference": 0.05088421226864276
+   },
+   {
+    "zkey": "d8b48b59789bbed1",
+    "player_positions": 23790,
+    "difference": 0.049905026866381055
+   },
+   {
+    "zkey": "4329a05d1c98bbf9",
+    "player_positions": 4289,
+    "difference": 0.04930948547461313
+   },
+   {
+    "zkey": "bb073f7150d86877",
+    "player_positions": 18629,
+    "difference": 0.049075721655088625
+   },
+   {
+    "zkey": "06e73513c24c9e47",
+    "player_positions": 1644,
+    "difference": 0.0486972566360162
+   },
+   {
+    "zkey": "5b7a3f74f23e7897",
+    "player_positions": 5002,
+    "difference": 0.04823487845782917
+   },
+   {
+    "zkey": "9ef0c54b6f057c3a",
+    "player_positions": 3090,
+    "difference": 0.0480476677374526
+   },
+   {
+    "zkey": "ab2dcfdba75868fc",
+    "player_positions": 3064,
+    "difference": 0.04802623011556938
+   },
+   {
+    "zkey": "86e015a7fb8d4dc6",
+    "player_positions": 7916,
+    "difference": 0.04749020459452967
+   },
+   {
+    "zkey": "99249479a1e19c5e",
+    "player_positions": 2978,
+    "difference": 0.04713340752660422
+   },
+   {
+    "zkey": "872d3612c75f06df",
+    "player_positions": 12776,
+    "difference": 0.04648592406304107
+   },
+   {
+    "zkey": "31e3aba910cd85bb",
+    "player_positions": 702,
+    "difference": 0.04568889076448626
+   },
+   {
+    "zkey": "4ecd5ca3811a111e",
+    "player_positions": 1055,
+    "difference": 0.04544297359676033
+   },
+   {
+    "zkey": "2cf5ab6fffb3ca53",
+    "player_positions": 520,
+    "difference": 0.04514970878924874
+   },
+   {
+    "zkey": "2e47fbf71f5315c4",
+    "player_positions": 6028,
+    "difference": 0.04501026717024069
+   },
+   {
+    "zkey": "6063d387383e094a",
+    "player_positions": 2294,
+    "difference": 0.04406079414001102
+   },
+   {
+    "zkey": "47e13bbe612ae948",
+    "player_positions": 70,
+    "difference": 0.044040193315635155
+   },
+   {
+    "zkey": "e4fa4a47daef0ee9",
+    "player_positions": 1404,
+    "difference": 0.04344838415254518
+   },
+   {
+    "zkey": "325b696440075d7d",
+    "player_positions": 1608,
+    "difference": 0.04275983747487217
+   },
+   {
+    "zkey": "4df44fdf3710c362",
+    "player_positions": 3476,
+    "difference": 0.042689982213759
+   },
+   {
+    "zkey": "0333ac473b7f90a9",
+    "player_positions": 557,
+    "difference": 0.042637774503225236
+   },
+   {
+    "zkey": "6d3950c071bc809c",
+    "player_positions": 2330,
+    "difference": 0.04258843591932272
+   },
+   {
+    "zkey": "2bcd5715dfd2c562",
+    "player_positions": 3059,
+    "difference": 0.04256436063892781
+   },
+   {
+    "zkey": "a964cf372e146a81",
+    "player_positions": 1752,
+    "difference": 0.0421522686931954
+   },
+   {
+    "zkey": "1557dbfdb09fd564",
+    "player_positions": 3979,
+    "difference": 0.04136322154405413
+   },
+   {
+    "zkey": "9fa5f1d67a92230e",
+    "player_positions": 196,
+    "difference": 0.040660412658264214
+   },
+   {
+    "zkey": "19841f9bc4ec67ef",
+    "player_positions": 363,
+    "difference": 0.04061517813339991
+   },
+   {
+    "zkey": "2ea020bdcc7eb828",
+    "player_positions": 1378,
+    "difference": 0.040309184848595025
+   },
+   {
+    "zkey": "b8beb8ffde7a3920",
+    "player_positions": 7642,
+    "difference": 0.040023057423011266
+   },
+   {
+    "zkey": "243419fe361badd5",
+    "player_positions": 535,
+    "difference": 0.03968218134777293
+   },
+   {
+    "zkey": "3c3f1caf0e25a459",
+    "player_positions": 1607,
+    "difference": 0.039477359983714495
+   },
+   {
+    "zkey": "161a7b2a9aea82f4",
+    "player_positions": 16069,
+    "difference": 0.03923859770489307
+   },
+   {
+    "zkey": "14697443b3731101",
+    "player_positions": 626,
+    "difference": 0.03910740753747805
+   },
+   {
+    "zkey": "54cc1e45aeba992f",
+    "player_positions": 1589,
+    "difference": 0.03863084003906842
+   },
+   {
+    "zkey": "8db0f3d8cfff6bc1",
+    "player_positions": 498,
+    "difference": 0.0384395390322911
+   },
+   {
+    "zkey": "89895840a814e22d",
+    "player_positions": 3467,
+    "difference": 0.038299058538614435
+   },
+   {
+    "zkey": "744ed9bee5688a0f",
+    "player_positions": 2208,
+    "difference": 0.03817338900254971
+   },
+   {
+    "zkey": "21d6b016d6a1dd28",
+    "player_positions": 2158,
+    "difference": 0.037381066575399975
+   },
+   {
+    "zkey": "838d620fe821308c",
+    "player_positions": 1158,
+    "difference": 0.037366030680390475
+   },
+   {
+    "zkey": "570c488e06d1d2ae",
+    "player_positions": 492,
+    "difference": 0.037078815199175746
+   },
+   {
+    "zkey": "4eb9ef081d6594f2",
+    "player_positions": 3914,
+    "difference": 0.03695297881315852
+   },
+   {
+    "zkey": "d15c5be9a2ba3c43",
+    "player_positions": 1241,
+    "difference": 0.036931901851239284
+   },
+   {
+    "zkey": "21f3cca7e1442bc5",
+    "player_positions": 900,
+    "difference": 0.036791584290794536
+   },
+   {
+    "zkey": "5375c1a61eafff00",
+    "player_positions": 6388,
+    "difference": 0.0364846390868018
+   },
+   {
+    "zkey": "31acc8fd3f9f8b7e",
+    "player_positions": 132,
+    "difference": 0.035827686840032257
+   },
+   {
+    "zkey": "39188b4eb584737b",
+    "player_positions": 1176,
+    "difference": 0.035786267367806136
+   },
+   {
+    "zkey": "5934cd9112467052",
+    "player_positions": 260,
+    "difference": 0.03567427015131026
+   },
+   {
+    "zkey": "1f6a1ab5c4f32fcf",
+    "player_positions": 3499,
+    "difference": 0.035516690019417985
+   },
+   {
+    "zkey": "56cab168857ce8be",
+    "player_positions": 779,
+    "difference": 0.03517687176647042
+   },
+   {
+    "zkey": "5ba410137929c83e",
+    "player_positions": 439,
+    "difference": 0.03348286228437209
+   },
+   {
+    "zkey": "632029cca8bd4536",
+    "player_positions": 9189,
+    "difference": 0.033296566212218645
+   },
+   {
+    "zkey": "9690a3295ff6a25f",
+    "player_positions": 719,
+    "difference": 0.03316653027065465
+   },
+   {
+    "zkey": "781a11e2bdf195fe",
+    "player_positions": 842,
+    "difference": 0.033046609420426205
+   },
+   {
+    "zkey": "d0c12049d4551112",
+    "player_positions": 274,
+    "difference": 0.03229580922634469
+   },
+   {
+    "zkey": "e03ebd685750c181",
+    "player_positions": 1014,
+    "difference": 0.03219218626504305
+   },
+   {
+    "zkey": "30b4c5e70209ca6a",
+    "player_positions": 850,
+    "difference": 0.03178678325261676
+   },
+   {
+    "zkey": "81d8e9dddbec42f7",
+    "player_positions": 1380,
+    "difference": 0.031777887754739616
+   },
+   {
+    "zkey": "93f818bc24fbdb3d",
+    "player_positions": 1269,
+    "difference": 0.031095185948789315
+   },
+   {
+    "zkey": "b2790472b437dea0",
+    "player_positions": 4621,
+    "difference": 0.03090279028982716
+   },
+   {
+    "zkey": "083bfdf059cefdc6",
+    "player_positions": 37,
+    "difference": 0.030885507356095576
+   },
+   {
+    "zkey": "7cc3af60417e186f",
+    "player_positions": 1093,
+    "difference": 0.030462663913215567
+   },
+   {
+    "zkey": "8709e37463358029",
+    "player_positions": 2059,
+    "difference": 0.0291046870593895
+   },
+   {
+    "zkey": "b3db21ae988b2c97",
+    "player_positions": 256,
+    "difference": 0.029061828452318764
+   },
+   {
+    "zkey": "c18f858c15148cba",
+    "player_positions": 249,
+    "difference": 0.0281730094983107
+   },
+   {
+    "zkey": "dea3ccaa70155cbd",
+    "player_positions": 1173,
+    "difference": 0.02816928886522812
+   },
+   {
+    "zkey": "c27d978805a5b2fe",
+    "player_positions": 1022,
+    "difference": 0.02811299349749387
+   },
+   {
+    "zkey": "f6577dc6d661f033",
+    "player_positions": 2557,
+    "difference": 0.027975920805992396
+   },
+   {
+    "zkey": "9a138dd21f33bc2a",
+    "player_positions": 3975,
+    "difference": 0.026900463164166995
+   },
+   {
+    "zkey": "c9c6c2594c215257",
+    "player_positions": 1410,
+    "difference": 0.026820095620606832
+   },
+   {
+    "zkey": "d7970105350e1e28",
+    "player_positions": 120,
+    "difference": 0.02605985691190837
+   },
+   {
+    "zkey": "43959798ea005b87",
+    "player_positions": 2878,
+    "difference": 0.025404556709609175
+   },
+   {
+    "zkey": "505c95f1e56a5c3e",
+    "player_positions": 2380,
+    "difference": 0.02537635580152433
+   },
+   {
+    "zkey": "66934f3ee39d46ca",
+    "player_positions": 1025,
+    "difference": 0.024433331096806437
+   },
+   {
+    "zkey": "13f029e6af6081ac",
+    "player_positions": 8588,
+    "difference": 0.023872066281020562
+   },
+   {
+    "zkey": "526341290d7773ff",
+    "player_positions": 3177,
+    "difference": 0.023860335176289084
+   },
+   {
+    "zkey": "96c1e49211a66996",
+    "player_positions": 321,
+    "difference": 0.023609790405172755
+   },
+   {
+    "zkey": "9228f6ace1db13c1",
+    "player_positions": 3952,
+    "difference": 0.02350425965225147
+   },
+   {
+    "zkey": "eb6a5af61d0f2d52",
+    "player_positions": 4673,
+    "difference": 0.023016865987707864
+   },
+   {
+    "zkey": "686f001ee61959e4",
+    "player_positions": 3433,
+    "difference": 0.02284650979691366
+   },
+   {
+    "zkey": "f2b09157f03b82db",
+    "player_positions": 3220,
+    "difference": 0.02224576788524487
+   },
+   {
+    "zkey": "8a30dfce26b6b37a",
+    "player_positions": 405,
+    "difference": 0.02132538862647389
+   },
+   {
+    "zkey": "3e4a5d964d148fec",
+    "player_positions": 1023,
+    "difference": 0.019858744067924785
+   },
+   {
+    "zkey": "0335da0d99d8cf40",
+    "player_positions": 2321,
+    "difference": 0.01940685231937551
+   },
+   {
+    "zkey": "331ca38c93779fb9",
+    "player_positions": 12893,
+    "difference": 0.018668690178485513
+   },
+   {
+    "zkey": "691de884dcd1bf9d",
+    "player_positions": 188,
+    "difference": 0.01819924720846779
+   },
+   {
+    "zkey": "6304fcaa0cd7c3c0",
+    "player_positions": 5374,
+    "difference": 0.01731581727578123
+   },
+   {
+    "zkey": "dd00a3758b620391",
+    "player_positions": 1716,
+    "difference": 0.01704704002216091
+   },
+   {
+    "zkey": "aa9025b0d6ed51ed",
+    "player_positions": 3424,
+    "difference": 0.016917390456632642
+   },
+   {
+    "zkey": "4adfabd7fbc45bda",
+    "player_positions": 2359,
+    "difference": 0.016531992726426803
+   },
+   {
+    "zkey": "738e8e18544ad419",
+    "player_positions": 1815,
+    "difference": 0.016021836352448783
+   },
+   {
+    "zkey": "2a292f0824629d2f",
+    "player_positions": 79,
+    "difference": 0.015262493588644944
+   },
+   {
+    "zkey": "f33a0a6ec5cd8d79",
+    "player_positions": 802,
+    "difference": 0.013658431266396166
+   },
+   {
+    "zkey": "8c7935f098f45fbe",
+    "player_positions": 1498,
+    "difference": 0.013616627122482464
+   },
+   {
+    "zkey": "ec1ab16142d11580",
+    "player_positions": 2298,
+    "difference": 0.011134081919145432
+   },
+   {
+    "zkey": "89a34fad00c47ed2",
+    "player_positions": 1204,
+    "difference": 0.011097990164767485
+   },
+   {
+    "zkey": "d0689586b0c8fa31",
+    "player_positions": 169,
+    "difference": 0.010647293743496423
+   },
+   {
+    "zkey": "bb5dc2b36938dfba",
+    "player_positions": 1670,
+    "difference": 0.009853396837445481
+   },
+   {
+    "zkey": "1d81a4f369529393",
+    "player_positions": 5103,
+    "difference": 0.008615332368146805
+   },
+   {
+    "zkey": "a375d841f791d881",
+    "player_positions": 493,
+    "difference": 0.00763409449840142
+   },
+   {
+    "zkey": "c421c3817627be9c",
+    "player_positions": 1949,
+    "difference": 0.007441371609528135
+   },
+   {
+    "zkey": "1642c6063bf6120a",
+    "player_positions": 7853,
+    "difference": 0.006209795369939392
+   },
+   {
+    "zkey": "d6cb7b0239813170",
+    "player_positions": 303,
+    "difference": 0.005213377987618867
+   },
+   {
+    "zkey": "9e913fb968e0e57c",
+    "player_positions": 685,
+    "difference": 0.003889934064681857
+   },
+   {
+    "zkey": "d5a1d723507dc897",
+    "player_positions": 173,
+    "difference": 0.002456105122764562
+   },
+   {
+    "zkey": "7d553ff675f88fbf",
+    "player_positions": 2595,
+    "difference": 0.002359991784288121
+   },
+   {
+    "zkey": "d38ef846691bc118",
+    "player_positions": 1109,
+    "difference": 0.0023559973888138035
+   },
+   {
+    "zkey": "78a8491a01789f8a",
+    "player_positions": 108,
+    "difference": 0.0005808620391953716
+   },
+   {
+    "zkey": "86ffae71ad298786",
+    "player_positions": 3646,
+    "difference": -0.0033457963294973394
+   },
+   {
+    "zkey": "60b39841da446c10",
+    "player_positions": 54,
+    "difference": -0.004622156458314657
+   },
+   {
+    "zkey": "6c51e09d3fdd47c3",
+    "player_positions": 38,
+    "difference": -0.006463035286754792
+   },
+   {
+    "zkey": "4f6f797fada6e329",
+    "player_positions": 80,
+    "difference": -0.01864801286676287
+   }
+  ]
+ }
+}

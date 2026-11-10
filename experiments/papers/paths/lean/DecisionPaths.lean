@@ -83,6 +83,96 @@ theorem history_can_matter_if_weight_reads_the_past :
       w3 0 2 0 < w3 0 2 1 ∧ w3 1 2 1 < w3 1 2 0 :=
   ⟨fun prev _ next => if next = prev then 0 else 1, by decide, by decide⟩
 
+/-! ### A reference that moves with the past
+
+The smallest addition to Definition 6.1 that lets history in: each edge weight may read
+a reference `r`, and the reference is updated after every step. The pair of state and
+reference then does the work the state did alone. -/
+
+section Reference
+
+variable {R : Type*}
+
+/-- Weight of a walk when each edge weight reads a reference that `step` updates. -/
+def costRef (w : R → V → V → ℝ≥0∞) (step : R → V → V → R) : R → V → List V → ℝ≥0∞
+  | _, _, [] => 0
+  | r, v, u :: p => w r v u + costRef w step (step r v u) u p
+
+/-- The reference a walk ends with. -/
+def refAfter (step : R → V → V → R) : R → V → List V → R
+  | r, _, [] => r
+  | r, v, u :: p => refAfter step (step r v u) u p
+
+theorem endOf_append (s : V) (h p : List V) :
+    endOf s (h ++ p) = endOf (endOf s h) p := by
+  induction h generalizing s with
+  | nil => simp [endOf]
+  | cons u h ih => simp [endOf, ih]
+
+theorem refAfter_append (step : R → V → V → R) (r : R) (s : V) (h p : List V) :
+    refAfter step r s (h ++ p) = refAfter step (refAfter step r s h) (endOf s h) p := by
+  induction h generalizing r s with
+  | nil => simp [refAfter, endOf]
+  | cons u h ih => simp [refAfter, endOf, ih]
+
+theorem costRef_append (w : R → V → V → ℝ≥0∞) (step : R → V → V → R) (r : R) (s : V)
+    (h p : List V) :
+    costRef w step r s (h ++ p) =
+      costRef w step r s h + costRef w step (refAfter step r s h) (endOf s h) p := by
+  induction h generalizing r s with
+  | nil => simp [costRef, refAfter, endOf]
+  | cons u h ih => simp [costRef, refAfter, endOf, ih, add_assoc]
+
+/-- With a moving reference, two histories that end in the same state **and the same
+reference** rank continuations alike. History enters through the reference and through
+nothing else. -/
+theorem ranking_depends_on_state_and_reference (w : R → V → V → ℝ≥0∞)
+    (step : R → V → V → R) (r₁ r₂ : R) (s₁ s₂ : V) (h₁ h₂ p q : List V)
+    (hend : endOf s₁ h₁ = endOf s₂ h₂)
+    (href : refAfter step r₁ s₁ h₁ = refAfter step r₂ s₂ h₂)
+    (f₁ : costRef w step r₁ s₁ h₁ ≠ ⊤) (f₂ : costRef w step r₂ s₂ h₂ ≠ ⊤) :
+    costRef w step r₁ s₁ (h₁ ++ p) ≤ costRef w step r₁ s₁ (h₁ ++ q) ↔
+      costRef w step r₂ s₂ (h₂ ++ p) ≤ costRef w step r₂ s₂ (h₂ ++ q) := by
+  rw [costRef_append, costRef_append, costRef_append, costRef_append, hend, href,
+    ENNReal.add_le_add_iff_left f₁, ENNReal.add_le_add_iff_left f₂]
+
+/-- A weight that ignores the reference gives back the original cost. Definition 6.1 is
+the special case. -/
+theorem costRef_const (w : V → V → ℝ≥0∞) (step : R → V → V → R) (r : R) (v : V)
+    (p : List V) : costRef (fun _ => w) step r v p = cost w v p := by
+  induction p generalizing r v with
+  | nil => simp [costRef, cost]
+  | cons u p ih => simp [costRef, cost, ih]
+
+/-- If the reference is the state just left, a history that ends by going from `a` to `b`
+ends with reference `a`, whatever came before. -/
+theorem refAfter_previous_state (r : V) (s : V) (g : List V) (a b : V) :
+    refAfter (fun _ v _ => v) r s (g ++ [a, b]) = a := by
+  have h : g ++ [a, b] = (g ++ [a]) ++ [b] := by simp
+  rw [h, refAfter_append, endOf_append]
+  simp [refAfter, endOf]
+
+/-- So when the reference is the state just left, two histories that share their last
+step rank continuations alike. Fixing the last move is then enough to remove every
+effect of what came earlier. -/
+theorem last_step_suffices_when_reference_is_previous_state (w : V → V → V → ℝ≥0∞)
+    (r₁ r₂ s₁ s₂ : V) (g₁ g₂ p q : List V) (a b : V)
+    (f₁ : costRef w (fun _ v _ => v) r₁ s₁ (g₁ ++ [a, b]) ≠ ⊤)
+    (f₂ : costRef w (fun _ v _ => v) r₂ s₂ (g₂ ++ [a, b]) ≠ ⊤) :
+    costRef w (fun _ v _ => v) r₁ s₁ ((g₁ ++ [a, b]) ++ p) ≤
+        costRef w (fun _ v _ => v) r₁ s₁ ((g₁ ++ [a, b]) ++ q) ↔
+      costRef w (fun _ v _ => v) r₂ s₂ ((g₂ ++ [a, b]) ++ p) ≤
+        costRef w (fun _ v _ => v) r₂ s₂ ((g₂ ++ [a, b]) ++ q) := by
+  apply ranking_depends_on_state_and_reference _ _ _ _ _ _ _ _ _ _ _ _ f₁ f₂
+  · have e : ∀ (s : V) (g : List V), endOf s (g ++ [a, b]) = b := by
+      intro s g
+      rw [endOf_append]
+      simp [endOf]
+    rw [e, e]
+  · rw [refAfter_previous_state, refAfter_previous_state]
+
+end Reference
+
 section Finite
 
 variable {K : Type*} [Fintype K]

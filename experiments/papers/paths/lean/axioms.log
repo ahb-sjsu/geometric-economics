@@ -2,6 +2,11 @@
 'DecisionPaths.ranking_history_free' depends on axioms: [propext, Classical.choice, Quot.sound]
 'DecisionPaths.best_continuation_history_free' depends on axioms: [propext, Classical.choice, Quot.sound]
 'DecisionPaths.history_can_matter_if_weight_reads_the_past' depends on axioms: [propext, Quot.sound]
+'DecisionPaths.ranking_depends_on_state_and_reference' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecisionPaths.costRef_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecisionPaths.last_step_suffices_when_reference_is_previous_state' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 'DecisionPaths.direction_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
 'DecisionPaths.boundary_edge_costs_its_penalty' depends on axioms: [propext, Classical.choice, Quot.sound]
 'DecisionPaths.weight_top_of_sacred' depends on axioms: [propext, Classical.choice, Quot.sound]
