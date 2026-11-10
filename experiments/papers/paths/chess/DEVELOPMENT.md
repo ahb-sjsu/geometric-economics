@@ -281,6 +281,38 @@ and that something smaller persists for at least four half-moves in opening posi
 **Consequence for the registration.** The second half of H3 and the whole of H5 rested on the
 uncorrected reading. They are removed from the draft and reported without a bar.
 
+## Pass 4, planned: does the effect of the last move depend on the time budget?
+
+Written 2026-11-10 before the curve was ever computed by speed. The owner asked whether this work
+bears on Geometric Evaluation Theory and on observer-limited cognition. It does through one
+question the rows already allow.
+
+The effect of the last move has two readings that those programmes separate.
+
+- **Budget.** An evaluator with a limited budget resolves only some distinctions, and the opponent's
+  last move directs where the budget is spent. Then the effect should be larger when the budget is
+  smaller. In GET's terms the budget B changes and the metric and ideal do not.
+- **Reference.** The cost of a move is measured from a reference that the last move shifts. Then
+  the effect has no reason to depend on the clock.
+
+Lichess speed categories give budgets that differ by an order of magnitude with the rules unchanged.
+
+**Prediction of the budget reading, fixed now.** D(0) is largest in bullet, smaller in blitz, smaller
+again in rapid, and smallest in classical, with the bullet value at least 1.5 times the rapid value.
+The same ordering for D(0) − D(2) over the same players.
+
+**What each outcome means.** The predicted ordering with that ratio supports the budget reading. No
+dependence on speed (bullet and rapid within 20% of each other) goes against it and leaves the
+reference reading. The reverse ordering, larger at slow speeds, would mean the effect needs time to
+appear, which is what a deliberate plan would give and neither reading above predicts.
+
+**Known limits.** Players choose which speed to play, and the people who play bullet are not the
+people who play classical. Each player is still compared with themselves, so this limits the
+comparison between speeds and not the estimate within one. The baseline rate of changing move also
+differs by speed, so the ratio of D(0) to the baseline is reported beside D(0). Gate G7a of
+`geometric-evaluation-theory` looked for a time-budget law in these same months with a different
+quantity and was indeterminate.
+
 ## Whose move differed: the curve over all pairs
 
 The last half-move before a decision is the opponent's, so in the curve over all pairs an even k

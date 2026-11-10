@@ -65,7 +65,7 @@ def minutes(stamp):
     return (((mo - 1) * 31 + da) * 24 + h) * 60 + mi
 
 
-def main(rows, out, min_gap_hours=0.0, max_opp_diff=0):
+def main(rows, out, min_gap_hours=0.0, max_opp_diff=0, only_speed=""):
     rng = np.random.default_rng(SEED)
     gap = min_gap_hours * 60
     by = defaultdict(list)
@@ -73,7 +73,7 @@ def main(rows, out, min_gap_hours=0.0, max_opp_diff=0):
         for line in f:
             r = line.rstrip("\n").split("\t")
             sp = speed(r[8])
-            if sp is not None:
+            if sp is not None and (not only_speed or sp == only_speed):
                 by[(r[2], int(r[1]), r[5], sp)].append((tuple(r[3].split(" ")), r[4], minutes(r[10]), int(r[7])))
     # (curve, mover) -> key -> [changed, pairs]; key is "same" or k
     acc = {"own_same": defaultdict(lambda: defaultdict(lambda: [0, 0])),
@@ -144,4 +144,5 @@ def main(rows, out, min_gap_hours=0.0, max_opp_diff=0):
 
 if __name__ == "__main__":
     main(sys.argv[1], sys.argv[2], float(sys.argv[3]) if len(sys.argv) > 3 else 0.0,
-         int(sys.argv[4]) if len(sys.argv) > 4 else 0)
+         int(sys.argv[4]) if len(sys.argv) > 4 else 0,
+         sys.argv[5] if len(sys.argv) > 5 else "")   # a fifth argument restricts to one speed category

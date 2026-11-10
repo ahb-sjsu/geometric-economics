@@ -124,6 +124,35 @@ no such effect after a loss, and after a win it appears only with coarse bins.
 for raising. It does so whichever way the pot went, so it is a response to having just played a
 large pot and not to its result. That is a narrower statement than the one pass 1 seemed to give.
 
+## Pass 3. The surviving contrast, estimated directly
+
+`analyze_recency.py`, run 2026-11-10. It uses only decisions with exactly one large pot in the
+player's last four hands and compares, within a cell, the rate at one lag with the rate at the next.
+No quiet-hand baseline enters. 2,790,778 decisions. Files `results/recency_dev_*.json`.
+
+**Raising, after a large pot of either kind.** Rate one hand after: 0.15 to 0.17.
+
+| Specification | Lag 1 − lag 2 | Lag 2 − lag 3 | Lag 3 − lag 4 | Players |
+|---|---|---|---|---|
+| Coarse bins | −0.012 (−0.017 to −0.007) | −0.002 (−0.006 to +0.003) | −0.002 (−0.007 to +0.002) | 17,974 |
+| Narrow bins | −0.014 (−0.020 to −0.007) | −0.002 (−0.009 to +0.004) | +0.000 (−0.006 to +0.007) | 11,784 |
+| Coarse bins, same table | −0.010 (−0.016 to −0.005) | −0.002 (−0.008 to +0.004) | −0.003 (−0.008 to +0.003) | 14,950 |
+| Narrow bins, same table | −0.013 (−0.021 to −0.005) | −0.001 (−0.008 to +0.008) | −0.009 (−0.017 to −0.001) | 8,856 |
+
+**The dip lasts one hand.** In the hand straight after a large pot a player raises about 1.2 points
+less often than in the hand after that, which is about 8% of the rate. From the second hand on,
+consecutive hands do not differ, in eleven of the twelve later intervals.
+
+Split by the result of the pot, the first difference is −0.016, −0.015, −0.013 and −0.014 after a
+win (all four intervals exclude zero) and −0.006, −0.011, −0.009 and −0.024 after a loss (two of four
+exclude zero, and the players are half as many).
+
+**Entering the pot shows no consistent first difference.** After a pot of either kind it is +0.004,
++0.000, +0.010 and +0.004, with one interval of four excluding zero.
+
+**What this adds to pass 2.** The contrast is not only robust, it has a shape: one hand, then
+nothing. In the language of `../DESIGN.md`, the depth of memory for raising is one step.
+
 ## Prior work, read 2026-11-10 from abstracts and summaries
 
 - Smith, Levere and Kurtzman, "Poker player behavior after big wins and big losses", Management
