@@ -70,6 +70,15 @@ model, with discovered coordinates and boundary penalties as its only non-smooth
 held-out choices better than the best published account of each setting at equal capacity. A
 prior-art check is running and its result is to be added as Section 9 before any claim of novelty.
 
+**Checked in Lean, 2026-11-10** (`lean/`, nine theorems, no `sorry`, standard axioms only). Under
+Definitions 6.1 and 6.2 two histories that end in the same state have the same best continuations
+(`best_continuation_history_free`), a weight that reads the previous state breaks this
+(`history_can_matter_if_weight_reads_the_past`), the two directions of a pair differ by boundary
+penalties alone when the distance term is symmetric (`direction_difference`), and a boundary-crossing
+move costs its penalty more than a move at equal distance that crosses none
+(`boundary_edge_costs_its_penalty`). These are consequences of the definitions and say nothing about
+behaviour. `lean/README.md` lists what was not formalised.
+
 ## 4. Rules for this line, each from a failure in the last one
 
 1. **The strongest incumbent at equal capacity is in the comparison from the first fit.** Last time

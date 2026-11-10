@@ -1,0 +1,10 @@
+name = "decisionpaths"
+defaultTargets = ["DecisionPaths"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.32.2"
+
+[[lean_lib]]
+name = "DecisionPaths"

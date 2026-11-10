@@ -1,0 +1,10 @@
+'DecisionPaths.cost_append' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecisionPaths.ranking_history_free' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecisionPaths.best_continuation_history_free' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecisionPaths.history_can_matter_if_weight_reads_the_past' depends on axioms: [propext, Quot.sound]
+'DecisionPaths.direction_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecisionPaths.boundary_edge_costs_its_penalty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecisionPaths.weight_top_of_sacred' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecisionPaths.cost_eq_top_of_crossesTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DecisionPaths.no_finite_path_through_sacred' depends on axioms: [propext, Classical.choice, Quot.sound]
+AXIOMS_EXIT=0

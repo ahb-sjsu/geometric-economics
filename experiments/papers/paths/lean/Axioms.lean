@@ -1,0 +1,11 @@
+import DecisionPaths
+
+#print axioms DecisionPaths.cost_append
+#print axioms DecisionPaths.ranking_history_free
+#print axioms DecisionPaths.best_continuation_history_free
+#print axioms DecisionPaths.history_can_matter_if_weight_reads_the_past
+#print axioms DecisionPaths.direction_difference
+#print axioms DecisionPaths.boundary_edge_costs_its_penalty
+#print axioms DecisionPaths.weight_top_of_sacred
+#print axioms DecisionPaths.cost_eq_top_of_crossesTop
+#print axioms DecisionPaths.no_finite_path_through_sacred
