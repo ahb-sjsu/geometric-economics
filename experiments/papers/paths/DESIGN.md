@@ -369,6 +369,43 @@ loses, since no one has scored the published models out of sample. Item 6 does t
 intertemporal database. Items 1 and 3 narrow what may be called new: the form is known, and the claim
 is the discovery of the space from choices and the single treatment of boundaries.
 
+## 12. Data better suited to the economic question, searched 2026-11-10
+
+The owner asked for a search for data that fit the economics work better than chess (no money) and
+poker (money, but the stack is part of the state and is made by the player's own play). The brief
+put one property above the rest: a history containing shocks the person did not cause, so that the
+same state is reached by different luck. Found from landing pages, dataset cards and file listings.
+No data file was opened. Items marked (u) were not confirmed on a primary page.
+
+**Shortlist.**
+
+| Rank | Source | Why it fits | Main weakness |
+|---|---|---|---|
+| 1 | **Basel-Berlin Risk Study** (Frey et al. 2017, Science Advances). OSF `rce7g`, CC BY 4.0. 1,507 people, 109 retested after six months. Trial-level balloon task (about 1.69 million choices) and Columbia Card Task (about 676,000), also in Psych-101 | The state is exact. Balloon bursts and card draws are random draws. Basel against Berlin, or the retest wave, gives a held-out set | One task drawn at random is paid, from a small bonus. The authors ask to be contacted before new projects. Whether card-task feedback was random or scripted is (u) |
+| 2 | **Pooled indefinitely repeated prisoner's dilemma.** Fudenberg and Karreskog Rehbinder 2024, AEJ Micro, replication package doi:10.3886/E182668V1, 161 sessions. Dal Bó and Fréchette 2011 single study on openICPSR 112401 | The state is exact: the payoff matrix and continuation probability are fixed per session. Match length and rematching are random, and a new partner's first move is not the chooser's doing. Incentivised | Access, licence and file list (u), the archive page blocked the fetch |
+| 3 | **Polymarket on-chain fills.** Hugging Face `moose-code/polymarket-onchain-v1`, CC BY 4.0, 1.17 billion fills, 2.6 million wallets, 2020 to 2026, 127 GB | The only large real-money field source that is openly downloadable. Resolutions are not a small trader's doing | A wallet is not a person. A wallet's position and balance are its own doing, which is the poker problem again. No order book |
+| 4 | **Decisions from experience** (Wulff et al. 2018). Zenodo 1491449, CC BY-SA 4.0, 28 publications, about 1.12 million sampling choices | Samples are random draws | Few final choices per person. Incentives vary by study (u) |
+
+**Already touched in this programme.** CPC18 was on the search's list. Its first-trial choices were
+used in Part II. Its later trials, where a person meets the same gamble repeatedly with feedback
+from random draws, were not used, but the corpus is not untouched. The description part of the Wulff
+collection was a test corpus of `prereg-psych101-v1`. Its sampling part was set aside there and not
+analysed.
+
+**Checked and set aside.** The bwin and Transparency Project gambling sets hold per-person totals or
+daily aggregates with no bet-level options or odds, and need a terms-of-use form naming an ethics
+board. Betfair historical data shows no bettor identifier. Prosper's bid data was withdrawn. Manifold
+is play money. The Dal Bó and Fréchette 2018 meta-data has no public location that could be found.
+
+**What each of the top two would test.** In the balloon task a burst is a random event. Among
+occasions where a person attempted a given pump, whether the balloon burst at that pump was decided
+by the draw and not by the person. The next balloon then starts from the same state, and the
+question is whether the person pumps less after a burst one balloon back, two back, and so on. In
+the repeated prisoner's dilemma each new match starts from the same state with a stranger, and the
+question is whether the first move depends on what the previous stranger did, one match back, two
+back, and so on. In both the event is not the chooser's doing, which is what the poker comparison
+lacked.
+
 ## 11. Bridge, parked 2026-11-10
 
 Proposed by the owner from a pasted list of sources. One item was checked and the rest are unverified.

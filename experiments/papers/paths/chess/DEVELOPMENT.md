@@ -313,6 +313,38 @@ differs by speed, so the ratio of D(0) to the baseline is reported beside D(0). 
 `geometric-evaluation-theory` looked for a time-budget law in these same months with a different
 quantity and was indeterminate.
 
+## Result of pass 4 (development, July and August 2026)
+
+`analyze_memory.py ROWS OUT 24 0 SPEED`, run 2026-11-10. Pairs a day apart, the player's own moves
+in the same order. Files `results/memory_speed_{bullet,blitz,rapid,classical}_2026-0{7,8}.json`.
+
+| Speed | Players (July) | Baseline change rate | D(0), July | D(0), August | D(0) ÷ baseline | D(0) − D(2), same players (July, August) |
+|---|---|---|---|---|---|---|
+| Bullet | 126,573 | 0.245 | +0.0469 (0.0455 to 0.0484) | +0.0468 (0.0455 to 0.0482) | 0.19 | +0.028, +0.029 |
+| Blitz | 219,358 | 0.286 | +0.0327 (0.0315 to 0.0339) | +0.0333 (0.0322 to 0.0345) | 0.11 | +0.020, +0.021 |
+| Rapid | 90,998 | 0.332 | +0.0253 (0.0232 to 0.0274) | +0.0253 (0.0233 to 0.0272) | 0.08 | +0.016, +0.015 |
+| Classical | 2,190 | 0.310 | +0.0322 (0.0184 to 0.0464) | +0.0310 (0.0168 to 0.0464) | 0.10 | +0.014, +0.010 (intervals include zero) |
+
+**Against the prediction written beforehand.**
+
+- **Bullet above blitz above rapid: yes,** in both months, with intervals that do not overlap. The
+  two months agree to the third decimal at every one of these three speeds.
+- **Bullet at least 1.5 times rapid: yes.** The ratio is 1.85 in both months.
+- **Classical smallest: not shown.** Its estimate is +0.031 to +0.032, between blitz and rapid, with
+  an interval from +0.017 to +0.046 that covers all three. Classical has about 2,200 players against
+  91,000 or more at the other speeds. The prediction for classical is neither met nor contradicted.
+- **The same ordering for the fall from zero to two half-moves: yes** for the three large speeds.
+
+**Reading.** The effect of the opponent's last move is larger when the player has less time, by a
+factor near two between one-minute and ten-minute chess. That is what the budget reading predicted
+and what the reference reading gave no reason to expect. It is not zero at the slower speeds, so a
+budget is not shown to be the whole of it.
+
+**Limits.** The people who play bullet are not the people who play rapid. Each player is compared
+with themselves within a speed, so the difference between speeds could still be a difference between
+populations. The check is the players who appear at two speeds, compared with themselves across
+them. It has not been run. Openings only, development only.
+
 ## Whose move differed: the curve over all pairs
 
 The last half-move before a decision is the opponent's, so in the curve over all pairs an even k
