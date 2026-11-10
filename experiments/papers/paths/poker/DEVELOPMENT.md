@@ -50,7 +50,10 @@ Intervals resample players.
 | After a loss, lag 1 minus lag 2 | −0.0022 (−0.0089 to +0.0041), 23,359 players | −0.0091 (−0.0140 to −0.0040) |
 | After a win, lag 1 minus lag 2 | −0.0111 (−0.0172 to −0.0050), 26,052 players | −0.0169 (−0.0210 to −0.0129) |
 
-## Reading, against what was written in DESIGN.md before any action was read
+## Reading of pass 1, against what was written in DESIGN.md before any action was read
+
+*Superseded in part by pass 2 below, 2026-11-10. Point 1 for losses and the loss column of the
+tables above did not survive finer control of the stack.*
 
 1. **The most recent hand changes the choice with the state held fixed.** Yes, for both events.
    Players enter 2.2 points more pots after a large loss and 2.0 points fewer after a large win, on a
@@ -66,6 +69,75 @@ Intervals resample players.
 the state fixed, and something smaller is still there four steps back. In poker every point at lag 4
 is clear of zero. As in chess, the column means fall with distance, and the comparison over the same
 players is what shows whether that fall is real: after a win it is, after a loss it is not.
+
+## Pass 2. The checks, and what did not survive them
+
+Run 2026-11-10. Two controls, alone and together. Stack bins 10 big blinds wide in place of bins 40
+wide (`lags_dev_bin10.json`), and the table added to the cell so that a player is compared only with
+the same player at the same table (`lags_dev_coarse_table.json`, `lags_dev_bin10_table.json`). Per
+site with narrow bins: `lags_dev_bin10_{ABS,FTP,ONG}.json`.
+
+**Difference from the baseline, one hand after the event.**
+
+| Specification | Enter, after loss | Enter, after win | Raise, after loss | Raise, after win |
+|---|---|---|---|---|
+| Coarse bins (pass 1) | +0.022 | −0.020 | +0.007 | −0.031 |
+| Narrow bins | −0.002 | −0.041 | −0.013 | −0.038 |
+| Coarse bins, same table | +0.013 | −0.024 | +0.002 | −0.033 |
+| Narrow bins, same table | −0.022 | −0.055 | −0.026 | −0.043 |
+
+**The finding of pass 1 that players enter more pots after a large loss is withdrawn.** It is +0.022
+with coarse bins, zero with narrow bins and −0.022 with narrow bins at the same table. A result
+whose sign depends on the width of a bin is not a result.
+
+**Why the comparison with a baseline cannot be trusted in either form.** The stack is part of the
+state, and the stack is itself made by the player's recent play. With coarse bins, a player after a
+loss is shallower than the same player in the baseline, inside one bin, and shallow stacks are played
+differently. With narrow bins the baseline at a given stack is made of the times the player drifted
+to that stack through many small pots, which are stretches of active play, while the event hands
+arrived there in one step. With narrow bins every curve goes negative and the loss curve grows with
+distance (−0.022, −0.025, −0.031, −0.036 at the same table), which no account of behaviour predicts
+and a biased baseline does. The three sites agree with one another under narrow bins, so this is a
+property of the method and not of one site.
+
+**After a large win the sign is the same in all four specifications.** Players enter fewer pots and
+raise less. The size ranges from −0.020 to −0.055, so only the direction is supported, and the
+direction is the one already published (Section "Prior work").
+
+**One comparison does not use the baseline, and it holds in every specification.** One hand after
+the event against two hands after the same kind of event, over the same players. Both sides have
+just been through a large pot and sit at about the same stack.
+
+| Specification | Raise, after loss | Raise, after win | Enter, after loss | Enter, after win |
+|---|---|---|---|---|
+| Coarse bins | −0.009 (−0.014 to −0.004) | −0.017 (−0.021 to −0.013) | −0.002 (−0.009 to +0.004) | −0.011 (−0.017 to −0.005) |
+| Narrow bins | −0.007 (−0.014 to −0.001) | −0.014 (−0.019 to −0.009) | +0.004 (−0.005 to +0.012) | −0.004 (−0.012 to +0.004) |
+| Coarse bins, same table | −0.010 (−0.015 to −0.004) | −0.017 (−0.021 to −0.012) | −0.001 (−0.009 to +0.006) | −0.010 (−0.016 to −0.003) |
+| Narrow bins, same table | −0.011 (−0.019 to −0.004) | −0.009 (−0.015 to −0.003) | +0.006 (−0.004 to +0.016) | −0.000 (−0.009 to +0.008) |
+
+**What development supports, then.** In the hand straight after a large pot, won or lost, a player
+raises less often than one hand later, by about one point after a loss and one to two after a win,
+on a base near 0.19. The eight intervals for raising all exclude zero. For entering the pot there is
+no such effect after a loss, and after a win it appears only with coarse bins.
+
+**For the claim carried from chess.** The most recent step changes the choice beyond the state, here
+for raising. It does so whichever way the pot went, so it is a response to having just played a
+large pot and not to its result. That is a narrower statement than the one pass 1 seemed to give.
+
+## Prior work, read 2026-11-10 from abstracts and summaries
+
+- Smith, Levere and Kurtzman, "Poker player behavior after big wins and big losses", Management
+  Science 55(9):1547–1555, 2009. Experienced online players play less cautiously after a big loss.
+  A win or loss of $1,000 in one hand was the event and the next 12 hands the window. Looseness was
+  measured by voluntary entry and aggression by an aggression factor.
+- Eil and Lien, "Staying ahead and getting even: risk attitudes of experienced poker players", Games
+  and Economic Behavior 87:50–69, 2014. Players take more risk while losing within a session, and
+  gains make many of them more conservative.
+
+Looser after losses and tighter after wins is therefore known. The first half did not survive the
+checks here at a threshold of 10 big blinds. That is not a contradiction of the published result,
+which used a threshold of $1,000 and a different comparison. Neither paper, as far as the abstracts
+show, compares one hand after with two hands after. That is unverified against the full texts.
 
 ## Not excluded
 

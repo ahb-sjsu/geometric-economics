@@ -1,6 +1,14 @@
 """Development analysis: does a recent large win or loss change the next decision, and how far back?
 
-    python analyze_lags.py dev_hands.tsv.gz out.json
+    python analyze_lags.py dev_hands.tsv.gz out.json [threshold_bb [stack_bin_width [site]]]
+
+`stack_bin_width` replaces the coarse stack bins with bins that many big blinds
+wide, to check that a deeper stack after a win is not what moves the curve.
+`site` restricts the analysis to one site ("all" for every site). A final
+argument `table` adds the table to the cell, so that a player is compared only
+with the same player at the same table. Tables where large pots are common are
+played differently, and without this a player's quiet hands at a quiet table
+would be the baseline for hands after a large pot at a wild one.
 
 Rows come from mine_hands.py. The design is in DESIGN.md, Sections 4 and 5.
 
@@ -39,7 +47,10 @@ BINS = (40, 80, 120, 200)
 DIGITS = re.compile(r"[0-9]+")
 
 
-def stack_bin(s):
+def stack_bin(s, width=0):
+    """Coarse bins by default. With `width`, bins that many big blinds wide, capped at 300."""
+    if width:
+        return int(min(s, 300) // width)
     for i, b in enumerate(BINS):
         if s < b:
             return i
@@ -50,13 +61,15 @@ def possible_topup(prev, new):
     return new > prev and 20 <= new <= 250 and abs(new / 10 - round(new / 10)) < 0.005
 
 
-def main(rows, out, thresh=THRESH):
+def main(rows, out, thresh=THRESH, width=0, only_site="", by_table=False):
     rng = np.random.default_rng(SEED)
     tables = defaultdict(lambda: defaultdict(dict))     # (site, bb, table) -> hand -> player -> row
     n_rows = n_skipped = 0
     with gzip.open(rows, "rt") as f:
         for line in f:
             r = line.rstrip("\n").split("\t")
+            if only_site and r[0] != only_site:
+                continue
             # Hand numbers are plain integers on some sites and text such as 'R5-1704660-533'
             # on Ongame. The order key is the tuple of integer groups in the label.
             hand = tuple(int(x) for x in DIGITS.findall(r[3]))
@@ -103,13 +116,14 @@ def main(rows, out, thresh=THRESH):
                 else:
                     counts["decisions_with_two_events"] += 1
                     continue
-                c = cells[(p, site, bb, pos, n, faced, stack_bin(stack))][kind]
+                c = cells[(p, site, bb, pos, n, faced, stack_bin(stack, width),
+                           table if by_table else "")][kind]
                 c[0] += act in "cr"
                 c[1] += act == "r"
                 c[2] += 1
                 counts["decisions_used"] += 1
             prev = now
-    res = {"rows": n_rows, "rows_without_hand_number": n_skipped, "tables": len(tables), "threshold_bb": thresh, **counts, "curves": {}}
+    res = {"rows": n_rows, "rows_without_hand_number": n_skipped, "tables": len(tables), "threshold_bb": thresh, "stack_bin_width": width, "site": only_site or "all", "within_table": by_table, **counts, "curves": {}}
     for which, idx in (("entered", 0), ("raised", 1)):
         per = {}                                          # kind -> player -> [sum w*diff, sum w]
         base_rates = []
@@ -155,4 +169,8 @@ def main(rows, out, thresh=THRESH):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2], float(sys.argv[3]) if len(sys.argv) > 3 else THRESH)
+    main(sys.argv[1], sys.argv[2],
+         float(sys.argv[3]) if len(sys.argv) > 3 else THRESH,
+         int(sys.argv[4]) if len(sys.argv) > 4 else 0,
+         sys.argv[5] if len(sys.argv) > 5 and sys.argv[5] != "all" else "",
+         len(sys.argv) > 6 and sys.argv[6] == "table")
