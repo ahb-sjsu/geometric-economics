@@ -1,0 +1,55 @@
+{
+ "positions_with_two_valued_moves": 232,
+ "margin": 0.1,
+ "min_evals": 20,
+ "min_plays": 50,
+ "classes": {
+  "pawn": {
+   "positions": 217,
+   "pairs": 2118,
+   "mean_log_odds": -0.21497053097389154,
+   "ci95": [
+    -0.3544779027012048,
+    -0.07648125466331927
+   ],
+   "sd_between_positions": 1.0891171643923092,
+   "share_of_positions_below_zero": 0.6036866359447005
+  },
+  "piece_vs_piece": {
+   "positions": 196,
+   "pairs": 1285,
+   "mean_log_odds": 0.16490802458499632,
+   "ci95": [
+    -0.03411340183406035,
+    0.3592638692497729
+   ],
+   "sd_between_positions": 1.3676690136383243,
+   "share_of_positions_below_zero": 0.4336734693877551
+  },
+  "capture": {
+   "positions": 39,
+   "pairs": 87,
+   "mean_log_odds": 0.8906758534675532,
+   "ci95": [
+    0.3087015161820844,
+    1.4467692205533635
+   ],
+   "sd_between_positions": 1.8732047803627065,
+   "share_of_positions_below_zero": 0.20512820512820512
+  },
+  "castle": {
+   "positions": 13,
+   "pairs": 20,
+   "mean_log_odds": 2.284692336264619,
+   "ci95": [
+    1.3786610733498332,
+    3.1912731741526983
+   ],
+   "sd_between_positions": 1.7670786689486746,
+   "share_of_positions_below_zero": 0.0
+  },
+  "king": {
+   "positions": 3
+  }
+ }
+}

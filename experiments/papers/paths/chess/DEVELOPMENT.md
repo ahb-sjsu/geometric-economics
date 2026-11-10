@@ -137,6 +137,40 @@ shallow. A proper test needs positions from the middle of the game and engine an
 legal alternative, which is an NRP job and is not yet planned in detail. The pilot is run to learn
 the size and sign to expect.
 
+## Result of the pass 3 pilot (August 2026)
+
+`analyze_edges.py`, run 2026-11-10 on August's rows, the only ones that carry evaluations.
+`results/edges_pilot_2026-08.json`. 232 positions had at least two moves with 20 evaluated games and
+50 plays each. Each row compares a class of move with engine-equal moves of class `piece`, the class
+that crosses nothing.
+
+| Class | Positions | Pairs | Mean log odds of choosing it | 95% interval | Spread between positions (SD) | Positions below zero |
+|---|---|---|---|---|---|---|
+| Pawn move | 217 | 2,118 | −0.21 | −0.35 to −0.08 | 1.09 | 60% |
+| Capture | 39 | 87 | +0.89 | +0.31 to +1.45 | 1.87 | 21% |
+| Castling | 13 | 20 | +2.28 | +1.38 to +3.19 | 1.77 | 0% |
+| King move | 3 | | too few | | | |
+| Check: piece against piece | 196 | 1,285 | +0.16 | −0.03 to +0.36 | 1.37 | 43% |
+
+**Reading, by the rule fixed above.**
+
+- **Captures and castling are chosen more than equal quiet moves, not less.** A capture is chosen
+  about 2.4 times as often and castling about ten times as often. Definition 6.1 with non-negative
+  penalties does not allow a boundary that attracts. On this pilot the reading "a move that cannot
+  be undone carries a penalty" is contradicted for both.
+- **Pawn moves are chosen a little less,** by a factor of about 0.8. The check row shows the pooling
+  has noise of the same size (+0.16 where it should be zero), so this is not established.
+- **The offset is not a constant of the class.** The spread between positions is five times the mean
+  for pawn moves and twice the mean for captures.
+
+**What this does and does not say.** It says that irreversibility under the rules of chess is not a
+boundary in the sense of Chapter 6. That was this design's guess (`../DESIGN.md`, Section 7b) and
+not a statement of the programme, whose boundaries are things like a right given up or a sacred
+value crossed. The pilot is on opening positions, where recapturing and castling are standard, and
+the evaluations are shallow. It is a pilot against one operational reading, and it went against that
+reading. A test of boundary penalties in chess would first need a reason, independent of the data,
+to call something a boundary there. None is offered here.
+
 ## Result of pass 2 (development, July and August 2026)
 
 Every game of each month was read. July gave 39,609,722 decisions at the target positions and
