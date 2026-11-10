@@ -1,0 +1,729 @@
+\documentclass[journal]{IEEEtran}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{url}
+\usepackage{balance}
+
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\Pclass}{\mathcal{P}}
+
+\begin{document}
+
+\title{Geometric Prediction of Economic Behavior~II:\\Registered Tests of the Diagonal Model}
+
+\author{Andrew~H.~Bond%
+\thanks{A.~H.~Bond is with the Department of Computer Engineering, San Jos\'{e} State University, San Jos\'{e}, CA 95192 USA (e-mail: andrew.bond@sjsu.edu; ORCID: 0009-0003-2599-6158).}%
+\thanks{This paper follows ``Geometric Prediction of Economic Behavior: Cross-Domain Validation Across Game Theory and Prospect Theory,'' IEEE Transactions on Computational Social Systems, 2026, doi: 10.1109/TCSS.2026.3734068.}%
+\thanks{Manuscript received \today.}}
+
+\markboth{IEEE Transactions on Computational Social Systems}%
+{Bond: Geometric Prediction of Economic Behavior~II}
+
+\maketitle
+
+\begin{abstract}
+An earlier paper in this journal described economic choices as movements in a space of monetary and non-monetary attributes, priced by one shared distance, and fit that model to sixteen aggregate targets.
+This paper reports what happened when the model was tested on data it was not fit to, under predictions written down before the data were scored.
+Three results hold.
+Money enters an ultimatum responder's decision in units of local income, as Part I proposed, in three countries.
+A distance with interactions between coordinates predicts held-out choices better than the diagonal distance Part I assumed, on three data sets.
+Matched problems that differ only in a non-monetary description move the choices of six language models in the predicted direction on five of seven contrasts, each of which an established theory also predicts.
+The larger set of results fails.
+In risky choice between described lotteries, the model frozen on one corpus was carried to six others.
+Cumulative prospect theory predicted better on all six, and on five the model did not separate from expected value.
+A revised encoding recovered about half of the deficit and missed every bar set for it but one.
+The model's ultimatum responder lost to a plain logit, its magnitudes were wrong on every contrast, and its temperature rule predicted a dose curve of the wrong shape.
+Every risky-choice test used a diagonal distance over summaries of a lottery chosen by hand, so the failures belong to that specification.
+No result here comes from a designed experiment with human subjects.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Computational social systems, decision theory, behavioral prediction, pre-registration, held-out validation, cumulative prospect theory, language-model panels.
+\end{IEEEkeywords}
+
+%==============================================================================
+\section{Introduction}
+\label{sec:intro}
+%==============================================================================
+
+\IEEEPARstart{A}{n} earlier paper in this journal proposed that economic choices can be read as movements in a space whose coordinates are monetary and non-monetary attributes of an option, such as its consequences for others, its bearing on the decider's identity, and how well its outcomes are known~\cite{bond2026partI}.
+One distance, shared across settings, prices every movement, and choice favors the cheaper option.
+Fit on bargaining and public-goods targets, the same parameters reproduced several prospect-theory targets.
+The model's prediction that ultimatum offers do not depend on the stake failed on high-stakes data from India, and Part I proposed measuring money in units of the decider's income instead.
+
+Part I's evidence was in-sample and aggregate.
+Its reviewers asked for individual choices, prediction on held-out data, and comparison with competing theories under one protocol.
+This paper reports those tests.
+There are seven sets of predictions, each written down before its data were scored, and Table~\ref{tab:scorecard} lists the outcome of every one.
+We call the model Geometric Decision Theory (GDT).
+
+The model tested here is narrower than the proposal in Part I's opening paragraph.
+Its distance is diagonal, so no two coordinates interact.
+Its coordinates are chosen by the researcher.
+A lottery is first reduced to a few summary numbers, such as its expected value and standard deviation, and the distance acts on those numbers.
+We call this specification the diagonal model.
+Each of these three choices was made for tractability in Part I, and each result below is a result about the diagonal model.
+
+Three results hold.
+The first concerns Part I's own proposal for money.
+A registration filed before analysis asked whether money enters the responder's acceptance decision in units of local daily wages, across three countries and stakes up to two hundred days of wages.
+The coordinate passes every test registered for it.
+The second concerns the diagonal assumption.
+A low-rank distance with interactions beats the diagonal one on three held-out data sets.
+The third is a designed comparison on language models.
+Two choice problems with identical payoffs and probabilities, differing only in a non-monetary description, must receive identical predictions from any theory that reads only payoffs and stated probabilities.
+Six language models conditioned on 36 personas move in the direction the model predicts on five of seven such contrasts.
+Each of the five is also predicted by an established account, for example ambiguity aversion or concern for third parties, so the contrasts reject theories that read only payoffs without separating GDT from those accounts.
+
+The remaining results fail, and the failures concentrate in risky choice.
+On the corpus used for fitting, the diagonal model predicts held-out problems better than expected value and worse than cumulative prospect theory (CPT).
+Frozen there and carried to another corpus under a public registration, it does not separate from expected value and CPT leads by a wider margin.
+A second registration replaced the two summary numbers with a richer hand-built encoding and carried both to five more corpora.
+The richer encoding beats the first, loses to CPT on every corpus, and predicts that people read probabilities almost linearly where they read them less linearly than before.
+Outside risky choice, the geometric responder built on the income coordinate loses to a logit on every held-out country, the sizes of the language-model shifts fall outside the predicted range on all seven contrasts, and a rule for menus of three options fit on one data set does not transfer to a second.
+
+Section~\ref{sec:recap} states the diagonal model and how each prediction was frozen.
+Sections~\ref{sec:income} to~\ref{sec:projgap} report the tests in the order of the three results that hold, with the risky-choice tests in Section~\ref{sec:risky}.
+Section~\ref{sec:rejected} lists conjectures that failed and Section~\ref{sec:discussion} states what the record supports.
+
+%==============================================================================
+\section{The Diagonal Model and How Predictions Were Frozen}
+\label{sec:recap}
+%==============================================================================
+
+An option is a displacement $\Delta\mathbf{a}\in\mathbb{R}^9$ from a reference point, with coordinates for monetary consequences ($d_1$), rights ($d_2$), fairness ($d_3$), autonomy ($d_4$), privacy and trust ($d_5$), social impact ($d_6$), virtue and identity ($d_7$), legitimacy ($d_8$), and epistemic status ($d_9$)~\cite{bond2026partI}.
+Its cost is the Mahalanobis distance
+\begin{equation}
+    C(\Delta\mathbf{a}) = \sqrt{\Delta\mathbf{a}^{\top}\, \Sigma^{-1}\, \Delta\mathbf{a}},
+    \label{eq:mahalanobis}
+\end{equation}
+and an option $A$ is chosen from a menu with probability
+\begin{equation}
+    P(A) = \frac{\exp(-C_A/T)}{\sum_{B}\exp(-C_B/T)}
+    \label{eq:softmax}
+\end{equation}
+at temperature $T>0$.
+Part I used a diagonal $\Sigma$ with active coordinates $d_6$, $d_7$ and $d_9$, and a temperature that grows with the cost difference, $T(\delta)=\max(0.5,\,0.24\,\delta^{2.13})$ with $\delta=|C_A-C_B|$.
+Choice probabilities depend on $\Sigma$ and $T$ only through $\Sigma^{-1}/T^2$, so the shape of the metric is identified and its overall scale is not separable from the temperature.
+
+For lotteries over money the tests below use two encodings, both diagonal.
+The two-number encoding places a lottery by its expected value and its standard deviation and measures cost from the point of highest expected value and zero dispersion.
+The stratified encoding of Section~\ref{sec:risky} uses expectations taken separately over gains and over losses, the probability mass on each side, a spread term, payoffs coded as shares of the stake, and a penalty for crossing into losses.
+In both, the expectation over a lottery's outcomes is taken before the distance acts.
+
+The competing class $\Pclass$ contains every model whose choice probabilities depend on an option only through a statistic that omits some coordinates.
+Expected utility reads money, payoff-based game theory reads own payoff, inequality aversion reads own and others' payoffs, and CPT reads outcomes and stated probabilities.
+A model in $\Pclass$ whose statistic omits a coordinate predicts the same choices for any two options that differ only in that coordinate.
+Section~\ref{sec:projgap} uses this.
+
+\begin{table*}[!t]
+\renewcommand{\arraystretch}{1.2}
+\caption{Every Set of Predictions in This Paper and Its Outcome. The Last Four Were Public Before Their Data Were Scored}
+\label{tab:scorecard}
+\centering
+\footnotesize
+\begin{tabular}{@{}p{0.165\textwidth} p{0.10\textwidth} p{0.16\textwidth} p{0.20\textwidth} p{0.24\textwidth}@{}}
+\toprule
+\textbf{Record} & \textbf{How frozen} & \textbf{Subject} & \textbf{Held} & \textbf{Failed} \\
+\midrule
+\texttt{prereg-v1} & Local commit, 2026-07-04 & Matched problems on six language models & Sign on 5 of 7 contrasts. Both placebos null & Sign on 2 of 7. Dose peak at level 4, predicted 2. Magnitude outside the predicted range on 7 of 7 \\
+\texttt{prereg-sigma-v1} & Local commit, July 2026, no hash file & Low-rank metric on three held-out legs & Rank one within 0.02 of full, beats diagonal, rank two adds little, on both legs where testable. Transfer 99\% & Transfer from gains to losses is zero \\
+Coupling test & Local commit, July 2026 & Risk and social tradeoffs in one survey & None & Risk and altruism correlate at 0.086 against a bound of 0.10. Measures not low-rank \\
+\texttt{prereg-boundary-v1} & OSF and signed tag, 2026-09-10 & Income-scaled money in ultimatum responders & P1 to P4 and P6, the coordinate & P5, the geometric responder against a logit \\
+\texttt{prereg-psych101-v1} & Signed public tag, 2026-10-30 & Two-number model frozen on CPC18, one new corpus & Frozen angle inside the new corpus's interval, a test that also passes when CPT is true & Does not beat expected value or linear random utility. CPT beats it. Deficit not specific to losses \\
+\texttt{prereg-strata-v1} & Signed public tag, 2026-10-30 & Stratified model frozen on CPC18, five new corpora & People move with stake less than the two-number model predicts & Six of seven assessable predictions, including the comparison with CPT and the shift in probability weighting \\
+\texttt{prereg-menus-v1} & Signed public tag, 2026-10-31 & Range scaling in menus with a third option & None that carries weight & Loses to additive value and to divisive normalization. Exponent does not transfer \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\textbf{How the predictions were frozen.}
+The records fall in two classes, and Table~\ref{tab:scorecard} marks which is which.
+The income-units test was registered on the Open Science Framework (\texttt{osf.io/ead4x}) on 2026-09-10, with a signed repository tag on the frozen files, before the analysis ran on 2026-09-12.
+The three October registrations were each committed with a signed tag to the public repository before the fit on real choices started, and each was rehearsed beforehand on simulated choices from known models.
+For these four a reader can check from public timestamps that prediction came first.
+The language-model panel (\texttt{prereg-v1}), the low-rank claims (\texttt{prereg-sigma-v1}) and the coupling test were written down and committed to a local repository in July 2026 before their data were analyzed.
+The panel's predictions were committed on the morning of 2026-07-04 and its results about five hours later.
+The repository became public on 2026-07-14, after those runs.
+The public copies of the frozen files are byte-identical to the committed ones, so a reader can check what was predicted, but the order of prediction and data rests on the author's commit timestamps.
+We use ``registered'' for the first class and ``frozen before analysis'' for the second.
+
+%==============================================================================
+\section{Money Enters Through Income Units, as Part I Proposed}
+\label{sec:income}
+%==============================================================================
+
+Part I encoded money as a share of the stake, so its calibrated model predicted that ultimatum behavior does not depend on the stake.
+Offers in the Andersen et al.\ study in Meghalaya, India, fell from 24 to 12 percent of the pie as the stake rose to about a year's income~\cite{andersen2011}, and Part I reported the prediction as failed.
+Part I then proposed a monetary coordinate scaled by the stake relative to local income, and stated that it was untested.
+This section reports the test.
+
+\textbf{Data.}
+The replication package of~\cite{andersen2011} contains 1{,}456 responder decisions from three studies, 820 from Slonim and Roth in Slovakia~\cite{slonim1998}, 178 from Cameron in Indonesia~\cite{cameron1999}, and 458 from Andersen et al.\ in India.
+Stakes range from a quarter of a day's wage to 200 days of wages.
+
+\textbf{What was known before registering.}
+At comparable stakes in days of wages, mean offers differ across the three populations by 20 percentage points or more.
+The strongest form of Part I's proposal, that offers depend on the stake only through its ratio to income, was therefore false before any model was fit, and the registration records it as falsified in advance.
+The registered predictions concern the responder.
+
+\textbf{Registered predictions and results.}
+Each model is a logistic regression for acceptance with a study-specific intercept and offer-share slope.
+P1 asks whether the log of the offered amount in days of wages, with one coefficient shared by all three studies, improves the fit.
+It does, with coefficient $0.817$ (standard error $0.147$) and a likelihood-ratio $p=2.3\times10^{-10}$ against a threshold of $0.01$.
+P2 asks whether separate coefficients per study fit better.
+They do not ($p=0.19$), which is consistent with one shared coordinate but does not demonstrate it, because the registered simulation checked the test's size and not its power.
+The ratio of the largest to the smallest per-study coefficient is 2.32, with a bootstrap interval from 1.13 to 9.70.
+P3 asks whether the nominal stake matters once the offered amount is known.
+Its coefficient is 0.165 per tenfold increase ($p=0.46$), inside the registered bound of 0.25.
+P4 fits the shared model on two studies and predicts the third.
+On every held-out study its log-loss is within 0.003 nats per decision of a model fit to that study itself, against a registered margin of 0.02.
+P6 asks whether proposers in Slovakia and Indonesia change their offers with the stake, and their slopes stay within the registered 1.5 percentage points per tenfold increase.
+
+P5 asked whether the geometric responder, with Part I's encoding and every constant fixed except the monetary variance and the temperature, predicts as well as the logit.
+It does not.
+Its held-out log-loss exceeds the logit's by 0.033 nats on Slovakia, 0.060 on Indonesia and 0.325 on India, against a margin of 0.03.
+The monetary variance went to the upper bound the registration allowed, which reduces the model to Part I's responder, so the income rescaling did no work inside it.
+
+The coordinate Part I proposed passes its tests.
+The geometric model built from Part I's other constants fails, most of all on the highest stakes.
+The first is a result about how money should be measured, and it does not depend on the geometric model, because a logistic regression carries it.
+
+%==============================================================================
+\section{In Risky Choice the Diagonal Model Loses to Prospect Theory on Seven Corpora}
+\label{sec:risky}
+%==============================================================================
+
+\subsection{On the fitting corpus the model beats expected value and trails CPT}
+The CPC18 description problems~\cite{erev2017,cpc18data} are 270 choices between described lotteries, with 27{,}780 first-trial choices made without feedback.
+Each model predicts the choice rate of each problem.
+Parameters are fit on a random 70 percent of problems and scored on the other 30 percent, and this is repeated for 20 random splits.
+Every model uses a single fitted temperature on each split, which for the geometric model means a fixed temperature in place of Part I's rule.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.15}
+\caption{Held-Out Choice Prediction on CPC18 Over 20 Random 70/30 Splits by Problem. Lower Is Better. The Geometric Model Sits Between Random Utility and CPT}
+\label{tab:cpc18}
+\centering
+\footnotesize
+\begin{tabular}{@{}l r r r@{}}
+\toprule
+\textbf{Model} & \textbf{Par.} & \textbf{Held-out MAE} & \textbf{GDT minus model} \\
+\midrule
+Constant                 & 1 & $0.199 \pm 0.012$ & \\
+Expected value (logit)   & 1 & $0.149 \pm 0.008$ & $-0.0253$, 20 of 20 \\
+Linear random utility    & 4 & $0.128 \pm 0.010$ & $-0.0042$, 18 of 20 \\
+Geometric, two numbers   & 4 & $0.124 \pm 0.009$ & \\
+CPT                      & 5 & $0.118 \pm 0.008$ & $+0.0059$, 2 of 20 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize{Mean and standard deviation of mean absolute error across splits. The last column is the paired mean difference on the same splits and the number of splits the geometric model wins. The Student-$t$ intervals on the 20 paired differences are $[-0.0284,-0.0222]$, $[-0.0058,-0.0026]$ and $[+0.0035,+0.0083]$. The splits overlap, so these intervals are approximate.}
+\end{flushleft}
+\end{table}
+
+The geometric model beats expected value on every split and linear random utility on 18 of 20 (Table~\ref{tab:cpc18}).
+CPT beats it on 18 of 20 splits, with one more parameter.
+The CPT code used for this table follows the standard rank-dependent form on problems with gains only.
+On problems with losses or mixed outcomes it attaches decision weights to the wrong outcomes, so the table understates what a standard CPT would score.
+The models that won the CPC18 competition combine behavioral mechanisms with machine learning and predict this benchmark better than CPT~\cite{plonsky2019}.
+We compare decision theories with four or five parameters and make no claim against those forecasting models.
+
+\subsection{Frozen and carried to a new corpus, the model does not separate from expected value}
+The four models of Table~\ref{tab:cpc18} were fit on all 270 problems and frozen.
+The registration \texttt{prereg-psych101-v1} then scored them on the description-condition choices collected by Wulff et al.~\cite{wulff2018}, as distributed in Psych-101~\cite{binz2025}.
+After problems repeating CPC18 were dropped, the corpus has 24{,}124 choices by 1{,}959 participants on 991 problems.
+The problems were split in half at random.
+Each frozen model refit one multiplier on its logit on the calibration half and was scored on the test half by log-loss per choice, with a paired bootstrap over test problems.
+A difference counts only if its interval clears a margin of 0.0005 nats.
+
+Frozen GDT does not beat expected value refit on the new corpus.
+The difference is $-0.0053$ nats per choice with interval $[-0.0124,+0.0015]$.
+It does not beat frozen linear random utility either ($-0.0017$, $[-0.0050,+0.0012]$).
+Frozen CPT beats frozen GDT by $0.0174$ nats ($[0.0107,0.0250]$), and this CPT is the weakened one described above.
+CPT at the parameter values Tversky and Kahneman published in 1992~\cite{tversky1992}, with only a temperature fit on CPC18, ties frozen GDT ($+0.0017$, $[-0.0137,+0.0184]$).
+
+The registration predicted that the model's deficit to CPT would be larger on problems with a loss.
+It is not.
+The difference in differences is $-0.0006$ with interval $[-0.0146,+0.0153]$.
+
+One prediction for the model passes.
+The ratio of its two scales fit on CPC18, 0.105, lies inside the new corpus's interval of 0.071 to 0.314.
+The rehearsal showed that this test also passes when CPT generates the choices, so it does not count as support.
+Frozen GDT loses almost nothing in the move.
+It reaches 99 percent of the improvement over a constant that a GDT refit on the new corpus reaches, against 74 percent for CPT.
+The shape carries over because it does little.
+A GDT refit on the new corpus scores 0.6457, worse than frozen CPT at 0.6287.
+
+\subsection{A stratified encoding recovers half the deficit and still loses on every corpus}
+The registration \texttt{prereg-strata-v1} tested a revision.
+The stratified model, described in Section~\ref{sec:recap}, was designed after the failure above, and it was fit to nothing but CPC18.
+It was frozen with the two-number model, expected value, linear random utility and CPT in the standard form.
+CPT was frozen under two payoff codings, a common money unit and shares of the stake, and each test corpus's calibration half chose between them, so the stratified model could not win through stake coding alone.
+The test corpora are five published studies never used in this work, with 68{,}826 choices in total~\cite{glockner2012,pachur2017,pachur2018,zilker2020,babula2018}.
+Problems repeating CPC18 or the Wulff et al.\ corpus were dropped.
+The procedure and scoring follow the previous subsection, and pooled differences weight the five corpora equally.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.15}
+\caption{Test Log-Loss Per Choice of Models Frozen on CPC18, on Six Other Corpora. Lower Is Better. CPT Is Lowest in Every Row}
+\label{tab:corpora}
+\centering
+\footnotesize
+\begin{tabular}{@{}l r r r r r@{}}
+\toprule
+\textbf{Corpus} & \textbf{Const.} & \textbf{EV} & \textbf{GDT-2} & \textbf{GDT-S} & \textbf{CPT} \\
+\midrule
+Wulff et al.~\cite{wulff2018}      & 0.698 & 0.651 & 0.646 &       & 0.629 \\
+Gl\"ockner, Pachur~\cite{glockner2012} & 0.693 & 0.604 & 0.579 & 0.602 & 0.566 \\
+Pachur et al.~\cite{pachur2017}    & 0.706 & 0.699 & 0.695 & 0.650 & 0.637 \\
+Pachur et al.~\cite{pachur2018}    & 0.674 & 0.580 & 0.590 & 0.553 & 0.534 \\
+Zilker et al.~\cite{zilker2020}    & 0.694 & 0.536 & 0.536 & 0.524 & 0.502 \\
+Babula~\cite{babula2018}           & 0.662 & 0.626 & 0.631 & 0.602 & 0.599 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize{GDT-2 is the two-number model and GDT-S the stratified model. The first row is from \texttt{prereg-psych101-v1}, which predates the stratified model and uses the weakened CPT of Table~\ref{tab:cpc18}. The other rows are from \texttt{prereg-strata-v1} and use standard CPT under the payoff coding its calibration half chose.}
+\end{flushleft}
+\end{table}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{build/fig_risky.pdf}
+\caption{Each model's test log-loss minus CPT's on the same test problems. The vertical line at zero is CPT, and points to its right are worse than CPT. Corpora are named by first author and year. No geometric model reaches the line on any corpus, and the stratified encoding is worse than the two-number one on Gl\"ockner and Pachur.}
+\label{fig:risky}
+\end{figure}
+
+The stratified model improves on the two-number model.
+Pooled, it is better by 0.0202 nats per choice ($[0.0061,0.0377]$), and its point estimate is better on four corpora (Table~\ref{tab:corpora}, Fig.~\ref{fig:risky}).
+The registered bar also required the interval to clear the margin on at least three corpora, and it does so on two, so the prediction fails as registered.
+The model is worse than the two-number model on the Gl\"ockner and Pachur corpus, the one corpus where CPT also preferred the money unit to the stake share.
+
+CPT is better than the stratified model on every corpus, by 0.0185 nats pooled ($[0.0135,0.0239]$).
+The stratified model closes 52 percent of the distance from the two-number model to CPT.
+The registered bar was half, with the lower end of the interval above a quarter, and the interval runs from 0.22 to 0.70.
+The two-number model again does not separate from expected value ($-0.0028$, $[-0.0087,+0.0033]$).
+
+One prediction passes.
+Across six groups of problems that differ only in stake, people's choices move with the stake less than the two-number model, which reads money in a fixed unit, predicts ($+0.088$, $[+0.007,+0.166]$).
+All six groups come from one corpus.
+CPT's own choice of coding points the same way, since four of five calibration halves chose the stake share.
+
+\subsection{The model reads probabilities linearly and people do not}
+The registration also derived a prediction from stimuli alone.
+CPT's weighting exponent equals one when probabilities are read linearly and falls as small probabilities are overweighted.
+Fitting CPT to the frozen stratified model's own predicted choices gives the exponent that model implies for each corpus.
+On CPC18 the implied exponent is 0.90 and the one fit to people is 0.89.
+On the five new corpora the model implies exponents between 0.99 and 1.06.
+People's exponents, fit on each calibration half, are 0.72, 0.71, 0.81, 0.66 and 1.02.
+The model predicted a move toward linear reading on every corpus, and people moved the other way on four of five.
+
+The cause is in the encoding.
+Each of the stratified coordinates is linear in the stated probabilities, because each is an expectation or a probability mass.
+The distance acts after those expectations are taken, so nothing in the model can bend a probability.
+CPT bends each probability first and combines outcomes afterward.
+A separate arm of the registration that could bend probabilities, by reading them through a noisy code, was given so large a precision by its CPC18 fit that it matched the stratified model to within 0.0001 nats, and its prediction was not assessable.
+
+The stratified model also reproduces two of six named effects from the literature where the two-number model reproduces three and CPT four.
+That count was fixed by the frozen parameters before any choice was read, and it fails its bar.
+
+%==============================================================================
+\section{A Metric With Interactions Beats the Diagonal, and Its Shape Transfers}
+\label{sec:lowrank}
+%==============================================================================
+
+\subsection{Low-rank claims on three held-out legs}
+Part I restricted $\Sigma$ to be diagonal.
+A search on lotteries and games suggested that a precision matrix of rank one or two would match the full metric and beat the diagonal.
+Four claims were frozen before the held-out data were analyzed (\texttt{prereg-sigma-v1}).
+H1 states that rank one fits within 0.02 negative log-likelihood (NLL) per choice of the full metric.
+H2 states that the metric transfers at least 85 percent of the distance from chance to a native fit.
+H3 states that rank one beats the diagonal at equal parameter count.
+H4 states that rank two adds little over rank one.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.2}
+\caption{Low-Rank Claims on Three Held-Out Legs. The Diagonal Loses on Both Legs Where It Can Be Compared}
+\label{tab:lowrank}
+\centering
+\begin{tabular}{@{}p{0.24\columnwidth} c c c p{0.20\columnwidth}@{}}
+\toprule
+\textbf{Held-out leg} & \textbf{H1} & \textbf{H3} & \textbf{H4} & \textbf{H2 (transfer)} \\
+\midrule
+Ultimatum responders, Fraser and Nettle~\cite{fraser2020} & Pass & Pass & Pass & $99\%$ across hunger conditions \\
+Prospect-theory items in 19 countries, Ruggeri et al.~\cite{ruggeri2020} & Pass$^{*}$ & Pass & Pass & $99\%$ across countries \\
+Six languages &  &  &  & axis cosine 0.818, placebo 0.604 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize{For H3, rank one against the diagonal gives NLL 0.290 against 0.335 for Fraser and Nettle and 0.667 against 0.680 for Ruggeri et al. $^{*}$Ruggeri et al.\ rank one sits at the 0.02 line, and rank two is the closer low-rank fit. The language leg tests whether coordinate directions survive translation and is described in the text.}
+\end{flushleft}
+\end{table}
+
+Where the claims can be tested, they hold (Table~\ref{tab:lowrank}).
+Rank one or two suffices, the diagonal is beaten, and the metric transfers at about 99 percent across hunger conditions and across 19 countries.
+In each leg the precision matrix is fit on five encoded features of the options, not on the nine coordinates.
+For the Ruggeri et al.\ items the features are expected value, standard deviation, skew, worst outcome and probability of a favorable outcome, and the Fraser and Nettle leg uses five analogous allocation features.
+The fitted loadings were not saved.
+The result holds for gains.
+Transfer from gains to losses on the Ruggeri et al.\ items is zero.
+These legs compare metrics with one another and include no competing theory, so they show that interactions matter inside the geometric family and say nothing about that family against CPT.
+Every risky-choice test of Section~\ref{sec:risky} was run with the diagonal that loses here.
+
+\textbf{Language leg.}
+The panel's contrast texts were translated from English into Spanish, Chinese, Arabic, Hindi and Swahili by a language model, and a translation was kept only if its LaBSE sentence embedding had cosine at least 0.75 with the English source.
+For each contrast, the coordinate axis is the mean embedding of the high-pole texts minus the mean of the low-pole texts in normalized LaBSE space, and invariance is the cosine between a language's axis and the English axis.
+Real contrasts give a mean cosine of 0.818 over 35 language-contrast pairs, against 0.604 over 10 placebo pairs.
+A behavioral panel ran the 13 contrasts in all six languages, 5{,}616 choices from six models and 12 personas.
+The vectors of choice shifts over the seven real contrasts correlate across the 15 language pairs with mean Pearson $r=0.737$, against 0.008 when contrasts are shuffled.
+
+\subsection{A shape fit on lotteries predicts play in games after one scale is refit}
+To place lotteries and games in one space we encode each option by its expected value and dispersion.
+A row strategy with payoff matrix $M$, under a uniform belief over the opponent's actions, has expected value $\operatorname{mean}_j M[s,j]$ and dispersion $\operatorname{std}_j M[s,j]$.
+Games are the data pool of~\cite{wright2017}, 110 two-player normal-form games from eight published studies with human action frequencies.
+We fit the two scales and the temperature on one domain and predict the other with no refit, scoring by multinomial NLL per choice.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.15}
+\caption{Transfer Between Lotteries and Games. Percent of the Distance From Chance to a Native Fit. The Second Column Was Chosen After the First Was Seen}
+\label{tab:polar}
+\centering
+\begin{tabular}{l r r}
+\toprule
+\textbf{Direction} & \textbf{No refit} & \textbf{One scale refit} \\
+\midrule
+lotteries $\to$ games & $0.931$ \; ($66\%$) & $0.876$ \; ($100\%$) \\
+games $\to$ lotteries & $0.783$ \; ($<0$)   & $0.627$ \; ($97\%$) \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize{NLL per choice with the percentage in parentheses. Native fits are 0.876 for games (chance 1.040) and 0.624 for lotteries (chance 0.693). The fitted ratios of the two scales are 0.105 for lotteries and 0.146 for games.}
+\end{flushleft}
+\end{table}
+
+A metric that has seen only lotteries predicts strategic play two thirds of the way from chance to a native fit, and the reverse direction is worse than chance (Table~\ref{tab:polar}).
+When only the ratio of the two scales is transferred and one overall scale is refit on the target, both directions reach 97 to 100 percent.
+This second analysis was chosen after the asymmetry was seen, so it is exploratory.
+Its reading is also limited by Section~\ref{sec:risky}.
+The same ratio carried to the Wulff et al.\ corpus at 99 percent while the model built on it failed to beat expected value, so a shape that transfers is not thereby a shape that predicts well.
+CPT has no representation of a game and Nash equilibrium none of a lottery, so neither can be scored on this transfer.
+
+The same construction applied to own payoff and other's payoff transfers between two giving tasks in one direction.
+Fit on the 3{,}800 budget-line choices of Fisman, Kariv and Markovits~\cite{fisman2007}, it predicts the seven dictator games of Charness and Rabin~\cite{charness2002} at 100 percent of a native fit with one scale refit.
+Fit on the seven games, it predicts the giving choices at 45 percent, because seven aggregate games do not fix the ratio.
+
+%==============================================================================
+\section{Matched Problems Move Language-Model Choices on Five of Seven Contrasts}
+\label{sec:projgap}
+%==============================================================================
+
+\subsection{Design}
+A matched pair $(x,x')$ has identical monetary payoffs and identical lottery structure and differs only in the description of one non-monetary coordinate, here social impact, identity or epistemic status.
+Every model in $\Pclass$ whose statistic omits that coordinate predicts identical choices on the two problems.
+GDT predicts a signed difference $\Delta=P(A\mid x_{\text{hi}})-P(A\mid x_{\text{lo}})$.
+The design, seven real contrasts, two wording placebos with predicted $\Delta=0$, and a four-level dose series were frozen before the panel was run (\texttt{prereg-v1}).
+A null result on such a pair fails to refute a model in $\Pclass$ without confirming it, and a nonzero result refutes every model whose statistic omits the manipulated coordinate.
+
+\subsection{The panel}
+The panel used six models served under the aliases gemma-small, qwen3-small, gemma, gpt-oss, glm-5 and qwen3 by the National Research Platform's model endpoint (\texttt{ellm.nrp-nautilus.io}), at sampling temperature 0.9.
+The endpoint resolves these aliases on the server and neither repository records the upstream model versions, so the panel cannot be rerun on identical weights.
+Each model answered under 36 personas, crossing risk attitude (averse, neutral, seeking), social orientation (self-interested, fair-minded, altruistic), culture (individualist, collectivist) and numeracy (low, high).
+The system prompt read ``You are a human participant in an economics study. Decide as a real person who is \{description\}. Answer honestly and consistently with that disposition.''
+The panel returned 83{,}682 valid choices from 216 model-persona subjects, 99.3 percent of attempts.
+
+\textbf{Unit of analysis.}
+For each subject and contrast, $\Delta$ is the difference between that subject's choice rates on the two problems, and each subject's $\Delta$ is corrected by subtracting the same subject's $\Delta$ on the wording placebo of the same frame.
+The test is a Wilcoxon signed-rank test over the 216 subjects (202 for the identity contrast), Cohen's $d$ is the mean over the standard deviation of the subject values, and false-discovery control is Benjamini--Hochberg at $q=0.05$ over the seven real contrasts.
+Personas within a model share weights, so the six models are the closest thing to independent units, and the per-model sign count is the primary cross-model statistic.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.15}
+\caption{All Seven Contrasts. Five Hold After Placebo Correction and Two Fail. Two of the Three Lottery Contrasts Are Among the Failures}
+\label{tab:projgap}
+\centering
+\footnotesize
+\begin{tabular}{@{}l l r r c c@{}}
+\toprule
+\textbf{Contrast} & \textbf{Coordinate} & \textbf{$\Delta$} & \textbf{$d$} & \textbf{Raw} & \textbf{Corr.} \\
+\midrule
+A3.1 trust game     & epistemic & $+0.46$ & $0.91$ & 6/6 & 6/6 \\
+A1.2 public good    & social    & $+0.32$ & $0.81$ & 6/6 & 6/6 \\
+A2.1 audit report   & identity  & $+0.25$ & $0.64$ & 6/6 & 6/6 \\
+B1.1 lottery, gain  & epistemic & $+0.17$ & $0.52$ & 6/6 & 6/6 \\
+A1.1 gift to shelter & social   & $+0.17$ & $0.56$ & 6/6 & 5/6 \\
+\midrule
+B2.1 lottery, shared & social   & $-0.01$ & $-0.03$ & 4/6 & 4/6 \\
+B1L.1 lottery, loss & epistemic & $+0.06$ & $0.20$ & 1/6 & 3/6 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize{$\Delta$ is the placebo-corrected change in choice probability and $d$ is Cohen's $d$. The last two columns count models whose mean change has the predicted sign, before and after placebo correction. A-contrasts are games and B-contrasts are lotteries. The predicted sign is positive for all rows except B1L.1, where it is negative.}
+\end{flushleft}
+\end{table}
+
+\subsection{Results}
+Five of seven contrasts move in the predicted direction after placebo correction and pass false-discovery control (Table~\ref{tab:projgap}).
+Four of them have the predicted sign in all six models after correction, and the gift-to-shelter contrast in five, because the smallest model reverses once its placebo is subtracted.
+The wording placebos are null.
+Four of the five passing contrasts are games.
+Of the three lottery contrasts only one passes.
+B2.1, which shares a lottery's payoff with the decider's community, shows a raw shift of $+0.021$ that disappears after placebo correction ($\Delta=-0.006$, $p=0.34$).
+B1L.1 predicted that vagueness about the odds would reverse its effect under losses, and the observed shift has the gain-domain sign, significant in the wrong direction ($p<10^{-3}$).
+Magnitudes fall outside the frozen model's predicted range for all seven contrasts, and the trust-game shift of $+0.46$ is about five times the predicted $+0.09$.
+
+\subsection{What these contrasts discriminate}
+Each passing contrast holds payoffs and stated probabilities fixed, so each rejects theories specified over those quantities alone.
+Each also has an established account that predicts its sign.
+Vague odds lower the choice of a lottery, which is ambiguity aversion~\cite{ellsberg1961}.
+A verified record that a trust-game partner returns half raises sending, which expected utility predicts once beliefs about the partner change.
+Benefits to a shelter or a village raise giving, which altruism, warm glow and concern for total surplus predict~\cite{andreoni1990,charness2002}.
+An auditor's professional identity raises truthful reporting, which identity utility predicts~\cite{akerlof2000}.
+These contrasts therefore do not separate GDT from those accounts.
+The claim specific to GDT is that one metric with one set of active coordinates predicts the sign of all of them, and the two failed contrasts are failures of that claim.
+
+The panel is a population of language models, not people.
+Its results show that the frozen metric predicts the direction of most matched-problem shifts in that population.
+They are not evidence about human choice.
+
+\subsection{The dose series contradicts Part I's temperature rule}
+Part I's temperature grows faster than the cost difference, with exponent 2.13 fit on aggregate targets.
+An exponent above one makes large cost differences wash out, which predicts a dose curve that rises and then falls.
+The frozen model put the peak at the second of four dose levels.
+The pooled shifts rise through all four levels, and three of the six models are individually monotone.
+Fit on CPC18 individual choices, the exponent is 0.42.
+
+We compared three temperature rules on a language-model dry run of the advice-letter instrument built for a human study, 16{,}688 valid choices from 216 subjects in 26 contrast-by-pole cells.
+The fit is in-sample on all cells.
+The cost-dependent rule has the worst Bayesian information criterion, 124.4 above a fixed temperature and 141.6 above a rule from rational inattention with a fitted prior~\cite{sims2003,matejka2015}.
+These comparisons show which rule fits these data.
+No rule was tested on held-out data.
+
+%==============================================================================
+\section{Other Conjectures That Failed}
+\label{sec:rejected}
+%==============================================================================
+
+\textbf{Range scaling in menus.}
+On the three-gamble menus of Molter et al.~\cite{molter2022}, development work found that dividing each attribute difference by the menu's range on that attribute, raised to a power, predicted choices better than additive value and reproduced the attraction and compromise effects.
+The median fitted power was 0.526.
+The registration \texttt{prereg-menus-v1} froze that power and tested the rule on the four experiments of Gluth et al.~\cite{gluth2018}, 147 participants and 24{,}933 choices on trials with an unavailable third option.
+The rule predicts worse than additive value by 0.0146 nats per choice ($[0.0078,0.0216]$), in all four experiments, and worse than divisive normalization.
+The power fit freely to the new data has median 0.356, below the interquartile range found in development.
+Additive value, which predicts no effect of the third option, is the best model, in agreement with a reanalysis of these experiments by Cao and Tsetsos~\cite{cao2022}.
+The registration also exposed a flaw in the rule's interpretation.
+With two options, dividing a difference by the range raised to a power is the same as raising the difference to a power, so on binary trials the fitted power measures diminishing sensitivity and not context.
+
+\textbf{Coupling of risk and social tradeoffs.}
+A test frozen in July asked whether a person's risk tradeoff predicts that person's social tradeoff, scored on the Global Preferences Survey~\cite{falk2018}.
+Risk taking correlates with altruism at $r=0.086$ against a frozen bound of 0.10, and the six preference measures are not low-rank.
+
+\textbf{Structural conjectures.}
+Four further conjectures about the shape of the metric failed.
+A single ratio of the two scales for all domains holds only within comparable samples.
+A conserved quantity in the polar form of the two-number encoding does not exist, because the normalized risk weight changes sign with stakes.
+An apparent fourfold symmetry of risk attitudes was traced to the endpoints of the coordinate, where gambles have no loss branch or no gain branch.
+A registered held-out test of that symmetry as a general law scored 0 of 3.
+
+%==============================================================================
+\section{Discussion}
+\label{sec:discussion}
+%==============================================================================
+
+\subsection{What the record supports}
+Three statements survive tests they could have failed.
+Money enters the responder's decision in income units, with one slope across three countries.
+A metric with interactions fits held-out choices better than a diagonal one.
+Descriptions of non-monetary attributes move choices in the direction the model's active coordinates predict, in a population of language models and with competing explanations for every contrast that passed.
+
+The first statement does not need the geometric model.
+The second is a comparison inside the geometric family.
+The third does not separate the model from established accounts.
+None of the three is a case where the geometric model predicted human choices better than an incumbent theory on held-out data.
+The record contains no such case.
+
+\subsection{What the diagonal model gets wrong}
+The risky-choice results are consistent across seven corpora and two encodings.
+The model predicts about as well as expected value once it leaves the corpus it was fit on, and CPT predicts better everywhere.
+The registered diagnosis is specific.
+The model takes expectations over outcomes before its distance acts, so it reads probabilities linearly, and people do not.
+The stratified encoding repaired the treatment of stake and of losses and left this untouched.
+The geometric responder of Section~\ref{sec:income} failed for a different reason, since it switched its own monetary coordinate off.
+Magnitudes failed on every contrast of Section~\ref{sec:projgap}, and Part I's temperature rule predicted the wrong dose curve.
+
+\subsection{What these tests did not reach}
+Three features of the diagonal model were shared by every risky-choice test, and the results cannot say which of them is responsible.
+The metric was diagonal, although Section~\ref{sec:lowrank} shows the diagonal loses to a metric with interactions.
+The coordinates were chosen by hand.
+A companion registration, public before its run (\texttt{prereg-learned-v1}), tested Part I's nine coordinates written as text against directions learned from a sentence encoder on 68{,}000 human moral judgments, and the nine coordinates barely improved on a constant model while the learned directions did better.
+Its results will be reported separately.
+The expectation over outcomes was taken before the distance acted.
+A lottery over money has one attribute per outcome, so within an outcome a metric with interactions has nothing to act on, and no test on such lotteries can detect one.
+
+A test that reaches these features needs outcomes with more than one attribute and a distance applied to each outcome before outcomes are combined.
+A study of that kind, with lotteries whose outcomes pay the participant and a charity together, was registered on 2026-11-07 (\texttt{prereg-correlation-v1}).
+Its rehearsal on simulated choices set its sample size and showed that it has little power if cost grows as the square of distance.
+It has not been run.
+Until it or a test like it is run, the proposal of Part I's opening paragraph is untested in risky choice, and its diagonal specification is refuted there.
+
+\subsection{Relevance to computational social systems}
+A simulation that needs a model of risky choice between described lotteries is better served by CPT than by the diagonal model, and CPT with its 1992 parameter values does as well as the diagonal model frozen on a large modern corpus.
+A simulation of bargaining across populations with different incomes should measure offers in income units.
+The panel software is public and runs registered individual-level designs on model populations, which can find a failed prediction before a human study is paid for.
+
+%==============================================================================
+\section{Conclusion}
+%==============================================================================
+
+Part I fit a shared-metric model of economic choice to aggregate targets.
+Seven sets of predictions frozen before scoring tested its diagonal specification.
+The income-scaled monetary coordinate holds in three countries, a metric with interactions beats the diagonal on three held-out data sets, and the model's signs hold on five of seven matched contrasts in language models.
+In risky choice the diagonal model does not separate from expected value outside its fitting corpus and loses to cumulative prospect theory on all seven corpora, because it reads probabilities linearly.
+Its ultimatum responder, its magnitudes, its temperature rule and a range-scaling rule for menus also fail.
+A metric with interactions applied before outcomes are combined was not tested, and the study registered to test it has not been run.
+
+%==============================================================================
+\section*{Data and Code Availability}
+%==============================================================================
+\sloppy
+Code, frozen predictions and results are in the public repository \url{https://github.com/ahb-sjsu/geometric-economics} under \texttt{experiments/}.
+The income-units registration is \texttt{experiments/papers/boundary/} with signed tag \texttt{prereg-boundary-v1} and OSF registration \texttt{osf.io/ead4x}. % confirm OSF public visibility before submission
+The registrations \texttt{prereg-psych101-v1} and \texttt{prereg-strata-v1} are under \path{experiments/papers-archive/}, and \texttt{prereg-menus-v1}, \texttt{prereg-learned-v1} and \texttt{prereg-correlation-v1} under \path{experiments/papers/}, each with a signed tag of the same name, a hash file, a rehearsal record and a run record.
+The panel design and analysis are in \path{experiments/projection-gap/}, and the frozen prediction file of \texttt{prereg-v1} is \texttt{prereg.lock.json}, public since 2026-07-14.
+The \texttt{prereg-sigma-v1} claims are \path{experiments/datasets/PREREG_lowrank_sigma.md}.
+The panel harness is the public package \url{https://github.com/ahb-sjsu/llm-panel} (release v0.1.0).
+The six model aliases are resolved by the National Research Platform endpoint, and no record maps them to upstream model versions.
+The data sets are public at the cited sources, and the repository's scripts regenerate every derived file from them.
+
+\section*{Acknowledgment}
+Generative AI tools (Claude, Anthropic) were used to assist with analysis code, the drafting of registrations, manuscript drafting, editing, and checking reported numbers against the repository.
+The research questions, model, experimental designs, and conclusions are the author's own, and the author is responsible for every reported number.
+
+%==============================================================================
+\begin{thebibliography}{40}
+
+\bibitem{bond2026partI}
+A.~H.~Bond, ``Geometric prediction of economic behavior: Cross-domain validation across game theory and prospect theory,''
+\emph{IEEE Trans. Comput. Social Syst.}, 2026, doi: 10.1109/TCSS.2026.3734068. % verify vol/pages on final
+
+\bibitem{andersen2011}
+S.~Andersen, S.~Ertac, U.~Gneezy, M.~Hoffman, and J.~A.~List, ``Stakes matter in ultimatum games,''
+\emph{Amer. Econ. Rev.}, vol.~101, no.~7, pp.~3427--3439, Dec. 2011. % verify vol/pages on final
+
+\bibitem{slonim1998}
+R.~Slonim and A.~E.~Roth, ``Learning in high stakes ultimatum games: An experiment in the Slovak Republic,''
+\emph{Econometrica}, vol.~66, no.~3, pp.~569--596, May 1998. % verify vol/pages on final
+
+\bibitem{cameron1999}
+L.~A.~Cameron, ``Raising the stakes in the ultimatum game: Experimental evidence from Indonesia,''
+\emph{Econ. Inquiry}, vol.~37, no.~1, pp.~47--59, Jan. 1999. % verify vol/pages on final
+
+\bibitem{erev2017}
+I.~Erev, E.~Ert, O.~Plonsky, D.~Roth, and Y.~Roth, ``From anomalies to forecasts: Toward a descriptive model of decisions under risk, under ambiguity, and from experience,''
+\emph{Psychol. Rev.}, vol.~124, no.~4, pp.~369--409, 2017.
+
+\bibitem{cpc18data}
+O.~Plonsky, I.~Erev, and E.~Ert, ``All raw data for CPC18: Choice prediction competition 2018,''
+Zenodo, 2019, doi: 10.5281/zenodo.2571510.
+
+\bibitem{plonsky2019}
+O.~Plonsky, R.~Apel, E.~Ert, M.~Tennenholtz, D.~Bourgin, J.~C.~Peterson, D.~Reichman,
+T.~L.~Griffiths, S.~J.~Russell, E.~C.~Carter, J.~F.~Cavanagh, and I.~Erev, ``Predicting human
+decisions with behavioural theories and machine learning,'' \emph{Nature Hum. Behav.},
+vol.~9, pp.~2271--2284, 2025, doi: 10.1038/s41562-025-02267-6.
+
+\bibitem{wulff2018}
+D.~U.~Wulff, M.~Mergenthaler-Canseco, and R.~Hertwig, ``A meta-analytic review of two modes of learning and the description-experience gap,''
+\emph{Psychol. Bull.}, vol.~144, no.~2, pp.~140--176, 2018. % verify vol/pages on final
+
+\bibitem{binz2025}
+M.~Binz \emph{et~al.}, ``A foundation model to predict and capture human cognition,''
+\emph{Nature}, vol.~644, pp.~1002--1009, 2025. % verify vol/pages on final
+
+\bibitem{tversky1992}
+A.~Tversky and D.~Kahneman, ``Advances in prospect theory: Cumulative representation of uncertainty,''
+\emph{J. Risk Uncertainty}, vol.~5, no.~4, pp.~297--323, 1992.
+
+\bibitem{glockner2012}
+A.~Gl\"ockner and T.~Pachur, ``Cognitive models of risky choice: Parameter stability and predictive accuracy of prospect theory,''
+\emph{Cognition}, vol.~123, no.~1, pp.~21--32, 2012. % verify vol/pages on final
+
+\bibitem{pachur2017}
+T.~Pachur, R.~Mata, and R.~Hertwig, ``Who dares, who errs? Disentangling cognitive and motivational roots of age differences in decisions under risk,''
+\emph{Psychol. Sci.}, vol.~28, no.~4, pp.~504--518, 2017. % verify vol/pages on final
+
+\bibitem{pachur2018}
+T.~Pachur, M.~Schulte-Mecklenbeck, R.~O.~Murphy, and R.~Hertwig, ``Prospect theory reflects selective allocation of attention,''
+\emph{J. Exp. Psychol. Gen.}, vol.~147, no.~2, pp.~147--169, 2018. % verify vol/pages on final
+
+\bibitem{zilker2020}
+V.~Zilker, R.~Hertwig, and T.~Pachur, ``Age differences in risk attitude are shaped by option complexity,''
+\emph{J. Exp. Psychol. Gen.}, vol.~149, no.~9, pp.~1644--1683, 2020. % verify vol/pages on final
+
+\bibitem{babula2018}
+Babula, data set of described-lottery choices, 2018, Zenodo, doi: 10.5281/zenodo.7770917. % verify author initials, title and year against the Zenodo record on final
+
+\bibitem{wright2017}
+J.~R.~Wright and K.~Leyton-Brown, ``Predicting human behavior in unrepeated, simultaneous-move games,''
+\emph{Games Econ. Behav.}, vol.~106, pp.~16--37, Nov. 2017.
+
+\bibitem{fraser2020}
+B.~J.~Fraser and D.~Nettle, ``Hunger affects social decisions in a multi-round public goods game but not an ultimatum game,''
+\emph{Adaptive Human Behav. Physiol.}, vol.~6, pp.~334--355, 2020.
+
+\bibitem{ruggeri2020}
+K.~Ruggeri \emph{et~al.}, ``Replicating patterns of prospect theory for decision under risk,''
+\emph{Nature Human Behav.}, vol.~4, no.~6, pp.~622--633, Jun. 2020.
+
+\bibitem{fisman2007}
+R.~Fisman, S.~Kariv, and D.~Markovits, ``Individual preferences for giving,''
+\emph{Amer. Econ. Rev.}, vol.~97, no.~5, pp.~1858--1876, Dec. 2007.
+
+\bibitem{charness2002}
+G.~Charness and M.~Rabin, ``Understanding social preferences with simple tests,''
+\emph{Quart. J. Econ.}, vol.~117, no.~3, pp.~817--869, Aug. 2002.
+
+\bibitem{ellsberg1961}
+D.~Ellsberg, ``Risk, ambiguity, and the Savage axioms,''
+\emph{Quart. J. Econ.}, vol.~75, no.~4, pp.~643--669, Nov. 1961.
+
+\bibitem{andreoni1990}
+J.~Andreoni, ``Impure altruism and donations to public goods: A theory of warm-glow giving,''
+\emph{Econ. J.}, vol.~100, no.~401, pp.~464--477, Jun. 1990.
+
+\bibitem{akerlof2000}
+G.~A.~Akerlof and R.~E.~Kranton, ``Economics and identity,''
+\emph{Quart. J. Econ.}, vol.~115, no.~3, pp.~715--753, Aug. 2000.
+
+\bibitem{sims2003}
+C.~A.~Sims, ``Implications of rational inattention,''
+\emph{J. Monetary Econ.}, vol.~50, no.~3, pp.~665--690, Apr. 2003.
+
+\bibitem{matejka2015}
+F.~Mat\v{e}jka and A.~McKay, ``Rational inattention to discrete choices: A new foundation for the multinomial logit model,''
+\emph{Amer. Econ. Rev.}, vol.~105, no.~1, pp.~272--298, Jan. 2015.
+
+\bibitem{molter2022}
+F.~Molter, A.~W.~Thomas, S.~A.~Huettel, H.~R.~Heekeren, and P.~N.~C.~Mohr, ``Gaze-dependent evidence accumulation predicts multi-alternative risky choice behaviour,''
+\emph{PLoS Comput. Biol.}, vol.~18, no.~7, e1010283, 2022. % verify vol/pages on final
+
+\bibitem{gluth2018}
+S.~Gluth, M.~S.~Spektor, and J.~Rieskamp, ``Value-based attentional capture affects multi-alternative decision making,''
+\emph{eLife}, vol.~7, e39659, 2018.
+
+\bibitem{cao2022}
+Y.~Cao and K.~Tsetsos, ``Clarifying the role of an unavailable distractor in human multiattribute choice,''
+\emph{eLife}, vol.~11, e83316, 2022. % verify vol/pages on final
+
+\bibitem{falk2018}
+A.~Falk, A.~Becker, T.~Dohmen, B.~Enke, D.~Huffman, and U.~Sunde, ``Global evidence on economic preferences,''
+\emph{Quart. J. Econ.}, vol.~133, no.~4, pp.~1645--1692, Nov. 2018. % verify vol/pages on final
+
+\end{thebibliography}
+
+\balance
+
+\end{document}
