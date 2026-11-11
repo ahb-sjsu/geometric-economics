@@ -28,13 +28,22 @@ Three sites (Absolute Poker, Full Tilt Poker, Ongame Network), 4,217,419 hands, 
 HandHQ logs in the PHH collection, version 2, md5 `0918a30f97bda0129897b7e0f1ec895a`, no-limit
 hold'em, 1 to 23 July 2009.
 
-**Held out, each graded as a separate replication:** PokerStars (8,042,259 hands by header count),
-iPoker Network (5,996,745) and PartyPoker (3,092,698). They are other sites than the development
-sites, so other tables and, unless one person held accounts at two sites, other people.
+**Held out, each graded as a separate replication:** PokerStars (8,042,259 hands by header count)
+and PartyPoker (3,092,698). They are other sites than the development sites, so other tables and,
+unless one person held accounts at two sites, other people.
+
+**iPoker Network (5,996,745 hands) is excluded, changed 2026-11-11 before the seal.** The first
+draft listed it as a third held-out site. The header check of Section 10 found that its hands give
+every starting stack as unknown and every table as the one label `HandHQ`, in all 301,587 hands of
+a sample of one file in twenty. A large pot is defined here from the change in a player's stack at
+a table, so the analysis cannot be run on that site. It was dropped on its headers alone. No action
+from it has been read.
 
 **What has been read of them.** Header lines of every hand, for the count of player labels. And the
 first four hands of one PokerStars file, read by eye on 2026-11-10 to learn the format before the
-split existed. No statistic of any action.
+split existed. And, on 2026-11-11, the table, hand label, player labels and starting stacks of the
+first million hands of each site, for the order check of Section 10 (`check_order.py`, which does
+not parse the actions line). No statistic of any action.
 
 ## 4. Procedure, fixed
 
@@ -79,8 +88,8 @@ precision and is stated as such.
 - H2 fails with H1 passing: the effect reaches further back than one hand.
 - H4 fails: the dip depends on the result of the pot and is not a response to having played one.
 
-**Overall.** The claim counts as replicated if H1 passes on all three sites. Two of three is reported
-as partial and is not called a replication.
+**Overall.** The claim counts as replicated if H1 passes on both sites. One of two is reported as
+partial and is not called a replication.
 
 ## 6. Reported without a bar
 
@@ -121,3 +130,28 @@ held-out sites.
   that needs no action: within a table, players' starting stacks should change little between
   consecutive labels far more often than between labels taken at random.
 - The owner's view on H3's band, which is the weakest part of this draft.
+
+**Progress on this list, 2026-11-11.**
+
+- **Hand labels do order play, on the four sites where it can be checked.** `check_order.py`, first
+  million hands of each site, file `results/order_check.json`. Among players seated in both hands of
+  a pair, the share who start the second hand within 1.5 big blinds of where they started the first:
+
+  | Site | Role | Consecutive labels | Random pair, same table |
+  |---|---|---|---|
+  | Absolute Poker | development | 0.74 | 0.09 |
+  | Full Tilt Poker | development | 0.80 | 0.28 |
+  | Ongame Network | development | 0.74 | 0.10 |
+  | PokerStars | held out | 0.78 | 0.16 |
+  | PartyPoker | held out | 0.81 | 0.16 |
+
+  The two held-out sites look like the three development sites. No site has a hand label without
+  digits, so void condition V3 is not near.
+- **iPoker cannot be used**, for the reason given in Section 3. It is removed from the held-out
+  sites. Held-out hands fall from 17.1 million to 11.1 million.
+- **Full texts of the two prior papers: not obtained.** The publisher and the author copies refused
+  automated access. Secondary accounts of Smith, Levere and Kurtzman say they pool the 12 hands after
+  a pot of 1,000 dollars and compare play after a win with play after a loss. That is not the
+  comparison of one hand after with two hands after. This rests on summaries and the item stays open
+  until someone reads the papers.
+- The grader's self-test and the owner's view on H3's band are unchanged.

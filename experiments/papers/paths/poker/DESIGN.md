@@ -24,7 +24,8 @@ Atlas). No-limit hold'em, six sites, 1 to 23 July 2009, 21,349,121 hands with co
 | Role | Sites (folder prefix) | Hands counted from header lines |
 |---|---|---|
 | **Development** | Absolute Poker (ABS), Full Tilt Poker (FTP), Ongame Network (ONG) | 1,270,658 + 1,299,362 + 1,647,399 |
-| **Held out, three separate replications** | PokerStars (PS), iPoker Network (IPN), PartyPoker (PTY) | 8,042,259, 5,996,745, 3,092,698 |
+| **Held out, two separate replications** | PokerStars (PS), PartyPoker (PTY) | 8,042,259, 3,092,698 |
+| Excluded 2026-11-11 on its headers: stacks unknown and one table label for every hand | iPoker Network (IPN) | 5,996,745 |
 
 The counts are from `results/labels.json`. An earlier note in `../DESIGN.md` gave the PokerStars and
 PartyPoker figures the other way round, as a web summary of the record had them. The folder counts
@@ -97,4 +98,4 @@ event and may play differently against that player.
 2. Development on the three small sites. Every analysis tried is recorded in `DEVELOPMENT.md`.
 3. A grader with bars from development, self-tested on the development sites.
 4. Prior art: play after wins and losses in online poker, and any within-player lag analysis.
-5. The owner's word, then the seal, then the three held-out sites, each graded separately.
+5. The owner's word, then the seal, then the two held-out sites, each graded separately.

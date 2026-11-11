@@ -1,0 +1,75 @@
+{
+ "max_hands_per_site": 1000000,
+ "sites": {
+  "ABS": {
+   "hands_read": 1000264,
+   "share_of_labels_with_no_digits": 0.0,
+   "consecutive": {
+    "players": 5138966,
+    "unchanged": 0.3961555690385965,
+    "within_1.5_bb": 0.7421271127304598
+   },
+   "random_pair_same_table": {
+    "players": 1211706,
+    "unchanged": 0.02135666572584439,
+    "within_1.5_bb": 0.0881302890305074
+   }
+  },
+  "FTP": {
+   "hands_read": 1000842,
+   "share_of_labels_with_no_digits": 0.0,
+   "consecutive": {
+    "players": 5224255,
+    "unchanged": 0.5705058424598339,
+    "within_1.5_bb": 0.795367760570646
+   },
+   "random_pair_same_table": {
+    "players": 333833,
+    "unchanged": 0.20843056258668255,
+    "within_1.5_bb": 0.27739318761176995
+   }
+  },
+  "ONG": {
+   "hands_read": 1000539,
+   "share_of_labels_with_no_digits": 0.0,
+   "consecutive": {
+    "players": 4510515,
+    "unchanged": 0.3890930414819594,
+    "within_1.5_bb": 0.7381966360825759
+   },
+   "random_pair_same_table": {
+    "players": 937291,
+    "unchanged": 0.024475856484272227,
+    "within_1.5_bb": 0.09526283726185357
+   }
+  },
+  "PS": {
+   "hands_read": 1000906,
+   "share_of_labels_with_no_digits": 0.0,
+   "consecutive": {
+    "players": 4886059,
+    "unchanged": 0.4888080557357167,
+    "within_1.5_bb": 0.7836681873878314
+   },
+   "random_pair_same_table": {
+    "players": 1455678,
+    "unchanged": 0.06365830904911664,
+    "within_1.5_bb": 0.15563469393643375
+   }
+  },
+  "PTY": {
+   "hands_read": 1000595,
+   "share_of_labels_with_no_digits": 0.0,
+   "consecutive": {
+    "players": 5226114,
+    "unchanged": 0.4910882158330262,
+    "within_1.5_bb": 0.8072833849395554
+   },
+   "random_pair_same_table": {
+    "players": 286160,
+    "unchanged": 0.052100223651104276,
+    "within_1.5_bb": 0.1556751467710372
+   }
+  }
+ }
+}

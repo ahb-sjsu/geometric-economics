@@ -1,7 +1,8 @@
 # Poker: development record
 
 **Development on three sites: Absolute Poker, Full Tilt Poker and Ongame Network.** Nothing here is
-a registered test. PokerStars, iPoker and PartyPoker are held out and no action from them has been
+a registered test. PokerStars and PartyPoker are held out (iPoker was dropped on 2026-11-11, see the draft
+registration, Section 3) and no action from them has been
 read by a program (`DESIGN.md`, Section 2).
 
 ## Pass 1. A large win or loss, one to four hands back

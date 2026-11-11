@@ -128,3 +128,17 @@ public repository, and only then the run.
 - Decide whether H4's bands are too generous or too tight. They are the weakest part of this draft.
 - Prior art: a test of history with the position held fixed was not found in the check of
   2026-11-09. Repeat the search for work on move-order effects before sealing.
+
+**Progress on this list, 2026-11-11.**
+
+- Prior art, search repeated. Still no study found that holds the position fixed and tests whether
+  the order of the moves that reached it changes the next move. The nearest work found is on other
+  questions: Salant, Spenkuch and Almog use Lichess games to show that a player's opening experience
+  in standard chess carries into Chess960, and Lappo, Rosenberg and Feldman (Proc. R. Soc. B 2023)
+  study how the popularity of opening moves spreads among masters. Both were read as search
+  summaries only, not in full. A web search is not proof of absence.
+- Rehearsal from a fresh clone. `run_rehearsal.sh` clones the public repository on Atlas, mines
+  August 2026 with the cloned code and the committed targets, runs the registered analysis and the
+  grader, and compares both outputs byte for byte with the committed files. Started 2026-11-11 on
+  commit `0bedf33`. Its outcome is recorded below when it ends. A rehearsal on the sealed commit
+  itself is still owed if any bundled file changes before the seal.
