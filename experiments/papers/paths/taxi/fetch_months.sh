@@ -5,12 +5,14 @@
 # accept the file only if its line count matches. Rerunning skips finished months.
 # The rows are not sorted by the server, since sorting a month took over three minutes
 # before the first byte. The count check does not need an order. No row is parsed here.
+# Usage: fetch_months.sh [first_year [last_year]]. Several instances may run on
+# different year ranges. Each writes to its own partial file and renames it on success.
 # Run on Atlas inside a named screen session.
 set -u
 D=/archive/experiments/paths/taxi/raw/months
 B=https://data.cityofchicago.org/resource/wrvz-psew
 mkdir -p "$D" && cd "$D" || exit 1
-for y in $(seq 2013 2023); do
+for y in $(seq "${1:-2013}" "${2:-2023}"); do
   for m in 01 02 03 04 05 06 07 08 09 10 11 12; do
     f="taxi_${y}-${m}.csv"
     [ -s "$f.ok" ] && continue
@@ -25,10 +27,10 @@ for y in $(seq 2013 2023); do
     [ -z "$n" ] && { echo "COUNT_FAILED $y-$m"; continue; }
     ok=0
     for try in 1 2 3 4 5; do
-      curl -sS -G --speed-limit 2000 --speed-time 600 -o "$f" "$B.csv" \
+      curl -sS -G --speed-limit 2000 --speed-time 600 -o "$f.part.$$" "$B.csv" \
         --data-urlencode "\$where=$w" --data-urlencode "\$limit=20000000"
-      got=$(($(wc -l < "$f") - 1))
-      if [ "$got" = "$n" ]; then ok=1; break; fi
+      got=$(($(wc -l < "$f.part.$$") - 1))
+      if [ "$got" = "$n" ]; then mv "$f.part.$$" "$f"; ok=1; break; fi
       echo "retry $y-$m try $try got $got want $n"; sleep 30
     done
     if [ "$ok" = 1 ]; then echo "$n" > "$f.ok"; echo "ok $y-$m $n $(date -u +%T)"; else echo "MONTH_FAILED $y-$m"; fi

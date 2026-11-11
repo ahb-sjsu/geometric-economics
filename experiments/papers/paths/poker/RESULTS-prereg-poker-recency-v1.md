@@ -58,8 +58,51 @@ hands did not differ.
 - **Not claimed,** as registered. The result does not say why. It does not show a reference point.
   The two prior papers on poker were not read in full, so whether this comparison is new is open.
 
-## Still to be reported
+## Reported without a bar (Section 6 of the registration)
 
-Section 6 of the registration lists five things to report without a bar (narrower stack bins, the
-table in the cell, entering the pot, big blind levels, the biased quiet-hand comparison). They have
-not been run yet.
+Run 2026-11-11 with the code at the sealed tag, after the verdicts. Files
+`results/sealed_s6_*.json`.
+
+**The first contrast for raising under the other three specifications.** Lag 1 minus lag 2 after a
+large pot of either result.
+
+| Specification | PokerStars | PartyPoker |
+|---|---|---|
+| Registered: coarse stack bins | −0.0101 (−0.0132 to −0.0071) | −0.0058 (−0.0115 to −0.0005) |
+| Stack bins 10 big blinds wide | −0.0057 (−0.0102 to −0.0014) | −0.0075 (−0.0152 to +0.0004) |
+| Coarse bins, table in the cell | −0.0096 (−0.0137 to −0.0057) | −0.0101 (−0.0170 to −0.0030) |
+| Narrow bins, table in the cell | −0.0041 (−0.0107 to +0.0024) | −0.0088 (−0.0204 to +0.0025) |
+
+All eight estimates are below zero. Five of the eight intervals exclude zero. The three that
+include it are the specifications that keep the fewest players.
+
+**Lag 2 minus lag 3 under the strictest specification** is −0.0068 (−0.0133 to +0.0004) on
+PokerStars and −0.0093 (−0.0203 to +0.0022) on PartyPoker. Under the other specifications it is
+within 0.005 of zero on both sites. So "the dip lasts one hand" holds in three specifications and
+is less clear in the fourth, where both sites lean the same way.
+
+**Entering the pot.** Nothing consistent, as on development. Under the registered specification
+the lag 1 minus lag 2 difference is +0.0010 (−0.0036 to +0.0053) on PokerStars and +0.0089
+(+0.0015 to +0.0164) on PartyPoker. The PartyPoker value does not hold with narrow stack bins.
+
+**After a win and after a loss, across specifications.** After a win the estimate for raising is
+below zero in all eight cells. After a loss it is below zero in all eight as well, from −0.0003 to
+−0.0112, and every one of those intervals includes zero.
+
+**The comparison with quiet hands, labelled biased in the registration.** Raising after a large pot
+against raising after four quiet hands, stack bins 10 big blinds wide.
+
+| Hands since the pot | PokerStars, after a win | PartyPoker, after a win | PokerStars, after a loss | PartyPoker, after a loss |
+|---|---|---|---|---|
+| 1 | −0.0342 | −0.0344 | −0.0055 | −0.0069 |
+| 2 | −0.0212 | −0.0215 | +0.0036 | −0.0020 |
+| 3 | −0.0172 | −0.0171 | −0.0034 | −0.0016 |
+| 4 | −0.0147 | −0.0149 | −0.0021 | −0.0039 |
+
+The two sites agree to the third decimal after a win. This comparison mixes the effect of the pot
+with the effect of the larger stack a win leaves, which is why it was not registered. It is shown
+because the drop from the first hand to the second, −0.013 on both sites after a win, is the
+quantity the registered contrast isolates.
+
+**Not run: the contrasts by big blind level.** The sealed code has no option for it. It needs a
+small addition and will be labelled as written after the result.
