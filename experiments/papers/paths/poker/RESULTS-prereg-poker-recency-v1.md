@@ -52,7 +52,7 @@ hands did not differ.
 - **The miner set aside 256,459 PokerStars records** that failed its validity rule (a missing or
   malformed line, or blinds and stacks that do not match the number of players), beside the
   8,042,259 it used. That is 3.1% of the site's 8,298,718 records. The registered count of
-  8,042,259 was made with the same rule, so the run used exactly the hands the registration named.
+  8,042,259, made from header lines before the seal, equals the number the run used.
   On the development sites the rule set aside 507 of 4.2 million, and on PartyPoker none. Why
   PokerStars has more has not been looked into. None of them has an unknown stack.
 - **Not claimed,** as registered. The result does not say why. It does not show a reference point.
