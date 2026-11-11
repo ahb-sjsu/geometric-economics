@@ -523,3 +523,98 @@ years. HandHQ is dollars over 23 days. Developing on the first and sealing a tes
 ask whether a model built where nothing was at stake predicts play for money, which is a harder and
 more useful test than a split of one source. It depends on question 1 for both: without stable player
 labels neither supports anything across hands.
+
+## 13. Triage, bridge and other card games, searched 2026-11-11
+
+Proposed by the owner. Two searches by agents, web pages only, nothing downloaded. Items the agents
+read on a primary page are marked (read). The rest come from search summaries or memory.
+
+### Triage
+
+The design needs two things together: an identifier for the person who triaged, and the true order
+of that person's cases. **No open set found has both.**
+
+| Set | Decision | Size | Triager identifier | Order across patients |
+|---|---|---|---|---|
+| MIMIC-IV-ED 2.2, PhysioNet, credentialed | Acuity 1 to 5, disposition | about 425,000 stays (read) | absent from the triage tables (read) | lost, dates are shifted per patient (read) |
+| MC-MED 1.0.0, PhysioNet, credentialed | Acuity | 118,385 visits (read) | none described (read) | lost, same reason (read) |
+| Yale admission set, Hong et al. 2018, GitHub | Acuity, admit or discharge | 560,486 visits (read) | not mentioned | month, day and hour only (read) |
+| Joint Trauma System registries | Field care | not known | not known | by request, forms marked internal |
+| DARPA In the Moment | Triage scenarios | synthetic casualties only (read) | no human responses released | does not apply |
+
+Hospital systems do record both. A study of Veterans Affairs records (Ly 2021, Annals of Emergency
+Medicine, 416,720 visits and 7,370 physicians by press accounts) and one of a Singapore department
+(Jin et al., 258,219 visits and 129 physicians, read) used physician identifiers and timestamps.
+Neither set is public. No published study was found of whether the previous patient shifts a
+nurse's triage level for the next. **Real triage would need a collaborator at a hospital and ethics
+approval.** That is the owner's to open.
+
+**Open substitute with moral stakes.** The immigration court case data of the US Executive Office
+for Immigration Review is public and updated monthly (read, `justice.gov/eoir/foia-library-0`, with
+a separate code key dated May 2019). Chen, Moskowitz and Shue (QJE 2016) showed with judge-level
+asylum data that a grant makes the next grant less likely. Whether the public file carries a judge
+code and hearing dates is not yet verified. The page does not say.
+
+### Bridge
+
+Section 11 parked bridge because a bid is a signal under an agreement. That objection does not
+reach the play of the cards, where one position can be reached by different orders of tricks. No
+bridge source with a permitted bulk download was found. The Bridge Base Online vugraph archive has
+named players and the same boards at two tables (read), is small, is keyed in by hand, and states
+no terms. Bridge stays parked until a source is cleared.
+
+### Skat
+
+**The International Skat Server offers its stored games for download** (read,
+`skatgame.net/iss/`): "All games are stored and made available for free to everyone." Two archives:
+`iss-games-2007-05-2026.bz2`, labelled 10.1 million games and 607 MiB, and
+`skatgame-games-2016-05-2026.bz2`, labelled 2.6 million and 162 MiB. No licence is stated beyond
+that sentence. The record format is not described on the page. An agent recalled from memory that
+records carry player names, date, bidding and every card played. That is unverified.
+
+Skat is a trick-taking game for three with an auction, a discard and ten tricks. What it would add:
+a position in the play (cards left, who leads, points taken) can be reached by different orders of
+tricks, the scoring has thresholds at 61, 90 and 120 card points, and the same three players meet
+over consecutive deals. No money is at stake.
+
+**Split, fixed 2026-11-11 before either file is downloaded. Development is the SkatGame archive
+(2.6 million). The ISS archive (10.1 million) is held out** and is not opened until a registration
+is sealed. The larger file is held out so that a registered test has the power. Whether the two
+servers share accounts is not known, and a registration must say how a shared player is handled
+before the seal.
+
+### Others
+
+Tenhou mahjong logs are large and human, and the terms forbid redistribution and use outside the
+service (read), so they need written permission. Magic draft data from 17Lands has no persistent
+player identifier by a third-party account. Two published casino baccarat studies (7.9 million
+and 18.0 million games) find bets rising with streak length on proprietary data, which is prior
+art for money stakes and not a source.
+
+### Two Kaggle tables proposed by the owner, checked 2026-11-11 and set aside
+
+- `rabieelkharoua/predict-customer-purchase-behavior-dataset`. Its description says it is synthetic
+  and generated for teaching. One row per customer.
+- `logiccraftbyhimanshi/walmart-customer-purchase-behavior-dataset`. Described as 50,000 Walmart
+  transactions. The file has 50,000 rows and 50,000 distinct customer identifiers, so nobody
+  appears twice. Gender falls in near-exact thirds, ratings in fifths and payment methods in
+  quarters, and there are 25,096 distinct city names. It is generated data.
+
+**What a set needs to serve this line.** A real log, the same person appearing many times in order,
+and the options faced at each choice recoverable from the record.
+- `sasikalanagarajan/customer-satisfaction-and-repeat-purchase-dataset`. Its description says it is
+  synthetic, 300 customers.
+- `AppleEcomerceInfo/ecommerce-information`. Fifteen text files of about 10 KB in all, no
+  description. A sample database, not a log. Not downloaded.
+
+### Skat archives fetched, 2026-11-11
+
+Both archives are on Atlas under `/archive/experiments/paths/skat`. Development,
+`dev/skatgame-games-2016-05-2026.bz2`, sha256
+`0c0ece59e55da27f26327f2e17d991f76ceb43635b7d5fc71172816b0928b6cf`. Held out,
+`heldout/iss-games-2007-05-2026.bz2`, sha256
+`7dd479a8d02a4a6759f7bd009ed33b795dd9d408a61b57b5a747854a8376f3f2`, set unreadable and not
+opened. The first records of the development file were read to learn the format. Each game is one
+line with the date and time, three player names, their ratings, the deal, the bidding, the discard
+and every card played, and the result. Some seats are held by programs (names such as `xskat`), so
+a study must drop them. Player names stay on Atlas and enter any output only as keyed digests.
