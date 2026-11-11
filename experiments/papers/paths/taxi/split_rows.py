@@ -1,6 +1,8 @@
 """Route each row of the Chicago taxi file to development or held out, reading two columns.
 
-    python split_rows.py Taxi_Trips_2013-2023.csv out_dir
+    python split_rows.py out_dir month_file.csv [month_file.csv ...]
+
+The source is the set of month files written by fetch_months.sh.
 
 The rule is DESIGN.md Section 4, fixed before the download. A cab is development
 if the first character of its taxi identifier is 0 to 7 and held out if it is
@@ -25,19 +27,23 @@ DEV = set("01234567")
 HELD = set("89abcdef")
 
 
-def main(src, out):
+def main(out, sources):
     os.makedirs(out, exist_ok=True)
     names = ("dev_2013_2019", "dev_2020_on", "heldout_2013_2019", "heldout_2020_on")
     files = {n: gzip.open(os.path.join(out, n + ".csv.gz"), "wt", compresslevel=3, newline="") for n in names}
     counts = {n: 0 for n in names}
     counts.update({"dropped_identifier": 0, "dropped_year": 0, "rows": 0})
-    with open(src, newline="", encoding="utf-8", errors="replace") as f:
+    first = True
+    for src in sorted(sources):
+      with open(src, newline="", encoding="utf-8", errors="replace") as f:
         header = f.readline()
-        cols = next(csv.reader(io.StringIO(header)))
-        i_taxi = cols.index("Taxi ID")
-        i_start = cols.index("Trip Start Timestamp")
-        for w in files.values():
-            w.write(header)
+        cols = [c.strip().lower().replace(" ", "_") for c in next(csv.reader(io.StringIO(header)))]
+        i_taxi = cols.index("taxi_id")
+        i_start = cols.index("trip_start_timestamp")
+        if first:
+            for w in files.values():
+                w.write(header)
+            first = False
         for line in f:
             counts["rows"] += 1
             row = next(csv.reader(io.StringIO(line)))
@@ -61,4 +67,4 @@ def main(src, out):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    main(sys.argv[1], sys.argv[2:])
