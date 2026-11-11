@@ -147,6 +147,11 @@ requested from the authors.
 
 ## 6. First study: Deal or No Deal
 
+**Added 2026-11-10.** A first pass on the development set is recorded in `dond/DEVELOPMENT.md`. A
+model-free test of how far back the path reaches is not possible at this size: the path terms are
+not distinguishable from zero and the intervals are wide. The held-out sets are unread. The model
+comparison below has not been started.
+
 **Why this one.** The decision is literally a path. The state is the set of prizes still in play, and
 each opened case removes one, so the distribution over remaining prizes moves to a face of the
 simplex it lived on. The stratification is given by the game and not chosen by the researcher. Three

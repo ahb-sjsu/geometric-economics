@@ -1,0 +1,39 @@
+{
+ "min_gap_hours": 24.0,
+ "mode": "matched",
+ "within_player_and_position": {
+  "bullet_minus_blitz": {
+   "players": 14149,
+   "matched_positions": 23686,
+   "difference": 0.01563045220675865,
+   "ci95": [
+    0.009868654371205238,
+    0.02151526924247006
+   ],
+   "mean_D0_fast": 0.04023647361239474,
+   "mean_D0_slow": 0.024606021405636096
+  },
+  "blitz_minus_rapid": {
+   "players": 6087,
+   "matched_positions": 8357,
+   "difference": 0.005297035063401075,
+   "ci95": [
+    -0.004906686463479765,
+    0.015342947857221014
+   ],
+   "mean_D0_fast": 0.02218424985824318,
+   "mean_D0_slow": 0.016887214794842106
+  },
+  "bullet_minus_rapid": {
+   "players": 2301,
+   "matched_positions": 3031,
+   "difference": 0.017983766949585447,
+   "ci95": [
+    0.0018304181745244774,
+    0.03401890032037678
+   ],
+   "mean_D0_fast": 0.03189497752733832,
+   "mean_D0_slow": 0.013911210577752875
+  }
+ }
+}

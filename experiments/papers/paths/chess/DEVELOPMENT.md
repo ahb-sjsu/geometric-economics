@@ -383,6 +383,54 @@ last move changes a player's choice beyond the position it produces, more so the
 player has, and this holds within the person. That is a statement about the evaluator's budget and
 not about the position, the metric or the ideal.
 
+## Pass 6, planned: the same player at the same position at two speeds
+
+Written 2026-11-10 before it was run. Pass 5 left one limit open. A player's positions at one speed
+were not matched to the same player's positions at the other. If faster games reach positions where
+the last move matters more, pass 5 would show a difference with no change in the player.
+
+Here D(0) is computed for each player at each position at each speed, as before. Only positions where
+the same player has a value at both speeds are kept. The faster value minus the slower value is
+taken at each such position, averaged over the player's matched positions, then averaged over
+players, with a 95% interval from resampling players. `analyze_cross_speed.py`, mode `matched`.
+
+**Prediction of the budget reading.** The matched difference is above zero for bullet against blitz
+in both months. That pair has the most players and is the one the prediction rests on. The other two
+pairs are reported with their intervals and are expected to be above zero, but fewer players will
+have matched positions and their intervals may include zero.
+
+**What each outcome means.** Bullet against blitz above zero with an interval clear of it in both
+months: the dependence on speed is in the player at a fixed position, and the position explanation
+of pass 5 fails. An interval that includes zero with a point estimate near the pass 5 value
+(+0.013): too few matched positions to say. A point estimate near zero with an interval that
+excludes +0.013: the pass 5 difference came from which positions arise at each speed, and the
+budget reading of passes 4 and 5 is withdrawn.
+
+## Result of pass 6 (development, July and August 2026)
+
+`analyze_cross_speed.py` in mode `matched`, run 2026-11-10. Files
+`results/cross_speed_matched_2026-0{7,8}.json`.
+
+| Faster minus slower, same player and position | Players (July) | Matched positions (July) | July | 95% interval | August | 95% interval |
+|---|---|---|---|---|---|---|
+| Bullet minus blitz | 14,149 | 23,686 | +0.0156 | +0.0099 to +0.0215 | +0.0120 | +0.0062 to +0.0175 |
+| Blitz minus rapid | 6,087 | 8,357 | +0.0053 | −0.0049 to +0.0153 | +0.0089 | −0.0002 to +0.0182 |
+| Bullet minus rapid | 2,301 | 3,031 | +0.0180 | +0.0018 to +0.0340 | +0.0140 | −0.0004 to +0.0288 |
+
+**The prediction held.** For bullet against blitz the matched difference is above zero in both
+months with intervals clear of it, and its size (+0.016, +0.012) is the size pass 5 found without
+matching (+0.014, +0.013). The position explanation of pass 5 fails for that pair. The same player
+at the same position is moved more by the opponent's last move when playing bullet than when
+playing blitz.
+
+**The other two pairs.** All four estimates are above zero. Three of the four intervals include
+zero, as the plan expected with fewer matched positions. They are consistent with the pass 5 values
+and do not establish them on their own.
+
+**Limits.** A position counts as matched when the same player has pairs of both kinds there at both
+speeds, which favours positions the player reaches often. Most players contribute one or two such
+positions. Openings only, development only.
+
 ## Whose move differed: the curve over all pairs
 
 The last half-move before a decision is the opponent's, so in the curve over all pairs an even k
