@@ -1,6 +1,6 @@
 """Development: the last outcome among trials matched on the running total.
 
-    python analyze_matched.py dev.pkl out.json
+    python analyze_matched.py dev.pkl out.json [lead]
 
 Pass 4 removed a mean within each play and could not hold the total fixed. The
 check with the next trial as reference failed whenever the total was in the
@@ -28,6 +28,10 @@ as reference (lead 1), where the difference must be zero. Intervals are from
 For lag 1 the three are also run apart for each kind of the reference trial
 (after_gain, after_mixed, after_loss) and each kind of the present trial
 (now_gain, now_mixed, now_loss), the splits of pass 3.
+
+With `lead` as third argument only the next-trial check is run, with the same
+splits. There after_gain means the next trial, the reference, is a gain trial.
+Each must be zero.
 """
 import json
 import pickle
@@ -38,7 +42,7 @@ import numpy as np
 from analyze_last import SEED, plays
 
 
-def main(src, out):
+def main(src, out, lead_only=False):
     recs = pickle.load(open(src, "rb"))["subjData"]
     rng = np.random.default_rng(SEED)
     rows = {"lag1": [], "lead1": []}
@@ -66,6 +70,8 @@ def main(src, out):
                                             np.floor(total[t] / 25), np.minimum((rest[t] * 5).astype(int), 4), kind[r]])
     res = {}
     for name, parts in rows.items():
+        if lead_only and name != "lead1":
+            continue
         a = np.concatenate(parts)
         pid, g, w = a[:, 0].astype(int), a[:, 1], a[:, 2]
         base = a[:, 3] * 5 + a[:, 4]
@@ -74,7 +80,7 @@ def main(src, out):
         upid, pidx = np.unique(pid, return_inverse=True)
         res[name] = {"rows": int(len(g)), "participants": int(len(upid))}
         subsets = {"": np.ones(len(g))}
-        if name == "lag1":
+        if name == "lag1" or lead_only:
             for i, kn in enumerate(("gain", "mixed", "loss")):
                 subsets["_after_" + kn] = (a[:, 7] == i).astype(float)
                 subsets["_now_" + kn] = (a[:, 3] == i).astype(float)
@@ -103,4 +109,4 @@ def main(src, out):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    main(sys.argv[1], sys.argv[2], len(sys.argv) > 3 and sys.argv[3] == "lead")
