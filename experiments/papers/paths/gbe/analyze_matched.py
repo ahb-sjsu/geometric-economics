@@ -24,6 +24,10 @@ of gambles over the rest of the play stands in for the kind of player.
 Each is run with the last trial as reference (lag 1) and with the next trial
 as reference (lead 1), where the difference must be zero. Intervals are from
 1,000 resamples of participants.
+
+For lag 1 the three are also run apart for each kind of the reference trial
+(after_gain, after_mixed, after_loss) and each kind of the present trial
+(now_gain, now_mixed, now_loss), the splits of pass 3.
 """
 import json
 import pickle
@@ -59,7 +63,7 @@ def main(src, out):
                 t, r = t[keep], r[keep]
                 if len(t):
                     rows[name].append(np.c_[np.full(len(t), i), gam[t], won[r], kind[t], np.minimum(t // 6, 4),
-                                            np.floor(total[t] / 25), np.minimum((rest[t] * 5).astype(int), 4)])
+                                            np.floor(total[t] / 25), np.minimum((rest[t] * 5).astype(int), 4), kind[r]])
     res = {}
     for name, parts in rows.items():
         a = np.concatenate(parts)
@@ -69,25 +73,32 @@ def main(src, out):
         cells = {"M0": base, "M1": base + 15 * tb, "M2": base + 15 * tb + 15 * (tb.max() + 1) * a[:, 6]}
         upid, pidx = np.unique(pid, return_inverse=True)
         res[name] = {"rows": int(len(g)), "participants": int(len(upid))}
-        for m, c in cells.items():
-            _, c = np.unique(c, return_inverse=True)
+        subsets = {"": np.ones(len(g))}
+        if name == "lag1":
+            for i, kn in enumerate(("gain", "mixed", "loss")):
+                subsets["_after_" + kn] = (a[:, 7] == i).astype(float)
+                subsets["_now_" + kn] = (a[:, 3] == i).astype(float)
+        draws = [np.bincount(rng.integers(0, len(upid), len(upid)), minlength=len(upid)) for _ in range(1000)]
+
+        def est(wt, c, k):
+            n1 = np.bincount(c, wt * w, k)
+            n0 = np.bincount(c, wt * (1 - w), k)
+            s1 = np.bincount(c, wt * w * g, k)
+            s0 = np.bincount(c, wt * (1 - w) * g, k)
+            use = (n1 > 0) & (n0 > 0)
+            wgt = n1[use] * n0[use] / (n1[use] + n0[use])
+            return float((wgt * (s1[use] / n1[use] - s0[use] / n0[use])).sum() / wgt.sum()), int(use.sum())
+
+        for m0, c0 in cells.items():
+            _, c = np.unique(c0, return_inverse=True)
             k = c.max() + 1
-
-            def est(wt):
-                n1 = np.bincount(c, wt * w, k)
-                n0 = np.bincount(c, wt * (1 - w), k)
-                s1 = np.bincount(c, wt * w * g, k)
-                s0 = np.bincount(c, wt * (1 - w) * g, k)
-                use = (n1 > 0) & (n0 > 0)
-                wgt = n1[use] * n0[use] / (n1[use] + n0[use])
-                return float((wgt * (s1[use] / n1[use] - s0[use] / n0[use])).sum() / wgt.sum()), int(use.sum())
-
-            point, used = est(np.ones(len(g)))
-            boots = [est(np.bincount(rng.integers(0, len(upid), len(upid)), minlength=len(upid))[pidx].astype(float))[0]
-                     for _ in range(1000)]
-            res[name][m] = {"difference": point, "ci95": [float(np.percentile(boots, 2.5)), float(np.percentile(boots, 97.5))],
-                            "cells_used": used}
-            print("%-6s %s %+.4f (%+.4f to %+.4f) cells %d" % (name, m, point, *res[name][m]["ci95"], used), flush=True)
+            for sub, mask in subsets.items():
+                m = m0 + sub
+                point, used = est(mask, c, k)
+                boots = [est(mask * d[pidx], c, k)[0] for d in draws]
+                res[name][m] = {"difference": point, "cells_used": used,
+                                "ci95": [float(np.percentile(boots, 2.5)), float(np.percentile(boots, 97.5))]}
+                print("%-6s %-14s %+.4f (%+.4f to %+.4f) cells %d" % (name, m, point, *res[name][m]["ci95"], used), flush=True)
     json.dump(res, open(out, "w"), indent=1)
 
 

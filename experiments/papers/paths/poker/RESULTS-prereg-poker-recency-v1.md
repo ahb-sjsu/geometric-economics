@@ -123,14 +123,38 @@ cannot show that it holds at high stakes either. After a win alone the six estim
 −0.0056 to −0.0166 and are all below zero. After a loss they run from −0.0092 to +0.0099 with every
 interval including zero.
 
-**A check still owed, raised on 2026-11-11 by the Skat development.** A comparison of this shape,
+**The check raised on 2026-11-11 by the Skat development, now run.** A comparison of this shape,
 run on short sequences, gave non-zero differences for card-playing programs whose raw rates were
-flat (`../skat/DEVELOPMENT.md`). The cause there is taken to be the known bias from selecting on
-patterns within a finite sequence (Miller and Sanjurjo 2018), which is an inference and has not
-been shown by simulation. The registered poker contrast conditions on a large pot in the previous
-hands, and a hand in which a player raised is more likely to become a large pot, so the same kind
-of bias could enter here. Its size falls as a player's cells grow, and the poker cells are per
-player and not per short series, but its size in this design has not been measured. The check is
-to pass simulated players with no memory, with raising and pot size tied as in the data, through
-the registered code. Until that is done the size of the poker effect should be read with this
-beside it. The verdicts above stand as graded and are not changed by this note.
+flat (`../skat/DEVELOPMENT.md`). The registered poker contrast selects on a large pot in the
+previous hands, and a hand in which a player raised is more likely to become a large pot, so a
+bias of the same kind could enter here. The check passes simulated players with no memory through
+the registered code unchanged (`null_sim.py`, `run_null.sh`, `null_raw.py`). Each simulated player
+is one measured PokerStars player's counts of actions (143,815 players, 46.8 million hands). Every
+action is drawn independently of the past, and the change in stack is drawn from the measured
+changes for that action, so raising leads to large pots as often as in the data. The seat moves
+round the table each hand. Two simulated sets, about 5.29 million decisions and 45,000 players in
+each first contrast.
+
+| Raising, after any large pot | PokerStars, sealed | Simulated, set 1 | Simulated, set 2 |
+|---|---|---|---|
+| Lag 1 minus lag 2 | −0.0101 (−0.0132 to −0.0071) | +0.0003 (−0.0027 to +0.0033) | +0.0017 (−0.0012 to +0.0046) |
+| Lag 2 minus lag 3 | +0.0017 (−0.0014 to +0.0048) | +0.0001 (−0.0028 to +0.0029) | −0.0031 (−0.0061 to −0.0001) |
+| Lag 3 minus lag 4 | 0.0000 (−0.0030 to +0.0031) | +0.0011 (−0.0018 to +0.0040) | −0.0011 (−0.0039 to +0.0018) |
+| Lag 1 minus lag 2 after a large win | −0.0106 (−0.0141 to −0.0070) | −0.0007 (−0.0042 to +0.0031) | −0.0023 (−0.0060 to +0.0014) |
+
+- **Players with no memory do not produce the sealed dip.** Both simulated values of the first
+  contrast are near zero and of the other sign, and their intervals end far above −0.0101.
+- The simulation bounds a bias of this kind at about three thousandths either way, the width of
+  its intervals. The PokerStars estimate is three times that. The PartyPoker estimate of −0.0058
+  is not, so on PartyPoker this check does not settle whether a bias of that size is present.
+- Of the 36 simulated intervals (two sets, raising and entering, three kinds of pot, three pairs
+  of lags) two exclude zero, both just, which is what chance gives.
+- A first version kept every simulated player in one seat. The registered analysis compares
+  within a seat, so that put consecutive hands in the same cell, which real play never does. It
+  returned about −0.005 at every pair of lags with flat raw rates
+  (`results/null_fixedseat_recency_1.json`). It shows the estimator can be biased when a cell
+  holds consecutive hands. It is not a measure of the bias in the data.
+- What the simulation leaves out: tables with several players, play that depends on the seat,
+  and a style that drifts between stays at a table. None of these has been tested.
+
+The verdicts above stand as graded and are not changed by this check.

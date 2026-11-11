@@ -127,8 +127,8 @@ across plays.
 The owner proposed using his Theory Radar (`theory-radar` 0.4.0, commit 2155a62) to look for a
 more basic form behind these patterns. It searches short formulas over the columns of a table
 for the one whose threshold best separates a yes from a no, scored by F1. The yes or no here is
-whether the player gambled. Mixed trials only. Both runs are trials of the method on small
-samples and neither is finished.
+whether the player gambled. Mixed trials only. The runs are trials of the method on small
+samples.
 
 **`radar_fit.py`, 15,000 trials, two folds done of five.** Area under the ROC curve on
 participants not used for the search.
@@ -151,22 +151,49 @@ participants not used for the search.
   that one threshold on a short formula does not reach.
 - The first formula on offer columns alone is the sign of `ev_gap` and no more.
 
-**`radar_path.py`, 40,000 trials, one fold done of five.** Only the trials that a model of offer
-and person leaves open (its probability between 0.3 and 0.7), about a third of all trials. On
-3,590 such test trials the area under the curve was 0.642 for the offer and person model alone,
-0.667 with a logistic regression that adds the path columns, 0.670 with boosted trees, and 0.612
-for the formula Theory Radar found, `(prev_lat max cum_total) * base`.
+**`radar_path.py`, 40,001 trials from 2,726 participants, five folds.** Only the trials that a
+model of offer and person leaves open (its probability between 0.3 and 0.7), 17,392 test trials
+over the folds, about half of them gambles. `base` is that model's log odds. Two scores were
+tried. The second, the area under the ROC curve, was added to Theory Radar on the owner's word on
+2026-11-11 after the first failed (theory-radar branch `feature/auc-objective-mahalanobis`,
+commit db41b48). Mean area under the curve on participants not used for the search:
 
-- **The path columns add about 0.025 on the open trials**, by the two standard models.
-- **Theory Radar's formula did worse than using no path column at all.** On these trials about
-  half the choices are gambles, and F1 at that rate is nearly as high for saying yes every time
-  (0.656) as for the formula found (0.667). F1 is the wrong score for a small shift in a rate. A
-  search scored by area under the curve or by log loss would be the fair trial of the idea, and
-  that is a change to Theory Radar and not to this analysis.
-- In the logistic regression the largest path weights were the points from the last trial
-  (−0.27), the running total (−0.18), the points two trials back (−0.16) and the last surprise
-  (+0.13), in units of one standard deviation. More points just received, less gambling. One
-  fold, no intervals.
+| | Area under the curve |
+|---|---|
+| Offer and person model alone (`base`) | 0.642 |
+| Theory Radar formula, scored by F1 | 0.592 |
+| Theory Radar formula, scored by area under the curve | 0.654 |
+| Logistic regression on `base` and the seven path columns | 0.666 |
+| Boosted trees on the same | 0.678 |
+
+- **The path columns add 0.023 to 0.036 on the open trials**, by the two standard models.
+- **Scored by F1, the formulas did worse than using no path column**, on every fold, and a
+  different formula came back on most folds. With half the choices being gambles, saying yes every
+  time scores 0.675 and the formulas found scored 0.679. F1 is the wrong score for a small shift
+  in a rate.
+- **Scored by area under the curve, four folds of five returned the same formula,
+  `(base - prev_out) max base`,** and the fifth returned `(base - cum_total) + base`. Columns are
+  on a common scale here, so the first reads: start from the player's usual odds and raise them
+  when the last trial paid less than average, by the size of the shortfall, and leave them alone
+  when it paid more. The formula gains 0.011, about a third to a half of what the standard models
+  gain.
+- So the search, given the right score, found a short and stable form, and it is one-sided: a
+  poor last payoff raises gambling and a good one does nothing. That asymmetry was not looked
+  for. It is a hypothesis for the held-out half. It also sits beside pass 6, where the points
+  held account for most of the effect of the last outcome. The last payoff and the points held
+  move together and these runs do not separate them.
+- In the logistic regression of fold 0 the largest path weights were the points from the last
+  trial (−0.27), the running total (−0.18), the points two trials back (−0.16) and the last
+  surprise (+0.13), per standard deviation.
+
+**With Mahalanobis columns, one fold done of five.** The owner also proposed Mahalanobis
+distance. Theory Radar now has six such columns: the distance of a trial from the centre of the
+gambles and from the centre of the safe choices, in the pooled covariance and in each class's
+own, and the linear and quadratic discriminants built from them. On fold 0 the linear
+discriminant alone scored 0.667, the same as the logistic regression (0.667), as it should, since
+the two are close to the same model. The formula found, `(prev_out max maha_lin) min maha_quad`,
+scored 0.666. So these columns let a formula match the linear model. They do not by themselves
+say what the form is, because each one is a weighted mix of all eight columns.
 
 ## Pass 6. Matching on the running total
 
@@ -199,8 +226,8 @@ and it was not predicted.
 - Pass 6 matches on the running total within a play. It does not separate the points held from
   the wealth of the player outside the game, which is not recorded.
 - The splits by kind of trial in pass 3 have not been redone with the total matched.
-- Both Theory Radar runs are unfinished, and a search scored by something other than F1 has not
-  been tried.
+- The first Theory Radar run (`radar_fit.py`) and the run with Mahalanobis columns are unfinished.
+- The one-sided form found in pass 5 has not been set against the points held of pass 6.
 - The poker result was a dip after winning. This is a dip after winning too. Whether the two are
   the same thing is not shown.
 - The source of the remaining lead 1 value.
