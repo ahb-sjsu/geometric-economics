@@ -86,3 +86,15 @@ A pass would say the recency of earnings replicates in a second city. It would s
 matters beyond the present state" in an economic setting with money. It would not single out this
 line's thesis, since an adaptive reference point is the published explanation and predicts the
 same thing. Telling the two apart needs a place where they disagree, which has not been found yet.
+
+## 7. Fetch log
+
+- 2026-11-11. The single full export stalled at 6.5 GB and ended with a receive error. It cannot
+  be resumed. The partial file is kept on Atlas under a name that marks it as incomplete and is
+  not used.
+- Month files with a check of each month's row count against the portal's own count worked for
+  five months (January to March 2013, January and February 2017, 9,533,714 trips).
+- Three streams in parallel were followed by "Timeout" and "Service unavailable" from the portal.
+  All three were stopped. One stream resumes after a pause of thirty minutes, for 2013 to 2019
+  only, with a minute between months and ten minutes after any failure. At the pace seen, 84
+  months take about a day and a half.

@@ -5,8 +5,9 @@
 # accept the file only if its line count matches. Rerunning skips finished months.
 # The rows are not sorted by the server, since sorting a month took over three minutes
 # before the first byte. The count check does not need an order. No row is parsed here.
-# Usage: fetch_months.sh [first_year [last_year]]. Several instances may run on
-# different year ranges. Each writes to its own partial file and renames it on success.
+# Usage: fetch_months.sh [first_year [last_year]]. ONE instance at a time. Three in
+# parallel on 2026-11-11 were followed by timeouts and "Service unavailable" from the
+# portal. A minute's pause follows each month and ten minutes follow each failure.
 # Run on Atlas inside a named screen session.
 set -u
 D=/archive/experiments/paths/taxi/raw/months
@@ -22,7 +23,7 @@ for y in $(seq "${1:-2013}" "${2:-2023}"); do
     for try in 1 2 3 4 5; do
       n=$(curl -sS -G --max-time 600 "$B.csv" --data-urlencode "\$select=count(*)" --data-urlencode "\$where=$w" | tail -1 | tr -d '"\r')
       [[ "$n" =~ ^[0-9]+$ ]] && break
-      n=""; sleep 30
+      n=""; sleep 600
     done
     [ -z "$n" ] && { echo "COUNT_FAILED $y-$m"; continue; }
     ok=0
@@ -31,9 +32,10 @@ for y in $(seq "${1:-2013}" "${2:-2023}"); do
         --data-urlencode "\$where=$w" --data-urlencode "\$limit=20000000"
       got=$(($(wc -l < "$f.part.$$") - 1))
       if [ "$got" = "$n" ]; then mv "$f.part.$$" "$f"; ok=1; break; fi
-      echo "retry $y-$m try $try got $got want $n"; sleep 30
+      echo "retry $y-$m try $try got $got want $n"; rm -f "$f.part.$$"; sleep 600
     done
     if [ "$ok" = 1 ]; then echo "$n" > "$f.ok"; echo "ok $y-$m $n $(date -u +%T)"; else echo "MONTH_FAILED $y-$m"; fi
+    sleep 60
   done
 done
 echo "FETCH_MONTHS_END $(ls *.ok 2>/dev/null | wc -l) of 132 $(date -u +%FT%TZ)"
