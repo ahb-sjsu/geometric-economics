@@ -1,0 +1,94 @@
+{
+ "H5 a move played in no time is drawn to the earlier move, a slower one to the last": "PASS",
+ "by_speed": {
+  "bullet": "PASS",
+  "blitz": "PASS",
+  "rapid": "PASS"
+ },
+ "numbers": {
+  "bullet": {
+   "zero": {
+    "players": 107044,
+    "group_pairs": 368923,
+    "pull_king_steps": -0.0733398579881237,
+    "ci95": [
+     -0.0760729161006632,
+     -0.07050009352257598
+    ]
+   },
+   "slow": {
+    "players": 42628,
+    "group_pairs": 84868,
+    "pull_king_steps": 0.07592596449199217,
+    "ci95": [
+     0.06814456567692873,
+     0.08422748684888576
+    ]
+   },
+   "slow_minus_zero": {
+    "players": 22686,
+    "difference": 0.1530427939332104,
+    "ci95": [
+     0.14119678953742854,
+     0.1654901304526445
+    ]
+   }
+  },
+  "blitz": {
+   "zero": {
+    "players": 77173,
+    "group_pairs": 168620,
+    "pull_king_steps": -0.07518214047717854,
+    "ci95": [
+     -0.07869873186120692,
+     -0.0715726502383742
+    ]
+   },
+   "slow": {
+    "players": 186688,
+    "group_pairs": 421569,
+    "pull_king_steps": 0.06684729165792778,
+    "ci95": [
+     0.06305884128189589,
+     0.07084039583465257
+    ]
+   },
+   "slow_minus_zero": {
+    "players": 39176,
+    "difference": 0.14228137398227292,
+    "ci95": [
+     0.13342689583153106,
+     0.1514783115130194
+    ]
+   }
+  },
+  "rapid": {
+   "zero": {
+    "players": 6775,
+    "group_pairs": 9697,
+    "pull_king_steps": -0.07068722899045117,
+    "ci95": [
+     -0.08422223055124038,
+     -0.057441604851105825
+    ]
+   },
+   "slow": {
+    "players": 125974,
+    "group_pairs": 261920,
+    "pull_king_steps": 0.05996930707619434,
+    "ci95": [
+     0.05527230936397458,
+     0.06478180671588703
+    ]
+   },
+   "slow_minus_zero": {
+    "players": 4393,
+    "difference": 0.14232098440146518,
+    "ci95": [
+     0.1160844254356365,
+     0.1679334794831511
+    ]
+   }
+  }
+ }
+}
