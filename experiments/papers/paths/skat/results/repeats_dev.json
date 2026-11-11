@@ -1,0 +1,24 @@
+{
+ "by_number_of_program_seats": {
+  "0": {
+   "games": 219,
+   "same_hands_seen_earlier_in_series": 0,
+   "identical_deal_string_seen_earlier_in_series": 0
+  },
+  "1": {
+   "games": 6860,
+   "same_hands_seen_earlier_in_series": 0,
+   "identical_deal_string_seen_earlier_in_series": 0
+  },
+  "2": {
+   "games": 2612909,
+   "same_hands_seen_earlier_in_series": 0,
+   "identical_deal_string_seen_earlier_in_series": 0
+  },
+  "3": {
+   "games": 16,
+   "same_hands_seen_earlier_in_series": 0,
+   "identical_deal_string_seen_earlier_in_series": 0
+  }
+ }
+}

@@ -618,3 +618,39 @@ opened. The first records of the development file were read to learn the format.
 line with the date and time, three player names, their ratings, the deal, the bidding, the discard
 and every card played, and the result. Some seats are held by programs (names such as `xskat`), so
 a study must drop them. Player names stay on Atlas and enter any output only as keyed digests.
+
+### EVE Online, proposed by the owner on 2026-11-11, looked at and not opened
+
+**What is open.** EVE Ref (`docs.everef.net/datasets/killmails`, read) hosts daily archives of
+kill records, each a verbatim copy of what the game's public interface returns for that kill, with
+a file of counts by day. The page states no date range, size, licence or download limit. A kill
+record names the pilot who lost the ship, the ship, the fitted and carried items, the place, the
+time and the attackers. That list of fields is from memory of the interface and was not read from
+a record. Market orders and price history are public by region and item. They are not tied to a
+pilot, so they give no person's sequence of choices.
+
+**What it would add.** A loss here is permanent and the pilot chose beforehand how much to put at
+risk. The natural question is whether the value a pilot flies next falls after a costly loss, and
+for how long. It is the one arena found so far where the stake is the player's own choice and a
+loss destroys it.
+
+**What stands in the way.**
+
+- **The state is not observed.** A pilot's wealth is private. A pilot who flies a cheaper ship
+  after a loss may simply have less to spend. The chess and Skat designs fix the state. This one
+  cannot, and no way round that has been found.
+- **Only losses are recorded for the victim.** A flight that ends safely leaves no record, so the
+  series for a pilot is the series of losses and of kills taken part in. Choices between them are
+  unseen.
+- **Terms.** CCP's Developer License Agreement (`developers.eveonline.com/license-agreement`,
+  read through a summariser and not in full) grants use of game data within an application for
+  non-commercial use "solely to improve the enjoyment of EVE", bars using an application "as a
+  means of tracking Player information or Player activity" without consent, and does not mention
+  research. Whether a study of pilots' sequences of losses is allowed is the owner's question to
+  put to CCP. Nothing has been downloaded.
+- **Prior work.** One search found no study of loss and later risk on kill records. Belaza and
+  colleagues (PLOS ONE) used server data from 2011 to 2016 supplied by the publisher, which shows
+  that CCP has given data to researchers. That paper was not read.
+
+**Standing.** Below Skat and taxi. It would move up if CCP supplied data with wallet balances,
+which would give the state.

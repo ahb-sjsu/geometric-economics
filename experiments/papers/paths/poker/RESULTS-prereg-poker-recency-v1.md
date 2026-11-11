@@ -104,5 +104,33 @@ with the effect of the larger stack a win leaves, which is why it was not regist
 because the drop from the first hand to the second, −0.013 on both sites after a win, is the
 quantity the registered contrast isolates.
 
-**Not run: the contrasts by big blind level.** The sealed code has no option for it. It needs a
-small addition and will be labelled as written after the result.
+**By big blind level, written after the result.** The sealed code had no option for it.
+`analyze_recency_bb.py` and `run_bb.sh` were written on 2026-11-11 after H1 to H4 were graded.
+They call the registered analysis unchanged on the hands within one range of big blind. The three
+ranges were chosen from the counts of rows by big blind on the two sites, before any contrast by
+level was computed. Raising, lag 1 minus lag 2, either kind of pot (`results/sealed_bb_*.json`).
+
+| Big blind | PokerStars | players | PartyPoker | players |
+|---|---|---|---|---|
+| under 1 dollar | −0.0097 (−0.0132 to −0.0062) | 30,044 | −0.0051 (−0.0121 to +0.0016) | 7,860 |
+| 1 to under 5 dollars | −0.0106 (−0.0177 to −0.0039) | 8,493 | −0.0056 (−0.0178 to +0.0069) | 2,045 |
+| 5 dollars and over | −0.0123 (−0.0258 to +0.0010) | 2,369 | −0.0027 (−0.0158 to +0.0099) | 1,647 |
+
+All six estimates are below zero. Two of the six intervals exclude zero, both on PokerStars. The
+estimate does not shrink as the stakes rise on PokerStars, and no trend can be read on PartyPoker
+at these widths. So the data give no sign that the dip belongs only to small-stakes play, and they
+cannot show that it holds at high stakes either. After a win alone the six estimates run from
+−0.0056 to −0.0166 and are all below zero. After a loss they run from −0.0092 to +0.0099 with every
+interval including zero.
+
+**A check still owed, raised on 2026-11-11 by the Skat development.** A comparison of this shape,
+run on short sequences, gave non-zero differences for card-playing programs whose raw rates were
+flat (`../skat/DEVELOPMENT.md`). The cause there is taken to be the known bias from selecting on
+patterns within a finite sequence (Miller and Sanjurjo 2018), which is an inference and has not
+been shown by simulation. The registered poker contrast conditions on a large pot in the previous
+hands, and a hand in which a player raised is more likely to become a large pot, so the same kind
+of bias could enter here. Its size falls as a player's cells grow, and the poker cells are per
+player and not per short series, but its size in this design has not been measured. The check is
+to pass simulated players with no memory, with raising and pot size tied as in the data, through
+the registered code. Until that is done the size of the poker effect should be read with this
+beside it. The verdicts above stand as graded and are not changed by this note.
