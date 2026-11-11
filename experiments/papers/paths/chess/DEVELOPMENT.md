@@ -676,3 +676,37 @@ and games where it took zero seconds. `analyze_memory_time.py` only splits the r
 **What follows.** If D(0) among slow moves is clearly lower, the draft registration needs a
 sentence on what H1 and H3 measure, and a slow-move curve added to what is reported, before any
 seal. The bars are not changed by this pass.
+
+## Result of pass 9 (development, August 2026)
+
+`analyze_memory_time.py`, run 2026-11-11 on Atlas. Files `results/memory_time_2026-08_slow.json`
+and `results/memory_time_2026-08_zero.json`. 15,275,128 rows with a move of two seconds or more and
+9,834,435 with a zero-second move. Own moves in the same order, pairs at least 24 hours apart.
+
+| | All moves (registered curve) | Two seconds or more | Zero seconds |
+|---|---|---|---|
+| Rate of changing the move, identical orders | 0.28 | 0.38 | 0.14 |
+| D(0) | +0.0360 (+0.0352 to +0.0369) | +0.0319 (+0.0304 to +0.0335) | +0.0515 (+0.0500 to +0.0530) |
+| D(2) | +0.0129 (+0.0119 to +0.0140) | +0.0080 (+0.0054 to +0.0102) | +0.0146 (+0.0132 to +0.0160) |
+| D(4) | +0.0069 (+0.0050 to +0.0086) | +0.0042 (−0.0011 to +0.0093) | +0.0060 (+0.0036 to +0.0085) |
+| D(0) − D(2), same players | +0.0232 | +0.0232 (+0.0202 to +0.0262) | +0.0349 (+0.0328 to +0.0370) |
+
+**Against the predictions.**
+
+- D(0) among moves of two seconds or more is above zero. Held.
+- It is smaller than over all moves. Held, by a little: +0.032 against +0.036. **About a tenth of
+  the registered D(0) goes when zero-second moves are removed, and nine tenths stay.** Early choice
+  does not explain the effect of the last move.
+- D(2) is above zero and within 0.005 of +0.012. Held at the edge. It is +0.008, lower by 0.0049.
+
+**What else the table shows.** Zero-second moves are far more repeatable, with a base rate of
+change of 0.14 against 0.38, and their D(0) is larger in absolute size and several times larger
+against that base. That fits pass 8. If a zero-second move was chosen before the opponent's last
+move, two orders that differ in that move were different positions when the choice was made, and a
+larger difference is expected. For slower moves the position was on the board, and the +0.032 is
+the cleaner measure of history at a fixed position.
+
+**For the registration.** No bar changes. H1's bar of +0.02 and H3's of +0.015 would be met by the
+slow moves alone on this month. H2's bar of +0.005 would be met narrowly. The registration gains a
+sentence on what D(0) over all moves includes, and the curve on slower moves is added to what is
+reported. One development month.

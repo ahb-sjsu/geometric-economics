@@ -1,8 +1,8 @@
 # prereg-chess-memory-v1. How far back does history reach in a chess player's choice of move?
 
-**Status: DRAFT, 2026-11-10. Not sealed.** Drafted by Claude. Every choice below is Claude's and
-open to the owner. Sealing needs the owner's explicit word after reading the bundle list in
-Section 9. The held-out month is on Atlas, checksummed and unopened.
+**Status: SEALED 2026-11-11.** Drafted by Claude on 2026-11-10. The owner gave the word to seal on
+2026-11-11 ("seal when ready and proceed"). Every choice below is Claude's. At the seal the held-out
+month was on Atlas, checksummed and unopened. The hashes are in `prereg-chess-memory-v1.sha256`.
 
 ## 1. Question
 
@@ -61,6 +61,13 @@ test is therefore a replication on new games, not on new people, and is describe
 The code is `mine_paths.py`, `mine_targets.py`, `analyze_paths.py` (for the speed categories) and
 `analyze_memory.py` at the sealed commit, called as `analyze_memory.py ROWS OUT 24`.
 
+5. **Second pass, for H5 and for the curves by time spent.** `mine_movetime.py` over every game of
+   October. It is the registered miner with one more column, the mover's clock after the chosen
+   move. The time spent on a move is the clock before it, minus the clock after it, plus the
+   increment, in whole seconds. `analyze_pull_time.py ROWS OUT` then gives the pull defined in
+   `DEVELOPMENT.md`, pass 7, for moves of zero seconds and for moves of two seconds or more. Moves
+   of one second are left out. H1 to H4 use the first pass only.
+
 ## 5. Predictions
 
 Each stands alone.
@@ -73,8 +80,17 @@ Each stands alone.
   +0.003 to +0.013. Each band is the mean of the two development months plus or minus 0.005, which
   is several times the difference between those months.
 
+- **H5. A move played in no time is drawn to the opponent's earlier move, and a slower move to the
+  last one.** Added 2026-11-11 from passes 7 and 8 of development. In each of bullet, blitz and
+  rapid, the pull among zero-second moves has an interval below zero, and the pull among moves of
+  two seconds or more has an interval above zero. H5 passes if both hold at all three speeds. On
+  August the six values were −0.074, −0.074 and −0.086, and +0.071, +0.067 and +0.062. H5 rests on
+  one development month. It is graded by `grade_pull.py` and is not part of H1 to H4.
+
 **What each failure would mean.**
 
+- H5 fails: the direction found in August does not replicate, and the reading that a zero-second
+  move was chosen before the opponent's last move loses its support.
 - H1 fails with an interval inside ±0.01: the development result does not replicate, and Definition
   6.2 as written stands in this arena.
 - H2 fails while H1 passes: a reference equal to the previous position is enough.
@@ -97,12 +113,21 @@ grader's self-test"). Neither is predicted here. Both quantities are reported wi
 - The curve by speed category and by rating band.
 - The curve with pairs restricted to different opponents, which October's rows allow and the
   development months' do not.
+- The curve on moves of two seconds or more and the curve on zero-second moves
+  (`analyze_memory_time.py`). On August, D(0) among moves of two seconds or more was +0.032 against
+  +0.036 over all moves (`DEVELOPMENT.md`, pass 9).
+- The pull at classical speed, and the difference in pull between the two kinds of move within
+  the same players.
 
 ## 7. Not claimed
 
 A pass says that in common opening positions on one site a player's move depends on the recent
 order of moves, with a memory of a few half-moves. It does not show that the cause is a moving
-reference and not a carried plan or a response to the opponent's identity. It says nothing about
+reference and not a carried plan or a response to the opponent's identity. Pass 8 of development
+found that a move played in zero seconds behaves as if chosen before the opponent's last move. For
+such a move the position was not fixed at the time of choosing, so D(0) over all moves includes
+some early choice along with memory. Pass 9 puts that share at about a tenth on August, and the
+curve on slower moves is reported beside the registered one. It says nothing about
 positions later in the game, about other games, or about economic choice. Whether the same depth
 appears in Deal or No Deal and in poker is the subject of later registrations.
 
@@ -111,14 +136,18 @@ appears in Deal or No Deal and in poker is the subject of later registrations.
 - **V1.** The October file's sha256 differs from Section 3.
 - **V2.** Fewer than 50,000 players contribute to D(0), or fewer than 5,000 to D(4). The development
   months had about 413,000 and 96,000.
+- **V3, for H5 only.** Fewer than 1,000 players in either set of moves at any of the three speeds.
+  August's smallest set had 6,502.
 
 ## 9. Bundle to seal
 
-This file without DRAFT in its name, `mine_paths.py`, `mine_targets.py`, `analyze_paths.py`,
-`analyze_memory.py`, `results/targets.tsv` (to be fetched from Atlas and committed),
-`DEVELOPMENT.md`, and a grader `grade_memory.py` holding the bars of Section 5, which is not yet
-written. Then a hash file, a signed commit, a signed tag `prereg-chess-memory-v1` pushed to the
-public repository, and only then the run.
+This file, `mine_paths.py`, `mine_targets.py`, `analyze_paths.py`, `analyze_memory.py`,
+`grade_memory.py`, `results/targets.tsv`, `DEVELOPMENT.md`, the development results
+`results/memory_reg_2026-07.json`, `results/memory_reg_2026-08.json` and
+`results/pull_time_2026-08.json`, and for H5 and the curves by time spent `mine_movetime.py`,
+`analyze_pull.py`, `analyze_pull_time.py`, `analyze_memory_time.py` and `grade_pull.py`.
+`seal_chess.py` lists them and writes the hash file. Then a signed commit, a signed tag
+`prereg-chess-memory-v1` pushed to the public repository, and only then the run.
 
 ## 10. Before sealing
 
@@ -149,3 +178,14 @@ public repository, and only then the run.
   result from the public repository alone, given the month's file and the key for player digests.
   No bundled file has changed since that commit. `mine_movetime.py`, added later for a development
   pass, is a separate file and leaves the registered miner untouched.
+
+**Settled at the seal, 2026-11-11.**
+
+- **H4's bands are unchanged.** The owner was told they were the weakest part and did not comment.
+- **H5 was added on the day of the seal,** from two development passes run that day. Its files are
+  new and no file of the H1 to H4 chain was changed, so the rehearsal above still covers that
+  chain. `grade_pull.py` returns a pass on the August development file
+  (`results/graded_pull_dev_2026-08.json`).
+- **Still owed after the seal and before October is opened:** a rerun of the H5 chain on August
+  from a fresh clone at the sealed tag, compared with the committed
+  `results/pull_time_2026-08.json`. The sealed run does this first and stops if it differs.
