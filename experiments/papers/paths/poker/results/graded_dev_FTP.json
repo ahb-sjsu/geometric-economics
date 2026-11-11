@@ -3,7 +3,7 @@
  "site": "FTP",
  "predictions": {
   "H1 raising dips in the hand straight after a large pot": "PASS",
-  "H2 the dip lasts one hand": "FAIL",
+  "H2 the dip lasts one hand": "PASS",
   "H3 the size replicates": "PASS",
   "H4 the dip follows wins and losses alike": "PASS"
  },

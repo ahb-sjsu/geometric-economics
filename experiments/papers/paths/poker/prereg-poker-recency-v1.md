@@ -1,8 +1,9 @@
 # prereg-poker-recency-v1. Does a player raise less in the hand straight after a large pot?
 
-**Status: DRAFT, 2026-11-10. Not sealed.** Drafted by Claude. Every choice below is Claude's and
-open to the owner. Sealing needs the owner's explicit word after reading the bundle list in
-Section 9. No action from a held-out site has been read by a program.
+**Status: SEALED 2026-11-11.** Drafted by Claude on 2026-11-10. The owner gave the word to seal on
+2026-11-11 ("seal when ready and proceed"), after the report of the self-test and of the proposed
+change to H2 recorded in Section 10. No action from a held-out site was read by a program before
+the seal. The hashes are in `prereg-poker-recency-v1.sha256`.
 
 ## 1. Question
 
@@ -75,8 +76,9 @@ precision and is stated as such.
 
 - **H1. Raising dips in the hand straight after a large pot.** The lag 1 minus lag 2 difference,
   after a large pot of either result, has an interval below zero.
-- **H2. The dip lasts one hand.** The lag 2 minus lag 3 difference has an interval inside −0.01 to
-  +0.01.
+- **H2. The dip lasts one hand.** The lag 2 minus lag 3 difference has an interval inside −0.015 to
+  +0.015. The first draft said ±0.01. Section 10 gives the reason for the change, which was made
+  before the seal on development data alone.
 - **H3. The size replicates.** The lag 1 minus lag 2 difference lies in −0.022 to −0.005.
 - **H4. The dip follows wins and losses alike.** The lag 1 minus lag 2 difference is below zero after
   a large win and after a large loss, taken separately. Point estimates only, since the loss side
@@ -115,11 +117,11 @@ addresses at a threshold a hundred times larger (Smith, Levere and Kurtzman 2009
 
 ## 9. Bundle to seal
 
-This file without DRAFT in its name, `mine_hands.py`, `analyze_lags.py` (for the shared constants and
-rules), `analyze_recency.py`, `grade_recency.py`, `DESIGN.md`, `DEVELOPMENT.md`, and the four
-development result files `results/recency_dev_*.json`. Then a hash file, a signed commit, a signed
-tag `prereg-poker-recency-v1` pushed to the public repository, and only then the mining of the
-held-out sites.
+This file, `mine_hands.py`, `analyze_lags.py` (for the shared constants and rules),
+`analyze_recency.py`, `grade_recency.py`, `DESIGN.md`, `DEVELOPMENT.md`, and the four development
+result files `results/recency_dev_*.json`. `seal_poker.py` lists them and writes the hash file.
+Then a signed commit, a signed tag `prereg-poker-recency-v1` pushed to the public repository, and
+only then the mining of the held-out sites.
 
 ## 10. Before sealing
 
@@ -184,3 +186,17 @@ about 87 times in 100, and a site where the dip continued at full size into the 
 (−0.012) would pass about 10 times in 100. The grader still holds ±0.01 until the owner decides.
 The two rates come from a normal approximation to the resampling intervals in the table and are
 rough.
+
+**Settled at the seal, 2026-11-11.**
+
+- **H2's band is ±0.015.** The owner was shown the fault and the proposed change and answered "seal
+  when ready and proceed". Claude took that as acceptance of the proposal. With the new band the
+  pooled development data and each development site alone pass H1 to H4
+  (`results/graded_dev_*.json`, graded again after the change).
+- **H3's band is unchanged.** The owner did not comment on it.
+- **The two prior papers were not read in full.** If either turns out to report the comparison of
+  one hand after with two hands after, this study is a replication of it on other sites and will be
+  described as one. That does not change any bar.
+- **Still owed after the seal and before any held-out site is mined:** a rerun of the development
+  chain from a fresh clone at the sealed tag, compared with the committed
+  `results/recency_dev_coarse.json`.

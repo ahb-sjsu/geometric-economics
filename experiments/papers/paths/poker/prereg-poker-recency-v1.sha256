@@ -1,0 +1,35 @@
+{
+  "prereg": "prereg-poker-recency-v1",
+  "title": "Does a player raise less in the hand straight after a large pot?",
+  "author": "Andrew H. Bond, San Jose State University",
+  "frozen_predictions": "H1-H4 in prereg-poker-recency-v1.md Section 5; void conditions in Section 8.",
+  "data": "PHH collection version 2, md5 0918a30f97bda0129897b7e0f1ec895a. Held out: PokerStars and PartyPoker. No action from either was read before sealing (Section 3).",
+  "hash_note": "sha256 of each file with CRLF normalized to LF; combined = sha256 over the concatenated component hex digests in bundle_files order",
+  "bundle_files": [
+    "prereg-poker-recency-v1.md",
+    "mine_hands.py",
+    "analyze_lags.py",
+    "analyze_recency.py",
+    "grade_recency.py",
+    "DESIGN.md",
+    "DEVELOPMENT.md",
+    "results/recency_dev_coarse.json",
+    "results/recency_dev_coarse_table.json",
+    "results/recency_dev_bin10.json",
+    "results/recency_dev_bin10_table.json"
+  ],
+  "files": {
+    "prereg-poker-recency-v1.md": "6bfe5cf998c3a70c4290db2bc014b502b9d760bcacdbd9e263ba1de4c90e6906",
+    "mine_hands.py": "bec3f0955fd93bc814cf8eb294fe3581248d844a525bf0c9894d6cedbd5921ec",
+    "analyze_lags.py": "299e1d1cee9b292f0d44c9d6927412782e6b4c08b6ecdc92dacb94f3376f0555",
+    "analyze_recency.py": "88f4f8750fb03fab844dcdd96c1aba47d2752391171cf58f52b5dda8eeed2f92",
+    "grade_recency.py": "f9b77556cf421b4182305846b3256b1a221ae61650bf7547d2df2a20b4d92dfc",
+    "DESIGN.md": "7ef7b63f38ca6f817b82fae508b4183301c2d440c70ae83836455056a309c8cf",
+    "DEVELOPMENT.md": "f1202744ce50e5b47f13c9e4463435894aa46f0f71ba68fe94178a30602ea110",
+    "results/recency_dev_coarse.json": "c3b8a36c389fe52c4a1091a7410fcb2044037c859132e5cbfe45f2788aac4e3e",
+    "results/recency_dev_coarse_table.json": "4eeaa3541ebb8c473e7aa495458f65e31b50cdd195a7ec3a5a9ec7907bb76321",
+    "results/recency_dev_bin10.json": "8ae031728914d2bd3c73d5160bd1267cf975b9a45755709d00592dde599ace80",
+    "results/recency_dev_bin10_table.json": "f2926967285b0db25f12cce2a97a6b552cadb5e76f346c94487b14a1f24b587f"
+  },
+  "combined_sha256": "a59c3a8d456ad2d4540b3995e064de852c3f86b0f0aa26aa254a0f18ed14f0dd"
+}

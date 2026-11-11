@@ -9,7 +9,7 @@ prediction from the contrasts for raising after a large pot of either result.
 import json
 import sys
 
-ZERO_BAND = 0.01                  # an interval inside +-ZERO_BAND counts as no difference
+ZERO_BAND = 0.015                 # an interval inside +-ZERO_BAND counts as no difference (widened from 0.01 before the seal)
 H3_BAND = (-0.022, -0.005)        # the development range -0.010 to -0.014, widened by about 0.007
 MIN_PLAYERS = 3000
 
