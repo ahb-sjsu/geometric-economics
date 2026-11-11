@@ -88,5 +88,33 @@ move (odd k) counts a little more than a difference in the opponent's one half-m
 **The pull at classical speed.** Among moves of two seconds or more it is +0.110 (+0.082 to
 +0.137), on 4,193 players. Zero-second moves are too few to report (39 players).
 
-**Not yet run.** The curve by speed category and by rating band, and the curve restricted to pairs
-with different opponents. October's rows carry the opponent's digest, so the last is possible.
+**By speed, by rating band and against different opponents, written after the result.** The
+sealed code could restrict by speed but not by rating or opponent. `analyze_memory_split.py` and
+`run_split.sh` were written on 2026-11-11 after H1 to H5 were graded. They import the registered
+functions unchanged and apply one filter to every class of pair, the baseline included. The four
+rating bands were chosen then, before any curve by band was computed. A band is the mover's rating
+in that game (`results/sealed_split_*.json`).
+
+| Subset | Players at D(0) | D(0) | D(2) | D(4) | D(5 or more) |
+|---|---|---|---|---|---|
+| Pairs against different opponents | 441,031 | +0.0372 (+0.0364 to +0.0380) | +0.0126 (+0.0116 to +0.0136) | +0.0065 (+0.0047 to +0.0084) | +0.0104 (+0.0045 to +0.0161) |
+| Bullet | 135,531 | +0.0477 (+0.0464 to +0.0492) | +0.0171 (+0.0155 to +0.0185) | +0.0083 (+0.0055 to +0.0110) | +0.0120 (+0.0032 to +0.0209) |
+| Blitz | 235,495 | +0.0339 (+0.0328 to +0.0350) | +0.0109 (+0.0096 to +0.0123) | +0.0061 (+0.0037 to +0.0087) | +0.0136 (+0.0055 to +0.0218) |
+| Rapid | 97,860 | +0.0280 (+0.0260 to +0.0299) | +0.0079 (+0.0052 to +0.0108) | +0.0017 (−0.0041 to +0.0074) | +0.0004 (−0.0169 to +0.0185) |
+| Classical | 2,206 | +0.0284 (+0.0143 to +0.0425) | −0.0185 (−0.0372 to +0.0015) | −0.0008 (−0.0381 to +0.0370) | +0.0385 (−0.0347 to +0.1229) |
+| Rated under 1400 | 139,613 | +0.0318 (+0.0302 to +0.0334) | +0.0104 (+0.0081 to +0.0127) | +0.0034 (−0.0021 to +0.0084) | +0.0130 (−0.0037 to +0.0297) |
+| Rated 1400 to 1799 | 179,166 | +0.0394 (+0.0381 to +0.0407) | +0.0134 (+0.0118 to +0.0151) | +0.0067 (+0.0034 to +0.0098) | +0.0107 (+0.0007 to +0.0208) |
+| Rated 1800 to 2199 | 118,960 | +0.0388 (+0.0374 to +0.0402) | +0.0143 (+0.0128 to +0.0160) | +0.0099 (+0.0072 to +0.0125) | +0.0149 (+0.0060 to +0.0245) |
+| Rated 2200 and over | 25,760 | +0.0395 (+0.0366 to +0.0423) | +0.0100 (+0.0071 to +0.0129) | +0.0072 (+0.0025 to +0.0117) | +0.0091 (−0.0069 to +0.0249) |
+
+- **Different opponents.** The curve is the registered one to the third decimal. Rematches against
+  one opponent do not produce it.
+- **Speed.** D(0) falls from bullet to blitz to rapid. Pass 9 of development found that moves made
+  in no time raise D(0), and bullet has the most of them, so this ordering is at least partly that
+  mixture and is not evidence that faster play has a longer memory. In rapid D(4) is not
+  distinguishable from zero. Classical has too few players to read beyond D(0).
+- **Rating.** D(0) is present in every band and is somewhat lower under 1400 than above. D(2) is
+  present in every band. The effect is not confined to weak or to strong players.
+- **D(5 or more)** is above zero in bullet, blitz, the two middle bands and the different-opponent
+  subset, and unresolved elsewhere. The reach beyond four half-moves reported above is not the
+  product of one subset.

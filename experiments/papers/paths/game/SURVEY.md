@@ -36,9 +36,10 @@ none of these. The dive theme is free. The name "Daily Dungeon" is taken twice.
   outcomes shown. **This is a candidate dataset for the present line**, with money-like stakes,
   many people and trial order. The Dryad page (read through a summariser) gives 91,058 completed
   plays, about 2.7 million choices and 1.1 million happiness ratings, in one 88 MB archive of
-  Matlab arrays with a README and the authors' script. The page names no licence beyond Dryad's
-  general terms. The README, which says what each field is and whether trials are in order, has
-  not been read. Nothing was downloaded. If it is taken up, the split into development and held
+  Matlab arrays with a README and the authors' script. Read in the owner's browser later the same
+  day: the page marks the data public domain (CC0), and the README says each play's 30 trials were
+  drawn at random and shown in a random order. So the history a player met was assigned by chance.
+  See `../gbe/DESIGN.md`. Nothing was downloaded. If it is taken up, the split into development and held
   out has to be fixed before the archive is opened, as for the other arenas.
 - **Sea Hero Quest.** A navigation game used for research on spatial ability, on phones, described
   by its makers as the largest navigation study.
@@ -62,7 +63,7 @@ far as these searches show, is assign the path to a fixed state.
 | **Paid panel (Prolific) pointed at the web page** | Pay per participant. | Best for the registered test. One peer-reviewed comparison found Prolific the only platform with high data quality without filters. Prolific published its own account of that study. |
 | **Volunteer research sites (LabInTheWild, TestMyBrain)** | Free, by arrangement with the site. Players get feedback on their own results. | Worth asking. Their own authors report good data quality and a wider range of ages and countries than paid panels. Whether they take outside studies was not checked. |
 | **itch.io, Reddit and similar** | Free. | Reach among people who like games. No evidence found on data quality from these. |
-| **Google Play** | 25 dollars once. A personal account made after November 2023 must run a closed test with 12 testers for 14 days before each new app is published. Organisation accounts are exempt. From third-party guides, not Google's page. | Possible later. The web page can be wrapped as an app. |
+| **Google Play** | 25 dollars once. A personal account made after November 2023 must run a closed test with 12 testers for 14 days before each new app is published. Organisation accounts are exempt. The 12 testers and 14 days were confirmed on Google's own help page (answer 14151465) on 2026-11-11. The fee and the exemption are from third-party guides. | Possible later. The web page can be wrapped as an app. |
 | **Apple App Store** | 99 dollars a year. A waiver exists for accredited educational institutions and nonprofits as legal entities, not for individuals, and only for free apps (Apple's support page, through a summary). | Possible later, and slowest. Apple's guideline 5.1.3 on health research apps requires consent and approval by an independent ethics board. Whether Apple would treat a decision game as such research was not established. |
 
 **Recommendation.** Web first. A single static page that installs to the home screen reaches every
