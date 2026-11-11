@@ -105,3 +105,29 @@ noise, then register. Keep the public version as a later step that reuses the sa
   now on Atlas.
 - The game rules as a specification, with the scripts and the split fixed in writing before a
   line of the page is written.
+
+## 9. Revenue, raised by the owner on 2026-11-11
+
+The owner would like the game to earn money if it can. It can be both a product and a research
+instrument, on these conditions. None of the legal or policy points below has been checked with
+either university, a lawyer or a store.
+
+- **Nothing sold may touch the decision.** No buying of in-game money, lives, retries or hints. A
+  purchase that changes the stake or the state destroys the measurement, and selling currency in
+  a game of chance invites gambling and loot-box rules. What can be sold: the game itself, a
+  one-time supporter unlock, removal of adverts, cosmetic themes.
+- **Research use is opt-in and separate from the product.** A player who declines plays the same
+  game and their data are not used. Scripted histories are disclosed in the consent text in
+  general terms.
+- **The financial interest is declared.** An investigator who earns from the instrument has a
+  conflict of interest that the ethics application and any paper must state.
+- **Ownership.** The owner states (2026-11-11) that the university has had no part in the
+  research. Whether an employer's policy could still reach work of this kind has not been read by
+  Claude and is not asserted either way.
+- **Adverts are a cost to the data.** They interrupt play between decisions and bring a third
+  party's tracking into a research instrument. A paid unlock is cleaner.
+- **Stores take a share,** and Apple's fee waiver for institutions does not apply to an app with
+  purchases.
+
+No estimate of revenue is made here. Most small games earn little, and nothing found in the
+survey says how this one would do.

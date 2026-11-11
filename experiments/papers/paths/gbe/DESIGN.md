@@ -1,6 +1,9 @@
 # The Great Brain Experiment: risky choices with the order assigned by chance
 
-**Status: design, 2026-11-11. Nothing downloaded. The archive has not been opened.** Found during
+**Status: design, 2026-11-11, written before the download. Since then the owner gave the word,
+the archive was fetched and split by the rule of Section 4, and development has begun
+(`DEVELOPMENT.md`). The held-out half is unreadable and unopened. Sections 1 to 6 are as written
+before the download, with one correction marked in Section 2.** Found during
 the survey for a purpose-built game (`../game/SURVEY.md`). Drafted by Claude. Every choice below
 is Claude's and open to the owner. Download and any seal need the owner's word.
 
@@ -40,6 +43,11 @@ choice and then uses a random event.
 
 That the gamble's two outcomes were equally likely is from memory of the published papers and is
 not stated in the README preview. It has to be confirmed from the field tables and from the data.
+
+**Correction after development pass 2.** The share of gambles won is 50.5% and rises with a
+person's number of plays, and the player spins the spinner. So the outcome is close to a coin flip
+within one play and is not one across a person's plays. The comparison has to be made within a
+play. See `DEVELOPMENT.md`.
 
 ## 3. What it does not give
 
