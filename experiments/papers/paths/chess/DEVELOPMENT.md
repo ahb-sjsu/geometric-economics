@@ -609,3 +609,70 @@ The first failing would discard the reading.
 a player who thinks on the opponent's time has chosen early without it showing on the clock. Both
 blur the two sets toward each other, which works against the predictions. One development month,
 openings only.
+
+## Result of pass 8 (development, August 2026)
+
+`mine_movetime.py` and `analyze_pull_time.py`, run 2026-11-11 on Atlas. File
+`results/pull_time_2026-08.json`. 41,060,070 rows. 15,884,159 moves of one second were left out as
+planned, and 7,841 rows with a negative time were dropped.
+
+The pull, in king steps, with 95% intervals over players:
+
+| Speed | Zero-second moves | Moves of two seconds or more | Slow minus zero, same players |
+|---|---|---|---|
+| Bullet | −0.074 (−0.077 to −0.071), 102,106 players | +0.071 (+0.063 to +0.079), 41,235 | +0.142 (+0.129 to +0.155), 22,187 |
+| Blitz | −0.074 (−0.078 to −0.071), 73,609 | +0.067 (+0.063 to +0.071), 177,422 | +0.145 (+0.136 to +0.154), 37,831 |
+| Rapid | −0.086 (−0.101 to −0.073), 6,502 | +0.062 (+0.057 to +0.067), 120,461 | +0.130 (+0.104 to +0.157), 4,291 |
+| Classical | too few (35 players) | +0.078 (+0.052 to +0.105), 4,314 | too few |
+
+**Against the predictions.** All three held in bullet, including the stronger form. Zero-second
+moves show a negative pull. Moves of two seconds or more show a positive one. The difference
+within the same players excludes zero.
+
+**What was not predicted.** The two numbers are nearly the same at every speed. A zero-second move
+shows about −0.07 to −0.09 whether the game is bullet, blitz or rapid, and a move of two seconds or
+more shows about +0.06 to +0.08 whether the game is bullet or classical. **The ordering by speed in
+pass 7 is a matter of mixture.** Bullet has more zero-second moves and classical has almost none.
+Once the time spent on the move is fixed, the game's clock adds little.
+
+**Reading.** This supports the guess of pass 7. A move that took time is drawn toward what the
+opponent just did. A move that took no time is drawn toward what the opponent did one move
+earlier, as it would be if it had been chosen before the last move was on the board. On this
+reading the history that enters a choice is the history up to the moment of choosing, and the two
+kinds of move differ in when that moment was, not in how the past is weighed.
+
+**Limits.**
+
+- One development month. July was not mined with move times.
+- A zero-second move is taken to be one entered in advance. The rows do not say so.
+- The split was made on the outcome's own timing, so the two sets can differ in other ways. A
+  player enters a move in advance when the reply seems forced or obvious, and such positions may
+  differ in which of the opponent's moves came last. The pull is computed within one position with
+  the player's own moves fixed, which limits this and does not remove it.
+- The pass 4 to 6 speed ordering of D(0) has not been recomputed by time spent. It may be mixture
+  as well. That is the next check.
+
+## Pass 9, planned: does the registered curve survive when zero-second moves are removed?
+
+Written 2026-11-11 before it was run. Pass 8 raises a question about the draft registration. If a
+zero-second move was chosen before the opponent's last move, then for that move the position was
+not fixed at the time of choosing, and D(0) would partly measure a difference of position and not
+of history. Points of the curve at k of 1 or more are not open to this, since two games that share
+their last half-move and their present position also shared the position one half-move earlier.
+
+**Statistic.** The registered analysis, `analyze_memory.py` with pairs at least 24 hours apart, run
+unchanged on two subsets of the August rows: games where the chosen move took two seconds or more,
+and games where it took zero seconds. `analyze_memory_time.py` only splits the rows.
+
+**Predictions for moves of two seconds or more.**
+
+- D(0) is above zero with an interval that excludes zero. Pass 8 already implies an effect of
+  order in this set, so this is expected.
+- D(0) is smaller than the +0.036 of all moves together. This is the open one. If D(0) is as large
+  here, early choice explains none of the registered effect. If it falls to near D(2), the last
+  move's extra weight was mostly early choice.
+- D(2) is above zero and within 0.005 of its value over all moves, +0.012.
+
+**What follows.** If D(0) among slow moves is clearly lower, the draft registration needs a
+sentence on what H1 and H3 measure, and a slow-move curve added to what is reported, before any
+seal. The bars are not changed by this pass.
