@@ -26,6 +26,15 @@ leads to large pots as often as in the data. Nothing else links one hand to the
 next except the stack. A stay ends at its drawn length or when the stack falls
 under two big blinds. Each stay is its own table, so no hand has two players.
 
+The seat moves round a table of six by one place each hand, from a random
+start. The first version (still available as a fifth argument `fixed-seat`)
+kept every simulated player in one seat. The registered analysis compares
+within a seat, so a fixed seat put consecutive hands in the same cell, which
+real play never does. That version returned about -0.005 at every lag while
+the raw rates by lag were flat (null_raw.py). It is kept as a demonstration
+that the estimator can be biased and is not a measure of the bias in the data.
+The action drawn does not depend on the seat, which real play does.
+
 What the simulation leaves out: tables with several players, time of day, and
 any change in a player's style from one stay to the next. A style that drifts
 between stays would sit on both sides of the registered comparison.
@@ -95,7 +104,7 @@ def measure(rows, out):
           "share of large pots by action", {a: round(float(np.mean(np.abs(delta[a]) >= 10)), 4) for a in ACTS if delta[a]})
 
 
-def simulate(profile, out, seed=1):
+def simulate(profile, out, seed=1, rotate=True):
     rng = np.random.default_rng(seed)
     m = json.load(open(profile))
     delta = {a: np.array(m["delta"][a]) for a in ACTS}
@@ -113,10 +122,12 @@ def simulate(profile, out, seed=1):
                 table += 1
                 length = min(int(rng.choice(lengths)), n - done)
                 stack = float(rng.choice(starts))
+                seat0 = int(rng.integers(0, 6)) if rotate else 3
                 for k in range(length):
                     c = int(codes[done + k])
                     act = ACTS[c % 4]
-                    g.write("SIM\t1\tt%d\t%d\t1\tp%d\t3\t6\t%.2f\t%d\t%s\n" % (table, k + 1, i, stack, c // 4, act))
+                    seat = (seat0 + k) % 6 if rotate else 3
+                    g.write("SIM\t1\tt%d\t%d\t1\tp%d\t%d\t6\t%.2f\t%d\t%s\n" % (table, k + 1, i, seat, stack, c // 4, act))
                     rows += 1
                     stack += float(rng.choice(delta[act]))
                     if stack < 2:
@@ -130,4 +141,5 @@ if __name__ == "__main__":
     if sys.argv[1] == "measure":
         measure(sys.argv[2], sys.argv[3])
     else:
-        simulate(sys.argv[2], sys.argv[3], int(sys.argv[4]) if len(sys.argv) > 4 else 1)
+        simulate(sys.argv[2], sys.argv[3], int(sys.argv[4]) if len(sys.argv) > 4 else 1,
+                 not (len(sys.argv) > 5 and sys.argv[5] == "fixed-seat"))
