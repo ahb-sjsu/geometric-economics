@@ -486,3 +486,126 @@ does not predict.
 changed move is, to tell a reference from a plan. Then write the registration for a fresh month:
 the four points of the curve, with the values above as the predictions and the two months' spread as
 the margin.
+
+## Pass 7, planned: is the next move drawn toward where the opponent just moved?
+
+Written 2026-11-11 before it was run. It is the first step of the classification named above.
+
+**Question.** Passes 2 to 6 show that the next move depends on the opponent's last move at a fixed
+position. They do not say in which direction. A reference that sits at the previous position makes
+one prediction about direction. The present position differs from the previous one only around the
+piece the opponent just moved, so that is where a player comparing the two would look, and the next
+move should land nearer to it. A plan carried from earlier moves predicts no such pull once the
+player's own moves are held fixed.
+
+**Statistic.** Take one player at one position, and only games in which the player's own moves came
+in the same order. Group the games by the opponent's last move. For two groups A and B whose last
+moves ended on different squares a and b, give every game the number x, the distance from the
+square the player's next move ends on to b, minus its distance to a. Distance is counted in king
+steps. The position is the same in both groups, so x is the same function of the chosen move in
+both. The pull is the mean of x in group A minus the mean of x in group B. It is zero if the order
+does not matter and positive if the move lands nearer the square the opponent moved to last. Pairs
+of groups are weighted by the smaller group, a player's value is the weighted mean over that
+player's positions, and the reported number is the mean over players with a 95% interval from 2,000
+resamples of players. Squares are read from the move text. Castling counts as the king's square.
+
+**Predictions.**
+
+- The pull is above zero in both months, with intervals that exclude zero.
+- By point estimate it is larger in bullet than in rapid, as the effect of the last move was in
+  pass 4.
+
+No size is predicted. Nothing like it has been measured here.
+
+**Limits known before running.**
+
+- A positive pull shows direction. It does not show that the nearer move is worse or better.
+- When two orders differ by the opponent swapping two moves, a is the square of the later move in
+  one group and of the earlier move in the other. The pull is then toward the more recent of the
+  two, which is the intended reading.
+- Openings only, development only.
+
+**What each outcome means.** A positive pull supports the reading that the player attends to what
+just changed, which is what a reference at the previous position describes. A pull of zero with
+the pass 2 effect intact would mean the order changes the move without drawing it toward the
+change, and the reference reading would lose its simplest support.
+
+## Result of pass 7 (development, July and August 2026)
+
+`analyze_pull.py`, run 2026-11-11 on Atlas. Files `results/pull_2026-07.json` and
+`results/pull_2026-08.json`. The script was first tried on the first 200,000 rows of August to see
+that it ran, and that slice showed a negative pull. Nothing was changed after that.
+
+The pull, in king steps, with 95% intervals over players:
+
+| Speed | Players, July | Pull, July | Players, August | Pull, August |
+|---|---|---|---|---|
+| Bullet | 173,620 | −0.036 (−0.038 to −0.033) | 177,631 | −0.038 (−0.040 to −0.035) |
+| Blitz | 307,786 | +0.004 (+0.002 to +0.006) | 314,845 | +0.006 (+0.004 to +0.008) |
+| Rapid | 147,574 | +0.035 (+0.032 to +0.039) | 152,718 | +0.038 (+0.034 to +0.042) |
+| Classical | 4,727 | +0.068 (+0.042 to +0.094) | 4,846 | +0.064 (+0.039 to +0.088) |
+| All speeds | 570,833 | +0.002 (+0.001 to +0.004) | 583,362 | +0.003 (+0.002 to +0.005) |
+
+**Against the predictions.**
+
+- The first held by its letter and not in substance. The pull over all speeds is above zero in both
+  months, but it is an average of a negative pull in bullet and positive pulls elsewhere, and it is
+  a twentieth the size of either.
+- **The second failed.** Bullet was predicted to show the largest pull. It shows a pull of the
+  opposite sign.
+
+**What the data show.** The direction of the effect depends on the clock, and in order. With the
+most time the next move lands nearer the square the opponent just moved to. With the least time it
+lands nearer the square of the opponent's earlier move. Blitz sits between and is close to zero.
+The two months agree at every speed to within 0.004.
+
+**Reading, made after seeing the result and not tested.** A slow player answers the change that
+just happened. A bullet player seems to answer the change before it. That is what would be seen if
+the bullet player's move were chosen one move early, before the opponent's last move was on the
+board, as when a move is entered in advance. On that reading the reference is not the previous
+position at every speed. It is the position at the time the choice was made, and under time
+pressure that is one move further back. This is a guess. A test would need the time spent on each
+move, which the rows do not carry: a bullet move played in a few tenths of a second should show
+the negative pull, and a bullet move played after a pause should not.
+
+**What this does to the earlier passes.** Pass 4 found the effect of the opponent's last move
+largest in bullet. Pass 7 says that in bullet the difference is not a pull toward that move. The
+two fit if the bullet player's choice was made before the last move, so that two orders with
+different last moves are, for that player, two different positions at the time of choosing. The
+size of the pass 4 effect in bullet would then partly measure early choice and not memory. That
+weakens the reading of the speed ordering as "less time, more weight on the recent past", which
+was offered after passes 4 to 6. The registered draft does not rest on the speed ordering.
+
+Openings only, development only, own moves in the same order.
+
+## Pass 8, planned: is the bullet reversal made by moves played in no time?
+
+Written 2026-11-11 before the rows were mined. It tests the guess at the end of pass 7.
+
+**Data.** August 2026 mined again with `mine_movetime.py`, a copy of the registered miner that adds
+the mover's clock after the chosen move. The time spent on a move is the clock before it, minus
+the clock after it, plus the increment. Lichess records clocks in whole seconds, and a move entered
+in advance costs no time, so such moves show a time of zero.
+
+**Statistic.** The pull of pass 7, computed with `analyze_pull.py`'s rule on two sets of games
+within each speed: those where the chosen move took zero seconds by the clock, and those where it
+took two seconds or more. Moves of one second are left out, since rounding puts both kinds there. Both groups of
+a pair must come from the same set.
+
+**Predictions.**
+
+- In bullet the pull among zero-second moves is below zero, with an interval that excludes zero.
+- In bullet the pull among moves of two seconds or more is above the pull among zero-second moves,
+  and the interval of the difference over players who have both excludes zero.
+- The stronger form, which may fail while the two above hold: in bullet the pull among moves of two
+  seconds or more is above zero.
+
+**What each outcome means.** All three holding would support the reading that the reference is the
+position at the time of choosing. The first two holding without the third would say that speed of
+the single move explains part of the reversal and something else in bullet play explains the rest.
+The first failing would discard the reading.
+
+**Limits known before running.** A move of zero seconds need not have been entered in advance, and
+a player who thinks on the opponent's time has chosen early without it showing on the clock. Both
+blur the two sets toward each other, which works against the predictions. One development month,
+openings only.

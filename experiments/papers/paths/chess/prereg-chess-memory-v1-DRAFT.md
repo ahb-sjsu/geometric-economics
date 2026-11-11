@@ -142,3 +142,10 @@ public repository, and only then the run.
   grader, and compares both outputs byte for byte with the committed files. Started 2026-11-11 on
   commit `0bedf33`. Its outcome is recorded below when it ends. A rehearsal on the sealed commit
   itself is still owed if any bundled file changes before the seal.
+- **Rehearsal outcome, 2026-11-11.** The run on commit `0bedf33` started at 02:17 UTC, finished
+  mining August at 04:29 and ended at 04:46. The analysis output is identical byte for byte to the
+  committed `results/memory_reg_2026-08.json`, and the grader's output is identical to the committed
+  `results/graded_dev_2026-08.json`. The registered chain therefore reproduces its development
+  result from the public repository alone, given the month's file and the key for player digests.
+  No bundled file has changed since that commit. `mine_movetime.py`, added later for a development
+  pass, is a separate file and leaves the registered miner untouched.

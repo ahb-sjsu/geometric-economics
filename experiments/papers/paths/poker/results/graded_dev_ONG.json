@@ -1,0 +1,57 @@
+{
+ "verdict": "GRADED",
+ "site": "ONG",
+ "predictions": {
+  "H1 raising dips in the hand straight after a large pot": "PASS",
+  "H2 the dip lasts one hand": "PASS",
+  "H3 the size replicates": "PASS",
+  "H4 the dip follows wins and losses alike": "PASS"
+ },
+ "numbers": {
+  "any_lag1_minus_lag2": {
+   "players": 4134,
+   "cells": 56120,
+   "difference": -0.011631591262034197,
+   "ci95": [
+    -0.020177923914385665,
+    -0.0026862317176162527
+   ]
+  },
+  "any_lag2_minus_lag3": {
+   "players": 4078,
+   "cells": 54216,
+   "difference": -0.00010606415868867768,
+   "ci95": [
+    -0.008885642449228822,
+    0.008698901710516432
+   ]
+  },
+  "any_lag3_minus_lag4": {
+   "players": 4099,
+   "cells": 54116,
+   "difference": -0.007211313016958846,
+   "ci95": [
+    -0.016093318551971495,
+    0.0019474206937050962
+   ]
+  },
+  "win_lag1_minus_lag2": {
+   "players": 3242,
+   "cells": 35321,
+   "difference": -0.018058456824849394,
+   "ci95": [
+    -0.027955434434763,
+    -0.007781800640555353
+   ]
+  },
+  "loss_lag1_minus_lag2": {
+   "players": 2624,
+   "cells": 23576,
+   "difference": -0.01776293076267693,
+   "ci95": [
+    -0.030846219474639548,
+    -0.004399607706419059
+   ]
+  }
+ }
+}

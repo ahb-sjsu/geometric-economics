@@ -125,3 +125,20 @@ The Australian and laboratory sets stay unread.
 
 **Not done.** Post et al. report path dependence in these data with a structural model. This pass
 did not fit their model and does not test their result.
+
+## The incumbent model cannot yet be written down (2026-11-11)
+
+The main design names the path-dependent prospect theory of Post et al. 2008 as the model to beat,
+"as specified in that paper". An attempt to obtain the published specification failed. The
+publisher, the SSRN copy and two repository copies refused automated access. The open Tinbergen
+Institute discussion paper 06-009/2 was read. It is an early draft on 53 Dutch and Australian
+contestants that regresses each contestant's estimated risk aversion on earlier losses and gains.
+It does not contain the reference-point model of the published article. **The model comparison
+stays unstarted until someone with access reads the published article** (American Economic Review
+98(1):38–71) and its equations are copied into this folder. Writing the model from memory would
+put a guess in the place of the incumbent.
+
+One fact from the early draft bears on the split. Its sample included 20 Australian episodes
+obtained from a private collection. The held-out Australian set here is the separate collection of
+de Roos and Sarafidis (399 contestants). Whether the two overlap has not been checked and cannot be
+without reading the held-out file's episode dates.

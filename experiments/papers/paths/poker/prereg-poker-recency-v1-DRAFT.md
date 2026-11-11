@@ -155,3 +155,32 @@ held-out sites.
   comparison of one hand after with two hands after. This rests on summaries and the item stays open
   until someone reads the papers.
 - The grader's self-test and the owner's view on H3's band are unchanged.
+
+**The grader's self-test, run 2026-11-11, and a fault it found in H2.** `run_selftest.sh` graded
+the development result with the registered specification, pooled and for each development site
+alone. Files `results/graded_dev_*.json`.
+
+| Data | Players | Lag 1 minus lag 2 | Lag 2 minus lag 3 | H1 | H2 | H3 | H4 |
+|---|---|---|---|---|---|---|---|
+| Three sites pooled | 17,974 | −0.0118 (−0.0167 to −0.0074) | −0.0018 (−0.0064 to +0.0027) | pass | pass | pass | pass |
+| Absolute Poker | 6,968 | −0.0094 (−0.0162 to −0.0027) | −0.0007 (−0.0079 to +0.0065) | pass | pass | pass | pass |
+| Full Tilt Poker | 6,879 | −0.0144 (−0.0219 to −0.0067) | −0.0041 (−0.0124 to +0.0044) | pass | **fail** | pass | pass |
+| Ongame Network | 4,134 | −0.0116 (−0.0202 to −0.0027) | −0.0001 (−0.0089 to +0.0087) | pass | pass | pass | pass |
+
+The pooled result passes all four, which is what the list above required. H1, H3 and H4 pass on
+every site alone, so the dip is not carried by one site.
+
+**H2's band is too narrow for one site.** H2 asks for the interval to lie inside −0.01 to +0.01.
+On one site the interval reaches about 0.008 either side of the estimate, so H2 passes only when the
+estimate falls within about 0.002 of zero. If the true difference were exactly zero, a site of this
+size would still fail H2 about three times in four. Full Tilt failed it with an estimate of −0.004
+whose interval includes zero. Two sites passed by landing near zero. A bar that a true null fails
+most of the time is not a test of the claim. PartyPoker has fewer hands than the three development
+sites together, so the same would happen there.
+
+**Proposed change, for the owner to accept or replace before the seal.** Widen H2's band to −0.015
+to +0.015. By the interval widths above, a site with a true difference of zero would then pass
+about 87 times in 100, and a site where the dip continued at full size into the second hand
+(−0.012) would pass about 10 times in 100. The grader still holds ±0.01 until the owner decides.
+The two rates come from a normal approximation to the resampling intervals in the table and are
+rough.
