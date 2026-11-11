@@ -168,10 +168,37 @@ for the formula Theory Radar found, `(prev_lat max cum_total) * base`.
   (+0.13), in units of one standard deviation. More points just received, less gambling. One
   fold, no intervals.
 
+## Pass 6. Matching on the running total
+
+`analyze_matched.py`, `results/dev_matched.json`. No mean is removed. Trials are put in cells and
+the rate of gambling after a won gamble is compared with the rate after a lost one inside each
+cell, all participants pooled.
+
+| Cells | Last gamble won | Next gamble won, must be zero |
+|---|---|---|
+| Kind of trial, position in the play | −0.0105 (−0.0130 to −0.0080) | +0.0017 (−0.0003 to +0.0038) |
+| and the points so far in the play, in bins of 25 | +0.0030 (+0.0004 to +0.0056) | +0.0018 (−0.0002 to +0.0039) |
+| and the player's share of gambles on the rest of the play, five bins | −0.0023 (−0.0047 to −0.0001) | +0.0001 (−0.0017 to +0.0020) |
+
+- **All three checks pass**, which the method of pass 4 could not manage with the total in the fit.
+- **Once two trials are matched on the points held, most of the effect of the last outcome is
+  gone.** It falls from −0.0105 to between +0.0030 and −0.0023, with the sign depending on
+  whether the kind of player is matched too. On this evidence the dip after a win is mostly the
+  player holding more points, and not the win as an event.
+- What is left is at most about a quarter of the first figure and its sign is not settled. Two
+  players at the same total after a win and after a loss came from different totals, so they are
+  not the same kind of player, and the third row only partly repairs that.
+
+This bears on the claim the campaign set out to test. Chess and poker supported "the last step
+matters beyond the present position". Here the present position, the points held, appears to
+carry most of what the last step seemed to do. That is a development finding on half the data
+and it was not predicted.
+
 ## What is not yet done
 
-- The running total differs after a win and after a loss. Pass 4 tried to hold it fixed and its
-  method failed the check. A matched comparison is still owed.
+- Pass 6 matches on the running total within a play. It does not separate the points held from
+  the wealth of the player outside the game, which is not recorded.
+- The splits by kind of trial in pass 3 have not been redone with the total matched.
 - Both Theory Radar runs are unfinished, and a search scored by something other than F1 has not
   been tried.
 - The poker result was a dip after winning. This is a dip after winning too. Whether the two are
