@@ -130,17 +130,22 @@ exactly so. The checks are the guard against that and they are not proof.
 ## 9. Bundle to seal
 
 This file, `DESIGN.md`, `DEVELOPMENT.md`, `split_gbe.py`, `analyze_last.py` (for the shared
-constants), `analyze_matched.py`, `analyze_onesided.py`, a grading script, and the development
-result files `results/dev_matched.json`, `results/dev_matched_lead.json`,
-`results/dev_onesided.json` and `results/dev_onesided_first.json`. Then a signed commit and a
+constants), `analyze_matched.py`, `analyze_onesided.py`, `grade_gbe.py`,
+`results/split_counts.json`, and the development result files `results/dev_matched.json`,
+`results/dev_matched_lead.json`, `results/dev_onesided.json` and
+`results/dev_onesided_first.json`. `seal_gbe.py` lists them. Then a signed commit and a
 signed tag pushed to the public repository, and only then the held-out file is made readable.
 
 ## 10. Before sealing
 
-- A grading script that reads the three result files and returns each prediction and check as
-  pass or fail, and its self-test on the development files. On development it must return every
-  prediction and check of Section 5 as a pass, since the bars were set there.
-- A seal script that lists the bundle and writes the hash file, as for chess and poker.
+- **Done 2026-11-12.** `grade_gbe.py` reads the three result files and returns each prediction
+  and check as pass or fail. On the development files it returns every line of Section 5 as a
+  pass (`results/dev_graded_selftest.json`), as it must, since the bars were set there.
+  `selftest_grade.py` then moves one number at a time across its bar. Each of H1 to H6 fails
+  alone, each of K1 to K3 marks the predictions it guards as not trusted and no others, and both
+  void conditions fire. All 63 assertions passed.
+- **Done 2026-11-12, not run.** `seal_gbe.py` lists the bundle and writes the hash file, as for
+  chess and poker. It expects this file under its name without `-DRAFT`.
 - The published papers on these data read for any analysis of the previous outcome. Two web
   searches found none. Two searches do not show there is none.
 - The owner's view on the bars, above all the bands of H2 and H3 and the limits of K1 to K3,

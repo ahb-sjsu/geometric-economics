@@ -1,0 +1,155 @@
+{
+ "verdict": "GRADED",
+ "rows": 799142,
+ "participants": 23579,
+ "checks": {
+  "K1 pooled next-trial checks within 0.004": "PASS",
+  "K2 next-trial checks after gain and loss trials within 0.005": "PASS",
+  "K3 next-trial slope for lost gambles within 0.010": "PASS"
+ },
+ "predictions": {
+  "H1 gambling dips after a win": "PASS",
+  "H2 the size replicates": "PASS",
+  "H3 the points held carry the pooled dip": "PASS",
+  "H4 the sign turns with the kind of trial just played": "PASS",
+  "H5 a larger loss is followed by more gambling": "PASS",
+  "H6 the loss slope is larger than the win slope": "PASS"
+ },
+ "overall": {
+  "part 1, the pooled dip and the points held (H1, H3, K1)": "PASS",
+  "part 2, structure inside the null (H4 with K2, H6)": "PASS"
+ },
+ "numbers": {
+  "lag1 M0": {
+   "difference": -0.010484837896731596,
+   "cells_used": 15,
+   "ci95": [
+    -0.013034439871316751,
+    -0.00802795616327998
+   ]
+  },
+  "lag1 M1": {
+   "difference": 0.0030294646097929526,
+   "cells_used": 862,
+   "ci95": [
+    0.00041956622451274034,
+    0.005278337822343757
+   ]
+  },
+  "lag1 M2": {
+   "difference": -0.0023261979149220764,
+   "cells_used": 3114,
+   "ci95": [
+    -0.004906207832171562,
+    -0.00019662136664774844
+   ]
+  },
+  "lag1 M1_after_gain": {
+   "difference": -0.013892288025035279,
+   "cells_used": 787,
+   "ci95": [
+    -0.017439382485217602,
+    -0.010350316464230134
+   ]
+  },
+  "lag1 M1_after_loss": {
+   "difference": 0.020672184142115142,
+   "cells_used": 774,
+   "ci95": [
+    0.016410771643422636,
+    0.024447859404781194
+   ]
+  },
+  "lag1 M2_after_gain": {
+   "difference": -0.0172976394383727,
+   "cells_used": 2700,
+   "ci95": [
+    -0.020453307827852405,
+    -0.014005481239076061
+   ]
+  },
+  "lag1 M2_after_loss": {
+   "difference": 0.014423437542911005,
+   "cells_used": 2589,
+   "ci95": [
+    0.0102040044580956,
+    0.018122281015639553
+   ]
+  },
+  "lead1 M0": {
+   "difference": 0.0017118483990586774,
+   "cells_used": 15,
+   "ci95": [
+    -0.0004961089245786811,
+    0.0038129889284484113
+   ]
+  },
+  "lead1 M1": {
+   "difference": 0.001755059858525939,
+   "cells_used": 899,
+   "ci95": [
+    -0.00040455510761709836,
+    0.0038735151514594193
+   ]
+  },
+  "lead1 M2": {
+   "difference": 0.00013088358279227162,
+   "cells_used": 3231,
+   "ci95": [
+    -0.0018720068009760518,
+    0.0021684098070117526
+   ]
+  },
+  "lead1 M1_after_gain": {
+   "difference": 0.0012526023493929055,
+   "cells_used": 819,
+   "ci95": [
+    -0.0018826535035174662,
+    0.004403000246566228
+   ]
+  },
+  "lead1 M1_after_loss": {
+   "difference": 0.0016612956942163846,
+   "cells_used": 812,
+   "ci95": [
+    -0.0024091172022490054,
+    0.005204782740594697
+   ]
+  },
+  "C1 lag_won": {
+   "slope_per_100_points": -0.0004259696628761435,
+   "ci95": [
+    -0.009969227345640416,
+    0.0085204185661453
+   ]
+  },
+  "C1 lag_lost": {
+   "slope_per_100_points": 0.019247664194977653,
+   "ci95": [
+    0.009871089516376268,
+    0.02851927203856941
+   ]
+  },
+  "C1 lead_won": {
+   "slope_per_100_points": 0.014383983037171073,
+   "ci95": [
+    0.005068360354995158,
+    0.023214926640958512
+   ]
+  },
+  "C1 lead_lost": {
+   "slope_per_100_points": 8.320083992222609e-05,
+   "ci95": [
+    -0.008887870380348894,
+    0.009749046370376338
+   ]
+  },
+  "C1 lag_lost_minus_won": {
+   "slope_per_100_points": 0.019673633857853798,
+   "ci95": [
+    0.006555518558992878,
+    0.03253849911901414
+   ]
+  }
+ }
+}

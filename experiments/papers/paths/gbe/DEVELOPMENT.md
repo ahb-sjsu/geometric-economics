@@ -130,9 +130,11 @@ for the one whose threshold best separates a yes from a no, scored by F1. The ye
 whether the player gambled. Mixed trials only. The runs are trials of the method on small
 samples.
 
-**`radar_fit.py`, 15,000 trials, three folds done of five and part of the fourth** (read
-2026-11-11 23:40 UTC, still running). Area under the ROC curve on participants not used for the
-search.
+**`radar_fit.py`, 15,000 trials, five folds** (`results/radar_fit_mixed.json`, finished
+2026-11-12). Area under the ROC curve on participants not used for the search. The table shows
+the first folds. Over all five the means are: offer and person, formula 0.801, logistic
+regression 0.801, boosted trees 0.814. With the path columns added, formula 0.801, logistic
+regression 0.807, boosted trees 0.827.
 
 | Columns | Formula found | Formula | Logistic regression | Boosted trees |
 |---|---|---|---|---|
@@ -149,15 +151,15 @@ search.
 On offer columns alone, folds 2 and 3 returned `sigmoid(lose geometric ev_gap)` and
 `tanh(lose hypot lose)`, a different formula on every fold, none as good as the standard models.
 
-- **With the player's own rate on offer, the search returned the same formula on every fold so
-  far (four).**
+- **With the player's own rate on offer, the search returned the same formula on all five
+  folds, with and without the path columns.**
   On a mixed trial the safe value is zero, so `ev_gap / lose` is half of one plus the ratio of
   the win to the loss. The formula says a player gambles when the win is large enough beside the
   loss, with a bar set by that player's habit. That is the standard account of loss aversion,
   recovered from the table with no hint. It is within 0.003 to 0.022 of the two standard models.
 - **With the path columns on offer the search returned the same formula and used none of them**,
-  on all three folds where that run is done.
-  The boosted trees gained 0.008 to 0.016 from the path columns, so there is something there
+  on all five folds.
+  The boosted trees gained 0.014 from the path columns on average, so there is something there
   that one threshold on a short formula does not reach.
 - The first formula on offer columns alone is the sign of `ev_gap` and no more.
 
@@ -371,7 +373,9 @@ hypothesis.
 
 - Pass 6 matches on the running total within a play. It does not separate the points held from
   the wealth of the player outside the game, which is not recorded.
-- The first Theory Radar run (`radar_fit.py`) is unfinished, in its fourth fold of five.
+- The registration is drafted (`prereg-gbe-last-outcome-v1-DRAFT.md`) with its grader
+  (`grade_gbe.py`, self-test `selftest_grade.py` passed on the development files) and seal script
+  (`seal_gbe.py`, not run). It is not sealed.
 - Whether a wide gamble won on the next trial goes with more gambling now than a wide one lost,
   and if so why (pass 7). First plays alone did not answer it.
 - The poker result was a dip after winning. This is a dip after winning too. Whether the two are

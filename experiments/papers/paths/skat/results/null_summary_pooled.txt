@@ -1,0 +1,61 @@
+shuffles 6
+people
+  L_minus_N              real +0.0208 (+0.0088 to +0.0328)  shuffled mean +0.0005 sd 0.0013 min -0.0010 max +0.0023  intervals excluding zero 0 of 6
+  W_minus_N              real +0.0196 (+0.0117 to +0.0283)  shuffled mean -0.0003 sd 0.0006 min -0.0013 max +0.0004  intervals excluding zero 0 of 6
+  L_minus_W              real -0.0046 (-0.0166 to +0.0072)  shuffled mean +0.0007 sd 0.0017 min -0.0012 max +0.0028  intervals excluding zero 0 of 6
+  any_lag1_minus_lag2    real +0.0041 (-0.0016 to +0.0101)  shuffled mean +0.0012 sd 0.0017 min -0.0019 max +0.0027  intervals excluding zero 0 of 6
+  any_lag2_minus_lag3    real -0.0014 (-0.0054 to +0.0021)  shuffled mean -0.0001 sd 0.0019 min -0.0024 max +0.0019  intervals excluding zero 0 of 6
+  loss_lag1_minus_lag2   real -0.0096 (-0.0204 to +0.0018)  shuffled mean +0.0002 sd 0.0049 min -0.0039 max +0.0085  intervals excluding zero 1 of 6
+  loss_lag2_minus_lag3   real -0.0025 (-0.0117 to +0.0079)  shuffled mean -0.0002 sd 0.0032 min -0.0026 max +0.0053  intervals excluding zero 0 of 6
+  win_lag1_minus_lag2    real +0.0071 (+0.0002 to +0.0142)  shuffled mean +0.0013 sd 0.0020 min -0.0019 max +0.0041  intervals excluding zero 1 of 6
+  win_lag2_minus_lag3    real -0.0009 (-0.0053 to +0.0031)  shuffled mean -0.0001 sd 0.0023 min -0.0027 max +0.0025  intervals excluding zero 0 of 6
+people_without_ten_busiest
+  L_minus_N              real +0.0255 (+0.0136 to +0.0380)  shuffled mean +0.0013 sd 0.0025 min -0.0010 max +0.0055  intervals excluding zero 1 of 6
+  W_minus_N              real +0.0231 (+0.0162 to +0.0300)  shuffled mean -0.0009 sd 0.0007 min -0.0023 max -0.0005  intervals excluding zero 0 of 6
+  L_minus_W              real -0.0014 (-0.0130 to +0.0107)  shuffled mean +0.0020 sd 0.0027 min -0.0008 max +0.0059  intervals excluding zero 1 of 6
+  any_lag1_minus_lag2    real +0.0089 (+0.0028 to +0.0150)  shuffled mean +0.0010 sd 0.0020 min -0.0014 max +0.0034  intervals excluding zero 0 of 6
+  any_lag2_minus_lag3    real -0.0028 (-0.0079 to +0.0021)  shuffled mean -0.0004 sd 0.0013 min -0.0028 max +0.0009  intervals excluding zero 0 of 6
+  loss_lag1_minus_lag2   real -0.0066 (-0.0188 to +0.0058)  shuffled mean +0.0029 sd 0.0083 min -0.0072 max +0.0147  intervals excluding zero 2 of 6
+  loss_lag2_minus_lag3   real +0.0002 (-0.0130 to +0.0122)  shuffled mean -0.0021 sd 0.0044 min -0.0068 max +0.0036  intervals excluding zero 0 of 6
+  win_lag1_minus_lag2    real +0.0126 (+0.0051 to +0.0198)  shuffled mean +0.0004 sd 0.0014 min -0.0015 max +0.0027  intervals excluding zero 0 of 6
+  win_lag2_minus_lag3    real -0.0028 (-0.0084 to +0.0029)  shuffled mean -0.0001 sd 0.0016 min -0.0028 max +0.0011  intervals excluding zero 0 of 6
+xskat
+  L_minus_N              real +0.0020 (-0.0031 to +0.0067)  shuffled mean +0.0024 sd 0.0023 min -0.0016 max +0.0043  intervals excluding zero 0 of 6
+  W_minus_N              real +0.0029 (+0.0008 to +0.0052)  shuffled mean +0.0019 sd 0.0011 min +0.0004 max +0.0035  intervals excluding zero 2 of 6
+  L_minus_W              real +0.0011 (-0.0061 to +0.0085)  shuffled mean +0.0020 sd 0.0019 min -0.0003 max +0.0046  intervals excluding zero 0 of 6
+  any_lag1_minus_lag2    real +0.0023 (-0.0028 to +0.0079)  shuffled mean -0.0001 sd 0.0020 min -0.0029 max +0.0022  intervals excluding zero 0 of 6
+  any_lag2_minus_lag3    real +0.0054 (+0.0005 to +0.0099)  shuffled mean +0.0079 sd 0.0032 min +0.0039 max +0.0130  intervals excluding zero 5 of 6
+  loss_lag1_minus_lag2   real -0.0024 (-0.0298 to +0.0246)  shuffled mean -0.0037 sd 0.0158 min -0.0142 max +0.0266  intervals excluding zero 1 of 6
+  loss_lag2_minus_lag3   real -0.0020 (-0.0229 to +0.0192)  shuffled mean +0.0140 sd 0.0169 min +0.0002 max +0.0460  intervals excluding zero 1 of 6
+  win_lag1_minus_lag2    real +0.0063 (+0.0001 to +0.0129)  shuffled mean -0.0002 sd 0.0029 min -0.0039 max +0.0031  intervals excluding zero 0 of 6
+  win_lag2_minus_lag3    real +0.0043 (-0.0014 to +0.0099)  shuffled mean +0.0059 sd 0.0040 min +0.0026 max +0.0135  intervals excluding zero 2 of 6
+kermit
+  L_minus_N              real -0.0078 (-0.0252 to +0.0101)  shuffled mean +0.0005 sd 0.0037 min -0.0043 max +0.0046  intervals excluding zero 0 of 6
+  W_minus_N              real +0.0014 (-0.0058 to +0.0085)  shuffled mean +0.0017 sd 0.0045 min -0.0027 max +0.0096  intervals excluding zero 1 of 6
+  L_minus_W              real -0.0123 (-0.0372 to +0.0130)  shuffled mean +0.0019 sd 0.0072 min -0.0080 max +0.0101  intervals excluding zero 0 of 6
+  any_lag1_minus_lag2    real -0.0094 (-0.0276 to +0.0085)  shuffled mean +0.0037 sd 0.0087 min -0.0072 max +0.0180  intervals excluding zero 1 of 6
+  any_lag2_minus_lag3    real +0.0273 (+0.0100 to +0.0446)  shuffled mean +0.0282 sd 0.0050 min +0.0204 max +0.0342  intervals excluding zero 6 of 6
+  loss_lag1_minus_lag2   real -0.0980 (-0.2010 to +0.0075)  shuffled mean +0.0049 sd 0.0578 min -0.0941 max +0.0731  intervals excluding zero 1 of 6
+  loss_lag2_minus_lag3   real -0.0631 (-0.1504 to +0.0251)  shuffled mean +0.0156 sd 0.0425 min -0.0522 max +0.0625  intervals excluding zero 0 of 6
+  win_lag1_minus_lag2    real -0.0109 (-0.0307 to +0.0093)  shuffled mean +0.0067 sd 0.0137 min -0.0050 max +0.0316  intervals excluding zero 1 of 6
+  win_lag2_minus_lag3    real +0.0317 (+0.0117 to +0.0516)  shuffled mean +0.0259 sd 0.0078 min +0.0171 max +0.0344  intervals excluding zero 4 of 6
+zoot
+  L_minus_N              real -0.0011 (-0.0162 to +0.0135)  shuffled mean -0.0030 sd 0.0060 min -0.0125 max +0.0043  intervals excluding zero 0 of 6
+  W_minus_N              real -0.0024 (-0.0093 to +0.0045)  shuffled mean +0.0020 sd 0.0028 min -0.0011 max +0.0069  intervals excluding zero 0 of 6
+  L_minus_W              real +0.0038 (-0.0173 to +0.0235)  shuffled mean -0.0079 sd 0.0086 min -0.0181 max +0.0043  intervals excluding zero 0 of 6
+  any_lag1_minus_lag2    real -0.0157 (-0.0328 to +0.0021)  shuffled mean +0.0040 sd 0.0051 min -0.0011 max +0.0127  intervals excluding zero 0 of 6
+  any_lag2_minus_lag3    real +0.0439 (+0.0262 to +0.0617)  shuffled mean +0.0289 sd 0.0052 min +0.0248 max +0.0380  intervals excluding zero 6 of 6
+  loss_lag1_minus_lag2   real -0.0301 (-0.1213 to +0.0574)  shuffled mean -0.0089 sd 0.0588 min -0.1117 max +0.0708  intervals excluding zero 1 of 6
+  loss_lag2_minus_lag3   real -0.0087 (-0.0856 to +0.0654)  shuffled mean +0.0246 sd 0.0311 min -0.0185 max +0.0622  intervals excluding zero 0 of 6
+  win_lag1_minus_lag2    real -0.0176 (-0.0398 to +0.0040)  shuffled mean +0.0065 sd 0.0077 min -0.0008 max +0.0192  intervals excluding zero 0 of 6
+  win_lag2_minus_lag3    real +0.0368 (+0.0166 to +0.0577)  shuffled mean +0.0285 sd 0.0052 min +0.0220 max +0.0373  intervals excluding zero 6 of 6
+theCount
+  L_minus_N              real -0.0013 (-0.0165 to +0.0150)  shuffled mean +0.0052 sd 0.0078 min -0.0070 max +0.0161  intervals excluding zero 1 of 6
+  W_minus_N              real +0.0051 (-0.0025 to +0.0122)  shuffled mean +0.0000 sd 0.0048 min -0.0077 max +0.0048  intervals excluding zero 1 of 6
+  L_minus_W              real -0.0109 (-0.0340 to +0.0121)  shuffled mean -0.0005 sd 0.0066 min -0.0090 max +0.0098  intervals excluding zero 0 of 6
+  any_lag1_minus_lag2    real +0.0106 (-0.0072 to +0.0291)  shuffled mean +0.0047 sd 0.0092 min -0.0095 max +0.0161  intervals excluding zero 0 of 6
+  any_lag2_minus_lag3    real +0.0322 (+0.0139 to +0.0496)  shuffled mean +0.0285 sd 0.0104 min +0.0124 max +0.0424  intervals excluding zero 5 of 6
+  loss_lag1_minus_lag2   real -0.0301 (-0.1349 to +0.0692)  shuffled mean +0.0094 sd 0.0501 min -0.0408 max +0.0888  intervals excluding zero 1 of 6
+  loss_lag2_minus_lag3   real +0.0269 (-0.0630 to +0.1204)  shuffled mean +0.0276 sd 0.0250 min -0.0073 max +0.0585  intervals excluding zero 0 of 6
+  win_lag1_minus_lag2    real +0.0179 (-0.0039 to +0.0396)  shuffled mean +0.0052 sd 0.0131 min -0.0178 max +0.0188  intervals excluding zero 0 of 6
+  win_lag2_minus_lag3    real +0.0430 (+0.0210 to +0.0636)  shuffled mean +0.0233 sd 0.0101 min +0.0089 max +0.0346  intervals excluding zero 3 of 6

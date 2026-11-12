@@ -1,0 +1,61 @@
+shuffles 10
+people
+  L_minus_N              real -0.0027 (-0.0239 to +0.0185)  shuffled mean -0.0039 sd 0.0124 min -0.0244 max +0.0184  intervals excluding zero 1 of 10
+  W_minus_N              real +0.0216 (+0.0019 to +0.0405)  shuffled mean +0.0039 sd 0.0122 min -0.0124 max +0.0269  intervals excluding zero 1 of 10
+  L_minus_W              real -0.0167 (-0.0424 to +0.0090)  shuffled mean -0.0033 sd 0.0160 min -0.0309 max +0.0155  intervals excluding zero 1 of 10
+  any_lag1_minus_lag2    real +0.0074 (-0.0153 to +0.0304)  shuffled mean -0.0019 sd 0.0128 min -0.0199 max +0.0211  intervals excluding zero 0 of 10
+  any_lag2_minus_lag3    real +0.0084 (-0.0146 to +0.0303)  shuffled mean +0.0119 sd 0.0080 min -0.0050 max +0.0228  intervals excluding zero 1 of 10
+  loss_lag1_minus_lag2   real -0.0018 (-0.0382 to +0.0329)  shuffled mean +0.0024 sd 0.0209 min -0.0321 max +0.0329  intervals excluding zero 0 of 10
+  loss_lag2_minus_lag3   real +0.0152 (-0.0148 to +0.0468)  shuffled mean +0.0104 sd 0.0171 min -0.0146 max +0.0341  intervals excluding zero 1 of 10
+  win_lag1_minus_lag2    real +0.0156 (-0.0104 to +0.0411)  shuffled mean -0.0026 sd 0.0115 min -0.0218 max +0.0146  intervals excluding zero 0 of 10
+  win_lag2_minus_lag3    real +0.0041 (-0.0197 to +0.0276)  shuffled mean +0.0091 sd 0.0111 min -0.0114 max +0.0268  intervals excluding zero 1 of 10
+people_without_ten_busiest
+  L_minus_N              real -0.0027 (-0.0242 to +0.0197)  shuffled mean -0.0039 sd 0.0127 min -0.0248 max +0.0187  intervals excluding zero 1 of 10
+  W_minus_N              real +0.0218 (+0.0020 to +0.0417)  shuffled mean +0.0040 sd 0.0123 min -0.0125 max +0.0272  intervals excluding zero 1 of 10
+  L_minus_W              real -0.0169 (-0.0423 to +0.0091)  shuffled mean -0.0033 sd 0.0162 min -0.0315 max +0.0157  intervals excluding zero 1 of 10
+  any_lag1_minus_lag2    real +0.0076 (-0.0155 to +0.0306)  shuffled mean -0.0019 sd 0.0131 min -0.0203 max +0.0216  intervals excluding zero 0 of 10
+  any_lag2_minus_lag3    real +0.0086 (-0.0141 to +0.0307)  shuffled mean +0.0121 sd 0.0082 min -0.0052 max +0.0232  intervals excluding zero 0 of 10
+  loss_lag1_minus_lag2   real -0.0013 (-0.0407 to +0.0341)  shuffled mean +0.0025 sd 0.0215 min -0.0334 max +0.0336  intervals excluding zero 0 of 10
+  loss_lag2_minus_lag3   real +0.0158 (-0.0178 to +0.0480)  shuffled mean +0.0108 sd 0.0175 min -0.0148 max +0.0350  intervals excluding zero 1 of 10
+  win_lag1_minus_lag2    real +0.0160 (-0.0081 to +0.0420)  shuffled mean -0.0026 sd 0.0117 min -0.0221 max +0.0150  intervals excluding zero 0 of 10
+  win_lag2_minus_lag3    real +0.0042 (-0.0206 to +0.0294)  shuffled mean +0.0093 sd 0.0114 min -0.0117 max +0.0274  intervals excluding zero 2 of 10
+xskat
+  L_minus_N              real +0.0051 (-0.0007 to +0.0105)  shuffled mean +0.0017 sd 0.0018 min -0.0012 max +0.0040  intervals excluding zero 0 of 10
+  W_minus_N              real +0.0069 (+0.0038 to +0.0101)  shuffled mean +0.0042 sd 0.0018 min +0.0015 max +0.0066  intervals excluding zero 6 of 10
+  L_minus_W              real +0.0046 (-0.0036 to +0.0133)  shuffled mean -0.0006 sd 0.0025 min -0.0035 max +0.0032  intervals excluding zero 0 of 10
+  any_lag1_minus_lag2    real +0.0039 (-0.0022 to +0.0106)  shuffled mean +0.0004 sd 0.0034 min -0.0028 max +0.0067  intervals excluding zero 1 of 10
+  any_lag2_minus_lag3    real +0.0094 (+0.0033 to +0.0152)  shuffled mean +0.0111 sd 0.0030 min +0.0072 max +0.0185  intervals excluding zero 10 of 10
+  loss_lag1_minus_lag2   real -0.0001 (-0.0277 to +0.0277)  shuffled mean -0.0012 sd 0.0086 min -0.0160 max +0.0155  intervals excluding zero 0 of 10
+  loss_lag2_minus_lag3   real -0.0007 (-0.0226 to +0.0214)  shuffled mean +0.0106 sd 0.0103 min -0.0043 max +0.0252  intervals excluding zero 2 of 10
+  win_lag1_minus_lag2    real +0.0055 (-0.0019 to +0.0130)  shuffled mean +0.0009 sd 0.0037 min -0.0041 max +0.0066  intervals excluding zero 0 of 10
+  win_lag2_minus_lag3    real +0.0084 (+0.0016 to +0.0154)  shuffled mean +0.0090 sd 0.0031 min +0.0053 max +0.0149  intervals excluding zero 7 of 10
+kermit
+  L_minus_N              real -0.0071 (-0.0256 to +0.0115)  shuffled mean -0.0028 sd 0.0072 min -0.0102 max +0.0145  intervals excluding zero 0 of 10
+  W_minus_N              real -0.0011 (-0.0099 to +0.0078)  shuffled mean +0.0011 sd 0.0046 min -0.0075 max +0.0070  intervals excluding zero 0 of 10
+  L_minus_W              real -0.0135 (-0.0400 to +0.0120)  shuffled mean -0.0016 sd 0.0100 min -0.0194 max +0.0114  intervals excluding zero 0 of 10
+  any_lag1_minus_lag2    real -0.0084 (-0.0280 to +0.0101)  shuffled mean +0.0002 sd 0.0143 min -0.0249 max +0.0154  intervals excluding zero 1 of 10
+  any_lag2_minus_lag3    real +0.0334 (+0.0138 to +0.0522)  shuffled mean +0.0286 sd 0.0092 min +0.0114 max +0.0397  intervals excluding zero 9 of 10
+  loss_lag1_minus_lag2   real -0.1055 (-0.2109 to +0.0001)  shuffled mean -0.0083 sd 0.0378 min -0.0752 max +0.0478  intervals excluding zero 0 of 10
+  loss_lag2_minus_lag3   real -0.0523 (-0.1398 to +0.0353)  shuffled mean +0.0189 sd 0.0468 min -0.0859 max +0.0824  intervals excluding zero 2 of 10
+  win_lag1_minus_lag2    real -0.0049 (-0.0263 to +0.0166)  shuffled mean +0.0024 sd 0.0165 min -0.0193 max +0.0297  intervals excluding zero 1 of 10
+  win_lag2_minus_lag3    real +0.0334 (+0.0119 to +0.0558)  shuffled mean +0.0212 sd 0.0134 min -0.0071 max +0.0396  intervals excluding zero 4 of 10
+zoot
+  L_minus_N              real -0.0051 (-0.0214 to +0.0101)  shuffled mean -0.0017 sd 0.0084 min -0.0147 max +0.0114  intervals excluding zero 0 of 10
+  W_minus_N              real -0.0056 (-0.0139 to +0.0029)  shuffled mean +0.0019 sd 0.0035 min -0.0042 max +0.0062  intervals excluding zero 0 of 10
+  L_minus_W              real +0.0047 (-0.0169 to +0.0255)  shuffled mean -0.0015 sd 0.0131 min -0.0226 max +0.0228  intervals excluding zero 2 of 10
+  any_lag1_minus_lag2    real -0.0146 (-0.0344 to +0.0051)  shuffled mean -0.0012 sd 0.0103 min -0.0160 max +0.0141  intervals excluding zero 0 of 10
+  any_lag2_minus_lag3    real +0.0553 (+0.0366 to +0.0751)  shuffled mean +0.0288 sd 0.0097 min +0.0163 max +0.0439  intervals excluding zero 9 of 10
+  loss_lag1_minus_lag2   real -0.0462 (-0.1379 to +0.0419)  shuffled mean +0.0033 sd 0.0336 min -0.0523 max +0.0540  intervals excluding zero 0 of 10
+  loss_lag2_minus_lag3   real -0.0136 (-0.0937 to +0.0615)  shuffled mean +0.0034 sd 0.0305 min -0.0429 max +0.0623  intervals excluding zero 0 of 10
+  win_lag1_minus_lag2    real -0.0154 (-0.0383 to +0.0072)  shuffled mean -0.0005 sd 0.0114 min -0.0145 max +0.0152  intervals excluding zero 0 of 10
+  win_lag2_minus_lag3    real +0.0468 (+0.0247 to +0.0692)  shuffled mean +0.0268 sd 0.0097 min +0.0149 max +0.0409  intervals excluding zero 6 of 10
+theCount
+  L_minus_N              real -0.0018 (-0.0187 to +0.0155)  shuffled mean -0.0015 sd 0.0077 min -0.0130 max +0.0064  intervals excluding zero 0 of 10
+  W_minus_N              real -0.0017 (-0.0109 to +0.0072)  shuffled mean +0.0051 sd 0.0072 min -0.0128 max +0.0108  intervals excluding zero 6 of 10
+  L_minus_W              real -0.0110 (-0.0355 to +0.0130)  shuffled mean -0.0007 sd 0.0097 min -0.0133 max +0.0213  intervals excluding zero 0 of 10
+  any_lag1_minus_lag2    real +0.0054 (-0.0131 to +0.0248)  shuffled mean -0.0019 sd 0.0109 min -0.0251 max +0.0133  intervals excluding zero 1 of 10
+  any_lag2_minus_lag3    real +0.0350 (+0.0151 to +0.0545)  shuffled mean +0.0329 sd 0.0036 min +0.0260 max +0.0384  intervals excluding zero 10 of 10
+  loss_lag1_minus_lag2   real -0.0239 (-0.1287 to +0.0772)  shuffled mean +0.0165 sd 0.0391 min -0.0495 max +0.0681  intervals excluding zero 0 of 10
+  loss_lag2_minus_lag3   real +0.0335 (-0.0553 to +0.1243)  shuffled mean +0.0229 sd 0.0302 min -0.0435 max +0.0589  intervals excluding zero 0 of 10
+  win_lag1_minus_lag2    real +0.0096 (-0.0125 to +0.0321)  shuffled mean -0.0032 sd 0.0130 min -0.0255 max +0.0161  intervals excluding zero 1 of 10
+  win_lag2_minus_lag3    real +0.0425 (+0.0196 to +0.0644)  shuffled mean +0.0289 sd 0.0099 min +0.0144 max +0.0439  intervals excluding zero 6 of 10

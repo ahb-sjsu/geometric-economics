@@ -85,10 +85,79 @@ it is not zero, and its size for people has not been measured.
 - For people, the raw rates after a win fall slightly with distance (0.546, 0.541, 0.539) and
   after a loss are flat. Nothing is claimed from them.
 
+## Pass 3, 2026-11-12. The bias measured, and an estimator that does not have it for people
+
+**The same games with memory removed.** `null_perm.py`. Every game in which middlehand bid or
+passed is put in a cell (middlehand's login, jacks held, bin of aces plus tens). Inside a cell
+the way the game went (the first action, who declared, the result) is shuffled among the games.
+Deals, seats and the order of games stay. After the shuffle a bid depends on the hand cell and
+on nothing before it, every player's rate in every cell is unchanged, and a game middlehand
+declares is still one in which middlehand bid. Ten shuffles through the unchanged
+`analyze_bids.py` (`results/null_summary_per_player.txt`).
+
+| 2 back against 3 back | Real | Mean of ten shuffles | Spread of the shuffles (sd) |
+|---|---|---|---|
+| `xskat` | +0.009 | +0.011 | 0.003 |
+| `kermit` | +0.033 | +0.029 | 0.009 |
+| `zoot` | +0.055 | +0.029 | 0.010 |
+| `theCount` | +0.035 | +0.033 | 0.004 |
+| people | +0.008 | +0.012 | 0.008 |
+
+- **The reading of pass 2 is shown.** Players with no memory give the differences the programs
+  gave. The interval excluded zero in 38 of 40 shuffled runs for the programs. The estimator
+  makes this difference and the programs did not respond to their past.
+- `zoot` is 2.7 spreads above its shuffles. That is not followed up. One of four at that
+  distance is not strong, and the shuffle is not a full model of a program.
+- 1 back against 2 back is unbiased, as expected, since the player sat in another seat at both.
+  The ten shuffles average −0.002 for people and within ±0.002 of zero for each program.
+- **For people the first estimator is also too noisy to use.** With no effect in the data its
+  value for 1 back against 2 back still ranged from −0.020 to +0.021 over ten shuffles.
+
+**Cells pooled over players.** `analyze_bids_pooled.py`, `results/bids_pooled_dev.json`. The
+same cells and the same two sides. Cells are weighted by n_a · n_b / (n_a + n_b) and pooled, so
+a player counts by the number of usable decisions and not as one vote. Intervals from 2,000
+resamples of players. Six shuffles through it (`results/null_summary_pooled.txt`).
+
+| People | Real | Mean of six shuffles | Spread (sd) |
+|---|---|---|---|
+| After a lost declared game, against after a game not declared | +0.0208 (+0.0088 to +0.0328) | +0.0005 | 0.0013 |
+| After a won declared game, against after a game not declared | +0.0196 (+0.0117 to +0.0283) | −0.0003 | 0.0006 |
+| After a loss against after a win | −0.0046 (−0.0166 to +0.0072) | +0.0007 | 0.0017 |
+| One declared game in the last three, 1 back against 2 back | +0.0041 (−0.0016 to +0.0101) | +0.0012 | 0.0017 |
+| The same, 2 back against 3 back | −0.0014 (−0.0054 to +0.0021) | −0.0001 | 0.0019 |
+| 1 back against 2 back, the game was won | +0.0071 (+0.0002 to +0.0142) | +0.0013 | 0.0020 |
+| 1 back against 2 back, the game was lost | −0.0096 (−0.0204 to +0.0018) | +0.0002 | 0.0049 |
+
+- **For people this estimator shows no bias.** All seven shuffled means are within 0.0013 of zero.
+  The intervals are about a quarter as wide as before (0.012 against 0.045 for the lag rows).
+- **For the programs the bias is still there** (2 back against 3 back, +0.008 to +0.029 on the
+  shuffles), because their unit is the series and a series is short. The programs' real values
+  sit on their shuffles here too.
+- **After declaring a game a person bids more on the next one, by two points of a hundred, and
+  it does not matter whether the game was won or lost.** This is far outside the shuffles. It is
+  not evidence that the last game acts on the next bid. A player in a session of free bidding
+  declares more and bids more, and the shuffle does not hold a session fixed.
+- **The comparison built to cancel the session, 1 back against 2 back, shows nothing resolved.**
+  +0.004, with an interval that includes zero. After a won game it is +0.007 and the interval
+  just excludes zero. Without the ten busiest people it is +0.009 (+0.003 to +0.015) overall
+  and +0.013 (+0.005 to +0.020) after a win, against shuffles of +0.001 and +0.000.
+- If that holds it is a rise in bidding in the game straight after a won one, lasting one game.
+  Poker gave a dip in raising straight after a large pot, so the direction is the opposite, and
+  here it appears clearly only when ten people are left out. It is a development reading on a
+  comparison chosen after seeing the table.
+
+**What the shuffle does not test.** It breaks the tie between a player and that player's result
+in games where the player sat in another seat, since the result moves with middlehand's cell.
+The comparisons are within player, so this should not matter, but it has not been shown. And a
+shuffle within a player's whole record removes sessions along with memory.
+
 ## Next
 
-1. A simulation with no memory through `analyze_bids.py` and through the registered poker code,
-   to measure the bias in each.
-2. An estimator for Skat that uses only lags at which the player sat in another seat, or pools
-   cells across a player's whole record.
-3. Position within the series, which the design listed and this pass did not use.
+1. Decide whether Skat goes to a registration. The pooled estimator is fit to register for
+   people. The one effect that cancels the session is small (+0.004 to +0.009) and unsettled, so
+   a registration would be a test of a weak development signal. The owner's call.
+2. Who the ten busiest people are in kind, people or programs, from their bidding against the
+   four known programs. The lag result turns on them.
+3. Position within the series, which the design listed and no pass has used.
+4. The poker check asked for in pass 2 was done by simulation
+   (`../poker/RESULTS-prereg-poker-recency-v1.md`).
