@@ -1,6 +1,9 @@
 """Development: is the effect of the last gamble one-sided, and does it outlast the points held.
 
-    python analyze_onesided.py dev.pkl out.json
+    python analyze_onesided.py dev.pkl out.json [first]
+
+With `first` only each participant's first play is used, where the share of
+gambles won is nearest one half (pass 2).
 
 Pass 5 found, with Theory Radar scored by area under the curve, the form
 `(base - prev_out) max base`: a last trial that paid less than average raises
@@ -29,7 +32,13 @@ A player who takes a wide gamble differs from one who takes a narrow one, so
 neither slope is clean by itself. The same fit with the next trial as
 reference (lead 1) has the same selection and no effect of the outcome, so the
 quantity read is the lag slope minus the lead slope. One-sided as in pass 5
-would be a positive value for lost and about zero for won. Intervals from
+would be a positive value for lost and about zero for won.
+
+The outcome of the next gamble is chance, so the lead slope should be the same
+for won and lost. lead_won_minus_lost tests that. If it holds, the mean of the
+two lead slopes is the better estimate of the selection, and the lag slopes
+minus that mean are given too. lag_lost_minus_won needs no lead at all, since
+a selection common to won and lost cancels in it. Intervals from
 1,000 resamples of participants, the same resamples for lag and lead.
 """
 import json
@@ -41,12 +50,12 @@ import numpy as np
 from analyze_last import SEED, plays
 
 
-def main(src, out):
+def main(src, out, first_only=False):
     recs = pickle.load(open(src, "rb"))["subjData"]
     rng = np.random.default_rng(SEED)
     rows = {"lag1": [], "lead1": []}
     for i, rec in enumerate(recs):
-        for p in plays(rec):
+        for p in plays(rec)[:1] if first_only else plays(rec):
             safe, win, lose = p[:, 2], p[:, 3], p[:, 4]
             gam = p[:, 6] == 1
             won = gam & (p[:, 7] == win)
@@ -78,7 +87,11 @@ def main(src, out):
         pid, g, w, s = a[:, 0].astype(int), a[:, 1], a[:, 2], a[:, 3]
         c0 = ((a[:, 4] * 3 + a[:, 5]) * 5 + a[:, 6]) * 5 + a[:, 7]
         tb = a[:, 8] - a[:, 8].min()
-        res[name] = {"rows": int(len(g)), "mean_half_spread_hundreds": float(s.mean())}
+        wide = s > np.median(s)
+        res[name] = {"rows": int(len(g)), "mean_half_spread_hundreds": float(s.mean()),
+                     "share_won": float(w.mean()), "share_won_narrow": float(w[~wide].mean()),
+                     "share_won_wide": float(w[wide].mean())}
+        print(name, res[name], flush=True)
         for cname, cell in (("C0", c0), ("C1", c0 + 225 * tb)):
             _, c = np.unique(cell * 2 + w, return_inverse=True)     # a constant per cell and per won or lost
             k = c.max() + 1
@@ -104,7 +117,12 @@ def main(src, out):
         e = {}
         for label, v in (("lag_won", lag[:, 0]), ("lag_lost", lag[:, 1]), ("lead_won", lead[:, 0]), ("lead_lost", lead[:, 1]),
                          ("won_lag_minus_lead", lag[:, 0] - lead[:, 0]), ("lost_lag_minus_lead", lag[:, 1] - lead[:, 1]),
-                         ("lost_minus_won_net", (lag[:, 1] - lead[:, 1]) - (lag[:, 0] - lead[:, 0]))):
+                         ("lost_minus_won_net", (lag[:, 1] - lead[:, 1]) - (lag[:, 0] - lead[:, 0])),
+                         ("lead_won_minus_lost", lead[:, 0] - lead[:, 1]),
+                         ("lag_lost_minus_won", lag[:, 1] - lag[:, 0]),
+                         ("lead_mean", lead.mean(1)),
+                         ("won_lag_minus_lead_mean", lag[:, 0] - lead.mean(1)),
+                         ("lost_lag_minus_lead_mean", lag[:, 1] - lead.mean(1))):
             e[label] = {"slope_per_100_points": float(v[0]),
                         "ci95": [float(np.percentile(v[1:], 2.5)), float(np.percentile(v[1:], 97.5))]}
             print("%s %-22s %+.4f (%+.4f to %+.4f)" % (cname, label, v[0], *e[label]["ci95"]), flush=True)
@@ -113,4 +131,4 @@ def main(src, out):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    main(sys.argv[1], sys.argv[2], len(sys.argv) > 3 and sys.argv[3] == "first")

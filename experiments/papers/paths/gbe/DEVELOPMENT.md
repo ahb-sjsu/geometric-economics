@@ -271,9 +271,23 @@ nothing where losing it cost points.
 - Put another way, in both kinds the player gambles less after a gamble that moved the points,
   up in a gain trial or down in a loss trial, than after one that returned zero. That reading
   was made after seeing the table.
-- **These splits have no check of their own yet.** The next-trial check was run pooled only. It
-  is being run by kind (`dev_matched_lead.json`), and until it is in the rows above stand
-  unchecked.
+- **The next-trial check by kind passes in 17 of 18 cases** (`results/dev_matched_lead.json`, the
+  same script with `lead`). Here the kind is that of the next trial, the reference, or of the
+  present trial.
+
+  | Next trial as reference | Kind and position | and points so far | and the player's share |
+  |---|---|---|---|
+  | Next gamble is in a gain trial | +0.0014 (−0.0018 to +0.0046) | +0.0013 (−0.0019 to +0.0044) | +0.0023 (−0.0005 to +0.0055) |
+  | Next gamble is in a mixed trial | +0.0014 (−0.0023 to +0.0052) | +0.0015 (−0.0021 to +0.0054) | −0.0000 (−0.0035 to +0.0038) |
+  | Next gamble is in a loss trial | +0.0014 (−0.0027 to +0.0050) | +0.0017 (−0.0024 to +0.0052) | −0.0036 (−0.0074 to −0.0003) |
+  | Present trial is a gain trial | +0.0018 (−0.0015 to +0.0051) | +0.0020 (−0.0013 to +0.0052) | +0.0002 (−0.0029 to +0.0033) |
+  | Present trial is a mixed trial | +0.0000 (−0.0039 to +0.0043) | +0.0001 (−0.0038 to +0.0044) | −0.0013 (−0.0050 to +0.0027) |
+  | Present trial is a loss trial | +0.0028 (−0.0007 to +0.0065) | +0.0027 (−0.0007 to +0.0064) | +0.0011 (−0.0021 to +0.0045) |
+
+  No check is larger than 0.004. The one interval that excludes zero, a loss trial with the
+  player's share matched, is a quarter the size of the effect in that cell (+0.0144) and of the
+  opposite sign. One of 18 at the 5% level is what chance gives. So the effects after gain
+  trials and after loss trials are not produced by whatever moves the check.
 - So the second bullet of this pass needs narrowing. Matching on the points held removes the
   pooled effect. It does not remove the effect after gain trials or after loss trials, which
   have opposite signs and cancel.
@@ -288,7 +302,7 @@ average). A won gamble paid s more than its mean and a lost one s less. The tabl
 change in the rate of gambling per hundred points of s, apart for won and lost, with a constant
 for each cell and for won against lost. The same fit with the next gamble as reference is the
 check. The outcome of the next gamble cannot act on the present choice, so that slope shows only
-which players take wide gambles.
+which players take wide gambles and, by pass 2, which of them win more often.
 
 Cells without the points held (kind of present trial, kind of reference trial, position, the
 player's share):
@@ -306,34 +320,60 @@ With the points held matched too, in bins of 25:
 | Lost, per hundred points | +0.0192 (+0.0099 to +0.0285) | +0.0001 (−0.0089 to +0.0097) | +0.0192 (+0.0063 to +0.0322) |
 
 - **A larger bad surprise is followed by more gambling, and matching on the points held does not
-  remove it.** The slope is +0.019 to +0.023 per hundred points in all four versions and every
+  remove it.** The slope is +0.012 to +0.023 per hundred points in all six versions here and every
   interval excludes zero. For the average gamble that is about one point of a hundred in the rate
-  of gambling, the size of the pooled effect of pass 3.
-- **For a good surprise the answer depends on the check.** With the points held matched the slope
-  after a won gamble is zero (−0.0004), which is the one-sided form of pass 5. But the check is
-  not flat for won gambles. A wider gamble won on the next trial goes with more gambling now
-  (+0.014), and a wider gamble lost on the next trial does not (+0.000). Subtract the check and
-  the won slope is −0.015, a two-sided effect.
-- **The check itself is not understood.** If the next-trial slope showed only who takes wide
-  gambles, it would be the same for won and lost, since the outcome is chance. It is not. This is
-  the same unexplained next-trial value as in passes 3, 4 and 6, here with a shape. Until it is
-  explained, neither the one-sided nor the two-sided reading of the won slope is established.
+  of gambling at the top of that range and half that at the bottom. The pooled effect of pass 3
+  was one point.
+- **The slope after a loss is larger than the slope after a win**, by +0.0342 (+0.0214 to
+  +0.0466) without the points held and +0.0197 (+0.0066 to +0.0325) with them. This figure needs
+  no check, because whatever marks out the players who take wide gambles is in both slopes and
+  cancels. So the two sides are not equal. That much of the form of pass 5 stands on this half.
+- **Whether the good side is exactly flat depends on the check.** With the points held matched the
+  slope after a won gamble is zero (−0.0004). The check is not the same for the two outcomes. A
+  wider gamble won on the next trial goes with more gambling now (+0.014) and a wider one lost
+  does not (+0.000). The difference is +0.0121 (−0.0000 to +0.0253) without the points held and
+  +0.0143 (+0.0023 to +0.0274) with them, so it is at the edge of what the resamples can tell
+  from zero.
+
+  | Points held matched | Won slope | Lost slope |
+  |---|---|---|
+  | Minus the check for the same outcome | −0.0148 (−0.0278 to −0.0026) | +0.0192 (+0.0063 to +0.0322) |
+  | Minus the mean of the two checks, +0.0072 | −0.0077 (−0.0180 to +0.0029) | +0.0120 (+0.0010 to +0.0228) |
+
+  With the same-outcome check the good side is negative, a two-sided effect. With the mean check
+  it is not told from zero, the one-sided form. Without the points held it is negative either
+  way (−0.0264 and −0.0203).
+- **Why the check would differ by outcome.** Pass 2 found the spinner is not a fair coin. 50.5%
+  of taken gambles are won here too, the same for narrow and wide ones (50.5% and 50.6%), and the
+  share rises with a participant's plays. A player who wins more often and also gambles more
+  would give a check that is higher for won gambles. That was a guess, and the first test of it
+  below does not support it.
+- **First plays only** (`results/dev_onesided_first.json`, 437,129 trials, 50.2% of gambles won).
+  If the uneven check came from players who learn to win, it should shrink on a participant's
+  first play. It does not shrink. The difference between the two checks is +0.0094 (−0.0081 to
+  +0.0262) without the points held and +0.0133 (−0.0039 to +0.0311) with them, the same size as
+  on all plays, with intervals that now include zero because the sample is half as large. So the
+  difference is either chance or has a cause other than the one guessed. It is not settled.
+- **The loss slope exceeds the win slope on first plays too**, by +0.0294 (+0.0119 to +0.0453)
+  without the points held and +0.0247 (+0.0069 to +0.0409) with them. On first plays the slope
+  after a won gamble with the points held matched is −0.0093 (−0.0210 to +0.0026) and after a
+  lost one +0.0155 (+0.0027 to +0.0278).
 - The caveat of pass 6 holds here too. Two players at the same total after a wide loss and
   after a narrow loss came from different totals.
 
 Set beside pass 6: on the points held matched, the average difference between after a win and
-after a loss is near zero pooled, and yet the size of a loss still moves the next choice. So the
-points held do not carry everything the last step does in these data. That is a development
-reading and goes to the held-out half as a hypothesis.
+after a loss is near zero pooled, and yet the size of a loss still moves the next choice, and
+moves it more than the size of a win does. So the points held do not carry everything the last
+step does in these data. That is a development reading and goes to the held-out half as a
+hypothesis.
 
 ## What is not yet done
 
 - Pass 6 matches on the running total within a play. It does not separate the points held from
   the wealth of the player outside the game, which is not recorded.
-- The next-trial check for the splits by kind in pass 6 is running.
 - The first Theory Radar run (`radar_fit.py`) is unfinished, in its fourth fold of five.
-- Why a wide gamble won on the next trial goes with more gambling now, and a wide one lost does
-  not (pass 7).
+- Whether a wide gamble won on the next trial goes with more gambling now than a wide one lost,
+  and if so why (pass 7). First plays alone did not answer it.
 - The poker result was a dip after winning. This is a dip after winning too. Whether the two are
   the same thing is not shown.
 - The source of the remaining lead 1 value.
