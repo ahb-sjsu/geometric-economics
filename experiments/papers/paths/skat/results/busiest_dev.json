@@ -1,0 +1,191 @@
+{
+ "programs": {
+  "xskat": {
+   "decisions": 1046752,
+   "bid_rate": 0.6047946409464706,
+   "days": 3722,
+   "busiest_day": 1320,
+   "hours_covered": 24,
+   "longest_run_hours": 12.393333333333333,
+   "nearest_program": "zoot",
+   "distance": 0.1839810872791495
+  },
+  "kermit": {
+   "decisions": 235080,
+   "bid_rate": 0.5333078101071975,
+   "days": 3637,
+   "busiest_day": 342,
+   "hours_covered": 24,
+   "longest_run_hours": 6.638055555555556,
+   "nearest_program": "theCount",
+   "distance": 0.029452177480910093
+  },
+  "zoot": {
+   "decisions": 232777,
+   "bid_rate": 0.6302512705293049,
+   "days": 3639,
+   "busiest_day": 395,
+   "hours_covered": 24,
+   "longest_run_hours": 6.695555555555556,
+   "nearest_program": "theCount",
+   "distance": 0.07907932195281667
+  },
+  "theCount": {
+   "decisions": 229329,
+   "bid_rate": 0.5597198784279354,
+   "days": 3637,
+   "busiest_day": 454,
+   "hours_covered": 24,
+   "longest_run_hours": 6.165555555555556,
+   "nearest_program": "kermit",
+   "distance": 0.02946177925499033
+  }
+ },
+ "ten_busiest": [
+  {
+   "decisions": 55361,
+   "bid_rate": 0.5802821480825852,
+   "days": 1249,
+   "busiest_day": 228,
+   "hours_covered": 14,
+   "longest_run_hours": 5.3525,
+   "nearest_program": "theCount",
+   "distance": 0.07596984626228849
+  },
+  {
+   "decisions": 47947,
+   "bid_rate": 0.9033307610486578,
+   "days": 1904,
+   "busiest_day": 247,
+   "hours_covered": 18,
+   "longest_run_hours": 2.7744444444444443,
+   "nearest_program": "zoot",
+   "distance": 0.3314730962706018
+  },
+  {
+   "decisions": 33966,
+   "bid_rate": 0.8291821232997704,
+   "days": 2413,
+   "busiest_day": 102,
+   "hours_covered": 24,
+   "longest_run_hours": 3.4122222222222223,
+   "nearest_program": "zoot",
+   "distance": 0.2466277855830361
+  },
+  {
+   "decisions": 33558,
+   "bid_rate": 0.5714285714285714,
+   "days": 1383,
+   "busiest_day": 135,
+   "hours_covered": 12,
+   "longest_run_hours": 2.100277777777778,
+   "nearest_program": "theCount",
+   "distance": 0.07187891328127319
+  },
+  {
+   "decisions": 26400,
+   "bid_rate": 0.39928030303030304,
+   "days": 1049,
+   "busiest_day": 129,
+   "hours_covered": 15,
+   "longest_run_hours": 2.5355555555555553,
+   "nearest_program": "kermit",
+   "distance": 0.14649461260941748
+  },
+  {
+   "decisions": 21636,
+   "bid_rate": 0.35205213533000557,
+   "days": 726,
+   "busiest_day": 158,
+   "hours_covered": 18,
+   "longest_run_hours": 2.2675,
+   "nearest_program": "kermit",
+   "distance": 0.20178266840971792
+  },
+  {
+   "decisions": 21531,
+   "bid_rate": 0.2575820909386466,
+   "days": 990,
+   "busiest_day": 71,
+   "hours_covered": 20,
+   "longest_run_hours": 2.3513888888888888,
+   "nearest_program": "kermit",
+   "distance": 0.3043436216650851
+  },
+  {
+   "decisions": 20404,
+   "bid_rate": 0.626347774946089,
+   "days": 1637,
+   "busiest_day": 75,
+   "hours_covered": 15,
+   "longest_run_hours": 1.9008333333333334,
+   "nearest_program": "zoot",
+   "distance": 0.07266237035572067
+  },
+  {
+   "decisions": 18630,
+   "bid_rate": 0.48990874932903916,
+   "days": 816,
+   "busiest_day": 162,
+   "hours_covered": 24,
+   "longest_run_hours": 2.3938888888888887,
+   "nearest_program": "kermit",
+   "distance": 0.08847087564796713
+  },
+  {
+   "decisions": 16002,
+   "bid_rate": 0.41644794400699914,
+   "days": 681,
+   "busiest_day": 132,
+   "hours_covered": 15,
+   "longest_run_hours": 2.638333333333333,
+   "nearest_program": "kermit",
+   "distance": 0.1299607734740596
+  }
+ ],
+ "other_logins_with_1000_or_more": {
+  "n": 114,
+  "decisions": {
+   "p10": 1220.4,
+   "median": 2624.0,
+   "p90": 10775.9,
+   "max": 15805.0
+  },
+  "days": {
+   "p10": 52.3,
+   "median": 184.0,
+   "p90": 580.7,
+   "max": 1484.0
+  },
+  "busiest_day": {
+   "p10": 37.0,
+   "median": 80.5,
+   "p90": 216.00000000000003,
+   "max": 435.0
+  },
+  "hours_covered": {
+   "p10": 13.0,
+   "median": 18.0,
+   "p90": 21.0,
+   "max": 24.0
+  },
+  "longest_run_hours": {
+   "p10": 0.976388888888889,
+   "median": 2.1143055555555557,
+   "p90": 4.646638888888892,
+   "max": 12.116666666666667
+  },
+  "bid_rate": {
+   "p10": 0.33084489644982384,
+   "median": 0.5836760779041771,
+   "p90": 0.7740778609313909,
+   "max": 0.9786535303776683
+  },
+  "distance": {
+   "p10": 0.07197930657499538,
+   "median": 0.13188328381038178,
+   "p90": 0.2719048632138653,
+   "max": 0.4223124614142613
+  }
+ }
+}

@@ -98,3 +98,8 @@ same thing. Telling the two apart needs a place where they disagree, which has n
   All three were stopped. One stream resumes after a pause of thirty minutes, for 2013 to 2019
   only, with a minute between months and ten minutes after any failure. At the pace seen, 84
   months take about a day and a half.
+- 2026-11-12. After 17 hours the single stream had 16 verified months. Two months failed
+  (December 2013, March 2014) and are to be retried. The plan of Section 4 to split once after
+  the whole download was changed: verified months are split in batches by the same rule, and the
+  held-out part of each batch is made unreadable when its split ends. Development began on the
+  first batch (`DEVELOPMENT.md`).

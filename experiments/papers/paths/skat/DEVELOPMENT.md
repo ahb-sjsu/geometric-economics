@@ -151,13 +151,32 @@ in games where the player sat in another seat, since the result moves with middl
 The comparisons are within player, so this should not matter, but it has not been shown. And a
 shuffle within a player's whole record removes sessions along with memory.
 
+**The ten busiest logins look like people.** `check_busiest.py`, `results/busiest_dev.json`. They
+hold 295,435 of the 867,108 decisions, a third, which is why leaving them out moves the result.
+
+| | Decisions | Longest run without a 30 minute pause | Hours of the day in use | Rate of bidding |
+|---|---|---|---|---|
+| The four programs | 229,329 to 1,046,752 | 6.2 to 12.4 hours | 24 | 0.53 to 0.63 |
+| The ten busiest logins | 16,002 to 55,361 | 1.9 to 5.4 hours | 12 to 24 | 0.26 to 0.90 |
+| The 114 other logins with 1,000 or more, median | 2,624 | 2.1 hours | 18 | 0.58 |
+| The same, 90th percentile | 10,776 | 4.6 hours | 21 | 0.77 |
+
+- No one of the ten plays in runs as long as any program's shortest. Their runs sit inside the
+  range of the other busy logins. Two of the ten use all 24 hours of the day, over two to six
+  years of play, with runs of 3.4 and 2.4 hours.
+- Their styles are far apart. Two bid on 90% and 83% of hands and one on 26%. The programs lie
+  between 53% and 63%.
+- So there is no ground for leaving them out as programs. The figure for all people is the one
+  to carry, +0.004 for 1 back against 2 back, not told from zero. The larger figure without the
+  ten was a choice made after seeing the table and is not carried.
+- Hours of the day are in UTC and a login's country is not known, so the hours column says
+  less than the runs do.
+
 ## Next
 
 1. Decide whether Skat goes to a registration. The pooled estimator is fit to register for
    people. The one effect that cancels the session is small (+0.004 to +0.009) and unsettled, so
    a registration would be a test of a weak development signal. The owner's call.
-2. Who the ten busiest people are in kind, people or programs, from their bidding against the
-   four known programs. The lag result turns on them.
-3. Position within the series, which the design listed and no pass has used.
+2. Position within the series, which the design listed and no pass has used.
 4. The poker check asked for in pass 2 was done by simulation
    (`../poker/RESULTS-prereg-poker-recency-v1.md`).
