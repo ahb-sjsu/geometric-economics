@@ -25,7 +25,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-from stop_timing import BIG, GAP_HOURS, LONG_HOURS, MIN_SHIFTS, WINDOW, fit
+from stop_timing import BIG, GAP_HOURS, LONG_HOURS, MIN_SHIFTS, WINDOW, crowded, fit
 
 NAMES = ("e_now", "e_0_1_rest", "e_1_2", "e_2_4", "e_4plus")
 
@@ -76,7 +76,7 @@ def main(src, out):
     total = cum - base[shift]
     b1, b2, b4 = upto(3600), upto(7200), upto(14400)
     X_all = np.column_stack([fare, total - b1 - fare, b1 - b2, b2 - b4, b4]) / 10.0
-    in_window = (hours_in >= WINDOW[0]) & (hours_in < WINDOW[1])
+    in_window = (hours_in >= WINDOW[0]) & (hours_in < WINDOW[1]) & ~crowded(key)
     t = pd.to_datetime(end, unit="s")
     how = t.dayofweek.values * 24 + t.hour.values
     date = end // 86400

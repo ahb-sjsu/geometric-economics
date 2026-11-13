@@ -247,9 +247,59 @@ and are in the result file.
   not been tested on New York data. Their replication files are public (openICPSR 125682) and
   have not been fetched.
 
+## Pass 7. A second batch of months, and identifiers that are not one car
+
+**Batch 2, split 2026-11-13.** 26 more verified months (July 2014 to July 2017, with breaks),
+70,143,293 trips. By the rule of `DESIGN.md` Section 4, 34,024,129 went to development and
+36,112,714 were held out and made unreadable when the split ended. 6,450 were dropped for an
+identifier that does not start with a hexadecimal digit (`results/split_counts_batch2.json`).
+The development halves of both batches were joined into one file of 42 months. The same cabs
+are in both batches, so the new months are more data on the development cabs and not a fresh
+sample of cabs.
+
+**Pass 6 again on 42 months** (`results/stop_clockhour_dev_batch12.json`). It reads as before.
+
+| Ten dollars earned in | 10 minutes, 5% bar | 30 minutes, 10% bar |
+|---|---|---|
+| hour 5 | +0.0014 (−0.0004 to +0.0032) | −0.0000 (−0.0007 to +0.0007) |
+| hour 6 | +0.0009 (−0.0009 to +0.0028) | +0.0009 (+0.0001 to +0.0016) |
+| hour 7 | +0.0021 (−0.0001 to +0.0043) | +0.0003 (−0.0005 to +0.0011) |
+| hour 8 | +0.0008 (−0.0016 to +0.0032) | −0.0017 (−0.0025 to −0.0008) |
+| the trip just ended | +0.0315 (+0.0268 to +0.0363) | +0.0245 (+0.0222 to +0.0269) |
+| decisions | 62,515 | 585,986 |
+
+- In the 10 minute sample at the 5% bar the interval for hour 7 now reaches +0.0043, above the
+  scaled New York size of +0.0040. The statement of pass 6 that hours 7 and 8 lie below the
+  published sizes in all four samples holds for three of the four on 42 months.
+- Hour 1 is positive in all four samples, +0.0038 to +0.0047 with intervals clear of zero. This
+  was not looked for and is not explained.
+
+**Identifiers that are not one car.** The last-hour fit of pass 3 on 42 months gave the same
+reading (trip just ended +0.0338 at the 5% bar and +0.0281 at the 10% bar, other fares of the
+last hour −0.0016 and −0.0006). But the other fares of the last hour had a spread of 44 dollars
+at the 10% bar against 14 at the 5% bar. `check_last_hour_tail.py`,
+`results/last_hour_tail_dev_batch12.json` counted why, with no model.
+
+- At the 10% bar 961 of 1,979,999 decisions have over 150 dollars of other fares in the last
+  hour. 425 of them come from one identifier. The largest value is 4,908 dollars.
+- Up to 436 trips of one shift end at the same rounded time. The 99.9th percentile is 5.
+- So a few identifiers stand for more than one car. They are 0.05% of decisions and sit far out
+  on the regressor.
+
+**Change made.** A shift in which more than eight trips end at one rounded time is left out
+whole, in `stop_timing.py`, `stop_where.py`, `stop_tip.py` and `stop_clockhour.py` (function
+`crowded`). Eight was chosen from the percentiles above and not tuned on any coefficient. The
+result files of passes 3 to 6 on batch 1 were made before this change and are kept as they
+were. The all-cabs sample of `stop_timing.py`, which pass 3 judged not usable, is now run only
+on request. The four fits are being rerun on 42 months with the change
+(`results/*_dev_batch12c.json`), and those are the figures a registration would be set on.
+
+`grade_taxi.py` is a first draft of a grader for such a registration. Its bars are provisional,
+there is no registration text yet, and nothing is sealed.
+
 ## Where the taxi arena stands
 
-On 16 months of development cabs the prediction carried in, that recent earnings raise stopping
+On 16 months of development cabs, and again on 42, the prediction carried in, that recent earnings raise stopping
 more than early ones, holds only through the fare of the trip just ended. The rest of the last
 hour does nothing, a tip on that same trip does nothing, and in the published paper's own form
 fares from hours 5 to 8 do nothing. That is not support for the claim that the timing of
@@ -266,5 +316,5 @@ driver, or the selection of cabs is not known.
    effect of that trip's fare), as a record that the published pattern is absent in Chicago. Or
    fetch the authors' public replication files, with the owner's word, and take the trip just
    ended apart on the New York data.
-2. The retry of the failed months continues (27 verified on 2026-11-12). Each new batch is
-   split as it is verified.
+2. The retry of the failed months continues (44 verified on 2026-11-13, 42 of them split).
+   Each new batch is split as it is verified.

@@ -38,7 +38,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-from stop_timing import BIG, GAP_HOURS, LONG_HOURS, MIN_SHIFTS, WINDOW, fit
+from stop_timing import BIG, GAP_HOURS, LONG_HOURS, MIN_SHIFTS, WINDOW, crowded, fit
 
 
 def main(src, out):
@@ -94,7 +94,7 @@ def main(src, out):
     tips_before = cumtip - basetip[shift] - tip
     common = np.column_stack([fare, total - b1 - fare, b1 - b2, b2 - b4, b4, tips_before]) / 10.0
     common_names = ("e_now", "e_0_1_rest", "e_1_2", "e_2_4", "e_4plus", "tips_before")
-    in_window = (hours_in >= WINDOW[0]) & (hours_in < WINDOW[1])
+    in_window = (hours_in >= WINDOW[0]) & (hours_in < WINDOW[1]) & ~crowded(key)
     t = pd.to_datetime(end, unit="s")
     how = t.dayofweek.values * 24 + t.hour.values
     date = end // 86400

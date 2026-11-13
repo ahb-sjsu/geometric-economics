@@ -1,13 +1,14 @@
 """Development pass 3: does money earned in the last hour move stopping more than money earned earlier?
 
-    python stop_timing.py dev_2013_2019.csv.gz out.json [apart]
+    python stop_timing.py dev_2013_2019.csv.gz out.json [apart] [allcabs]
 
 A first, plain form of the test of Thakral and To (2021), on development cabs.
 Nothing here is registered.
 
 Shifts as in pass 1 (no pause over six hours). Cabs as in pass 2: 50 shifts or
 more, and a share of shifts over 14 hours at or under a bar. Run for bars of
-5% and 10% and for all cabs with 50 shifts.
+5% and 10%, and with `allcabs` for all cabs with 50 shifts as well. That last
+sample mixes shared cabs in, takes far longer and is not used (pass 3).
 
 A decision is the end of a trip that falls 6 to 10 hours into its shift. The
 outcome is 1 if that trip was the last of the shift. The fares of the shift up
@@ -33,6 +34,9 @@ to an airport or toward home, would put a large fare on the last trip of a
 shift for a reason that has nothing to do with money earned. If the effect of
 the last hour sits only in e_now it cannot be told from that.
 
+A shift in which more than eight trips end at one rounded time is left out
+whole. One car cannot do that (added 2026-11-13, DEVELOPMENT.md pass 7).
+
 Fares are cut to the range 0 to 200 dollars. Tips are not counted, as in the
 published paper. What this does not control: a busy hour raises the last
 hour's fares and also the reason to stay out, beyond what date and hour of the
@@ -52,6 +56,21 @@ MIN_SHIFTS = 50
 WINDOW = (6.0, 10.0)
 NAMES = ("e_0_1", "e_1_2", "e_2_4", "e_4plus")
 BIG = 10 ** 11
+CROWD = 8
+
+
+def crowded(key):
+    """True for every trip of a shift in which more than CROWD trips end at one rounded time.
+
+    One car cannot do that. Such a shift belongs to an identifier that stands for
+    more than one car, and its sums of fares run to thousands of dollars an hour
+    (check_last_hour_tail.py). `key` is shift * BIG + end time, sorted.
+    """
+    _, inv, cnt = np.unique(key, return_inverse=True, return_counts=True)
+    sh = key // BIG
+    bad = np.zeros(int(sh.max()) + 1, dtype=bool)
+    bad[sh[cnt[inv] > CROWD]] = True
+    return bad[sh]
 
 
 def fit(y, X, groups, cluster):
@@ -81,7 +100,7 @@ def fit(y, X, groups, cluster):
     return beta, V, offset
 
 
-def main(src, out, apart=False):
+def main(src, out, apart=False, all_cabs=False):
     d = pd.read_csv(src, usecols=["taxi_id", "trip_start_timestamp", "trip_end_timestamp", "fare"],
                     dtype={"taxi_id": "category"})
     for c in ("trip_start_timestamp", "trip_end_timestamp"):
@@ -94,7 +113,7 @@ def main(src, out, apart=False):
     cab = d["cab"].values.astype(np.int64)
     raw_fare = d["fare"].fillna(0).values
     fare = np.clip(raw_fare, 0, 200)
-    res = {"trips": int(len(d)), "share_of_fares_cut": float((raw_fare != fare).mean())}
+    res = {"trips": int(len(d)), "share_of_fares_cut": float((raw_fare != fare).mean()), "crowd_limit": CROWD}
     del d
     first = np.r_[True, cab[1:] != cab[:-1]]
     prev_end = pd.Series(end).groupby(cab).cummax().shift(1).values
@@ -132,14 +151,14 @@ def main(src, out, apart=False):
     if apart:
         X_all = np.column_stack([fare / 10.0, X_all[:, 0] - fare / 10.0, X_all[:, 1:]])
         names = ("e_now", "e_0_1_rest") + NAMES[1:]
-    in_window = (hours_in >= WINDOW[0]) & (hours_in < WINDOW[1])
+    in_window = (hours_in >= WINDOW[0]) & (hours_in < WINDOW[1]) & ~crowded(key)
     t = pd.to_datetime(end, unit="s")
     how = (t.dayofweek.values * 24 + t.hour.values)
     date = end // 86400
     qbin = np.floor(hours_in * 4).astype(int)
 
     res["samples"] = {}
-    for label, bar in (("long_share_at_most_0.05", 0.05), ("long_share_at_most_0.10", 0.10), ("all_cabs_with_50_shifts", 1.0)):
+    for label, bar in (("long_share_at_most_0.05", 0.05), ("long_share_at_most_0.10", 0.10)) + ((("all_cabs_with_50_shifts", 1.0),) if all_cabs else ()):
         keep_cab = (n_sh >= MIN_SHIFTS) & (share_long <= bar)
         m = in_window & keep_cab[cab]
         y = last[m].astype(float)
@@ -168,4 +187,4 @@ def main(src, out, apart=False):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2], len(sys.argv) > 3 and sys.argv[3] == "apart")
+    main(sys.argv[1], sys.argv[2], "apart" in sys.argv[3:], "allcabs" in sys.argv[3:])

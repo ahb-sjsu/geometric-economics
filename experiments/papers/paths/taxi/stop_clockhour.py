@@ -32,7 +32,8 @@ paper has driver, time and 195 neighbourhoods) and quarter hour into the
 shift. The city rounds trip times to the nearest 15 minutes, so within ten
 minutes of 8.5 hours every decision sits at exactly 8.5 hours and the last
 constant does nothing there. Clustered by cab. Same shifts and cabs as stop_timing.py.
-Linear probability, not the paper's elasticities, and cabs, not drivers.
+Shifts in which more than eight trips end at one rounded time are left out,
+as in stop_timing.py. Linear probability, not the paper's elasticities, and cabs, not drivers.
 Nothing here is registered.
 """
 import json
@@ -41,7 +42,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-from stop_timing import GAP_HOURS, LONG_HOURS, MIN_SHIFTS, fit
+from stop_timing import BIG, GAP_HOURS, LONG_HOURS, MIN_SHIFTS, crowded, fit
 
 CENTRE = 8.5
 HOURS = 8
@@ -90,11 +91,12 @@ def main(src, out):
     t = pd.to_datetime(end, unit="s")
     how = t.dayofweek.values * 24 + t.hour.values
     date = end // 86400
+    crowd = crowded(shift * BIG + (end - end.min()))
     hnames = tuple("h%d" % (k + 1) for k in range(HOURS))
 
     res = {"centre_hours": CENTRE, "samples": {}}
     for half, hl in ((10, "within_10_minutes"), (30, "within_30_minutes")):
-        near = np.abs(hours_in - CENTRE) <= half / 60.0
+        near = (np.abs(hours_in - CENTRE) <= half / 60.0) & ~crowd
         for label, bar in (("long_share_at_most_0.05", 0.05), ("long_share_at_most_0.10", 0.10)):
             keep_cab = (n_sh >= MIN_SHIFTS) & (share_long <= bar)
             m = near & keep_cab[cab]

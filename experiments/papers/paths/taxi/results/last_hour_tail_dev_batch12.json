@@ -1,0 +1,75 @@
+{
+ "limit_dollars": 150.0,
+ "samples": {
+  "long_share_at_most_0.05": {
+   "decisions": 1063033,
+   "over_limit": 234,
+   "rest_dollars_percentiles": {
+    "50": 12.250000023841856,
+    "90": 32.58000002861023,
+    "99": 54.15000006771088,
+    "99.9": 84.50000004615784,
+    "99.99": 207.13747999953338,
+    "100": 950.0
+   },
+   "cabs_in_sample": 594,
+   "cabs_with_any_over_limit": 78,
+   "over_limit_from_top_cabs": {
+    "1": 18,
+    "5": 69,
+    "20": 145
+   },
+   "cabs_with_over_1_percent_of_decisions_over_limit": 3,
+   "shifts_with_any_over_limit": 116,
+   "trips_ending_at_same_time_percentiles": {
+    "50": 1.0,
+    "99": 3.0,
+    "99.9": 5.0,
+    "100": 19.0
+   },
+   "trips_ending_at_same_time_when_over_limit_median": 2.0,
+   "shift_trips_per_hour_percentiles": {
+    "50": 1.7,
+    "99": 3.675675675675676,
+    "99.9": 4.457142857142857,
+    "100": 24.285714285714285
+   },
+   "shift_trips_per_hour_when_over_limit_median": 1.5941176470588236
+  },
+  "long_share_at_most_0.10": {
+   "decisions": 1979999,
+   "over_limit": 961,
+   "rest_dollars_percentiles": {
+    "50": 12.0,
+    "90": 32.25,
+    "99": 54.5,
+    "99.9": 96.64999999703764,
+    "99.99": 2638.551929808233,
+    "100": 4907.849999856949
+   },
+   "cabs_in_sample": 1005,
+   "cabs_with_any_over_limit": 170,
+   "over_limit_from_top_cabs": {
+    "1": 425,
+    "5": 545,
+    "20": 669
+   },
+   "cabs_with_over_1_percent_of_decisions_over_limit": 6,
+   "shifts_with_any_over_limit": 265,
+   "trips_ending_at_same_time_percentiles": {
+    "50": 1.0,
+    "99": 3.0,
+    "99.9": 5.0,
+    "100": 436.0
+   },
+   "trips_ending_at_same_time_when_over_limit_median": 5.0,
+   "shift_trips_per_hour_percentiles": {
+    "50": 1.6842105263157894,
+    "99": 3.6923076923076925,
+    "99.9": 4.558139534883721,
+    "100": 66.66666666666667
+   },
+   "shift_trips_per_hour_when_over_limit_median": 2.888888888888889
+  }
+ }
+}
