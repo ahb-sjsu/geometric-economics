@@ -191,21 +191,80 @@ of pass 4, with the fare, the minutes and the earlier fares in the fit.
 - What the tip test cannot rule out: passengers on some kinds of trip tip more, in ways the
   fare, the area and the minutes do not capture.
 
+## Pass 6. The test in the form the published paper used
+
+Read 2026-11-12 from the authors' posted copies of the paper (pages 2426 to 2431) and its
+appendix (Sections D.1 and E.5, Tables A7 to A9).
+
+- **Their form.** Trips that end within ten minutes of 8.5 hours into the shift. Fares split by
+  the hour of the shift in which they were earned, hour 1 to hour 8. Constants for driver, time,
+  195 neighbourhoods and weather.
+- **Their effect falls off gradually.** Table 2, last column, percent change in stopping for 1%
+  more daily earnings arriving in hours 1 to 8: 0.01, 0.04, −0.04, 0.10, 0.36, 0.49, 0.79, 1.02.
+  The table came through text extraction with its columns out of line. This reading of the last
+  column agrees with the text, which gives 10.2% for the eighth hour.
+- **The trip just ended is not taken apart** in what was read. A trip that ends at 8.5 hours
+  ends in the ninth hour, and no term for the ninth hour is in the table. Where its fare sits
+  is not stated in the pages read.
+- **What they did check** (appendix D.1): adding distance, tips, airport fares and the number
+  of trips as controls does not change the estimate, the effect holds on trips inside
+  Manhattan, and a constant for each pair of driver and neighbourhood strengthens it. Earnings
+  instrumented by other drivers' speed give 1.91 (standard error 0.93) for hour 8.
+
+`stop_clockhour.py`, `results/stop_clockhour_dev_batch1.json` put the Chicago development cabs
+through that form. Constants for cab, date, hour of the week and dropoff area. Change in the
+probability of stopping for ten dollars, with 95% intervals:
+
+| Ten dollars earned in | 10 minutes, 5% bar | 30 minutes, 10% bar |
+|---|---|---|
+| hour 5 | −0.0010 (−0.0038 to +0.0017) | −0.0005 (−0.0015 to +0.0004) |
+| hour 6 | +0.0000 (−0.0028 to +0.0029) | +0.0013 (+0.0003 to +0.0023) |
+| hour 7 | +0.0001 (−0.0027 to +0.0029) | +0.0005 (−0.0005 to +0.0014) |
+| hour 8 | +0.0015 (−0.0012 to +0.0043) | −0.0010 (−0.0021 to +0.0001) |
+| after 8 hours, the trip just ended included | +0.0154 (+0.0105 to +0.0202) | +0.0072 (+0.0051 to +0.0093) |
+| after 8 hours, apart from the trip just ended | +0.0023 (−0.0026 to +0.0073) | −0.0029 (−0.0042 to −0.0016) |
+| the trip just ended | +0.0334 (+0.0271 to +0.0396) | +0.0249 (+0.0207 to +0.0292) |
+| decisions | 23,946 | 213,104 |
+
+The first five rows are from the fit as published. The last two are from a second fit with the
+trip just ended taken apart, where hours 5 to 8 read the same. The other two samples (10 minutes at the 10% bar, 30 minutes at the 5% bar) read the same way
+and are in the result file.
+
+- **Chicago shows no gradual fall-off.** Fares from hours 5 to 8 do nothing in any of the four
+  samples. Only the trip just ended moves stopping.
+- **Against the published sizes.** Their 1.35 points for 26 dollars in hour 8 is +0.0052 for ten
+  dollars, and by the same scaling hour 7 is +0.0040 and hour 6 is +0.0025. The Chicago
+  intervals for hours 7 and 8 lie below those in all four samples. The scaling is rough: other
+  city, other fares, linear probability against their elasticities.
+- **A fault found on the way.** The city rounds trip times to 15 minutes, so every decision
+  within ten minutes of 8.5 hours sits at exactly 8.5 hours. A covariate for hours into the
+  shift was constant there and the fit failed. It was replaced by a constant for each quarter
+  hour. The rounding also moves a fare into a neighbouring hour now and then. That would smear
+  a gradient across hours and would not remove one.
+- **What this is.** In the published form the Chicago development cabs do not show the
+  published pattern. The differences stand: the cab and not the driver, a selected set of cabs,
+  times to 15 minutes, no weather, and a fall of the published effect onto the last trip has
+  not been tested on New York data. Their replication files are public (openICPSR 125682) and
+  have not been fetched.
+
 ## Where the taxi arena stands
 
 On 16 months of development cabs the prediction carried in, that recent earnings raise stopping
 more than early ones, holds only through the fare of the trip just ended. The rest of the last
-hour does nothing, and a tip on that same trip does nothing. That is not support for the claim
-that the timing of earnings matters. It is closer to a finding about how shifts end.
+hour does nothing, a tip on that same trip does nothing, and in the published paper's own form
+fares from hours 5 to 8 do nothing. That is not support for the claim that the timing of
+earnings matters. It is closer to a finding about how shifts end.
 
-This is not a failed replication of the published paper. The data differ (the cab and not the
-driver, times to 15 minutes, a selected set of cabs, no weather) and the model here is simpler.
-Whether the published result would survive the same split of the last hour is not known.
+The published paper reports a gradual fall-off over hours 5 to 8 that a last-trip effect alone
+would not give. Chicago does not show it. Whether that is the city, the cab standing in for the
+driver, or the selection of cabs is not known.
 
 ## Next
 
-1. Read the rest of the published paper for how it treats the final trip. If it does not, a
-   short note to its authors may be worth more than a registration here. The owner's call.
-2. Decide whether taxi goes to a registration at all. As it stands there is no development
-   effect of the kind the campaign is after to register.
-3. The retry of the failed months continues. Each new batch is split as it is verified.
+1. The owner decides between three courses. Stop the taxi line. Register on the held-out half
+   the two things development shows (no effect of fares before the trip just ended, and an
+   effect of that trip's fare), as a record that the published pattern is absent in Chicago. Or
+   fetch the authors' public replication files, with the owner's word, and take the trip just
+   ended apart on the New York data.
+2. The retry of the failed months continues (27 verified on 2026-11-12). Each new batch is
+   split as it is verified.
