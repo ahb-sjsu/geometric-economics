@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter 3: The Economic Decision Manifold &mdash; Geometric Economics</title>
   <meta name="description" content="Chapter 3: The Economic Decision Manifold from Geometric Economics: Decision Manifolds, Equilibria, and the Geometry of Markets, by Andrew H. Bond.">
+  <meta name="generator" content="geometric-series build kit">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../book/book.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 </head>
 
-<body data-book-slug="geometric-economics">
+<body data-book-slug="geometric-economics" data-chapter-id="ch03_decision_manifold">
   <nav id="main-nav">
     <div class="nav-inner">
       <a href="../index.html" class="nav-brand">
@@ -36,6 +37,11 @@
         <span class="breadcrumb-sep">&rsaquo;</span>
         <span class="breadcrumb-current">Chapter 3: The Economic Decision Manifold</span>
       </nav>
+      <div class="chapter-nav-top">
+        <a href="ch02_historical_precursors.html" class="nav-prev">&larr; Chapter 2: Historical Precursors</a>
+        <a href="index.html" class="nav-toc">Contents</a>
+        <a href="ch04_economic_metric.html" class="nav-next">Chapter 4: The Economic Metric &rarr;</a>
+      </div>
 
       <div class="chapter-content">
 <h1 id="chapter-3-the-economic-decision-manifold">Chapter 3: The Economic Decision Manifold</h1>
@@ -47,7 +53,7 @@
 <blockquote>
 <p><strong>RUNNING EXAMPLE &ndash; MARIA&rsquo;S COFFEE SHOP</strong></p>
 <p><em>Maria is thinking about hiring a new barista. On the surface, this looks like a simple business decision: can she afford the salary? But sit with Maria for an hour as she thinks it through, and you will hear her navigate a space far richer than a profit-and-loss statement.</em></p>
-<p><em>&ldquo;The salary is $3,200 a month -- I can cover it if the weekend traffic holds" -- that is $d_1$, monetary cost. &ldquo;I&rsquo;d need to put them on a real contract, not just day-to-day like last time&rdquo; &ndash; that is $d_2$, contractual obligation. &ldquo;I want to pay at least $18 an hour; anything less isn't right for this city" -- that is $d_3$, fair wage. &ldquo;They need to be able to set their own pace behind the counter, not be micromanaged&rdquo; &ndash; that is $d_4$, worker autonomy. &ldquo;Can I trust this person with the register, the keys, the customers?&rdquo; &ndash; that is $d_5$, trust in the hire. &ldquo;If I hire from the neighborhood, that matters; people notice&rdquo; &ndash; that is $d_6$, community impact. &ldquo;I want to be the kind of employer people are proud to work for&rdquo; &ndash; that is $d_7$, Maria&rsquo;s identity as employer. &ldquo;I need to make sure everything is above board &ndash; payroll taxes, workers&rsquo; comp, the whole thing&rdquo; &ndash; that is $d_8$, regulatory compliance. &ldquo;But honestly, I don&rsquo;t know if the neighborhood is going to keep gentrifying or if there&rsquo;s a downturn coming&rdquo; &ndash; that is $d_9$, uncertainty about business outlook.</em></p>
+<p><em>&ldquo;The salary is \$3,200 a month &ndash; I can cover it if the weekend traffic holds&rdquo; &ndash; that is $d_1$, monetary cost. &ldquo;I&rsquo;d need to put them on a real contract, not just day-to-day like last time&rdquo; &ndash; that is $d_2$, contractual obligation. &ldquo;I want to pay at least \$18 an hour; anything less isn&rsquo;t right for this city&rdquo; &ndash; that is $d_3$, fair wage. &ldquo;They need to be able to set their own pace behind the counter, not be micromanaged&rdquo; &ndash; that is $d_4$, worker autonomy. &ldquo;Can I trust this person with the register, the keys, the customers?&rdquo; &ndash; that is $d_5$, trust in the hire. &ldquo;If I hire from the neighborhood, that matters; people notice&rdquo; &ndash; that is $d_6$, community impact. &ldquo;I want to be the kind of employer people are proud to work for&rdquo; &ndash; that is $d_7$, Maria&rsquo;s identity as employer. &ldquo;I need to make sure everything is above board &ndash; payroll taxes, workers&rsquo; comp, the whole thing&rdquo; &ndash; that is $d_8$, regulatory compliance. &ldquo;But honestly, I don&rsquo;t know if the neighborhood is going to keep gentrifying or if there&rsquo;s a downturn coming&rdquo; &ndash; that is $d_9$, uncertainty about business outlook.</em></p>
 <p><em>Nine dimensions. One decision. The economic decision manifold is the space that Maria is actually navigating. This chapter gives it a name and a mathematical structure.</em></p>
 </blockquote>
 <hr />
@@ -190,13 +196,13 @@ $$\mathbf{a}(v_1) = (a_1^0 - c_{\text{salary}}, a_2^0 + \delta_2, a_3^0 + \delta
 <h2 id="36-proposition-5-why-irrational-refusal-is-rational">3.6 Proposition 5: Why &ldquo;Irrational&rdquo; Refusal Is Rational</h2>
 <p>The interaction between Mahalanobis distance and boundary penalties generates one of the framework&rsquo;s most important results: a formal explanation of why agents refuse economically advantageous transactions.</p>
 <blockquote>
-<p><strong>Proposition 5 (Infinite-Weight Boundaries Explain &ldquo;Irrational&rdquo; Refusal).</strong> <em>An agent who refuses a transaction with positive expected monetary value ($\Delta d_1 > 0$) is acting rationally on the full manifold $\mathcal{E}$ whenever the transaction crosses a boundary with $\beta_k > \Delta d_1 / \sigma_1^2$. The refusal appears &ldquo;irrational&rdquo; only when the decision is projected onto the $d_1$ axis alone.</em></p>
+<p><strong>Proposition 5 (Infinite-Weight Boundaries Explain &ldquo;Irrational&rdquo; Refusal).</strong> <em>An agent who refuses a transaction with positive expected monetary value ($\Delta d_1 &gt; 0$) is acting rationally on the full manifold $\mathcal{E}$ whenever the transaction crosses a boundary with $\beta_k &gt; \Delta d_1 / \sigma_1^2$. The refusal appears &ldquo;irrational&rdquo; only when the decision is projected onto the $d_1$ axis alone.</em></p>
 </blockquote>
 <p><strong>Proof.</strong> The total edge weight is $w = \Delta \mathbf{a}^T \Sigma^{-1} \Delta \mathbf{a} + \beta_k$. Even if the Mahalanobis component contributes a net decrease in distance along $d_1$ (the action improves monetary position), the boundary penalty $\beta_k$ makes the total weight positive. The action is therefore not on the minimum-cost path &ndash; the agent rationally avoids it. Projection onto $d_1$ discards $\beta_k$, making the refusal appear unmotivated. $\square$</p>
 <p>This proposition explains a vast range of economic phenomena that classical economics cannot account for:</p>
 <ul>
-<li><strong>Ultimatum game rejections:</strong> Responders reject unfair offers ($\Delta d_1 > 0$) because the fairness boundary penalty $\beta_{\text{fairness}}$ exceeds the monetary gain.</li>
-<li><strong>Altruistic punishment:</strong> Agents pay to punish norm violators ($\Delta d_1 < 0$) because tolerating the violation has higher total manifold cost than the monetary cost of punishment.</li>
+<li><strong>Ultimatum game rejections:</strong> Responders reject unfair offers ($\Delta d_1 &gt; 0$) because the fairness boundary penalty $\beta_{\text{fairness}}$ exceeds the monetary gain.</li>
+<li><strong>Altruistic punishment:</strong> Agents pay to punish norm violators ($\Delta d_1 &lt; 0$) because tolerating the violation has higher total manifold cost than the monetary cost of punishment.</li>
 <li><strong>Refusal to sell sacred objects:</strong> No finite offer can compensate for crossing a sacred-value boundary ($\beta = \infty$).</li>
 <li><strong>Rejection of exploitative contracts:</strong> Workers refuse below-subsistence wages even when the alternative is unemployment, because the dignity boundary ($d_3$, $d_7$) has high $\beta$.</li>
 </ul>
@@ -206,8 +212,8 @@ $$\mathbf{a}(v_1) = (a_1^0 - c_{\text{salary}}, a_2^0 + \delta_2, a_3^0 + \delta
 <p>An agent stands in a grocery store. Two paths are available:</p>
 <p><strong>Path A (buy):</strong> Pay \$50. Attribute-vector change: $\Delta d_1 = -50$, all other dimensions approximately 0. Edge weight: $w_A = 50^2 / \sigma_1^2$.</p>
 <p><strong>Path B (steal):</strong> Pay \$0. Attribute-vector change: $\Delta d_1 = 0$, but $\Delta d_2 = -\infty$ (rights violation), $\Delta d_6 = -\text{large}$ (social sanction risk), $\Delta d_7 = -\text{large}$ (identity violation). Edge weight: $w_B = \infty$.</p>
-<p>Under scalar utility ($\phi = d_1$): $\phi(B) > \phi(A)$, so Homo economicus steals.</p>
-<p>On the full manifold: $w_B = \infty > w_A$, so the rational agent buys.</p>
+<p>Under scalar utility ($\phi = d_1$): $\phi(B) &gt; \phi(A)$, so Homo economicus steals.</p>
+<p>On the full manifold: $w_B = \infty &gt; w_A$, so the rational agent buys.</p>
 <p>The agent is not &ldquo;irrational&rdquo; for buying. The economist is computing on the wrong manifold. This is, in miniature, the entire argument of the book. Classical economics operates on the $d_1$ projection and is puzzled by behavior that makes perfect sense on the full decision complex. The solution is not to add epicycles to the utility function &ndash; it is to expand the dimensionality of the evaluation space.</p>
 <hr />
 <h2 id="37-formal-properties-of-the-decision-complex">3.7 Formal Properties of the Decision Complex</h2>
@@ -215,7 +221,7 @@ $$\mathbf{a}(v_1) = (a_1^0 - c_{\text{salary}}, a_2^0 + \delta_2, a_3^0 + \delta
 <p>The decision complex $\mathcal{E}$ has nine dimensions. This is a structural commitment of the framework, not a free parameter. It is derived from the $3 \times 3$ decomposition of moral-economic space (three normative modes crossed with three evaluative scopes) and validated by factor analysis of behavioral data. The commitment is falsifiable: if a replicable economic behavior is discovered that cannot be decomposed into any subset of the nine dimensions, the framework is wrong.</p>
 <p><strong>[Modeling Axiom.]</strong> The specific number nine is a modeling choice inherited from Geometric Ethics. It is possible that finer-grained analysis would identify sub-dimensions within each of the nine (e.g., distributional fairness and procedural fairness as sub-dimensions of $d_3$), or that some dimensions could be merged. The framework&rsquo;s predictions are robust to modest changes in dimensionality &ndash; the key claim is that the dimension is significantly greater than one, not that it is exactly nine.</p>
 <h3 id="the-covariance-matrix">The Covariance Matrix</h3>
-<p>The covariance matrix $\Sigma$ is a $9 \times 9$ symmetric positive semi-definite matrix with at most $9(9+1)/2 = 45$ free parameters. Empirical regularities further constrain it: cross-lingual validation shows that the rank of $\Sigma$ (the number of active dimensions) is stable across cultures at approximately 9, even though individual entries vary. This is a structural prediction: any culture that reduces $\operatorname{rank}(\Sigma) < 9$ would provide evidence against the framework.</p>
+<p>The covariance matrix $\Sigma$ is a $9 \times 9$ symmetric positive semi-definite matrix with at most $9(9+1)/2 = 45$ free parameters. Empirical regularities further constrain it: cross-lingual validation shows that the rank of $\Sigma$ (the number of active dimensions) is stable across cultures at approximately 9, even though individual entries vary. This is a structural prediction: any culture that reduces $\operatorname{rank}(\Sigma) &lt; 9$ would provide evidence against the framework.</p>
 <p>$\Sigma$ is estimated <em>before</em> prediction, not after. The estimation procedure parallels standard psychometric practice: administer a battery of moral-economic scenarios, measure attribute-vector activations via validated instruments (the MoralVector probes), and compute $\Sigma$ from the calibration sample. Once $\Sigma$ is fixed, the framework generates <em>a priori</em> predictions for novel scenarios.</p>
 <h3 id="metric-structure">Metric Structure</h3>
 <p>The Mahalanobis distance $d(\mathbf{a}, \mathbf{b}) = \sqrt{(\mathbf{b} - \mathbf{a})^T \Sigma^{-1} (\mathbf{b} - \mathbf{a})}$ defines a metric on the attribute-vector space $\mathbb{R}^9$. This metric has several important properties:</p>
@@ -337,7 +343,9 @@ $$w_3 = \Delta \mathbf{a}_3^T \Sigma^{-1} \Delta \mathbf{a}_3$$</p>
       </div>
 
       <div class="chapter-nav-bottom">
-        <a href="index.html" class="nav-toc">&larr; Contents</a>
+        <a href="ch02_historical_precursors.html" class="nav-prev">&larr; Chapter 2: Historical Precursors</a>
+        <a href="index.html" class="nav-toc">Contents</a>
+        <a href="ch04_economic_metric.html" class="nav-next">Chapter 4: The Economic Metric &rarr;</a>
       </div>
     </div>
   </article>
@@ -365,6 +373,7 @@ $$w_3 = \Delta \mathbf{a}_3^T \Sigma^{-1} \Delta \mathbf{a}_3$$</p>
         {left: '\\\\(', right: '\\\\)', display: false},
         {left: '\\\\[', right: '\\\\]', display: true}
       ],
+      ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
       throwOnError: false
     });"></script>
 </body>

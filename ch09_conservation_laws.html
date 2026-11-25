@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter 9: Conservation Laws for Economics &mdash; Geometric Economics</title>
   <meta name="description" content="Chapter 9: Conservation Laws for Economics from Geometric Economics: Decision Manifolds, Equilibria, and the Geometry of Markets, by Andrew H. Bond.">
+  <meta name="generator" content="geometric-series build kit">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../book/book.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 </head>
 
-<body data-book-slug="geometric-economics">
+<body data-book-slug="geometric-economics" data-chapter-id="ch09_conservation_laws">
   <nav id="main-nav">
     <div class="nav-inner">
       <a href="../index.html" class="nav-brand">
@@ -36,6 +37,11 @@
         <span class="breadcrumb-sep">&rsaquo;</span>
         <span class="breadcrumb-current">Chapter 9: Conservation Laws for Economics</span>
       </nav>
+      <div class="chapter-nav-top">
+        <a href="ch08_gauge_invariance.html" class="nav-prev">&larr; Chapter 8: Market Symmetries and Gauge Invariance</a>
+        <a href="index.html" class="nav-toc">Contents</a>
+        <a href="ch10_market_failures.html" class="nav-next">Chapter 10: Market Failures as Geometric Pathologies &rarr;</a>
+      </div>
 
       <div class="chapter-content">
 <h1 id="chapter-9-conservation-laws-for-economics">Chapter 9: Conservation Laws for Economics</h1>
@@ -47,8 +53,8 @@
 <hr />
 <blockquote>
 <p><strong>RUNNING EXAMPLE — MARIA&rsquo;S COFFEE SHOP</strong></p>
-<p><em>Maria Esperanza buys twenty pounds of single-origin coffee beans from her Oakland roaster, Elena, for $500. The monetary transaction is zero-sum: Maria&rsquo;s $500 leaves her account and enters Elena&rsquo;s. The rights transfer is similarly conserved: Elena surrenders ownership of the beans; Maria acquires it. The autonomy exchange is balanced: Elena freely chose to sell; Maria freely chose to buy.</em></p>
-<p><em>But something remarkable happens on the evaluative dimensions. Maria&rsquo;s trust in Elena increases ($\Delta d_5 > 0$ for both). The community bond strengthens ($\Delta d_6 > 0$ for both). Elena&rsquo;s identity as a craft roaster is affirmed ($\Delta d_7 > 0$), and Maria&rsquo;s identity as an ethical sourcer is reinforced ($\Delta d_7 > 0$). Value has been created — not monetary value, which is conserved, but relational value, which is not zero-sum.</em></p>
+<p><em>Maria Esperanza buys twenty pounds of single-origin coffee beans from her Oakland roaster, Elena, for \$500. The monetary transaction is zero-sum: Maria&rsquo;s \$500 leaves her account and enters Elena&rsquo;s. The rights transfer is similarly conserved: Elena surrenders ownership of the beans; Maria acquires it. The autonomy exchange is balanced: Elena freely chose to sell; Maria freely chose to buy.</em></p>
+<p><em>But something remarkable happens on the evaluative dimensions. Maria&rsquo;s trust in Elena increases ($\Delta d_5 &gt; 0$ for both). The community bond strengthens ($\Delta d_6 &gt; 0$ for both). Elena&rsquo;s identity as a craft roaster is affirmed ($\Delta d_7 &gt; 0$), and Maria&rsquo;s identity as an ethical sourcer is reinforced ($\Delta d_7 &gt; 0$). Value has been created — not monetary value, which is conserved, but relational value, which is not zero-sum.</em></p>
 <p><em>This asymmetry between transferable and evaluative dimensions is not a curiosity. It is a conservation law — the economic analogue of conservation of charge in physics — and it explains why trade creates value even when no new goods are produced.</em></p>
 </blockquote>
 <hr />
@@ -63,14 +69,14 @@
 <p><em>A dimension $d_k$ is transferable if the gain to one party necessarily comes from the other: monetary value ($d_1$), rights ($d_2$ via Hohfeldian correlative structure), and autonomy ($d_4$, in the sense that one party&rsquo;s coercion is another&rsquo;s constraint).</em></p>
 <p><strong>Proof.</strong> On the monetary dimension ($d_1$), conservation follows from accounting identity: in a closed exchange, every dollar A pays is a dollar B receives. $\Delta d_1(A) + \Delta d_1(B) = 0$.</p>
 <p>On the rights dimension ($d_2$), conservation follows from the Hohfeldian correlative structure developed in <em>Geometric Ethics</em> (Chapter 12). Every right A transfers is an obligation B assumes; every obligation A is relieved of is a claim-right B acquires. The correlative mapping preserves the total rights vector.</p>
-<p>On the autonomy dimension ($d_4$), conservation holds in the sense that voluntary constraints are symmetric: if A agrees to deliver goods by Friday (constraining A&rsquo;s autonomy, $\Delta d_4(A) < 0$), then B acquires the right to expect delivery ($\Delta d_4(B) > 0$ in the form of guaranteed receipt). Coercion — one party&rsquo;s autonomy loss without compensating gain — violates the conservation law and is detectable as such. $\square$</p>
+<p>On the autonomy dimension ($d_4$), conservation holds in the sense that voluntary constraints are symmetric: if A agrees to deliver goods by Friday (constraining A&rsquo;s autonomy, $\Delta d_4(A) &lt; 0$), then B acquires the right to expect delivery ($\Delta d_4(B) &gt; 0$ in the form of guaranteed receipt). Coercion — one party&rsquo;s autonomy loss without compensating gain — violates the conservation law and is detectable as such. $\square$</p>
 <h2 id="93-non-conservation-on-evaluative-dimensions">9.3 Non-Conservation on Evaluative Dimensions</h2>
 <p><strong>[Empirical.]</strong> The evaluative dimensions — trust ($d_5$), social impact ($d_6$), identity ($d_7$), legitimacy ($d_8$), and epistemic status ($d_9$) — are <em>not</em> conserved in general. Both parties may simultaneously perceive an exchange as:</p>
 <ul>
-<li><strong>Trust-building</strong> ($\Delta d_5 > 0$ for both): the exchange reveals reliability, creating mutual confidence that did not exist before.</li>
-<li><strong>Socially beneficial</strong> ($\Delta d_6 > 0$ for both): a commercial transaction that strengthens community ties (Maria&rsquo;s coffee shop as neighborhood hub).</li>
-<li><strong>Identity-affirming</strong> ($\Delta d_7 > 0$ for both): Elena takes pride in craft roasting; Maria takes pride in ethical sourcing. The transaction affirms both identities.</li>
-<li><strong>Epistemically enriching</strong> ($\Delta d_9 > 0$ for both): the exchange reveals information about quality, reliability, and market conditions that both parties value.</li>
+<li><strong>Trust-building</strong> ($\Delta d_5 &gt; 0$ for both): the exchange reveals reliability, creating mutual confidence that did not exist before.</li>
+<li><strong>Socially beneficial</strong> ($\Delta d_6 &gt; 0$ for both): a commercial transaction that strengthens community ties (Maria&rsquo;s coffee shop as neighborhood hub).</li>
+<li><strong>Identity-affirming</strong> ($\Delta d_7 &gt; 0$ for both): Elena takes pride in craft roasting; Maria takes pride in ethical sourcing. The transaction affirms both identities.</li>
+<li><strong>Epistemically enriching</strong> ($\Delta d_9 &gt; 0$ for both): the exchange reveals information about quality, reliability, and market conditions that both parties value.</li>
 </ul>
 <p><strong>Remark 9.1 (Mutual Value Creation).</strong> The non-conservation of evaluative dimensions is what makes voluntary exchange <em>positive-sum</em>. On the transferable dimensions, trade is zero-sum by conservation. On the evaluative dimensions, trade can be positive-sum. The total value created by an exchange is:</p>
 <p>$$V_{\text{created}} = \sum_{k=5}^{9} \left[ \Delta d_k(A) + \Delta d_k(B) \right]$$</p>
@@ -82,18 +88,18 @@
 <p>This distinction has a profound implication for economic policy. Policies that focus exclusively on transferable dimensions — redistribution of money ($d_1$), reallocation of rights ($d_2$) — are operating in a zero-sum regime. Every dollar transferred is a dollar taken. Policies that also cultivate evaluative dimensions — trust-building institutions ($d_5$), community development ($d_6$), education ($d_9$) — can create value that does not come from anyone else. The evaluative surplus is genuine new value, not a transfer.</p>
 <blockquote>
 <p><strong>MARIA&rsquo;S COFFEE SHOP — CONSERVATION AND CREATION</strong></p>
-<p><em>Maria&rsquo;s monthly rent payment is pure conservation on $d_1$: her $6,000 becomes the REIT's $6,000. Zero sum. But the stable lease relationship builds mutual trust ($d_5$) — the REIT gets a reliable tenant, Maria gets predictable costs — which is positive-sum. The community gathering that happens in the shop creates social value ($d_6$) for everyone involved, at no one's expense. The identity affirmation ($d_7$) that Maria derives from running an ethical business does not diminish Elena&rsquo;s identity as a craft roaster.</em></p>
-<p><em>The scalar economist sees only the $6,000 transfer. The geometric economist also sees the 2.4 units of evaluative value created. The first sees a zero-sum exchange. The second sees a transaction that is zero-sum on three dimensions and positive-sum on five.</em></p>
+<p><em>Maria&rsquo;s monthly rent payment is pure conservation on $d_1$: her \$6,000 becomes the REIT&rsquo;s \$6,000. Zero sum. But the stable lease relationship builds mutual trust ($d_5$) — the REIT gets a reliable tenant, Maria gets predictable costs — which is positive-sum. The community gathering that happens in the shop creates social value ($d_6$) for everyone involved, at no one&rsquo;s expense. The identity affirmation ($d_7$) that Maria derives from running an ethical business does not diminish Elena&rsquo;s identity as a craft roaster.</em></p>
+<p><em>The scalar economist sees only the \$6,000 transfer. The geometric economist also sees the 2.4 units of evaluative value created. The first sees a zero-sum exchange. The second sees a transaction that is zero-sum on three dimensions and positive-sum on five.</em></p>
 </blockquote>
 <h3 id="the-asymmetry-of-value-destruction">The Asymmetry of Value Destruction</h3>
 <p>Non-conservation is symmetric for value creation but asymmetric for value destruction. While both parties can gain evaluative value simultaneously, the destruction of evaluative value is more complex.</p>
-<p><strong>Theorem 9.3 (Asymmetric Destruction).</strong> <em>Trust destruction is asymmetric: a single betrayal by party A ($\Delta d_5(A \to B) < 0$) destroys trust for both parties ($\Delta d_5(A) < 0$ and $\Delta d_5(B) < 0$), but the magnitude of destruction typically exceeds the magnitude of any prior trust creation. That is:</em></p>
-<p>$$|\Delta d_5^{\text{betrayal}}| > \sum_{t=1}^{n} |\Delta d_5^{(t), \text{building}}|$$</p>
+<p><strong>Theorem 9.3 (Asymmetric Destruction).</strong> <em>Trust destruction is asymmetric: a single betrayal by party A ($\Delta d_5(A \to B) &lt; 0$) destroys trust for both parties ($\Delta d_5(A) &lt; 0$ and $\Delta d_5(B) &lt; 0$), but the magnitude of destruction typically exceeds the magnitude of any prior trust creation. That is:</em></p>
+<p>$$|\Delta d_5^{\text{betrayal}}| &gt; \sum_{t=1}^{n} |\Delta d_5^{(t), \text{building}}|$$</p>
 <p><em>for sufficiently large betrayals, even after many rounds of trust-building.</em></p>
 <p><strong>[Empirical.]</strong> This is the evaluative analogue of loss aversion — and it has the same geometric origin. Trust destruction activates more dimensions of the manifold than trust creation (the betrayal simultaneously damages $d_3$ fairness, $d_7$ identity, $d_9$ epistemic certainty about future interactions). The Mahalanobis distance of the destruction event is therefore larger than the sum of the creation events, because the destruction crosses dimensions that the creation did not activate.</p>
 <p>The practical consequence: evaluative value is easy to destroy and slow to build. This is not a psychological bias. It is a geometric fact about the manifold structure. It explains why commercial relationships take years to build and moments to destroy, why institutional trust recovered slowly after the 2008 financial crisis, and why a single food safety scandal can destroy a brand that took decades to establish.</p>
 <h2 id="94-the-no-free-lunch-theorem">9.4 The No Free Lunch Theorem</h2>
-<p><strong>Theorem 9.2 (No Free Lunch on Transferable Dimensions).</strong> <em>An agent cannot extract positive surplus on all transferable dimensions simultaneously from a voluntary bilateral exchange. If $\Delta d_k(A) > 0$ for some transferable dimension $k$, then $\Delta d_k(B) < 0$ (by Theorem 9.1). In particular, if A gains monetarily ($\Delta d_1(A) > 0$), then B pays ($\Delta d_1(B) < 0$).</em></p>
+<p><strong>Theorem 9.2 (No Free Lunch on Transferable Dimensions).</strong> <em>An agent cannot extract positive surplus on all transferable dimensions simultaneously from a voluntary bilateral exchange. If $\Delta d_k(A) &gt; 0$ for some transferable dimension $k$, then $\Delta d_k(B) &lt; 0$ (by Theorem 9.1). In particular, if A gains monetarily ($\Delta d_1(A) &gt; 0$), then B pays ($\Delta d_1(B) &lt; 0$).</em></p>
 <p><strong>Proof.</strong> Immediate from conservation: $\Delta d_k(A) + \Delta d_k(B) = 0$ implies that a positive $\Delta d_k(A)$ requires a negative $\Delta d_k(B)$. $\square$</p>
 <p>This is the geometric formalization of &ldquo;there is no such thing as a free lunch&rdquo; — but restricted to the transferable dimensions. On the evaluative dimensions, free lunches are not merely possible but <em>typical</em>: a transaction that builds trust creates value for both parties at no transferable cost.</p>
 <h2 id="95-the-value-accounting-identity">9.5 The Value Accounting Identity</h2>
@@ -120,7 +126,7 @@
 <h2 id="98-value-conservation-and-the-price-system">9.8 Value Conservation and the Price System</h2>
 <p><strong>[Modeling Axiom.]</strong> The conservation law constrains the price system. A well-functioning price captures the $d_1$ component of the exchange — the monetary transfer. But the full exchange involves all nine dimensions. A price that reflects only $d_1$ systematically under-prices transactions that create evaluative value (trust, community, identity) and over-prices transactions that destroy it.</p>
 <p>This is the geometric explanation for the persistent gap between market prices and &ldquo;true&rdquo; economic value. The gap is not a market failure in the traditional sense — the price system is functioning correctly on $d_1$. It is a dimensional projection: the price captures one dimension of a nine-dimensional transaction, and the Scalar Irrecoverability Theorem (Chapter 6) says the other eight dimensions cannot be recovered from the price alone.</p>
-<p>Maria&rsquo;s fair-trade coffee costs $2/lb more than commodity coffee. On $d_1$, this is a pure loss. On the full manifold, the extra cost buys fairness ($d_3$), community development ($d_6$), identity consistency ($d_7$), and supply chain transparency ($d_9$). The &ldquo;premium&rdquo; is not irrational — it is the monetary cost of traversing a geodesic on the full manifold rather than the $d_1$-only projection.</p>
+<p>Maria&rsquo;s fair-trade coffee costs \$2/lb more than commodity coffee. On $d_1$, this is a pure loss. On the full manifold, the extra cost buys fairness ($d_3$), community development ($d_6$), identity consistency ($d_7$), and supply chain transparency ($d_9$). The &ldquo;premium&rdquo; is not irrational — it is the monetary cost of traversing a geodesic on the full manifold rather than the $d_1$-only projection.</p>
 <h2 id="99-the-noether-derivation">9.9 The Noether Derivation</h2>
 <p>The conservation laws established above were proved directly from the structure of bilateral exchange. But there is a deeper route: deriving them from the Bond Invariance Principle via Noether&rsquo;s theorem. This derivation connects the conservation laws to the gauge invariance developed in Chapter 8 and reveals <em>why</em> certain dimensions are conserved and others are not.</p>
 <p><strong>[Conditional Theorem.]</strong> The argument proceeds in three steps.</p>
@@ -182,7 +188,7 @@
 <p>The second law of thermodynamics — entropy of a closed system never decreases — has an economic shadow in Theorem 9.3: trust, once destroyed, cannot be fully recovered by the same sequence of interactions that built it. The time-asymmetry of trust creation and destruction mirrors the time-asymmetry of entropy production. Both arise from the same geometric feature: the space of states accessible by &ldquo;constructive&rdquo; paths is smaller than the space accessible by &ldquo;destructive&rdquo; paths. Building trust requires a specific sequence of reliable interactions; destroying it requires only one betrayal.</p>
 <hr />
 <h2 id="worked-example-marias-supply-chain-transaction">Worked Example: Maria&rsquo;s Supply Chain Transaction</h2>
-<p>Maria places her monthly order with Elena: 80 pounds of single-origin Colombian beans at $25/lb = $2,000.</p>
+<p>Maria places her monthly order with Elena: 80 pounds of single-origin Colombian beans at \$25/lb = \$2,000.</p>
 <p><strong>Transferable dimensions (conserved):</strong></p>
 <table>
 <thead>
@@ -196,9 +202,9 @@
 <tbody>
 <tr>
 <td>$d_1$: Money</td>
-<td>-$2,000 | +$2,000</td>
+<td>-\$2,000</td>
+<td>+\$2,000</td>
 <td>0</td>
-<td></td>
 </tr>
 <tr>
 <td>$d_2$: Rights</td>
@@ -252,14 +258,14 @@
 </tbody>
 </table>
 <p><strong>Total value created</strong>: 0 on transferable dimensions (conservation holds) + 2.4 units on evaluative dimensions (positive-sum). The transaction creates value <em>even though no new goods are produced</em> — the value is in the relational, identity, and epistemic dimensions that the price cannot capture.</p>
-<p>Now compare with a transaction where Maria buys commodity beans from an anonymous broker at $18/lb:</p>
-<p><strong>Evaluative dimensions:</strong> All near zero. No trust built ($\Delta d_5 \approx 0$), no community ($d_6 \approx 0$), no identity affirmation ($d_7 \approx 0$). The monetary savings ($7/lb × 80 = $560) come at a cost of 2.4 units of evaluative value — a cost invisible to $d_1$-only accounting.</p>
+<p>Now compare with a transaction where Maria buys commodity beans from an anonymous broker at \$18/lb:</p>
+<p><strong>Evaluative dimensions:</strong> All near zero. No trust built ($\Delta d_5 \approx 0$), no community ($d_6 \approx 0$), no identity affirmation ($d_7 \approx 0$). The monetary savings (\$7/lb × 80 = \$560) come at a cost of 2.4 units of evaluative value — a cost invisible to $d_1$-only accounting.</p>
 <p>The Bond geodesic for Maria — the minimum-cost path on the full manifold — depends on the Mahalanobis metric $\Sigma$. If Maria&rsquo;s $\Sigma$ weights evaluative dimensions heavily (as the behavioral data suggests for morally loaded transactions), the fair-trade geodesic has lower total cost despite higher monetary cost.</p>
 <h3 id="what-conservation-reveals-about-this-transaction">What Conservation Reveals About This Transaction</h3>
-<p>The conservation law tells us something that neither the price nor the satisfaction of both parties reveals: the <em>structure</em> of value creation. The $2,000 monetary exchange is zero-sum. The 2.4 units of evaluative surplus are positive-sum. The total economic value of the transaction is:</p>
+<p>The conservation law tells us something that neither the price nor the satisfaction of both parties reveals: the <em>structure</em> of value creation. The \$2,000 monetary exchange is zero-sum. The 2.4 units of evaluative surplus are positive-sum. The total economic value of the transaction is:</p>
 <p>$$V_{\text{total}} = \underbrace{0}_{\text{transferable (conserved)}} + \underbrace{+2.4}_{\text{evaluative (created)}} = +2.4$$</p>
-<p>This means that if a well-meaning policymaker replaced Maria&rsquo;s personal relationship with Elena by a more &ldquo;efficient&rdquo; commodity market — matching buyers and sellers anonymously at lower transaction costs — the $d_1$ efficiency would improve (lower prices) but 2.4 units of evaluative value per transaction would be destroyed. Over the course of a year (12 transactions), that is 28.8 units of evaluative value — trust, community, identity, epistemic clarity — sacrificed for a monetary saving of $560 × 12 = $6,720.</p>
-<p>Is the trade-off worth it? The conservation framework does not answer this question — it depends on $\Sigma$. But it <em>reveals</em> the question. The scalar analysis saw only the $6,720 saving and called it an efficiency gain. The geometric analysis sees the $6,720 saving and the 28.8-unit evaluative loss, and asks: what does the metric say?</p>
+<p>This means that if a well-meaning policymaker replaced Maria&rsquo;s personal relationship with Elena by a more &ldquo;efficient&rdquo; commodity market — matching buyers and sellers anonymously at lower transaction costs — the $d_1$ efficiency would improve (lower prices) but 2.4 units of evaluative value per transaction would be destroyed. Over the course of a year (12 transactions), that is 28.8 units of evaluative value — trust, community, identity, epistemic clarity — sacrificed for a monetary saving of \$560 × 12 = \$6,720.</p>
+<p>Is the trade-off worth it? The conservation framework does not answer this question — it depends on $\Sigma$. But it <em>reveals</em> the question. The scalar analysis saw only the \$6,720 saving and called it an efficiency gain. The geometric analysis sees the \$6,720 saving and the 28.8-unit evaluative loss, and asks: what does the metric say?</p>
 <h2 id="implications-for-economic-theory">Implications for Economic Theory</h2>
 <h3 id="why-trade-creates-value">Why Trade Creates Value</h3>
 <p>The conservation law resolves a puzzle that has lingered since Adam Smith: if exchange is voluntary, why does it create value? The standard answer — &ldquo;comparative advantage&rdquo; and &ldquo;gains from trade&rdquo; — explains why both parties can be better off monetarily (Chapter 13). But it does not explain the deeper phenomenon: that economic exchange can create value that <em>did not exist before the exchange took place</em>.</p>
@@ -312,7 +318,9 @@ Smith, A. (1776). <em>An Inquiry into the Nature and Causes of the Wealth of Nat
       </div>
 
       <div class="chapter-nav-bottom">
-        <a href="index.html" class="nav-toc">&larr; Contents</a>
+        <a href="ch08_gauge_invariance.html" class="nav-prev">&larr; Chapter 8: Market Symmetries and Gauge Invariance</a>
+        <a href="index.html" class="nav-toc">Contents</a>
+        <a href="ch10_market_failures.html" class="nav-next">Chapter 10: Market Failures as Geometric Pathologies &rarr;</a>
       </div>
     </div>
   </article>
@@ -340,6 +348,7 @@ Smith, A. (1776). <em>An Inquiry into the Nature and Causes of the Wealth of Nat
         {left: '\\\\(', right: '\\\\)', display: false},
         {left: '\\\\[', right: '\\\\]', display: true}
       ],
+      ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
       throwOnError: false
     });"></script>
 </body>

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter 15: The Discount Rate as Geodesic Curvature &mdash; Geometric Economics</title>
   <meta name="description" content="Chapter 15: The Discount Rate as Geodesic Curvature from Geometric Economics: Decision Manifolds, Equilibria, and the Geometry of Markets, by Andrew H. Bond.">
+  <meta name="generator" content="geometric-series build kit">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../book/book.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 </head>
 
-<body data-book-slug="geometric-economics">
+<body data-book-slug="geometric-economics" data-chapter-id="ch15_discount_rate">
   <nav id="main-nav">
     <div class="nav-inner">
       <a href="../index.html" class="nav-brand">
@@ -36,6 +37,11 @@
         <span class="breadcrumb-sep">&rsaquo;</span>
         <span class="breadcrumb-current">Chapter 15: The Discount Rate as Geodesic Curvature</span>
       </nav>
+      <div class="chapter-nav-top">
+        <a href="ch14_regulation.html" class="nav-prev">&larr; Chapter 14: Regulation as Boundary Enforcement</a>
+        <a href="index.html" class="nav-toc">Contents</a>
+        <a href="ch16_open_questions.html" class="nav-next">Chapter 16: Open Questions &rarr;</a>
+      </div>
 
       <div class="chapter-content">
 <h1 id="chapter-15-the-discount-rate-as-geodesic-curvature">Chapter 15: The Discount Rate as Geodesic Curvature</h1>
@@ -47,7 +53,7 @@
 <hr />
 <blockquote>
 <p><strong>RUNNING EXAMPLE — MARIA&rsquo;S COFFEE SHOP</strong></p>
-<p><em>Maria Esperanza is deciding whether to invest $30,000 in solar panels for her coffee shop. The payback period is 8 years. At a 3% discount rate (her personal rate), the investment has positive net present value. At a 12% discount rate (her landlord&rsquo;s REIT rate), it does not. The same investment, evaluated by two agents, produces opposite decisions — not because they disagree about the facts, but because they experience different curvature on the temporal manifold.</em></p>
+<p><em>Maria Esperanza is deciding whether to invest \$30,000 in solar panels for her coffee shop. The payback period is 8 years. At a 3% discount rate (her personal rate), the investment has positive net present value. At a 12% discount rate (her landlord&rsquo;s REIT rate), it does not. The same investment, evaluated by two agents, produces opposite decisions — not because they disagree about the facts, but because they experience different curvature on the temporal manifold.</em></p>
 <p><em>The discount rate is not a preference parameter. It is the curvature of the agent&rsquo;s decision manifold along the time axis — and the Stern-Nordhaus debate about climate change is, at bottom, a disagreement about this curvature.</em></p>
 </blockquote>
 <hr />
@@ -62,8 +68,8 @@
 <p>A critical prediction of the geometric framework is that different dimensions should be discounted at different rates, because the temporal curvature varies across dimensions.</p>
 <p><strong>Proposition 15.2 (Dimension-Dependent Discounting — Extended).</strong> <em>The discount rate on dimension $d_k$ is:</em></p>
 <p>$$\delta_k = K(t, d_k)$$</p>
-<p><em>where $K(t, d_k)$ is the sectional curvature of the temporal-$d_k$ plane. If $K(t, d_1) > K(t, d_6)$ — if the temporal manifold curves more steeply on the monetary axis than on the social-impact axis — then monetary value is discounted faster than social value.</em></p>
-<p><strong>[Empirical.]</strong> This prediction is testable. Ask subjects: &ldquo;Would you rather receive $100 today or $110 in a year?" (monetary discounting on $d_1$). Then ask: &ldquo;Would you rather your neighborhood park be clean today or slightly cleaner in a year?&rdquo; (social-impact discounting on $d_6$). The monetary discount rate is typically 5–15% (subjects require $105–$115 in a year to match $100 today). The social-impact discount rate is much lower — subjects treat future community benefits as nearly as valuable as present ones.</p>
+<p><em>where $K(t, d_k)$ is the sectional curvature of the temporal-$d_k$ plane. If $K(t, d_1) &gt; K(t, d_6)$ — if the temporal manifold curves more steeply on the monetary axis than on the social-impact axis — then monetary value is discounted faster than social value.</em></p>
+<p><strong>[Empirical.]</strong> This prediction is testable. Ask subjects: &ldquo;Would you rather receive \$100 today or \$110 in a year?&rdquo; (monetary discounting on $d_1$). Then ask: &ldquo;Would you rather your neighborhood park be clean today or slightly cleaner in a year?&rdquo; (social-impact discounting on $d_6$). The monetary discount rate is typically 5–15% (subjects require \$105–\$115 in a year to match \$100 today). The social-impact discount rate is much lower — subjects treat future community benefits as nearly as valuable as present ones.</p>
 <p>The standard approach of applying a single discount rate to all dimensions — computing the net present value of a policy by discounting monetary costs, environmental benefits, health impacts, and community effects at the same rate — is a scalar contraction. The Scalar Irrecoverability Theorem (Chapter 6) says this contraction destroys information. The lost information is <em>which dimensions are properly discounted at which rates</em>.</p>
 <p>The practical consequence is enormous. A highway project with immediate monetary benefits ($d_1$, discounted at 3%) and long-term environmental costs ($d_6$, which should be discounted at 0.5%) will be approved under a single 3% rate and rejected under dimension-dependent discounting. The single rate effectively discounts the environment into irrelevance — not because anyone decided that the environment does not matter, but because the choice to use one rate for all dimensions implicitly makes that decision.</p>
 <h2 id="152-the-stern-nordhaus-debate">15.2 The Stern-Nordhaus Debate</h2>
@@ -82,14 +88,14 @@
 <p><strong>$\rho$ (pure time preference)</strong> is the <em>intrinsic</em> temporal curvature — the curvature that would exist even on a manifold where all other dimensions are constant. Stern sets $\rho \approx 0$ (no intrinsic preference for the present over the future — a flat temporal manifold). Nordhaus calibrates $\rho$ from market interest rates, arriving at $\rho \approx 1.5\%$ (moderate intrinsic curvature).</p>
 </li>
 <li>
-<p><strong>$\eta \cdot g$ (growth-adjusted discounting)</strong> is the <em>extrinsic</em> temporal curvature induced by growth. If future people are richer ($g > 0$) and additional wealth has diminishing returns ($\eta > 0$), then a dollar in the future is &ldquo;worth less&rdquo; to them — the manifold curves away from the monetary axis as time progresses. Stern uses $\eta = 1$, $g \approx 1.3\%$, yielding $\eta g \approx 1.3\%$. Nordhaus uses $\eta \approx 2$, $g \approx 2\%$, yielding $\eta g \approx 4\%$.</p>
+<p><strong>$\eta \cdot g$ (growth-adjusted discounting)</strong> is the <em>extrinsic</em> temporal curvature induced by growth. If future people are richer ($g &gt; 0$) and additional wealth has diminishing returns ($\eta &gt; 0$), then a dollar in the future is &ldquo;worth less&rdquo; to them — the manifold curves away from the monetary axis as time progresses. Stern uses $\eta = 1$, $g \approx 1.3\%$, yielding $\eta g \approx 1.3\%$. Nordhaus uses $\eta \approx 2$, $g \approx 2\%$, yielding $\eta g \approx 4\%$.</p>
 </li>
 </ul>
 <p>The total discount rate is the sum of intrinsic and extrinsic curvature: $\delta = \rho + \eta g$. Stern: $\delta \approx 0.1 + 1.3 = 1.4\%$. Nordhaus: $\delta \approx 1.5 + 4 = 5.5\%$.</p>
 <p>The geometric framework reveals a critical hidden assumption in the Ramsey equation: it assumes that all dimensions are discounted at the same rate — that the curvature is isotropic across dimensions. But there is no reason to believe this. Growth-adjusted discounting ($\eta g$) applies to dimensions where future people will be &ldquo;richer.&rdquo; On $d_1$ (monetary wealth), growth is plausible — future generations may indeed be materially richer. On $d_6$ (environmental quality), growth is implausible — future generations may inherit a degraded environment. On $d_5$ (institutional trust), growth is uncertain. On $d_2$ (rights of future populations), growth is not even well-defined.</p>
 <p>The Ramsey equation with a single $\delta$ conflates these dimensions. A multi-dimensional Ramsey equation would specify:</p>
 <p>$$\delta_k = \rho + \eta_k \cdot g_k \quad \text{for each dimension } k$$</p>
-<p>where $g_k$ is the growth rate of dimension $d_k$ and $\eta_k$ is the elasticity of the manifold in that dimension. For monetary wealth ($k=1$), $g_1 \approx 2\%$ and $\delta_1 \approx 4\%$. For environmental quality ($k=6$), $g_6 < 0$ (declining) and $\delta_6 < \rho$ (the discount rate should be <em>below</em> the pure time preference rate, because future environmental quality will be scarcer, not more abundant). For some dimensions, $\delta_k$ may even be negative — meaning that future values on that dimension should count <em>more</em> than present values, because the dimension is deteriorating.</p>
+<p>where $g_k$ is the growth rate of dimension $d_k$ and $\eta_k$ is the elasticity of the manifold in that dimension. For monetary wealth ($k=1$), $g_1 \approx 2\%$ and $\delta_1 \approx 4\%$. For environmental quality ($k=6$), $g_6 &lt; 0$ (declining) and $\delta_6 &lt; \rho$ (the discount rate should be <em>below</em> the pure time preference rate, because future environmental quality will be scarcer, not more abundant). For some dimensions, $\delta_k$ may even be negative — meaning that future values on that dimension should count <em>more</em> than present values, because the dimension is deteriorating.</p>
 <p>This is the geometric resolution of the Stern-Nordhaus debate: both are correct on different dimensions. Nordhaus&rsquo;s rate is appropriate for $d_1$ (monetary value, which grows over time). Stern&rsquo;s rate is appropriate for $d_6$ (environmental quality, which does not grow and may decline). The error is in using a single rate for a multi-dimensional problem — a scalar contraction, once again, destroying the information that matters most.</p>
 <h2 id="153-intergenerational-equity-as-parallel-transport">15.3 Intergenerational Equity as Parallel Transport</h2>
 <p><strong>[Speculation/Extension.]</strong> When we ask &ldquo;what do we owe future generations?&rdquo;, we are asking a parallel-transport question. An obligation formulated in the present — &ldquo;preserve a livable climate&rdquo; — must be transported along the temporal geodesic to the future. But the manifold has curvature, and parallel transport on a curved manifold introduces holonomy: the obligation may arrive &ldquo;rotated&rdquo; — its content may have shifted through the transport.</p>
@@ -117,12 +123,12 @@
 <p>The geometric explanation for why curvature is high near the present: nearby outcomes activate more dimensions of the decision manifold. A reward available <em>now</em> engages $d_1$ (monetary value), $d_4$ (autonomy — I can use it immediately), $d_7$ (identity — I am someone who seizes opportunities), $d_9$ (epistemic certainty — the reward is concrete and observable). A reward available in ten years engages primarily $d_1$, with the other dimensions attenuated by temporal distance. More active dimensions = higher-dimensional displacement = steeper curvature = higher effective discount rate.</p>
 <p>This explanation makes a testable prediction: hyperbolic discounting should be <em>weaker</em> for goods that activate few dimensions at any time horizon (e.g., abstract monetary rewards — pure $d_1$) and <em>stronger</em> for goods that activate many dimensions at short horizons but few at long horizons (e.g., visceral rewards like food or social status). The experimental evidence confirms this pattern (McClure et al., 2004; Laibson, 1997).</p>
 <h3 id="time-inconsistency-as-curvature-change">Time-Inconsistency as Curvature Change</h3>
-<p>The classic problem with hyperbolic discounting is <em>time-inconsistency</em>: a preference expressed today about future trade-offs changes when the future arrives. Today, I prefer $110 in 31 days to $100 in 30 days. When day 30 arrives, I prefer $100 today to $110 tomorrow. My preferences have reversed.</p>
+<p>The classic problem with hyperbolic discounting is <em>time-inconsistency</em>: a preference expressed today about future trade-offs changes when the future arrives. Today, I prefer \$110 in 31 days to \$100 in 30 days. When day 30 arrives, I prefer \$100 today to \$110 tomorrow. My preferences have reversed.</p>
 <p>In the geometric framework, this is not a &ldquo;bias.&rdquo; It is the natural consequence of position-dependent curvature. The curvature at time $t$ determines the discount rate at time $t$. When the agent moves forward to time $t + 30$, the curvature at that position is different (higher, because the manifold is steeper near the present). The &ldquo;reversal&rdquo; is the agent experiencing the same manifold from a different position — seeing different curvature because they are at a different point.</p>
 <p>This reframing has a practical consequence: <em>commitment devices</em> (Laibson, 1997) are not corrections for irrationality. They are tools for navigating a manifold with position-dependent curvature. An agent who locks up their savings in a long-term account is not fighting their own bias. They are choosing to follow the geodesic computed from their current position (where the curvature favors long-term investment) and committing to it before they reach a future position where the curvature will favor short-term consumption. The commitment device is a boundary — a regulation the agent imposes on their own manifold — that prevents the geodesic from changing when the curvature changes.</p>
 <blockquote>
 <p><strong>MARIA&rsquo;S COFFEE SHOP — DISCOUNTING IN PRACTICE</strong></p>
-<p><em>Maria thinks about the solar panels differently depending on her time horizon. When she imagines next month (high temporal curvature), the $30,000 cost looms large — it is a full month's revenue, tangible, immediate, visceral. Her System 1 fires a boundary alarm on $d_1$. When she imagines the 25-year lifespan of the panels (low temporal curvature), the cost becomes a small investment relative to the total energy savings, the community signaling, and the regulatory anticipation. Her System 1 fires an identity alarm on $d_7$: &ldquo;I am the kind of person who invests in the future.&rdquo;</em></p>
+<p><em>Maria thinks about the solar panels differently depending on her time horizon. When she imagines next month (high temporal curvature), the \$30,000 cost looms large — it is a full month&rsquo;s revenue, tangible, immediate, visceral. Her System 1 fires a boundary alarm on $d_1$. When she imagines the 25-year lifespan of the panels (low temporal curvature), the cost becomes a small investment relative to the total energy savings, the community signaling, and the regulatory anticipation. Her System 1 fires an identity alarm on $d_7$: &ldquo;I am the kind of person who invests in the future.&rdquo;</em></p>
 <p><em>The discount rate she applies is different on different dimensions. On $d_1$ (monetary cost), she discounts at roughly 5% — the cost becomes manageable when spread over years. On $d_7$ (identity), she discounts at roughly 0% — the identity benefit of being an environmentally responsible business owner does not diminish with time. On $d_6$ (community impact), she discounts at roughly 1% — the neighborhood&rsquo;s appreciation of her environmental commitment persists but fades slightly as newer buildings adopt solar as standard.</em></p>
 <p><em>Her decision to install the panels is the Bond geodesic on a manifold with dimension-dependent temporal curvature. On the $d_1$-only manifold, the investment is marginal. On the full manifold, it is strongly positive — because the dimensions that matter most to Maria ($d_6$, $d_7$, $d_8$) have lower temporal curvature than the dimension that the spreadsheet captures ($d_1$).</em></p>
 </blockquote>
@@ -194,21 +200,21 @@
 <tbody>
 <tr>
 <td>0</td>
-<td>-$30,000 | 1.00 | -$30,000</td>
-<td></td>
-<td></td>
+<td>-\$30,000</td>
+<td>1.00</td>
+<td>-\$30,000</td>
 </tr>
 <tr>
 <td>1-8</td>
-<td>+$4,500/yr | $\sum e^{-0.03t}$</td>
-<td>+$31,200</td>
-<td></td>
+<td>+\$4,500/yr</td>
+<td>$\sum e^{-0.03t}$</td>
+<td>+\$31,200</td>
 </tr>
 <tr>
 <td>NPV</td>
 <td></td>
 <td></td>
-<td><strong>+$1,200</strong></td>
+<td><strong>+\$1,200</strong></td>
 </tr>
 </tbody>
 </table>
@@ -252,7 +258,7 @@
 <p><strong>Proposition 15.2 (Dimension-Dependent Discounting).</strong> <strong>[Conditional Theorem.]</strong> If temporal curvature varies across dimensions — $K(t, d_1) \neq K(t, d_6)$ — then the discount rate is dimension-dependent. Monetary value ($d_1$) may be discounted at 3% while community value ($d_6$) is discounted at 0.5%. The standard approach of applying a single discount rate to all dimensions is a scalar contraction that violates the Scalar Irrecoverability Theorem.</p>
 <p><strong>Proposition 15.3 (Commitment Value as Curvature Reduction).</strong> <strong>[Conditional Theorem.]</strong> A commitment device — a mechanism that constrains an agent&rsquo;s future choices — has positive value on a manifold with position-dependent temporal curvature. The value of commitment is:</p>
 <p>$$V_{\text{commit}} = \text{BF}(\gamma_{\text{uncommitted}}) - \text{BF}(\gamma_{\text{committed}})$$</p>
-<p>where $\gamma_{\text{uncommitted}}$ is the path an uncommitted agent follows (subject to curvature changes at each future time step) and $\gamma_{\text{committed}}$ is the path an agent follows when committed to the plan formulated at $t = 0$. When $V_{\text{commit}} > 0$ — when the uncommitted path has higher total friction due to curvature-induced deviations — the commitment device is welfare-improving.</p>
+<p>where $\gamma_{\text{uncommitted}}$ is the path an uncommitted agent follows (subject to curvature changes at each future time step) and $\gamma_{\text{committed}}$ is the path an agent follows when committed to the plan formulated at $t = 0$. When $V_{\text{commit}} &gt; 0$ — when the uncommitted path has higher total friction due to curvature-induced deviations — the commitment device is welfare-improving.</p>
 <p>This formalizes Laibson&rsquo;s (1997) insight that agents who recognize their own hyperbolic discounting will voluntarily adopt commitment devices. In the geometric framework, the agent is not fighting a &ldquo;bias.&rdquo; They are recognizing that the manifold&rsquo;s curvature will change at future positions, causing their future geodesic to deviate from their current one, and pre-committing to the current geodesic before the curvature shift occurs.</p>
 <hr />
 <h2 id="references">References</h2>
@@ -266,7 +272,9 @@ Gollier, C. (2012). <em>Pricing the Planet&rsquo;s Future: The Economics of Disc
       </div>
 
       <div class="chapter-nav-bottom">
-        <a href="index.html" class="nav-toc">&larr; Contents</a>
+        <a href="ch14_regulation.html" class="nav-prev">&larr; Chapter 14: Regulation as Boundary Enforcement</a>
+        <a href="index.html" class="nav-toc">Contents</a>
+        <a href="ch16_open_questions.html" class="nav-next">Chapter 16: Open Questions &rarr;</a>
       </div>
     </div>
   </article>
@@ -294,6 +302,7 @@ Gollier, C. (2012). <em>Pricing the Planet&rsquo;s Future: The Economics of Disc
         {left: '\\\\(', right: '\\\\)', display: false},
         {left: '\\\\[', right: '\\\\]', display: true}
       ],
+      ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
       throwOnError: false
     });"></script>
 </body>

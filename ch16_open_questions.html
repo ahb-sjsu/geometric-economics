@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter 16: Open Questions &mdash; Geometric Economics</title>
   <meta name="description" content="Chapter 16: Open Questions from Geometric Economics: Decision Manifolds, Equilibria, and the Geometry of Markets, by Andrew H. Bond.">
+  <meta name="generator" content="geometric-series build kit">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../book/book.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 </head>
 
-<body data-book-slug="geometric-economics">
+<body data-book-slug="geometric-economics" data-chapter-id="ch16_open_questions">
   <nav id="main-nav">
     <div class="nav-inner">
       <a href="../index.html" class="nav-brand">
@@ -36,6 +37,11 @@
         <span class="breadcrumb-sep">&rsaquo;</span>
         <span class="breadcrumb-current">Chapter 16: Open Questions</span>
       </nav>
+      <div class="chapter-nav-top">
+        <a href="ch15_discount_rate.html" class="nav-prev">&larr; Chapter 15: The Discount Rate as Geodesic Curvature</a>
+        <a href="index.html" class="nav-toc">Contents</a>
+        <span class="nav-next"></span>
+      </div>
 
       <div class="chapter-content">
 <h1 id="chapter-16-open-questions">Chapter 16: Open Questions</h1>
@@ -72,11 +78,11 @@
 <p>The Vickrey-Clarke-Groves (VCG) mechanism achieves incentive compatibility for scalar values by charging each agent the externality they impose on others. A manifold VCG would charge each agent the full-manifold externality — the behavioral friction their participation imposes on other agents across all nine dimensions. This requires agents to report their full $\Sigma$ matrix, which is a much richer private signal than a scalar valuation. The incentive compatibility of such a mechanism is an open question.</p>
 <p><strong>Open Problem 16.7.</strong> <strong>[Speculation/Extension.]</strong> Can auction design exploit the evaluative-dimension surplus? In a standard auction, the good goes to the highest bidder on $d_1$. A manifold auction would assign the good to the agent whose total behavioral friction is minimized — the agent for whom the good creates the most value across all nine dimensions. This may not be the highest monetary bidder. A community member who will use a building as a neighborhood center may create more total value (including $d_5$, $d_6$, $d_7$) than a developer who will create more monetary value ($d_1$). Can we design auctions that elicit full-manifold valuations and allocate accordingly?</p>
 <p><strong>Open Problem 16.8.</strong> Can the BGE be computed in polynomial time for general multi-agent problems? The single-agent case reduces to A* search ($O(|E| + |V| \log |V|)$). The multi-agent case requires iterated best response, which may cycle. Under what conditions does it converge, and how quickly?</p>
-<p>The contraction lemma (Chapter 7, Lemma 26) provides a sufficient condition for convergence: if each agent&rsquo;s self-sensitivity exceeds their cross-sensitivity ($\alpha_i > \kappa_i$), the best-response mapping is a contraction and convergence is geometric. But this condition is not always satisfied. For strongly coupled games — where each agent&rsquo;s manifold is substantially shaped by others&rsquo; strategies — the computation may require equilibrium-finding algorithms with exponential worst-case complexity. Whether polynomial-time algorithms exist for BGE computation under weaker conditions than contraction is a significant open problem in algorithmic game theory on manifolds.</p>
+<p>The contraction lemma (Chapter 7, Lemma 26) provides a sufficient condition for convergence: if each agent&rsquo;s self-sensitivity exceeds their cross-sensitivity ($\alpha_i &gt; \kappa_i$), the best-response mapping is a contraction and convergence is geometric. But this condition is not always satisfied. For strongly coupled games — where each agent&rsquo;s manifold is substantially shaped by others&rsquo; strategies — the computation may require equilibrium-finding algorithms with exponential worst-case complexity. Whether polynomial-time algorithms exist for BGE computation under weaker conditions than contraction is a significant open problem in algorithmic game theory on manifolds.</p>
 <h2 id="164-falsifiable-predictions">16.4 Falsifiable Predictions</h2>
 <p>The framework generates specific, testable predictions that distinguish it from both classical and behavioral economics:</p>
 <p><strong>[Empirical.]</strong> <strong>Prediction 1: Dimensional activation.</strong> Increasing the salience of fairness ($d_3$) in an ultimatum game should increase rejection rates — not because preferences change but because the active manifold expands, increasing the effective boundary penalty. This is testable by manipulating fairness framing while holding monetary stakes constant.</p>
-<p><strong>Prediction 2: Loss-aversion variability.</strong> $\lambda$ should vary with the number of active dimensions (Chapter 4). Transactions that activate more dimensions should show higher loss aversion. Pure monetary gambles should show $\lambda \approx 1$ (no extra dimensions activated); morally loaded gambles should show $\lambda > 2$ (multiple dimensions activated by loss).</p>
+<p><strong>Prediction 2: Loss-aversion variability.</strong> $\lambda$ should vary with the number of active dimensions (Chapter 4). Transactions that activate more dimensions should show higher loss aversion. Pure monetary gambles should show $\lambda \approx 1$ (no extra dimensions activated); morally loaded gambles should show $\lambda &gt; 2$ (multiple dimensions activated by loss).</p>
 <p><strong>Prediction 3: Cross-cultural $\Sigma$ variation.</strong> The covariance matrix $\Sigma$ should vary across cultures in ways that predict game-theoretic behavior. Cultures with strong cooperative norms should have high off-diagonal terms between $d_1$ and $d_3$/$d_6$; individualistic cultures should have low off-diagonal terms.</p>
 <p><strong>Prediction 4: Sacred-value boundaries.</strong> Willingness to accept compensation for sacred-value violations should be discontinuous (not merely very high). If boundaries are genuine topological features, no finite compensation can induce crossing — the willingness-to-accept function has a discontinuity at the boundary, not just a steep slope.</p>
 <p><strong>Prediction 5: Factor analysis recovers ~9 dimensions.</strong> Principal component analysis of behavioral economic data across a broad enough set of decisions should recover approximately 9 independent factors corresponding to the nine dimensions.</p>
@@ -109,10 +115,10 @@
 <p>The economic map has been one-dimensional for too long. This book has drawn the other eight dimensions. Now the real work begins: measuring the curvature, testing the predictions, building the tools, and — eventually — navigating the full geometry of economic life.</p>
 <blockquote>
 <p><strong>MARIA&rsquo;S COFFEE SHOP — EPILOGUE</strong></p>
-<p><em>Maria Esperanza retires in 2050. She sells her coffee shop to Daniela, a former barista who grew up in the Mission District. The sale price — $280,000 — captures the shop&rsquo;s monetary value. The transition captures much more.</em></p>
+<p><em>Maria Esperanza retires in 2050. She sells her coffee shop to Daniela, a former barista who grew up in the Mission District. The sale price — \$280,000 — captures the shop&rsquo;s monetary value. The transition captures much more.</em></p>
 <p><em>The sale agreement includes a five-year mentoring commitment from Maria to Daniela ($d_5$: trust transfer). The supplier relationship with Elena&rsquo;s roastery in Oakland passes to Daniela with a formal introduction and a shared lunch ($d_5$, $d_7$: relationship and identity continuity). The neighborhood knows Daniela — she has been behind the counter for six years — and the community gathering role continues without interruption ($d_6$: social continuity). The fair-wage policy, the ethical sourcing, the wheelchair-accessible entrance — all continue ($d_3$, $d_4$, $d_8$: institutional continuity).</em></p>
-<p><em>Maria&rsquo;s accountant sees a $280,000 sale. Maria's geometric economist sees a nine-dimensional transition: $280,000 on $d_1$ (conserved — Maria receives what Daniela pays), plus approximately 4.2 units of evaluative value preserved and transferred — trust, community, identity, legitimacy, epistemic continuity — that would have been destroyed if the shop had been sold to the highest bidder (a chain restaurant offering $340,000 but proposing to demolish the interior and rename it).</em></p>
-<p><em>Maria took the lower offer. On $d_1$, she left $60,000 on the table. On the full manifold, she chose the geodesic.</em></p>
+<p><em>Maria&rsquo;s accountant sees a \$280,000 sale. Maria&rsquo;s geometric economist sees a nine-dimensional transition: \$280,000 on $d_1$ (conserved — Maria receives what Daniela pays), plus approximately 4.2 units of evaluative value preserved and transferred — trust, community, identity, legitimacy, epistemic continuity — that would have been destroyed if the shop had been sold to the highest bidder (a chain restaurant offering \$340,000 but proposing to demolish the interior and rename it).</em></p>
+<p><em>Maria took the lower offer. On $d_1$, she left \$60,000 on the table. On the full manifold, she chose the geodesic.</em></p>
 </blockquote>
 <p>The work begins here.</p>
 <hr />
@@ -131,7 +137,9 @@ Helliwell, J. F. (2003). &ldquo;How&rsquo;s Life? Combining Individual and Natio
       </div>
 
       <div class="chapter-nav-bottom">
-        <a href="index.html" class="nav-toc">&larr; Contents</a>
+        <a href="ch15_discount_rate.html" class="nav-prev">&larr; Chapter 15: The Discount Rate as Geodesic Curvature</a>
+        <a href="index.html" class="nav-toc">Contents</a>
+        <span class="nav-next"></span>
       </div>
     </div>
   </article>
@@ -159,6 +167,7 @@ Helliwell, J. F. (2003). &ldquo;How&rsquo;s Life? Combining Individual and Natio
         {left: '\\\\(', right: '\\\\)', display: false},
         {left: '\\\\[', right: '\\\\]', display: true}
       ],
+      ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
       throwOnError: false
     });"></script>
 </body>
