@@ -55,7 +55,7 @@
 <blockquote>
 <p><strong>RUNNING EXAMPLE &ndash; MARIA&rsquo;S COFFEE SHOP</strong></p>
 <p><em>Maria is afraid of losing her shop. She is not equivalently excited about expanding it. This asymmetry &ndash; the fact that the threat of loss produces a stronger reaction than the promise of an equivalent gain &ndash; is one of the most replicated findings in behavioral economics. Kahneman and Tversky called it loss aversion and measured it at $\lambda \approx 2.25$: losses loom roughly 2.25 times as large as equivalent gains.</em></p>
-<p><em>But Maria&rsquo;s loss aversion is not a fixed number. When her landlord threatens to raise the rent 40% &ndash; threatening her livelihood, her employees&rsquo; jobs, her identity as a business owner, her standing in the community &ndash; Maria&rsquo;s resistance is fierce. When she loses \$20 in a poker game with friends, she shrugs it off. Same person, wildly different $\lambda$. The standard account says both are &ldquo;loss aversion&rdquo; with $\lambda \approx 2.25$. The geometric account says they are different because different dimensions of the decision manifold are active. The rent threat activates $d_1$ through $d_9$; the poker loss activates $d_1$ only. The metric is different because the space is different.</em></p>
+<p><em>But Maria&rsquo;s loss aversion is not a fixed number. When her landlord threatens to raise the rent 40% &ndash; threatening her livelihood, her employees&rsquo; jobs, her identity as a business owner, her standing in the community &ndash; Maria&rsquo;s resistance is fierce. When she loses <span class="currency">&#36;</span>20 in a poker game with friends, she shrugs it off. Same person, wildly different $\lambda$. The standard account says both are &ldquo;loss aversion&rdquo; with $\lambda \approx 2.25$. The geometric account says they are different because different dimensions of the decision manifold are active. The rent threat activates $d_1$ through $d_9$; the poker loss activates $d_1$ only. The metric is different because the space is different.</em></p>
 <p><em>This chapter derives loss aversion &ndash; and every other prospect-theory phenomenon &ndash; as a geometric property of the decision manifold&rsquo;s metric. The metric is not a parameter to be fitted. It is a mathematical structure from which the parameters follow.</em></p>
 </blockquote>
 <hr />
@@ -128,19 +128,19 @@ $$w_- \approx \frac{x^2}{\sigma_1^2} + \frac{\delta_2^2}{\sigma_2^2} + \frac{\de
 </thead>
 <tbody>
 <tr>
-<td>Losing \$100 cash</td>
+<td>Losing <span class="currency">&#36;</span>100 cash</td>
 <td>$d_1$ only</td>
 <td>$\approx 1.0 - 1.2$</td>
 <td>$\approx 1.0 - 1.5$</td>
 </tr>
 <tr>
-<td>Losing a \$100 gift from a friend</td>
+<td>Losing a <span class="currency">&#36;</span>100 gift from a friend</td>
 <td>$d_1 + d_5 + d_7$</td>
 <td>$\approx 2.0$</td>
 <td>$\approx 1.8 - 2.3$</td>
 </tr>
 <tr>
-<td>Losing a \$100 family heirloom</td>
+<td>Losing a <span class="currency">&#36;</span>100 family heirloom</td>
 <td>$d_1 + d_2 + d_6 + d_7$</td>
 <td>$\approx 3.0$</td>
 <td>$\approx 2.5 - 3.5$</td>
@@ -158,7 +158,7 @@ $$w_- \approx \frac{x^2}{\sigma_1^2} + \frac{\delta_2^2}{\sigma_2^2} + \frac{\de
 <blockquote>
 <p><strong>RUNNING EXAMPLE &ndash; MARIA&rsquo;S VARIABLE LOSS AVERSION</strong></p>
 <p><em>Maria&rsquo;s $\lambda$ for the rent increase is high &ndash; perhaps 3.0 or higher &ndash; because the threatened loss activates at least seven of the nine dimensions. Losing the shop means losing money ($d_1$), contractual position ($d_2$), fairness ($d_3$: the REIT is capturing value Maria created), autonomy ($d_4$: she would need to find employment), trust relationships ($d_5$), community standing ($d_6$), and her identity as a business owner ($d_7$). Only $d_8$ (legitimacy &ndash; the REIT is within its rights) and $d_9$ (epistemic &ndash; the situation is not ambiguous) are approximately neutral.</em></p>
-<p><em>Compare this to Maria losing \$100 from her purse. Only $d_1$ is activated. Her $\lambda$ for this loss is close to 1.0 &ndash; she is mildly annoyed, not devastated. Same person. Different manifold activation. Different $\lambda$.</em></p>
+<p><em>Compare this to Maria losing <span class="currency">&#36;</span>100 from her purse. Only $d_1$ is activated. Her $\lambda$ for this loss is close to 1.0 &ndash; she is mildly annoyed, not devastated. Same person. Different manifold activation. Different $\lambda$.</em></p>
 </blockquote>
 <hr />
 <h2 id="43-reference-dependence-as-coordinate-choice">4.3 Reference Dependence as Coordinate Choice</h2>
@@ -168,10 +168,10 @@ $$w_- \approx \frac{x^2}{\sigma_1^2} + \frac{\delta_2^2}{\sigma_2^2} + \frac{\de
 <p>A<em> search computes edge costs $w(v_i, v_{i+1})$ from the </em>current* node, not from the origin. The cost of moving from &ldquo;here&rdquo; to &ldquo;there&rdquo; depends on where &ldquo;here&rdquo; is. This is not an approximation or a computational shortcut &ndash; it is the correct procedure for pathfinding on a curved manifold.</p>
 <p>In physics, the analogous phenomenon is well understood: the metric of a curved manifold is position-dependent. The speed of light is the same everywhere, but the distance between two events depends on where you measure it &ndash; because spacetime is curved by mass. Similarly, the &ldquo;cost&rdquo; of an economic displacement depends on the agent&rsquo;s current position on the manifold &ndash; because the metric varies with position.</p>
 <h3 id="why-reference-dependence-is-not-a-bias">Why Reference Dependence Is Not a Bias</h3>
-<p>Consider two agents evaluating the same absolute outcome: a salary of \$80,000.</p>
-<p><strong>Agent A</strong> currently earns \$60,000. The displacement is $\Delta d_1 = +20,000$ (a gain). The gain path is approximately one-dimensional.</p>
-<p><strong>Agent B</strong> currently earns \$100,000. The displacement is $\Delta d_1 = -20,000$ (a loss). The loss path activates multiple dimensions: $d_3$ (unfairness of the pay cut), $d_6$ (status loss), $d_7$ (identity as a high earner).</p>
-<p>The same absolute outcome (\$80,000) has different metric costs for the two agents &ndash; not because they have different &ldquo;reference points&rdquo; (a psychological construct) but because they are at different positions on the manifold, and the metric is position-dependent (a geometric fact). Agent B&rsquo;s displacement traverses more dimensions than Agent A&rsquo;s, so it has higher total cost.</p>
+<p>Consider two agents evaluating the same absolute outcome: a salary of <span class="currency">&#36;</span>80,000.</p>
+<p><strong>Agent A</strong> currently earns <span class="currency">&#36;</span>60,000. The displacement is $\Delta d_1 = +20,000$ (a gain). The gain path is approximately one-dimensional.</p>
+<p><strong>Agent B</strong> currently earns <span class="currency">&#36;</span>100,000. The displacement is $\Delta d_1 = -20,000$ (a loss). The loss path activates multiple dimensions: $d_3$ (unfairness of the pay cut), $d_6$ (status loss), $d_7$ (identity as a high earner).</p>
+<p>The same absolute outcome (<span class="currency">&#36;</span>80,000) has different metric costs for the two agents &ndash; not because they have different &ldquo;reference points&rdquo; (a psychological construct) but because they are at different positions on the manifold, and the metric is position-dependent (a geometric fact). Agent B&rsquo;s displacement traverses more dimensions than Agent A&rsquo;s, so it has higher total cost.</p>
 <p><strong>[Conditional Theorem.]</strong> Reference dependence dissolves as a paradox once we recognize that economic decisions are made on a manifold with position-dependent metric, not on a flat space with position-independent metric. On a flat space, the cost of moving from 60 to 80 and from 100 to 80 differs only in sign. On a curved manifold, the two displacements traverse different regions of the space, with different curvatures and different dimensional activations. The asymmetry is geometric, not psychological.</p>
 <hr />
 <h2 id="44-framing-effects-as-gauge-variance">4.4 Framing Effects as Gauge Variance</h2>
@@ -196,7 +196,7 @@ $$w_- \approx \frac{x^2}{\sigma_1^2} + \frac{\delta_2^2}{\sigma_2^2} + \frac{\de
 <p>The geometric framework does not claim that all &ldquo;biases&rdquo; are rational. It claims that <em>some</em> are rational responses to manifold structure and <em>some</em> are genuine heuristic errors &ndash; and it provides the mathematical criterion (gauge invariance) that distinguishes them.</p>
 <blockquote>
 <p><strong>RUNNING EXAMPLE &ndash; FRAMING MARIA&rsquo;S DECISION</strong></p>
-<p><em>&ldquo;Your rent is increasing from \$5,000 to \$7,000&rdquo; activates loss framing: Maria perceives a loss of \$2,000/month. &ldquo;Your new rent will be \$7,000, which is below the neighborhood average of \$8,500&rdquo; activates gain framing: Maria perceives a saving relative to the market. The underlying economic state is identical. If Maria&rsquo;s response differs between the two descriptions, she is exhibiting a framing effect &ndash; a gauge violation. The geometric framework predicts: Maria is more susceptible to framing when she is under cognitive load (System 2 resources depleted, so she relies more on gauge-variant System 1), and less susceptible when she has time to compute the full attribute vector (System 2 can verify gauge invariance by checking that the two descriptions map to the same manifold state).</em></p>
+<p><em>&ldquo;Your rent is increasing from <span class="currency">&#36;</span>5,000 to <span class="currency">&#36;</span>7,000&rdquo; activates loss framing: Maria perceives a loss of <span class="currency">&#36;</span>2,000/month. &ldquo;Your new rent will be <span class="currency">&#36;</span>7,000, which is below the neighborhood average of <span class="currency">&#36;</span>8,500&rdquo; activates gain framing: Maria perceives a saving relative to the market. The underlying economic state is identical. If Maria&rsquo;s response differs between the two descriptions, she is exhibiting a framing effect &ndash; a gauge violation. The geometric framework predicts: Maria is more susceptible to framing when she is under cognitive load (System 2 resources depleted, so she relies more on gauge-variant System 1), and less susceptible when she has time to compute the full attribute vector (System 2 can verify gauge invariance by checking that the two descriptions map to the same manifold state).</em></p>
 </blockquote>
 <hr />
 <h2 id="45-hyperbolic-discounting-as-path-curvature">4.5 Hyperbolic Discounting as Path Curvature</h2>
@@ -221,20 +221,20 @@ $$w_- \approx \frac{x^2}{\sigma_1^2} + \frac{\delta_2^2}{\sigma_2^2} + \frac{\de
 <p>This derivation also explains a secondary finding: present bias is stronger for visceral goods (food, sex, drugs) than for abstract goods (money, career advancement). Visceral goods activate more dimensions of the manifold at short time horizons &ndash; social impact, identity, autonomy are all engaged by immediate visceral choice. Abstract goods primarily affect $d_1$ (consequences) at all horizons. The curvature differential between $t = 0$ and $t \gg 0$ is therefore larger for visceral goods than for abstract goods, producing a steeper discount function and more pronounced present bias.</p>
 <blockquote>
 <p><strong>RUNNING EXAMPLE &ndash; MARIA&rsquo;S TIME HORIZON</strong></p>
-<p><em>Maria is offered two deals: (A) a \$5,000 equipment grant she can use immediately, or (B) a \$7,000 equipment grant that arrives in six months. Classical discounting at market rates favors B. But Maria&rsquo;s manifold evaluation at $t = 0$ activates multiple dimensions: she can fix the espresso machine now ($d_1$), demonstrate competence to her landlord during lease negotiations ($d_5$, $d_6$), and maintain her identity as a proactive business owner ($d_7$). At $t = 6$ months, these dimensions are less active &ndash; the lease negotiation will be over, the immediate crisis past. Maria&rsquo;s preference for A is not &ldquo;present bias&rdquo; in the pejorative sense. It is the rational response to a manifold where immediate action has higher dimensional activation than delayed action.</em></p>
+<p><em>Maria is offered two deals: (A) a <span class="currency">&#36;</span>5,000 equipment grant she can use immediately, or (B) a <span class="currency">&#36;</span>7,000 equipment grant that arrives in six months. Classical discounting at market rates favors B. But Maria&rsquo;s manifold evaluation at $t = 0$ activates multiple dimensions: she can fix the espresso machine now ($d_1$), demonstrate competence to her landlord during lease negotiations ($d_5$, $d_6$), and maintain her identity as a proactive business owner ($d_7$). At $t = 6$ months, these dimensions are less active &ndash; the lease negotiation will be over, the immediate crisis past. Maria&rsquo;s preference for A is not &ldquo;present bias&rdquo; in the pejorative sense. It is the rational response to a manifold where immediate action has higher dimensional activation than delayed action.</em></p>
 </blockquote>
 <hr />
 <h2 id="46-the-endowment-effect-as-hohfeldian-asymmetry">4.6 The Endowment Effect as Hohfeldian Asymmetry</h2>
 <blockquote>
 <p><strong>Proposition 39 (Endowment Effect as Rights Creation).</strong> <em>The endowment effect &ndash; valuing a good more highly when you own it than when you don&rsquo;t &ndash; arises because ownership creates a Hohfeldian right ($d_2$) that must be surrendered upon sale. The attribute-vector change for selling includes $\Delta d_2 &lt; 0$ (loss of right), while the attribute-vector change for buying includes $\Delta d_2 &gt; 0$ (acquisition of right). Since loss of rights activates more dimensions than acquisition (by the same mechanism as loss aversion), selling has higher total edge weight than buying.</em></p>
 </blockquote>
-<p><strong>Argument.</strong> Consider a coffee mug worth \$5 at market price.</p>
+<p><strong>Argument.</strong> Consider a coffee mug worth <span class="currency">&#36;</span>5 at market price.</p>
 <p><strong>Buying the mug (non-owner $\to$ owner):</strong>
 $$\Delta \mathbf{a}_{\text{buy}} = (-5, +\delta_2, 0, 0, 0, 0, 0, 0, 0)$$</p>
-<p>The buyer pays \$5 ($\Delta d_1 = -5$) and acquires a property right ($\Delta d_2 = +\delta_2$). The acquisition of a right is a positive change on $d_2$, approximately one-dimensional.</p>
+<p>The buyer pays <span class="currency">&#36;</span>5 ($\Delta d_1 = -5$) and acquires a property right ($\Delta d_2 = +\delta_2$). The acquisition of a right is a positive change on $d_2$, approximately one-dimensional.</p>
 <p><strong>Selling the mug (owner $\to$ non-owner):</strong>
 $$\Delta \mathbf{a}_{\text{sell}} = (+5, -\delta_2, -\delta_3, 0, 0, -\delta_6, -\delta_7, 0, 0)$$</p>
-<p>The seller receives \$5 ($\Delta d_1 = +5$) but surrenders a property right ($\Delta d_2 = -\delta_2$). The <em>loss</em> of the right activates additional dimensions: fairness ($d_3$: &ldquo;am I getting enough for something that&rsquo;s mine?&rdquo;), social status ($d_6$: &ldquo;selling off my things&rdquo;), identity ($d_7$: &ldquo;this was part of my possessions&rdquo;). The selling path is multi-dimensional.</p>
+<p>The seller receives <span class="currency">&#36;</span>5 ($\Delta d_1 = +5$) but surrenders a property right ($\Delta d_2 = -\delta_2$). The <em>loss</em> of the right activates additional dimensions: fairness ($d_3$: &ldquo;am I getting enough for something that&rsquo;s mine?&rdquo;), social status ($d_6$: &ldquo;selling off my things&rdquo;), identity ($d_7$: &ldquo;this was part of my possessions&rdquo;). The selling path is multi-dimensional.</p>
 <p>The willingness to accept (WTA) must compensate for the multi-dimensional displacement:
 $$\text{WTA} = \sqrt{(\Delta d_1)^2 / \sigma_1^2 + (\delta_2)^2 / \sigma_2^2 + (\delta_3)^2 / \sigma_3^2 + \cdots}$$</p>
 <p>The willingness to pay (WTP) must compensate only for the monetary cost:
@@ -251,12 +251,12 @@ $$\text{WTP} \approx \frac{|\Delta d_1|}{\sigma_1}$$</p>
 <p>This is consistent with the Allais and Ellsberg paradoxes, which both involve shifts in epistemic status ($d_9$) that the scalar expected-value calculation ignores.</p>
 <h3 id="the-allais-paradox-dissolved">The Allais Paradox Dissolved</h3>
 <p>The Allais paradox &ndash; the most famous violation of the expected utility independence axiom &ndash; dissolves on the decision manifold. Consider the classic choice:</p>
-<p><strong>Option A:</strong> Certain \$1,000,000.
-<strong>Option B:</strong> 89% chance of \$1,000,000, 10% chance of \$5,000,000, 1% chance of \$0.</p>
-<p>Expected value favors B (\$1,390,000 vs. \$1,000,000). Most people choose A. Then, in a second pair:</p>
-<p><strong>Option C:</strong> 11% chance of \$1,000,000, 89% chance of \$0.
-<strong>Option D:</strong> 10% chance of \$5,000,000, 90% chance of \$0.</p>
-<p>Expected value favors D. Most people choose D &ndash; but this violates the independence axiom, because the only difference between the A-vs-B pair and the C-vs-D pair is the removal of the common 89% chance of \$1,000,000.</p>
+<p><strong>Option A:</strong> Certain <span class="currency">&#36;</span>1,000,000.
+<strong>Option B:</strong> 89% chance of <span class="currency">&#36;</span>1,000,000, 10% chance of <span class="currency">&#36;</span>5,000,000, 1% chance of <span class="currency">&#36;</span>0.</p>
+<p>Expected value favors B (<span class="currency">&#36;</span>1,390,000 vs. <span class="currency">&#36;</span>1,000,000). Most people choose A. Then, in a second pair:</p>
+<p><strong>Option C:</strong> 11% chance of <span class="currency">&#36;</span>1,000,000, 89% chance of <span class="currency">&#36;</span>0.
+<strong>Option D:</strong> 10% chance of <span class="currency">&#36;</span>5,000,000, 90% chance of <span class="currency">&#36;</span>0.</p>
+<p>Expected value favors D. Most people choose D &ndash; but this violates the independence axiom, because the only difference between the A-vs-B pair and the C-vs-D pair is the removal of the common 89% chance of <span class="currency">&#36;</span>1,000,000.</p>
 <p>On the decision manifold, the paradox vanishes. Choosing A over B reflects the activation of $d_9$ (epistemic certainty has value: &ldquo;I <em>know</em> I get the million&rdquo;) and $d_7$ (identity: &ldquo;I am prudent &ndash; I take the sure thing&rdquo;). The attribute-vector difference between A and B includes non-zero components on $d_7$ and $d_9$ that the expected-value calculation discards. In the C-vs-D pair, both options involve substantial uncertainty ($d_9$ is already degraded for both), so the epistemic and identity components are approximately equal, and the agent defaults to expected-value comparison &ndash; choosing D.</p>
 <p>On the scalar projection, independence is violated. On the full manifold, preferences are consistent: the attribute-vector difference between certainty and risk includes dimensions that the scalar calculation ignores.</p>
 <h3 id="the-ellsberg-paradox-dissolved">The Ellsberg Paradox Dissolved</h3>
@@ -266,9 +266,9 @@ $$\text{WTP} \approx \frac{|\Delta d_1|}{\sigma_1}$$</p>
 <p>Let us compute the geometric loss-aversion coefficient for Maria&rsquo;s specific situation.</p>
 <h3 id="setup">Setup</h3>
 <p>Maria currently operates at a steady state with attribute vector $\mathbf{a}_0$. She faces two symmetric possibilities:</p>
-<p><strong>Scenario G (gain):</strong> The landlord <em>reduces</em> rent by \$2,000/month (from \$5,000 to \$3,000). Total annual impact: +\$24,000.</p>
-<p><strong>Scenario L (loss):</strong> The landlord <em>increases</em> rent by \$2,000/month (from \$5,000 to \$7,000). Total annual impact: -\$24,000.</p>
-<p>Both scenarios involve the same monetary magnitude: \$24,000/year. The question is: what is the ratio of manifold distances?</p>
+<p><strong>Scenario G (gain):</strong> The landlord <em>reduces</em> rent by <span class="currency">&#36;</span>2,000/month (from <span class="currency">&#36;</span>5,000 to <span class="currency">&#36;</span>3,000). Total annual impact: +<span class="currency">&#36;</span>24,000.</p>
+<p><strong>Scenario L (loss):</strong> The landlord <em>increases</em> rent by <span class="currency">&#36;</span>2,000/month (from <span class="currency">&#36;</span>5,000 to <span class="currency">&#36;</span>7,000). Total annual impact: -<span class="currency">&#36;</span>24,000.</p>
+<p>Both scenarios involve the same monetary magnitude: <span class="currency">&#36;</span>24,000/year. The question is: what is the ratio of manifold distances?</p>
 <h3 id="gain-path-g">Gain Path (G)</h3>
 <p>Maria&rsquo;s attribute-vector change under the rent reduction:</p>
 <p>$$\Delta \mathbf{a}_G = (+24000, 0, +0.2, +0.1, +0.1, +0.1, +0.1, 0, 0)$$</p>
@@ -298,7 +298,7 @@ $$w_L = \frac{(24000)^2}{\sigma_1^2} + \frac{(0.3)^2}{\sigma_2^2} + \frac{(0.6)^
 <p>$$\lambda = \frac{w_L}{w_G} = \frac{1.0 + 1.80}{1.0 + 0.08} = \frac{2.80}{1.08} \approx 2.59$$</p>
 <h3 id="interpretation">Interpretation</h3>
 <p>Maria&rsquo;s loss-aversion coefficient for the rent decision is approximately $\lambda \approx 2.6$ &ndash; higher than the textbook average of 2.25, because the rent increase activates more dimensions more strongly than a typical laboratory gamble. This is consistent with the prediction that $\lambda$ increases with dimensional activation.</p>
-<p>Compare this to a laboratory experiment where Maria evaluates a coin flip for \$100 gain or \$100 loss, with no social context, no identity implications, and no contractual dimensions. In that setting, the gain and loss paths are both approximately one-dimensional, and $\lambda \approx 1.0$-$1.2$.</p>
+<p>Compare this to a laboratory experiment where Maria evaluates a coin flip for <span class="currency">&#36;</span>100 gain or <span class="currency">&#36;</span>100 loss, with no social context, no identity implications, and no contractual dimensions. In that setting, the gain and loss paths are both approximately one-dimensional, and $\lambda \approx 1.0$-$1.2$.</p>
 <p><strong>The geometric framework predicts that loss aversion is not a personality trait (some fixed $\lambda$ that characterizes Maria). It is a manifold property (a variable $\lambda$ that depends on how many dimensions the specific loss activates).</strong> This prediction is testable and distinguishes the geometric framework from standard prospect theory.</p>
 <h3 id="sensitivity-analysis-what-drives-math225">Sensitivity Analysis: What Drives $\lambda$?</h3>
 <p>The computation above reveals what controls the magnitude of loss aversion. Three factors dominate:</p>

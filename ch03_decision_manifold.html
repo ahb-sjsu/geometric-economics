@@ -53,7 +53,7 @@
 <blockquote>
 <p><strong>RUNNING EXAMPLE &ndash; MARIA&rsquo;S COFFEE SHOP</strong></p>
 <p><em>Maria is thinking about hiring a new barista. On the surface, this looks like a simple business decision: can she afford the salary? But sit with Maria for an hour as she thinks it through, and you will hear her navigate a space far richer than a profit-and-loss statement.</em></p>
-<p><em>&ldquo;The salary is \$3,200 a month &ndash; I can cover it if the weekend traffic holds&rdquo; &ndash; that is $d_1$, monetary cost. &ldquo;I&rsquo;d need to put them on a real contract, not just day-to-day like last time&rdquo; &ndash; that is $d_2$, contractual obligation. &ldquo;I want to pay at least \$18 an hour; anything less isn&rsquo;t right for this city&rdquo; &ndash; that is $d_3$, fair wage. &ldquo;They need to be able to set their own pace behind the counter, not be micromanaged&rdquo; &ndash; that is $d_4$, worker autonomy. &ldquo;Can I trust this person with the register, the keys, the customers?&rdquo; &ndash; that is $d_5$, trust in the hire. &ldquo;If I hire from the neighborhood, that matters; people notice&rdquo; &ndash; that is $d_6$, community impact. &ldquo;I want to be the kind of employer people are proud to work for&rdquo; &ndash; that is $d_7$, Maria&rsquo;s identity as employer. &ldquo;I need to make sure everything is above board &ndash; payroll taxes, workers&rsquo; comp, the whole thing&rdquo; &ndash; that is $d_8$, regulatory compliance. &ldquo;But honestly, I don&rsquo;t know if the neighborhood is going to keep gentrifying or if there&rsquo;s a downturn coming&rdquo; &ndash; that is $d_9$, uncertainty about business outlook.</em></p>
+<p><em>&ldquo;The salary is <span class="currency">&#36;</span>3,200 a month &ndash; I can cover it if the weekend traffic holds&rdquo; &ndash; that is $d_1$, monetary cost. &ldquo;I&rsquo;d need to put them on a real contract, not just day-to-day like last time&rdquo; &ndash; that is $d_2$, contractual obligation. &ldquo;I want to pay at least <span class="currency">&#36;</span>18 an hour; anything less isn&rsquo;t right for this city&rdquo; &ndash; that is $d_3$, fair wage. &ldquo;They need to be able to set their own pace behind the counter, not be micromanaged&rdquo; &ndash; that is $d_4$, worker autonomy. &ldquo;Can I trust this person with the register, the keys, the customers?&rdquo; &ndash; that is $d_5$, trust in the hire. &ldquo;If I hire from the neighborhood, that matters; people notice&rdquo; &ndash; that is $d_6$, community impact. &ldquo;I want to be the kind of employer people are proud to work for&rdquo; &ndash; that is $d_7$, Maria&rsquo;s identity as employer. &ldquo;I need to make sure everything is above board &ndash; payroll taxes, workers&rsquo; comp, the whole thing&rdquo; &ndash; that is $d_8$, regulatory compliance. &ldquo;But honestly, I don&rsquo;t know if the neighborhood is going to keep gentrifying or if there&rsquo;s a downturn coming&rdquo; &ndash; that is $d_9$, uncertainty about business outlook.</em></p>
 <p><em>Nine dimensions. One decision. The economic decision manifold is the space that Maria is actually navigating. This chapter gives it a name and a mathematical structure.</em></p>
 </blockquote>
 <hr />
@@ -210,8 +210,8 @@ $$\mathbf{a}(v_1) = (a_1^0 - c_{\text{salary}}, a_2^0 + \delta_2, a_3^0 + \delta
 <h3 id="the-grocery-store-example">The Grocery Store Example</h3>
 <p>To make this concrete, consider the simplest possible application.</p>
 <p>An agent stands in a grocery store. Two paths are available:</p>
-<p><strong>Path A (buy):</strong> Pay \$50. Attribute-vector change: $\Delta d_1 = -50$, all other dimensions approximately 0. Edge weight: $w_A = 50^2 / \sigma_1^2$.</p>
-<p><strong>Path B (steal):</strong> Pay \$0. Attribute-vector change: $\Delta d_1 = 0$, but $\Delta d_2 = -\infty$ (rights violation), $\Delta d_6 = -\text{large}$ (social sanction risk), $\Delta d_7 = -\text{large}$ (identity violation). Edge weight: $w_B = \infty$.</p>
+<p><strong>Path A (buy):</strong> Pay <span class="currency">&#36;</span>50. Attribute-vector change: $\Delta d_1 = -50$, all other dimensions approximately 0. Edge weight: $w_A = 50^2 / \sigma_1^2$.</p>
+<p><strong>Path B (steal):</strong> Pay <span class="currency">&#36;</span>0. Attribute-vector change: $\Delta d_1 = 0$, but $\Delta d_2 = -\infty$ (rights violation), $\Delta d_6 = -\text{large}$ (social sanction risk), $\Delta d_7 = -\text{large}$ (identity violation). Edge weight: $w_B = \infty$.</p>
 <p>Under scalar utility ($\phi = d_1$): $\phi(B) &gt; \phi(A)$, so Homo economicus steals.</p>
 <p>On the full manifold: $w_B = \infty &gt; w_A$, so the rational agent buys.</p>
 <p>The agent is not &ldquo;irrational&rdquo; for buying. The economist is computing on the wrong manifold. This is, in miniature, the entire argument of the book. Classical economics operates on the $d_1$ projection and is puzzled by behavior that makes perfect sense on the full decision complex. The solution is not to add epicycles to the utility function &ndash; it is to expand the dimensionality of the evaluation space.</p>
@@ -233,7 +233,7 @@ $$\mathbf{a}(v_1) = (a_1^0 - c_{\text{salary}}, a_2^0 + \delta_2, a_3^0 + \delta
 <p><strong>Correlation sensitivity:</strong> The distance accounts for correlations between dimensions. Two states that differ by the same amount on $d_1$ and $d_3$ are closer if $d_1$ and $d_3$ are positively correlated (because correlated changes are &ldquo;expected&rdquo; and therefore less costly) and farther apart if they are negatively correlated.</p>
 </li>
 <li>
-<p><strong>Scale normalization:</strong> The division by $\sigma_k^2$ normalizes each dimension by its typical variance. A \$100 change in monetary value ($d_1$) is a small displacement in a high-income context (where $\sigma_1$ is large) but a large displacement in a low-income context (where $\sigma_1$ is small). The metric automatically adjusts for scale.</p>
+<p><strong>Scale normalization:</strong> The division by $\sigma_k^2$ normalizes each dimension by its typical variance. A <span class="currency">&#36;</span>100 change in monetary value ($d_1$) is a small displacement in a high-income context (where $\sigma_1$ is large) but a large displacement in a low-income context (where $\sigma_1$ is small). The metric automatically adjusts for scale.</p>
 </li>
 </ol>
 <hr />
@@ -241,13 +241,13 @@ $$\mathbf{a}(v_1) = (a_1^0 - c_{\text{salary}}, a_2^0 + \delta_2, a_3^0 + \delta
 <p>Let us map Maria&rsquo;s lease negotiation onto the decision complex in detail.</p>
 <h3 id="setting-up-the-vertices">Setting Up the Vertices</h3>
 <p>Maria&rsquo;s landlord has offered three possible terms for lease renewal:</p>
-<p><strong>$v_0$ (current state):</strong> Lease at \$5,000/month, month-to-month.
+<p><strong>$v_0$ (current state):</strong> Lease at <span class="currency">&#36;</span>5,000/month, month-to-month.
 $$\mathbf{a}(v_0) = (a_1, a_2, a_3, a_4, a_5, a_6, a_7, a_8, a_9)$$</p>
 <p>Take this as the reference point &ndash; all changes are measured relative to $v_0$.</p>
-<p><strong>$v_1$ (accept 40% increase):</strong> Lease at \$7,000/month, one-year term.
+<p><strong>$v_1$ (accept 40% increase):</strong> Lease at <span class="currency">&#36;</span>7,000/month, one-year term.
 $$\Delta \mathbf{a}_1 = (-24000, +0.3, -0.5, -0.4, -0.6, -0.2, -0.3, +0.2, -0.5)$$</p>
 <p>Breaking this down:
-- $\Delta d_1 = -24000$: \$2,000/month additional cost over 12 months
+- $\Delta d_1 = -24000$: <span class="currency">&#36;</span>2,000/month additional cost over 12 months
 - $\Delta d_2 = +0.3$: one-year lease provides slightly more contractual security than month-to-month
 - $\Delta d_3 = -0.5$: the increase feels unfair &ndash; Maria built the neighborhood value the REIT is capturing
 - $\Delta d_4 = -0.4$: reduced autonomy &ndash; must cut wages or quality to afford the increase
@@ -256,10 +256,10 @@ $$\Delta \mathbf{a}_1 = (-24000, +0.3, -0.5, -0.4, -0.6, -0.2, -0.3, +0.2, -0.5)
 - $\Delta d_7 = -0.3$: identity strain &ndash; being forced to make choices she opposes
 - $\Delta d_8 = +0.2$: the REIT is within its legal rights (legitimate process)
 - $\Delta d_9 = -0.5$: uncertainty about future increases</p>
-<p><strong>$v_2$ (negotiate to \$6,000 with five-year term):</strong>
+<p><strong>$v_2$ (negotiate to <span class="currency">&#36;</span>6,000 with five-year term):</strong>
 $$\Delta \mathbf{a}_2 = (-12000, +0.7, +0.1, -0.1, +0.2, +0.1, +0.2, +0.3, +0.4)$$</p>
 <ul>
-<li>$\Delta d_1 = -12000$: \$1,000/month additional cost over 12 months (but five-year certainty)</li>
+<li>$\Delta d_1 = -12000$: <span class="currency">&#36;</span>1,000/month additional cost over 12 months (but five-year certainty)</li>
 <li>$\Delta d_2 = +0.7$: five-year lease provides substantial contractual security</li>
 <li>$\Delta d_3 = +0.1$: the negotiated outcome feels approximately fair &ndash; a compromise</li>
 <li>$\Delta d_4 = -0.1$: slight reduction in autonomy (committed to three years)</li>
@@ -287,7 +287,7 @@ $$\Delta \mathbf{a}_3 = (+\text{savings}, -0.8, -0.3, -0.7, -0.4, -0.9, -0.8, 0,
 <p><strong>Path to $v_1$ (accept 40% increase):</strong>
 $$w_1 = \Delta \mathbf{a}_1^T \Sigma^{-1} \Delta \mathbf{a}_1$$</p>
 <p>The large negative displacements on $d_3$ (fairness), $d_5$ (trust), and $d_9$ (epistemic) compound because $\Sigma$ encodes positive correlations between these dimensions &ndash; when trust erodes, fairness perception worsens, and epistemic uncertainty increases. The Mahalanobis distance amplifies these correlated displacements.</p>
-<p><strong>Path to $v_2$ (negotiate to \$6,000):</strong>
+<p><strong>Path to $v_2$ (negotiate to <span class="currency">&#36;</span>6,000):</strong>
 $$w_2 = \Delta \mathbf{a}_2^T \Sigma^{-1} \Delta \mathbf{a}_2$$</p>
 <p>The smaller monetary cost, combined with positive or near-zero displacements on most non-monetary dimensions, produces a much smaller total edge weight. The positive movements on $d_2$ (contractual security), $d_5$ (trust restoration), and $d_9$ (reduced uncertainty) actively <em>reduce</em> the Mahalanobis distance, because improvements on correlated dimensions offset the monetary cost.</p>
 <p><strong>Path to $v_3$ (close shop):</strong>

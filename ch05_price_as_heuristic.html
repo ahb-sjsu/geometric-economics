@@ -52,7 +52,7 @@
 <hr />
 <blockquote>
 <p><strong>RUNNING EXAMPLE &ndash; MARIA&rsquo;S COFFEE SHOP</strong></p>
-<p><em>Maria is staring at her wholesale invoice. Her Oakland roaster, Elena, has raised the price of fair-trade Ethiopian Yirgacheffe by 18%. Her System 1 fires instantly: this feels wrong &ndash; she has been loyal to this supplier for six years, and the increase feels like it violates the relationship. Her System 2 opens a spreadsheet: current margin per cup is \$2.10; the increase cuts it to \$1.53; at 200 cups a day, that is \$114/day in lost margin, \$3,420/month.</em></p>
+<p><em>Maria is staring at her wholesale invoice. Her Oakland roaster, Elena, has raised the price of fair-trade Ethiopian Yirgacheffe by 18%. Her System 1 fires instantly: this feels wrong &ndash; she has been loyal to this supplier for six years, and the increase feels like it violates the relationship. Her System 2 opens a spreadsheet: current margin per cup is <span class="currency">&#36;</span>2.10; the increase cuts it to <span class="currency">&#36;</span>1.53; at 200 cups a day, that is <span class="currency">&#36;</span>114/day in lost margin, <span class="currency">&#36;</span>3,420/month.</em></p>
 <p><em>But the decision Maria faces is not &ldquo;absorb or pass through.&rdquo; It is a pathfinding problem on a nine-dimensional manifold. Absorb the cost and her monetary position erodes ($d_1$). Pass the full increase to customers and she risks losing the price-sensitive regulars who are also her community ($d_6$). Switch to a cheaper, non-fair-trade supplier and she violates her identity as an ethical sourcer ($d_7$) and breaks faith with the Oakland roaster ($d_5$). Split the increase &ndash; raise prices modestly, absorb some margin loss, and negotiate a smaller increase with the roaster &ndash; and she navigates a path through the manifold that balances all nine dimensions.</em></p>
 <p><em>The price signal told her something was changing. But the price alone could not tell her what to do. For that, she needed the full evaluation function: $f = g + h$.</em></p>
 </blockquote>
@@ -77,7 +77,7 @@
 </ul>
 </blockquote>
 <p>This definition reframes every economic choice as a question about paths, not points. The classical economist asks: &ldquo;Which outcome maximizes utility?&rdquo; The geometric economist asks: &ldquo;Which <em>path</em> through the decision manifold reaches the goal region at minimum total cost &ndash; where cost is measured on all nine dimensions?&rdquo;</p>
-<p>The distinction matters. Two paths may reach the same monetary outcome ($d_1$) but at radically different costs on the other dimensions. A company that reaches \$10M in revenue through fair dealing and one that reaches \$10M through fraud arrive at the same $d_1$ destination, but the second has accumulated catastrophic costs on $d_2$ (rights violations), $d_5$ (trust destruction), $d_7$ (identity corruption), and $d_8$ (legitimacy erosion). The scalar economist sees identical outcomes. The geometric economist sees two paths with vastly different total costs &ndash; and correctly predicts that the second path is unstable, because the accumulated non-monetary costs will eventually cascade back into $d_1$ (through lawsuits, loss of customers, regulatory action).</p>
+<p>The distinction matters. Two paths may reach the same monetary outcome ($d_1$) but at radically different costs on the other dimensions. A company that reaches <span class="currency">&#36;</span>10M in revenue through fair dealing and one that reaches <span class="currency">&#36;</span>10M through fraud arrive at the same $d_1$ destination, but the second has accumulated catastrophic costs on $d_2$ (rights violations), $d_5$ (trust destruction), $d_7$ (identity corruption), and $d_8$ (legitimacy erosion). The scalar economist sees identical outcomes. The geometric economist sees two paths with vastly different total costs &ndash; and correctly predicts that the second path is unstable, because the accumulated non-monetary costs will eventually cascade back into $d_1$ (through lawsuits, loss of customers, regulatory action).</p>
 <h3 id="the-system-1-system-2-mapping">The System 1 / System 2 Mapping</h3>
 <p>The correspondence between A* search and dual-process theory is not approximate. It is exact:</p>
 <table>
@@ -130,11 +130,11 @@
 </tr>
 </tbody>
 </table>
-<p>Consider what each component does. The $g(n)$ function accumulates <em>actual costs</em> as the agent moves through the decision complex. This is the spreadsheet work: Maria knows she has spent \$14,000 this month on rent, \$6,200 on supplies, \$9,800 on wages. These are recorded, verifiable, deliberate calculations. System 2 is slow because it operates on concrete data that must be retrieved, processed, and summed.</p>
+<p>Consider what each component does. The $g(n)$ function accumulates <em>actual costs</em> as the agent moves through the decision complex. This is the spreadsheet work: Maria knows she has spent <span class="currency">&#36;</span>14,000 this month on rent, <span class="currency">&#36;</span>6,200 on supplies, <span class="currency">&#36;</span>9,800 on wages. These are recorded, verifiable, deliberate calculations. System 2 is slow because it operates on concrete data that must be retrieved, processed, and summed.</p>
 <p>The $h(n)$ function estimates <em>remaining costs</em> from the current state to the goal. This is the intuitive assessment: Maria feels that switching to a non-fair-trade supplier would &ldquo;cost too much&rdquo; &ndash; not in dollars, but in identity ($d_7$), trust ($d_5$), and community standing ($d_6$). She does not compute these costs; she <em>perceives</em> them, the way you perceive that a dark alley is dangerous without computing the conditional probability of assault. System 1 is fast because it operates on compressed, pre-computed estimates &ndash; heuristics &ndash; rather than on raw data.</p>
 <p>The genius of A<em> search is that it combines both: $f(n) = g(n) + h(n)$. The decision is not &ldquo;trust your gut&rdquo; (use only $h$) or &ldquo;run the numbers&rdquo; (use only $g$). It is the sum. And the sum has a mathematical property that neither component has alone: when $h$ is </em>admissible<em> &ndash; when it never overestimates the true remaining cost &ndash; A</em> is guaranteed to find the optimal path.</p>
 <h3 id="the-price-signal-as-scalar-heuristic">The Price Signal as Scalar Heuristic</h3>
-<p>Where does the <em>price signal</em> fit in this architecture? Prices are the most ubiquitous heuristic in economic life. When Maria sees that fair-trade Ethiopian Yirgacheffe costs \$8.20 per pound and conventional Colombian costs \$4.50 per pound, the prices are providing her with a <em>scalar estimate</em> of the cost of transitioning between states on the decision manifold.</p>
+<p>Where does the <em>price signal</em> fit in this architecture? Prices are the most ubiquitous heuristic in economic life. When Maria sees that fair-trade Ethiopian Yirgacheffe costs <span class="currency">&#36;</span>8.20 per pound and conventional Colombian costs <span class="currency">&#36;</span>4.50 per pound, the prices are providing her with a <em>scalar estimate</em> of the cost of transitioning between states on the decision manifold.</p>
 <p>But prices are heuristics about $d_1$ only. The price of a good does not encode its fairness ($d_3$), the labor conditions under which it was produced ($d_4$), the trust relationship with the supplier ($d_5$), or its environmental impact ($d_6$). The price is a <em>projection</em> of the full edge weight onto the monetary dimension:</p>
 <p>$$h_{\text{price}}(n) = \pi_{d_1}(w(v_n, v_{\text{goal}}))$$</p>
 <p>where $\pi_{d_1}$ is the projection onto the first coordinate.</p>
@@ -259,7 +259,7 @@
 <h2 id="the-price-signal-reconsidered">The Price Signal Reconsidered</h2>
 <p>With the A* framework in hand, we can now give a precise geometric account of the price signal.</p>
 <h3 id="prices-as-math185-heuristics">Prices as $d_1$-Heuristics</h3>
-<p>The price of a good or service is a scalar estimate of the $d_1$ cost of a transition on the economic decision manifold. When Maria sees that a pound of coffee beans costs \$8.20, the price is telling her: &ldquo;The monetary cost of transitioning from the state &lsquo;I do not have these beans&rsquo; to the state &lsquo;I have these beans&rsquo; is approximately \$8.20 along $d_1$.&rdquo;</p>
+<p>The price of a good or service is a scalar estimate of the $d_1$ cost of a transition on the economic decision manifold. When Maria sees that a pound of coffee beans costs <span class="currency">&#36;</span>8.20, the price is telling her: &ldquo;The monetary cost of transitioning from the state &lsquo;I do not have these beans&rsquo; to the state &lsquo;I have these beans&rsquo; is approximately <span class="currency">&#36;</span>8.20 along $d_1$.&rdquo;</p>
 <p>This is a heuristic in the technical A* sense: it estimates the cost-to-go without requiring the agent to trace through the full sequence of intermediate states (sourcing, shipping, roasting, packaging, retailing). The market aggregates this information and presents it as a single number.</p>
 <h3 id="the-efficient-market-hypothesis-as-admissibility">The Efficient Market Hypothesis as Admissibility</h3>
 <p>Hayek&rsquo;s claim that prices communicate dispersed information is, in the geometric framework, the claim that the price heuristic is <em>admissible on $d_1$</em>: prices do not systematically overestimate the true monetary cost of reaching the goal. The Efficient Market Hypothesis, in its strongest form, is the claim that $h_{\text{price}}(n) = h_1^*(n)$ &ndash; the price heuristic is not merely admissible but <em>exact</em> on the monetary dimension.</p>
@@ -291,17 +291,17 @@
 </ul>
 <p>The pattern is not random. It is predicted by the dimensionality of the active manifold. Tell me which dimensions are active, and I will tell you whether the price heuristic is sufficient or misleading. This is a falsifiable claim.</p>
 <h2 id="worked-example-marias-coffee-pricing-decision">Worked Example: Maria&rsquo;s Coffee Pricing Decision</h2>
-<p>Let us work through a complete A* analysis of a concrete economic decision: Maria is considering whether to raise her coffee prices from \$4.50 to \$5.00 per cup in response to her supplier&rsquo;s 18% cost increase.</p>
+<p>Let us work through a complete A* analysis of a concrete economic decision: Maria is considering whether to raise her coffee prices from <span class="currency">&#36;</span>4.50 to <span class="currency">&#36;</span>5.00 per cup in response to her supplier&rsquo;s 18% cost increase.</p>
 <h3 id="step-1-define-the-search-space">Step 1: Define the Search Space</h3>
 <p><strong>Start node</strong> $v_0$: Maria&rsquo;s current state.
-- $d_1$: Revenue \$18,900/month; costs \$17,500/month; margin \$1,400/month
+- $d_1$: Revenue <span class="currency">&#36;</span>18,900/month; costs <span class="currency">&#36;</span>17,500/month; margin <span class="currency">&#36;</span>1,400/month
 - $d_3$: Prices perceived as fair by customers and community
 - $d_5$: High trust with regulars and supplier
 - $d_6$: Community anchor &ndash; known gathering place for neighborhood
 - $d_7$: Identity as ethical, community-oriented business owner</p>
 <p><strong>Goal region</strong> $G$: A state where the business remains viable ($d_1$ positive), relationships are maintained ($d_5$, $d_6$), identity is preserved ($d_7$), and fairness norms are respected ($d_3$).</p>
 <h3 id="step-2-enumerate-the-paths">Step 2: Enumerate the Paths</h3>
-<p><strong>Path A: Absorb the full cost increase.</strong> No price change; margin drops to roughly $-$2,020/month (from \$1,400 to -\$620 after the \$3,420/month cost increase from the 18% supplier price hike on \$19,000 of annual bean costs). Business becomes unsustainable within months.</p>
+<p><strong>Path A: Absorb the full cost increase.</strong> No price change; margin drops to roughly $-$2,020/month (from <span class="currency">&#36;</span>1,400 to -<span class="currency">&#36;</span>620 after the <span class="currency">&#36;</span>3,420/month cost increase from the 18% supplier price hike on <span class="currency">&#36;</span>19,000 of annual bean costs). Business becomes unsustainable within months.</p>
 <table>
 <thead>
 <tr>
@@ -339,7 +339,7 @@
 </tbody>
 </table>
 <p>Total cost: Very high. The $d_1$ catastrophe eventually cascades to $d_6$ (closure), making this path dominated despite its short-term preservation of $d_3$ and $d_5$.</p>
-<p><strong>Path B: Pass the full cost increase (\$4.50 $\to$ \$5.50/cup).</strong> A \$1.00 increase covers the cost increase and adds margin.</p>
+<p><strong>Path B: Pass the full cost increase (<span class="currency">&#36;</span>4.50 $\to$ <span class="currency">&#36;</span>5.50/cup).</strong> A <span class="currency">&#36;</span>1.00 increase covers the cost increase and adds margin.</p>
 <table>
 <thead>
 <tr>
@@ -351,8 +351,8 @@
 <tbody>
 <tr>
 <td>$d_1$</td>
-<td>+\$2,580/month</td>
-<td>Strong: margin increases to \$3,980</td>
+<td>+<span class="currency">&#36;</span>2,580/month</td>
+<td>Strong: margin increases to <span class="currency">&#36;</span>3,980</td>
 </tr>
 <tr>
 <td>$d_3$</td>
@@ -377,7 +377,7 @@
 </tbody>
 </table>
 <p>Total cost: The $d_1$ gain is offset by boundary penalties on $d_3$ (fairness threshold crossed for a jump over 15%) and friction on $d_5$ and $d_6$. The edge weight $w_B$ includes $\beta_{\text{fairness}}$ for the sharp increase.</p>
-<p><strong>Path C: Moderate increase (\$4.50 $\to$ \$5.00/cup) + negotiate with supplier + slight menu adjustment.</strong> Raise prices by \$0.50, negotiate a 5% reduction in the supplier&rsquo;s increase (from 18% to 13%), and slightly reduce the proportion of the most expensive beans in the house blend.</p>
+<p><strong>Path C: Moderate increase (<span class="currency">&#36;</span>4.50 $\to$ <span class="currency">&#36;</span>5.00/cup) + negotiate with supplier + slight menu adjustment.</strong> Raise prices by <span class="currency">&#36;</span>0.50, negotiate a 5% reduction in the supplier&rsquo;s increase (from 18% to 13%), and slightly reduce the proportion of the most expensive beans in the house blend.</p>
 <table>
 <thead>
 <tr>
@@ -389,8 +389,8 @@
 <tbody>
 <tr>
 <td>$d_1$</td>
-<td>+\$600/month</td>
-<td>Modest improvement; margin \$2,000/month</td>
+<td>+<span class="currency">&#36;</span>600/month</td>
+<td>Modest improvement; margin <span class="currency">&#36;</span>2,000/month</td>
 </tr>
 <tr>
 <td>$d_3$</td>
@@ -427,8 +427,8 @@
 <tbody>
 <tr>
 <td>$d_1$</td>
-<td>+\$4,200/month</td>
-<td>Excellent: margin jumps to \$5,600</td>
+<td>+<span class="currency">&#36;</span>4,200/month</td>
+<td>Excellent: margin jumps to <span class="currency">&#36;</span>5,600</td>
 </tr>
 <tr>
 <td>$d_3$</td>
@@ -564,8 +564,8 @@
 <h2 id="worked-example-why-people-dont-steal-the-grocery-store-revisited">Worked Example: Why People Don&rsquo;t Steal (The Grocery Store Revisited)</h2>
 <p>To solidify the A* interpretation, consider the economic decision that classical economics cannot explain: why people do not steal.</p>
 <p>An agent stands in a grocery store. Two paths are available:</p>
-<p><strong>Path A (buy):</strong> Pay \$50. Attribute-vector change: $\Delta d_1 = -50$, all other dimensions $\approx 0$. Edge weight: $w_A = 50^2 / \sigma_1^2$ (Mahalanobis distance on $d_1$ alone).</p>
-<p><strong>Path B (steal):</strong> Pay \$0. Attribute-vector change: $\Delta d_1 = 0$, but $\Delta d_2 = -\infty$ (rights violation), $\Delta d_6 = -\text{large}$ (social sanction risk), $\Delta d_7 = -\text{large}$ (identity violation). Edge weight: $w_B = \infty$ (boundary penalty dominates).</p>
+<p><strong>Path A (buy):</strong> Pay <span class="currency">&#36;</span>50. Attribute-vector change: $\Delta d_1 = -50$, all other dimensions $\approx 0$. Edge weight: $w_A = 50^2 / \sigma_1^2$ (Mahalanobis distance on $d_1$ alone).</p>
+<p><strong>Path B (steal):</strong> Pay <span class="currency">&#36;</span>0. Attribute-vector change: $\Delta d_1 = 0$, but $\Delta d_2 = -\infty$ (rights violation), $\Delta d_6 = -\text{large}$ (social sanction risk), $\Delta d_7 = -\text{large}$ (identity violation). Edge weight: $w_B = \infty$ (boundary penalty dominates).</p>
 <p>Under scalar utility ($\phi = d_1$): $\phi(B) &gt; \phi(A)$, so Homo economicus steals.</p>
 <p>On the full manifold: $w_B = \infty &gt; w_A$, so the rational agent buys.</p>
 <p>The agent&rsquo;s moral heuristic $h_M$ assigns $\beta_{\text{theft}} = \infty$ to Path B. This is admissible on $\mathcal{E}$ because the true cost of theft &ndash; legal penalty, social sanction, identity damage, rights violation, epistemic uncertainty about future consequences &ndash; is effectively unbounded for most agents. The agent is not &ldquo;irrational&rdquo; for buying. The economist is computing on the wrong manifold.</p>
