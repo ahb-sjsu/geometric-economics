@@ -153,3 +153,10 @@ These repairs come from the survey of the series for consistency between volumes
 ### Figures and captions
 
 None is made stale. No figure draws the passages above.
+
+## Appendices published (2026-11-26)
+
+The appendices went online with the survey (chapters cite them). Repairs made when they were added:
+
+- Appendix C, Section C.4, opens with a status note: its results come from runs of the framework against published data with parameters calibrated per dataset; the runs are not in this repository and the volume does not reproduce them, so the results are reported without a run record; the registered coupling test failed (Chapter 16, Section 16.1).
+- Appendix B cited 'Definition 3.1' and 'Definition 4.2'; the book numbers these Definitions 3 and 4.
