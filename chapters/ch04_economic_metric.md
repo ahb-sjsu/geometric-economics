@@ -319,6 +319,10 @@ The loss is monetary ($d_1 = -24000$) but triggers substantial non-monetary acti
 - $d_8 = +0.1$: the REIT is within its rights (slightly legitimacy-preserving)
 - $d_9 = -0.6$: uncertainty ("what happens next year?")
 
+![Figure 4.1](figures/ch04_fig1.svg)
+
+*Figure 4.1. The two paths of the worked example in Section 4.8. The rent falls or rises by the same 2,000 dollars a month, 24,000 a year, so the monetary change d1 has the same size on both paths. The bars show the changes the chapter assigns on the other eight dimensions: small for the gain, and larger on seven dimensions for the loss. This asymmetry is what the chapter's account of loss aversion rests on. The values are the worked example's own, posited for illustration, not measurements.*
+
 ### Computing Edge Weights
 
 Using a representative covariance matrix with standard deviations $\sigma_k$ calibrated to behavioral data (and assuming for simplicity that cross-correlations add approximately 20% to the diagonal terms):

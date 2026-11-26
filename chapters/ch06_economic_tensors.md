@@ -59,6 +59,10 @@ This theorem is the mathematical core of the book's argument. Let us prove it in
 >
 > **(3) The optimal path diverges.** The minimum-cost path on $\mathcal{E}$ depends on the full 9-dimensional edge weights: $w(v_i, v_j) = \Delta\mathbf{a}^T \Sigma^{-1} \Delta\mathbf{a} + \sum_k \beta_k \cdot \mathbf{1}[\text{boundary } k \text{ crossed}]$. The $\phi$-optimal path depends only on $\phi$-values at the vertices: it follows the steepest ascent in $\phi$. Two edges with identical $\phi$-differences but different attribute-vector differences will have different weights on $\mathcal{E}$ but identical weights under $\phi$. The $\phi$-optimal path may therefore cross moral boundaries (adding infinite penalty on $\mathcal{E}$) while achieving maximal $\phi$-gain. The difference between the $\mathcal{E}$-optimal and $\phi$-optimal paths is unbounded because the boundary penalty $\beta_k$ can be infinite while the $\phi$-difference is finite. No function of $\phi$ alone can bound the divergence, because $\phi$ cannot distinguish boundary-crossing edges from non-boundary-crossing edges that have the same scalar effect. $\square$
 
+![Figure 6.1](figures/ch06_fig1.svg)
+
+*Figure 6.1. Part 1 of Theorem 14 in a picture with two dimensions instead of nine. The curves are level sets of one illustrative continuous function, phi(a1, a2) = a1 + 0.15 sin(2 pi a2): every state on a curve gets the same number. The states a and a' differ on the second dimension and both map to 0.5, so the number cannot tell them apart and no rule can recover the state from it. In nine dimensions the chapter's level sets have dimension at least 8.*
+
 ### What the Theorem Says
 
 The theorem establishes three things:
@@ -228,6 +232,10 @@ where $\mathbf{B}$ is the attribute vector of the business and $\phi$ is the dis
 > *This is not a difference of opinion. It is a difference of *dimensionality*. The scalar and the tensor are making different mathematical claims, and the tensor's claim is richer, more informative, and -- by the irrecoverability theorem -- strictly non-recoverable from the scalar.*
 
 ---
+
+![Figure 6.2](figures/ch06_fig2.svg)
+
+*Figure 6.2. The tensor valuation of Maria's coffee shop from the chapter's running example. The appraiser reports one component, B1 = 200,000 dollars. The bars are the other eight components on the chapter's scale from 0 to 1. The four in the second colour are the ones the chapter says a buyer could destroy while B1 stays the same or rises, a change the scalar valuation would not show. The values are the worked example's own, posited for illustration, not measurements.*
 
 ## Worked Example: Maria's Valuation Under Different Projections
 

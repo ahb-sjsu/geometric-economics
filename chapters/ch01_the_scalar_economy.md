@@ -44,6 +44,10 @@ And it is, by the standards of this book, a *contraction*: a mathematical operat
 
 GDP cannot distinguish them. The scalar has destroyed eight dimensions of information. The Stiglitz-Sen-Fitoussi Commission (2009) documented this failure exhaustively and recommended "multiple indicators." The geometric framework provides the mathematical alternative that the commission lacked: the *economic tensor*, of which GDP is a specific contraction — and the Scalar Irrecoverability Theorem (Chapter 6) proves that what the contraction destroys is mathematically irrecoverable from the scalar alone.
 
+![Figure 1.1](figures/ch01_fig1.svg)
+
+*Figure 1.1. A schematic of the contraction that the chapter's Technical Appendix writes as GDP = sum over agents i and goods j of T(1, i, j). The economic tensor has one row of entries for each of the nine dimensions. GDP adds up the row for the monetary dimension and nothing else, so the other eight rows, and the way the rows interact, do not enter the number.*
+
 ### Failure 2: Utility Maximization
 
 **[Modeling Axiom.]** The utility function $u: X \to \mathbb{R}$ maps the set of possible outcomes $X$ to the real line. A rational agent chooses the $x \in X$ that maximizes $u(x)$. This is the foundation of rational choice theory, and it has a deep problem: the codomain is one-dimensional.

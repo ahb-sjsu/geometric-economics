@@ -196,6 +196,10 @@ The cascade explains why the crisis was so difficult to prevent. Correcting any 
 
 ---
 
+![Figure 10.1](figures/ch10_fig1.svg)
+
+*Figure 10.1. The four pathologies of Section 10.1 arranged in the cycle of Proposition 10.2, in which each one enables or deepens the next. Each box gives the general form, the economic instances from the chapter's table, and the step the chapter assigns to it in its account of the 2008 crisis. This is a schematic of the chapter's proposal; Section 16.4 lists the cascade as a prediction still to be tested.*
+
 ## Worked Example: Maria's Gentrifying Neighborhood
 
 Maria's Mission District neighborhood illustrates all four pathologies simultaneously.

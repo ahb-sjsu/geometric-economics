@@ -125,6 +125,10 @@ The geometric explanation for why curvature is high near the present: nearby out
 
 This explanation makes a testable prediction: hyperbolic discounting should be *weaker* for goods that activate few dimensions at any time horizon (e.g., abstract monetary rewards — pure $d_1$) and *stronger* for goods that activate many dimensions at short horizons but few at long horizons (e.g., visceral rewards like food or social status). The experimental evidence confirms this pattern (McClure et al., 2004; Laibson, 1997).
 
+![Figure 15.1](figures/ch15_fig1.svg)
+
+*Figure 15.1. Discount functions from the formula of Section 15.4, D(t) = exp(− integral of K from 0 to t), where K is the temporal curvature. Left, the curvature: constant at the two rates Section 15.2 quotes for Stern (0.1% a year) and Nordhaus (3% a year), and declining as K0/(1 + alpha tau). Right, the discount functions these give: two exponentials, and the hyperbolic form (1 + alpha t) to the power −K0/alpha, which falls faster than the 3% exponential at first and more slowly later. The declining curve is drawn for illustrative values K0 = alpha = 0.1 a year, which the chapter does not specify.*
+
 ### Time-Inconsistency as Curvature Change
 
 The classic problem with hyperbolic discounting is *time-inconsistency*: a preference expressed today about future trade-offs changes when the future arrives. Today, I prefer \$110 in 31 days to \$100 in 30 days. When day 30 arrives, I prefer \$100 today to \$110 tomorrow. My preferences have reversed.

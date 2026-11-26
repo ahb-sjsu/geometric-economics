@@ -72,6 +72,10 @@ These are not moral preferences layered on top of economic calculation. They are
 
 The nine dimensions are not nine moral values. They are nine *information channels* that any agent -- altruistic, selfish, or anything in between -- must process to make decisions that achieve their goals. Homo economicus fails not because it is too selfish but because it processes information along only one channel. It is not morally deficient; it is *informationally impoverished*.
 
+![Figure 3.1](figures/ch03_fig1.svg)
+
+*Figure 3.1. The nine dimensions of Definition 1. The first is the only one visible to Homo economicus. Remark 1 argues that four of the others, marked here with the question the chapter attaches to each, are information a purely selfish agent must also process. This is a schematic of the definition, not data.*
+
 ### The Transferable/Evaluative Distinction
 
 A structural distinction runs through the nine dimensions that will matter throughout the book.
@@ -300,6 +304,10 @@ $$\Delta \mathbf{a}_3 = (+\text{savings}, -0.8, -0.3, -0.7, -0.4, -0.9, -0.8, 0,
 - $\Delta d_7 = -0.8$: major identity disruption -- "I am no longer a business owner"
 - $\Delta d_8 = 0$: no legitimacy issue -- closing is within her rights
 - $\Delta d_9 = +0.3$: at least the uncertainty is resolved
+
+![Figure 3.2](figures/ch03_fig2.svg)
+
+*Figure 3.2. The three lease options of Section 3.8 as the chapter writes them: the change in each of the dimensions d2 to d9 relative to the current lease, on the chapter's own scale. The monetary change d1 is given under each name in dollars over twelve months. Accepting the increase and closing the shop are negative on most dimensions, and the negotiated lease is positive on seven of the eight. The values are the worked example's own, posited for illustration, not measurements.*
 
 ### Computing Edge Weights
 

@@ -309,6 +309,10 @@ The $d_1$-only inequality ratio between Sofia and Crane is $4.0 / 0.0004 = 10{,}
 
 This is the central empirical prediction of the geometric theory of inequality: *scalar measures underestimate inequality by a factor of 2-3x*, because they capture only the $d_1$ metric distortion while the full metric distortion includes cross-dimensional effects that amplify the inequality.
 
+![Figure 12.1](figures/ch12_fig1.svg)
+
+*Figure 12.1. The worked example of Section 12.5: the cost of one unexpected 100-dollar expense on the metrics of three agents: Sofia the barista, Maria the owner and Crane the chief executive of the REIT. Left, on a logarithmic axis, the cost on the monetary dimension alone, 100 squared over the agent's monetary scale squared, and the full-manifold cost the chapter arrives at. Right, the terms the chapter itemises for Sofia; its total of about 9.1 also includes cross terms it does not itemise. The full-manifold ratio of Sofia to Crane is 22,750 against 10,000 on money alone. The values are the worked example's own, posited for illustration, not measurements.*
+
 ### What the Gini Misses
 
 The Gini coefficient for this three-person economy, computed on $d_1$ income alone, would be approximately 0.67 (reflecting the extreme income disparity between Crane and the other two). But the Gini cannot distinguish between this economy and an alternative economy where:

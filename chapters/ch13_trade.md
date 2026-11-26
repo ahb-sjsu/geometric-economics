@@ -192,6 +192,10 @@ Maria evaluates three supply chain options:
 
 The $d_1$-only ranking: A > C > B. The full-manifold ranking: B > C > A. Maria chooses B — the most expensive option monetarily, the cheapest on the full manifold. This is not irrational. It is optimal on the correct manifold.
 
+![Figure 13.1](figures/ch13_fig1.svg)
+
+*Figure 13.1. Maria's three sourcing options from the worked example. Left, the monthly cost of 80 pounds at each price, in dollars, with the rank on money alone. Right, the changes the chapter assigns on the other dimensions it lists for each option; a missing bar means the chapter gives no value. The chapter ranks the options B, C, A on the full manifold, the reverse of the money ranking. The values are the worked example's own, posited for illustration, not measurements.*
+
 ### The Conservation Laws in Maria's Trade
 
 Applying the conservation framework (Chapter 9) to Maria's sourcing decision:

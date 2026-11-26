@@ -343,6 +343,10 @@ The gauge violation tensor has been measured, though not under this name, in the
 
 ---
 
+![Figure 8.1](figures/ch08_fig1.svg)
+
+*Figure 8.1. The worked example of Section 8.7: one real salary described four ways, with the mean attractiveness rating on a scale of 1 to 10 that the chapter supplies for each description, plus or minus one standard error. The chapter states that these ratings are hypothetical. The differences from the baseline are the components of the gauge violation tensor, −0.4, −1.1 and +0.9, with Frobenius norm 1.48; a description-invariant evaluation would put all four points on the dashed line.*
+
 ## 8.8 The Geometry of Gauge Correction
 
 If gauge violations are heuristic miscalibrations, they should be correctable. The geometric framework suggests a specific correction procedure: *gauge-fixing* the heuristic.

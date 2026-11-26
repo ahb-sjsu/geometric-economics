@@ -45,6 +45,10 @@ The conjecture is testable: identify candidate disconnections (organ markets, sl
 
 **Open Problem 16.5.** What is the relationship between topological disconnection and sacred values? The experimental literature on sacred values (Tetlock, 2003; Baron and Spranca, 1997) shows that certain trade-offs trigger moral outrage ("taboo trade-offs") — offering money for kidneys, paying people to vote a certain way, pricing human life. Is the outrage response a cognitive signal that the proposed transaction attempts to traverse a topologically disconnected region of the manifold? If so, the moral psychology of sacred values provides empirical evidence for the manifold's topological structure.
 
+![Figure 16.1](figures/ch16_fig1.svg)
+
+*Figure 16.1. The distinction on which Conjecture 16.1 turns, as a schematic. Left, two regions of the decision manifold separated by a boundary with a penalty that is high but finite: a path across exists, and a large enough offer or a clever enough instrument can take it. Right, two components with no connecting path at all: nothing can cross. Whether sacred-value boundaries are of the second kind is the open question; the chapter states it as a conjecture and it has not been tested.*
+
 ## 16.3 Mechanism Design on the Manifold
 
 **Open Problem 16.6.** Classical mechanism design (Hurwicz, Myerson, Maskin) operates on scalar utilities. What does mechanism design look like on the full decision manifold?

@@ -332,6 +332,10 @@ A $d_1$-only analysis ranks the paths: D > B > C > A. Homo economicus switches s
 
 Note that Maria's actual decision process matches the geometric prediction, not the scalar prediction. She does not run a formal optimization. She "considers the options" (generates paths), "sleeps on it" (lets System 1 process the heuristic costs), "runs some numbers" (System 2 computes $g$), and arrives at the moderate increase -- the path that *feels right and works financially*. The feeling and the arithmetic are not in conflict. They are $h$ and $g$, components of a single evaluation function.
 
+![Figure 5.1](figures/ch05_fig1.svg)
+
+*Figure 5.1. Maria's four pricing paths from the worked example, ranked twice as Step 4 ranks them: on the left by the monetary dimension alone, on the right by f = g + h on the full manifold. Margins are the chapter's, in dollars a month. The path that is best on money, switching supplier, is last on the full manifold because the chapter assigns it an infinite trust penalty, and the path chosen is third on money. The values are the worked example's own, posited for illustration, not measurements.*
+
 ## Heuristic Fields Over the Decision Complex
 
 We can now generalize from individual prices to the concept of a *heuristic field* -- a function defined over the entire economic decision complex that estimates the cost-to-go from any state.

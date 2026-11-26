@@ -386,6 +386,10 @@ At this profile:
 
 This is the **Bond Geodesic Equilibrium** of the lease negotiation.
 
+![Figure 7.1](figures/ch07_fig1.svg)
+
+*Figure 7.1. The best responses that the worked example lists for the lease negotiation. A filled circle marks the landlord's best response to each of Maria's strategies (Step 1), and a ring marks Maria's best response to each rent offer where the chapter names one (Step 2). For the offers of 5K and 6K the chapter says only that Maria accepts. Both marks fall in one cell, 6K with a five-year guarantee and acceptance with guarantee, which the chapter takes as the Bond geodesic equilibrium. The values are the worked example's own, posited for illustration, not measurements.*
+
 ### Checking the contraction condition
 
 The landlord's $\alpha$ (self-sensitivity): High. The landlord's costs are primarily determined by the rent level and vacancy risk -- properties of the landlord's own strategy.

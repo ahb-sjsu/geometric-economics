@@ -314,6 +314,10 @@ Each school has been drawing one face of the same geometric object. This book pr
 
 ---
 
+![Figure 2.1](figures/ch02_fig1.svg)
+
+*Figure 2.1. The nine schools of Sections 2.1 to 2.9, each placed at the year of the work the chapter cites for it, with the part of the geometric framework that Section 2.10 assigns to it. This is a schematic of the chapter's reading of the literature, not a result: the right-hand column is the book's interpretation of each school.*
+
 ## Technical Appendix
 
 **Theorem (Projected Intransitivity).** **[Conditional Theorem.]** Let $\succ_{\mathcal{E}}$ denote the preference relation on the full manifold ("$x \succ_{\mathcal{E}} y$ iff $w(v_0, x) < w(v_0, y)$") and let $\succ_\phi$ denote the projected preference ("$x \succ_\phi y$ iff $\phi(x) > \phi(y)$"). Then:

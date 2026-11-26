@@ -220,6 +220,10 @@ Now compare with a transaction where Maria buys commodity beans from an anonymou
 
 The Bond geodesic for Maria — the minimum-cost path on the full manifold — depends on the Mahalanobis metric $\Sigma$. If Maria's $\Sigma$ weights evaluative dimensions heavily (as the behavioral data suggests for morally loaded transactions), the fair-trade geodesic has lower total cost despite higher monetary cost.
 
+![Figure 9.1](figures/ch09_fig1.svg)
+
+*Figure 9.1. The worked example of Maria's order from Elena, 80 pounds at 25 dollars a pound. On the left the money: Maria pays 2,000 dollars and Elena receives 2,000, and the two changes sum to zero. On the right the four evaluative dimensions the example lists: both parties gain on each, and the gains sum to 2.4 units on the chapter's scale. The values are the worked example's own, posited for illustration, not measurements.*
+
 ### What Conservation Reveals About This Transaction
 
 The conservation law tells us something that neither the price nor the satisfaction of both parties reveals: the *structure* of value creation. The \$2,000 monetary exchange is zero-sum. The 2.4 units of evaluative surplus are positive-sum. The total economic value of the transaction is:

@@ -47,6 +47,10 @@ The geometric characterization: a carbon cap of $X$ tons/year creates a hyperpla
 
 **[Empirical.]** The framework explains why carbon pricing alone has been insufficient for climate action. A carbon tax at \$51/ton (the U.S. social cost of carbon) treats CO₂ emissions as a Type 2 boundary — continuously reversible, amenable to a Pigouvian penalty. But climate science indicates that certain emission thresholds are Type 3 — potentially irreversible tipping points (ice sheet collapse, permafrost methane release, ocean circulation shutdown). For these thresholds, the correct boundary penalty includes the precautionary premium, which may be orders of magnitude larger than the Pigouvian rate. The geometric framework recommends a *two-tier* regulatory structure: a carbon tax for marginal emissions (Type 2) combined with hard caps for total atmospheric concentration (Type 3).
 
+![Figure 14.1](figures/ch14_fig1.svg)
+
+*Figure 14.1. The three cases of Theorem 14.1 as a schematic. Each panel shows the penalty added to a path as it crosses a regulatory boundary, marked by the dashed line. An irreversible crossing gets an infinite penalty, a hard cap. A reversible crossing with a measurable cost gets a finite penalty equal to the social cost, a Pigouvian tax. A crossing that may prove irreversible gets the social cost plus a precautionary premium. Heights are not to scale.*
+
 ### The Tragedy of the Commons, Geometrized
 
 Hardin's (1968) tragedy of the commons is a local-minimum problem on a multi-agent manifold. Each agent's Bond geodesic on $d_1$ alone leads to overuse of the common resource. The "tragedy" is that the individually rational geodesics collectively converge on a state that is Pareto-dominated on the full manifold.

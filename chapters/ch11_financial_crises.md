@@ -51,6 +51,10 @@ In normal times, $\Sigma$ is estimated from historical data. The variances are f
 
 In a crisis, the historical covariance structure collapses. Correlations that were stable for decades change abruptly. Assets that were uncorrelated become perfectly correlated -- everyone sells everything simultaneously, so the effective dimensionality of the market drops from many to one (the "sell" direction). When correlations converge to $\pm 1$, the covariance matrix becomes singular: $\det(\Sigma) \to 0$.
 
+![Figure 11.1](figures/ch11_fig1.svg)
+
+*Figure 11.1. The degeneracy of Definition 38 in the smallest case: two dimensions with unit variances and correlation rho, so that the covariance matrix is [[1, rho], [rho, 1]]. Left, its determinant, 1 − rho squared, falls to zero as the correlation goes to 1. Right, on a logarithmic scale, the cost that the metric g, the inverse of the covariance matrix, assigns to a unit displacement in the direction that moves the two dimensions oppositely: it equals 1/(1 − rho) and grows without bound. Computed from the chapter's formulas for an illustrative two-dimensional case.*
+
 ### Curvature Diverges
 
 When the metric becomes degenerate, curvature diverges. Curvature measures how the manifold's geometry deviates from flatness -- equivalently, how much a small perturbation to the initial conditions changes the resulting geodesic. In the Riemannian setting, the sectional curvature $K$ at a point $p$ in the plane spanned by tangent vectors $u$ and $v$ is:
@@ -204,6 +208,10 @@ The mechanism, in geometric terms:
 4. **The correlation convergence**: As $g_{55}$ and $g_{99}$ diverged, the only rational strategy was to sell everything and hold cash. This drove all asset correlations toward 1.0, made $\Sigma$ singular, and collapsed the geodesic structure of the market.
 
 The amplification from 0.35% to 50x was not "irrational panic." It was the geometrically predictable consequence of operating on a manifold with divergent curvature. In a region of high curvature, small displacements produce large changes in the geodesic -- and financial contagion is the economic manifestation of this mathematical fact.
+
+![Figure 11.2](figures/ch11_fig2.svg)
+
+*Figure 11.2. The three magnitudes Section 11.4 sets side by side, in trillions of dollars and as the chapter states them: the assets Lehman Brothers held in September 2008, the assets of the global financial system, and the fall in global equity values from September 2008 to March 2009. Lehman's balance sheet was about 0.35% of the global one, and the fall was roughly 50 times Lehman's assets. Reading that ratio as the signature of divergent curvature is the chapter's interpretation.*
 
 ### Cross-Dimensional Contagion
 
