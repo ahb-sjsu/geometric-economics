@@ -155,6 +155,8 @@ ESG metrics collectively cover 7 of 9 dimensions (missing $d_1$ --- monetary pay
 
 ## C.4 Experimental Validation Data
 
+*Status of this section.* The results stated below come from runs of the framework against the published experimental data named in each subsection, with parameters calibrated to each dataset as the subsections say. Those runs are not part of this volume's repository and the volume does not reproduce them, so the results are reported here without a run record. The registered test of the framework's cross-domain coupling prediction failed (Chapter 16, Section 16.1).
+
 ### Game Theory: Ultimatum Game (Henrich et al., 2001, 2005, 2010)
 
 **Dataset**: Ultimatum game offers and rejections across 15 small-scale societies (Machiguenga, Tsimane, Lamalera, Au, Gnau, Hadza, Mapuche, Torguud, Khazakh, Sangu, Orma, Shuar, Achuar, U.S., and others). N = 1,762 subjects.

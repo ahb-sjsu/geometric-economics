@@ -6,7 +6,7 @@ This appendix provides a code walkthrough of the `eris-econ` library --- the Pyt
 
 ## B.1 Economic Decision Complex Construction
 
-The economic decision complex $\mathcal{E}$ (Definition 3.1) is a weighted simplicial complex whose vertices are economic states and whose edges are feasible economic actions. Construction proceeds in three steps: state enumeration, edge generation, and weight computation.
+The economic decision complex $\mathcal{E}$ (Definition 3) is a weighted simplicial complex whose vertices are economic states and whose edges are feasible economic actions. Construction proceeds in three steps: state enumeration, edge generation, and weight computation.
 
 ```python
 import numpy as np
@@ -97,7 +97,7 @@ complex.add_edge(maria_current, maria_negotiated)
 
 ## B.2 Edge Weight Computation
 
-Edge weights implement the Mahalanobis distance plus boundary penalties (Definition 4.2):
+Edge weights implement the Mahalanobis distance plus boundary penalties (Definition 4):
 
 $$w(v_i, v_j) = \Delta\mathbf{a}^T \Sigma^{-1} \Delta\mathbf{a} + \sum_k \beta_k \cdot \mathbb{1}[\text{boundary } k \text{ crossed}]$$
 
