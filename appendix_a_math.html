@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appendix A: Mathematical Prerequisites &mdash; Geometric Economics</title>
+  <meta name="description" content="Appendix A: Mathematical Prerequisites from Geometric Economics: Decision Manifolds, Equilibria, and the Geometry of Markets, by Andrew H. Bond.">
+  <meta name="generator" content="geometric-series build kit">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../book/book.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+</head>
+
+<body data-book-slug="geometric-economics" data-chapter-id="appendix_a_math">
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <span class="brand-symbol">M</span>
+        <span class="brand-text">Geometric Economics</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="series-nav-list"></ul>
+    </div>
+  </nav>
+
+  <article class="book-chapter">
+    <div class="chapter-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Geometric Series</a>
+        <span class="breadcrumb-sep">&rsaquo;</span>
+        <a href="index.html">Geometric Economics</a>
+        <span class="breadcrumb-sep">&rsaquo;</span>
+        <span class="breadcrumb-current">Appendix A: Mathematical Prerequisites</span>
+      </nav>
+      <div class="chapter-nav-top">
+        <a href="ch16_open_questions.html" class="nav-prev">&larr; Chapter 16: Open Questions</a>
+        <a href="index.html" class="nav-toc">Contents</a>
+        <a href="appendix_b_code.html" class="nav-next">Appendix B: The eris-econ Library &rarr;</a>
+      </div>
+
+      <div class="chapter-content">
+<h1 id="appendix-a-mathematical-prerequisites">Appendix A: Mathematical Prerequisites</h1>
+<p>This appendix collects the mathematical definitions and results used throughout the book. It is self-contained for readers unfamiliar with differential geometry, game theory, or the specific constructions of the geometric framework; those with background in these areas may skip directly to the chapters. Full proofs and extended treatments can be found in <em>Geometric Methods in Computational Modeling</em> (Bond, 2026a) and <em>Geometric Reasoning</em> (Bond, 2026c).</p>
+<hr />
+<h2 id="a1-smooth-manifolds-and-riemannian-geometry">A.1 Smooth Manifolds and Riemannian Geometry</h2>
+<p><strong>Definition A.1 (Topological Manifold).</strong> A <em>topological manifold</em> of dimension $n$ is a Hausdorff, second-countable topological space $M$ such that every point $p \in M$ has a neighborhood homeomorphic to an open subset of $\mathbb{R}^n$.</p>
+<p><strong>Definition A.2 (Smooth Manifold).</strong> A <em>smooth manifold</em> is a topological manifold equipped with a maximal smooth atlas &mdash; a collection of charts $\{(U_\alpha, \varphi_\alpha)\}$ covering $M$ such that all transition maps $\varphi_\beta \circ \varphi_\alpha^{-1}$ are $C^\infty$.</p>
+<p><em>Economic interpretation</em>: The economic decision manifold is a 9-dimensional space. Each &ldquo;chart&rdquo; corresponds to a particular accounting system, unit convention, or cultural framework for describing economic states. Transition maps are the conversions between these descriptions (e.g., currency conversion). The smoothness requirement says that small changes in one description produce small changes in any other. (See Chapter 3.)</p>
+<p><strong>Definition A.3 (Riemannian Metric).</strong> A <em>Riemannian metric</em> on a smooth manifold $M$ is a smooth assignment of a positive-definite inner product $g_p: T_pM \times T_pM \to \mathbb{R}$ to each tangent space $T_pM$. In local coordinates, $g = g_{ij} \, dx^i \otimes dx^j$.</p>
+<p><strong>Definition A.4 (Geodesic).</strong> A curve $\gamma: [0,1] \to M$ is a <em>geodesic</em> if it satisfies</p>
+<p>$$\frac{d^2 \gamma^k}{dt^2} + \Gamma^k_{ij} \frac{d\gamma^i}{dt} \frac{d\gamma^j}{dt} = 0$$</p>
+<p>where $\Gamma^k_{ij}$ are the Christoffel symbols of the Levi-Civita connection.</p>
+<p><strong>Definition A.5 (Geodesic Distance).</strong> The geodesic distance between $p, q \in M$ is</p>
+<p>$$d(p, q) = \inf_\gamma \int_0^1 \sqrt{g_{\gamma(t)}(\dot{\gamma}(t), \dot{\gamma}(t))} \, dt$$</p>
+<p>where the infimum is over all smooth curves from $p$ to $q$.</p>
+<p><em>Economic interpretation</em>: Geodesics are the &ldquo;optimal paths&rdquo; on the decision manifold &mdash; the paths of least total cost when all nine dimensions are accounted for. The Bond geodesic (Chapter 7) is the discrete analogue on the economic decision complex.</p>
+<p><strong>Definition A.6 (Sectional Curvature).</strong> The sectional curvature at a point $p$ in the plane spanned by tangent vectors $u, v \in T_pM$ is</p>
+<p>$$K(u,v) = \frac{R(u,v,v,u)}{g(u,u)g(v,v) - g(u,v)^2}$$</p>
+<p>where $R$ is the Riemann curvature tensor. Curvature measures how rapidly nearby geodesics diverge or converge. In a flat space ($K = 0$), parallel geodesics remain parallel. In positive curvature ($K &gt; 0$), they converge. In negative curvature ($K &lt; 0$), they diverge.</p>
+<p><em>Economic interpretation</em>: Curvature determines how sensitive economic outcomes are to small perturbations. Divergent curvature (Chapter 11) is the mathematical mechanism of financial contagion: small perturbations produce arbitrarily large changes in the geodesic.</p>
+<hr />
+<h2 id="a2-the-mahalanobis-distance">A.2 The Mahalanobis Distance</h2>
+<p><strong>Definition A.7 (Mahalanobis Distance).</strong> Given a positive-definite covariance matrix $\Sigma \in \mathbb{R}^{n \times n}$, the <em>Mahalanobis distance</em> between vectors $x, y \in \mathbb{R}^n$ is</p>
+<p>$$d_M(x, y) = \sqrt{(x - y)^T \Sigma^{-1} (x - y)}$$</p>
+<p><strong>Properties:</strong>
+- When $\Sigma = I$ (identity), the Mahalanobis distance reduces to Euclidean distance.
+- The Mahalanobis distance is invariant under linear transformations that preserve $\Sigma$: if $y = Ax$ and $\Sigma_y = A\Sigma_x A^T$, then $d_M(y_1, y_2; \Sigma_y) = d_M(x_1, x_2; \Sigma_x)$.
+- The Mahalanobis distance accounts for correlations between dimensions: if $d_1$ and $d_3$ are highly correlated ($\sigma_{13}$ is large), a change that affects both in the expected direction has lower Mahalanobis distance than a change affecting them independently.</p>
+<p><em>Economic interpretation</em>: The Mahalanobis distance is the natural metric on the economic decision manifold (Chapter 4). The covariance matrix $\Sigma$ encodes how the nine economic dimensions interact: which tradeoffs are easy (correlated dimensions) and which are costly (independent or anti-correlated dimensions). Different economic cultures correspond to different $\Sigma$ matrices, producing different metrics on the same underlying manifold.</p>
+<hr />
+<h2 id="a3-a-search">A.3 A* Search</h2>
+<p><strong>Definition A.8 (A* Search).</strong> Given a weighted graph $(V, E, w)$ with start vertex $v_0$ and goal set $G \subseteq V$, and a heuristic function $h: V \to \mathbb{R}_{\geq 0}$, the A* algorithm finds the minimum-cost path from $v_0$ to $G$ by maintaining the evaluation function</p>
+<p>$$f(v) = g(v) + h(v)$$</p>
+<p>where $g(v)$ is the actual cost of the best known path from $v_0$ to $v$, and $h(v)$ is the heuristic estimate of the cost from $v$ to the nearest goal vertex.</p>
+<p><strong>Theorem A.1 (Optimality of A*).</strong> If $h$ is <em>admissible</em> &mdash; $h(v) \leq h^*(v)$ for all $v$, where $h^*(v)$ is the true minimum cost from $v$ to $G$ &mdash; and <em>consistent</em> &mdash; $h(v) \leq w(v, v') + h(v')$ for all edges $(v, v')$ &mdash; then A* returns an optimal path.</p>
+<p><em>Economic interpretation</em>: Economic decision-making is A* search on the decision complex (Chapter 5). The $g(v)$ component is System 2 deliberation &mdash; the accumulated, verified cost of the path so far. The $h(v)$ component is System 1 heuristic estimation &mdash; the fast, approximate estimate of how much further cost remains. Prices are the economic heuristic field: an admissible price heuristic corresponds to an efficient market. Market failures are failures of heuristic admissibility. (See Chapter 5.)</p>
+<hr />
+<h2 id="a4-simplicial-complexes">A.4 Simplicial Complexes</h2>
+<p><strong>Definition A.9 (Simplicial Complex).</strong> A <em>simplicial complex</em> $K$ is a collection of simplices (vertices, edges, triangles, tetrahedra, &hellip;) closed under taking faces. A $k$-simplex is the convex hull of $k+1$ affinely independent points.</p>
+<p><strong>Definition A.10 (Weighted Simplicial Complex).</strong> A <em>weighted simplicial complex</em> is a simplicial complex equipped with a weight function $w: K_1 \to \mathbb{R}_{&gt; 0}$ on its 1-simplices (edges).</p>
+<p><em>Economic interpretation</em>: The economic decision complex $\mathcal{E}$ (Chapter 3) is a weighted simplicial complex whose vertices are economic states (points in $\mathbb{R}^9$), whose edges are feasible economic actions, and whose edge weights are the Mahalanobis distance plus boundary penalties. Higher-dimensional simplices encode multi-step economic plans.</p>
+<hr />
+<h2 id="a5-noethers-theorem">A.5 Noether&rsquo;s Theorem</h2>
+<p><strong>Theorem A.2 (Noether&rsquo;s Theorem, 1918).</strong> If the action functional $S[\gamma] = \int L(\gamma, \dot{\gamma}, t) \, dt$ is invariant under a continuous one-parameter group of transformations $\gamma \mapsto \gamma_\varepsilon$, then there exists a conserved quantity $Q$ along the equations of motion:</p>
+<p>$$\frac{dQ}{dt} = 0$$</p>
+<p>The conserved quantity is</p>
+<p>$$Q = \frac{\partial L}{\partial \dot{\gamma}^i} \xi^i$$</p>
+<p>where $\xi^i = \frac{d\gamma^i_\varepsilon}{d\varepsilon}\big|_{\varepsilon=0}$ is the generator of the symmetry.</p>
+<p><strong>Correspondence (symmetry $\to$ conservation):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Symmetry</th>
+<th>Conservation Law</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time translation invariance</td>
+<td>Energy conservation</td>
+</tr>
+<tr>
+<td>Spatial translation invariance</td>
+<td>Momentum conservation</td>
+</tr>
+<tr>
+<td>Rotational invariance</td>
+<td>Angular momentum conservation</td>
+</tr>
+<tr>
+<td>Gauge invariance ($U(1)$)</td>
+<td>Charge conservation</td>
+</tr>
+</tbody>
+</table>
+<p><em>Economic interpretation</em>: Chapter 9 applies Noether&rsquo;s theorem to the economic gauge group $\mathcal{G} = \mathbb{R}^+ \times S_n$. The continuous scaling symmetry $\mathbb{R}^+$ produces a conservation law for economic value: value cannot be created by relabeling (changing currency, units, or numeraire). The discrete component $S_n$ produces selection rules rather than continuous conservation laws.</p>
+<hr />
+<h2 id="a6-game-theory-basics">A.6 Game Theory Basics</h2>
+<p><strong>Definition A.11 (Normal-Form Game).</strong> A <em>normal-form game</em> is a triple $\Gamma = (N, \{S_i\}_{i \in N}, \{u_i\}_{i \in N})$ where $N$ is a finite set of players, $S_i$ is player $i$&rsquo;s strategy set, and $u_i: \prod_{j \in N} S_j \to \mathbb{R}$ is player $i$&rsquo;s payoff function.</p>
+<p><strong>Definition A.12 (Nash Equilibrium).</strong> A strategy profile $s^* = (s_1^*, \ldots, s_n^*)$ is a <em>Nash equilibrium</em> if no player can improve their payoff by unilateral deviation:</p>
+<p>$$u_i(s_i^*, s_{-i}^*) \geq u_i(s_i, s_{-i}^*) \quad \forall \, s_i \in S_i, \; \forall \, i \in N$$</p>
+<p><strong>Theorem A.3 (Nash, 1950).</strong> Every finite game has at least one mixed-strategy Nash equilibrium.</p>
+<p><em>Economic interpretation</em>: The Bond Geodesic Equilibrium (Chapter 7) is Nash equilibrium of the augmented game $\Gamma^+$, where payoffs are the negative of behavioral friction on the full manifold. Classical Nash equilibrium is the scalar projection &mdash; the special case where only $d_1$ (monetary payoff) is active. The BGE-Nash theorem (Theorem 21) establishes this relationship precisely.</p>
+<hr />
+<h2 id="a7-the-scalar-irrecoverability-theorem">A.7 The Scalar Irrecoverability Theorem</h2>
+<p><strong>Theorem A.4 (Scalar Irrecoverability).</strong> Let $n &gt; 1$. No continuous function $\phi: \mathbb{R}^n \to \mathbb{R}$ is injective.</p>
+<p><em>Proof.</em> By the rank-nullity theorem, $\ker(D\phi_p)$ has dimension $\geq n - 1$ at every regular point $p$. Thus $\phi$ identifies distinct points in $\mathbb{R}^n$ that differ only along the kernel directions. The collapse is irrecoverable: no continuous function $\psi: \mathbb{R} \to \mathbb{R}^n$ satisfies $\psi \circ \phi = \text{id}$, because such a $\psi$ would imply injectivity of $\phi$. $\square$</p>
+<p><strong>Corollary A.5 (GDP Irrecoverability).</strong> GDP is a continuous function $\phi: \mathbb{R}^9 \to \mathbb{R}$ on the economic state space. By Theorem A.4, GDP identifies distinct economic states that differ on at least 8 of 9 dimensions. No post-hoc adjustment, weighting, or correction can recover the information that GDP discards.</p>
+<p><em>Economic interpretation</em>: This is the mathematical foundation of the book&rsquo;s critique of scalar economics. Utility functions, cost-benefit analyses, and single-index welfare measures all fall under the scope of the theorem. Chapter 6 develops the full implications.</p>
+<hr />
+<h2 id="a8-finsler-metrics-and-asymmetric-distance">A.8 Finsler Metrics and Asymmetric Distance</h2>
+<p><strong>Definition A.13 (Finsler Metric).</strong> A <em>Finsler metric</em> on a manifold $M$ is a smooth function $F: TM \to \mathbb{R}_{\geq 0}$ that is positively homogeneous of degree 1 in each fiber ($F(x, \lambda v) = \lambda F(x, v)$ for $\lambda &gt; 0$) and strictly convex in $v$. Unlike a Riemannian metric, a Finsler metric need not satisfy $F(x, v) = F(x, -v)$.</p>
+<p><em>Economic interpretation</em>: Loss aversion makes the economic metric asymmetric: the cost of moving from state $A$ to state $B$ (a gain) differs from the cost of moving from $B$ to $A$ (a loss of the same magnitude). This asymmetry is naturally modeled by a Finsler metric (Chapter 4). The loss aversion coefficient $\lambda$ &mdash; which varies between 1.0 and 3.53 with dimensional activation in the eris-econ validation &mdash; quantifies the degree of asymmetry.</p>
+<hr />
+<h2 id="a9-gauge-theory-fundamentals">A.9 Gauge Theory Fundamentals</h2>
+<p><strong>Definition A.14 (Gauge Group).</strong> A <em>gauge group</em> $G$ is a group of transformations that change the mathematical description of a system without changing its physical (or economic) content.</p>
+<p><strong>Definition A.15 (Gauge Invariance).</strong> A functional $J$ is <em>gauge-invariant</em> if $J(\tau(x)) = J(x)$ for all gauge transformations $\tau \in G$.</p>
+<p><strong>Definition A.16 (Gauge Violation).</strong> A <em>gauge violation</em> is a measurable failure of invariance: $J(\tau(x)) \neq J(x)$ for some $\tau \in G$.</p>
+<p><em>Economic interpretation</em>: The economic gauge group is $\mathcal{G} = \mathbb{R}^+ \times S_n$ (scaling and relabeling). Gauge invariance means that economic decisions should not depend on the units used to describe them. Money illusion, sunk cost fallacy, and denomination effects are gauge violations &mdash; failures of invariance under meaning-preserving re-description. (See Chapter 8.)</p>
+      </div>
+
+      <div class="chapter-nav-bottom">
+        <a href="ch16_open_questions.html" class="nav-prev">&larr; Chapter 16: Open Questions</a>
+        <a href="index.html" class="nav-toc">Contents</a>
+        <a href="appendix_b_code.html" class="nav-next">Appendix B: The eris-econ Library &rarr;</a>
+      </div>
+    </div>
+  </article>
+
+  <footer class="book-footer">
+    <p>&copy; 2026 Andrew H. Bond. <em>Geometric Economics: Decision Manifolds, Equilibria, and the Geometry of Markets.</em></p>
+    <p class="footer-note">The geometry was always real. The scalars were always insufficient.</p>
+  </footer>
+
+  <script src="../assets/js/series.js"></script>
+  <script>
+    window.addEventListener('scroll', function () {
+      document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 20);
+    });
+    document.querySelector('.nav-toggle')?.addEventListener('click', function () {
+      document.querySelector('.nav-links').classList.toggle('open');
+    });
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\\\(', right: '\\\\)', display: false},
+        {left: '\\\\[', right: '\\\\]', display: true}
+      ],
+      ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      throwOnError: false
+    });"></script>
+</body>
+</html>

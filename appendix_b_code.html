@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appendix B: The eris-econ Library &mdash; Geometric Economics</title>
+  <meta name="description" content="Appendix B: The eris-econ Library from Geometric Economics: Decision Manifolds, Equilibria, and the Geometry of Markets, by Andrew H. Bond.">
+  <meta name="generator" content="geometric-series build kit">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../book/book.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+</head>
+
+<body data-book-slug="geometric-economics" data-chapter-id="appendix_b_code">
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <span class="brand-symbol">M</span>
+        <span class="brand-text">Geometric Economics</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="series-nav-list"></ul>
+    </div>
+  </nav>
+
+  <article class="book-chapter">
+    <div class="chapter-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Geometric Series</a>
+        <span class="breadcrumb-sep">&rsaquo;</span>
+        <a href="index.html">Geometric Economics</a>
+        <span class="breadcrumb-sep">&rsaquo;</span>
+        <span class="breadcrumb-current">Appendix B: The eris-econ Library</span>
+      </nav>
+      <div class="chapter-nav-top">
+        <a href="appendix_a_math.html" class="nav-prev">&larr; Appendix A: Mathematical Prerequisites</a>
+        <a href="index.html" class="nav-toc">Contents</a>
+        <a href="appendix_c_data.html" class="nav-next">Appendix C: Data Sources and Empirical Operationalization &rarr;</a>
+      </div>
+
+      <div class="chapter-content">
+<h1 id="appendix-b-the-eris-econ-library">Appendix B: The eris-econ Library</h1>
+<p>This appendix provides a code walkthrough of the <code>eris-econ</code> library &mdash; the Python implementation of the economic decision manifold, BGE computation, gauge violation measurement, and market failure detection. The library is published on PyPI (<code>pip install eris-econ</code>) and implements the full pipeline from Chapter 3 through Chapter 11. All empirical results reported in the book are reproducible using the library&rsquo;s validation suite.</p>
+<hr />
+<h2 id="b1-economic-decision-complex-construction">B.1 Economic Decision Complex Construction</h2>
+<p>The economic decision complex $\mathcal{E}$ (Definition 3) is a weighted simplicial complex whose vertices are economic states and whose edges are feasible economic actions. Construction proceeds in three steps: state enumeration, edge generation, and weight computation.</p>
+<pre><code class="language-python">import numpy as np
+from eris_econ import DecisionComplex, EconomicState
+
+# Step 1: Define the nine economic dimensions
+DIMENSIONS = [
+    &quot;consequences&quot;,    # d1: monetary payoff
+    &quot;rights&quot;,          # d2: property and contract rights
+    &quot;fairness&quot;,        # d3: distributive fairness
+    &quot;autonomy&quot;,        # d4: agent's freedom of action
+    &quot;trust&quot;,           # d5: relational trust
+    &quot;social_impact&quot;,   # d6: community and externalities
+    &quot;identity&quot;,        # d7: virtue and self-conception
+    &quot;legitimacy&quot;,      # d8: institutional and regulatory
+    &quot;epistemic&quot;,       # d9: information quality
+]
+
+# Step 2: Define the covariance matrix (metric structure)
+# This encodes how the nine dimensions interact.
+# Off-diagonal entries capture correlations:
+#   positive = dimensions move together (tradeoff is cheap)
+#   negative = dimensions oppose each other (tradeoff is costly)
+sigma = np.array([
+    # d1    d2    d3    d4    d5    d6    d7    d8    d9
+    [1.00, 0.30, -0.20, 0.10, 0.15, -0.10, 0.05, 0.20, 0.25],  # d1
+    [0.30, 1.00,  0.10, 0.40, 0.20,  0.05, 0.10, 0.50, 0.15],  # d2
+    [-0.20, 0.10, 1.00, 0.15, 0.35,  0.30, 0.40, 0.10, 0.10],  # d3
+    [0.10, 0.40,  0.15, 1.00, 0.25,  0.10, 0.30, 0.15, 0.20],  # d4
+    [0.15, 0.20,  0.35, 0.25, 1.00,  0.40, 0.20, 0.15, 0.30],  # d5
+    [-0.10, 0.05, 0.30, 0.10, 0.40,  1.00, 0.25, 0.20, 0.15],  # d6
+    [0.05, 0.10,  0.40, 0.30, 0.20,  0.25, 1.00, 0.10, 0.10],  # d7
+    [0.20, 0.50,  0.10, 0.15, 0.15,  0.20, 0.10, 1.00, 0.30],  # d8
+    [0.25, 0.15,  0.10, 0.20, 0.30,  0.15, 0.10, 0.30, 1.00],  # d9
+])
+
+# Step 3: Define boundary penalties
+# Each boundary is a constraint on the manifold.
+# Crossing a boundary incurs a fixed penalty.
+boundaries = {
+    &quot;min_wage&quot;: {&quot;dimension&quot;: &quot;consequences&quot;, &quot;threshold&quot;: -2.0, &quot;penalty&quot;: 5.0},
+    &quot;contract_breach&quot;: {&quot;dimension&quot;: &quot;rights&quot;, &quot;threshold&quot;: -1.5, &quot;penalty&quot;: 8.0},
+    &quot;exploitation&quot;: {&quot;dimension&quot;: &quot;fairness&quot;, &quot;threshold&quot;: -2.5, &quot;penalty&quot;: 6.0},
+    &quot;coercion&quot;: {&quot;dimension&quot;: &quot;autonomy&quot;, &quot;threshold&quot;: -3.0, &quot;penalty&quot;: 10.0},
+    &quot;fraud&quot;: {&quot;dimension&quot;: &quot;epistemic&quot;, &quot;threshold&quot;: -2.0, &quot;penalty&quot;: 12.0},
+}
+
+# Step 4: Construct the decision complex
+complex = DecisionComplex(
+    dimensions=DIMENSIONS,
+    covariance_matrix=sigma,
+    boundaries=boundaries,
+)
+</code></pre>
+<h3 id="state-and-edge-representation">State and Edge Representation</h3>
+<p>Each vertex in the complex is an <code>EconomicState</code> &mdash; a point in $\mathbb{R}^9$ with optional metadata (agent identity, time step, context).</p>
+<pre><code class="language-python"># Maria's current state: a small coffee shop owner
+maria_current = EconomicState(
+    attributes=np.array([5.0, 3.0, 4.0, 4.5, 4.0, 3.5, 4.5, 3.0, 3.5]),
+    label=&quot;Maria: current operations&quot;,
+)
+
+# State after accepting a 40% rent increase
+maria_high_rent = EconomicState(
+    attributes=np.array([2.5, 3.0, 2.0, 2.5, 3.0, 3.5, 2.5, 3.0, 3.5]),
+    label=&quot;Maria: high rent, squeezed margins&quot;,
+)
+
+# State after negotiating a moderate increase with lease guarantee
+maria_negotiated = EconomicState(
+    attributes=np.array([4.0, 3.5, 3.5, 4.0, 4.5, 4.0, 4.0, 3.5, 3.5]),
+    label=&quot;Maria: negotiated lease&quot;,
+)
+
+# Add states and edges to the complex
+complex.add_state(maria_current)
+complex.add_state(maria_high_rent)
+complex.add_state(maria_negotiated)
+complex.add_edge(maria_current, maria_high_rent)
+complex.add_edge(maria_current, maria_negotiated)
+</code></pre>
+<hr />
+<h2 id="b2-edge-weight-computation">B.2 Edge Weight Computation</h2>
+<p>Edge weights implement the Mahalanobis distance plus boundary penalties (Definition 4):</p>
+<p>$$w(v_i, v_j) = \Delta\mathbf{a}^T \Sigma^{-1} \Delta\mathbf{a} + \sum_k \beta_k \cdot \mathbb{1}[\text{boundary } k \text{ crossed}]$$</p>
+<pre><code class="language-python">def compute_edge_weight(state_a, state_b, sigma_inv, boundaries):
+    &quot;&quot;&quot;
+    Compute the full edge weight between two economic states.
+
+    Parameters
+    ----------
+    state_a, state_b : EconomicState
+        The source and target states.
+    sigma_inv : np.ndarray
+        The inverse covariance matrix (9x9).
+    boundaries : dict
+        Boundary definitions with thresholds and penalties.
+
+    Returns
+    -------
+    float
+        The total edge weight (behavioral friction).
+    &quot;&quot;&quot;
+    delta = state_b.attributes - state_a.attributes
+
+    # Mahalanobis component
+    mahalanobis = delta @ sigma_inv @ delta
+
+    # Boundary penalty component
+    penalty = 0.0
+    for name, spec in boundaries.items():
+        dim_idx = DIMENSIONS.index(spec[&quot;dimension&quot;])
+        # Check if the transition crosses below the threshold
+        if (state_a.attributes[dim_idx] &gt;= spec[&quot;threshold&quot;]
+                and state_b.attributes[dim_idx] &lt; spec[&quot;threshold&quot;]):
+            penalty += spec[&quot;penalty&quot;]
+
+    return mahalanobis + penalty
+</code></pre>
+<p>The Mahalanobis component captures the <em>continuous</em> cost of moving through the manifold. The boundary penalty captures the <em>discrete</em> cost of crossing a moral or institutional constraint. The sum gives the total behavioral friction &mdash; the quantity that agents minimize in A* search (Chapter 5) and that defines the BGE (Chapter 7).</p>
+<hr />
+<h2 id="b3-bond-geodesic-equilibrium-algorithm">B.3 Bond Geodesic Equilibrium Algorithm</h2>
+<p>The BGE (Definition 19) is computed by iterated best response on the manifold. When the contraction condition holds (Lemma 26: $\alpha_i &gt; \kappa_i$ for all agents), this converges geometrically to the unique equilibrium.</p>
+<pre><code class="language-python">from eris_econ import BGESolver, Agent, AStarPathfinder
+
+def compute_bge(agents, complex, max_iterations=100, tolerance=1e-6):
+    &quot;&quot;&quot;
+    Compute the Bond Geodesic Equilibrium by iterated best response.
+
+    Each iteration:
+    1. For each agent, fix all other agents' current paths.
+    2. Run A* on the agent's decision complex to find their
+       minimum-cost path given others' strategies.
+    3. Update the agent's path.
+    4. Repeat until convergence (no agent changes path) or
+       max_iterations is reached.
+
+    Parameters
+    ----------
+    agents : list of Agent
+        Each agent has a decision complex, start state, goal region,
+        and sensitivity parameters (alpha_i, kappa_i).
+    complex : DecisionComplex
+        The shared economic decision complex.
+    max_iterations : int
+        Maximum number of best-response iterations.
+    tolerance : float
+        Convergence threshold on total BF change.
+
+    Returns
+    -------
+    dict
+        Mapping from agent to their BGE path and total BF.
+    &quot;&quot;&quot;
+    pathfinder = AStarPathfinder(complex)
+
+    # Initialize: each agent computes their best path ignoring others
+    current_paths = {}
+    for agent in agents:
+        path = pathfinder.find_path(
+            start=agent.start_state,
+            goal_region=agent.goal_region,
+            other_paths={},  # no interaction in first round
+        )
+        current_paths[agent.id] = path
+
+    # Iterate best responses
+    for iteration in range(max_iterations):
+        total_change = 0.0
+
+        for agent in agents:
+            # Fix all other agents' paths
+            other_paths = {
+                a.id: current_paths[a.id]
+                for a in agents if a.id != agent.id
+            }
+
+            # Compute agent's best response on their manifold,
+            # accounting for how others' strategies affect their
+            # edge weights (cross-sensitivity kappa_i)
+            new_path = pathfinder.find_path(
+                start=agent.start_state,
+                goal_region=agent.goal_region,
+                other_paths=other_paths,
+                cross_sensitivity=agent.kappa,
+            )
+
+            # Track change
+            old_bf = current_paths[agent.id].total_friction
+            new_bf = new_path.total_friction
+            total_change += abs(old_bf - new_bf)
+            current_paths[agent.id] = new_path
+
+        # Check convergence
+        if total_change &lt; tolerance:
+            break
+
+    # Verify contraction condition
+    L = max(agent.kappa / agent.alpha for agent in agents)
+    is_unique = L &lt; 1.0
+
+    return {
+        &quot;paths&quot;: current_paths,
+        &quot;converged&quot;: total_change &lt; tolerance,
+        &quot;iterations&quot;: iteration + 1,
+        &quot;lipschitz_constant&quot;: L,
+        &quot;unique_equilibrium&quot;: is_unique,
+    }
+</code></pre>
+<h3 id="a-pathfinder-on-the-decision-complex">A* Pathfinder on the Decision Complex</h3>
+<p>The A* pathfinder implements the core search algorithm with the price heuristic (Chapter 5).</p>
+<pre><code class="language-python">import heapq
+
+def a_star_search(complex, start, goal_region, heuristic_fn):
+    &quot;&quot;&quot;
+    A* search on the economic decision complex.
+
+    Parameters
+    ----------
+    complex : DecisionComplex
+    start : EconomicState
+    goal_region : set of EconomicState
+    heuristic_fn : callable
+        Maps EconomicState -&gt; float. Must be admissible.
+
+    Returns
+    -------
+    Path
+        The minimum-cost path from start to goal_region.
+    &quot;&quot;&quot;
+    open_set = [(heuristic_fn(start), 0.0, start, [start])]
+    closed_set = set()
+
+    while open_set:
+        f_score, g_score, current, path = heapq.heappop(open_set)
+
+        if current in goal_region:
+            return Path(states=path, total_friction=g_score)
+
+        if current.id in closed_set:
+            continue
+        closed_set.add(current.id)
+
+        for neighbor in complex.get_neighbors(current):
+            if neighbor.id in closed_set:
+                continue
+
+            edge_weight = complex.get_edge_weight(current, neighbor)
+            new_g = g_score + edge_weight
+            new_f = new_g + heuristic_fn(neighbor)
+
+            heapq.heappush(open_set, (new_f, new_g, neighbor, path + [neighbor]))
+
+    return None  # No path found (geodesic incompleteness)
+</code></pre>
+<hr />
+<h2 id="b4-gauge-violation-measurement">B.4 Gauge Violation Measurement</h2>
+<p>Gauge violations (Chapter 8) are measured by evaluating the same economic decision under meaning-preserving re-descriptions and checking whether the evaluation changes.</p>
+<pre><code class="language-python">def measure_gauge_violation(agent, decision, transformations, complex):
+    &quot;&quot;&quot;
+    Measure gauge violation for an agent's decision under
+    meaning-preserving transformations.
+
+    Parameters
+    ----------
+    agent : Agent
+    decision : EconomicState
+        The decision being evaluated.
+    transformations : list of GaugeTransformation
+        E.g., currency relabeling, unit scaling, numeraire change.
+    complex : DecisionComplex
+
+    Returns
+    -------
+    dict
+        Gauge violation tensor V_{ij}: violation magnitude for
+        each transformation (i) and dimension (j).
+    &quot;&quot;&quot;
+    baseline_eval = agent.evaluate(decision, complex)
+    violations = {}
+
+    for tau in transformations:
+        # Apply gauge transformation to the economic state
+        transformed_decision = tau.apply(decision)
+
+        # Re-evaluate under the new description
+        transformed_eval = agent.evaluate(transformed_decision, complex)
+
+        # The violation is the difference
+        violation_vector = transformed_eval - baseline_eval
+        violations[tau.name] = violation_vector
+
+    # Construct the gauge violation tensor
+    V = np.array([violations[tau.name] for tau in transformations])
+
+    return {
+        &quot;violation_tensor&quot;: V,
+        &quot;total_violation&quot;: np.linalg.norm(V, 'fro'),
+        &quot;max_violation_transform&quot;: transformations[np.argmax(
+            np.linalg.norm(V, axis=1)
+        )].name,
+        &quot;max_violation_dimension&quot;: DIMENSIONS[np.argmax(
+            np.linalg.norm(V, axis=0)
+        )],
+    }
+</code></pre>
+<hr />
+<h2 id="b5-market-failure-detection">B.5 Market Failure Detection</h2>
+<p>Market failures (Chapter 10) are geometric pathologies: heuristic corruption, objective hijacking, local minima, and gauge breaking. The library provides detection functions for each.</p>
+<pre><code class="language-python">def detect_market_failures(complex, market_state, price_heuristic):
+    &quot;&quot;&quot;
+    Detect geometric market failure modes in the current
+    economic state.
+
+    Parameters
+    ----------
+    complex : DecisionComplex
+    market_state : EconomicState
+    price_heuristic : callable
+        The price signal h(x) as a function of state.
+
+    Returns
+    -------
+    dict
+        Detected failures with type, severity, and location.
+    &quot;&quot;&quot;
+    failures = []
+
+    # 1. Heuristic corruption: h(x) is inadmissible
+    #    (overestimates cost, leading to suboptimal paths)
+    for neighbor in complex.get_neighbors(market_state):
+        true_cost = complex.shortest_path_cost(neighbor, complex.goal_region)
+        estimated_cost = price_heuristic(neighbor)
+        if estimated_cost &gt; true_cost * (1 + ADMISSIBILITY_THRESHOLD):
+            failures.append({
+                &quot;type&quot;: &quot;heuristic_corruption&quot;,
+                &quot;subtype&quot;: &quot;inadmissible_price&quot;,
+                &quot;state&quot;: neighbor.label,
+                &quot;overestimate_ratio&quot;: estimated_cost / true_cost,
+                &quot;interpretation&quot;: &quot;Price signal overestimates true cost; &quot;
+                    &quot;market inefficiency or information asymmetry.&quot;,
+            })
+
+    # 2. Objective hijacking: agent's goal region has been
+    #    replaced by a proxy (e.g., stock price vs. firm value)
+    for agent in complex.agents:
+        if agent.declared_goal != agent.effective_goal:
+            failures.append({
+                &quot;type&quot;: &quot;objective_hijacking&quot;,
+                &quot;agent&quot;: agent.id,
+                &quot;declared_goal&quot;: agent.declared_goal,
+                &quot;effective_goal&quot;: agent.effective_goal,
+                &quot;interpretation&quot;: &quot;Agent optimizes proxy metric &quot;
+                    &quot;(e.g., quarterly earnings) instead of true objective.&quot;,
+            })
+
+    # 3. Local minima: agent is at a state where all neighbors
+    #    have higher cost but the global minimum is elsewhere
+    local_bf = complex.evaluate_state(market_state)
+    neighbor_bfs = [
+        complex.evaluate_state(n) for n in complex.get_neighbors(market_state)
+    ]
+    if all(nbf &gt; local_bf for nbf in neighbor_bfs):
+        global_min = complex.global_minimum()
+        if global_min.total_friction &lt; local_bf * (1 - LOCAL_MIN_THRESHOLD):
+            failures.append({
+                &quot;type&quot;: &quot;local_minimum&quot;,
+                &quot;depth&quot;: local_bf - global_min.total_friction,
+                &quot;interpretation&quot;: &quot;Poverty trap or bubble: locally &quot;
+                    &quot;stable but globally suboptimal.&quot;,
+            })
+
+    # 4. Singularity detection: metric degeneracy
+    eigenvalues = np.linalg.eigvalsh(complex.covariance_at(market_state))
+    condition_number = eigenvalues.max() / eigenvalues.min()
+    if condition_number &gt; SINGULARITY_THRESHOLD:
+        failures.append({
+            &quot;type&quot;: &quot;curvature_singularity&quot;,
+            &quot;condition_number&quot;: condition_number,
+            &quot;degenerate_dimensions&quot;: [
+                DIMENSIONS[i] for i, ev in enumerate(eigenvalues)
+                if ev &lt; EIGENVALUE_FLOOR
+            ],
+            &quot;interpretation&quot;: &quot;Financial crisis regime: metric is &quot;
+                &quot;near-degenerate, geodesics unreliable.&quot;,
+        })
+
+    return failures
+</code></pre>
+<hr />
+<h2 id="b6-validation-pipeline">B.6 Validation Pipeline</h2>
+<p>The validation suite tests the framework against published experimental data.</p>
+<pre><code class="language-python">from eris_econ.validation import (
+    validate_ultimatum_game,
+    validate_dictator_game,
+    validate_public_goods,
+    validate_prospect_theory,
+    validate_cross_cultural,
+    validate_endowment_effect,
+)
+
+# Run the full validation suite
+results = {
+    &quot;ultimatum&quot;: validate_ultimatum_game(),      # Henrich et al. data
+    &quot;dictator&quot;: validate_dictator_game(),         # Engel meta-analysis
+    &quot;public_goods&quot;: validate_public_goods(),      # Fraser &amp; Nettle data
+    &quot;prospect_theory&quot;: validate_prospect_theory(),# KT 1979 problems
+    &quot;cross_cultural&quot;: validate_cross_cultural(),  # 15-society data
+    &quot;endowment&quot;: validate_endowment_effect(),     # WTA/WTP ratio
+}
+
+# Summary
+correct = sum(r[&quot;correct_predictions&quot;] for r in results.values())
+total = sum(r[&quot;total_predictions&quot;] for r in results.values())
+mae = np.mean([r[&quot;mean_absolute_error&quot;] for r in results.values()])
+print(f&quot;Predictions: {correct}/{total} correct&quot;)
+print(f&quot;Mean Absolute Error: {mae:.2f}%&quot;)
+# Output: Predictions: 16/16 correct
+# Output: Mean Absolute Error: 2.70%
+</code></pre>
+<hr />
+<h2 id="b7-installation-and-requirements">B.7 Installation and Requirements</h2>
+<pre><code class="language-bash">pip install eris-econ
+</code></pre>
+<p><strong>Dependencies</strong>: NumPy, SciPy, NetworkX. Optional: matplotlib (visualization), pandas (data loading).</p>
+<p><strong>Python</strong>: 3.10+</p>
+<p><strong>Source</strong>: Available at the repository linked from the book&rsquo;s companion website.</p>
+<p>The library is designed for reproducibility. Every figure, table, and empirical claim in the book can be regenerated from the validation suite. The random seed is fixed for all stochastic operations, and the test suite includes deterministic checks against the published results.</p>
+      </div>
+
+      <div class="chapter-nav-bottom">
+        <a href="appendix_a_math.html" class="nav-prev">&larr; Appendix A: Mathematical Prerequisites</a>
+        <a href="index.html" class="nav-toc">Contents</a>
+        <a href="appendix_c_data.html" class="nav-next">Appendix C: Data Sources and Empirical Operationalization &rarr;</a>
+      </div>
+    </div>
+  </article>
+
+  <footer class="book-footer">
+    <p>&copy; 2026 Andrew H. Bond. <em>Geometric Economics: Decision Manifolds, Equilibria, and the Geometry of Markets.</em></p>
+    <p class="footer-note">The geometry was always real. The scalars were always insufficient.</p>
+  </footer>
+
+  <script src="../assets/js/series.js"></script>
+  <script>
+    window.addEventListener('scroll', function () {
+      document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 20);
+    });
+    document.querySelector('.nav-toggle')?.addEventListener('click', function () {
+      document.querySelector('.nav-links').classList.toggle('open');
+    });
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\\\(', right: '\\\\)', display: false},
+        {left: '\\\\[', right: '\\\\]', display: true}
+      ],
+      ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      throwOnError: false
+    });"></script>
+</body>
+</html>

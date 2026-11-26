@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appendix C: Data Sources and Empirical Operationalization &mdash; Geometric Economics</title>
+  <meta name="description" content="Appendix C: Data Sources and Empirical Operationalization from Geometric Economics: Decision Manifolds, Equilibria, and the Geometry of Markets, by Andrew H. Bond.">
+  <meta name="generator" content="geometric-series build kit">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../book/book.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+</head>
+
+<body data-book-slug="geometric-economics" data-chapter-id="appendix_c_data">
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <span class="brand-symbol">M</span>
+        <span class="brand-text">Geometric Economics</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="series-nav-list"></ul>
+    </div>
+  </nav>
+
+  <article class="book-chapter">
+    <div class="chapter-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Geometric Series</a>
+        <span class="breadcrumb-sep">&rsaquo;</span>
+        <a href="index.html">Geometric Economics</a>
+        <span class="breadcrumb-sep">&rsaquo;</span>
+        <span class="breadcrumb-current">Appendix C: Data Sources and Empirical Operationalization</span>
+      </nav>
+      <div class="chapter-nav-top">
+        <a href="appendix_b_code.html" class="nav-prev">&larr; Appendix B: The eris-econ Library</a>
+        <a href="index.html" class="nav-toc">Contents</a>
+        <a href="appendix_d_notation.html" class="nav-next">Appendix D: Notation and Conventions &rarr;</a>
+      </div>
+
+      <div class="chapter-content">
+<h1 id="appendix-c-data-sources-and-empirical-operationalization">Appendix C: Data Sources and Empirical Operationalization</h1>
+<p>This appendix describes the data sources used to validate the framework, the methods for measuring the economic metric from observable data, and the connections between existing economic indicators and the nine-dimensional decision manifold.</p>
+<hr />
+<h2 id="c1-measuring-the-economic-metric-from-market-data">C.1 Measuring the Economic Metric from Market Data</h2>
+<p>The economic metric is determined by the $9 \times 9$ covariance matrix $\Sigma$ (Chapter 4). Estimating $\Sigma$ from real-world data is the central empirical challenge of the framework. The matrix has $9 \times 10 / 2 = 45$ independent parameters (9 variances and 36 covariances). This section describes how each class of parameter can be estimated.</p>
+<h3 id="monetary-dimension-math4-variance-and-cross-covariances">Monetary Dimension ($d_1$): Variance and Cross-Covariances</h3>
+<p>The variance $\sigma_1^2$ &mdash; the normal range of fluctuation in monetary outcomes &mdash; is directly observable from market data: asset return distributions, income distributions, price volatility indices.</p>
+<p><strong>Data sources:</strong>
+- CRSP (Center for Research in Security Prices): stock returns, daily/monthly, 1926&ndash;present.
+- FRED (Federal Reserve Economic Data): interest rates, inflation, GDP components, labor market indicators.
+- World Bank Open Data: cross-country income, trade flows, development indicators.
+- BLS (Bureau of Labor Statistics): wage distributions, consumer price indices, employment data.</p>
+<p>The cross-covariances $\sigma_{1k}$ (how monetary outcomes correlate with non-monetary dimensions) are estimated indirectly, typically from survey data or natural experiments. For example, $\sigma_{15}$ (money-trust covariance) can be estimated from the relationship between financial returns and trust measures in the General Social Survey or the World Values Survey.</p>
+<h3 id="rights-dimension-math8-property-rights-indices">Rights Dimension ($d_2$): Property Rights Indices</h3>
+<p>The variance $\sigma_2^2$ and cross-covariances $\sigma_{2k}$ are estimated from institutional quality indices.</p>
+<p><strong>Data sources:</strong>
+- Heritage Foundation Index of Economic Freedom: property rights sub-index, 183 countries, 1995&ndash;present.
+- World Bank Doing Business/Business Ready indicators: contract enforcement, property registration.
+- Fraser Institute Economic Freedom of the World: legal structure and property rights component.</p>
+<h3 id="fairness-dimension-math11-inequality-measures">Fairness Dimension ($d_3$): Inequality Measures</h3>
+<p>The fairness dimension is operationalized through distributional measures.</p>
+<p><strong>Data sources:</strong>
+- World Inequality Database (WID): top income shares, wealth concentration, pre/post-tax distributions, 100+ countries, 1900&ndash;present.
+- Luxembourg Income Study (LIS): cross-national microdata on income and wealth, 50+ countries.
+- Piketty and collaborators: historical capital-income ratios, wealth-to-income series.
+- Gini coefficients: World Bank, OECD, national statistical offices.</p>
+<h3 id="autonomy-dimension-math12-labor-market-flexibility">Autonomy Dimension ($d_4$): Labor Market Flexibility</h3>
+<p><strong>Data sources:</strong>
+- OECD Employment Outlook: employment protection legislation indices, hours worked, job tenure.
+- ILO (International Labour Organization): labor market indicators, informal employment, forced labor estimates.
+- Survey data: job satisfaction surveys, self-employment rates, union coverage.</p>
+<h3 id="trust-dimension-math13-social-and-institutional-trust">Trust Dimension ($d_5$): Social and Institutional Trust</h3>
+<p><strong>Data sources:</strong>
+- World Values Survey (WVS): generalized trust (&ldquo;Most people can be trusted&rdquo;), institutional trust, 100+ countries, 1981&ndash;present.
+- General Social Survey (GSS): interpersonal trust, confidence in institutions, U.S., 1972&ndash;present.
+- Edelman Trust Barometer: trust in government, business, media, NGOs, 28 markets.
+- Experimental data: trust games (Berg, Dickhaut, and McCabe, 1995), repeated-interaction protocols.</p>
+<h3 id="social-impact-dimension-math14-externality-measures">Social Impact Dimension ($d_6$): Externality Measures</h3>
+<p><strong>Data sources:</strong>
+- EPA (Environmental Protection Agency): emissions data, Toxics Release Inventory.
+- Global Carbon Project: national CO$_2$ emissions, 1959&ndash;present.
+- OECD Better Life Index: community engagement, environmental quality, social connections.
+- Eurostat: social impact indicators, community cohesion metrics.</p>
+<h3 id="identityvirtue-dimension-math16-cultural-values">Identity/Virtue Dimension ($d_7$): Cultural Values</h3>
+<p><strong>Data sources:</strong>
+- Hofstede cultural dimensions: individualism/collectivism, long-term orientation, 70+ countries.
+- Schwartz Values Survey: 10 basic human values, 82 countries.
+- World Values Survey: self-expression values, traditional/secular values.</p>
+<h3 id="legitimacy-dimension-math17-governance-quality">Legitimacy Dimension ($d_8$): Governance Quality</h3>
+<p><strong>Data sources:</strong>
+- World Bank Worldwide Governance Indicators: rule of law, regulatory quality, government effectiveness, control of corruption, 200+ countries, 1996&ndash;present.
+- Transparency International Corruption Perceptions Index.
+- V-Dem (Varieties of Democracy): democratic governance indicators, 200+ countries, 1789&ndash;present.</p>
+<h3 id="epistemic-dimension-math18-information-quality">Epistemic Dimension ($d_9$): Information Quality</h3>
+<p><strong>Data sources:</strong>
+- Market microstructure data: bid-ask spreads as proxies for information asymmetry (Glosten and Milgrom, 1985).
+- Credit rating agency data: rating accuracy, transition matrices, default prediction performance.
+- Financial reporting quality: Beneish M-score for earnings manipulation detection, audit quality indicators.
+- Media pluralism indices: Reporters Without Borders Press Freedom Index, media concentration data.</p>
+<hr />
+<h2 id="c2-gdp-alternatives-as-partial-dimensional-recovery">C.2 GDP Alternatives as Partial Dimensional Recovery</h2>
+<p>The Scalar Irrecoverability Theorem (Chapter 6) proves that GDP discards 8 of 9 dimensions. Existing alternative indices can be understood as attempts to recover some of the discarded dimensions.</p>
+<h3 id="stiglitz-sen-fitoussi-commission-2009">Stiglitz-Sen-Fitoussi Commission (2009)</h3>
+<p>The Commission on the Measurement of Economic Performance and Social Progress recommended a multi-dimensional dashboard including:</p>
+<table>
+<thead>
+<tr>
+<th>Recommendation</th>
+<th>Dimension Recovered</th>
+<th>Manifold Dimension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Material living standards (income, consumption, wealth)</td>
+<td>Monetary outcomes</td>
+<td>$d_1$</td>
+</tr>
+<tr>
+<td>Health</td>
+<td>Physical wellbeing</td>
+<td>$d_1$ (partial), $d_6$</td>
+</tr>
+<tr>
+<td>Education</td>
+<td>Epistemic capacity</td>
+<td>$d_9$</td>
+</tr>
+<tr>
+<td>Personal activities including work</td>
+<td>Autonomy</td>
+<td>$d_4$</td>
+</tr>
+<tr>
+<td>Political voice and governance</td>
+<td>Legitimacy</td>
+<td>$d_8$</td>
+</tr>
+<tr>
+<td>Social connections and relationships</td>
+<td>Trust</td>
+<td>$d_5$</td>
+</tr>
+<tr>
+<td>Environment (present and future)</td>
+<td>Social impact</td>
+<td>$d_6$</td>
+</tr>
+<tr>
+<td>Insecurity (economic and physical)</td>
+<td>Rights, autonomy</td>
+<td>$d_2$, $d_4$</td>
+</tr>
+</tbody>
+</table>
+<p>The Commission&rsquo;s dashboard recovers dimensions $d_1$, $d_2$, $d_4$, $d_5$, $d_6$, $d_8$, $d_9$ &mdash; 7 of 9 dimensions. The missing dimensions are $d_3$ (fairness as an intrinsic dimension, not just an observable) and $d_7$ (identity and virtue). This is the most comprehensive scalar-recovery attempt in the mainstream economics literature, and its incompleteness confirms the irrecoverability theorem: even the most sophisticated multi-dimensional dashboard cannot reconstruct the full metric from its scalar projections.</p>
+<h3 id="human-development-index-hdi">Human Development Index (HDI)</h3>
+<p>The UNDP&rsquo;s HDI combines life expectancy, education, and GNI per capita.</p>
+<table>
+<thead>
+<tr>
+<th>HDI Component</th>
+<th>Dimension Recovered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Life expectancy at birth</td>
+<td>$d_1$ (partial), $d_6$</td>
+</tr>
+<tr>
+<td>Mean years of schooling</td>
+<td>$d_9$</td>
+</tr>
+<tr>
+<td>GNI per capita (PPP)</td>
+<td>$d_1$</td>
+</tr>
+</tbody>
+</table>
+<p>The HDI recovers 2 of 9 dimensions ($d_1$, $d_9$). It is a substantial improvement over GDP alone but remains a severe compression.</p>
+<h3 id="genuine-progress-indicator-gpi">Genuine Progress Indicator (GPI)</h3>
+<p>The GPI adjusts GDP for income distribution, household labor, environmental costs, and other factors.</p>
+<table>
+<thead>
+<tr>
+<th>GPI Adjustment</th>
+<th>Dimension Recovered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Income distribution weighting</td>
+<td>$d_3$ (partial)</td>
+</tr>
+<tr>
+<td>Value of household work</td>
+<td>$d_4$ (partial)</td>
+</tr>
+<tr>
+<td>Cost of environmental degradation</td>
+<td>$d_6$</td>
+</tr>
+<tr>
+<td>Cost of crime</td>
+<td>$d_2$ (partial)</td>
+</tr>
+<tr>
+<td>Value of leisure time</td>
+<td>$d_4$ (partial)</td>
+</tr>
+</tbody>
+</table>
+<p>The GPI recovers approximately 4 of 9 dimensions, but each recovery is partial (a scalar proxy for a full dimensional value).</p>
+<hr />
+<h2 id="c3-esg-metrics-as-partial-dimensional-recovery">C.3 ESG Metrics as Partial Dimensional Recovery</h2>
+<p>Environmental, Social, and Governance (ESG) metrics &mdash; used by investors to assess non-financial performance &mdash; can be mapped directly to manifold dimensions.</p>
+<table>
+<thead>
+<tr>
+<th>ESG Category</th>
+<th>Typical Indicators</th>
+<th>Manifold Dimension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Environmental</td>
+<td>Carbon emissions, water use, waste</td>
+<td>$d_6$ (social impact)</td>
+</tr>
+<tr>
+<td>Social - Labor</td>
+<td>Worker safety, fair wages, diversity</td>
+<td>$d_3$ (fairness), $d_4$ (autonomy)</td>
+</tr>
+<tr>
+<td>Social - Community</td>
+<td>Community investment, local impact</td>
+<td>$d_6$ (social impact)</td>
+</tr>
+<tr>
+<td>Social - Human Rights</td>
+<td>Supply chain labor standards</td>
+<td>$d_2$ (rights)</td>
+</tr>
+<tr>
+<td>Governance - Board</td>
+<td>Independence, diversity, structure</td>
+<td>$d_8$ (legitimacy)</td>
+</tr>
+<tr>
+<td>Governance - Transparency</td>
+<td>Reporting quality, audit standards</td>
+<td>$d_9$ (epistemic)</td>
+</tr>
+<tr>
+<td>Governance - Ethics</td>
+<td>Anti-corruption, whistleblower protection</td>
+<td>$d_5$ (trust), $d_7$ (identity)</td>
+</tr>
+</tbody>
+</table>
+<p>ESG metrics collectively cover 7 of 9 dimensions (missing $d_1$ &mdash; monetary payoff &mdash; which is measured by standard financial metrics). The ESG framework&rsquo;s limitation, from the manifold perspective, is that it does not estimate the <em>covariance matrix</em> $\Sigma$. It measures individual dimensions but not their interactions. The metric &mdash; which is determined by $\Sigma^{-1}$ &mdash; requires the full covariance structure, including how environmental performance covaries with governance quality ($\sigma_{68}$), how labor practices covary with financial returns ($\sigma_{13}$), and so on. This covariance estimation is the key empirical frontier identified in Chapter 16.</p>
+<hr />
+<h2 id="c4-experimental-validation-data">C.4 Experimental Validation Data</h2>
+<p><em>Status of this section.</em> The results stated below come from runs of the framework against the published experimental data named in each subsection, with parameters calibrated to each dataset as the subsections say. Those runs are not part of this volume&rsquo;s repository and the volume does not reproduce them, so the results are reported here without a run record. The registered test of the framework&rsquo;s cross-domain coupling prediction failed (Chapter 16, Section 16.1).</p>
+<h3 id="game-theory-ultimatum-game-henrich-et-al-2001-2005-2010">Game Theory: Ultimatum Game (Henrich et al., 2001, 2005, 2010)</h3>
+<p><strong>Dataset</strong>: Ultimatum game offers and rejections across 15 small-scale societies (Machiguenga, Tsimane, Lamalera, Au, Gnau, Hadza, Mapuche, Torguud, Khazakh, Sangu, Orma, Shuar, Achuar, U.S., and others). N = 1,762 subjects.</p>
+<p><strong>Framework prediction</strong>: Cross-cultural variation in offers is explained by variation in the covariance matrix $\Sigma$ &mdash; specifically, the relative weight of $d_3$ (fairness) versus $d_1$ (monetary payoff) &mdash; rather than by &ldquo;cultural preferences&rdquo; treated as unexplained parameters.</p>
+<p><strong>Result</strong>: The framework predicts offer levels across all 15 societies with MAE &lt; 5%, using only three metric parameters ($\sigma_1$, $\sigma_3$, $\sigma_{13}$) calibrated to each society&rsquo;s market integration and institutional structure.</p>
+<h3 id="game-theory-public-goods-fraser-and-nettle-2020">Game Theory: Public Goods (Fraser and Nettle, 2020)</h3>
+<p><strong>Dataset</strong>: 106 subjects (Study 1) and 528 subjects (Study 2) in public goods games with varied institutional contexts.</p>
+<p><strong>Framework prediction</strong>: Contribution levels are determined by the effective weight of $d_6$ (social impact) in the agent&rsquo;s metric, which varies with institutional framing.</p>
+<p><strong>Result</strong>: 4.3% out-of-sample prediction error.</p>
+<h3 id="prospect-theory-kahneman-and-tversky-1979">Prospect Theory: Kahneman and Tversky (1979)</h3>
+<p><strong>Dataset</strong>: The original 17 choice problems from Kahneman and Tversky (1979).</p>
+<p><strong>Framework prediction</strong>: Prospect theory &ldquo;anomalies&rdquo; &mdash; the certainty effect, reflection effect, and isolation effect &mdash; are predicted by the Finsler asymmetry of the economic metric (loss aversion as metric asymmetry, Chapter 4) and dimensional activation patterns.</p>
+<p><strong>Result</strong>: 13 of 17 problems correctly predicted. The four misses involve mixed prospects where the dimensional activation pattern is ambiguous.</p>
+<h3 id="endowment-effect-kahneman-knetsch-and-thaler-1990">Endowment Effect (Kahneman, Knetsch, and Thaler, 1990)</h3>
+<p><strong>Framework prediction</strong>: The willingness-to-accept / willingness-to-pay ratio is determined by the loss aversion coefficient $\lambda$, which varies with dimensional activation.</p>
+<p><strong>Result</strong>: Predicted WTA/WTP ratio of 1.66, consistent with the experimental range of 1.5&ndash;2.5.</p>
+<hr />
+<h2 id="c5-cross-cultural-metric-calibration">C.5 Cross-Cultural Metric Calibration</h2>
+<p>The framework predicts that different cultures correspond to different covariance matrices $\Sigma$, producing different metrics on the same underlying manifold. The calibration procedure:</p>
+<ol>
+<li>
+<p><strong>Collect dimensional proxies</strong>: For each culture/society, collect observables that proxy the nine dimensions (income variance, property rights indices, Gini coefficient, labor market flexibility, trust surveys, environmental indicators, cultural values, governance quality, information access).</p>
+</li>
+<li>
+<p><strong>Estimate $\Sigma$</strong>: Compute the sample covariance matrix from the proxied dimensional values, corrected for measurement error using the errors-in-variables framework.</p>
+</li>
+<li>
+<p><strong>Validate</strong>: Use the estimated $\Sigma$ to predict behavior in game-theoretic experiments conducted in that culture, and compare predictions to observed behavior.</p>
+</li>
+</ol>
+<p>This procedure has been applied to the Henrich et al. cross-cultural dataset (15 societies) and to the Fraser and Nettle institutional framing dataset (2 institutional contexts). In both cases, the metric variation explains behavioral variation that the standard model treats as unexplained &ldquo;cultural preferences.&rdquo;</p>
+      </div>
+
+      <div class="chapter-nav-bottom">
+        <a href="appendix_b_code.html" class="nav-prev">&larr; Appendix B: The eris-econ Library</a>
+        <a href="index.html" class="nav-toc">Contents</a>
+        <a href="appendix_d_notation.html" class="nav-next">Appendix D: Notation and Conventions &rarr;</a>
+      </div>
+    </div>
+  </article>
+
+  <footer class="book-footer">
+    <p>&copy; 2026 Andrew H. Bond. <em>Geometric Economics: Decision Manifolds, Equilibria, and the Geometry of Markets.</em></p>
+    <p class="footer-note">The geometry was always real. The scalars were always insufficient.</p>
+  </footer>
+
+  <script src="../assets/js/series.js"></script>
+  <script>
+    window.addEventListener('scroll', function () {
+      document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 20);
+    });
+    document.querySelector('.nav-toggle')?.addEventListener('click', function () {
+      document.querySelector('.nav-links').classList.toggle('open');
+    });
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\\\(', right: '\\\\)', display: false},
+        {left: '\\\\[', right: '\\\\]', display: true}
+      ],
+      ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      throwOnError: false
+    });"></script>
+</body>
+</html>
