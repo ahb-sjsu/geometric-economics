@@ -153,7 +153,7 @@ $$w_- \approx \frac{x^2}{\sigma_1^2} + \frac{\delta_2^2}{\sigma_2^2} + \frac{\de
 </tr>
 </tbody>
 </table>
-<p>The eris-econ validation confirms this: the framework predicts loss aversion varying from 1.0 to 3.53 depending on dimensional activation, matching observed ranges in the empirical literature.</p>
+<p>The eris-econ calibration is consistent with this: the model yields loss aversion varying from 1.0 to 3.53 depending on dimensional activation, a range comparable to those reported in the empirical literature. This is an in-sample calibration, not a held-out test.</p>
 <p><strong>What would falsify this:</strong> If $\lambda$ were constant across conditions &ndash; as standard prospect theory predicts &ndash; the geometric derivation would be wrong. If $\lambda$ varied but not monotonically with dimension count, the dimensional model would be wrong.</p>
 <blockquote>
 <p><strong>RUNNING EXAMPLE &ndash; MARIA&rsquo;S VARIABLE LOSS AVERSION</strong></p>
@@ -272,7 +272,7 @@ $$\text{WTP} \approx \frac{|\Delta d_1|}{\sigma_1}$$</p>
 <h3 id="gain-path-g">Gain Path (G)</h3>
 <p>Maria&rsquo;s attribute-vector change under the rent reduction:</p>
 <p>$$\Delta \mathbf{a}_G = (+24000, 0, +0.2, +0.1, +0.1, +0.1, +0.1, 0, 0)$$</p>
-<p>The gain is primarily monetary ($d_1$). Small positive spillovers: the lower rent feels slightly fairer ($d_3 = +0.2$), gives Maria slightly more autonomy ($d_4 = +0.1$), slightly increases her trust in the landlord ($d_5 = +0.1$), has a small positive community signal ($d_6 = +0.1$), and mildly reinforces her identity ($d_7 = +0.1$). These spillovers are small because gains do not strongly activate non-monetary dimensions.</p>
+<p>The gain is primarily monetary ($d_1$). Small positive spillovers: the lower rent feels slightly fairer ($d_3 = +0.2$), gives Maria slightly more autonomy ($d_4 = +0.1$), slightly increases her trust in the landlord ($d_5 = +0.1$), has a small positive community signal ($d_6 = +0.1$), and mildly reinforces her identity ($d_7 = +0.1$). These spillovers are small because gains do not strongly activate non-monetary dimensions. (The values in this example are posited for it. They differ from the vector Section 3.8 assigns to accepting the increase, which was scored together with a one-year lease and so carried a positive $d_2$.)</p>
 <h3 id="loss-path-l">Loss Path (L)</h3>
 <p>Maria&rsquo;s attribute-vector change under the rent increase:</p>
 <p>$$\Delta \mathbf{a}_L = (-24000, -0.3, -0.6, -0.5, -0.7, -0.4, -0.5, +0.1, -0.6)$$</p>
@@ -285,6 +285,8 @@ $$\text{WTP} \approx \frac{|\Delta d_1|}{\sigma_1}$$</p>
 - $d_7 = -0.5$: identity threat (&ldquo;I might not be a business owner anymore&rdquo;)
 - $d_8 = +0.1$: the REIT is within its rights (slightly legitimacy-preserving)
 - $d_9 = -0.6$: uncertainty (&ldquo;what happens next year?&rdquo;)</p>
+<p><img alt="Figure 4.1" src="figures/ch04_fig1.svg" /></p>
+<p><em>Figure 4.1. The two paths of the worked example in Section 4.8. The rent falls or rises by the same 2,000 dollars a month, 24,000 a year, so the monetary change d1 has the same size on both paths. The bars show the changes the chapter assigns on the other eight dimensions: small for the gain, and larger on seven dimensions for the loss. This asymmetry is what the chapter&rsquo;s account of loss aversion rests on. The values are the worked example&rsquo;s own, posited for illustration, not measurements.</em></p>
 <h3 id="computing-edge-weights">Computing Edge Weights</h3>
 <p>Using a representative covariance matrix with standard deviations $\sigma_k$ calibrated to behavioral data (and assuming for simplicity that cross-correlations add approximately 20% to the diagonal terms):</p>
 <p><strong>Gain weight:</strong>
@@ -300,7 +302,7 @@ $$w_L = \frac{(24000)^2}{\sigma_1^2} + \frac{(0.3)^2}{\sigma_2^2} + \frac{(0.6)^
 <p>Maria&rsquo;s loss-aversion coefficient for the rent decision is approximately $\lambda \approx 2.6$ &ndash; higher than the textbook average of 2.25, because the rent increase activates more dimensions more strongly than a typical laboratory gamble. This is consistent with the prediction that $\lambda$ increases with dimensional activation.</p>
 <p>Compare this to a laboratory experiment where Maria evaluates a coin flip for <span class="currency">&#36;</span>100 gain or <span class="currency">&#36;</span>100 loss, with no social context, no identity implications, and no contractual dimensions. In that setting, the gain and loss paths are both approximately one-dimensional, and $\lambda \approx 1.0$-$1.2$.</p>
 <p><strong>The geometric framework predicts that loss aversion is not a personality trait (some fixed $\lambda$ that characterizes Maria). It is a manifold property (a variable $\lambda$ that depends on how many dimensions the specific loss activates).</strong> This prediction is testable and distinguishes the geometric framework from standard prospect theory.</p>
-<h3 id="sensitivity-analysis-what-drives-math225">Sensitivity Analysis: What Drives $\lambda$?</h3>
+<h3 id="sensitivity-analysis-what-drives-math226">Sensitivity Analysis: What Drives $\lambda$?</h3>
 <p>The computation above reveals what controls the magnitude of loss aversion. Three factors dominate:</p>
 <ol>
 <li>
@@ -399,7 +401,7 @@ $$w_L = \frac{(24000)^2}{\sigma_1^2} + \frac{(0.3)^2}{\sigma_2^2} + \frac{(0.6)^
 <p>$$F(x, v) = \begin{cases} \sqrt{v^T \Sigma_+^{-1}(x) \, v} &amp; \text{if } v \text{ is a "gain direction" (net positive on active dimensions)} \\ \sqrt{v^T \Sigma_-^{-1}(x) \, v} &amp; \text{if } v \text{ is a "loss direction" (net negative on active dimensions)} \end{cases}$$</p>
 <p>where $\Sigma_+^{-1}(x)$ is the metric for gain paths (approximately diagonal, concentrated on $d_1$) and $\Sigma_-^{-1}(x)$ is the metric for loss paths (full matrix, with activation across multiple dimensions). The loss-aversion coefficient is:</p>
 <p>$$\lambda(x) = \frac{F(x, -v)}{F(x, v)}$$</p>
-<p>This is position-dependent (through $\Sigma_{\pm}(x)$), direction-dependent (through the gain/loss classification of $v$), and computable from the covariance structure.</p>
+<p>This coefficient is a ratio of Finsler lengths. It is the square root of the ratio of edge weights $w_- / w_+$ that Section 4.2 and the worked example of Section 4.8 call $\lambda$, since an edge weight is a squared length; the two agree on whether and in which direction loss aversion is present and differ in magnitude. It is position-dependent (through $\Sigma_{\pm}(x)$), direction-dependent (through the gain/loss classification of $v$), and computable from the covariance structure.</p>
 <h3 id="application-wage-rigidity">Application: Wage Rigidity</h3>
 <p>The Finsler metric immediately explains one of the most puzzling phenomena in labor economics: downward wage rigidity. Bewley&rsquo;s (1999) field study found that firms resist cutting nominal wages even in recessions, citing &ldquo;morale&rdquo; as the primary reason. Classical economics has no explanation for this &ndash; if labor supply exceeds demand, the wage should fall.</p>
 <p>The geometric explanation is direct:</p>
@@ -424,14 +426,14 @@ $$w_L = \frac{(24000)^2}{\sigma_1^2} + \frac{(0.3)^2}{\sigma_2^2} + \frac{(0.6)^
 <p><strong>[Conditional Theorem.]</strong> Let $\mathcal{M} \subseteq \mathbb{R}^9$ be the smooth economic decision manifold (the continuous limit of the decision complex). A <em>Finsler metric</em> on $\mathcal{M}$ is a function $F: T\mathcal{M} \to [0, \infty)$ satisfying:</p>
 <ol>
 <li>$F(x, v) \geq 0$ for all $(x, v) \in T\mathcal{M}$, with equality iff $v = 0$ (positive definiteness).</li>
-<li>$F(x, \alpha v) = |\alpha| F(x, v)$ for all $\alpha \in \mathbb{R}$ (absolute homogeneity &ndash; note: this allows $F(x, v) \neq F(x, -v)$, unlike the positive homogeneity of standard Finsler metrics, because we use absolute value).</li>
+<li>$F(x, \alpha v) = |\alpha| F(x, v)$ for all $\alpha \in \mathbb{R}$ (absolute homogeneity &ndash; note: this forces $F(x, v) = F(x, -v)$; the positive homogeneity of standard Finsler metrics, which requires the identity only for $\alpha &gt; 0$, does not).</li>
 <li>The Hessian $g_{ij}(x, v) = \frac{1}{2} \frac{\partial^2 F^2}{\partial v^i \partial v^j}$ is positive definite for $v \neq 0$ (strong convexity).</li>
 </ol>
-<p>For the economic metric, we relax condition 2 to allow directional asymmetry:</p>
+<p>For the economic metric, we relax condition 2 to positive homogeneity to allow directional asymmetry:</p>
 <p>$$F(x, v) = \begin{cases} \sqrt{v^T G_+(x) v} &amp; \text{if } v \in C_+(x) \text{ (gain cone)} \\ \sqrt{v^T G_-(x) v} &amp; \text{if } v \in C_-(x) \text{ (loss cone)} \end{cases}$$</p>
 <p>where $C_+(x)$ and $C_-(x)$ partition the tangent space $T_x\mathcal{M}$ into gain and loss directions (defined by the sign of the net change on emotionally salient dimensions), and $G_+(x)$, $G_-(x)$ are the position-dependent gain and loss metric tensors. The loss-aversion coefficient at position $x$ in direction $v$ is:</p>
 <p>$$\lambda(x, v) = \frac{F(x, -v)}{F(x, v)} = \sqrt{\frac{v^T G_-(x) v}{v^T G_+(x) v}}$$</p>
-<h3 id="derivation-of-math290-from-population-averages">Derivation of $\lambda \approx 2.25$ from Population Averages</h3>
+<h3 id="derivation-of-math294-from-population-averages">Derivation of $\lambda \approx 2.25$ from Population Averages</h3>
 <p><strong>[Conditional Theorem.]</strong> Let $N_{\text{loss}}$ denote the average number of non-monetary dimensions activated by a loss in a standard prospect-theory experiment (where the loss involves money in a laboratory setting with moderate social context). Let $\bar{\delta}$ denote the average normalized activation per dimension (in units of $\sigma_k$). Then:</p>
 <p>$$\lambda \approx \sqrt{1 + N_{\text{loss}} \cdot \bar{\delta}^2}$$</p>
 <p>For $N_{\text{loss}} \approx 4$-$5$ and $\bar{\delta} \approx 0.6$-$0.7$:</p>
@@ -454,7 +456,7 @@ $$w_L = \frac{(24000)^2}{\sigma_1^2} + \frac{(0.3)^2}{\sigma_2^2} + \frac{(0.6)^
 </ul>
 <hr />
 <h2 id="notes-on-sources">Notes on Sources</h2>
-<p>Loss aversion was first reported in Kahneman and Tversky (1979), &ldquo;Prospect Theory,&rdquo; <em>Econometrica</em>. The endowment effect was demonstrated by Thaler (1980), &ldquo;Toward a Positive Theory of Consumer Choice,&rdquo; <em>Journal of Economic Behavior and Organization</em>, and systematically studied by Kahneman, Knetsch, and Thaler (1990), &ldquo;Experimental Tests of the Endowment Effect and the Coase Theorem,&rdquo; <em>Journal of Political Economy</em>. Hyperbolic discounting is reviewed in Frederick, Loewenstein, and O&rsquo;Donoghue (2002), &ldquo;Time Discounting and Time Preference: A Critical Review,&rdquo; <em>Journal of Economic Literature</em>. Framing effects are from Tversky and Kahneman (1981), &ldquo;The Framing of Decisions and the Psychology of Choice,&rdquo; <em>Science</em>. The Finsler metric generalization draws on Bao, Chern, and Shen (2000), <em>An Introduction to Riemann-Finsler Geometry</em>, Springer. The Hohfeldian framework is from Hohfeld (1913), &ldquo;Some Fundamental Legal Conceptions,&rdquo; <em>Yale Law Journal</em>. The geometric derivations are from Bond (2026), &ldquo;Geometric Economics,&rdquo; Sections 7-8, and Bond (2026), <em>Geometric Ethics</em>, Chapter 20. The eris-econ empirical validation data (loss aversion varying 1.0-3.53, 16/16 behavioral predictions, 2.70% MAE) is from the eris-econ library validation results (Appendix C of the book plan).</p>
+<p>Loss aversion was first reported in Kahneman and Tversky (1979), &ldquo;Prospect Theory,&rdquo; <em>Econometrica</em>. The endowment effect was demonstrated by Thaler (1980), &ldquo;Toward a Positive Theory of Consumer Choice,&rdquo; <em>Journal of Economic Behavior and Organization</em>, and systematically studied by Kahneman, Knetsch, and Thaler (1990), &ldquo;Experimental Tests of the Endowment Effect and the Coase Theorem,&rdquo; <em>Journal of Political Economy</em>. Hyperbolic discounting is reviewed in Frederick, Loewenstein, and O&rsquo;Donoghue (2002), &ldquo;Time Discounting and Time Preference: A Critical Review,&rdquo; <em>Journal of Economic Literature</em>. Framing effects are from Tversky and Kahneman (1981), &ldquo;The Framing of Decisions and the Psychology of Choice,&rdquo; <em>Science</em>. The Finsler metric generalization draws on Bao, Chern, and Shen (2000), <em>An Introduction to Riemann-Finsler Geometry</em>, Springer. The Hohfeldian framework is from Hohfeld (1913), &ldquo;Some Fundamental Legal Conceptions,&rdquo; <em>Yale Law Journal</em>. The geometric derivations are from Bond (2026), &ldquo;Geometric Economics,&rdquo; Sections 7-8, and Bond (2026), <em>Geometric Ethics</em>, Chapter 20. The eris-econ calibration data (loss aversion varying 1.0-3.53, 16/16 aggregate behavioral targets reproduced in sample, 2.70% MAE) is from the eris-econ library validation results (Appendix C of the book plan).</p>
       </div>
 
       <div class="chapter-nav-bottom">

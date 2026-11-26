@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 440" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 14px; font-weight: 600; fill: #333; }
+      .subtitle { font-size: 10px; fill: #666; }
+      .axis-label { font-size: 11px; fill: #444; font-weight: 500; }
+      .tick-label { font-size: 9px; fill: #777; }
+      .bar-label { font-size: 10px; fill: #fff; font-weight: 600; }
+      .val-label { font-size: 11px; fill: #333; font-weight: 700; }
+      .cat-label { font-size: 10px; fill: #444; }
+      .annotation { font-size: 9px; fill: #888; font-style: italic; }
+    </style>
+    <!-- ColorBrewer sequential Blues -->
+  </defs>
+
+  <!-- Title -->
+  <text x="340" y="24" text-anchor="middle" class="title">Figure 4.1 — Loss Aversion Varies with Dimensional Activation</text>
+  <text x="340" y="40" text-anchor="middle" class="subtitle">The loss-aversion coefficient λ = w₋/w₊ increases with the number of manifold dimensions activated by the loss.</text>
+  <text x="340" y="54" text-anchor="middle" class="subtitle">Kahneman &amp; Tversky's "constant" λ ≈ 2.25 is the population average, not a fundamental parameter.</text>
+
+  <!-- Chart area -->
+  <g transform="translate(100, 80)">
+    <!-- Y axis -->
+    <line x1="0" y1="0" x2="0" y2="290" stroke="#333" stroke-width="1"/>
+    <text x="-60" y="145" text-anchor="middle" transform="rotate(-90,-60,145)" class="axis-label">Loss-Aversion Coefficient λ</text>
+
+    <!-- Y gridlines and ticks -->
+    <line x1="0" y1="290" x2="500" y2="290" stroke="#eee" stroke-width="0.5"/>
+    <text x="-8" y="294" text-anchor="end" class="tick-label">0</text>
+
+    <line x1="0" y1="226" x2="500" y2="226" stroke="#eee" stroke-width="0.5"/>
+    <text x="-8" y="230" text-anchor="end" class="tick-label">1.0</text>
+
+    <line x1="0" y1="162" x2="500" y2="162" stroke="#eee" stroke-width="0.5"/>
+    <text x="-8" y="166" text-anchor="end" class="tick-label">2.0</text>
+
+    <line x1="0" y1="98" x2="500" y2="98" stroke="#eee" stroke-width="0.5"/>
+    <text x="-8" y="102" text-anchor="end" class="tick-label">3.0</text>
+
+    <line x1="0" y1="34" x2="500" y2="34" stroke="#eee" stroke-width="0.5"/>
+    <text x="-8" y="38" text-anchor="end" class="tick-label">4.0</text>
+
+    <!-- KT reference line at λ = 2.25 -->
+    <line x1="0" y1="146" x2="500" y2="146" stroke="#b2182b" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="505" y="150" class="annotation" fill="#b2182b">KT constant λ = 2.25</text>
+
+    <!-- Bars — ColorBrewer sequential RdYlBu (warm to cool) -->
+    <!-- Bar width = 70, gap = 30 -->
+
+    <!-- Pure cash: λ = 1.0, dims activated = 1 -->
+    <rect x="15" y="226" width="70" height="64" fill="#4575b4" rx="3"/>
+    <text x="50" y="256" text-anchor="middle" class="bar-label">1.00</text>
+    <text x="50" y="305" text-anchor="middle" class="cat-label">Pure cash</text>
+    <text x="50" y="318" text-anchor="middle" class="annotation">1 dim (d₁)</text>
+
+    <!-- Commodity: λ = 1.63, dims = 2-3 -->
+    <rect x="115" y="186" width="70" height="104" fill="#74add1" rx="3"/>
+    <text x="150" y="236" text-anchor="middle" class="bar-label">1.63</text>
+    <text x="150" y="305" text-anchor="middle" class="cat-label">Commodity</text>
+    <text x="150" y="318" text-anchor="middle" class="annotation">2-3 dims</text>
+
+    <!-- Gift: λ = 1.91, dims = 3-4 -->
+    <rect x="215" y="168" width="70" height="122" fill="#fee090" rx="3"/>
+    <text x="250" y="228" text-anchor="middle" class="bar-label" fill="#333">1.91</text>
+    <text x="250" y="305" text-anchor="middle" class="cat-label">Gift</text>
+    <text x="250" y="318" text-anchor="middle" class="annotation">3-4 dims</text>
+
+    <!-- Standard (KT): λ = 2.22, dims = 4-5 -->
+    <rect x="315" y="148" width="70" height="142" fill="#f46d43" rx="3"/>
+    <text x="350" y="218" text-anchor="middle" class="bar-label">2.22</text>
+    <text x="350" y="305" text-anchor="middle" class="cat-label">Standard</text>
+    <text x="350" y="318" text-anchor="middle" class="annotation">4-5 dims (KT)</text>
+
+    <!-- Heirloom: λ = 3.53, dims = 7-9 -->
+    <rect x="415" y="64" width="70" height="226" fill="#a50026" rx="3"/>
+    <text x="450" y="178" text-anchor="middle" class="bar-label">3.53</text>
+    <text x="450" y="305" text-anchor="middle" class="cat-label">Heirloom</text>
+    <text x="450" y="318" text-anchor="middle" class="annotation">7-9 dims</text>
+
+    <!-- Trend arrow -->
+    <line x1="50" y1="340" x2="450" y2="340" stroke="#999" stroke-width="1" marker-end="url(#arrowhead)"/>
+    <text x="250" y="358" text-anchor="middle" class="annotation">More dimensions activated by loss →</text>
+  </g>
+
+  <!-- Caption -->
+  <text x="340" y="420" text-anchor="middle" class="subtitle">λ is not a free parameter — it is a derived quantity determined by the manifold's metric structure.</text>
+  <text x="340" y="435" text-anchor="middle" class="subtitle">Source: eris-econ validation. Losses traverse more dimensions than equivalent gains, producing w₋ > w₊.</text>
+</svg>

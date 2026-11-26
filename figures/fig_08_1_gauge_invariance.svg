@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 14px; font-weight: 600; fill: #333; }
+      .subtitle { font-size: 10px; fill: #666; }
+      .label { font-size: 11px; fill: #444; font-weight: 500; }
+      .small { font-size: 9px; fill: #555; }
+      .violation { font-size: 10px; font-weight: 600; fill: #c62828; }
+      .invariant { font-size: 10px; font-weight: 600; fill: #2e7d32; }
+    </style>
+  </defs>
+
+  <text x="350" y="24" text-anchor="middle" class="title">Figure 8.1 — Economic Gauge Invariance: Same Transaction, Different Descriptions</text>
+  <text x="350" y="40" text-anchor="middle" class="subtitle">The Economic BIP requires that evaluations be invariant under admissible re-descriptions. Violations are measurable economic irrationality.</text>
+
+  <!-- Three gauge transformations -->
+  <!-- Currency relabeling -->
+  <g transform="translate(20, 60)">
+    <rect x="0" y="0" width="210" height="290" fill="#e8eaf6" stroke="#7986cb" stroke-width="1.5" rx="8"/>
+    <text x="105" y="22" text-anchor="middle" class="label" fill="#283593">Currency Relabeling</text>
+    <text x="105" y="38" text-anchor="middle" class="small" fill="#5c6bc0">Gauge group: ℝ⁺ (scaling)</text>
+
+    <!-- Same coffee, two prices -->
+    <rect x="15" y="50" width="180" height="45" fill="#c5cae9" rx="4"/>
+    <text x="105" y="68" text-anchor="middle" class="small" font-weight="600">Maria's latte</text>
+    <text x="60" y="85" text-anchor="middle" class="label" fill="#283593">$5.50</text>
+    <text x="105" y="85" text-anchor="middle" class="small">=</text>
+    <text x="150" y="85" text-anchor="middle" class="label" fill="#283593">€5.10</text>
+
+    <text x="105" y="115" text-anchor="middle" class="invariant">✓ SHOULD be invariant</text>
+    <text x="105" y="130" text-anchor="middle" class="small">Same coffee, same value.</text>
+    <text x="105" y="143" text-anchor="middle" class="small">Only the label changes.</text>
+
+    <rect x="15" y="155" width="180" height="65" fill="#ffebee" stroke="#ef9a9a" stroke-width="0.5" rx="4"/>
+    <text x="105" y="172" text-anchor="middle" class="violation">✗ Money Illusion</text>
+    <text x="105" y="187" text-anchor="middle" class="small">Tourists perceive €5.10 as</text>
+    <text x="105" y="200" text-anchor="middle" class="small">"cheaper" than $5.50 despite</text>
+    <text x="105" y="213" text-anchor="middle" class="small">identical value. Gauge violated.</text>
+
+    <rect x="15" y="230" width="180" height="48" fill="#e8eaf6" rx="3"/>
+    <text x="105" y="248" text-anchor="middle" class="small" fill="#283593" font-weight="600">Economic analogue:</text>
+    <text x="105" y="262" text-anchor="middle" class="small" fill="#283593">nominal vs real confusion</text>
+    <text x="105" y="275" text-anchor="middle" class="small" fill="#283593">inflation illusion in housing</text>
+  </g>
+
+  <!-- Framing -->
+  <g transform="translate(245, 60)">
+    <rect x="0" y="0" width="210" height="290" fill="#fce4ec" stroke="#f48fb1" stroke-width="1.5" rx="8"/>
+    <text x="105" y="22" text-anchor="middle" class="label" fill="#880e4f">Framing</text>
+    <text x="105" y="38" text-anchor="middle" class="small" fill="#c2185b">Gauge group: description permutations</text>
+
+    <rect x="15" y="50" width="180" height="45" fill="#f8bbd0" rx="4"/>
+    <text x="105" y="68" text-anchor="middle" class="small" font-weight="600">Surgery outcome</text>
+    <text x="105" y="85" text-anchor="middle" class="small">"90% survival" = "10% mortality"</text>
+
+    <text x="105" y="115" text-anchor="middle" class="invariant">✓ SHOULD be invariant</text>
+    <text x="105" y="130" text-anchor="middle" class="small">Same probability, same outcome.</text>
+    <text x="105" y="143" text-anchor="middle" class="small">Only the description changes.</text>
+
+    <rect x="15" y="155" width="180" height="65" fill="#ffebee" stroke="#ef9a9a" stroke-width="0.5" rx="4"/>
+    <text x="105" y="172" text-anchor="middle" class="violation">✗ Framing Effect (Thm 37)</text>
+    <text x="105" y="187" text-anchor="middle" class="small">Patients choose surgery when told</text>
+    <text x="105" y="200" text-anchor="middle" class="small">"90% survival" but refuse when</text>
+    <text x="105" y="213" text-anchor="middle" class="small">told "10% mortality." BIP violated.</text>
+
+    <rect x="15" y="230" width="180" height="48" fill="#fce4ec" rx="3"/>
+    <text x="105" y="248" text-anchor="middle" class="small" fill="#880e4f" font-weight="600">Geometric diagnosis:</text>
+    <text x="105" y="262" text-anchor="middle" class="small" fill="#880e4f">h(n) is gauge-variant —</text>
+    <text x="105" y="275" text-anchor="middle" class="small" fill="#880e4f">heuristic, not manifold, error</text>
+  </g>
+
+  <!-- Sunk cost -->
+  <g transform="translate(470, 60)">
+    <rect x="0" y="0" width="210" height="290" fill="#fff3e0" stroke="#ffb74d" stroke-width="1.5" rx="8"/>
+    <text x="105" y="22" text-anchor="middle" class="label" fill="#e65100">Temporal Re-description</text>
+    <text x="105" y="38" text-anchor="middle" class="small" fill="#f57f17">Gauge group: path reparametrization</text>
+
+    <rect x="15" y="50" width="180" height="45" fill="#ffe0b2" rx="4"/>
+    <text x="105" y="68" text-anchor="middle" class="small" font-weight="600">Concert ticket ($200, non-refundable)</text>
+    <text x="105" y="85" text-anchor="middle" class="small">Snowstorm tonight. Go or stay?</text>
+
+    <text x="105" y="115" text-anchor="middle" class="invariant">✓ SHOULD be invariant</text>
+    <text x="105" y="130" text-anchor="middle" class="small">Past cost is sunk. Only future</text>
+    <text x="105" y="143" text-anchor="middle" class="small">costs/benefits should matter.</text>
+
+    <rect x="15" y="155" width="180" height="65" fill="#ffebee" stroke="#ef9a9a" stroke-width="0.5" rx="4"/>
+    <text x="105" y="172" text-anchor="middle" class="violation">✗ Sunk Cost Fallacy</text>
+    <text x="105" y="187" text-anchor="middle" class="small">People attend to "justify" the $200.</text>
+    <text x="105" y="200" text-anchor="middle" class="small">Past path influences future choice —</text>
+    <text x="105" y="213" text-anchor="middle" class="small">violating path reparametrization.</text>
+
+    <rect x="15" y="230" width="180" height="48" fill="#fff3e0" rx="3"/>
+    <text x="105" y="248" text-anchor="middle" class="small" fill="#e65100" font-weight="600">Geometric diagnosis:</text>
+    <text x="105" y="262" text-anchor="middle" class="small" fill="#e65100">g(n) includes past cost that</text>
+    <text x="105" y="275" text-anchor="middle" class="small" fill="#e65100">should be amortized away</text>
+  </g>
+
+  <!-- Bottom -->
+  <rect x="80" y="360" width="540" height="32" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="1" rx="5"/>
+  <text x="350" y="375" text-anchor="middle" class="small" font-weight="600">All three violations have the same form: the evaluation depends on the description, not the content.</text>
+  <text x="350" y="388" text-anchor="middle" class="small">The Bond Index measures the magnitude of gauge violation across perturbation types — quantifying "irrationality" geometrically.</text>
+</svg>

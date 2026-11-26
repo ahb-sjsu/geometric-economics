@@ -102,11 +102,12 @@
 </li>
 </ul>
 </blockquote>
-<p>The gauge group acts on the attribute vector $\mathbf{a} \in \mathbb{R}^9$ primarily through the monetary dimension $d_1$, but the action extends to all transferable dimensions ($d_1$&ndash;$d_4$) that have quantitative units. The evaluative dimensions ($d_5$&ndash;$d_9$) are invariant under the gauge group &ndash; trust, identity, and community impact do not have units that can be rescaled.</p>
+<p>The gauge group acts on the attribute vector $\mathbf{a} \in \mathbb{R}^9$ primarily through the monetary dimension $d_1$, but the action extends to all transferable dimensions ($d_1$, $d_2$, $d_4$) that have quantitative units. The evaluative dimensions ($d_3$, $d_5$&ndash;$d_9$) are invariant under the gauge group &ndash; trust, identity, and community impact do not have units that can be rescaled.</p>
 <blockquote>
 <p><strong>Remark 36 (Structure of the Gauge Group).</strong> The economic gauge group $\mathcal{G} = \mathbb{R}^+ \times S_n$ is a semidirect product when the scaling and relabeling interact. In the simplest case, where scaling applies uniformly to all monetary quantities and relabeling permutes the numeraire independently, the group is a direct product. The full structure depends on the number of commodities and the complexity of the accounting system. For most applications in this book, we work with the direct product $\mathbb{R}^+ \times S_n$ and note where the semidirect structure matters.</p>
 </blockquote>
 <h3 id="comparison-with-other-domain-gauge-groups">Comparison with Other Domain Gauge Groups</h3>
+<p><em>Note, 2026-11-26.</em> Earlier versions of this table gave the dihedral group $D_4$, of order eight, as the group of the four Hohfeldian positions for Ethics and Law. <em>Geometric Ethics</em> withdrew that identification in version 1.25 (2026-11-08): the two demonstrated operations, correlative and negation, commute and generate the Klein four-group $V_4$, of order four, and there is no quarter-turn. It also withdrew &ldquo;conservation of harm&rdquo; (2026-06-19) in favour of representation-invariance of harm accounting, and now states $V_4 \times U(1)_H$ as a modeling choice, not a uniqueness theorem. The comparison below uses only the fact that the Hohfeldian factor is a finite group, which holds for $V_4$, so it stands with the group restated. Nothing in this chapter depends on a quarter-turn or on order eight.</p>
 <p>The economic gauge group is structurally different from the gauge groups of other domains in the geometric series:</p>
 <table>
 <thead>
@@ -120,9 +121,9 @@
 <tbody>
 <tr>
 <td>Ethics</td>
-<td>$D_4 \times U(1)_H$</td>
+<td>$V_4 \times U(1)_H$</td>
 <td>Hohfeldian symmetries + harm phase</td>
-<td>Rights-duty pairs, harm conservation</td>
+<td>Rights-duty pairs, harm accounting</td>
 </tr>
 <tr>
 <td>Economics</td>
@@ -132,7 +133,7 @@
 </tr>
 <tr>
 <td>Law</td>
-<td>$D_4$</td>
+<td>$V_4$</td>
 <td>Hohfeldian symmetries</td>
 <td>Jural relations</td>
 </tr>
@@ -144,7 +145,7 @@
 </tr>
 </tbody>
 </table>
-<p>The ethics gauge group is discrete ($D_4$ is finite); the economics gauge group is continuous ($\mathbb{R}^+$ is a connected Lie group). This difference has consequences: continuous gauge symmetries produce <em>conservation laws</em> via Noether&rsquo;s theorem (Chapter 9), while discrete symmetries produce selection rules. The economic gauge group&rsquo;s continuous component is what makes economic conservation laws possible.</p>
+<p>The Hohfeldian factor of the ethics gauge group is discrete ($V_4$ is finite); the economics gauge group is continuous ($\mathbb{R}^+$ is a connected Lie group). This difference has consequences: continuous gauge symmetries produce <em>conservation laws</em> via Noether&rsquo;s theorem (Chapter 9), while discrete symmetries produce selection rules. The economic gauge group&rsquo;s continuous component is what makes economic conservation laws possible.</p>
 <h2 id="83-gauge-invariance-of-the-metric">8.3 Gauge Invariance of the Metric</h2>
 <p>The economic metric must be invariant under the gauge group. If it were not, the cost of an economic action would depend on the units used to describe it &ndash; which would be absurd.</p>
 <blockquote>
@@ -340,9 +341,9 @@
 <p>The gauge violation tensor has been measured, though not under this name, in the studies cited throughout this section. Shafir, Diamond, and Tversky&rsquo;s (1997) money illusion experiment measures $V$ along the inflation-scaling axis. Raghubir and Srivastava&rsquo;s (2009) denomination experiment measures $V$ along the granularity-scaling axis. The geometric framework unifies these scattered measurements into a single mathematical object.</p>
 <hr />
 <blockquote>
-<p><strong>WORKED EXAMPLE: Measuring Money Illusion in a Wage Negotiation</strong></p>
+<p><strong>WORKED EXAMPLE (hypothetical data): Measuring Money Illusion in a Wage Negotiation</strong></p>
 <p><em>Consider a wage negotiation between Maria and a prospective employee, Alex. Maria offers Alex a salary. We measure the gauge violation tensor by presenting the same real salary under different nominal descriptions.</em></p>
-<p><strong>Setup.</strong> The real salary is <span class="currency">&#36;</span>48,000/year in purchasing-power terms. We present it under three descriptions:</p>
+<p><strong>Setup.</strong> The real salary is <span class="currency">&#36;</span>48,000/year in purchasing-power terms. We present it under four descriptions, a baseline and three transformations:</p>
 <table>
 <thead>
 <tr>
@@ -420,6 +421,8 @@ $$V_{\tau_3, n} = 7.1 - 6.2 = +0.9 \quad \text{(inflation-masked raise more attr
 <p><strong>Practical implication:</strong> If Maria wants to attract Alex, she should quote the annual salary ($\tau_0$ or $\tau_3$), not the hourly rate ($\tau_2$). If Maria wants Alex to accept a real wage cut, she should offer a nominal increase below the inflation rate ($\tau_3$). These are not deceptive strategies in the usual sense &ndash; the real economic content is identical under all descriptions. They are gauge-frame selections that exploit the non-zero gauge violation tensor of the human heuristic.</p>
 </blockquote>
 <hr />
+<p><img alt="Figure 8.1" src="figures/ch08_fig1.svg" /></p>
+<p><em>Figure 8.1. The worked example of Section 8.7: one real salary described four ways, with the mean attractiveness rating on a scale of 1 to 10 that the chapter supplies for each description, plus or minus one standard error. The chapter states that these ratings are hypothetical. The differences from the baseline are the components of the gauge violation tensor, −0.4, −1.1 and +0.9, with Frobenius norm 1.48; a description-invariant evaluation would put all four points on the dashed line.</em></p>
 <h2 id="88-the-geometry-of-gauge-correction">8.8 The Geometry of Gauge Correction</h2>
 <p>If gauge violations are heuristic miscalibrations, they should be correctable. The geometric framework suggests a specific correction procedure: <em>gauge-fixing</em> the heuristic.</p>
 <blockquote>

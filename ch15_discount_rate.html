@@ -73,7 +73,7 @@
 <p>The standard approach of applying a single discount rate to all dimensions — computing the net present value of a policy by discounting monetary costs, environmental benefits, health impacts, and community effects at the same rate — is a scalar contraction. The Scalar Irrecoverability Theorem (Chapter 6) says this contraction destroys information. The lost information is <em>which dimensions are properly discounted at which rates</em>.</p>
 <p>The practical consequence is enormous. A highway project with immediate monetary benefits ($d_1$, discounted at 3%) and long-term environmental costs ($d_6$, which should be discounted at 0.5%) will be approved under a single 3% rate and rejected under dimension-dependent discounting. The single rate effectively discounts the environment into irrelevance — not because anyone decided that the environment does not matter, but because the choice to use one rate for all dimensions implicitly makes that decision.</p>
 <h2 id="152-the-stern-nordhaus-debate">15.2 The Stern-Nordhaus Debate</h2>
-<p>The most consequential disagreement about discount rates is in climate economics. Nicholas Stern (2006) used a near-zero social discount rate ($\delta \approx 0.1\%$) and concluded that immediate, aggressive climate action is economically justified. William Nordhaus (2008) used a market-calibrated rate ($\delta \approx 3\%$) and concluded that gradual action is optimal.</p>
+<p>The most consequential disagreement about discount rates is in climate economics. Nicholas Stern (2006) used a near-zero rate of pure time preference ($\rho \approx 0.1\%$; the Ramsey decomposition below gives his total $\delta \approx 1.4\%$) and concluded that immediate, aggressive climate action is economically justified. William Nordhaus (2008) used a market-calibrated rate ($\delta \approx 3\%$) and concluded that gradual action is optimal.</p>
 <p><strong>[Modeling Axiom.]</strong> In the geometric framework, this is not a disagreement about preferences. It is a disagreement about the <em>curvature of the intergenerational manifold</em>.</p>
 <p>Stern&rsquo;s manifold is nearly flat along the temporal axis: future people&rsquo;s welfare counts almost as much as present people&rsquo;s. The geodesic on this manifold avoids catastrophic climate trajectories even at high present cost, because the distant future is &ldquo;close&rdquo; on Stern&rsquo;s metric.</p>
 <p>Nordhaus&rsquo;s manifold has positive curvature along the temporal axis: distant future welfare is geometrically farther away than present welfare. The geodesic on this manifold accepts some climate risk in exchange for faster present growth, because the distant future is &ldquo;far&rdquo; on Nordhaus&rsquo;s metric.</p>
@@ -122,6 +122,8 @@
 <p>which is a hyperbolic discount function. The parameters $K_0$ (initial curvature) and $\alpha$ (rate of curvature decline) determine the specific shape.</p>
 <p>The geometric explanation for why curvature is high near the present: nearby outcomes activate more dimensions of the decision manifold. A reward available <em>now</em> engages $d_1$ (monetary value), $d_4$ (autonomy — I can use it immediately), $d_7$ (identity — I am someone who seizes opportunities), $d_9$ (epistemic certainty — the reward is concrete and observable). A reward available in ten years engages primarily $d_1$, with the other dimensions attenuated by temporal distance. More active dimensions = higher-dimensional displacement = steeper curvature = higher effective discount rate.</p>
 <p>This explanation makes a testable prediction: hyperbolic discounting should be <em>weaker</em> for goods that activate few dimensions at any time horizon (e.g., abstract monetary rewards — pure $d_1$) and <em>stronger</em> for goods that activate many dimensions at short horizons but few at long horizons (e.g., visceral rewards like food or social status). The experimental evidence confirms this pattern (McClure et al., 2004; Laibson, 1997).</p>
+<p><img alt="Figure 15.1" src="figures/ch15_fig1.svg" /></p>
+<p><em>Figure 15.1. Discount functions from the formula of Section 15.4, D(t) = exp(− integral of K from 0 to t), where K is the temporal curvature. Left, the curvature: constant at the two rates Section 15.2 quotes for Stern (0.1% a year) and Nordhaus (3% a year), and declining as K0/(1 + alpha tau). Right, the discount functions these give: two exponentials, and the hyperbolic form (1 + alpha t) to the power −K0/alpha, which falls faster than the 3% exponential at first and more slowly later. The declining curve is drawn for illustrative values K0 = alpha = 0.1 a year, which the chapter does not specify.</em></p>
 <h3 id="time-inconsistency-as-curvature-change">Time-Inconsistency as Curvature Change</h3>
 <p>The classic problem with hyperbolic discounting is <em>time-inconsistency</em>: a preference expressed today about future trade-offs changes when the future arrives. Today, I prefer <span class="currency">&#36;</span>110 in 31 days to <span class="currency">&#36;</span>100 in 30 days. When day 30 arrives, I prefer <span class="currency">&#36;</span>100 today to <span class="currency">&#36;</span>110 tomorrow. My preferences have reversed.</p>
 <p>In the geometric framework, this is not a &ldquo;bias.&rdquo; It is the natural consequence of position-dependent curvature. The curvature at time $t$ determines the discount rate at time $t$. When the agent moves forward to time $t + 30$, the curvature at that position is different (higher, because the manifold is steeper near the present). The &ldquo;reversal&rdquo; is the agent experiencing the same manifold from a different position — seeing different curvature because they are at a different point.</p>
@@ -208,13 +210,13 @@
 <td>1-8</td>
 <td>+<span class="currency">&#36;</span>4,500/yr</td>
 <td>$\sum e^{-0.03t}$</td>
-<td>+<span class="currency">&#36;</span>31,200</td>
+<td>+<span class="currency">&#36;</span>31,500</td>
 </tr>
 <tr>
 <td>NPV</td>
 <td></td>
 <td></td>
-<td><strong>+<span class="currency">&#36;</span>1,200</strong></td>
+<td><strong>+<span class="currency">&#36;</span>1,500</strong></td>
 </tr>
 </tbody>
 </table>
