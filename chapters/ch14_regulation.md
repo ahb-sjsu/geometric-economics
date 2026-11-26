@@ -234,7 +234,7 @@ Adaptive manifold management would operate differently:
 
 4. **Pathology detection**: Use the four-pathology taxonomy to diagnose emerging problems — detecting heuristic corruption, objective hijacking, local minima, and gauge breaking before they produce crises.
 
-This vision requires two capabilities that do not currently exist: reliable real-time measurement of the economic manifold's position on evaluative dimensions ($d_5$–$d_9$), and governance mechanisms that can adjust boundaries at manifold-relevant timescales without being captured by the regulated interests. Both are open problems — but the framework identifies them as the *right* problems, which is the first step toward solving them.
+This vision requires two capabilities that do not currently exist: reliable real-time measurement of the economic manifold's position on evaluative dimensions ($d_3$, $d_5$–$d_9$), and governance mechanisms that can adjust boundaries at manifold-relevant timescales without being captured by the regulated interests. Both are open problems — but the framework identifies them as the *right* problems, which is the first step toward solving them.
 
 The key insight is that regulation is not a constraint imposed from outside the market. It is *manifold infrastructure* — the boundary and penalty structure that enables the market to function on the full nine-dimensional manifold rather than being restricted to the $d_1$ projection. Just as roads and power grids are physical infrastructure that enables economic activity, regulatory boundaries are *geometric infrastructure* that enables economic activity on the full decision manifold.
 

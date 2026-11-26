@@ -93,7 +93,7 @@ The irrecoverability theorem has a particularly striking consequence for the tra
 >
 > 1. *$\succ_{\mathcal{E}}$ is transitive (it is a total order induced by path cost from $v_0$).*
 >
-> 2. *$\succ_\phi$ may be intransitive: there exist alternatives $x, y, z$ such that $\phi(x) > \phi(y) > \phi(z) > \phi(x)$ is possible when the projection $\phi$ discards different dimensions for different pairwise comparisons.*
+> 2. *$\succ_\phi$ may be intransitive: there exist alternatives $x, y, z$ such that the cycle $x \succ_\phi y \succ_\phi z \succ_\phi x$ is possible when the projection $\phi$ is context-dependent, discarding different dimensions for different pairwise comparisons. (For a single fixed real-valued $\phi$ no such cycle can occur.)*
 
 > *Proof.*
 >
@@ -191,7 +191,7 @@ This is a scalar -- a single number. But it is a *derived* scalar, obtained from
 
 The most consequential scalar in economics -- GDP -- is a specific contraction of the full economic tensor.
 
-Define the *national economic tensor* $\mathbf{T}$ as the aggregate of all economic activity in a country over a period, with components $T_{k}$ representing the total change along each dimension $k$:
+Define the *national economic tensor* $\mathbf{T}$ as the aggregate of all economic activity in a country over a period, with components $T_{k}$ representing the total activity along each dimension $k$ (for $d_1$, the volume of transactions, which Corollary 9.2 of Chapter 9 distinguishes from the net change, zero in a closed economy):
 
 $$\text{GDP} = T_1 = \pi_{d_1}(\mathbf{T})$$
 
@@ -227,7 +227,7 @@ where $\mathbf{B}$ is the attribute vector of the business and $\phi$ is the dis
 > | $d_8$: Legitimacy | $B_8 = 0.7$ | Moderate: standard regulatory compliance |
 > | $d_9$: Epistemic | $B_9 = 0.4$ | Low: uncertainty about rent, neighborhood trajectory |
 >
-> *The full tensor $\mathbf{B} = (\$200K, 0.7, 0.8, 0.6, 0.9, 0.85, 0.9, 0.7, 0.4)$ contains information that the scalar $\$200K$ cannot. A buyer who acquires the business and replaces the fair-trade supplier with a commodity supplier, fires the long-term employees, and converts the community space to additional seating would preserve $B_1$ (maybe even increase it) while destroying $B_3$, $B_5$, $B_6$, and $B_7$. The scalar valuation would say: "Business maintained or improved." The tensor valuation would say: "Business gutted on five of nine dimensions."*
+> *The full tensor $\mathbf{B} = (\$200K, 0.7, 0.8, 0.6, 0.9, 0.85, 0.9, 0.7, 0.4)$ contains information that the scalar $\$200K$ cannot. A buyer who acquires the business and replaces the fair-trade supplier with a commodity supplier, fires the long-term employees, and converts the community space to additional seating would preserve $B_1$ (maybe even increase it) while destroying $B_3$, $B_5$, $B_6$, and $B_7$. The scalar valuation would say: "Business maintained or improved." The tensor valuation would say: "Business gutted on four of nine dimensions."*
 >
 > *This is not a difference of opinion. It is a difference of *dimensionality*. The scalar and the tensor are making different mathematical claims, and the tensor's claim is richer, more informative, and -- by the irrecoverability theorem -- strictly non-recoverable from the scalar.*
 
@@ -245,9 +245,9 @@ To demonstrate concretely how the valuation changes depending on which dimension
 
 The standard discounted-cash-flow projection considers only the monetary dimension. Inputs: annual revenue \$226,800 (from the monthly figure), annual costs \$210,000 (rent + supplies + wages + utilities), discount rate 10%, assumed 10-year horizon with 2% growth.
 
-$$\text{Value}_1 = \sum_{t=1}^{10} \frac{(226{,}800 \times 1.02^{t-1}) - 210{,}000}{1.10^t} \approx \$200{,}000$$
+$$\text{Value}_1 = \sum_{t=1}^{10} \frac{(226{,}800 \times 1.02^{t-1}) - 210{,}000}{1.10^t} \approx \$212{,}000$$
 
-This is the appraiser's number. It captures one dimension.
+This is the appraiser's number, \$200,000 in round figures. It captures one dimension.
 
 ### Projection 2: DCF + Community Value ($\phi = \pi_{d_1, d_6}$)
 

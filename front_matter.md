@@ -29,7 +29,7 @@ This book is the second domain instantiation, and in many ways the most confront
 
 The central construction of this volume is the **Bond Geodesic Equilibrium** (BGE), a generalization of Nash equilibrium to the full nine-dimensional economic decision manifold. We prove that Nash equilibrium is the scalar projection of BGE --- the special case obtained when all dimensions except monetary payoff are collapsed. The projection is lossy: the Scalar Irrecoverability Theorem demonstrates that the information destroyed by this collapse is mathematically irrecoverable. The homo economicus of classical theory is not wrong. It is a shadow on the wall of a nine-dimensional cave, and the shadow cannot be used to reconstruct the object that cast it.
 
-The empirical validation is substantial. The companion library `eris-econ` implements the full pipeline --- decision manifold construction, A* pathfinding, BGE computation --- and validates against published experimental data from game theory, prospect theory, and cross-cultural behavioral economics. The results: 16 of 16 behavioral predictions correct at 2.70% mean absolute error, including the cross-cultural variation in ultimatum game offers that has resisted satisfactory explanation within the classical paradigm. The framework does not catalogue biases. It predicts them, from geometry alone.
+The framework is posited theory with a first calibration, not validated measurement. The companion library `eris-econ` implements the full pipeline --- decision manifold construction, A* pathfinding, BGE computation --- and is calibrated against published experimental data from game theory, prospect theory, and cross-cultural behavioral economics. The result is an in-sample benchmark: 16 of 16 aggregate behavioral targets reproduced within tolerance at 2.70% mean absolute error, including the cross-cultural variation in ultimatum game offers that has resisted satisfactory explanation within the classical paradigm. The framework does not catalogue biases. It predicts them, from geometry alone.
 
 Subsequent volumes extend the framework further: *Geometric Law* (Book 5) takes the manifold into courts and constitutions, *Geometric Cognition* (Book 6) turns it inward on the mind, *Geometric Communication* (Book 7) applies it across species and millennia, and *Geometric Medicine* (Book 8) brings it to the bedside where the stakes are highest. Each domain instantiation reveals new structure. Each confirms the same theorem: scalar reduction is irrecoverable, and the geometry matters.
 
@@ -99,7 +99,7 @@ Each chapter opens with a running example --- Maria, who owns a small coffee sho
 |---------|--------|
 | Nash equilibrium is the scalar projection of BGE (Theorem 21) | eris-econ |
 | Loss aversion varies 1.0--3.53 with dimensional activation (contradicts constant $\lambda$) | eris-econ |
-| 16/16 behavioral predictions correct at 2.70% MAE | eris-econ validation |
+| 16/16 aggregate behavioral targets reproduced at 2.70% MAE (in-sample calibration benchmark) | eris-econ validation |
 | Kahneman & Tversky 17 problems: 13/17 predicted (76%) | eris-econ |
 | Cross-cultural ultimatum offers explained by metric variation | Henrich et al. data |
 | Public goods: 4.3% out-of-sample prediction error | Fraser & Nettle |

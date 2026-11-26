@@ -77,7 +77,7 @@ The geometric account is richer in three ways.
 >
 > *Maria's manifold has a boundary at approximately $-\$3{,}000$ from her current state: if her monthly margin drops by more than \$3,000, she cannot make rent, and the business fails. This boundary creates a *cliff* on her manifold -- a region of discontinuously infinite metric cost. Every decision Maria makes is conditioned by the proximity of this boundary. She cannot take risks that would move her close to the cliff, even if the expected $d_1$ payoff is positive, because the boundary penalty is infinite.*
 >
-> *Crane's manifold has no corresponding boundary. A \$3,000 loss is 0.002% of his annual compensation. His nearest equivalent boundary -- the point at which the REIT faces a liquidity crisis -- is tens of millions of dollars away from his personal financial position. His decisions are unconstrained by survival boundaries.*
+> *Crane's manifold has no corresponding boundary. A \$3,000 loss is 0.067% of his annual compensation. His nearest equivalent boundary -- the point at which the REIT faces a liquidity crisis -- is tens of millions of dollars away from his personal financial position. His decisions are unconstrained by survival boundaries.*
 >
 > *The consequence: Maria's option set is geometrically smaller than Crane's. She is confined to a narrow corridor on the manifold by the proximity of the boundary. Crane can explore a vast region. The *effective dimension* of Maria's decision manifold is lower than Crane's -- not because she has fewer aspirations but because the boundaries on her manifold constrain her movement to a lower-dimensional subspace.*
 >
@@ -109,7 +109,7 @@ The Gini coefficient is the most widely used scalar measure of income inequality
 >
 > *Specifically, $G$ is the normalized mean absolute difference in $d_1$, which is a monotone function of the variance of $g_{11}^{(i)}$ across agents. The Gini discards all components of $\mathcal{I}$ except $\mathcal{I}_{11}$.*
 
-The Scalar Irrecoverability Theorem (Chapter 6) applies directly: the inequality information destroyed by the Gini contraction is mathematically irrecoverable from the Gini alone. Two societies with identical Gini coefficients can have radically different inequality tensors:
+The proportionality is schematic: the Technical Appendix shows that the Gini and $\mathcal{I}_{11}$ are related but not identical functionals of the income distribution. The Scalar Irrecoverability Theorem (Chapter 6) applies directly: the inequality information destroyed by the Gini contraction is mathematically irrecoverable from the Gini alone. Two societies with identical Gini coefficients can have radically different inequality tensors:
 
 **Society A**: Gini = 0.40. High income inequality ($\mathcal{I}_{11}$ large), but strong social infrastructure: universal healthcare reduces $\mathcal{I}_{44}$ (autonomy inequality is low -- both rich and poor have medical autonomy), robust public institutions reduce $\mathcal{I}_{88}$ (legitimacy inequality is low -- the legal system treats all agents similarly), and a strong social safety net creates no survival boundaries near the lower end of the income distribution.
 
@@ -285,7 +285,7 @@ $$w_{\text{total}}^{\text{Maria}} = 0.111 + 0.0625 + 0.0625 + 0.04 + 0.017 + \te
 
 #### Crane's Manifold
 
-**$d_1$ (monetary):** \$100 is 0.00007% of Crane's monthly discretionary income. The monetary scale $\sigma_{1,\text{Crane}} \approx 5{,}000$.
+**$d_1$ (monetary):** \$100 is 0.067% of Crane's monthly discretionary income. The monetary scale $\sigma_{1,\text{Crane}} \approx 5{,}000$.
 
 $$w_1^{\text{Crane}} = \frac{100^2}{5{,}000^2} = 0.0004$$
 
@@ -315,10 +315,10 @@ This is the central empirical prediction of the geometric theory of inequality: 
 
 ### What the Gini Misses
 
-The Gini coefficient for this three-person economy, computed on $d_1$ income alone, would be approximately 0.67 (reflecting the extreme income disparity between Crane and the other two). But the Gini cannot distinguish between this economy and an alternative economy where:
+The Gini coefficient for this three-person economy, computed on $d_1$ income alone, would be approximately 0.65 (reflecting the extreme income disparity between Crane and the other two). But the Gini cannot distinguish between this economy and an alternative economy where:
 
 - Sofia has the same income but lives in a society with universal healthcare (reducing $g_{33}$ and $g_{44}$ for low-income agents), robust public transportation (reducing $g_{44}$), and strong labor protections (reducing $g_{33}$).
-- The Gini is still 0.67 (income distribution is the same), but the inequality tensor is dramatically different: $\mathcal{I}_{33}$, $\mathcal{I}_{44}$, and $\mathcal{I}_{55}$ are all lower, because the social infrastructure has partially equalized the non-monetary metric components.
+- The Gini is still 0.65 (income distribution is the same), but the inequality tensor is dramatically different: $\mathcal{I}_{33}$, $\mathcal{I}_{44}$, and $\mathcal{I}_{55}$ are all lower, because the social infrastructure has partially equalized the non-monetary metric components.
 
 The full-manifold inequality ratio in the alternative economy might be 12,000x instead of 22,750x -- still enormous, but materially different. The Gini sees no difference. The inequality tensor sees the structural improvement.
 

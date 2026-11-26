@@ -43,7 +43,7 @@ On the autonomy dimension ($d_4$), conservation holds in the sense that voluntar
 
 ## 9.3 Non-Conservation on Evaluative Dimensions
 
-**[Empirical.]** The evaluative dimensions — trust ($d_5$), social impact ($d_6$), identity ($d_7$), legitimacy ($d_8$), and epistemic status ($d_9$) — are *not* conserved in general. Both parties may simultaneously perceive an exchange as:
+**[Empirical.]** The evaluative dimensions — fairness ($d_3$), trust ($d_5$), social impact ($d_6$), identity ($d_7$), legitimacy ($d_8$), and epistemic status ($d_9$) — are *not* conserved in general. Both parties may simultaneously perceive an exchange as:
 
 - **Trust-building** ($\Delta d_5 > 0$ for both): the exchange reveals reliability, creating mutual confidence that did not exist before.
 - **Socially beneficial** ($\Delta d_6 > 0$ for both): a commercial transaction that strengthens community ties (Maria's coffee shop as neighborhood hub).
@@ -52,7 +52,7 @@ On the autonomy dimension ($d_4$), conservation holds in the sense that voluntar
 
 **Remark 9.1 (Mutual Value Creation).** The non-conservation of evaluative dimensions is what makes voluntary exchange *positive-sum*. On the transferable dimensions, trade is zero-sum by conservation. On the evaluative dimensions, trade can be positive-sum. The total value created by an exchange is:
 
-$$V_{\text{created}} = \sum_{k=5}^{9} \left[ \Delta d_k(A) + \Delta d_k(B) \right]$$
+$$V_{\text{created}} = \sum_{k \in \{3,5,6,7,8,9\}} \left[ \Delta d_k(A) + \Delta d_k(B) \right]$$
 
 This quantity can be positive, and in healthy markets, it typically is. The insight formalizes Adam Smith's observation that trade creates "mutual advantage" — but now we can say precisely *on which dimensions* the advantage accrues and *why* the transferable dimensions cannot contribute to it.
 
@@ -62,7 +62,7 @@ The non-conservation of evaluative dimensions is not an anomaly or a loophole. I
 
 Trust is not a substance. Maria does not "give" trust to Elena in exchange for beans. Trust *emerges* from the interaction — it is a property of the edge, not of the vertices. When Maria pays on time and Elena delivers quality beans, the trust between them increases for both parties simultaneously. No conservation law is violated because trust was never a conserved quantity to begin with.
 
-Formally, the distinction maps onto the difference between extensive and intensive quantities in thermodynamics. Extensive quantities (mass, energy, charge) are additive and conserved in closed systems. Intensive quantities (temperature, pressure, chemical potential) are properties of the system's state and are not conserved — both containers in thermal contact can increase in temperature if heat flows in from outside. The transferable economic dimensions ($d_1$, $d_2$, $d_4$) are extensive: they are additive across agents and conserved in closed exchange. The evaluative dimensions ($d_5$–$d_9$) are intensive: they characterize the state of the economic relationship and can change for all parties simultaneously.
+Formally, the distinction maps onto the difference between extensive and intensive quantities in thermodynamics. Extensive quantities (mass, energy, charge) are additive and conserved in closed systems. Intensive quantities (temperature, pressure, chemical potential) are properties of the system's state and are not conserved — both containers in thermal contact can increase in temperature if heat flows in from outside. The transferable economic dimensions ($d_1$, $d_2$, $d_4$) are extensive: they are additive across agents and conserved in closed exchange. The evaluative dimensions ($d_3$, $d_5$–$d_9$) are intensive: they characterize the state of the economic relationship and can change for all parties simultaneously.
 
 This distinction has a profound implication for economic policy. Policies that focus exclusively on transferable dimensions — redistribution of money ($d_1$), reallocation of rights ($d_2$) — are operating in a zero-sum regime. Every dollar transferred is a dollar taken. Policies that also cultivate evaluative dimensions — trust-building institutions ($d_5$), community development ($d_6$), education ($d_9$) — can create value that does not come from anyone else. The evaluative surplus is genuine new value, not a transfer.
 
@@ -70,7 +70,7 @@ This distinction has a profound implication for economic policy. Policies that f
 >
 > *Maria's monthly rent payment is pure conservation on $d_1$: her \$6,000 becomes the REIT's \$6,000. Zero sum. But the stable lease relationship builds mutual trust ($d_5$) — the REIT gets a reliable tenant, Maria gets predictable costs — which is positive-sum. The community gathering that happens in the shop creates social value ($d_6$) for everyone involved, at no one's expense. The identity affirmation ($d_7$) that Maria derives from running an ethical business does not diminish Elena's identity as a craft roaster.*
 >
-> *The scalar economist sees only the \$6,000 transfer. The geometric economist also sees the 2.4 units of evaluative value created. The first sees a zero-sum exchange. The second sees a transaction that is zero-sum on three dimensions and positive-sum on five.*
+> *The scalar economist sees only the \$6,000 transfer. The geometric economist also sees the 2.4 units of evaluative value created. The first sees a zero-sum exchange. The second sees a transaction that is zero-sum on three dimensions and able to be positive-sum on the other six.*
 
 ### The Asymmetry of Value Destruction
 
@@ -201,7 +201,7 @@ Maria places her monthly order with Elena: 80 pounds of single-origin Colombian 
 |-----------|---------------------|---------------------|-----|
 | $d_1$: Money | -\$2,000 | +\$2,000 | 0 |
 | $d_2$: Rights | +ownership of beans | -ownership of beans | 0 |
-| $d_4$: Autonomy | -committed to menu | -committed to delivery | balanced |
+| $d_4$: Autonomy | +guaranteed delivery | -committed to delivery | 0 |
 
 **Evaluative dimensions (not conserved):**
 

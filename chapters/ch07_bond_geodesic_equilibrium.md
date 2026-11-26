@@ -400,7 +400,7 @@ Maria's $\alpha$: High. Maria's costs are determined by her own financial positi
 
 Maria's $\kappa$: Moderate. Maria's costs depend on the landlord's offer, but her values and community are largely independent of the landlord's specific number.
 
-Since $\alpha_i > \kappa_i$ for both players (each agent's situation is dominated by their own manifold structure rather than by the other's strategy), the contraction condition (Lemma 26) is satisfied. The BGE is unique. Iterated best response converges geometrically to the \$6K + guarantee equilibrium.
+If $\alpha_i > \kappa_i$ for both players, as these qualitative assessments suggest (each agent's situation is dominated by their own manifold structure rather than by the other's strategy), the contraction condition (Lemma 26) is satisfied, and then the BGE is unique and iterated best response converges geometrically to the \$6K + guarantee equilibrium. The best-response lists above do not by themselves establish uniqueness: for the offers of \$5K and \$6K they do not say which accepting strategy Maria plays.
 
 ### Comparison with $d_1$-Only Nash
 

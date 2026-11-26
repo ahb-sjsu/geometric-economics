@@ -42,7 +42,7 @@
 **efficient market hypothesis**, 5 --- equivalent to admissibility of the price heuristic
 **endowment effect**, 4, 7 --- predicted WTA/WTP ratio of 1.66 via Finsler metric asymmetry
 **epistemic quality** ($d_9$), 3, 11 --- information quality dimension; degrades in bubbles and crises
-**evaluative dimensions** ($d_5$--$d_9$), 3 --- trust, social impact, identity, legitimacy, epistemic; not directly transferable
+**evaluative dimensions** ($d_3$, $d_5$--$d_9$), 3 --- fairness, trust, social impact, identity, legitimacy, epistemic; not directly transferable
 **externality**, 10 --- heuristic corruption: price signal does not encode social cost
 
 **fairness** ($d_3$), 3, 4, 7, 12 --- distributive justice dimension; key to ultimatum game predictions
@@ -97,7 +97,7 @@
 **sunk cost fallacy**, 8 --- gauge violation: path-dependent evaluation violating re-description invariance
 
 **trade as geodesic exchange**, 13 --- trade restrictions as artificial boundaries; comparative advantage as curvature
-**transferable dimensions** ($d_1$--$d_4$), 3 --- consequences, rights, fairness, autonomy; can be directly exchanged
+**transferable dimensions** ($d_1$, $d_2$, $d_4$), 3 --- consequences, rights, autonomy; can be directly exchanged
 **trust** ($d_5$), 3, 7, 11 --- relational and institutional trust; collapses in financial crises ($g_{55} \to \infty$)
 
 **ultimatum game**, 7, C --- BGE predicts rejection of unfair offers via $d_3$, $d_7$ activation; cross-cultural variation via metric differences
@@ -186,10 +186,10 @@
 
 ## Empirical Results (Key)
 
-**2.70% MAE** (mean absolute error), 7, C --- across 16/16 behavioral predictions
+**2.70% MAE** (mean absolute error), 7, C --- across 16/16 aggregate behavioral targets, in sample
 **4.3% out-of-sample error**, 7, C --- public goods game; Fraser & Nettle data
 **13/17 prospect theory problems**, 7, C --- Kahneman & Tversky 1979 problems
-**16/16 behavioral predictions**, 7, C --- correct across game theory and prospect theory
+**16/16 aggregate behavioral targets**, 7, C --- reproduced in sample across game theory and prospect theory (calibration benchmark)
 **1.66 endowment ratio**, 4, C --- predicted WTA/WTP; consistent with experimental 1.5--2.5
 **$\lambda \in [1.0, 3.53]$**, 4 --- loss aversion varies with dimensional activation; contradicts constant $\lambda$ assumption
 **50$\times$ amplification** (Lehman), 11 --- 0.35% perturbation $\to$ \$34 trillion response; divergent curvature

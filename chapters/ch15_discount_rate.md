@@ -47,7 +47,7 @@ The practical consequence is enormous. A highway project with immediate monetary
 
 ## 15.2 The Stern-Nordhaus Debate
 
-The most consequential disagreement about discount rates is in climate economics. Nicholas Stern (2006) used a near-zero social discount rate ($\delta \approx 0.1\%$) and concluded that immediate, aggressive climate action is economically justified. William Nordhaus (2008) used a market-calibrated rate ($\delta \approx 3\%$) and concluded that gradual action is optimal.
+The most consequential disagreement about discount rates is in climate economics. Nicholas Stern (2006) used a near-zero rate of pure time preference ($\rho \approx 0.1\%$; the Ramsey decomposition below gives his total $\delta \approx 1.4\%$) and concluded that immediate, aggressive climate action is economically justified. William Nordhaus (2008) used a market-calibrated rate ($\delta \approx 3\%$) and concluded that gradual action is optimal.
 
 **[Modeling Axiom.]** In the geometric framework, this is not a disagreement about preferences. It is a disagreement about the *curvature of the intergenerational manifold*.
 
@@ -184,8 +184,8 @@ Maria evaluates the solar panel investment on two manifolds.
 | Year | Cash flow | PV factor | PV |
 |------|-----------|-----------|-----|
 | 0 | -\$30,000 | 1.00 | -\$30,000 |
-| 1-8 | +\$4,500/yr | $\sum e^{-0.03t}$ | +\$31,200 |
-| NPV | | | **+\$1,200** |
+| 1-8 | +\$4,500/yr | $\sum e^{-0.03t}$ | +\$31,500 |
+| NPV | | | **+\$1,500** |
 
 Positive but marginal. The investment barely clears the hurdle.
 

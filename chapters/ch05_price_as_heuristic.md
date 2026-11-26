@@ -265,7 +265,7 @@ Let us work through a complete A* analysis of a concrete economic decision: Mari
 
 ### Step 2: Enumerate the Paths
 
-**Path A: Absorb the full cost increase.** No price change; margin drops to roughly $-$2,020/month (from \$1,400 to -\$620 after the \$3,420/month cost increase from the 18% supplier price hike on \$19,000 of annual bean costs). Business becomes unsustainable within months.
+**Path A: Absorb the full cost increase.** No price change; margin drops to roughly $-$2,020/month (from \$1,400 to -\$2,020 after the \$3,420/month cost increase from the 18% supplier price hike on \$19,000 of annual bean costs). Business becomes unsustainable within months.
 
 | Dimension | $\Delta$ | Assessment |
 |-----------|----------|------------|
@@ -319,8 +319,8 @@ For each path, System 2 computes $g(n)$ (the accumulated monetary costs and bene
 
 | Path | $g(n)$ (System 2) | $h(n)$ (System 1) | $f(n) = g + h$ | Rank |
 |------|-------------------|--------------------|-----------------|------|
-| A: Absorb all | Very high (bankruptcy) | Low (no boundaries crossed) | Very high | 4th |
-| B: Full pass-through | Low (strong $d_1$) | High (fairness boundary) | Moderate-high | 3rd |
+| A: Absorb all | Very high (bankruptcy) | Low (no boundaries crossed) | Very high | 3rd |
+| B: Full pass-through | Low (strong $d_1$) | High (fairness boundary) | Moderate-high | 2nd |
 | C: Moderate + negotiate | Moderate ($d_1$ OK) | Low (no boundaries) | **Lowest** | **1st** |
 | D: Switch supplier | Lowest ($d_1$ optimal) | Infinite (trust boundary) | Infinite | Last |
 

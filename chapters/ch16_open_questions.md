@@ -17,7 +17,7 @@
 
 ## 16.1 Measuring the Economic Metric
 
-The framework assumes a 9×9 covariance matrix $\Sigma$ that encodes the interaction structure of economic dimensions. The eris-econ library calibrates $\Sigma$ from behavioral data — game theory experiments, prospect theory studies, cross-cultural comparisons. The calibration produces 16/16 correct behavioral predictions at 2.70% MAE.
+The framework assumes a 9×9 covariance matrix $\Sigma$ that encodes the interaction structure of economic dimensions. The eris-econ library calibrates $\Sigma$ from behavioral data — game theory experiments, prospect theory studies, cross-cultural comparisons. The calibration reproduces 16 of 16 aggregate behavioral targets within tolerance at 2.70% MAE; this is an in-sample benchmark, not an out-of-sample prediction. One registered out-of-sample consequence of a single shared $\Sigma$, that an individual's risk and social preferences are coupled through one rank-one factor, was scored on the Global Preferences Survey and failed on that proxy (`experiments/RESULTS_coupling_scorecard.md`): the correlations were positive but below the registered threshold, and the structure was not rank-one. The same-subject test on choice-fit angles, which the scorecard names as the decisive one, has not been run.
 
 **[Empirical.]** But the calibration is partial. The open questions:
 
@@ -125,7 +125,7 @@ The levels are not sequential. Empirical validation and theoretical extension ca
 
 This book has argued that economic decisions have geometric structure that scalar models cannot capture. The Bond Geodesic Equilibrium generalizes Nash equilibrium to the full decision manifold. Prospect theory's anomalies are geometric properties, not cognitive biases. Conservation laws distinguish transferable from evaluative dimensions, explaining why trade creates value even when no new goods are produced. Market failures are geometric pathologies — heuristic corruption, objective hijacking, local minima, gauge breaking — that co-occur and reinforce each other. The discount rate is the temporal curvature of the decision manifold, and the Stern-Nordhaus debate is a disagreement about this curvature. Trade follows geodesics on the multi-national manifold, and comparative advantage is a statement about curvature. Regulation constrains the manifold so that all geodesics are safe.
 
-The framework is young. The empirical validation, while promising (16/16 predictions at 2.70% MAE), covers only a fraction of economic behavior. The open questions above define a research program that will take decades to complete.
+The framework is young. The empirical record so far is an in-sample calibration (16/16 aggregate targets at 2.70% MAE) and one failed registered test of cross-domain coupling (Section 16.1); it covers only a fraction of economic behavior. The open questions above define a research program that will take decades to complete.
 
 But the central insight is already clear: *Homo economicus is not wrong because humans are irrational. It is incomplete because it computes on a projected subspace of the actual decision manifold.* The projection is the source of the anomalies, the paradoxes, and the persistent gap between economic theory and economic reality. The full manifold has been there all along. This book provides the vocabulary to describe it.
 

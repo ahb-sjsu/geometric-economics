@@ -163,30 +163,50 @@ BOOK_CONFIGS: dict[str, dict] = {
         "subtitle": "Language, Signal, and the Topology of Meaning",
         "source_dirs": ["manuscript/part_i", "manuscript/part_ii",
                         "manuscript/part_iii", "manuscript/part_iv",
-                        "manuscript/part_v", "manuscript/appendices"],
+                        "manuscript/part_v", "manuscript/part_vi",
+                        "manuscript/part_vii", "manuscript/appendices"],
         "glob": "*.md",
+        # Parts VI and VII went online on 2026-11-26 after a review. Chapter 17 is held back:
+        # the proof of Proposition 17.1 does not give its stated bound and two of its figures
+        # are unsourced (CORRECTIONS-2026-11-26.md, "Unresolved").
+        "exclude": ["ch17_*.md"],
     },
     "geometric-medicine": {
         "number": 8, "title": "Geometric Medicine",
         "subtitle": "Clinical Reasoning, Triage, and the Ethics of Allocation",
         "source_dirs": ["manuscript/part_i", "manuscript/part_ii",
                         "manuscript/part_iii", "manuscript/part_iv",
+                        "manuscript/part_v", "manuscript/part_vi",
                         "manuscript/appendices"],
         "glob": "*.md",
+        # Parts V and VI went online on 2026-11-26 after a review. Chapter 14 is held back:
+        # its evidence paragraphs rest on findings attributed to papers that are not in the
+        # bibliography and have not been checked (CORRECTIONS-2026-11-26.md, "Unresolved").
+        "exclude": ["ch14_*.md"],
     },
     "geometric-education": {
         "number": 9, "title": "Geometric Education",
         "subtitle": "Learning, Assessment, and the Topology of Understanding",
         "source_dirs": ["manuscript/part_i", "manuscript/part_ii",
-                        "manuscript/part_iii", "manuscript/appendices"],
+                        "manuscript/part_iii", "manuscript/part_iv",
+                        "manuscript/part_v", "manuscript/appendices"],
         "glob": "*.md",
+        # Parts IV and V went online on 2026-11-26 after a review. Chapter 14 is held back:
+        # its point estimates are unsourced and its compound total contradicts its own table
+        # (CORRECTIONS-2026-11-26.md in the volume, "Unresolved").
+        "exclude": ["ch14_*.md"],
     },
     "geometric-politics": {
         "number": 10, "title": "Geometric Politics",
         "subtitle": "Representation, Polarization, and the Topology of Democratic Choice",
         "source_dirs": ["manuscript/part_i", "manuscript/part_ii",
-                        "manuscript/part_iii", "manuscript/appendices"],
+                        "manuscript/part_iii", "manuscript/part_iv",
+                        "manuscript/part_v", "manuscript/appendices"],
         "glob": "*.md",
+        # Parts IV and V went online on 2026-11-26 after a review. Chapters 13 and 15 are
+        # held back: their election shares and Bond Index values contradict each other and
+        # could not be settled (CORRECTIONS-2026-11-26.md, "Unresolved").
+        "exclude": ["ch13_*.md", "ch15_*.md"],
     },
     "geometric-ai": {
         "number": 11, "title": "Geometric AI",

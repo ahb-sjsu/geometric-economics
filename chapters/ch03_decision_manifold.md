@@ -27,7 +27,7 @@ We begin with the dimensions.
 
 ## 3.1 The Nine Dimensions of Economic Decision-Making
 
-Economic decisions are evaluated on nine dimensions. These are the same nine dimensions of the moral manifold identified in *Geometric Ethics* (Bond, 2026), re-interpreted for economic contexts. They were empirically validated across 20,030 texts and 11 languages, and independently replicated across 6 additional languages (Thiele, 2026).
+Economic decisions are evaluated on nine dimensions. These are the same nine dimensions of the moral manifold identified in *Geometric Ethics* (Bond, 2026), re-interpreted for economic contexts. *Geometric Ethics* reports them from a corpus of 20,030 advice-column letters and a cross-lingual set of 109,294 passages in 11 languages, with a reported replication across 6 additional languages (Thiele, 2026). That volume's claim ledger classes the cross-lingual result as exploratory, with an instrument confound still open.
 
 > **Definition 1 (Dimensions of the Economic Decision Manifold).** The economic decision manifold has nine coordinate dimensions $d_1, \ldots, d_9$:
 
@@ -51,7 +51,7 @@ Economic decisions are evaluated on nine dimensions. These are the same nine dim
 
 These dimensions are not arbitrary. They derive from a systematic decomposition of moral space developed in *Geometric Ethics*, where three normative modes (consequentialist, deontological, virtue-based) are crossed with three evaluative scopes (individual, relational, institutional), yielding a $3 \times 3$ structure that maps onto nine independent dimensions. The economic adaptation relabels the dimensions for economic contexts while preserving the mathematical structure.
 
-**[Empirical.]** The claim that these nine dimensions are empirically operative is supported by factor analysis of behavioral economic data, cross-cultural replication, and the eris-econ validation results (Appendix C), which show that the framework correctly predicts 16/16 behavioral phenomena with 2.70% mean absolute error.
+**[Empirical.]** The claim that these nine dimensions are empirically operative is posited, not yet validated. The support offered for it is the cross-lingual work of *Geometric Ethics* and the eris-econ calibration results (Appendix C), an in-sample benchmark in which the framework reproduces 16 of 16 aggregate behavioral targets within tolerance at 2.70% mean absolute error. No economics instrument has yet passed the series' admission filter.
 
 ---
 
@@ -195,7 +195,7 @@ Introducing monetary payment into a social relationship ("paying a friend for di
 
 The interaction between Mahalanobis distance and boundary penalties generates one of the framework's most important results: a formal explanation of why agents refuse economically advantageous transactions.
 
-> **Proposition 5 (Infinite-Weight Boundaries Explain "Irrational" Refusal).** *An agent who refuses a transaction with positive expected monetary value ($\Delta d_1 > 0$) is acting rationally on the full manifold $\mathcal{E}$ whenever the transaction crosses a boundary with $\beta_k > \Delta d_1 / \sigma_1^2$. The refusal appears "irrational" only when the decision is projected onto the $d_1$ axis alone.*
+> **Proposition 5 (Infinite-Weight Boundaries Explain "Irrational" Refusal).** *An agent who refuses a transaction with positive expected monetary value ($\Delta d_1 > 0$) is acting rationally on the full manifold $\mathcal{E}$ whenever the transaction crosses a boundary with $\beta_k > (\Delta d_1)^2 / \sigma_1^2$. The refusal appears "irrational" only when the decision is projected onto the $d_1$ axis alone.*
 
 **Proof.** The total edge weight is $w = \Delta \mathbf{a}^T \Sigma^{-1} \Delta \mathbf{a} + \beta_k$. Even if the Mahalanobis component contributes a net decrease in distance along $d_1$ (the action improves monetary position), the boundary penalty $\beta_k$ makes the total weight positive. The action is therefore not on the minimum-cost path -- the agent rationally avoids it. Projection onto $d_1$ discards $\beta_k$, making the refusal appear unmotivated. $\square$
 
@@ -230,13 +230,13 @@ The agent is not "irrational" for buying. The economist is computing on the wron
 
 ### Dimensionality
 
-The decision complex $\mathcal{E}$ has nine dimensions. This is a structural commitment of the framework, not a free parameter. It is derived from the $3 \times 3$ decomposition of moral-economic space (three normative modes crossed with three evaluative scopes) and validated by factor analysis of behavioral data. The commitment is falsifiable: if a replicable economic behavior is discovered that cannot be decomposed into any subset of the nine dimensions, the framework is wrong.
+The decision complex $\mathcal{E}$ has nine dimensions. This is a structural commitment of the framework, not a free parameter. It is derived from the $3 \times 3$ decomposition of moral-economic space (three normative modes crossed with three evaluative scopes); a factor analysis of behavioral data that recovers it is a prediction (Section 16.4, Prediction 5), not a result in hand. The commitment is falsifiable: if a replicable economic behavior is discovered that cannot be decomposed into any subset of the nine dimensions, the framework is wrong.
 
 **[Modeling Axiom.]** The specific number nine is a modeling choice inherited from Geometric Ethics. It is possible that finer-grained analysis would identify sub-dimensions within each of the nine (e.g., distributional fairness and procedural fairness as sub-dimensions of $d_3$), or that some dimensions could be merged. The framework's predictions are robust to modest changes in dimensionality -- the key claim is that the dimension is significantly greater than one, not that it is exactly nine.
 
 ### The Covariance Matrix
 
-The covariance matrix $\Sigma$ is a $9 \times 9$ symmetric positive semi-definite matrix with at most $9(9+1)/2 = 45$ free parameters. Empirical regularities further constrain it: cross-lingual validation shows that the rank of $\Sigma$ (the number of active dimensions) is stable across cultures at approximately 9, even though individual entries vary. This is a structural prediction: any culture that reduces $\operatorname{rank}(\Sigma) < 9$ would provide evidence against the framework.
+The covariance matrix $\Sigma$ is a $9 \times 9$ symmetric positive semi-definite matrix with at most $9(9+1)/2 = 45$ free parameters. The framework further posits, on the strength of the cross-lingual work reported in *Geometric Ethics*, that the rank of $\Sigma$ (the number of active dimensions) is stable across cultures at approximately 9, even though individual entries vary. This is a structural prediction: any culture that reduces $\operatorname{rank}(\Sigma) < 9$ would provide evidence against the framework. It is open: the repository's own registered tests on choice data report a low-rank metric (`experiments/EVIDENCE.md`), and its registered cross-domain coupling test failed on its proxy data (`experiments/RESULTS_coupling_scorecard.md`).
 
 $\Sigma$ is estimated *before* prediction, not after. The estimation procedure parallels standard psychometric practice: administer a battery of moral-economic scenarios, measure attribute-vector activations via validated instruments (the MoralVector probes), and compute $\Sigma$ from the calibration sample. Once $\Sigma$ is fixed, the framework generates *a priori* predictions for novel scenarios.
 
@@ -285,7 +285,7 @@ $$\Delta \mathbf{a}_2 = (-12000, +0.7, +0.1, -0.1, +0.2, +0.1, +0.2, +0.3, +0.4)
 - $\Delta d_1 = -12000$: \$1,000/month additional cost over 12 months (but five-year certainty)
 - $\Delta d_2 = +0.7$: five-year lease provides substantial contractual security
 - $\Delta d_3 = +0.1$: the negotiated outcome feels approximately fair -- a compromise
-- $\Delta d_4 = -0.1$: slight reduction in autonomy (committed to three years)
+- $\Delta d_4 = -0.1$: slight reduction in autonomy (committed to five years)
 - $\Delta d_5 = +0.2$: trust partially restored through successful negotiation
 - $\Delta d_6 = +0.1$: community sees Maria as a fighter who got a decent deal
 - $\Delta d_7 = +0.2$: identity reinforced -- "I stood up for myself and my employees"
@@ -321,7 +321,7 @@ The large negative displacements on $d_3$ (fairness), $d_5$ (trust), and $d_9$ (
 **Path to $v_2$ (negotiate to \$6,000):**
 $$w_2 = \Delta \mathbf{a}_2^T \Sigma^{-1} \Delta \mathbf{a}_2$$
 
-The smaller monetary cost, combined with positive or near-zero displacements on most non-monetary dimensions, produces a much smaller total edge weight. The positive movements on $d_2$ (contractual security), $d_5$ (trust restoration), and $d_9$ (reduced uncertainty) actively *reduce* the Mahalanobis distance, because improvements on correlated dimensions offset the monetary cost.
+The smaller monetary cost, combined with positive or near-zero displacements on most non-monetary dimensions, produces a much smaller total edge weight. The movements on $d_2$ (contractual security), $d_5$ (trust restoration), and $d_9$ (reduced uncertainty) are improvements, and the non-monetary displacements are smaller in total than on the path to $v_1$. A quadratic form counts a displacement in either direction as cost, so these improvements do not subtract from the Mahalanobis distance; the direction-dependent treatment of gains and losses is the Finsler metric of Section 4.10.
 
 **Path to $v_3$ (close shop):**
 $$w_3 = \Delta \mathbf{a}_3^T \Sigma^{-1} \Delta \mathbf{a}_3$$

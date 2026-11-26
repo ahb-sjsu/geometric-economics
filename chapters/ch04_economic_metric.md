@@ -115,7 +115,7 @@ This is not a free parameter. It is a *derived quantity* determined by the manif
 | Losing a \$100 family heirloom | $d_1 + d_2 + d_6 + d_7$ | $\approx 3.0$ | $\approx 2.5 - 3.5$ |
 | Losing a family photograph (no monetary value) | $d_2 + d_6 + d_7$ | $\gg 3.0$ | Often described as "priceless" |
 
-The eris-econ validation confirms this: the framework predicts loss aversion varying from 1.0 to 3.53 depending on dimensional activation, matching observed ranges in the empirical literature.
+The eris-econ calibration is consistent with this: the model yields loss aversion varying from 1.0 to 3.53 depending on dimensional activation, a range comparable to those reported in the empirical literature. This is an in-sample calibration, not a held-out test.
 
 **What would falsify this:** If $\lambda$ were constant across conditions -- as standard prospect theory predicts -- the geometric derivation would be wrong. If $\lambda$ varied but not monotonically with dimension count, the dimensional model would be wrong.
 
@@ -301,7 +301,7 @@ Maria's attribute-vector change under the rent reduction:
 
 $$\Delta \mathbf{a}_G = (+24000, 0, +0.2, +0.1, +0.1, +0.1, +0.1, 0, 0)$$
 
-The gain is primarily monetary ($d_1$). Small positive spillovers: the lower rent feels slightly fairer ($d_3 = +0.2$), gives Maria slightly more autonomy ($d_4 = +0.1$), slightly increases her trust in the landlord ($d_5 = +0.1$), has a small positive community signal ($d_6 = +0.1$), and mildly reinforces her identity ($d_7 = +0.1$). These spillovers are small because gains do not strongly activate non-monetary dimensions.
+The gain is primarily monetary ($d_1$). Small positive spillovers: the lower rent feels slightly fairer ($d_3 = +0.2$), gives Maria slightly more autonomy ($d_4 = +0.1$), slightly increases her trust in the landlord ($d_5 = +0.1$), has a small positive community signal ($d_6 = +0.1$), and mildly reinforces her identity ($d_7 = +0.1$). These spillovers are small because gains do not strongly activate non-monetary dimensions. (The values in this example are posited for it. They differ from the vector Section 3.8 assigns to accepting the increase, which was scored together with a one-year lease and so carried a positive $d_2$.)
 
 ### Loss Path (L)
 
@@ -413,7 +413,7 @@ where $\Sigma_+^{-1}(x)$ is the metric for gain paths (approximately diagonal, c
 
 $$\lambda(x) = \frac{F(x, -v)}{F(x, v)}$$
 
-This is position-dependent (through $\Sigma_{\pm}(x)$), direction-dependent (through the gain/loss classification of $v$), and computable from the covariance structure.
+This coefficient is a ratio of Finsler lengths. It is the square root of the ratio of edge weights $w_- / w_+$ that Section 4.2 and the worked example of Section 4.8 call $\lambda$, since an edge weight is a squared length; the two agree on whether and in which direction loss aversion is present and differ in magnitude. It is position-dependent (through $\Sigma_{\pm}(x)$), direction-dependent (through the gain/loss classification of $v$), and computable from the covariance structure.
 
 ### Application: Wage Rigidity
 
@@ -453,10 +453,10 @@ Different economic theories correspond to different choices of metric on the dec
 **[Conditional Theorem.]** Let $\mathcal{M} \subseteq \mathbb{R}^9$ be the smooth economic decision manifold (the continuous limit of the decision complex). A *Finsler metric* on $\mathcal{M}$ is a function $F: T\mathcal{M} \to [0, \infty)$ satisfying:
 
 1. $F(x, v) \geq 0$ for all $(x, v) \in T\mathcal{M}$, with equality iff $v = 0$ (positive definiteness).
-2. $F(x, \alpha v) = |\alpha| F(x, v)$ for all $\alpha \in \mathbb{R}$ (absolute homogeneity -- note: this allows $F(x, v) \neq F(x, -v)$, unlike the positive homogeneity of standard Finsler metrics, because we use absolute value).
+2. $F(x, \alpha v) = |\alpha| F(x, v)$ for all $\alpha \in \mathbb{R}$ (absolute homogeneity -- note: this forces $F(x, v) = F(x, -v)$; the positive homogeneity of standard Finsler metrics, which requires the identity only for $\alpha > 0$, does not).
 3. The Hessian $g_{ij}(x, v) = \frac{1}{2} \frac{\partial^2 F^2}{\partial v^i \partial v^j}$ is positive definite for $v \neq 0$ (strong convexity).
 
-For the economic metric, we relax condition 2 to allow directional asymmetry:
+For the economic metric, we relax condition 2 to positive homogeneity to allow directional asymmetry:
 
 $$F(x, v) = \begin{cases} \sqrt{v^T G_+(x) v} & \text{if } v \in C_+(x) \text{ (gain cone)} \\ \sqrt{v^T G_-(x) v} & \text{if } v \in C_-(x) \text{ (loss cone)} \end{cases}$$
 
@@ -501,4 +501,4 @@ The standard Mahalanobis distance $d_M = \sqrt{\Delta \mathbf{a}^T \Sigma^{-1} \
 
 ## Notes on Sources
 
-Loss aversion was first reported in Kahneman and Tversky (1979), "Prospect Theory," *Econometrica*. The endowment effect was demonstrated by Thaler (1980), "Toward a Positive Theory of Consumer Choice," *Journal of Economic Behavior and Organization*, and systematically studied by Kahneman, Knetsch, and Thaler (1990), "Experimental Tests of the Endowment Effect and the Coase Theorem," *Journal of Political Economy*. Hyperbolic discounting is reviewed in Frederick, Loewenstein, and O'Donoghue (2002), "Time Discounting and Time Preference: A Critical Review," *Journal of Economic Literature*. Framing effects are from Tversky and Kahneman (1981), "The Framing of Decisions and the Psychology of Choice," *Science*. The Finsler metric generalization draws on Bao, Chern, and Shen (2000), *An Introduction to Riemann-Finsler Geometry*, Springer. The Hohfeldian framework is from Hohfeld (1913), "Some Fundamental Legal Conceptions," *Yale Law Journal*. The geometric derivations are from Bond (2026), "Geometric Economics," Sections 7-8, and Bond (2026), *Geometric Ethics*, Chapter 20. The eris-econ empirical validation data (loss aversion varying 1.0-3.53, 16/16 behavioral predictions, 2.70% MAE) is from the eris-econ library validation results (Appendix C of the book plan).
+Loss aversion was first reported in Kahneman and Tversky (1979), "Prospect Theory," *Econometrica*. The endowment effect was demonstrated by Thaler (1980), "Toward a Positive Theory of Consumer Choice," *Journal of Economic Behavior and Organization*, and systematically studied by Kahneman, Knetsch, and Thaler (1990), "Experimental Tests of the Endowment Effect and the Coase Theorem," *Journal of Political Economy*. Hyperbolic discounting is reviewed in Frederick, Loewenstein, and O'Donoghue (2002), "Time Discounting and Time Preference: A Critical Review," *Journal of Economic Literature*. Framing effects are from Tversky and Kahneman (1981), "The Framing of Decisions and the Psychology of Choice," *Science*. The Finsler metric generalization draws on Bao, Chern, and Shen (2000), *An Introduction to Riemann-Finsler Geometry*, Springer. The Hohfeldian framework is from Hohfeld (1913), "Some Fundamental Legal Conceptions," *Yale Law Journal*. The geometric derivations are from Bond (2026), "Geometric Economics," Sections 7-8, and Bond (2026), *Geometric Ethics*, Chapter 20. The eris-econ calibration data (loss aversion varying 1.0-3.53, 16/16 aggregate behavioral targets reproduced in sample, 2.70% MAE) is from the eris-econ library validation results (Appendix C of the book plan).

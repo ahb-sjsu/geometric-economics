@@ -69,22 +69,24 @@ In economics, the gauge group captures the transformations that change the *desc
 >
 > - $S_n$ is the symmetric group on $n$ elements, acting by *relabeling*: for any permutation $\pi \in S_n$, the transformation $\rho_\pi$ permutes the roles of $n$ goods as potential numeraires. If we have three goods (coffee, sandwiches, labor-hours), $S_3$ permutes which one serves as the measuring unit.
 
-The gauge group acts on the attribute vector $\mathbf{a} \in \mathbb{R}^9$ primarily through the monetary dimension $d_1$, but the action extends to all transferable dimensions ($d_1$--$d_4$) that have quantitative units. The evaluative dimensions ($d_5$--$d_9$) are invariant under the gauge group -- trust, identity, and community impact do not have units that can be rescaled.
+The gauge group acts on the attribute vector $\mathbf{a} \in \mathbb{R}^9$ primarily through the monetary dimension $d_1$, but the action extends to all transferable dimensions ($d_1$, $d_2$, $d_4$) that have quantitative units. The evaluative dimensions ($d_3$, $d_5$--$d_9$) are invariant under the gauge group -- trust, identity, and community impact do not have units that can be rescaled.
 
 > **Remark 36 (Structure of the Gauge Group).** The economic gauge group $\mathcal{G} = \mathbb{R}^+ \times S_n$ is a semidirect product when the scaling and relabeling interact. In the simplest case, where scaling applies uniformly to all monetary quantities and relabeling permutes the numeraire independently, the group is a direct product. The full structure depends on the number of commodities and the complexity of the accounting system. For most applications in this book, we work with the direct product $\mathbb{R}^+ \times S_n$ and note where the semidirect structure matters.
 
 ### Comparison with Other Domain Gauge Groups
 
+*Note, 2026-11-26.* Earlier versions of this table gave the dihedral group $D_4$, of order eight, as the group of the four Hohfeldian positions for Ethics and Law. *Geometric Ethics* withdrew that identification in version 1.25 (2026-11-08): the two demonstrated operations, correlative and negation, commute and generate the Klein four-group $V_4$, of order four, and there is no quarter-turn. It also withdrew "conservation of harm" (2026-06-19) in favour of representation-invariance of harm accounting, and now states $V_4 \times U(1)_H$ as a modeling choice, not a uniqueness theorem. The comparison below uses only the fact that the Hohfeldian factor is a finite group, which holds for $V_4$, so it stands with the group restated. Nothing in this chapter depends on a quarter-turn or on order eight.
+
 The economic gauge group is structurally different from the gauge groups of other domains in the geometric series:
 
 | Domain | Gauge Group | Generator | What It Permutes |
 |---|---|---|---|
-| Ethics | $D_4 \times U(1)_H$ | Hohfeldian symmetries + harm phase | Rights-duty pairs, harm conservation |
+| Ethics | $V_4 \times U(1)_H$ | Hohfeldian symmetries + harm phase | Rights-duty pairs, harm accounting |
 | Economics | $\mathbb{R}^+ \times S_n$ | Scaling + relabeling | Currency units, numeraire choice |
-| Law | $D_4$ | Hohfeldian symmetries | Jural relations |
+| Law | $V_4$ | Hohfeldian symmetries | Jural relations |
 | Communication | Translation gauge | Language mapping | Natural languages |
 
-The ethics gauge group is discrete ($D_4$ is finite); the economics gauge group is continuous ($\mathbb{R}^+$ is a connected Lie group). This difference has consequences: continuous gauge symmetries produce *conservation laws* via Noether's theorem (Chapter 9), while discrete symmetries produce selection rules. The economic gauge group's continuous component is what makes economic conservation laws possible.
+The Hohfeldian factor of the ethics gauge group is discrete ($V_4$ is finite); the economics gauge group is continuous ($\mathbb{R}^+$ is a connected Lie group). This difference has consequences: continuous gauge symmetries produce *conservation laws* via Noether's theorem (Chapter 9), while discrete symmetries produce selection rules. The economic gauge group's continuous component is what makes economic conservation laws possible.
 
 ## 8.3 Gauge Invariance of the Metric
 
@@ -299,11 +301,11 @@ The gauge violation tensor has been measured, though not under this name, in the
 
 ---
 
-> **WORKED EXAMPLE: Measuring Money Illusion in a Wage Negotiation**
+> **WORKED EXAMPLE (hypothetical data): Measuring Money Illusion in a Wage Negotiation**
 >
 > *Consider a wage negotiation between Maria and a prospective employee, Alex. Maria offers Alex a salary. We measure the gauge violation tensor by presenting the same real salary under different nominal descriptions.*
 >
-> **Setup.** The real salary is \$48,000/year in purchasing-power terms. We present it under three descriptions:
+> **Setup.** The real salary is \$48,000/year in purchasing-power terms. We present it under four descriptions, a baseline and three transformations:
 >
 > | Description ($\tau_i$) | Nominal value | Framing |
 > |---|---|---|

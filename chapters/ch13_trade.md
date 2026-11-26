@@ -173,7 +173,7 @@ Maria evaluates three supply chain options:
 - $d_5$: -0.3 (anonymous broker, no relationship)
 - $d_6$: -0.4 (plantation monoculture, community disruption)
 - $d_7$: -0.7 (violates Maria's identity as ethical sourcer)
-- Total BF: $960/\sigma_1^2 + 0.6^2/\sigma_3^2 + 0.3^2/\sigma_5^2 + 0.4^2/\sigma_6^2 + 0.7^2/\sigma_7^2$ ≈ **high**
+- Total BF: $960^2/\sigma_1^2 + 0.6^2/\sigma_3^2 + 0.3^2/\sigma_5^2 + 0.4^2/\sigma_6^2 + 0.7^2/\sigma_7^2$ ≈ **high**
 
 **Option B: Fair-trade (Colombia via Elena, \$25/lb)**
 - $d_1$: -\$2,000/month
@@ -181,7 +181,7 @@ Maria evaluates three supply chain options:
 - $d_5$: +0.4 (trusted relationship with Elena)
 - $d_6$: +0.6 (community development fund)
 - $d_7$: +0.8 (identity-consistent sourcing)
-- Total BF: $2,000/\sigma_1^2 - (0.5^2 + 0.4^2 + 0.6^2 + 0.8^2)/\sigma_k^2$ ≈ **moderate**
+- Total BF: $2{,}000^2/\sigma_1^2 - (0.5^2 + 0.4^2 + 0.6^2 + 0.8^2)/\sigma_k^2$ ≈ **moderate**
 
 **Option C: Direct-trade (Colombia, no intermediary, \$18/lb)**
 - $d_1$: -\$1,440/month
@@ -200,7 +200,7 @@ The $d_1$-only ranking: A > C > B. The full-manifold ranking: B > C > A. Maria c
 
 Applying the conservation framework (Chapter 9) to Maria's sourcing decision:
 
-**Option B (Elena, fair-trade):** The \$2,000 monetary transfer is conserved — Maria pays, Elena receives. But the evaluative surplus is substantial: trust (+0.4 each), community (+0.6 each), identity (+0.8 Maria, +0.5 Elena). Total evaluative value created per transaction: approximately 2.3 units.
+**Option B (Elena, fair-trade):** The \$2,000 monetary transfer is conserved — Maria pays, Elena receives. But the evaluative surplus is substantial: trust (+0.4 each), community (+0.6 each), identity (+0.8 Maria, +0.5 Elena). Total evaluative value created per transaction: approximately 3.3 units on these values (Chapter 9's illustration of the same order assigns smaller per-party gains and totals 2.4).
 
 **Option A (commodity):** The \$960 monetary transfer is conserved. The evaluative surplus is approximately zero — no trust, no community, no identity affirmation. The \$1,040/month Maria saves on $d_1$ comes at the cost of 2.3 units of evaluative value per transaction.
 

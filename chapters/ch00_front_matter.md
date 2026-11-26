@@ -20,7 +20,7 @@ The mathematical name for this structure is *geometry*. Not the geometry of tria
 
 The central construction is the **Bond Geodesic Equilibrium** (BGE), a generalization of Nash equilibrium to the full decision manifold. We prove that Nash equilibrium is the scalar projection of BGE — the special case obtained by collapsing all dimensions except monetary payoff. The projection is lossy: the Scalar Irrecoverability Theorem (Chapter 6) proves that the information destroyed by this collapse is mathematically irrecoverable. Homo economicus is not wrong. It is a shadow on the wall of a nine-dimensional cave.
 
-The framework is empirically grounded. The companion library `eris-econ` (published on PyPI) implements the full pipeline — decision manifold, A* pathfinding, BGE computation — and validates against published experimental data from game theory and prospect theory across multiple cultures. The results: 16 of 16 behavioral predictions correct at 2.70% mean absolute error, including cross-cultural variation in ultimatum game offers explained by metric differences rather than "cultural preferences."
+The framework is posited theory with a first calibration, not validated measurement. The companion library `eris-econ` (published on PyPI) implements the full pipeline — decision manifold, A* pathfinding, BGE computation — and is calibrated against published experimental data from game theory and prospect theory across multiple cultures. The result is an in-sample benchmark: 16 of 16 aggregate behavioral targets reproduced within tolerance at 2.70% mean absolute error, including cross-cultural variation in ultimatum game offers fitted by metric differences rather than "cultural preferences." A registered out-of-sample test of one consequence of a single shared metric, a rank-one coupling of risk and social preferences, failed on its proxy data (`experiments/RESULTS_coupling_scorecard.md`).
 
 This is the fourth book in the Geometric Series. *Geometric Methods in Computational Modeling* (Bond, 2026a) provides the mathematical toolkit. *Geometric Ethics* (Bond, 2026b) develops the moral manifold. *Geometric Reasoning* (Bond, 2026c) generalizes from ethics to all reasoning, establishing the search-geometry connection, the heuristic field formalism, and the failure taxonomy. The present book instantiates that general framework on the economic decision manifold.
 
@@ -51,7 +51,7 @@ March 2026
 |---------|--------|
 | Nash equilibrium is the scalar projection of BGE (Theorem 21) | eris-econ |
 | Loss aversion varies 1.0–3.53 with dimensional activation (contradicts constant λ) | eris-econ |
-| 16/16 behavioral predictions correct at 2.70% MAE | eris-econ validation |
+| 16/16 aggregate behavioral targets reproduced at 2.70% MAE (in-sample calibration benchmark) | eris-econ validation |
 | Kahneman & Tversky 17 problems: 13/17 predicted (76%) | eris-econ |
 | Cross-cultural ultimatum offers explained by metric variation | Henrich et al. data |
 | Public goods: 4.3% out-of-sample prediction error | Fraser & Nettle |

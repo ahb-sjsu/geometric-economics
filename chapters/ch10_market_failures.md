@@ -86,9 +86,9 @@ The geometric framework predicts that capture is easier when the public-welfare 
 
 Quarterly earnings pressure is objective hijacking in the temporal dimension. The firm's true geodesic optimizes over the full temporal manifold — including long-term trust ($d_5$), institutional legitimacy ($d_8$), and social capital ($d_6$). The quarterly proxy contracts the optimization horizon, collapsing the temporal manifold to a single period and destroying the geodesic's long-term structure.
 
-The geometric prediction: short-termism is most damaging for firms whose value depends heavily on evaluative dimensions ($d_5$–$d_9$) — technology companies (trust in data handling), financial institutions (trust in solvency), and community-serving businesses like Maria's coffee shop. For commodity producers whose value is primarily $d_1$, short-term optimization is less distortionary because the relevant manifold is closer to the scalar projection.
+The geometric prediction: short-termism is most damaging for firms whose value depends heavily on evaluative dimensions ($d_3$, $d_5$–$d_9$) — technology companies (trust in data handling), financial institutions (trust in solvency), and community-serving businesses like Maria's coffee shop. For commodity producers whose value is primarily $d_1$, short-term optimization is less distortionary because the relevant manifold is closer to the scalar projection.
 
-**Theorem 10.1 (Temporal Hijacking and Evaluative Erosion).** *Let $V_E(t) = \sum_{k=5}^{9} d_k(t)$ be the total evaluative value at time $t$. A firm optimizing $d_1$ on a single-period horizon will, if the off-diagonal covariance terms between $d_1$ and $d_5$–$d_9$ are positive, deplete $V_E$ over time:*
+**Theorem 10.1 (Temporal Hijacking and Evaluative Erosion).** *Let $V_E(t) = \sum_{k=5}^{9} d_k(t)$ be the evaluative value summed over $d_5$–$d_9$ at time $t$. A firm optimizing $d_1$ on a single-period horizon will, if the off-diagonal covariance terms between $d_1$ and $d_5$–$d_9$ are positive, deplete $V_E$ over time:*
 
 $$\frac{dV_E}{dt} < 0 \quad \text{when } \text{Cov}(d_1, d_k) > 0 \text{ and the agent maximizes } d_1^{(\text{short-term})}$$
 
@@ -136,7 +136,7 @@ $$D(s^*) \propto k^2 \cdot \bar{\beta}$$
 
 **[Empirical.]** This prediction is testable. Banerjee and Duflo's (2011) evidence on "graduation programs" — multi-dimensional anti-poverty interventions — shows that simultaneous intervention on income ($d_1$), assets ($d_2$), training ($d_9$), and social support ($d_5$) produces persistent escape from poverty, while single-dimension interventions (cash alone, training alone) produce only temporary improvement. The geometric explanation: single-dimension interventions move the agent along one axis of the manifold but do not escape the basin, because the other constrained dimensions pull the agent back. Multi-dimensional interventions move the agent diagonally across the basin, exploiting the covariance structure to escape with lower total energy.
 
-The Mahalanobis geometry is key. If the covariance matrix $\Sigma$ has large positive off-diagonal terms between $d_1$ and $d_9$ (income and information are correlated — rich people have more information), then a diagonal move (simultaneously improving income and information) covers more Mahalanobis distance than two sequential single-dimension moves of the same total magnitude. The diagonal move escapes the basin; the sequential moves do not. This is why integrated anti-poverty programs work and single-instrument policies often fail.
+The Mahalanobis geometry is key. If the covariance matrix $\Sigma$ has large positive off-diagonal terms between $d_1$ and $d_9$ (income and information are correlated — rich people have more information), then a diagonal move (simultaneously improving income and information) costs less Mahalanobis distance than two sequential single-dimension moves of the same total magnitude. The diagonal move escapes the basin; the sequential moves do not. This is why integrated anti-poverty programs work and single-instrument policies often fail.
 
 ### Herding as Heuristic Convergence
 

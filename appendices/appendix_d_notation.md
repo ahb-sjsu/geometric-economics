@@ -20,7 +20,7 @@ Consistent with the Geometric Series. Where domain-specific notation extends the
 |---|---|---|---|
 | $d_1$ | Consequences (monetary payoff) | Transferable | Ch. 3 |
 | $d_2$ | Rights (property, contract) | Transferable | Ch. 3 |
-| $d_3$ | Fairness (distributive justice) | Transferable | Ch. 3 |
+| $d_3$ | Fairness (distributive justice) | Evaluative | Ch. 3 |
 | $d_4$ | Autonomy (freedom of action) | Transferable | Ch. 3 |
 | $d_5$ | Trust (relational, institutional) | Evaluative | Ch. 3 |
 | $d_6$ | Social impact (externalities, community) | Evaluative | Ch. 3 |
