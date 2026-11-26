@@ -22,7 +22,7 @@ The central construction is the **Bond Geodesic Equilibrium** (BGE), a generaliz
 
 The framework is posited theory with a first calibration, not validated measurement. The companion library `eris-econ` (published on PyPI) implements the full pipeline — decision manifold, A* pathfinding, BGE computation — and is calibrated against published experimental data from game theory and prospect theory across multiple cultures. The result is an in-sample benchmark: 16 of 16 aggregate behavioral targets reproduced within tolerance at 2.70% mean absolute error, including cross-cultural variation in ultimatum game offers fitted by metric differences rather than "cultural preferences." A registered out-of-sample test of one consequence of a single shared metric, a rank-one coupling of risk and social preferences, failed on its proxy data (`experiments/RESULTS_coupling_scorecard.md`).
 
-This is the fourth book in the Geometric Series. *Geometric Methods in Computational Modeling* (Bond, 2026a) provides the mathematical toolkit. *Geometric Ethics* (Bond, 2026b) develops the moral manifold. *Geometric Reasoning* (Bond, 2026c) generalizes from ethics to all reasoning, establishing the search-geometry connection, the heuristic field formalism, and the failure taxonomy. The present book instantiates that general framework on the economic decision manifold.
+This is the fourth book in the Geometric Series. *Geometric Methods: Computational Modeling* (Bond, 2026a) provides the mathematical toolkit. *Geometric Ethics* (Bond, 2026b) develops the moral manifold. *Geometric Reasoning* (Bond, 2026c) generalizes from ethics to all reasoning, establishing the search-geometry connection, the heuristic field formalism, and the failure taxonomy. The present book instantiates that general framework on the economic decision manifold.
 
 I thank my colleagues in the SJSU Department of Computer Engineering, the researchers whose experimental data make the empirical validation possible — especially Fraser, Nettle, Ruggeri, and their collaborators — and the computational resources provided by the Atlas workstation and San Jose State University.
 
@@ -54,7 +54,7 @@ March 2026
 | 16/16 aggregate behavioral targets reproduced at 2.70% MAE (in-sample calibration benchmark) | eris-econ validation |
 | Kahneman & Tversky 17 problems: 13/17 predicted (76%) | eris-econ |
 | Cross-cultural ultimatum offers explained by metric variation | Henrich et al. data |
-| Public goods: 4.3% out-of-sample prediction error | Fraser & Nettle |
+| Public goods: 4.3% prediction error, labelled out-of-sample by eris-econ (no run record here; *Geometric Ethics* §20.7 says the published calibration is not held-out prediction) | Fraser & Nettle |
 | Endowment ratio: 1.66 (consistent with experimental WTA/WTP) | eris-econ |
 
 ## How to Read This Book

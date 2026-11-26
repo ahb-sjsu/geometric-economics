@@ -25,7 +25,7 @@ The result is a precise geometric account of some of the most persistent puzzles
 
 ## 8.1 The Bond Invariance Principle for Economics
 
-The Bond Invariance Principle (BIP), developed in *Geometric Reasoning* (Bond, 2026c) and applied to ethics in *Geometric Ethics* (Bond, 2026), states that evaluations must be invariant under meaning-preserving transformations. The principle is domain-general: in ethics, it requires that moral judgments not change under morally irrelevant re-descriptions of the scenario; in law, it requires that legal outcomes not depend on protected characteristics; in cognition, it requires that reasoning be invariant under representational format.
+The Bond Invariance Principle (BIP), stated in *Geometric Ethics* (Bond, 2026b, Axiom 5.1) and generalized to all reasoning in *Geometric Reasoning* (Bond, 2026c, Ch. 8), states that evaluations must be invariant under meaning-preserving transformations. The principle is domain-general: in ethics, it requires that moral judgments not change under morally irrelevant re-descriptions of the scenario; in law, it requires that legal outcomes not depend on protected characteristics; in cognition, it requires that reasoning be invariant under representational format.
 
 In economics, the BIP takes a specific and powerful form.
 
@@ -265,7 +265,7 @@ To make gauge violations measurable, we need a mathematical object that captures
 >
 > A gauge-invariant heuristic has $V_{ij} = 0$ for all $i, j$. The Frobenius norm $\|V\| = \sqrt{\sum_{ij} V_{ij}^2}$ measures the total magnitude of gauge violation.
 
-The gauge violation tensor is a direct analogue of the object defined in *Geometric Reasoning* (Bond, 2026c, Ch. 8) and applied to ethics in *Geometric Ethics* (Bond, 2026, Ch. 17). In ethics, the gauge violation tensor measures the degree to which moral judgments change under morally irrelevant re-descriptions (e.g., switching the language of the dilemma, swapping the gender of the characters). In economics, it measures the degree to which economic evaluations change under economically irrelevant re-descriptions (e.g., switching the currency, relabeling the accounts).
+The gauge violation tensor is a direct analogue of the object used in *Geometric Reasoning* (Bond, 2026c, Chs. 5 and 8, the corruption tensor read along gauge directions). *Geometric Ethics* (Bond, 2026b, §17.3) tests the corresponding invariance in a multilingual embedding model, not in people (§17.7). In ethics, such a tensor would measure the degree to which moral judgments change under morally irrelevant re-descriptions (e.g., switching the language of the dilemma, swapping the gender of the characters). In economics, it measures the degree to which economic evaluations change under economically irrelevant re-descriptions (e.g., switching the currency, relabeling the accounts).
 
 ### Properties of the Gauge Violation Tensor
 
@@ -283,7 +283,7 @@ The cocycle condition in property (2) is particularly important. It says that if
 
 ### Measuring the Gauge Violation Tensor
 
-The gauge violation tensor is empirically measurable. The measurement protocol mirrors the BIP experiments from *Geometric Ethics* (Bond, 2026, Ch. 17):
+The gauge violation tensor is empirically measurable. The measurement protocol adapts to human subjects the BIP experiments that *Geometric Ethics* (Bond, 2026b, §17.3) ran in an embedding model:
 
 1. **Select a set of economic states** $\{n_j\}$ -- e.g., wage offers, prices, investment proposals.
 
@@ -371,7 +371,7 @@ In practice, gauge correction does not require averaging over the full gauge gro
 
 3. **Suspicion of frame-dependent reactions.** When your evaluation changes under a gauge transformation, ask: has the underlying economic state changed, or just the description? If just the description, the changed evaluation is gauge artifact, not information.
 
-This is the economic instantiation of the general debiasing strategy from *Geometric Reasoning* (Bond, 2026c, Ch. 14): heuristic augmentation. The heuristic $h$ is biased (gauge-variant); the correction is to augment it with gauge-awareness so that the augmented heuristic $\hat{h}$ is approximately gauge-invariant.
+This is the economic instantiation of the general debiasing strategy from *Geometric Reasoning* (Bond, 2026c, Chs. 11 and 14): heuristic augmentation. The heuristic $h$ is biased (gauge-variant); the correction is to augment it with gauge-awareness so that the augmented heuristic $\hat{h}$ is approximately gauge-invariant.
 
 **[Empirical.]** Gauge correction is effective. Training programs that teach "think in real terms" reduce money illusion in experimental settings (Fehr and Tyran, 2001, Study 2). Financial literacy programs that teach unit conversion reduce denomination effects. The gauge violation tensor is not a fixed property of the human cognitive system; it is a heuristic calibration parameter that responds to training.
 

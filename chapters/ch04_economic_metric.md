@@ -14,7 +14,7 @@
 >
 > *But Maria's loss aversion is not a fixed number. When her landlord threatens to raise the rent 40% -- threatening her livelihood, her employees' jobs, her identity as a business owner, her standing in the community -- Maria's resistance is fierce. When she loses \$20 in a poker game with friends, she shrugs it off. Same person, wildly different $\lambda$. The standard account says both are "loss aversion" with $\lambda \approx 2.25$. The geometric account says they are different because different dimensions of the decision manifold are active. The rent threat activates $d_1$ through $d_9$; the poker loss activates $d_1$ only. The metric is different because the space is different.*
 >
-> *This chapter derives loss aversion -- and every other prospect-theory phenomenon -- as a geometric property of the decision manifold's metric. The metric is not a parameter to be fitted. It is a mathematical structure from which the parameters follow.*
+> *This chapter reads loss aversion -- and every other prospect-theory phenomenon -- as a geometric property of the decision manifold's metric. Sealed tests of reduced-form geometric models against cumulative prospect theory have so far favored prospect theory (*Geometric Ethics*, §20.8).*
 
 ---
 
@@ -161,7 +161,7 @@ The Bond Index quantifies the magnitude of this miscalibration:
 
 $$\text{BI}(\tau) = \frac{|h(\tau(x)) - h(x)|}{h(x)}$$
 
-A Bond Index of zero means perfect gauge invariance (no framing effect). A positive Bond Index measures the severity of the gauge violation. $\square$
+A Bond Index of zero means perfect gauge invariance (no framing effect). A positive Bond Index measures the severity of the gauge violation. (This is the deviation under one re-description, scaled by $h(x)$, and a different quantity from the Bond Index of *Geometric Ethics*, Chapter 18, which is the mean of such deviations over the tested inputs and declared re-descriptions, divided by a tolerance.) $\square$
 
 ### The Critical Distinction: Metric Feature vs. Heuristic Error
 
@@ -501,4 +501,4 @@ The standard Mahalanobis distance $d_M = \sqrt{\Delta \mathbf{a}^T \Sigma^{-1} \
 
 ## Notes on Sources
 
-Loss aversion was first reported in Kahneman and Tversky (1979), "Prospect Theory," *Econometrica*. The endowment effect was demonstrated by Thaler (1980), "Toward a Positive Theory of Consumer Choice," *Journal of Economic Behavior and Organization*, and systematically studied by Kahneman, Knetsch, and Thaler (1990), "Experimental Tests of the Endowment Effect and the Coase Theorem," *Journal of Political Economy*. Hyperbolic discounting is reviewed in Frederick, Loewenstein, and O'Donoghue (2002), "Time Discounting and Time Preference: A Critical Review," *Journal of Economic Literature*. Framing effects are from Tversky and Kahneman (1981), "The Framing of Decisions and the Psychology of Choice," *Science*. The Finsler metric generalization draws on Bao, Chern, and Shen (2000), *An Introduction to Riemann-Finsler Geometry*, Springer. The Hohfeldian framework is from Hohfeld (1913), "Some Fundamental Legal Conceptions," *Yale Law Journal*. The geometric derivations are from Bond (2026), "Geometric Economics," Sections 7-8, and Bond (2026), *Geometric Ethics*, Chapter 20. The eris-econ calibration data (loss aversion varying 1.0-3.53, 16/16 aggregate behavioral targets reproduced in sample, 2.70% MAE) is from the eris-econ library validation results (Appendix C of the book plan).
+Loss aversion was first reported in Kahneman and Tversky (1979), "Prospect Theory," *Econometrica*. The endowment effect was demonstrated by Thaler (1980), "Toward a Positive Theory of Consumer Choice," *Journal of Economic Behavior and Organization*, and systematically studied by Kahneman, Knetsch, and Thaler (1990), "Experimental Tests of the Endowment Effect and the Coase Theorem," *Journal of Political Economy*. Hyperbolic discounting is reviewed in Frederick, Loewenstein, and O'Donoghue (2002), "Time Discounting and Time Preference: A Critical Review," *Journal of Economic Literature*. Framing effects are from Tversky and Kahneman (1981), "The Framing of Decisions and the Psychology of Choice," *Science*. The Finsler metric generalization draws on Bao, Chern, and Shen (2000), *An Introduction to Riemann-Finsler Geometry*, Springer. The Hohfeldian framework is from Hohfeld (1913), "Some Fundamental Legal Conceptions," *Yale Law Journal*. The geometric derivations are from Bond (2026), "Geometric Economics," Sections 7-8, and Bond (2026b), *Geometric Ethics*, Chapter 20. The eris-econ calibration data (loss aversion varying 1.0-3.53, 16/16 aggregate behavioral targets reproduced in sample, 2.70% MAE) is from the eris-econ library validation results (Appendix C of the book plan).

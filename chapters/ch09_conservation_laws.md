@@ -130,7 +130,7 @@ This observation has a methodological implication: conservation violations, when
 
 ## 9.7 Exploitation as Conservation Violation
 
-**Corollary 9.1 (Exploitation Is Detectable).** *If one party consistently extracts surplus on $d_1$ (monetary gain) while the counterparty consistently bears costs on $d_3$ (fairness), $d_4$ (autonomy), or $d_6$ (social impact), the Bond Index will be non-zero. Exploitation is not a moral judgment — it is a measurable asymmetry in the dimensional distribution of behavioral friction.*
+**Corollary 9.1 (Exploitation Is Detectable).** *If one party consistently extracts surplus on $d_1$ (monetary gain) while the counterparty consistently bears costs on $d_3$ (fairness), $d_4$ (autonomy), or $d_6$ (social impact), the exploitation index of Proposition 9.3 will be positive. Exploitation is not a moral judgment — it is a measurable asymmetry in the dimensional distribution of behavioral friction.*
 
 **[Empirical.]** This gives us a quantitative definition of exploitation that does not depend on subjective moral assessment. The measurement is: compute the attribute-vector changes for both parties across all nine dimensions. If party A's gains are concentrated on $d_1$ while party B's losses are distributed across $d_3$, $d_4$, $d_5$, $d_6$, and $d_7$, the transaction has the geometric signature of exploitation — regardless of whether both parties nominally "agreed" to it.
 
@@ -316,7 +316,7 @@ The evaluative surplus concept connects to the social capital literature (Putnam
 
 ## References
 
-Bond, A. H. (2026a). *Geometric Methods in Computational Modeling.* SJSU.
+Bond, A. H. (2026a). *Geometric Methods: Computational Modeling.* SJSU.
 Bond, A. H. (2026b). *Geometric Ethics: The Mathematical Structure of Moral Reasoning.* SJSU.
 Cecchetti, S. G., and Kharroubi, E. (2012). "Reassessing the Impact of Finance on Growth." BIS Working Paper No. 381.
 Coleman, J. S. (1988). "Social Capital in the Creation of Human Capital." *American Journal of Sociology*, 94, S95–S120.

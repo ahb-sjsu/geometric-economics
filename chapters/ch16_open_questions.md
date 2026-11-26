@@ -31,7 +31,7 @@ The framework assumes a 9×9 covariance matrix $\Sigma$ that encodes the interac
 
 ## 16.2 The Economic No Escape Theorem
 
-*Geometric Ethics* (Chapter 18) proves the No Escape Theorem: an AI system operating within a geometrically constrained evaluation space cannot circumvent the constraints through representational manipulation. The constraints are *structural*, not behavioral — they are properties of the space, not rules the agent can reinterpret.
+*Geometric Ethics* (Theorem 18.1) proves, conditional on four requirements (canonicalization, grounded evaluation, audit, external verification), the No Escape Theorem: an AI system operating within a geometrically constrained evaluation space cannot circumvent the constraints through representational manipulation. The constraints are *structural*, not behavioral — they are properties of the space, not rules the agent can reinterpret.
 
 **Open Problem 16.4.** **[Speculation/Extension.]** Is there an economic analogue? Can we construct an economic decision manifold with structural constraints that market participants cannot circumvent through financial engineering? If so, such constraints would be qualitatively different from regulation (which can be evaded) — they would be features of the economic space itself.
 
@@ -77,7 +77,7 @@ The framework generates specific, testable predictions that distinguish it from 
 
 **Prediction 5: Factor analysis recovers ~9 dimensions.** Principal component analysis of behavioral economic data across a broad enough set of decisions should recover approximately 9 independent factors corresponding to the nine dimensions.
 
-**Prediction 6: Bond Index correlates with behavior.** The Bond Index (the gauge-violation measure from Chapter 8) should predict deviations from classical economic behavior: transactions with high Bond Index are morally loaded and should show larger deviations from $d_1$-optimal behavior.
+**Prediction 6: Bond Index correlates with behavior.** The Bond Index (the gauge-violation measure of Section 4.4) should predict deviations from classical economic behavior: transactions on which an evaluator shows a large gauge violation (Section 4.4, the deviation under one re-description) are morally loaded and should show larger deviations from $d_1$-optimal behavior.
 
 **Prediction 7: Conservation law holds empirically.** In bilateral exchange, the sum of monetary changes across parties should be zero (conservation on $d_1$), while the sum of trust, community, and identity changes should be positive in healthy markets (non-conservation on evaluative dimensions). This is testable: survey both parties in a set of bilateral transactions about changes on all nine dimensions and check the conservation/non-conservation pattern.
 
@@ -149,7 +149,7 @@ The work begins here.
 
 Amari, S. (1998). "Natural Gradient Works Efficiently in Learning." *Neural Computation*, 10(2), 251–276.
 Baron, J., and Spranca, M. (1997). "Protected Values." *Organizational Behavior and Human Decision Processes*, 70(1), 1–16.
-Bond, A. H. (2026a). *Geometric Methods in Computational Modeling.* SJSU.
+Bond, A. H. (2026a). *Geometric Methods: Computational Modeling.* SJSU.
 Bond, A. H. (2026b). *Geometric Ethics.* SJSU.
 Bond, A. H. (2026c). *Geometric Reasoning.* SJSU.
 Hurwicz, L. (1972). "On Informationally Decentralized Systems." *Decision and Organization*, 297–336.

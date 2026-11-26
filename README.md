@@ -1,4 +1,4 @@
-# Geometric Economics: Decision Manifolds, the Bond Geodesic Equilibrium, and the Irrecoverable Geometry of Markets
+# Geometric Economics: Decision Manifolds, Equilibria, and the Geometry of Markets
 
 **Andrew H. Bond**
 Senior Member, IEEE | San Jose State University
@@ -16,7 +16,7 @@ Senior Member, IEEE | San Jose State University
 
 This book is a domain instantiation of the general framework developed in:
 
-- **Geometric Methods in Computational Modeling** (Bond, 2026a) — the mathematical toolkit
+- **Geometric Methods: Computational Modeling** (Bond, 2026a) — the mathematical toolkit
 - **Geometric Reasoning: From Search to Manifolds** (Bond, 2026c) — the parent theory
 
 It inherits the heuristic field formalism, geodesic deviation measure, failure taxonomy, gauge invariance diagnostics, and engineering toolkit from the parent text, and instantiates them on a domain-specific manifold.
@@ -30,8 +30,9 @@ Draft. See `BOOK_PLAN.md` for the chapter plan.
 ```mermaid
 flowchart TB
     subgraph ROOT[Parent framework]
-      METH[Geometric Methods<br/>in Computational Modeling]
+      METH[Geometric Methods<br/>Computational Modeling]
       REAS[Geometric Reasoning<br/>from Search to Manifolds]
+      OBS[Geometric Observation]
     end
 
     subgraph DOMAIN[Domain instantiations]
@@ -70,18 +71,19 @@ flowchart TB
 | Book | Status |
 |------|--------|
 | [Geometric Methods: Computational Modeling](https://github.com/ahb-sjsu/geometric-methods) | Published |
-| [Geometric Ethics: The Mathematical Structure of Moral Reasoning](https://github.com/ahb-sjsu/geometric-ethics) | Published (v1.23) |
+| [Geometric Ethics: The Mathematical Structure of Moral Reasoning](https://github.com/ahb-sjsu/geometric-ethics) | Published (v1.29) |
 | [Geometric Reasoning: From Search to Manifolds](https://github.com/ahb-sjsu/geometric-reasoning) | Draft complete |
-| **Geometric Economics: Decision Manifolds, the Bond Geodesic Equilibrium, and the Irrecoverable Geometry of Markets** | **Draft** |
+| **Geometric Economics: Decision Manifolds, Equilibria, and the Geometry of Markets** | **Draft** |
 | [Geometric Law: Symmetry, Invariance, and the Structure of Legal Reasoning](https://github.com/ahb-sjsu/geometric-law) | Draft |
 | [Geometric Cognition: The Mathematical Structure of Human and Artificial Thought](https://github.com/ahb-sjsu/geometric-cognition) | Draft |
-| [Geometric Communication: Signal, Symmetry, and the Geometry of Meaning](https://github.com/ahb-sjsu/geometric-communication) | Draft |
-| [Geometric Medicine: Clinical Reasoning, Allocation, and the Mathematics of Moral Injury](https://github.com/ahb-sjsu/geometric-medicine) | Draft |
+| [Geometric Communication: Language, Signal, and the Topology of Meaning](https://github.com/ahb-sjsu/geometric-communication) | Draft |
+| [Geometric Medicine: Clinical Reasoning, Triage, and the Ethics of Allocation](https://github.com/ahb-sjsu/geometric-medicine) | Draft |
 | [Geometric Education: Learning, Assessment, and the Topology of Understanding](https://github.com/ahb-sjsu/geometric-education) | Draft |
 | [Geometric Politics: Representation, Polarization, and the Topology of Democratic Choice](https://github.com/ahb-sjsu/geometric-politics) | Draft |
 | [Geometric AI: Alignment, Safety, and the Manifold Structure of Machine Values](https://github.com/ahb-sjsu/geometric-ai) | Draft |
 | [Geometric Gastronomy: The Mathematical Structure of Flavor, Pairing, Cooking, and Culinary Navigation](https://github.com/ahb-sjsu/geometric-gastronomy) | Draft |
 | [Geometric Aesthetics: The Mathematical Structure of Judgment](https://github.com/ahb-sjsu/geometric-aesthetics) | Draft |
+| [Geometric Observation: The Mathematical Structure of What an Observer Can Use](https://github.com/ahb-sjsu/geometric-observation) | Draft |
 
 ## License
 
@@ -97,8 +99,9 @@ published elsewhere are outside both files. They carry the rights their
 publisher agreement assigns.
 
 CC BY asks you to attribute and to indicate whether you changed anything. Both
-halves of that matter here. Every claim in this series carries a status label,
-such as `[proved]`, `[posited]` or `[open]`, graded against a claim ledger, and
+halves of that matter here. Claims in this series carry status labels,
+such as `[proved]`, `[posited]` or `[open]` or a volume's own tags, graded
+against a claim ledger where the volume keeps one, and
 an adapted version presented as the original misstates the evidence behind it.
 Attribution that names the author, the volume and this repository, and that
 says whether the text was changed, is enough.

@@ -411,7 +411,7 @@ The Scalar Irrecoverability Theorem provides the mathematical backbone that Sen'
 
 ## Notes on Sources
 
-The Scalar Irrecoverability Theorem is the economic application of a general topological result (Brouwer, 1911). The specific formulation for economic attribute vectors, including the three-part structure (non-injectivity, irrecoverability, path divergence) and the application to prospect-theoretic paradoxes, is original to Bond (2026b), *Geometric Ethics*, Chapter 15, here adapted for the economic context.
+The Scalar Irrecoverability Theorem is the economic application of a general topological result (Brouwer, 1911). The specific formulation for economic attribute vectors, including the three-part structure (non-injectivity, irrecoverability, path divergence), is original to Bond (2026b), *Geometric Ethics*, Theorem 15.1 (conditional there on its nine-dimensional chart, a modeling axiom), here adapted for the economic context. The application to prospect-theoretic paradoxes is new here.
 
 The Allais paradox is from Allais (1953), "Le Comportement de l'Homme Rationnel devant le Risque," *Econometrica*. The Ellsberg paradox is from Ellsberg (1961), "Risk, Ambiguity, and the Savage Axioms," *Quarterly Journal of Economics*. The interpretation as dimensional-activation effects rather than axiom violations is original to this framework.
 
